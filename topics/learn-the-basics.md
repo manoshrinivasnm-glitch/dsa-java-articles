@@ -4,14 +4,14 @@ title: "Learn the basics"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Things to Know in C++/Java/Python or any language</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>425</td><td>Input Output <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1211</td><td>Cpp Basics <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>424</td><td>If ElseIf <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>429</td><td>Switch Case <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2869</td><td>What are arrays, strings? <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2867</td><td>For loops <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2868</td><td>While loops <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2866</td><td>Functions (Pass by Reference and Value) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>425</td><td><a href="{{ "/p/425.html" | relative_url }}">Input Output</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>1211</td><td><a href="{{ "/p/1211.html" | relative_url }}">Cpp Basics</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>424</td><td><a href="{{ "/p/424.html" | relative_url }}">If ElseIf</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>429</td><td><a href="{{ "/p/429.html" | relative_url }}">Switch Case</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2869</td><td><a href="{{ "/p/2869.html" | relative_url }}">What are arrays, strings?</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2867</td><td><a href="{{ "/p/2867.html" | relative_url }}">For loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2868</td><td><a href="{{ "/p/2868.html" | relative_url }}">While loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2866</td><td><a href="{{ "/p/2866.html" | relative_url }}">Functions (Pass by Reference and Value)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr class="todo"><td>1219</td><td>Theory with examples <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Build-up Logical Thinking</h2>
@@ -46,8 +46,8 @@ title: "Learn the basics"
 </tbody></table>
 <h2>Learn STL/Java-Collections or similar thing in your | language</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1218</td><td>STL <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1217</td><td>Java Collections <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
+<tr><td>1218</td><td><a href="{{ "/p/1218.html" | relative_url }}">STL</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
+<tr><td>1217</td><td><a href="{{ "/p/1217.html" | relative_url }}">Java Collections</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Know Basic Maths</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -62,7 +62,7 @@ title: "Learn the basics"
 <h2>Learn Basic Recursion</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr><td>2401</td><td><a href="{{ "/p/2401.html" | relative_url }}">Understand recursion by print something N times</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>2405</td><td>Print name N times using recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>2405</td><td><a href="{{ "/p/2405.html" | relative_url }}">Print name N times using recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>850</td><td><a href="{{ "/p/850.html" | relative_url }}">Print 1 to N using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>852</td><td><a href="{{ "/p/852.html" | relative_url }}">Print N to 1 using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>386</td><td><a href="{{ "/p/386.html" | relative_url }}">Sum of First N Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>

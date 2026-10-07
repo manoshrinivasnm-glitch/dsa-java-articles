@@ -61,7 +61,7 @@ public class P379_CheckIfTheArrayIsSortedII {
     }
 
     public static void main(String[] args) {
-        verify(new int[]{3, 4, 5, 1, 2}, true);          // rotated by 3
+        verify(new int[]{3, 4, 5, 1, 2}, true);          // [1, 2, 3, 4, 5] rotated left by 2
         verify(new int[]{2, 1, 3, 4}, false);            // two descents
         verify(new int[]{1, 2, 3}, true);                // rotation by zero
         verify(new int[]{1, 1, 1}, true);                // all equal

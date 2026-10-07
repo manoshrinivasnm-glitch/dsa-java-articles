@@ -72,10 +72,10 @@ public class P44_FindMissingNumber {
         verify(new int[]{1}, 0);                                      // n = 1, missing 0
         verify(new int[]{}, 0);                                       // n = 0: the only value in 0..0 is missing
         verify(new int[]{1, 2, 3, 4, 5}, 0);                          // 0 missing from an otherwise complete run
-        // large n: 0 + 1 + ... + n is about 5 * 10^9, far past Integer.MAX_VALUE
-        int n = 100_000;
+        // large n: 0 + 1 + ... + n is about 2.45 * 10^9, past Integer.MAX_VALUE; an int-only sum version fails here
+        int n = 70_000;
         int[] big = new int[n];
-        int missing = 77_777;
+        int missing = 54_321;
         for (int i = 0, v = 0; v <= n; v++) {
             if (v != missing) big[i++] = v;
         }

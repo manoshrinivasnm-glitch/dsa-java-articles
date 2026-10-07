@@ -3,14 +3,14 @@ title: All problems
 ---
 <p>All 583 problems in sheet order, keyed by TUF ID.</p>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>425</td><td>Input Output <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1211</td><td>Cpp Basics <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>424</td><td>If ElseIf <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>429</td><td>Switch Case <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2869</td><td>What are arrays, strings? <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2867</td><td>For loops <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2868</td><td>While loops <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>2866</td><td>Functions (Pass by Reference and Value) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>425</td><td><a href="{{ "/p/425.html" | relative_url }}">Input Output</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>1211</td><td><a href="{{ "/p/1211.html" | relative_url }}">Cpp Basics</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>424</td><td><a href="{{ "/p/424.html" | relative_url }}">If ElseIf</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>429</td><td><a href="{{ "/p/429.html" | relative_url }}">Switch Case</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2869</td><td><a href="{{ "/p/2869.html" | relative_url }}">What are arrays, strings?</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2867</td><td><a href="{{ "/p/2867.html" | relative_url }}">For loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2868</td><td><a href="{{ "/p/2868.html" | relative_url }}">While loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>2866</td><td><a href="{{ "/p/2866.html" | relative_url }}">Functions (Pass by Reference and Value)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr class="todo"><td>1219</td><td>Theory with examples <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr class="todo"><td>1216</td><td>Easy and Medium <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
 <tr class="todo"><td>1205</td><td>Hard <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
@@ -36,8 +36,8 @@ title: All problems
 <tr><td>413</td><td><a href="{{ "/p/413.html" | relative_url }}">Pattern 20</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
 <tr><td>414</td><td><a href="{{ "/p/414.html" | relative_url }}">Pattern 21</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
 <tr><td>415</td><td><a href="{{ "/p/415.html" | relative_url }}">Pattern 22</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>1218</td><td>STL <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1217</td><td>Java Collections <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
+<tr><td>1218</td><td><a href="{{ "/p/1218.html" | relative_url }}">STL</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
+<tr><td>1217</td><td><a href="{{ "/p/1217.html" | relative_url }}">Java Collections</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn STL/Java-Collections or similar thing in your | language</td><td>A2Z</td></tr>
 <tr><td>367</td><td><a href="{{ "/p/367.html" | relative_url }}">Count all Digits of a Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>376</td><td><a href="{{ "/p/376.html" | relative_url }}">Reverse a number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>374</td><td><a href="{{ "/p/374.html" | relative_url }}">Palindrome Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z B75</td></tr>
@@ -46,7 +46,7 @@ title: All problems
 <tr><td>2807</td><td><a href="{{ "/p/2807.html" | relative_url }}">Print all Divisors</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>365</td><td><a href="{{ "/p/365.html" | relative_url }}">Check for Prime Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>2401</td><td><a href="{{ "/p/2401.html" | relative_url }}">Understand recursion by print something N times</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>2405</td><td>Print name N times using recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>2405</td><td><a href="{{ "/p/2405.html" | relative_url }}">Print name N times using recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>850</td><td><a href="{{ "/p/850.html" | relative_url }}">Print 1 to N using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>852</td><td><a href="{{ "/p/852.html" | relative_url }}">Print N to 1 using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>386</td><td><a href="{{ "/p/386.html" | relative_url }}">Sum of First N Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
@@ -70,59 +70,59 @@ title: All problems
 <tr><td>2764</td><td><a href="{{ "/p/2764.html" | relative_url }}">Remove duplicates from Sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr><td>40</td><td><a href="{{ "/p/40.html" | relative_url }}">Left Rotate Array by One</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr><td>39</td><td><a href="{{ "/p/39.html" | relative_url }}">Left Rotate Array by K Places</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>46</td><td>Move Zeros to End <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>41</td><td>Linear Search <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>48</td><td>Union of two sorted arrays <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>44</td><td>Find missing number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z B75</td></tr>
+<tr><td>46</td><td><a href="{{ "/p/46.html" | relative_url }}">Move Zeros to End</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>41</td><td><a href="{{ "/p/41.html" | relative_url }}">Linear Search</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>48</td><td><a href="{{ "/p/48.html" | relative_url }}">Union of two sorted arrays</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>44</td><td><a href="{{ "/p/44.html" | relative_url }}">Find missing number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z B75</td></tr>
 <tr><td>42</td><td><a href="{{ "/p/42.html" | relative_url }}">Maximum Consecutive Ones</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z SDE</td></tr>
 <tr><td>2793</td><td><a href="{{ "/p/2793.html" | relative_url }}">Find the number that appears once, and other numbers twice.</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>2836</td><td>Longest subarray with given sum K(positives) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>564</td><td>Longest subarray with sum K <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>2836</td><td><a href="{{ "/p/2836.html" | relative_url }}">Longest subarray with given sum K(positives)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>564</td><td><a href="{{ "/p/564.html" | relative_url }}">Longest subarray with sum K</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr><td>37</td><td><a href="{{ "/p/37.html" | relative_url }}">Two Sum</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>2762</td><td>Sort an array of 0's 1's and 2's <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>22</td><td>Majority Element-I <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>29</td><td>Kadane's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2761</td><td>Print subarray with maximum subarray sum (extended version of above problem) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
+<tr><td>2762</td><td><a href="{{ "/p/2762.html" | relative_url }}">Sort an array of 0's 1's and 2's</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
+<tr><td>22</td><td><a href="{{ "/p/22.html" | relative_url }}">Majority Element-I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>A2Z SDE</td></tr>
+<tr><td>29</td><td><a href="{{ "/p/29.html" | relative_url }}">Kadane's Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
+<tr><td>2761</td><td><a href="{{ "/p/2761.html" | relative_url }}">Print subarray with maximum subarray sum (extended version of above problem)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr class="todo"><td>2798</td><td>Stock Buy and Sell <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>34</td><td><a href="{{ "/p/34.html" | relative_url }}">Rearrange array elements by sign</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr><td>31</td><td><a href="{{ "/p/31.html" | relative_url }}">Next Permutation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>30</td><td><a href="{{ "/p/30.html" | relative_url }}">Leaders in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>2835</td><td>Longest Consecutive Sequence in an Array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>911</td><td>Set Matrix Zeroes <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>35</td><td>Rotate matrix by 90 degrees <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>33</td><td>Print the matrix in spiral manner <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>561</td><td>Count subarrays with given sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>813</td><td>Pascal's Triangle I <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>23</td><td>Majority Element-II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>2835</td><td><a href="{{ "/p/2835.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
+<tr><td>911</td><td><a href="{{ "/p/911.html" | relative_url }}">Set Matrix Zeroes</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
+<tr><td>35</td><td><a href="{{ "/p/35.html" | relative_url }}">Rotate matrix by 90 degrees</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
+<tr><td>33</td><td><a href="{{ "/p/33.html" | relative_url }}">Print the matrix in spiral manner</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z B75</td></tr>
+<tr><td>561</td><td><a href="{{ "/p/561.html" | relative_url }}">Count subarrays with given sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
+<tr><td>813</td><td><a href="{{ "/p/813.html" | relative_url }}">Pascal's Triangle I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>23</td><td><a href="{{ "/p/23.html" | relative_url }}">Majority Element-II</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
 <tr><td>27</td><td><a href="{{ "/p/27.html" | relative_url }}">3 Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE B75</td></tr>
 <tr><td>28</td><td><a href="{{ "/p/28.html" | relative_url }}">4 Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
 <tr><td>605</td><td><a href="{{ "/p/605.html" | relative_url }}">Largest Subarray with Sum 0</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>562</td><td>Count subarrays with given xor K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>715</td><td>Merge Overlapping Subintervals <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>25</td><td>Merge two sorted arrays without extra space <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>21</td><td>Find the repeating and missing number <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>20</td><td>Count Inversions <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>26</td><td>Reverse Pairs <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>24</td><td>Maximum Product Subarray in an Array <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z B75</td></tr>
+<tr><td>562</td><td><a href="{{ "/p/562.html" | relative_url }}">Count subarrays with given xor K</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>715</td><td><a href="{{ "/p/715.html" | relative_url }}">Merge Overlapping Subintervals</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>25</td><td><a href="{{ "/p/25.html" | relative_url }}">Merge two sorted arrays without extra space</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>21</td><td><a href="{{ "/p/21.html" | relative_url }}">Find the repeating and missing number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE B75</td></tr>
+<tr><td>20</td><td><a href="{{ "/p/20.html" | relative_url }}">Count Inversions</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z</td></tr>
+<tr><td>26</td><td><a href="{{ "/p/26.html" | relative_url }}">Reverse Pairs</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
+<tr><td>24</td><td><a href="{{ "/p/24.html" | relative_url }}">Maximum Product Subarray in an Array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z B75</td></tr>
 <tr><td>81</td><td><a href="{{ "/p/81.html" | relative_url }}">Search X in sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr><td>80</td><td><a href="{{ "/p/80.html" | relative_url }}">Lower Bound</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr><td>82</td><td><a href="{{ "/p/82.html" | relative_url }}">Upper Bound</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr><td>89</td><td><a href="{{ "/p/89.html" | relative_url }}">Search insert position</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>86</td><td>Floor and Ceil in Sorted Array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>85</td><td>First and last occurrence <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>229</td><td>Count Occurrences in a Sorted Array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>87</td><td>Search in rotated sorted array-I <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>88</td><td>Search in rotated sorted array-II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>83</td><td>Find minimum in Rotated Sorted Array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>84</td><td>Find out how many times the array is rotated <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>86</td><td><a href="{{ "/p/86.html" | relative_url }}">Floor and Ceil in Sorted Array</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>85</td><td><a href="{{ "/p/85.html" | relative_url }}">First and last occurrence</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>229</td><td><a href="{{ "/p/229.html" | relative_url }}">Count Occurrences in a Sorted Array</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>87</td><td><a href="{{ "/p/87.html" | relative_url }}">Search in rotated sorted array-I</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z B75</td></tr>
+<tr><td>88</td><td><a href="{{ "/p/88.html" | relative_url }}">Search in rotated sorted array-II</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>83</td><td><a href="{{ "/p/83.html" | relative_url }}">Find minimum in Rotated Sorted Array</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z B75</td></tr>
+<tr><td>84</td><td><a href="{{ "/p/84.html" | relative_url }}">Find out how many times the array is rotated</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr><td>2770</td><td><a href="{{ "/p/2770.html" | relative_url }}">Single element in a Sorted Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr><td>75</td><td><a href="{{ "/p/75.html" | relative_url }}">Find peak element</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>92</td><td>Find square root of a number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>91</td><td>Find Nth root of a number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>94</td><td>Koko eating bananas <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>95</td><td>Minimum days to make M bouquets <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>93</td><td>Find the smallest divisor <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>161</td><td>Capacity to Ship Packages Within D Days <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>92</td><td><a href="{{ "/p/92.html" | relative_url }}">Find square root of a number</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>91</td><td><a href="{{ "/p/91.html" | relative_url }}">Find Nth root of a number</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>94</td><td><a href="{{ "/p/94.html" | relative_url }}">Koko eating bananas</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>95</td><td><a href="{{ "/p/95.html" | relative_url }}">Minimum days to make M bouquets</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>93</td><td><a href="{{ "/p/93.html" | relative_url }}">Find the smallest divisor</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>161</td><td><a href="{{ "/p/161.html" | relative_url }}">Capacity to Ship Packages Within D Days</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>600</td><td>Kth Missing Positive Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>73</td><td>Aggressive Cows <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>74</td><td>Book Allocation Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
