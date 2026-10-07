@@ -62,29 +62,17 @@ public class P26_ReversePairs {
         verify(new int[]{2, 2, 2, 2}, 0, true);                    // equal values: 2 > 4 is false
         verify(new int[]{-5, -3, -1, 2}, 1, true);                 // negatives: -5 > 2 * (-3)
         verify(new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE}, 5, true); // 2 * MIN overflows int
-        int n = 100_000;                                           // descending 2n, 2n-2, ..., 2: answer exceeds int range
+        int n = 100_000;                                           // desc = 2n, 2n-2, ..., 2: the answer exceeds the int range
         int[] desc = new int[n];
         for (int i = 0; i < n; i++) desc[i] = 2 * (n - i);
-        long expected = 0;
-        for (int j = 0; j < n; j++) expected += Math.max(0, j - (n - j));   // indices i < j with 2(n-i) > 4(n-j), i.e. i > 2n - 2j... counted directly below
-        expected = 0;
-        for (int j = 1; j < n; j++) {
-            int smallestI = Math.max(0, 2 * n - 2 * j + 1 - n);  // placeholder, replaced by direct count
-            smallestI = 0;
-            expected += 0 * smallestI;
-        }
-        expected = countDescending(n);
-        verify(desc, expected, false);
+        verify(desc, countDescending(n), false);
         System.out.println("OK P26_ReversePairs");
     }
 
-    /** Closed-form reference for desc[i] = 2(n - i): pair (i, j) is a reverse pair iff n - i > 2(n - j), i.e. i < 2j - n. */
+    /** Reference count for desc[i] = 2(n - i): (i, j) is a reverse pair iff n - i > 2(n - j), i.e. i < 2j - n, so j contributes max(0, 2j - n) pairs. */
     static long countDescending(int n) {
         long total = 0;
-        for (int j = 0; j < n; j++) {
-            int upper = Math.min(j, 2 * j - n);                  // i ranges over 0 .. upper-1
-            if (upper > 0) total += upper;
-        }
+        for (int j = 0; j < n; j++) total += Math.max(0, 2 * j - n);
         return total;
     }
 }

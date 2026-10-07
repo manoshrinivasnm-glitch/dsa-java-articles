@@ -5,9 +5,9 @@ title: "Solve Problems on Arrays [Easy -> Medium -> Hard]"
 <h2>Easy</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr><td>38</td><td><a href="{{ "/p/38.html" | relative_url }}">Largest Element</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>43</td><td>Second Largest Element <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>379</td><td>Check if the Array is Sorted II <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
-<tr class="todo"><td>2764</td><td>Remove duplicates from Sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>43</td><td><a href="{{ "/p/43.html" | relative_url }}">Second Largest Element</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>379</td><td><a href="{{ "/p/379.html" | relative_url }}">Check if the Array is Sorted II</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>2764</td><td><a href="{{ "/p/2764.html" | relative_url }}">Remove duplicates from Sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>40</td><td>Left Rotate Array by One <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>39</td><td>Left Rotate Array by K Places <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>46</td><td>Move Zeros to End <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
@@ -27,8 +27,8 @@ title: "Solve Problems on Arrays [Easy -> Medium -> Hard]"
 <tr class="todo"><td>29</td><td>Kadane's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>2761</td><td>Print subarray with maximum subarray sum (extended version of above problem) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr class="todo"><td>2798</td><td>Stock Buy and Sell <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>34</td><td>Rearrange array elements by sign <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>31</td><td>Next Permutation <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
+<tr><td>34</td><td><a href="{{ "/p/34.html" | relative_url }}">Rearrange array elements by sign</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
+<tr><td>31</td><td><a href="{{ "/p/31.html" | relative_url }}">Next Permutation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>30</td><td>Leaders in an Array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr class="todo"><td>2835</td><td>Longest Consecutive Sequence in an Array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr class="todo"><td>911</td><td>Set Matrix Zeroes <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE B75</td></tr>
@@ -40,7 +40,7 @@ title: "Solve Problems on Arrays [Easy -> Medium -> Hard]"
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr class="todo"><td>813</td><td>Pascal's Triangle I <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>23</td><td>Majority Element-II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>27</td><td>3 Sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE B75</td></tr>
+<tr><td>27</td><td><a href="{{ "/p/27.html" | relative_url }}">3 Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE B75</td></tr>
 <tr class="todo"><td>28</td><td>4 Sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>605</td><td>Largest Subarray with Sum 0 <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard</td><td>A2Z</td></tr>
 <tr class="todo"><td>562</td><td>Count subarrays with given xor K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>A2Z SDE</td></tr>

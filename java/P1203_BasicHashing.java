@@ -120,6 +120,10 @@ public class P1203_BasicHashing {
         check(Arrays.stream(charFrequencyLowercase("")).sum() == 0, "empty string has no characters");
         int[] ascii = charFrequencyAscii("Hello, World!");
         check(ascii['l'] == 3 && ascii['o'] == 2 && ascii['H'] == 1 && ascii['h'] == 0 && ascii[' '] == 1 && ascii['!'] == 1, "ascii Hello, World!");
+        check(charFrequencyLowercase("zzz")[25] == 3 && charFrequencyLowercase("a")[0] == 1, "lowercase zzz and a");
+        int[] mixed = charFrequencyAscii("AaAa  ");
+        check(mixed['A'] == 2 && mixed['a'] == 2 && mixed[' '] == 2 && mixed['b'] == 0, "ascii keeps upper and lower case apart");
+        check(Arrays.stream(charFrequencyAscii("")).sum() == 0, "ascii empty string");
         int[] lowerAgain = charFrequencyLowercase("abcabcz");
         int[] asciiAgain = charFrequencyAscii("abcabcz");
         for (char c = 'a'; c <= 'z'; c++) {

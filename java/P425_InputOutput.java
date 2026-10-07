@@ -1,7 +1,7 @@
 import java.util.*;
 
 /** TUF 425 - Input Output. Reading tokens and lines, and formatting output, in Java.
- *  Every parser here works on a String so the tests need no stdin; new Scanner(System.in) behaves identically. */
+ *  Every parser here works on a String so the tests need no stdin; a Scanner over standard input behaves identically. */
 public class P425_InputOutput {
 
     /** Read every whitespace-separated integer in the input and add them up. */

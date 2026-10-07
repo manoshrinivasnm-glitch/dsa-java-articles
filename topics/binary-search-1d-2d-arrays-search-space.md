@@ -4,8 +4,8 @@ title: "Binary Search [1D, 2D Arrays, Search Space]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>BS on 1D Arrays</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>81</td><td>Search X in sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>80</td><td>Lower Bound <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>81</td><td><a href="{{ "/p/81.html" | relative_url }}">Search X in sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
+<tr><td>80</td><td><a href="{{ "/p/80.html" | relative_url }}">Lower Bound</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>82</td><td>Upper Bound <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>89</td><td>Search insert position <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>86</td><td>Floor and Ceil in Sorted Array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 1D Arrays</td><td>A2Z</td></tr>

@@ -55,9 +55,9 @@ title: "Learn the basics"
 <tr><td>376</td><td><a href="{{ "/p/376.html" | relative_url }}">Reverse a number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>374</td><td><a href="{{ "/p/374.html" | relative_url }}">Palindrome Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z B75</td></tr>
 <tr><td>372</td><td><a href="{{ "/p/372.html" | relative_url }}">GCD of Two Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>366</td><td>Check if the Number is Armstrong <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>2807</td><td>Print all Divisors <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>365</td><td>Check for Prime Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>366</td><td><a href="{{ "/p/366.html" | relative_url }}">Check if the Number is Armstrong</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>2807</td><td><a href="{{ "/p/2807.html" | relative_url }}">Print all Divisors</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>365</td><td><a href="{{ "/p/365.html" | relative_url }}">Check for Prime Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Learn Basic Recursion</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>

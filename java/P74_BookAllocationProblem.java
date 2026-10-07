@@ -56,7 +56,7 @@ public class P74_BookAllocationProblem {
         verify(new int[]{12, 34, 67, 90}, 2, 113);
         verify(new int[]{25, 46, 28, 49, 24}, 4, 71);
         verify(new int[]{15, 17, 20}, 2, 32);
-        verify(new int[]{10, 20, 30, 40}, 2, 70);
+        verify(new int[]{10, 20, 30, 40}, 2, 60);        // [10,20,30 | 40] beats [10,20 | 30,40]
         verify(new int[]{1, 2, 3}, 4, -1);                // more students than books
         verify(new int[]{5, 5, 5}, 3, 5);                 // one book each: answer is the max
         verify(new int[]{100}, 1, 100);                   // single book, single student
