@@ -216,15 +216,15 @@ title: All problems
 <tr><td>1005</td><td><a href="{{ "/p/1005.html" | relative_url }}">Swap Two Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
 <tr><td>140</td><td><a href="{{ "/p/140.html" | relative_url }}">Divide two numbers without multiplication and division</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
 <tr><td>141</td><td><a href="{{ "/p/141.html" | relative_url }}">Minimum Bit Flips to Convert Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>143</td><td>Single Number - I <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>142</td><td>Power Set Bit Manipulation <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>146</td><td>XOR of numbers in a given range <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>145</td><td>Single Number - III <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2853</td><td>Print Prime Factors of a Number <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>370</td><td>Divisors of a Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>651</td><td>Count primes in range L to R <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>652</td><td>Prime factorisation of a Number <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>877</td><td>Pow(x,n) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
+<tr><td>143</td><td><a href="{{ "/p/143.html" | relative_url }}">Single Number - I</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>142</td><td><a href="{{ "/p/142.html" | relative_url }}">Power Set Bit Manipulation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>146</td><td><a href="{{ "/p/146.html" | relative_url }}">XOR of numbers in a given range</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>145</td><td><a href="{{ "/p/145.html" | relative_url }}">Single Number - III</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>2853</td><td><a href="{{ "/p/2853.html" | relative_url }}">Print Prime Factors of a Number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
+<tr><td>370</td><td><a href="{{ "/p/370.html" | relative_url }}">Divisors of a Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
+<tr><td>651</td><td><a href="{{ "/p/651.html" | relative_url }}">Count primes in range L to R</a></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
+<tr><td>652</td><td><a href="{{ "/p/652.html" | relative_url }}">Prime factorisation of a Number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
+<tr><td>877</td><td><a href="{{ "/p/877.html" | relative_url }}">Pow(x,n)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>390</td><td>Implement Stack using Arrays <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>387</td><td>Implement Queue using Arrays <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>392</td><td>Implement Stack using Queue <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
