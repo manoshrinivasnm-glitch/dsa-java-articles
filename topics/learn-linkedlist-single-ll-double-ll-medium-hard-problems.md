@@ -4,23 +4,23 @@ title: "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Learn 1D LinkedList</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1237</td><td>Introduction to Singly LinkedList <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>356</td><td>Insertion at the head of Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>352</td><td>Deletion of the head of LL <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>470</td><td>Find the length of the Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>905</td><td>Search in Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
+<tr><td>1237</td><td><a href="{{ "/p/1237.html" | relative_url }}">Introduction to Singly LinkedList</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
+<tr><td>356</td><td><a href="{{ "/p/356.html" | relative_url }}">Insertion at the head of Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
+<tr><td>352</td><td><a href="{{ "/p/352.html" | relative_url }}">Deletion of the head of LL</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
+<tr><td>470</td><td><a href="{{ "/p/470.html" | relative_url }}">Find the length of the Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
+<tr><td>905</td><td><a href="{{ "/p/905.html" | relative_url }}">Search in Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Learn Doubly LinkedList</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1234</td><td>Introduction to Doubly LL <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>361</td><td>Insert node before head in Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>348</td><td>Delete head of Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
-<tr class="todo"><td>900</td><td>Reverse a Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
+<tr><td>1234</td><td><a href="{{ "/p/1234.html" | relative_url }}">Introduction to Doubly LL</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
+<tr><td>361</td><td><a href="{{ "/p/361.html" | relative_url }}">Insert node before head in Doubly Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
+<tr><td>348</td><td><a href="{{ "/p/348.html" | relative_url }}">Delete head of Doubly Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
+<tr><td>900</td><td><a href="{{ "/p/900.html" | relative_url }}">Reverse a Doubly Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learn Doubly LinkedList</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Medium Problems of LL</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>2810</td><td>Middle of a LinkedList [TortoiseHare Method] <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>2850</td><td>Reverse a LinkedList [Iterative] <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
+<tr><td>2810</td><td><a href="{{ "/p/2810.html" | relative_url }}">Middle of a LinkedList [TortoiseHare Method]</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
+<tr><td>2850</td><td><a href="{{ "/p/2850.html" | relative_url }}">Reverse a LinkedList [Iterative]</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
 <tr class="todo"><td>627</td><td>Reverse a LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z SDE B75</td></tr>
 <tr class="todo"><td>2845</td><td>Detect a loop in LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
 <tr class="todo"><td>2847</td><td>Find the starting point in LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>

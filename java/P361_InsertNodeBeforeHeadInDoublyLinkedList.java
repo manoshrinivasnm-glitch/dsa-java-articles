@@ -115,7 +115,7 @@ public class P361_InsertNodeBeforeHeadInDoublyLinkedList {
             checkList(insertBeforeNode(head, head, val), expectedHead, "insertBeforeNode(head) " + in);
         }
         checkList(insertAtTail(fromArray(arr), val), expectedTail, "insertAtTail " + in);
-        checkList(insertBeforePosition(fromArray(arr), arr.length + 1, val), arr, "position n+1 does not exist " + in);
+        checkList(insertBeforePosition(fromArray(arr), arr.length + 2, val), arr, "position n+2 does not exist " + in);
     }
 
     public static void main(String[] args) {
@@ -127,7 +127,9 @@ public class P361_InsertNodeBeforeHeadInDoublyLinkedList {
 
         checkList(insertBeforePosition(fromArray(new int[]{1, 2, 4}), 3, 3), new int[]{1, 2, 3, 4}, "insert before the 3rd node");
         checkList(insertBeforePosition(fromArray(new int[]{1, 2}), 0, 7), new int[]{1, 2}, "k = 0 is rejected");
+        checkList(insertBeforePosition(fromArray(new int[]{1, 2}), 3, 7), new int[]{1, 2}, "there is no 3rd node to insert before");
         check(insertBeforePosition(null, 2, 7) == null, "position 2 of an empty list does not exist");
+        checkList(insertBeforePosition(null, 1, 7), new int[]{7}, "position 1 of an empty list creates the list");
 
         Node old = fromArray(new int[]{10, 20});
         Node fresh = insertBeforeHead(old, 5);
