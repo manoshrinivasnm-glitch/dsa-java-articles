@@ -140,10 +140,10 @@ title: All problems
 <tr><td>2863</td><td><a href="{{ "/p/2863.html" | relative_url }}">Reverse words in a given string / Palindrome Check</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>394</td><td><a href="{{ "/p/394.html" | relative_url }}">Largest Odd Number in a String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>395</td><td><a href="{{ "/p/395.html" | relative_url }}">Longest Common Prefix</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>393</td><td>Isomorphic String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>398</td><td>Rotate String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2809</td><td>Check if two strings are anagram of each other <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>399</td><td>Sort Characters by Frequency <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
+<tr><td>393</td><td><a href="{{ "/p/393.html" | relative_url }}">Isomorphic String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>398</td><td><a href="{{ "/p/398.html" | relative_url }}">Rotate String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>2809</td><td><a href="{{ "/p/2809.html" | relative_url }}">Check if two strings are anagram of each other</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>399</td><td><a href="{{ "/p/399.html" | relative_url }}">Sort Characters by Frequency</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>674</td><td>Maximum Nesting Depth of the Parentheses <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>903</td><td>Roman to Integer <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>974</td><td>String to Integer (atoi) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
