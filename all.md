@@ -200,13 +200,13 @@ title: All problems
 <tr><td>866</td><td><a href="{{ "/p/866.html" | relative_url }}">Combination Sum III</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
 <tr><td>875</td><td><a href="{{ "/p/875.html" | relative_url }}">Letter Combinations of a Phone Number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
 <tr><td>871</td><td><a href="{{ "/p/871.html" | relative_url }}">Palindrome partitioning</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>874</td><td>Word Search <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>870</td><td>N Queen <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>872</td><td>Rat in a Maze <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>4</td><td>Word Break <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>869</td><td>M Coloring Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>873</td><td>Sudoku Solver <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>3</td><td>Expression Add Operators <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z</td></tr>
+<tr><td>874</td><td><a href="{{ "/p/874.html" | relative_url }}">Word Search</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z B75</td></tr>
+<tr><td>870</td><td><a href="{{ "/p/870.html" | relative_url }}">N Queen</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
+<tr><td>872</td><td><a href="{{ "/p/872.html" | relative_url }}">Rat in a Maze</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
+<tr><td>4</td><td><a href="{{ "/p/4.html" | relative_url }}">Word Break</a></td><td><span class="badge badge-medium">Medium</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE B75</td></tr>
+<tr><td>869</td><td><a href="{{ "/p/869.html" | relative_url }}">M Coloring Problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
+<tr><td>873</td><td><a href="{{ "/p/873.html" | relative_url }}">Sudoku Solver</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
+<tr><td>3</td><td><a href="{{ "/p/3.html" | relative_url }}">Expression Add Operators</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z</td></tr>
 <tr><td>1155</td><td><a href="{{ "/p/1155.html" | relative_url }}">Introduction to Bits and Tricks</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
 <tr><td>177</td><td><a href="{{ "/p/177.html" | relative_url }}">Check if the i-th bit is Set or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
 <tr><td>171</td><td><a href="{{ "/p/171.html" | relative_url }}">Check if a Number is Odd or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
