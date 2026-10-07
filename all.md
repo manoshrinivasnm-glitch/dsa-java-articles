@@ -207,15 +207,15 @@ title: All problems
 <tr class="todo"><td>869</td><td>M Coloring Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>873</td><td>Sudoku Solver <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>3</td><td>Expression Add Operators <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>1155</td><td>Introduction to Bits and Tricks <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>177</td><td>Check if the i-th bit is Set or Not <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>171</td><td>Check if a Number is Odd or Not <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>172</td><td>Check if a Number is Power of 2 or Not <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>243</td><td>Count the Number of Set Bits <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>2410</td><td>Set/Unset the rightmost unset bit <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>1005</td><td>Swap Two Numbers <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>140</td><td>Divide two numbers without multiplication and division <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
-<tr class="todo"><td>141</td><td>Minimum Bit Flips to Convert Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>1155</td><td><a href="{{ "/p/1155.html" | relative_url }}">Introduction to Bits and Tricks</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>177</td><td><a href="{{ "/p/177.html" | relative_url }}">Check if the i-th bit is Set or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>171</td><td><a href="{{ "/p/171.html" | relative_url }}">Check if a Number is Odd or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>172</td><td><a href="{{ "/p/172.html" | relative_url }}">Check if a Number is Power of 2 or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>243</td><td><a href="{{ "/p/243.html" | relative_url }}">Count the Number of Set Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>2410</td><td><a href="{{ "/p/2410.html" | relative_url }}">Set/Unset the rightmost unset bit</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>1005</td><td><a href="{{ "/p/1005.html" | relative_url }}">Swap Two Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>140</td><td><a href="{{ "/p/140.html" | relative_url }}">Divide two numbers without multiplication and division</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learn Bit Manipulation</td><td>A2Z</td></tr>
+<tr><td>141</td><td><a href="{{ "/p/141.html" | relative_url }}">Minimum Bit Flips to Convert Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>143</td><td>Single Number - I <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>142</td><td>Power Set Bit Manipulation <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>146</td><td>XOR of numbers in a given range <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
