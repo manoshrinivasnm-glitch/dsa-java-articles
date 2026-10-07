@@ -1,0 +1,21 @@
+name: Java solutions check
+
+on:
+  push:
+    branches: [main]
+    paths: ['java/**', 'tools/check_java.sh', '.github/workflows/java-check.yml']
+  pull_request:
+    paths: ['java/**', 'tools/check_java.sh']
+  workflow_dispatch:
+
+jobs:
+  compile-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile every solution and run its self-tests
+        run: tools/check_java.sh
