@@ -26,7 +26,7 @@ title: "Solve Problems on Arrays [Easy -> Medium -> Hard]"
 <tr><td>22</td><td><a href="{{ "/p/22.html" | relative_url }}">Majority Element-I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>29</td><td><a href="{{ "/p/29.html" | relative_url }}">Kadane's Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>2761</td><td><a href="{{ "/p/2761.html" | relative_url }}">Print subarray with maximum subarray sum (extended version of above problem)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>2798</td><td>Stock Buy and Sell <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
+<tr><td>2798</td><td><a href="{{ "/p/2798.html" | relative_url }}">Stock Buy and Sell</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>34</td><td><a href="{{ "/p/34.html" | relative_url }}">Rearrange array elements by sign</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr><td>31</td><td><a href="{{ "/p/31.html" | relative_url }}">Next Permutation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>30</td><td><a href="{{ "/p/30.html" | relative_url }}">Leaders in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>

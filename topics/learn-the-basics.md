@@ -12,7 +12,7 @@ title: "Learn the basics"
 <tr><td>2867</td><td><a href="{{ "/p/2867.html" | relative_url }}">For loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>2868</td><td><a href="{{ "/p/2868.html" | relative_url }}">While loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>2866</td><td><a href="{{ "/p/2866.html" | relative_url }}">Functions (Pass by Reference and Value)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1219</td><td>Theory with examples <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>1219</td><td><a href="{{ "/p/1219.html" | relative_url }}">Theory with examples</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Build-up Logical Thinking</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>

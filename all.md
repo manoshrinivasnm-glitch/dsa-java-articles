@@ -11,7 +11,7 @@ title: All problems
 <tr><td>2867</td><td><a href="{{ "/p/2867.html" | relative_url }}">For loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>2868</td><td><a href="{{ "/p/2868.html" | relative_url }}">While loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>2866</td><td><a href="{{ "/p/2866.html" | relative_url }}">Functions (Pass by Reference and Value)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1219</td><td>Theory with examples <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
+<tr><td>1219</td><td><a href="{{ "/p/1219.html" | relative_url }}">Theory with examples</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr class="todo"><td>1216</td><td>Easy and Medium <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
 <tr class="todo"><td>1205</td><td>Hard <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
 <tr><td>401</td><td><a href="{{ "/p/401.html" | relative_url }}">Pattern 1</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
@@ -83,7 +83,7 @@ title: All problems
 <tr><td>22</td><td><a href="{{ "/p/22.html" | relative_url }}">Majority Element-I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>29</td><td><a href="{{ "/p/29.html" | relative_url }}">Kadane's Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>2761</td><td><a href="{{ "/p/2761.html" | relative_url }}">Print subarray with maximum subarray sum (extended version of above problem)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
-<tr class="todo"><td>2798</td><td>Stock Buy and Sell <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
+<tr><td>2798</td><td><a href="{{ "/p/2798.html" | relative_url }}">Stock Buy and Sell</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>34</td><td><a href="{{ "/p/34.html" | relative_url }}">Rearrange array elements by sign</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
 <tr><td>31</td><td><a href="{{ "/p/31.html" | relative_url }}">Next Permutation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z SDE</td></tr>
 <tr><td>30</td><td><a href="{{ "/p/30.html" | relative_url }}">Leaders in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>A2Z</td></tr>
@@ -136,7 +136,7 @@ title: All problems
 <tr class="todo"><td>68</td><td>Search in 2D matrix - II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>65</td><td>Find Peak Element - II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>67</td><td>Matrix Median <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>892</td><td>Remove Outermost Parentheses <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>892</td><td><a href="{{ "/p/892.html" | relative_url }}">Remove Outermost Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>2863</td><td>Reverse words in a given string / Palindrome Check <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>394</td><td>Largest Odd Number in a String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>395</td><td>Longest Common Prefix <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>

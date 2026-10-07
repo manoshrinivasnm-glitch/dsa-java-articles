@@ -4,7 +4,7 @@ title: "Strings [Basic and Medium]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Basic and Easy String Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>892</td><td>Remove Outermost Parentheses <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>892</td><td><a href="{{ "/p/892.html" | relative_url }}">Remove Outermost Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>2863</td><td>Reverse words in a given string / Palindrome Check <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>394</td><td>Largest Odd Number in a String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>395</td><td>Longest Common Prefix <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
