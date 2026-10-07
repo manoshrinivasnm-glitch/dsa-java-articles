@@ -126,16 +126,16 @@ title: All problems
 <tr><td>600</td><td><a href="{{ "/p/600.html" | relative_url }}">Kth Missing Positive Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr><td>73</td><td><a href="{{ "/p/73.html" | relative_url }}">Aggressive Cows</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
 <tr><td>74</td><td><a href="{{ "/p/74.html" | relative_url }}">Book Allocation Problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>79</td><td>Split array - largest sum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>805</td><td>Painter's Partition <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>78</td><td>Minimize Max Distance to Gas Station <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>77</td><td>Median of 2 sorted arrays <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2767</td><td>Kth element of 2 sorted arrays <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>66</td><td>Find row with maximum 1's <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>69</td><td>Search in a 2D matrix <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>68</td><td>Search in 2D matrix - II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>65</td><td>Find Peak Element - II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
-<tr class="todo"><td>67</td><td>Matrix Median <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
+<tr><td>79</td><td><a href="{{ "/p/79.html" | relative_url }}">Split array - largest sum</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>805</td><td><a href="{{ "/p/805.html" | relative_url }}">Painter's Partition</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>78</td><td><a href="{{ "/p/78.html" | relative_url }}">Minimize Max Distance to Gas Station</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>77</td><td><a href="{{ "/p/77.html" | relative_url }}">Median of 2 sorted arrays</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
+<tr><td>2767</td><td><a href="{{ "/p/2767.html" | relative_url }}">Kth element of 2 sorted arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>66</td><td><a href="{{ "/p/66.html" | relative_url }}">Find row with maximum 1's</a></td><td><span class="badge badge-easy">Easy</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
+<tr><td>69</td><td><a href="{{ "/p/69.html" | relative_url }}">Search in a 2D matrix</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
+<tr><td>68</td><td><a href="{{ "/p/68.html" | relative_url }}">Search in 2D matrix - II</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
+<tr><td>65</td><td><a href="{{ "/p/65.html" | relative_url }}">Find Peak Element - II</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
+<tr><td>67</td><td><a href="{{ "/p/67.html" | relative_url }}">Matrix Median</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
 <tr><td>892</td><td><a href="{{ "/p/892.html" | relative_url }}">Remove Outermost Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>2863</td><td><a href="{{ "/p/2863.html" | relative_url }}">Reverse words in a given string / Palindrome Check</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>394</td><td><a href="{{ "/p/394.html" | relative_url }}">Largest Odd Number in a String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>

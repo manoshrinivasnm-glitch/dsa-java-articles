@@ -2,13 +2,13 @@
 title: Topics
 permalink: /
 ---
-<p>142 of 583 problems written (24%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:24%"></span></div>
+<p>152 of 583 problems written (26%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:26%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
 <li><a href="{{ "/topics/solve-problems-on-arrays-easy-medium-hard.html" | relative_url }}">Solve Problems on Arrays [Easy -> Medium -> Hard]</a><span class="count">40 / 40 written</span></li>
-<li><a href="{{ "/topics/binary-search-1d-2d-arrays-search-space.html" | relative_url }}">Binary Search [1D, 2D Arrays, Search Space]</a><span class="count">22 / 32 written</span></li>
+<li><a href="{{ "/topics/binary-search-1d-2d-arrays-search-space.html" | relative_url }}">Binary Search [1D, 2D Arrays, Search Space]</a><span class="count">32 / 32 written</span></li>
 <li><a href="{{ "/topics/strings-basic-and-medium.html" | relative_url }}">Strings [Basic and Medium]</a><span class="count">8 / 15 written</span></li>
 <li><a href="{{ "/topics/learn-linkedlist-single-ll-double-ll-medium-hard-problems.html" | relative_url }}">Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]</a><span class="count">11 / 31 written</span></li>
 <li><a href="{{ "/topics/recursion-patternwise.html" | relative_url }}">Recursion [PatternWise]</a><span class="count">0 / 25 written</span></li>
