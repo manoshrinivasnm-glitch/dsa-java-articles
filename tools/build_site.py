@@ -9,8 +9,19 @@ def slugify(s):
     s = re.sub(r"['’]", '', s.lower())
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
+import subprocess
+def _published_ids():
+    """Articles count as written only once they are tracked or staged in git, so pages for
+    batches still being drafted never appear in the index."""
+    try:
+        out = subprocess.run(['git', 'ls-files', '--cached', 'p/'], cwd=ROOT, capture_output=True, text=True, check=True).stdout
+    except Exception:
+        return None
+    return {int(os.path.basename(f)[:-3]) for f in out.split() if os.path.basename(f)[:-3].isdigit()}
+_PUB = _published_ids()
 def written(p):
-    return os.path.exists(os.path.join(ROOT, 'p', f"{p['id']}.md"))
+    exists = os.path.exists(os.path.join(ROOT, 'p', f"{p['id']}.md"))
+    return exists and (_PUB is None or p['id'] in _PUB)
 
 by_topic = collections.OrderedDict()
 for p in problems:
