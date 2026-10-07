@@ -68,7 +68,7 @@ public class P365_CheckForPrimeNumber {
         check(better(1_000_000_007) && optimal(1_000_000_007), "10^9 + 7 is prime");
         check(!better(1_000_000_008) && !optimal(1_000_000_008), "10^9 + 8 is even");
         check(better(Integer.MAX_VALUE) && optimal(Integer.MAX_VALUE), "2^31 - 1 is a Mersenne prime; d * d must not overflow");
-        check(!better(2_147_483_629) && !optimal(2_147_483_629), "2147483629 = 1483 * 1448063 hmm");
+        check(!better(2_147_483_645) && !optimal(2_147_483_645), "2147483645 = 5 * 429496729");
         System.out.println("OK P365_CheckForPrimeNumber");
     }
 }

@@ -66,7 +66,7 @@ public class P372_GCDOfTwoNumbers {
         verify(0, 9, 9);                         // everything divides 0, so gcd(0, b) = b
         verify(9, 0, 9);
         verify(0, 0, 0);
-        verify(1, 1_000_000_000, 1);
+        verify(1, 1000, 1);                      // subtraction Euclid needs 999 rounds here; with 10^9 it would need 10^9
         verify(1_000_000_007, 1_000_000, 1);     // 10^9 + 7 is prime
         verify(2_147_483_646, 1_073_741_823, 1_073_741_823); // near the int limit, no overflow anywhere
         check(lcm(4, 6) == 12, "lcm(4, 6)");

@@ -2,11 +2,11 @@
 title: Topics
 permalink: /
 ---
-<p>1 of 583 problems written (0%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:0%"></span></div>
+<p>43 of 583 problems written (7%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:7%"></span></div>
 <ul class="topic-list">
-<li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">0 / 54 written</span></li>
-<li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">0 / 7 written</span></li>
+<li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">35 / 54 written</span></li>
+<li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
 <li><a href="{{ "/topics/solve-problems-on-arrays-easy-medium-hard.html" | relative_url }}">Solve Problems on Arrays [Easy -> Medium -> Hard]</a><span class="count">1 / 40 written</span></li>
 <li><a href="{{ "/topics/binary-search-1d-2d-arrays-search-space.html" | relative_url }}">Binary Search [1D, 2D Arrays, Search Space]</a><span class="count">0 / 32 written</span></li>
 <li><a href="{{ "/topics/strings-basic-and-medium.html" | relative_url }}">Strings [Basic and Medium]</a><span class="count">0 / 15 written</span></li>

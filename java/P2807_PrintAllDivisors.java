@@ -69,9 +69,9 @@ public class P2807_PrintAllDivisors {
         List<Integer> big = optimal(1_000_000_000);
         check(big.size() == 100 && big.equals(better(1_000_000_000)), "10^9 = 2^9 * 5^9 has 10 * 10 divisors");
         for (int i = 1; i < big.size(); i++) check(big.get(i - 1) < big.get(i), "not increasing");
-        check(optimal(Integer.MAX_VALUE).equals(List.of(1, 3, 7, 21, 73, 219, 511, 1533, 2_147_483_647 / 1533, 2_147_483_647 / 511,
-                2_147_483_647 / 219, 2_147_483_647 / 73, 2_147_483_647 / 21, 2_147_483_647 / 7, 2_147_483_647 / 3, 2_147_483_647)),
-                "d * d must be computed in long near Integer.MAX_VALUE");
+        check(optimal(Integer.MAX_VALUE).equals(List.of(1, Integer.MAX_VALUE)), "2^31 - 1 is prime; d * d must be computed in long");
+        check(better(Integer.MAX_VALUE).equals(List.of(1, Integer.MAX_VALUE)), "2^31 - 1 is prime; d * d must be computed in long");
+        check(optimal(2_147_483_645).equals(better(2_147_483_645)) && optimal(2_147_483_645).contains(429_496_729), "2147483645 = 5 * 429496729");
         System.out.println("OK P2807_PrintAllDivisors");
     }
 }

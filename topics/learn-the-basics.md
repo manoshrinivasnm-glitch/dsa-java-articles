@@ -21,28 +21,28 @@ title: "Learn the basics"
 </tbody></table>
 <h2>Patterns</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>401</td><td>Pattern 1 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>412</td><td>Pattern 2 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>416</td><td>Pattern 3 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>417</td><td>Pattern 4 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>418</td><td>Pattern 5 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>419</td><td>Pattern 6 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>420</td><td>Pattern 7 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>421</td><td>Pattern 8 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>422</td><td>Pattern 9 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>402</td><td>Pattern 10 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>403</td><td>Pattern 11 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>404</td><td>Pattern 12 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>405</td><td>Pattern 13 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>406</td><td>Pattern 14 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>407</td><td>Pattern 15 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>408</td><td>Pattern 16 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>409</td><td>Pattern 17 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>410</td><td>Pattern 18 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>411</td><td>Pattern 19 <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>413</td><td>Pattern 20 <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>414</td><td>Pattern 21 <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
-<tr class="todo"><td>415</td><td>Pattern 22 <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>401</td><td><a href="{{ "/p/401.html" | relative_url }}">Pattern 1</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>412</td><td><a href="{{ "/p/412.html" | relative_url }}">Pattern 2</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>416</td><td><a href="{{ "/p/416.html" | relative_url }}">Pattern 3</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>417</td><td><a href="{{ "/p/417.html" | relative_url }}">Pattern 4</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>418</td><td><a href="{{ "/p/418.html" | relative_url }}">Pattern 5</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>419</td><td><a href="{{ "/p/419.html" | relative_url }}">Pattern 6</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>420</td><td><a href="{{ "/p/420.html" | relative_url }}">Pattern 7</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>421</td><td><a href="{{ "/p/421.html" | relative_url }}">Pattern 8</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>422</td><td><a href="{{ "/p/422.html" | relative_url }}">Pattern 9</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>402</td><td><a href="{{ "/p/402.html" | relative_url }}">Pattern 10</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>403</td><td><a href="{{ "/p/403.html" | relative_url }}">Pattern 11</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>404</td><td><a href="{{ "/p/404.html" | relative_url }}">Pattern 12</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>405</td><td><a href="{{ "/p/405.html" | relative_url }}">Pattern 13</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>406</td><td><a href="{{ "/p/406.html" | relative_url }}">Pattern 14</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>407</td><td><a href="{{ "/p/407.html" | relative_url }}">Pattern 15</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>408</td><td><a href="{{ "/p/408.html" | relative_url }}">Pattern 16</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>409</td><td><a href="{{ "/p/409.html" | relative_url }}">Pattern 17</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>410</td><td><a href="{{ "/p/410.html" | relative_url }}">Pattern 18</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>411</td><td><a href="{{ "/p/411.html" | relative_url }}">Pattern 19</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>413</td><td><a href="{{ "/p/413.html" | relative_url }}">Pattern 20</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>414</td><td><a href="{{ "/p/414.html" | relative_url }}">Pattern 21</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
+<tr><td>415</td><td><a href="{{ "/p/415.html" | relative_url }}">Pattern 22</a></td><td><span class="badge badge-medium">Medium</span></td><td>Patterns</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Learn STL/Java-Collections or similar thing in your | language</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -51,9 +51,9 @@ title: "Learn the basics"
 </tbody></table>
 <h2>Know Basic Maths</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>367</td><td>Count all Digits of a Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>376</td><td>Reverse a number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>374</td><td>Palindrome Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z B75</td></tr>
+<tr><td>367</td><td><a href="{{ "/p/367.html" | relative_url }}">Count all Digits of a Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>376</td><td><a href="{{ "/p/376.html" | relative_url }}">Reverse a number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>374</td><td><a href="{{ "/p/374.html" | relative_url }}">Palindrome Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z B75</td></tr>
 <tr class="todo"><td>372</td><td>GCD of Two Numbers <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>366</td><td>Check if the Number is Armstrong <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>2807</td><td>Print all Divisors <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
@@ -63,17 +63,17 @@ title: "Learn the basics"
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr class="todo"><td>2401</td><td>Understand recursion by print something N times <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr class="todo"><td>2405</td><td>Print name N times using recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>850</td><td>Print 1 to N using Recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>852</td><td>Print N to 1 using Recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>386</td><td>Sum of First N Numbers <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>371</td><td>Factorial of a given number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>342</td><td>Reverse an array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>378</td><td>Check if String is Palindrome or Not <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
-<tr class="todo"><td>381</td><td>Fibonacci Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>850</td><td><a href="{{ "/p/850.html" | relative_url }}">Print 1 to N using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>852</td><td><a href="{{ "/p/852.html" | relative_url }}">Print N to 1 using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>386</td><td><a href="{{ "/p/386.html" | relative_url }}">Sum of First N Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>371</td><td><a href="{{ "/p/371.html" | relative_url }}">Factorial of a given number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>342</td><td><a href="{{ "/p/342.html" | relative_url }}">Reverse an array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>378</td><td><a href="{{ "/p/378.html" | relative_url }}">Check if String is Palindrome or Not</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>381</td><td><a href="{{ "/p/381.html" | relative_url }}">Fibonacci Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Learn Basic Hashing</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1203</td><td>Basic Hashing <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
-<tr class="todo"><td>252</td><td>Counting Frequencies of Array Elements <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
-<tr class="todo"><td>344</td><td>Highest Occurring Element in an Array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
+<tr><td>1203</td><td><a href="{{ "/p/1203.html" | relative_url }}">Basic Hashing</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
+<tr><td>252</td><td><a href="{{ "/p/252.html" | relative_url }}">Counting Frequencies of Array Elements</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
+<tr><td>344</td><td><a href="{{ "/p/344.html" | relative_url }}">Highest Occurring Element in an Array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Hashing</td><td>A2Z</td></tr>
 </tbody></table>
