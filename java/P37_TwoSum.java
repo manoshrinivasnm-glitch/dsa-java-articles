@@ -8,7 +8,7 @@ public class P37_TwoSum {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (nums[i] + nums[j] == target) return new int[]{i, j};
+                if ((long) nums[i] + nums[j] == target) return new int[]{i, j};
             }
         }
         return new int[]{-1, -1};
@@ -36,9 +36,11 @@ public class P37_TwoSum {
     static int[] optimal(int[] nums, int target) {
         Map<Integer, Integer> seen = new HashMap<>();
         for (int j = 0; j < nums.length; j++) {
-            int need = target - nums[j];
-            Integer i = seen.get(need);
-            if (i != null) return new int[]{i, j};
+            long need = (long) target - nums[j];           // long: target - nums[j] can overflow int
+            if (need >= Integer.MIN_VALUE && need <= Integer.MAX_VALUE) {
+                Integer i = seen.get((int) need);
+                if (i != null) return new int[]{i, j};
+            }
             seen.put(nums[j], j);
         }
         return new int[]{-1, -1};
@@ -66,7 +68,7 @@ public class P37_TwoSum {
         verify(new int[]{3, 3}, 6, true);                     // duplicates must use two different indices
         verify(new int[]{1, 2, 3}, 7, false);                 // no answer
         verify(new int[]{-3, 4, 3, 90}, 0, true);             // negatives
-        verify(new int[]{2_000_000_000, 2_000_000_000}, -294967296, true); // int overflow in naive sum is a real trap
+        verify(new int[]{2_000_000_000, 2_000_000_000}, -294967296, false); // naive int addition wraps to exactly this target
         verify(new int[]{5}, 5, false);                        // single element
         System.out.println("OK P37_TwoSum");
     }
