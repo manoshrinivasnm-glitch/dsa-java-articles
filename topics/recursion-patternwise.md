@@ -16,18 +16,18 @@ title: "Recursion [PatternWise]"
 <tr class="todo"><td>876</td><td>Generate Parentheses <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
 <tr class="todo"><td>878</td><td>Power Set <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
 <tr class="todo"><td>2400</td><td>Learn All Patterns of Subsequences (Theory) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
-<tr class="todo"><td>880</td><td>Count all subsequences with sum K <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
-<tr class="todo"><td>879</td><td>Check if there exists a subsequence with sum K <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
-<tr class="todo"><td>864</td><td>Combination Sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>865</td><td>Combination Sum II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>867</td><td>Subsets I <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
-<tr class="todo"><td>868</td><td>Subsets II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>866</td><td>Combination Sum III <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
-<tr class="todo"><td>875</td><td>Letter Combinations of a Phone Number <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
+<tr><td>880</td><td><a href="{{ "/p/880.html" | relative_url }}">Count all subsequences with sum K</a></td><td><span class="badge badge-easy">Easy</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
+<tr><td>879</td><td><a href="{{ "/p/879.html" | relative_url }}">Check if there exists a subsequence with sum K</a></td><td><span class="badge badge-easy">Easy</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
+<tr><td>864</td><td><a href="{{ "/p/864.html" | relative_url }}">Combination Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE B75</td></tr>
+<tr><td>865</td><td><a href="{{ "/p/865.html" | relative_url }}">Combination Sum II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE</td></tr>
+<tr><td>867</td><td><a href="{{ "/p/867.html" | relative_url }}">Subsets I</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
+<tr><td>868</td><td><a href="{{ "/p/868.html" | relative_url }}">Subsets II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z SDE</td></tr>
+<tr><td>866</td><td><a href="{{ "/p/866.html" | relative_url }}">Combination Sum III</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
+<tr><td>875</td><td><a href="{{ "/p/875.html" | relative_url }}">Letter Combinations of a Phone Number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Subsequences Pattern</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Trying out all Combos / Hard</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>871</td><td>Palindrome partitioning <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
+<tr><td>871</td><td><a href="{{ "/p/871.html" | relative_url }}">Palindrome partitioning</a></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>874</td><td>Word Search <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z B75</td></tr>
 <tr class="todo"><td>870</td><td>N Queen <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>872</td><td>Rat in a Maze <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Trying out all Combos / Hard</td><td>A2Z SDE</td></tr>
