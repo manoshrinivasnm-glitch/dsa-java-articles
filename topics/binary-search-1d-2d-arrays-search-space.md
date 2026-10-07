@@ -26,9 +26,9 @@ title: "Binary Search [1D, 2D Arrays, Search Space]"
 <tr><td>95</td><td><a href="{{ "/p/95.html" | relative_url }}">Minimum days to make M bouquets</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr><td>93</td><td><a href="{{ "/p/93.html" | relative_url }}">Find the smallest divisor</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr><td>161</td><td><a href="{{ "/p/161.html" | relative_url }}">Capacity to Ship Packages Within D Days</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>600</td><td>Kth Missing Positive Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>73</td><td>Aggressive Cows <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>74</td><td>Book Allocation Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>600</td><td><a href="{{ "/p/600.html" | relative_url }}">Kth Missing Positive Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>73</td><td><a href="{{ "/p/73.html" | relative_url }}">Aggressive Cows</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
+<tr><td>74</td><td><a href="{{ "/p/74.html" | relative_url }}">Book Allocation Problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>79</td><td>Split array - largest sum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>805</td><td>Painter's Partition <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>78</td><td>Minimize Max Distance to Gas Station <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>

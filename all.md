@@ -12,8 +12,8 @@ title: All problems
 <tr><td>2868</td><td><a href="{{ "/p/2868.html" | relative_url }}">While loops</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>2866</td><td><a href="{{ "/p/2866.html" | relative_url }}">Functions (Pass by Reference and Value)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
 <tr><td>1219</td><td><a href="{{ "/p/1219.html" | relative_url }}">Theory with examples</a></td><td><span class="badge badge-easy">Easy</span></td><td>Things to Know in C++/Java/Python or any language</td><td>A2Z</td></tr>
-<tr class="todo"><td>1216</td><td>Easy and Medium <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
-<tr class="todo"><td>1205</td><td>Hard <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
+<tr><td>1216</td><td><a href="{{ "/p/1216.html" | relative_url }}">Easy and Medium</a></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
+<tr><td>1205</td><td><a href="{{ "/p/1205.html" | relative_url }}">Hard</a></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
 <tr><td>401</td><td><a href="{{ "/p/401.html" | relative_url }}">Pattern 1</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
 <tr><td>412</td><td><a href="{{ "/p/412.html" | relative_url }}">Pattern 2</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
 <tr><td>416</td><td><a href="{{ "/p/416.html" | relative_url }}">Pattern 3</a></td><td><span class="badge badge-easy">Easy</span></td><td>Patterns</td><td>A2Z</td></tr>
@@ -123,9 +123,9 @@ title: All problems
 <tr><td>95</td><td><a href="{{ "/p/95.html" | relative_url }}">Minimum days to make M bouquets</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr><td>93</td><td><a href="{{ "/p/93.html" | relative_url }}">Find the smallest divisor</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr><td>161</td><td><a href="{{ "/p/161.html" | relative_url }}">Capacity to Ship Packages Within D Days</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>600</td><td>Kth Missing Positive Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
-<tr class="todo"><td>73</td><td>Aggressive Cows <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>74</td><td>Book Allocation Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>600</td><td><a href="{{ "/p/600.html" | relative_url }}">Kth Missing Positive Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
+<tr><td>73</td><td><a href="{{ "/p/73.html" | relative_url }}">Aggressive Cows</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z SDE</td></tr>
+<tr><td>74</td><td><a href="{{ "/p/74.html" | relative_url }}">Book Allocation Problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>79</td><td>Split array - largest sum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>805</td><td>Painter's Partition <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>A2Z</td></tr>
 <tr class="todo"><td>78</td><td>Minimize Max Distance to Gas Station <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>A2Z</td></tr>
@@ -137,9 +137,9 @@ title: All problems
 <tr class="todo"><td>65</td><td>Find Peak Element - II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 2D Arrays</td><td>A2Z</td></tr>
 <tr class="todo"><td>67</td><td>Matrix Median <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>BS on 2D Arrays</td><td>A2Z SDE</td></tr>
 <tr><td>892</td><td><a href="{{ "/p/892.html" | relative_url }}">Remove Outermost Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2863</td><td>Reverse words in a given string / Palindrome Check <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>394</td><td>Largest Odd Number in a String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>395</td><td>Longest Common Prefix <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2863</td><td><a href="{{ "/p/2863.html" | relative_url }}">Reverse words in a given string / Palindrome Check</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>394</td><td><a href="{{ "/p/394.html" | relative_url }}">Largest Odd Number in a String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>395</td><td><a href="{{ "/p/395.html" | relative_url }}">Longest Common Prefix</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>393</td><td>Isomorphic String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>398</td><td>Rotate String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>2809</td><td>Check if two strings are anagram of each other <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>

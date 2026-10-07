@@ -16,8 +16,8 @@ title: "Learn the basics"
 </tbody></table>
 <h2>Build-up Logical Thinking</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1216</td><td>Easy and Medium <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
-<tr class="todo"><td>1205</td><td>Hard <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
+<tr><td>1216</td><td><a href="{{ "/p/1216.html" | relative_url }}">Easy and Medium</a></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
+<tr><td>1205</td><td><a href="{{ "/p/1205.html" | relative_url }}">Hard</a></td><td><span class="badge badge-easy">Easy</span></td><td>Build-up Logical Thinking</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Patterns</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>

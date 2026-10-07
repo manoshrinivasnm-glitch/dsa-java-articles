@@ -5,9 +5,9 @@ title: "Strings [Basic and Medium]"
 <h2>Basic and Easy String Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr><td>892</td><td><a href="{{ "/p/892.html" | relative_url }}">Remove Outermost Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2863</td><td>Reverse words in a given string / Palindrome Check <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>394</td><td>Largest Odd Number in a String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>395</td><td>Longest Common Prefix <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2863</td><td><a href="{{ "/p/2863.html" | relative_url }}">Reverse words in a given string / Palindrome Check</a></td><td><span class="badge badge-medium">Medium</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>394</td><td><a href="{{ "/p/394.html" | relative_url }}">Largest Odd Number in a String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
+<tr><td>395</td><td><a href="{{ "/p/395.html" | relative_url }}">Longest Common Prefix</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>393</td><td>Isomorphic String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>398</td><td>Rotate String <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>2809</td><td>Check if two strings are anagram of each other <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
