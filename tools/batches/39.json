@@ -1,0 +1,189 @@
+[
+ {
+  "id": 501,
+  "title": "Detect a cycle in an undirected graph",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 362,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "501-detect-a-cycle-in-an-undirected-graph",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 530,
+  "title": "Distance of nearest cell having one",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 363,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "530-distance-of-nearest-cell-having-one",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 537,
+  "title": "Surrounded Regions",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 364,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "537-surrounded-regions",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 533,
+  "title": "Number of enclaves",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 365,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "533-number-of-enclaves",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 509,
+  "title": "Word ladder I",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 366,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "509-word-ladder-i",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 510,
+  "title": "Word ladder II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 367,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "510-word-ladder-ii",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 534,
+  "title": "Number of islands",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 368,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "534-number-of-islands",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 2813,
+  "title": "Bipartite Graph (DFS)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 369,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "2813-bipartite-graph-dfs",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 2814,
+  "title": "Cycle Detection in Directed Graph (DFS)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 370,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "2814-cycle-detection-in-directed-graph-dfs",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 2822,
+  "title": "Topo Sort",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 371,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   }
+  },
+  "slug": "2822-topo-sort",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 502,
+  "title": "Topological sort or Kahn's algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 372,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   }
+  },
+  "slug": "502-topological-sort-or-kahns-algorithm",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ }
+]

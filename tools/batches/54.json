@@ -1,0 +1,167 @@
+[
+ {
+  "id": 2771,
+  "title": "The N-th root of an integer",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 61,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "2771-the-n-th-root-of-an-integer",
+  "topic": "Binary Search",
+  "section": ""
+ },
+ {
+  "id": 90,
+  "title": "Single element in sorted array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 63,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "90-single-element-in-sorted-array",
+  "topic": "Binary Search",
+  "section": ""
+ },
+ {
+  "id": 2769,
+  "title": "Search element in a sorted and rotated array/ find pivot where it is rotated",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 64,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "2769-search-element-in-a-sorted-and-rotated-array-find-pivot-wher",
+  "topic": "Binary Search",
+  "section": ""
+ },
+ {
+  "id": 76,
+  "title": "Kth element of 2 sorted arrays",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 66,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "76-kth-element-of-2-sorted-arrays",
+  "topic": "Binary Search",
+  "section": ""
+ },
+ {
+  "id": 2766,
+  "title": "Allocate Minimum Number of Pages",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 67,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "2766-allocate-minimum-number-of-pages",
+  "topic": "Binary Search",
+  "section": ""
+ },
+ {
+  "id": 575,
+  "title": "Implement Max Heap",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 69,
+    "day": 12,
+    "topic": "Heaps"
+   }
+  },
+  "slug": "575-implement-max-heap",
+  "topic": "Heaps",
+  "section": ""
+ },
+ {
+  "id": 713,
+  "title": "Merge K Sorted Arrays",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 73,
+    "day": 12,
+    "topic": "Heaps"
+   },
+   "blind75": {
+    "order": 44,
+    "no": 44,
+    "topic": "Linked List"
+   }
+  },
+  "slug": "713-merge-k-sorted-arrays",
+  "topic": "Heaps",
+  "section": ""
+ },
+ {
+  "id": 2808,
+  "title": "Implement Stack using Queue (using single queue)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 77,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "2808-implement-stack-using-queue-using-single-queue",
+  "topic": "Stack and Queue",
+  "section": ""
+ },
+ {
+  "id": 936,
+  "title": "Sort a Stack",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 81,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "936-sort-a-stack",
+  "topic": "Stack and Queue",
+  "section": ""
+ },
+ {
+  "id": 687,
+  "title": "Maximum of Minimums for Every Window Size",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 90,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "687-maximum-of-minimums-for-every-window-size",
+  "topic": "Stack and Queue Part-II",
+  "section": ""
+ }
+]

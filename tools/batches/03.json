@@ -1,0 +1,189 @@
+[
+ {
+  "id": 404,
+  "title": "Pattern 12",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 23,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "404-pattern-12",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 405,
+  "title": "Pattern 13",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 24,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "405-pattern-13",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 406,
+  "title": "Pattern 14",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 25,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "406-pattern-14",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 407,
+  "title": "Pattern 15",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 26,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "407-pattern-15",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 408,
+  "title": "Pattern 16",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 27,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "408-pattern-16",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 409,
+  "title": "Pattern 17",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 28,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "409-pattern-17",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 410,
+  "title": "Pattern 18",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 29,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "410-pattern-18",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 411,
+  "title": "Pattern 19",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 30,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "411-pattern-19",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 413,
+  "title": "Pattern 20",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 31,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "413-pattern-20",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 414,
+  "title": "Pattern 21",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 32,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "414-pattern-21",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ },
+ {
+  "id": 415,
+  "title": "Pattern 22",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 33,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Patterns"
+   }
+  },
+  "slug": "415-pattern-22",
+  "topic": "Learn the basics",
+  "section": "Patterns"
+ }
+]

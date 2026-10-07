@@ -1,0 +1,194 @@
+[
+ {
+  "id": 769,
+  "title": "Ninja and his Friends",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 415,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "769-ninja-and-his-friends",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ },
+ {
+  "id": 2804,
+  "title": "Subset sum equal to target (DP- 14)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 416,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "2804-subset-sum-equal-to-target-dp-14",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 321,
+  "title": "Partition equal subset sum",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 417,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "321-partition-equal-subset-sum",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 320,
+  "title": "Partition a set into two subsets with minimum absolute sum difference",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 418,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "320-partition-a-set-into-two-subsets-with-minimum-absolute-sum-d",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 318,
+  "title": "Count subsets with sum K",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 419,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "318-count-subsets-with-sum-k",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 317,
+  "title": "Count partitions with given difference",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 420,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "317-count-partitions-with-given-difference",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 541,
+  "title": "Assign Cookies",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 421,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   },
+   "sde": {
+    "order": 48,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "541-assign-cookies",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 2802,
+  "title": "Minimum Coins (DP - 20)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 422,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "2802-minimum-coins-dp-20",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 324,
+  "title": "Target sum",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 423,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "324-target-sum",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 2801,
+  "title": "Coin Change 2 (DP - 22)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 424,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "2801-coin-change-2-dp-22",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 325,
+  "title": "Unbounded knapsack",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 425,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "325-unbounded-knapsack",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ }
+]

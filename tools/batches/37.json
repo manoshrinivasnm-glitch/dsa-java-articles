@@ -1,0 +1,163 @@
+[
+ {
+  "id": 100,
+  "title": "Check if a tree is a BST or not",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 343,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   },
+   "sde": {
+    "order": 135,
+    "day": 20,
+    "topic": "Binary Search Tree"
+   },
+   "blind75": {
+    "order": 69,
+    "no": 69,
+    "topic": "Tree"
+   }
+  },
+  "slug": "100-check-if-a-tree-is-a-bst-or-not",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 106,
+  "title": "LCA in BST",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 344,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   },
+   "sde": {
+    "order": 136,
+    "day": 20,
+    "topic": "Binary Search Tree"
+   },
+   "blind75": {
+    "order": 71,
+    "no": 71,
+    "topic": "Tree"
+   }
+  },
+  "slug": "106-lca-in-bst",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 101,
+  "title": "Construct a BST from a preorder traversal",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 345,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   },
+   "sde": {
+    "order": 134,
+    "day": 20,
+    "topic": "Binary Search Tree"
+   }
+  },
+  "slug": "101-construct-a-bst-from-a-preorder-traversal",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 2775,
+  "title": "Inorder Successor/Predecessor in BST",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 346,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   }
+  },
+  "slug": "2775-inorder-successor-predecessor-in-bst",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 2772,
+  "title": "Merge 2 BST's",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 347,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   }
+  },
+  "slug": "2772-merge-2-bsts",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 2774,
+  "title": "Two Sum In BST | Check if there exists a pair with Sum K",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 348,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   }
+  },
+  "slug": "2774-two-sum-in-bst-check-if-there-exists-a-pair-with-sum-k",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 97,
+  "title": "Correct BST with two nodes swapped",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 349,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   }
+  },
+  "slug": "97-correct-bst-with-two-nodes-swapped",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ },
+ {
+  "id": 98,
+  "title": "Largest BST in Binary Tree",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 350,
+    "step": 14,
+    "step_name": "Binary Search Trees [Concept and Problems]",
+    "section": "Practice Problems"
+   }
+  },
+  "slug": "98-largest-bst-in-binary-tree",
+  "topic": "Binary Search Trees [Concept and Problems]",
+  "section": "Practice Problems"
+ }
+]

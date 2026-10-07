@@ -1,0 +1,204 @@
+[
+ {
+  "id": 188,
+  "title": "Clone Graph",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 152,
+    "day": 23,
+    "topic": "Graph"
+   },
+   "blind75": {
+    "order": 27,
+    "no": 27,
+    "topic": "Graph"
+   }
+  },
+  "slug": "188-clone-graph",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2818,
+  "title": "Detect A cycle in Undirected Graph using BFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 155,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2818-detect-a-cycle-in-undirected-graph-using-bfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2819,
+  "title": "Detect A cycle in Undirected Graph using DFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 156,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2819-detect-a-cycle-in-undirected-graph-using-dfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2816,
+  "title": "Detect A cycle in a Directed Graph using DFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 157,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2816-detect-a-cycle-in-a-directed-graph-using-dfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2815,
+  "title": "Detect A cycle in a Directed Graph using BFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 158,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2815-detect-a-cycle-in-a-directed-graph-using-bfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2820,
+  "title": "Topological Sort BFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 159,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2820-topological-sort-bfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2821,
+  "title": "Topological Sort DFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 160,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2821-topological-sort-dfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2833,
+  "title": "Number of islands(Do in Grid and Graph Both)",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 161,
+    "day": 23,
+    "topic": "Graph"
+   },
+   "blind75": {
+    "order": 30,
+    "no": 30,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2833-number-of-islands-do-in-grid-and-graph-both",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 499,
+  "title": "Bipartite graph",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 162,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "499-bipartite-graph",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2812,
+  "title": "Bipartite Check using DFS",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 163,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2812-bipartite-check-using-dfs",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 2403,
+  "title": "Pacific Atlantic Water Flow",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 29,
+    "no": 29,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2403-pacific-atlantic-water-flow",
+  "topic": "Graph",
+  "section": ""
+ },
+ {
+  "id": 495,
+  "title": "Graph Valid Tree",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 33,
+    "no": 33,
+    "topic": "Graph"
+   }
+  },
+  "slug": "495-graph-valid-tree",
+  "topic": "Graph",
+  "section": ""
+ }
+]

@@ -1,0 +1,172 @@
+[
+ {
+  "id": 850,
+  "title": "Print 1 to N using Recursion",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 45,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "850-print-1-to-n-using-recursion",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 852,
+  "title": "Print N to 1 using Recursion",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 46,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "852-print-n-to-1-using-recursion",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 386,
+  "title": "Sum of First N Numbers",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 47,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "386-sum-of-first-n-numbers",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 371,
+  "title": "Factorial of a given number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 48,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "371-factorial-of-a-given-number",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 342,
+  "title": "Reverse an array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 49,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "342-reverse-an-array",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 378,
+  "title": "Check if String is Palindrome or Not",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 50,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "378-check-if-string-is-palindrome-or-not",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 381,
+  "title": "Fibonacci Number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 51,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "381-fibonacci-number",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 1203,
+  "title": "Basic Hashing",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 52,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Hashing"
+   }
+  },
+  "slug": "1203-basic-hashing",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Hashing"
+ },
+ {
+  "id": 252,
+  "title": "Counting Frequencies of Array Elements",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 53,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Hashing"
+   }
+  },
+  "slug": "252-counting-frequencies-of-array-elements",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Hashing"
+ },
+ {
+  "id": 344,
+  "title": "Highest Occurring Element in an Array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 54,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Hashing"
+   }
+  },
+  "slug": "344-highest-occurring-element-in-an-array",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Hashing"
+ }
+]

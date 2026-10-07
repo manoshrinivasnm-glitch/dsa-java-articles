@@ -1,0 +1,199 @@
+[
+ {
+  "id": 2797,
+  "title": "Minimum sum path in the matrix",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 177,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "2797-minimum-sum-path-in-the-matrix",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 316,
+  "title": "Coin change II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 178,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   },
+   "blind75": {
+    "order": 17,
+    "no": 17,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "316-coin-change-ii",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 323,
+  "title": "Subset sum equals to target",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 179,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "323-subset-sum-equals-to-target",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 322,
+  "title": "Rod cutting problem",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 180,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "322-rod-cutting-problem",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 1004,
+  "title": "Super Egg Drop",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 181,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "1004-super-egg-drop",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 2854,
+  "title": "Palindrome Partitioning (MCM Variation)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 183,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "2854-palindrome-partitioning-mcm-variation",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 691,
+  "title": "Maximum Profit in Job Scheduling",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 184,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   }
+  },
+  "slug": "691-maximum-profit-in-job-scheduling",
+  "topic": "Dynamic Programming Part-II",
+  "section": ""
+ },
+ {
+  "id": 2856,
+  "title": "Power Set (this is very important)",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 189,
+    "day": 27,
+    "topic": "Trie"
+   }
+  },
+  "slug": "2856-power-set-this-is-very-important",
+  "topic": "Trie",
+  "section": ""
+ },
+ {
+  "id": 2392,
+  "title": "Contains Duplicate",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 3,
+    "no": 3,
+    "topic": "Array"
+   }
+  },
+  "slug": "2392-contains-duplicate",
+  "topic": "Array",
+  "section": ""
+ },
+ {
+  "id": 2404,
+  "title": "Product of Array Except Self",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 4,
+    "no": 4,
+    "topic": "Array"
+   }
+  },
+  "slug": "2404-product-of-array-except-self",
+  "topic": "Array",
+  "section": ""
+ },
+ {
+  "id": 2760,
+  "title": "Kadane's Algorithm, maximum subarray sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 5,
+    "no": 5,
+    "topic": "Array"
+   }
+  },
+  "slug": "2760-kadanes-algorithm-maximum-subarray-sum",
+  "topic": "Array",
+  "section": ""
+ },
+ {
+  "id": 2396,
+  "title": "Container with most water",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 10,
+    "no": 10,
+    "topic": "Array"
+   }
+  },
+  "slug": "2396-container-with-most-water",
+  "topic": "Array",
+  "section": ""
+ }
+]

@@ -1,0 +1,155 @@
+[
+ {
+  "id": 143,
+  "title": "Single Number - I",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 214,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Interview Problems"
+   }
+  },
+  "slug": "143-single-number-i",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Interview Problems"
+ },
+ {
+  "id": 142,
+  "title": "Power Set Bit Manipulation",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 215,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Interview Problems"
+   }
+  },
+  "slug": "142-power-set-bit-manipulation",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Interview Problems"
+ },
+ {
+  "id": 146,
+  "title": "XOR of numbers in a given range",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 216,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Interview Problems"
+   }
+  },
+  "slug": "146-xor-of-numbers-in-a-given-range",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Interview Problems"
+ },
+ {
+  "id": 145,
+  "title": "Single Number - III",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 217,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Interview Problems"
+   }
+  },
+  "slug": "145-single-number-iii",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Interview Problems"
+ },
+ {
+  "id": 2853,
+  "title": "Print Prime Factors of a Number",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 218,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Advanced Maths"
+   }
+  },
+  "slug": "2853-print-prime-factors-of-a-number",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Advanced Maths"
+ },
+ {
+  "id": 370,
+  "title": "Divisors of a Number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 219,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Advanced Maths"
+   }
+  },
+  "slug": "370-divisors-of-a-number",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Advanced Maths"
+ },
+ {
+  "id": 651,
+  "title": "Count primes in range L to R",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 220,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Advanced Maths"
+   }
+  },
+  "slug": "651-count-primes-in-range-l-to-r",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Advanced Maths"
+ },
+ {
+  "id": 652,
+  "title": "Prime factorisation of a Number",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 221,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Advanced Maths"
+   }
+  },
+  "slug": "652-prime-factorisation-of-a-number",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Advanced Maths"
+ },
+ {
+  "id": 877,
+  "title": "Pow(x,n)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 222,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Advanced Maths"
+   }
+  },
+  "slug": "877-pow-x-n",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Advanced Maths"
+ }
+]

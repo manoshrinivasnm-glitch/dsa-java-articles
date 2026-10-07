@@ -1,0 +1,155 @@
+[
+ {
+  "id": 1155,
+  "title": "Introduction to Bits and Tricks",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 205,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "1155-introduction-to-bits-and-tricks",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 177,
+  "title": "Check if the i-th bit is Set or Not",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 206,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "177-check-if-the-i-th-bit-is-set-or-not",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 171,
+  "title": "Check if a Number is Odd or Not",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 207,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "171-check-if-a-number-is-odd-or-not",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 172,
+  "title": "Check if a Number is Power of 2 or Not",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 208,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "172-check-if-a-number-is-power-of-2-or-not",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 243,
+  "title": "Count the Number of Set Bits",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 209,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "243-count-the-number-of-set-bits",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 2410,
+  "title": "Set/Unset the rightmost unset bit",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 210,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "2410-set-unset-the-rightmost-unset-bit",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 1005,
+  "title": "Swap Two Numbers",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 211,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "1005-swap-two-numbers",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 140,
+  "title": "Divide two numbers without multiplication and division",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 212,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Learn Bit Manipulation"
+   }
+  },
+  "slug": "140-divide-two-numbers-without-multiplication-and-division",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Learn Bit Manipulation"
+ },
+ {
+  "id": 141,
+  "title": "Minimum Bit Flips to Convert Number",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 213,
+    "step": 8,
+    "step_name": "Bit Manipulation [Concepts & Problems]",
+    "section": "Interview Problems"
+   }
+  },
+  "slug": "141-minimum-bit-flips-to-convert-number",
+  "topic": "Bit Manipulation [Concepts & Problems]",
+  "section": "Interview Problems"
+ }
+]

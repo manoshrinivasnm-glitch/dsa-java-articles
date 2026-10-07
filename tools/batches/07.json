@@ -1,0 +1,177 @@
+[
+ {
+  "id": 38,
+  "title": "Largest Element",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 62,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "38-largest-element",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 43,
+  "title": "Second Largest Element",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 63,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "43-second-largest-element",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 379,
+  "title": "Check if the Array is Sorted II",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 64,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "379-check-if-the-array-is-sorted-ii",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 2764,
+  "title": "Remove duplicates from Sorted array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 65,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "2764-remove-duplicates-from-sorted-array",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 40,
+  "title": "Left Rotate Array by One",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 66,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "40-left-rotate-array-by-one",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 39,
+  "title": "Left Rotate Array by K Places",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 67,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "39-left-rotate-array-by-k-places",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 46,
+  "title": "Move Zeros to End",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 68,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "46-move-zeros-to-end",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 41,
+  "title": "Linear Search",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 69,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "41-linear-search",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 48,
+  "title": "Union of two sorted arrays",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 70,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   }
+  },
+  "slug": "48-union-of-two-sorted-arrays",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ },
+ {
+  "id": 44,
+  "title": "Find missing number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 71,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Easy"
+   },
+   "blind75": {
+    "order": 14,
+    "no": 14,
+    "topic": "Binary"
+   }
+  },
+  "slug": "44-find-missing-number",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Easy"
+ }
+]

@@ -1,0 +1,202 @@
+[
+ {
+  "id": 967,
+  "title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 243,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "967-asteroid-collision",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 972,
+  "title": "Sum of Subarray Ranges",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 244,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "972-sum-of-subarray-ranges",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 970,
+  "title": "Remove K Digits",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 245,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "970-remove-k-digits",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 959,
+  "title": "Largest rectangle in a histogram",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 246,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   },
+   "sde": {
+    "order": 85,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "959-largest-rectangle-in-a-histogram",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 962,
+  "title": "Maximum Rectangles",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 247,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "962-maximum-rectangles",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 963,
+  "title": "Sliding Window Maximum",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 248,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Implementation Problems"
+   },
+   "sde": {
+    "order": 86,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "963-sliding-window-maximum",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Implementation Problems"
+ },
+ {
+  "id": 964,
+  "title": "Stock span problem",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 249,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Implementation Problems"
+   },
+   "sde": {
+    "order": 89,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "964-stock-span-problem",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Implementation Problems"
+ },
+ {
+  "id": 957,
+  "title": "Celebrity Problem",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 250,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Implementation Problems"
+   },
+   "sde": {
+    "order": 91,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "957-celebrity-problem",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Implementation Problems"
+ },
+ {
+  "id": 961,
+  "title": "LRU Cache",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 251,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Implementation Problems"
+   },
+   "sde": {
+    "order": 83,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "961-lru-cache",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Implementation Problems"
+ },
+ {
+  "id": 960,
+  "title": "LFU Cache",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 252,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Implementation Problems"
+   },
+   "sde": {
+    "order": 84,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "960-lfu-cache",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Implementation Problems"
+ }
+]

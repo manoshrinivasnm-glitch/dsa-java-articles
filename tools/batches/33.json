@@ -1,0 +1,227 @@
+[
+ {
+  "id": 2787,
+  "title": "Post-order Traversal of Binary Tree using 1 stack",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 307,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Traversals"
+   }
+  },
+  "slug": "2787-post-order-traversal-of-binary-tree-using-1-stack",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Traversals"
+ },
+ {
+  "id": 2789,
+  "title": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 308,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Traversals"
+   }
+  },
+  "slug": "2789-preorder-inorder-and-postorder-traversal-in-one-traversal",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Traversals"
+ },
+ {
+  "id": 131,
+  "title": "Maximum Depth in BT",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 309,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 117,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   },
+   "blind75": {
+    "order": 61,
+    "no": 61,
+    "topic": "Tree"
+   }
+  },
+  "slug": "131-maximum-depth-in-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 127,
+  "title": "Check for balanced binary tree",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 310,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 119,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   }
+  },
+  "slug": "127-check-for-balanced-binary-tree",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 130,
+  "title": "Diameter of Binary Tree",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 311,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 118,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   }
+  },
+  "slug": "130-diameter-of-binary-tree",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 132,
+  "title": "Maximum path sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 312,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 124,
+    "day": 19,
+    "topic": "Binary Tree part-III"
+   },
+   "blind75": {
+    "order": 64,
+    "no": 64,
+    "topic": "Tree"
+   }
+  },
+  "slug": "132-maximum-path-sum",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 129,
+  "title": "Check if two trees are identical or not",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 313,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 121,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   },
+   "blind75": {
+    "order": 62,
+    "no": 62,
+    "topic": "Tree"
+   }
+  },
+  "slug": "129-check-if-two-trees-are-identical-or-not",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 126,
+  "title": "Zig Zag or Spiral Traversal",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 314,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 122,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   }
+  },
+  "slug": "126-zig-zag-or-spiral-traversal",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 116,
+  "title": "Boundary Traversal",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 315,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 123,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   }
+  },
+  "slug": "116-boundary-traversal",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 125,
+  "title": "Vertical Order Traversal",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 316,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 113,
+    "day": 17,
+    "topic": "Binary Tree"
+   }
+  },
+  "slug": "125-vertical-order-traversal",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ }
+]

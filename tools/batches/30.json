@@ -1,0 +1,158 @@
+[
+ {
+  "id": 2834,
+  "title": "Assign Cookies",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 282,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Easy Problems"
+   }
+  },
+  "slug": "2834-assign-cookies",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Easy Problems"
+ },
+ {
+  "id": 489,
+  "title": "Fractional Knapsack",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 283,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Easy Problems"
+   },
+   "sde": {
+    "order": 46,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "489-fractional-knapsack",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Easy Problems"
+ },
+ {
+  "id": 543,
+  "title": "Lemonade Change",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 284,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Easy Problems"
+   }
+  },
+  "slug": "543-lemonade-change",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Easy Problems"
+ },
+ {
+  "id": 545,
+  "title": "Valid Paranthesis Checker",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 285,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Easy Problems"
+   }
+  },
+  "slug": "545-valid-paranthesis-checker",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Easy Problems"
+ },
+ {
+  "id": 549,
+  "title": "N meetings in one room",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 286,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "sde": {
+    "order": 43,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "549-n-meetings-in-one-room",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 542,
+  "title": "Jump Game - I",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 287,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "blind75": {
+    "order": 26,
+    "no": 26,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "542-jump-game-i",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 595,
+  "title": "Jump Game II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 288,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   }
+  },
+  "slug": "595-jump-game-ii",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 548,
+  "title": "Minimum number of platforms required for a railway",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 289,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "sde": {
+    "order": 44,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "548-minimum-number-of-platforms-required-for-a-railway",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ }
+]

@@ -1,0 +1,204 @@
+[
+ {
+  "id": 2803,
+  "title": "Rod Cutting Problem - (DP - 24)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 426,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Subsequences"
+   }
+  },
+  "slug": "2803-rod-cutting-problem-dp-24",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Subsequences"
+ },
+ {
+  "id": 308,
+  "title": "Longest common subsequence",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 427,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   },
+   "sde": {
+    "order": 172,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   },
+   "blind75": {
+    "order": 19,
+    "no": 19,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "308-longest-common-subsequence",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 2799,
+  "title": "Print Longest Common Subsequence - (DP - 26)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 428,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "2799-print-longest-common-subsequence-dp-26",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 309,
+  "title": "Longest common substring",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 429,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "309-longest-common-substring",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 310,
+  "title": "Longest palindromic subsequence",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 430,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "310-longest-palindromic-subsequence",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 2800,
+  "title": "Minimum insertions to make string palindrome - DP-29",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 431,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "2800-minimum-insertions-to-make-string-palindrome-dp-29",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 311,
+  "title": "Minimum insertions or deletions to convert string A to B",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 432,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "311-minimum-insertions-or-deletions-to-convert-string-a-to-b",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 313,
+  "title": "Shortest common supersequence",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 433,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "313-shortest-common-supersequence",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 306,
+  "title": "Distinct subsequences",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 434,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "306-distinct-subsequences",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 307,
+  "title": "Edit distance",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 435,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   },
+   "sde": {
+    "order": 174,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "307-edit-distance",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ },
+ {
+  "id": 314,
+  "title": "Wildcard matching",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 436,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Strings"
+   }
+  },
+  "slug": "314-wildcard-matching",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Strings"
+ }
+]

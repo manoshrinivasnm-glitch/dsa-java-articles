@@ -1,0 +1,180 @@
+[
+ {
+  "id": 880,
+  "title": "Count all subsequences with sum K",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 189,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "880-count-all-subsequences-with-sum-k",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 879,
+  "title": "Check if there exists a subsequence with sum K",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 190,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "879-check-if-there-exists-a-subsequence-with-sum-k",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 864,
+  "title": "Combination Sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 191,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   },
+   "sde": {
+    "order": 51,
+    "day": 9,
+    "topic": "Recursion"
+   },
+   "blind75": {
+    "order": 21,
+    "no": 21,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "864-combination-sum",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 865,
+  "title": "Combination Sum II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 192,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   },
+   "sde": {
+    "order": 52,
+    "day": 9,
+    "topic": "Recursion"
+   }
+  },
+  "slug": "865-combination-sum-ii",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 867,
+  "title": "Subsets I",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 193,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "867-subsets-i",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 868,
+  "title": "Subsets II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 194,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   },
+   "sde": {
+    "order": 50,
+    "day": 9,
+    "topic": "Recursion"
+   }
+  },
+  "slug": "868-subsets-ii",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 866,
+  "title": "Combination Sum III",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 195,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "866-combination-sum-iii",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 875,
+  "title": "Letter Combinations of a Phone Number",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 196,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "875-letter-combinations-of-a-phone-number",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 871,
+  "title": "Palindrome partitioning",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 197,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 53,
+    "day": 9,
+    "topic": "Recursion"
+   }
+  },
+  "slug": "871-palindrome-partitioning",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ }
+]

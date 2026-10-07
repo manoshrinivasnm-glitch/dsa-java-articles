@@ -1,0 +1,189 @@
+[
+ {
+  "id": 425,
+  "title": "Input Output",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 1,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "425-input-output",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 1211,
+  "title": "Cpp Basics",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 2,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "1211-cpp-basics",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 424,
+  "title": "If ElseIf",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 3,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "424-if-elseif",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 429,
+  "title": "Switch Case",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 4,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "429-switch-case",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 2869,
+  "title": "What are arrays, strings?",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 5,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "2869-what-are-arrays-strings",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 2867,
+  "title": "For loops",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 6,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "2867-for-loops",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 2868,
+  "title": "While loops",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 7,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "2868-while-loops",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 2866,
+  "title": "Functions (Pass by Reference and Value)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 8,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "2866-functions-pass-by-reference-and-value",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 1219,
+  "title": "Theory with examples",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 9,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Things to Know in C++/Java/Python or any language"
+   }
+  },
+  "slug": "1219-theory-with-examples",
+  "topic": "Learn the basics",
+  "section": "Things to Know in C++/Java/Python or any language"
+ },
+ {
+  "id": 1216,
+  "title": "Easy and Medium",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 10,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Build-up Logical Thinking"
+   }
+  },
+  "slug": "1216-easy-and-medium",
+  "topic": "Learn the basics",
+  "section": "Build-up Logical Thinking"
+ },
+ {
+  "id": 1205,
+  "title": "Hard",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 11,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Build-up Logical Thinking"
+   }
+  },
+  "slug": "1205-hard",
+  "topic": "Learn the basics",
+  "section": "Build-up Logical Thinking"
+ }
+]

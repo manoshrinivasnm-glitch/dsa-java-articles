@@ -1,0 +1,199 @@
+[
+ {
+  "id": 500,
+  "title": "Detect a cycle in a directed graph",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 373,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   }
+  },
+  "slug": "500-detect-a-cycle-in-a-directed-graph",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 504,
+  "title": "Course Schedule I",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 374,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   },
+   "blind75": {
+    "order": 28,
+    "no": 28,
+    "topic": "Graph"
+   }
+  },
+  "slug": "504-course-schedule-i",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 505,
+  "title": "Course Schedule II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 375,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   }
+  },
+  "slug": "505-course-schedule-ii",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 506,
+  "title": "Find eventual safe states",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 376,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   }
+  },
+  "slug": "506-find-eventual-safe-states",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 503,
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 377,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Topo Sort and Problems"
+   },
+   "blind75": {
+    "order": 32,
+    "no": 32,
+    "topic": "Graph"
+   }
+  },
+  "slug": "503-alien-dictionary",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Topo Sort and Problems"
+ },
+ {
+  "id": 508,
+  "title": "Shortest path in undirected graph with unit weights",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 378,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "508-shortest-path-in-undirected-graph-with-unit-weights",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ },
+ {
+  "id": 507,
+  "title": "Shortest path in DAG",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 379,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "507-shortest-path-in-dag",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ },
+ {
+  "id": 2827,
+  "title": "Djisktra's Algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 380,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "2827-djisktras-algorithm",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ },
+ {
+  "id": 2828,
+  "title": "Why priority Queue is used in Djisktra's Algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 381,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "2828-why-priority-queue-is-used-in-djisktras-algorithm",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ },
+ {
+  "id": 527,
+  "title": "Shortest Distance in a Binary Maze",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 382,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "527-shortest-distance-in-a-binary-maze",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ },
+ {
+  "id": 525,
+  "title": "Path with minimum effort",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 383,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Shortest Path Algorithms and Problems"
+   }
+  },
+  "slug": "525-path-with-minimum-effort",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Shortest Path Algorithms and Problems"
+ }
+]

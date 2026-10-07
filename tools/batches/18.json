@@ -1,0 +1,160 @@
+[
+ {
+  "id": 617,
+  "title": "Add one to a number represented by LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 171,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "617-add-one-to-a-number-represented-by-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 625,
+  "title": "Add two numbers in Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 172,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "625-add-two-numbers-in-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 609,
+  "title": "Delete all occurrences of a key in DLL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 173,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of DLL"
+   }
+  },
+  "slug": "609-delete-all-occurrences-of-a-key-in-dll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of DLL"
+ },
+ {
+  "id": 452,
+  "title": "Find Pairs with Given Sum in Doubly Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 174,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of DLL"
+   }
+  },
+  "slug": "452-find-pairs-with-given-sum-in-doubly-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of DLL"
+ },
+ {
+  "id": 610,
+  "title": "Remove duplicates from sorted DLL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 175,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of DLL"
+   }
+  },
+  "slug": "610-remove-duplicates-from-sorted-dll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of DLL"
+ },
+ {
+  "id": 2842,
+  "title": "Reverse LL in group of given size K",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 176,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Hard Problems of LL"
+   }
+  },
+  "slug": "2842-reverse-ll-in-group-of-given-size-k",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Hard Problems of LL"
+ },
+ {
+  "id": 2843,
+  "title": "Rotate a LL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 177,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Hard Problems of LL"
+   }
+  },
+  "slug": "2843-rotate-a-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Hard Problems of LL"
+ },
+ {
+  "id": 2841,
+  "title": "Flattening of LL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 178,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Hard Problems of LL"
+   }
+  },
+  "slug": "2841-flattening-of-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Hard Problems of LL"
+ },
+ {
+  "id": 611,
+  "title": "Clone a LL with random and next pointer",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 179,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Hard Problems of LL"
+   },
+   "sde": {
+    "order": 38,
+    "day": 7,
+    "topic": "Linked List and Arrays"
+   }
+  },
+  "slug": "611-clone-a-ll-with-random-and-next-pointer",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Hard Problems of LL"
+ }
+]

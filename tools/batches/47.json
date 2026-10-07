@@ -1,0 +1,194 @@
+[
+ {
+  "id": 633,
+  "title": "Longest Bitonic Subsequence",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 448,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on LIS"
+   }
+  },
+  "slug": "633-longest-bitonic-subsequence",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on LIS"
+ },
+ {
+  "id": 780,
+  "title": "Number of Longest Increasing Subsequences",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 449,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on LIS"
+   }
+  },
+  "slug": "780-number-of-longest-increasing-subsequences",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on LIS"
+ },
+ {
+  "id": 327,
+  "title": "Matrix chain multiplication",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 450,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   },
+   "sde": {
+    "order": 176,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "327-matrix-chain-multiplication",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 2806,
+  "title": "Matrix Chain Multiplication - Bottom-Up - (DP-49)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 451,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "2806-matrix-chain-multiplication-bottom-up-dp-49",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 328,
+  "title": "Minimum cost to cut the stick",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 452,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "328-minimum-cost-to-cut-the-stick",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 326,
+  "title": "Burst balloons",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 453,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "326-burst-balloons",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 276,
+  "title": "Different Ways to Evaluate a Boolean Expression",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 454,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "276-different-ways-to-evaluate-a-boolean-expression",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 329,
+  "title": "Palindrome partitioning II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 455,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "329-palindrome-partitioning-ii",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 810,
+  "title": "Partition Array for Maximum Sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 456,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "MCM DP - Partition DP"
+   }
+  },
+  "slug": "810-partition-array-for-maximum-sum",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "MCM DP - Partition DP"
+ },
+ {
+  "id": 2860,
+  "title": "Maximum Rectangle Area with all 1's - (DP-55)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 457,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Squares"
+   }
+  },
+  "slug": "2860-maximum-rectangle-area-with-all-1s-dp-55",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Squares"
+ },
+ {
+  "id": 2395,
+  "title": "Count Square Submatrices with All Ones - (DP-56)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 458,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "DP on Squares"
+   }
+  },
+  "slug": "2395-count-square-submatrices-with-all-ones-dp-56",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "DP on Squares"
+ }
+]

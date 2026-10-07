@@ -1,0 +1,222 @@
+[
+ {
+  "id": 27,
+  "title": "3 Sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 92,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 39,
+    "day": 7,
+    "topic": "Linked List and Arrays"
+   },
+   "blind75": {
+    "order": 9,
+    "no": 9,
+    "topic": "Array"
+   }
+  },
+  "slug": "27-3-sum",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 28,
+  "title": "4 Sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 93,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 20,
+    "day": 4,
+    "topic": "Arrays Part-IV"
+   }
+  },
+  "slug": "28-4-sum",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 605,
+  "title": "Largest Subarray with Sum 0",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 94,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   }
+  },
+  "slug": "605-largest-subarray-with-sum-0",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 562,
+  "title": "Count subarrays with given xor K",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 95,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 23,
+    "day": 4,
+    "topic": "Arrays Part-IV"
+   }
+  },
+  "slug": "562-count-subarrays-with-given-xor-k",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 715,
+  "title": "Merge Overlapping Subintervals",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 96,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 8,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   }
+  },
+  "slug": "715-merge-overlapping-subintervals",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 25,
+  "title": "Merge two sorted arrays without extra space",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 97,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 9,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   }
+  },
+  "slug": "25-merge-two-sorted-arrays-without-extra-space",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 21,
+  "title": "Find the repeating and missing number",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 98,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 11,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   },
+   "blind75": {
+    "order": 38,
+    "no": 38,
+    "topic": "Interval"
+   }
+  },
+  "slug": "21-find-the-repeating-and-missing-number",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 20,
+  "title": "Count Inversions",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 99,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   }
+  },
+  "slug": "20-count-inversions",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 26,
+  "title": "Reverse Pairs",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 100,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 18,
+    "day": 3,
+    "topic": "Arrays Part-III"
+   }
+  },
+  "slug": "26-reverse-pairs",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 24,
+  "title": "Maximum Product Subarray in an Array",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 101,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "blind75": {
+    "order": 6,
+    "no": 6,
+    "topic": "Array"
+   }
+  },
+  "slug": "24-maximum-product-subarray-in-an-array",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ }
+]

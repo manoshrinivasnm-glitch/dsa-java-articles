@@ -1,0 +1,161 @@
+[
+ {
+  "id": 1028,
+  "title": "Trie Implementation and Operations",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 459,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Theory"
+   },
+   "sde": {
+    "order": 185,
+    "day": 27,
+    "topic": "Trie"
+   },
+   "blind75": {
+    "order": 72,
+    "no": 72,
+    "topic": "Tree"
+   }
+  },
+  "slug": "1028-trie-implementation-and-operations",
+  "topic": "Tries",
+  "section": "Theory"
+ },
+ {
+  "id": 1027,
+  "title": "Trie Implementation and Advanced Operations",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 460,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   },
+   "sde": {
+    "order": 186,
+    "day": 27,
+    "topic": "Trie"
+   },
+   "blind75": {
+    "order": 73,
+    "no": 73,
+    "topic": "Tree"
+   }
+  },
+  "slug": "1027-trie-implementation-and-advanced-operations",
+  "topic": "Tries",
+  "section": "Problems"
+ },
+ {
+  "id": 1023,
+  "title": "Longest Word with All Prefixes",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 461,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   },
+   "sde": {
+    "order": 187,
+    "day": 27,
+    "topic": "Trie"
+   }
+  },
+  "slug": "1023-longest-word-with-all-prefixes",
+  "topic": "Tries",
+  "section": "Problems"
+ },
+ {
+  "id": 1026,
+  "title": "Number of distinct substrings in a string",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 462,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   },
+   "sde": {
+    "order": 188,
+    "day": 27,
+    "topic": "Trie"
+   }
+  },
+  "slug": "1026-number-of-distinct-substrings-in-a-string",
+  "topic": "Tries",
+  "section": "Problems"
+ },
+ {
+  "id": 2390,
+  "title": "Bit PreRequisites for TRIE Problems",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 463,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   }
+  },
+  "slug": "2390-bit-prerequisites-for-trie-problems",
+  "topic": "Tries",
+  "section": "Problems"
+ },
+ {
+  "id": 1024,
+  "title": "Maximum XOR of two numbers in an array",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 464,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   },
+   "sde": {
+    "order": 190,
+    "day": 27,
+    "topic": "Trie"
+   }
+  },
+  "slug": "1024-maximum-xor-of-two-numbers-in-an-array",
+  "topic": "Tries",
+  "section": "Problems"
+ },
+ {
+  "id": 1025,
+  "title": "Maximum Xor with an element from an array",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 465,
+    "step": 17,
+    "step_name": "Tries",
+    "section": "Problems"
+   },
+   "sde": {
+    "order": 191,
+    "day": 27,
+    "topic": "Trie"
+   }
+  },
+  "slug": "1025-maximum-xor-with-an-element-from-an-array",
+  "topic": "Tries",
+  "section": "Problems"
+ }
+]

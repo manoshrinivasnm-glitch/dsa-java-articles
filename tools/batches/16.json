@@ -1,0 +1,189 @@
+[
+ {
+  "id": 1237,
+  "title": "Introduction to Singly LinkedList",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 149,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn 1D LinkedList"
+   }
+  },
+  "slug": "1237-introduction-to-singly-linkedlist",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn 1D LinkedList"
+ },
+ {
+  "id": 356,
+  "title": "Insertion at the head of Linked List",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 150,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn 1D LinkedList"
+   }
+  },
+  "slug": "356-insertion-at-the-head-of-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn 1D LinkedList"
+ },
+ {
+  "id": 352,
+  "title": "Deletion of the head of LL",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 151,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn 1D LinkedList"
+   }
+  },
+  "slug": "352-deletion-of-the-head-of-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn 1D LinkedList"
+ },
+ {
+  "id": 470,
+  "title": "Find the length of the Linked List",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 152,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn 1D LinkedList"
+   }
+  },
+  "slug": "470-find-the-length-of-the-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn 1D LinkedList"
+ },
+ {
+  "id": 905,
+  "title": "Search in Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 153,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn 1D LinkedList"
+   }
+  },
+  "slug": "905-search-in-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn 1D LinkedList"
+ },
+ {
+  "id": 1234,
+  "title": "Introduction to Doubly LL",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 154,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn Doubly LinkedList"
+   }
+  },
+  "slug": "1234-introduction-to-doubly-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn Doubly LinkedList"
+ },
+ {
+  "id": 361,
+  "title": "Insert node before head in Doubly Linked List",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 155,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn Doubly LinkedList"
+   }
+  },
+  "slug": "361-insert-node-before-head-in-doubly-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn Doubly LinkedList"
+ },
+ {
+  "id": 348,
+  "title": "Delete head of Doubly Linked List",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 156,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn Doubly LinkedList"
+   }
+  },
+  "slug": "348-delete-head-of-doubly-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn Doubly LinkedList"
+ },
+ {
+  "id": 900,
+  "title": "Reverse a Doubly Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 157,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Learn Doubly LinkedList"
+   }
+  },
+  "slug": "900-reverse-a-doubly-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Learn Doubly LinkedList"
+ },
+ {
+  "id": 2810,
+  "title": "Middle of a LinkedList [TortoiseHare Method]",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 158,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2810-middle-of-a-linkedlist-tortoisehare-method",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2850,
+  "title": "Reverse a LinkedList [Iterative]",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 159,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2850-reverse-a-linkedlist-iterative",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ }
+]

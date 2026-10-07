@@ -1,0 +1,221 @@
+[
+ {
+  "id": 2857,
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 253,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   },
+   "blind75": {
+    "order": 51,
+    "no": 51,
+    "topic": "String"
+   }
+  },
+  "slug": "2857-longest-substring-without-repeating-characters",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 930,
+  "title": "Max Consecutive Ones III",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 254,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "930-max-consecutive-ones-iii",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 926,
+  "title": "Fruit Into Baskets",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 255,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "926-fruit-into-baskets",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 927,
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 256,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   },
+   "blind75": {
+    "order": 52,
+    "no": 52,
+    "topic": "String"
+   }
+  },
+  "slug": "927-longest-repeating-character-replacement",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 923,
+  "title": "Binary Subarrays With Sum",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 257,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "923-binary-subarrays-with-sum",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 924,
+  "title": "Count number of Nice subarrays",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 258,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "924-count-number-of-nice-subarrays",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 925,
+  "title": "Number of Substrings Containing All Three Characters",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 259,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "925-number-of-substrings-containing-all-three-characters",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 922,
+  "title": "Maximum Points You Can Obtain from Cards",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 260,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "922-maximum-points-you-can-obtain-from-cards",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 928,
+  "title": "Longest Substring With At Most K Distinct Characters",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 261,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "928-longest-substring-with-at-most-k-distinct-characters",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 988,
+  "title": "Subarrays with K Different Integers",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 262,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "988-subarrays-with-k-different-integers",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 931,
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 263,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Hard Problems"
+   },
+   "blind75": {
+    "order": 53,
+    "no": 53,
+    "topic": "String"
+   }
+  },
+  "slug": "931-minimum-window-substring",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 754,
+  "title": "Minimum Window Subsequence",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 264,
+    "step": 10,
+    "step_name": "Sliding Window & Two Pointer Combined Problems",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "754-minimum-window-subsequence",
+  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "section": "Hard Problems"
+ }
+]

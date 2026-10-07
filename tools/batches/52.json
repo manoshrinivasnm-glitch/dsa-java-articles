@@ -1,0 +1,183 @@
+[
+ {
+  "id": 621,
+  "title": "Find the intersection point of Y LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 31,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   }
+  },
+  "slug": "621-find-the-intersection-point-of-y-ll",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 620,
+  "title": "Detect a loop in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 32,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   },
+   "blind75": {
+    "order": 42,
+    "no": 42,
+    "topic": "Linked List"
+   }
+  },
+  "slug": "620-detect-a-loop-in-ll",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 614,
+  "title": "Reverse LL in group of given size K",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 33,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   }
+  },
+  "slug": "614-reverse-ll-in-group-of-given-size-k",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 618,
+  "title": "Check if LL is palindrome or not",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 34,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   }
+  },
+  "slug": "618-check-if-ll-is-palindrome-or-not",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 622,
+  "title": "Find the starting point in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 35,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   }
+  },
+  "slug": "622-find-the-starting-point-in-ll",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 612,
+  "title": "Flattening of LL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 36,
+    "day": 6,
+    "topic": "Linked List Part-II"
+   }
+  },
+  "slug": "612-flattening-of-ll",
+  "topic": "Linked List Part-II",
+  "section": ""
+ },
+ {
+  "id": 615,
+  "title": "Rotate a LL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 37,
+    "day": 7,
+    "topic": "Linked List and Arrays"
+   }
+  },
+  "slug": "615-rotate-a-ll",
+  "topic": "Linked List and Arrays",
+  "section": ""
+ },
+ {
+  "id": 47,
+  "title": "Remove duplicates from sorted array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 41,
+    "day": 7,
+    "topic": "Linked List and Arrays"
+   }
+  },
+  "slug": "47-remove-duplicates-from-sorted-array",
+  "topic": "Linked List and Arrays",
+  "section": ""
+ },
+ {
+  "id": 319,
+  "title": "Minimum coins",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 47,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "319-minimum-coins",
+  "topic": "Greedy Algorithm",
+  "section": ""
+ },
+ {
+  "id": 2805,
+  "title": "Subset Sums",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 49,
+    "day": 9,
+    "topic": "Recursion"
+   }
+  },
+  "slug": "2805-subset-sums",
+  "topic": "Recursion",
+  "section": ""
+ },
+ {
+  "id": 818,
+  "title": "Permutation Sequence",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 54,
+    "day": 9,
+    "topic": "Recursion"
+   }
+  },
+  "slug": "818-permutation-sequence",
+  "topic": "Recursion",
+  "section": ""
+ }
+]

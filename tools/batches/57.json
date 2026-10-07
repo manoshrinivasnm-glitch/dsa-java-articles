@@ -1,0 +1,103 @@
+[
+ {
+  "id": 2779,
+  "title": "Floor in a BST",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 138,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   }
+  },
+  "slug": "2779-floor-in-a-bst",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ },
+ {
+  "id": 2777,
+  "title": "Ceil in a BST",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 139,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   }
+  },
+  "slug": "2777-ceil-in-a-bst",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ },
+ {
+  "id": 2776,
+  "title": "Find K-th smallest element in BST",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 140,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   },
+   "blind75": {
+    "order": 70,
+    "no": 70,
+    "topic": "Tree"
+   }
+  },
+  "slug": "2776-find-k-th-smallest-element-in-bst",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ },
+ {
+  "id": 99,
+  "title": "Two sum in BST",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 142,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   }
+  },
+  "slug": "99-two-sum-in-bst",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ },
+ {
+  "id": 96,
+  "title": "BST iterator",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 143,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   }
+  },
+  "slug": "96-bst-iterator",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ },
+ {
+  "id": 2773,
+  "title": "Size of the largest BST in a Binary Tree",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 144,
+    "day": 21,
+    "topic": "Binary Search Tree Part-II"
+   }
+  },
+  "slug": "2773-size-of-the-largest-bst-in-a-binary-tree",
+  "topic": "Binary Search Tree Part-II",
+  "section": ""
+ }
+]

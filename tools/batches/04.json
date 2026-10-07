@@ -1,0 +1,194 @@
+[
+ {
+  "id": 1218,
+  "title": "STL",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 34,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn STL/Java-Collections or similar thing in your | language"
+   }
+  },
+  "slug": "1218-stl",
+  "topic": "Learn the basics",
+  "section": "Learn STL/Java-Collections or similar thing in your | language"
+ },
+ {
+  "id": 1217,
+  "title": "Java Collections",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 35,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn STL/Java-Collections or similar thing in your | language"
+   }
+  },
+  "slug": "1217-java-collections",
+  "topic": "Learn the basics",
+  "section": "Learn STL/Java-Collections or similar thing in your | language"
+ },
+ {
+  "id": 367,
+  "title": "Count all Digits of a Number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 36,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "367-count-all-digits-of-a-number",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 376,
+  "title": "Reverse a number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 37,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "376-reverse-a-number",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 374,
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 38,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   },
+   "blind75": {
+    "order": 57,
+    "no": 57,
+    "topic": "String"
+   }
+  },
+  "slug": "374-palindrome-number",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 372,
+  "title": "GCD of Two Numbers",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 39,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "372-gcd-of-two-numbers",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 366,
+  "title": "Check if the Number is Armstrong",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 40,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "366-check-if-the-number-is-armstrong",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 2807,
+  "title": "Print all Divisors",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 41,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "2807-print-all-divisors",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 365,
+  "title": "Check for Prime Number",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 42,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Know Basic Maths"
+   }
+  },
+  "slug": "365-check-for-prime-number",
+  "topic": "Learn the basics",
+  "section": "Know Basic Maths"
+ },
+ {
+  "id": 2401,
+  "title": "Understand recursion by print something N times",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 43,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "2401-understand-recursion-by-print-something-n-times",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ },
+ {
+  "id": 2405,
+  "title": "Print name N times using recursion",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 44,
+    "step": 1,
+    "step_name": "Learn the basics",
+    "section": "Learn Basic Recursion"
+   }
+  },
+  "slug": "2405-print-name-n-times-using-recursion",
+  "topic": "Learn the basics",
+  "section": "Learn Basic Recursion"
+ }
+]

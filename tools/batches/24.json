@@ -1,0 +1,202 @@
+[
+ {
+  "id": 390,
+  "title": "Implement Stack using Arrays",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 223,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 75,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "390-implement-stack-using-arrays",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 387,
+  "title": "Implement Queue using Arrays",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 224,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 76,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "387-implement-queue-using-arrays",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 392,
+  "title": "Implement Stack using Queue",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 225,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   }
+  },
+  "slug": "392-implement-stack-using-queue",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 389,
+  "title": "Implement Queue using Stack",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 226,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 78,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "389-implement-queue-using-stack",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 391,
+  "title": "Implement stack using Linkedlist",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 227,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   }
+  },
+  "slug": "391-implement-stack-using-linkedlist",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 388,
+  "title": "Implement queue using Linkedlist",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 228,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   }
+  },
+  "slug": "388-implement-queue-using-linkedlist",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 966,
+  "title": "Balanced Paranthesis",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 229,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 79,
+    "day": 13,
+    "topic": "Stack and Queue"
+   },
+   "blind75": {
+    "order": 56,
+    "no": 56,
+    "topic": "String"
+   }
+  },
+  "slug": "966-balanced-paranthesis",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 958,
+  "title": "Implement Min Stack",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 230,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 87,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "958-implement-min-stack",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Learning"
+ },
+ {
+  "id": 586,
+  "title": "Infix to Postfix Conversion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 231,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "586-infix-to-postfix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ },
+ {
+  "id": 848,
+  "title": "Prefix to Infix Conversion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 232,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "848-prefix-to-infix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ }
+]

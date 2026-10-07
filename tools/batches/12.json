@@ -1,0 +1,194 @@
+[
+ {
+  "id": 2770,
+  "title": "Single element in a Sorted Array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 113,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "2770-single-element-in-a-sorted-array",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 75,
+  "title": "Find peak element",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 114,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "75-find-peak-element",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 92,
+  "title": "Find square root of a number",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 115,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "92-find-square-root-of-a-number",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 91,
+  "title": "Find Nth root of a number",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 116,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "91-find-nth-root-of-a-number",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 94,
+  "title": "Koko eating bananas",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 117,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "94-koko-eating-bananas",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 95,
+  "title": "Minimum days to make M bouquets",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 118,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "95-minimum-days-to-make-m-bouquets",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 93,
+  "title": "Find the smallest divisor",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 119,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "93-find-the-smallest-divisor",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 161,
+  "title": "Capacity to Ship Packages Within D Days",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 120,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "161-capacity-to-ship-packages-within-d-days",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 600,
+  "title": "Kth Missing Positive Number",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 121,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "600-kth-missing-positive-number",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 73,
+  "title": "Aggressive Cows",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 122,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   },
+   "sde": {
+    "order": 68,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "73-aggressive-cows",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 74,
+  "title": "Book Allocation Problem",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 123,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "74-book-allocation-problem",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ }
+]

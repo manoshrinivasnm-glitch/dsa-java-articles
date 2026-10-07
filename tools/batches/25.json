@@ -1,0 +1,187 @@
+[
+ {
+  "id": 849,
+  "title": "Prefix to Postfix Conversion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 233,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "849-prefix-to-postfix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ },
+ {
+  "id": 825,
+  "title": "Postfix to Prefix Conversion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 234,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "825-postfix-to-prefix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ },
+ {
+  "id": 824,
+  "title": "Postfix to Infix Conversion",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 235,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "824-postfix-to-infix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ },
+ {
+  "id": 587,
+  "title": "Infix to Prefix Conversion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 236,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Prefix, Infix, PostFix Conversion Problems"
+   }
+  },
+  "slug": "587-infix-to-prefix-conversion",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Prefix, Infix, PostFix Conversion Problems"
+ },
+ {
+  "id": 968,
+  "title": "Next Greater Element",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 237,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   },
+   "sde": {
+    "order": 80,
+    "day": 13,
+    "topic": "Stack and Queue"
+   }
+  },
+  "slug": "968-next-greater-element",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 969,
+  "title": "Next Greater Element - 2",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 238,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "969-next-greater-element-2",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 768,
+  "title": "Next Smaller Element",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 239,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   },
+   "sde": {
+    "order": 82,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "768-next-smaller-element",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 285,
+  "title": "Number of Greater Elements to the Right",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 240,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "285-number-of-greater-elements-to-the-right",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 965,
+  "title": "Trapping Rainwater",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 241,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   },
+   "sde": {
+    "order": 40,
+    "day": 7,
+    "topic": "Linked List and Arrays"
+   }
+  },
+  "slug": "965-trapping-rainwater",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ },
+ {
+  "id": 971,
+  "title": "Sum of Subarray Minimums",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 242,
+    "step": 9,
+    "step_name": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+   }
+  },
+  "slug": "971-sum-of-subarray-minimums",
+  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
+ }
+]

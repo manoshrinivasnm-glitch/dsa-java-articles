@@ -1,0 +1,160 @@
+[
+ {
+  "id": 2862,
+  "title": "Recursive Implementation of atoi()",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 180,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Get a Strong Hold"
+   }
+  },
+  "slug": "2862-recursive-implementation-of-atoi",
+  "topic": "Recursion [PatternWise]",
+  "section": "Get a Strong Hold"
+ },
+ {
+  "id": 2855,
+  "title": "Pow(x, n)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 181,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Get a Strong Hold"
+   },
+   "sde": {
+    "order": 14,
+    "day": 3,
+    "topic": "Arrays Part-III"
+   }
+  },
+  "slug": "2855-pow-x-n",
+  "topic": "Recursion [PatternWise]",
+  "section": "Get a Strong Hold"
+ },
+ {
+  "id": 222,
+  "title": "Count Good Numbers",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 182,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Get a Strong Hold"
+   }
+  },
+  "slug": "222-count-good-numbers",
+  "topic": "Recursion [PatternWise]",
+  "section": "Get a Strong Hold"
+ },
+ {
+  "id": 2858,
+  "title": "Sort a stack using recursion",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 183,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Get a Strong Hold"
+   }
+  },
+  "slug": "2858-sort-a-stack-using-recursion",
+  "topic": "Recursion [PatternWise]",
+  "section": "Get a Strong Hold"
+ },
+ {
+  "id": 901,
+  "title": "Reverse a Stack",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 184,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Get a Strong Hold"
+   }
+  },
+  "slug": "901-reverse-a-stack",
+  "topic": "Recursion [PatternWise]",
+  "section": "Get a Strong Hold"
+ },
+ {
+  "id": 493,
+  "title": "Generate Binary Strings Without Consecutive 1s",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 185,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "493-generate-binary-strings-without-consecutive-1s",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 876,
+  "title": "Generate Parentheses",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 186,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "876-generate-parentheses",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 878,
+  "title": "Power Set",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 187,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "878-power-set",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ },
+ {
+  "id": 2400,
+  "title": "Learn All Patterns of Subsequences (Theory)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 188,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Subsequences Pattern"
+   }
+  },
+  "slug": "2400-learn-all-patterns-of-subsequences-theory",
+  "topic": "Recursion [PatternWise]",
+  "section": "Subsequences Pattern"
+ }
+]

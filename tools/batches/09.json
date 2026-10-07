@@ -1,0 +1,212 @@
+[
+ {
+  "id": 34,
+  "title": "Rearrange array elements by sign",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 82,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   }
+  },
+  "slug": "34-rearrange-array-elements-by-sign",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 31,
+  "title": "Next Permutation",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 83,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   },
+   "sde": {
+    "order": 3,
+    "day": 1,
+    "topic": "Arrays"
+   }
+  },
+  "slug": "31-next-permutation",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 30,
+  "title": "Leaders in an Array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 84,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   }
+  },
+  "slug": "30-leaders-in-an-array",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 2835,
+  "title": "Longest Consecutive Sequence in an Array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 85,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   }
+  },
+  "slug": "2835-longest-consecutive-sequence-in-an-array",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 911,
+  "title": "Set Matrix Zeroes",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 86,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   },
+   "sde": {
+    "order": 1,
+    "day": 1,
+    "topic": "Arrays"
+   },
+   "blind75": {
+    "order": 47,
+    "no": 47,
+    "topic": "Matrix"
+   }
+  },
+  "slug": "911-set-matrix-zeroes",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 35,
+  "title": "Rotate matrix by 90 degrees",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 87,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   },
+   "sde": {
+    "order": 7,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   },
+   "blind75": {
+    "order": 49,
+    "no": 49,
+    "topic": "Matrix"
+   }
+  },
+  "slug": "35-rotate-matrix-by-90-degrees",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 33,
+  "title": "Print the matrix in spiral manner",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 88,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   },
+   "blind75": {
+    "order": 48,
+    "no": 48,
+    "topic": "Matrix"
+   }
+  },
+  "slug": "33-print-the-matrix-in-spiral-manner",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 561,
+  "title": "Count subarrays with given sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 89,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Medium"
+   }
+  },
+  "slug": "561-count-subarrays-with-given-sum",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Medium"
+ },
+ {
+  "id": 813,
+  "title": "Pascal's Triangle I",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 90,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 2,
+    "day": 1,
+    "topic": "Arrays"
+   }
+  },
+  "slug": "813-pascals-triangle-i",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ },
+ {
+  "id": 23,
+  "title": "Majority Element-II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 91,
+    "step": 3,
+    "step_name": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "section": "Hard"
+   },
+   "sde": {
+    "order": 16,
+    "day": 3,
+    "topic": "Arrays Part-III"
+   }
+  },
+  "slug": "23-majority-element-ii",
+  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "section": "Hard"
+ }
+]

@@ -1,0 +1,223 @@
+[
+ {
+  "id": 983,
+  "title": "Minimum number of bracket reversals to make an expression balanced",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 466,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "983-minimum-number-of-bracket-reversals-to-make-an-expression-ba",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 982,
+  "title": "Count and say",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 467,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 102,
+    "day": 16,
+    "topic": "String Part-II"
+   }
+  },
+  "slug": "982-count-and-say",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 2399,
+  "title": "Hashing In Strings - Theory",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 468,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "2399-hashing-in-strings-theory",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 979,
+  "title": "Rabin Karp Algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 469,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 97,
+    "day": 15,
+    "topic": "String"
+   }
+  },
+  "slug": "979-rabin-karp-algorithm",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 981,
+  "title": "Z function",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 470,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 98,
+    "day": 16,
+    "topic": "String Part-II"
+   }
+  },
+  "slug": "981-z-function",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 977,
+  "title": "KMP Algorithm or LPS array",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 471,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 99,
+    "day": 16,
+    "topic": "String Part-II"
+   }
+  },
+  "slug": "977-kmp-algorithm-or-lps-array",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 980,
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 472,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "980-shortest-palindrome",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 978,
+  "title": "Longest happy prefix",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 473,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "978-longest-happy-prefix",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 231,
+  "title": "Count Palindromic Subsequences",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 474,
+    "step": 18,
+    "step_name": "Strings",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "231-count-palindromic-subsequences",
+  "topic": "Strings",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 36,
+  "title": "Sort an array of 0's 1's and 2's",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 5,
+    "day": 1,
+    "topic": "Arrays"
+   }
+  },
+  "slug": "36-sort-an-array-of-0s-1s-and-2s",
+  "topic": "Arrays",
+  "section": ""
+ },
+ {
+  "id": 465,
+  "title": "Find the Duplicate Number",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 10,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   }
+  },
+  "slug": "465-find-the-duplicate-number",
+  "topic": "Arrays Part-II",
+  "section": ""
+ },
+ {
+  "id": 2758,
+  "title": "Inversion of Array (Pre-req: Merge Sort)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 12,
+    "day": 2,
+    "topic": "Arrays Part-II"
+   }
+  },
+  "slug": "2758-inversion-of-array-pre-req-merge-sort",
+  "topic": "Arrays Part-II",
+  "section": ""
+ }
+]

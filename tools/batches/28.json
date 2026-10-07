@@ -1,0 +1,160 @@
+[
+ {
+  "id": 1223,
+  "title": "Heaps (Theory Video)",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 265,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "1223-heaps-theory-video",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 576,
+  "title": "Implement Min Heap",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 266,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "576-implement-min-heap",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 571,
+  "title": "Check if an array represents a min heap",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 267,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "571-check-if-an-array-represents-a-min-heap",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 572,
+  "title": "Convert Min Heap to Max Heap",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 268,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "572-convert-min-heap-to-max-heap",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 578,
+  "title": "K-th Largest element in an array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 269,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 70,
+    "day": 12,
+    "topic": "Heaps"
+   }
+  },
+  "slug": "578-k-th-largest-element-in-an-array",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 2840,
+  "title": "Kth smallest element in an array [use priority queue]",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 270,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "2840-kth-smallest-element-in-an-array-use-priority-queue",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 2409,
+  "title": "Sort K sorted array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 271,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "2409-sort-k-sorted-array",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 569,
+  "title": "Merge K sorted Lists",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 272,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "569-merge-k-sorted-lists",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 898,
+  "title": "Replace Elements by Their Rank",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 273,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "898-replace-elements-by-their-rank",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ }
+]

@@ -1,0 +1,204 @@
+[
+ {
+  "id": 1195,
+  "title": "Introduction to DP",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 404,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "Introduction to DP"
+   }
+  },
+  "slug": "1195-introduction-to-dp",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "Introduction to DP"
+ },
+ {
+  "id": 287,
+  "title": "Climbing stairs",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 405,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "1D DP"
+   },
+   "blind75": {
+    "order": 16,
+    "no": 16,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "287-climbing-stairs",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "1D DP"
+ },
+ {
+  "id": 288,
+  "title": "Frog Jump",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 406,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "1D DP"
+   }
+  },
+  "slug": "288-frog-jump",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "1D DP"
+ },
+ {
+  "id": 289,
+  "title": "Frog jump with K distances",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 407,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "1D DP"
+   }
+  },
+  "slug": "289-frog-jump-with-k-distances",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "1D DP"
+ },
+ {
+  "id": 291,
+  "title": "Maximum sum of non adjacent elements",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 408,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "1D DP"
+   },
+   "blind75": {
+    "order": 22,
+    "no": 22,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "291-maximum-sum-of-non-adjacent-elements",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "1D DP"
+ },
+ {
+  "id": 290,
+  "title": "House robber",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 409,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "1D DP"
+   },
+   "blind75": {
+    "order": 23,
+    "no": 23,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "290-house-robber",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "1D DP"
+ },
+ {
+  "id": 292,
+  "title": "Ninja's training",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 410,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "292-ninjas-training",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ },
+ {
+  "id": 2795,
+  "title": "Grid Unique Paths : DP on Grids (DP8)",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 411,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "2795-grid-unique-paths-dp-on-grids-dp8",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ },
+ {
+  "id": 300,
+  "title": "Unique paths II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 412,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "300-unique-paths-ii",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ },
+ {
+  "id": 298,
+  "title": "Minimum Falling Path Sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 413,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "298-minimum-falling-path-sum",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ },
+ {
+  "id": 299,
+  "title": "Triangle",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 414,
+    "step": 16,
+    "step_name": "Dynamic Programming [Patterns and Problems]",
+    "section": "2D/3D DP and DP on Grids"
+   }
+  },
+  "slug": "299-triangle",
+  "topic": "Dynamic Programming [Patterns and Problems]",
+  "section": "2D/3D DP and DP on Grids"
+ }
+]

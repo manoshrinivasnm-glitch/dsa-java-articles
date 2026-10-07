@@ -1,0 +1,136 @@
+[
+ {
+  "id": 674,
+  "title": "Maximum Nesting Depth of the Parentheses",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 142,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   }
+  },
+  "slug": "674-maximum-nesting-depth-of-the-parentheses",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 903,
+  "title": "Roman to Integer",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 143,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   },
+   "sde": {
+    "order": 94,
+    "day": 15,
+    "topic": "String"
+   }
+  },
+  "slug": "903-roman-to-integer",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 974,
+  "title": "String to Integer (atoi)",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 144,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   }
+  },
+  "slug": "974-string-to-integer-atoi",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 2394,
+  "title": "Count Number of Substrings",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 145,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   }
+  },
+  "slug": "2394-count-number-of-substrings",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 638,
+  "title": "Longest Palindromic Substring",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 146,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   },
+   "blind75": {
+    "order": 58,
+    "no": 58,
+    "topic": "String"
+   }
+  },
+  "slug": "638-longest-palindromic-substring",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 993,
+  "title": "Sum of Beauty of All Substrings",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 147,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   }
+  },
+  "slug": "993-sum-of-beauty-of-all-substrings",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ },
+ {
+  "id": 984,
+  "title": "Reverse every word in a string",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 148,
+    "step": 5,
+    "step_name": "Strings [Basic and Medium]",
+    "section": "Medium String Problems"
+   },
+   "sde": {
+    "order": 92,
+    "day": 15,
+    "topic": "String"
+   }
+  },
+  "slug": "984-reverse-every-word-in-a-string",
+  "topic": "Strings [Basic and Medium]",
+  "section": "Medium String Problems"
+ }
+]

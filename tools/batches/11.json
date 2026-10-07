@@ -1,0 +1,199 @@
+[
+ {
+  "id": 81,
+  "title": "Search X in sorted array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 102,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "81-search-x-in-sorted-array",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 80,
+  "title": "Lower Bound",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 103,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "80-lower-bound",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 82,
+  "title": "Upper Bound",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 104,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "82-upper-bound",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 89,
+  "title": "Search insert position",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 105,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "89-search-insert-position",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 86,
+  "title": "Floor and Ceil in Sorted Array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 106,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "86-floor-and-ceil-in-sorted-array",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 85,
+  "title": "First and last occurrence",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 107,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "85-first-and-last-occurrence",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 229,
+  "title": "Count Occurrences in a Sorted Array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 108,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "229-count-occurrences-in-a-sorted-array",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 87,
+  "title": "Search in rotated sorted array-I",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 109,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   },
+   "blind75": {
+    "order": 8,
+    "no": 8,
+    "topic": "Array"
+   }
+  },
+  "slug": "87-search-in-rotated-sorted-array-i",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 88,
+  "title": "Search in rotated sorted array-II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 110,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "88-search-in-rotated-sorted-array-ii",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 83,
+  "title": "Find minimum in Rotated Sorted Array",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 111,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   },
+   "blind75": {
+    "order": 7,
+    "no": 7,
+    "topic": "Array"
+   }
+  },
+  "slug": "83-find-minimum-in-rotated-sorted-array",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ },
+ {
+  "id": 84,
+  "title": "Find out how many times the array is rotated",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 112,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 1D Arrays"
+   }
+  },
+  "slug": "84-find-out-how-many-times-the-array-is-rotated",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 1D Arrays"
+ }
+]

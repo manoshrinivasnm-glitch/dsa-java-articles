@@ -1,0 +1,76 @@
+[
+ {
+  "id": 297,
+  "title": "Grid unique paths",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 17,
+    "day": 3,
+    "topic": "Arrays Part-III"
+   },
+   "blind75": {
+    "order": 25,
+    "no": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "297-grid-unique-paths",
+  "topic": "Arrays Part-III",
+  "section": ""
+ },
+ {
+  "id": 563,
+  "title": "Longest Consecutive Sequence in an Array",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 21,
+    "day": 4,
+    "topic": "Arrays Part-IV"
+   },
+   "blind75": {
+    "order": 31,
+    "no": 31,
+    "topic": "Graph"
+   }
+  },
+  "slug": "563-longest-consecutive-sequence-in-an-array",
+  "topic": "Arrays Part-IV",
+  "section": ""
+ },
+ {
+  "id": 2837,
+  "title": "Largest Subarray with K sum",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 22,
+    "day": 4,
+    "topic": "Arrays Part-IV"
+   }
+  },
+  "slug": "2837-largest-subarray-with-k-sum",
+  "topic": "Arrays Part-IV",
+  "section": ""
+ },
+ {
+  "id": 929,
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 24,
+    "day": 4,
+    "topic": "Arrays Part-IV"
+   }
+  },
+  "slug": "929-longest-substring-without-repeating-characters",
+  "topic": "Arrays Part-IV",
+  "section": ""
+ }
+]

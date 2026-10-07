@@ -1,0 +1,141 @@
+[
+ {
+  "id": 547,
+  "title": "Job sequencing Problem",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 290,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "sde": {
+    "order": 45,
+    "day": 8,
+    "topic": "Greedy Algorithm"
+   }
+  },
+  "slug": "547-job-sequencing-problem",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 544,
+  "title": "Candy",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 291,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   }
+  },
+  "slug": "544-candy",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 551,
+  "title": "Shortest Job First",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 292,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   }
+  },
+  "slug": "551-shortest-job-first",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 2859,
+  "title": "Program for Least Recently Used (LRU) Page Replacement Algorithm",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 293,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   }
+  },
+  "slug": "2859-program-for-least-recently-used-lru-page-replacement-algorit",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 546,
+  "title": "Insert Interval",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 294,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "blind75": {
+    "order": 35,
+    "no": 35,
+    "topic": "Interval"
+   }
+  },
+  "slug": "546-insert-interval",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 712,
+  "title": "Merge Intervals",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 295,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "blind75": {
+    "order": 36,
+    "no": 36,
+    "topic": "Interval"
+   }
+  },
+  "slug": "712-merge-intervals",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ },
+ {
+  "id": 550,
+  "title": "Non-overlapping Intervals",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 296,
+    "step": 12,
+    "step_name": "Greedy Algorithms [Easy, Medium/Hard]",
+    "section": "Medium/Hard"
+   },
+   "blind75": {
+    "order": 37,
+    "no": 37,
+    "topic": "Interval"
+   }
+  },
+  "slug": "550-non-overlapping-intervals",
+  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "section": "Medium/Hard"
+ }
+]

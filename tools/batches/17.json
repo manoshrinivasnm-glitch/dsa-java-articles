@@ -1,0 +1,199 @@
+[
+ {
+  "id": 627,
+  "title": "Reverse a LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 160,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   },
+   "sde": {
+    "order": 25,
+    "day": 5,
+    "topic": "Linked List"
+   },
+   "blind75": {
+    "order": 41,
+    "no": 41,
+    "topic": "Linked List"
+   }
+  },
+  "slug": "627-reverse-a-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2845,
+  "title": "Detect a loop in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 161,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2845-detect-a-loop-in-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2847,
+  "title": "Find the starting point in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 162,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2847-find-the-starting-point-in-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 623,
+  "title": "Length of loop in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 163,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "623-length-of-loop-in-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2844,
+  "title": "Check if LL is palindrome or not",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 164,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2844-check-if-ll-is-palindrome-or-not",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 628,
+  "title": "Segregate odd and even nodes in Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 165,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "628-segregate-odd-and-even-nodes-in-linked-list",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2849,
+  "title": "Remove Nth node from the back of the LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 166,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2849-remove-nth-node-from-the-back-of-the-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 619,
+  "title": "Delete the middle node in LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 167,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "619-delete-the-middle-node-in-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 616,
+  "title": "Sort LL",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 168,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "616-sort-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 629,
+  "title": "Sort a Linked List of 0's 1's and 2's",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 169,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "629-sort-a-linked-list-of-0s-1s-and-2s",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ },
+ {
+  "id": 2846,
+  "title": "Find the intersection point of Y LL",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 170,
+    "step": 6,
+    "step_name": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "section": "Medium Problems of LL"
+   }
+  },
+  "slug": "2846-find-the-intersection-point-of-y-ll",
+  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "section": "Medium Problems of LL"
+ }
+]

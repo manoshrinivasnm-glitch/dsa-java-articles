@@ -1,0 +1,98 @@
+[
+ {
+  "id": 62,
+  "title": "Binary Tree to Doubly Linked List",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 146,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "62-binary-tree-to-doubly-linked-list",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ },
+ {
+  "id": 446,
+  "title": "Find Median in a Stream",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 147,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "446-find-median-in-a-stream",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ },
+ {
+  "id": 567,
+  "title": "Kth largest element in a stream of running integers",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 148,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "567-kth-largest-element-in-a-stream-of-running-integers",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ },
+ {
+  "id": 279,
+  "title": "Distinct Numbers in Each Subarray",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 149,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "279-distinct-numbers-in-each-subarray",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ },
+ {
+  "id": 2839,
+  "title": "K-th largest element in an unsorted array.",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 150,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "2839-k-th-largest-element-in-an-unsorted-array",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ },
+ {
+  "id": 2832,
+  "title": "Flood-fill Algorithm",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 151,
+    "day": 22,
+    "topic": "Binary Trees[Miscellaneous]"
+   }
+  },
+  "slug": "2832-flood-fill-algorithm",
+  "topic": "Binary Trees[Miscellaneous]",
+  "section": ""
+ }
+]

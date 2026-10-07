@@ -1,0 +1,121 @@
+[
+ {
+  "id": 947,
+  "title": "Selection Sort",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 55,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-I"
+   }
+  },
+  "slug": "947-selection-sort",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-I"
+ },
+ {
+  "id": 943,
+  "title": "Bubble Sort",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 56,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-I"
+   }
+  },
+  "slug": "943-bubble-sort",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-I"
+ },
+ {
+  "id": 944,
+  "title": "Insertion Sorting",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 57,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-I"
+   }
+  },
+  "slug": "944-insertion-sorting",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-I"
+ },
+ {
+  "id": 945,
+  "title": "Merge Sorting",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 58,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-II"
+   }
+  },
+  "slug": "945-merge-sorting",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-II"
+ },
+ {
+  "id": 881,
+  "title": "Recursive Bubble Sort",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 59,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-II"
+   }
+  },
+  "slug": "881-recursive-bubble-sort",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-II"
+ },
+ {
+  "id": 882,
+  "title": "Recursive Insertion Sort",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 60,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-II"
+   }
+  },
+  "slug": "882-recursive-insertion-sort",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-II"
+ },
+ {
+  "id": 946,
+  "title": "Quick Sorting",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 61,
+    "step": 2,
+    "step_name": "Learn Important Sorting Techniques",
+    "section": "Sorting-II"
+   }
+  },
+  "slug": "946-quick-sorting",
+  "topic": "Learn Important Sorting Techniques",
+  "section": "Sorting-II"
+ }
+]

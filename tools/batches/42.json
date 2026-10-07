@@ -1,0 +1,155 @@
+[
+ {
+  "id": 515,
+  "title": "Number of operations to make network connected",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 395,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "515-number-of-operations-to-make-network-connected",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 513,
+  "title": "Most stones removed with same row or column",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 396,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "513-most-stones-removed-with-same-row-or-column",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 511,
+  "title": "Accounts merge",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 397,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "511-accounts-merge",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 514,
+  "title": "Number of islands II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 398,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "514-number-of-islands-ii",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 512,
+  "title": "Making a large island",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 399,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "512-making-a-large-island",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 1006,
+  "title": "Swim in Rising Water",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 400,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "MinimumSpanningTree/Disjoint Set and Problems"
+   }
+  },
+  "slug": "1006-swim-in-rising-water",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
+ },
+ {
+  "id": 497,
+  "title": "Bridges in graph",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 401,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Other Algorithms"
+   }
+  },
+  "slug": "497-bridges-in-graph",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Other Algorithms"
+ },
+ {
+  "id": 496,
+  "title": "Articulation point in graph",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 402,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Other Algorithms"
+   }
+  },
+  "slug": "496-articulation-point-in-graph",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Other Algorithms"
+ },
+ {
+  "id": 498,
+  "title": "Kosaraju's algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 403,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Other Algorithms"
+   }
+  },
+  "slug": "498-kosarajus-algorithm",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Other Algorithms"
+ }
+]

@@ -1,0 +1,163 @@
+[
+ {
+  "id": 1008,
+  "title": "Task Scheduler",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 274,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "1008-task-scheduler",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 556,
+  "title": "Hand of Straights",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 275,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "556-hand-of-straights",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 565,
+  "title": "Design Twitter",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 276,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "565-design-twitter",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 755,
+  "title": "Minimum Cost to Connect Sticks",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 277,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "755-minimum-cost-to-connect-sticks",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 2838,
+  "title": "Kth largest element in a stream of running integers",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 278,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "2838-kth-largest-element-in-a-stream-of-running-integers",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 568,
+  "title": "Maximum Sum Combination",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 279,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 71,
+    "day": 12,
+    "topic": "Heaps"
+   }
+  },
+  "slug": "568-maximum-sum-combination",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 566,
+  "title": "Find Median from Data Stream",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 280,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 72,
+    "day": 12,
+    "topic": "Heaps"
+   },
+   "blind75": {
+    "order": 75,
+    "no": 75,
+    "topic": "Heap"
+   }
+  },
+  "slug": "566-find-median-from-data-stream",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 1018,
+  "title": "Top K Frequent Elements",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 281,
+    "step": 11,
+    "step_name": "Heaps [Learning, Medium, Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 74,
+    "day": 12,
+    "topic": "Heaps"
+   },
+   "blind75": {
+    "order": 74,
+    "no": 74,
+    "topic": "Heap"
+   }
+  },
+  "slug": "1018-top-k-frequent-elements",
+  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "section": "Hard Problems"
+ }
+]

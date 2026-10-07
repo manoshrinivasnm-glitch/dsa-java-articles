@@ -1,0 +1,162 @@
+[
+ {
+  "id": 2811,
+  "title": "Strongly Connected Component(using KosaRaju's algo)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 164,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "2811-strongly-connected-component-using-kosarajus-algo",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 520,
+  "title": "Dijkstra's algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 165,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "520-dijkstras-algorithm",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 518,
+  "title": "Bellman ford algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 166,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "518-bellman-ford-algorithm",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 2829,
+  "title": "Floyd Warshall Algorithm",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 167,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "2829-floyd-warshall-algorithm",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 2824,
+  "title": "MST using Prim's Algo",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 168,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "2824-mst-using-prims-algo",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 2823,
+  "title": "MST using Kruskal's Algo",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 169,
+    "day": 24,
+    "topic": "Graph Part-II"
+   }
+  },
+  "slug": "2823-mst-using-kruskals-algo",
+  "topic": "Graph Part-II",
+  "section": ""
+ },
+ {
+  "id": 2759,
+  "title": "Max Product Subarray",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 170,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "2759-max-product-subarray",
+  "topic": "Dynamic Programming",
+  "section": ""
+ },
+ {
+  "id": 315,
+  "title": "0 and 1 Knapsack",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 173,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "315-0-and-1-knapsack",
+  "topic": "Dynamic Programming",
+  "section": ""
+ },
+ {
+  "id": 698,
+  "title": "Maximum Sum Increasing Subsequence",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 175,
+    "day": 25,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "698-maximum-sum-increasing-subsequence",
+  "topic": "Dynamic Programming",
+  "section": ""
+ },
+ {
+  "id": 2397,
+  "title": "Decode Ways",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "blind75": {
+    "order": 24,
+    "no": 24,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "2397-decode-ways",
+  "topic": "Dynamic Programming",
+  "section": ""
+ }
+]

@@ -1,0 +1,207 @@
+[
+ {
+  "id": 124,
+  "title": "Top View of BT",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 317,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 111,
+    "day": 17,
+    "topic": "Binary Tree"
+   }
+  },
+  "slug": "124-top-view-of-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 115,
+  "title": "Bottom view of BT",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 318,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 110,
+    "day": 17,
+    "topic": "Binary Tree"
+   }
+  },
+  "slug": "115-bottom-view-of-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 2782,
+  "title": "Right/Left View of Binary Tree",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 319,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   }
+  },
+  "slug": "2782-right-left-view-of-binary-tree",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 2784,
+  "title": "Symmetric Binary Tree",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 320,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Medium Problems"
+   },
+   "sde": {
+    "order": 127,
+    "day": 19,
+    "topic": "Binary Tree part-III"
+   }
+  },
+  "slug": "2784-symmetric-binary-tree",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Medium Problems"
+ },
+ {
+  "id": 122,
+  "title": "Print root to leaf path in BT",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 321,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 114,
+    "day": 17,
+    "topic": "Binary Tree"
+   }
+  },
+  "slug": "122-print-root-to-leaf-path-in-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 118,
+  "title": "LCA in BT",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 322,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 120,
+    "day": 18,
+    "topic": "Binary Tree part-II"
+   }
+  },
+  "slug": "118-lca-in-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 119,
+  "title": "Maximum Width of BT",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 323,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 115,
+    "day": 17,
+    "topic": "Binary Tree"
+   }
+  },
+  "slug": "119-maximum-width-of-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 185,
+  "title": "Children Sum Property in Binary Tree",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 324,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   },
+   "sde": {
+    "order": 130,
+    "day": 19,
+    "topic": "Binary Tree part-III"
+   }
+  },
+  "slug": "185-children-sum-property-in-binary-tree",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 121,
+  "title": "Print all nodes at a distance of K in BT",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 325,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "121-print-all-nodes-at-a-distance-of-k-in-bt",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ },
+ {
+  "id": 120,
+  "title": "Minimum time taken to burn the BT from a given Node",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 326,
+    "step": 13,
+    "step_name": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "section": "Hard Problems"
+   }
+  },
+  "slug": "120-minimum-time-taken-to-burn-the-bt-from-a-given-node",
+  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "section": "Hard Problems"
+ }
+]

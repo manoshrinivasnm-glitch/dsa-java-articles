@@ -1,0 +1,187 @@
+[
+ {
+  "id": 79,
+  "title": "Split array - largest sum",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 124,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "79-split-array-largest-sum",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 805,
+  "title": "Painter's Partition",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 125,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "805-painters-partition",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 78,
+  "title": "Minimize Max Distance to Gas Station",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 126,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "78-minimize-max-distance-to-gas-station",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 77,
+  "title": "Median of 2 sorted arrays",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 127,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   },
+   "sde": {
+    "order": 65,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "77-median-of-2-sorted-arrays",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 2767,
+  "title": "Kth element of 2 sorted arrays",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 128,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on Answers"
+   }
+  },
+  "slug": "2767-kth-element-of-2-sorted-arrays",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on Answers"
+ },
+ {
+  "id": 66,
+  "title": "Find row with maximum 1's",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 129,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 2D Arrays"
+   }
+  },
+  "slug": "66-find-row-with-maximum-1s",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 2D Arrays"
+ },
+ {
+  "id": 69,
+  "title": "Search in a 2D matrix",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 130,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 2D Arrays"
+   },
+   "sde": {
+    "order": 13,
+    "day": 3,
+    "topic": "Arrays Part-III"
+   }
+  },
+  "slug": "69-search-in-a-2d-matrix",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 2D Arrays"
+ },
+ {
+  "id": 68,
+  "title": "Search in 2D matrix - II",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 131,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 2D Arrays"
+   }
+  },
+  "slug": "68-search-in-2d-matrix-ii",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 2D Arrays"
+ },
+ {
+  "id": 65,
+  "title": "Find Peak Element - II",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 132,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 2D Arrays"
+   }
+  },
+  "slug": "65-find-peak-element-ii",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 2D Arrays"
+ },
+ {
+  "id": 67,
+  "title": "Matrix Median",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 133,
+    "step": 4,
+    "step_name": "Binary Search [1D, 2D Arrays, Search Space]",
+    "section": "BS on 2D Arrays"
+   },
+   "sde": {
+    "order": 62,
+    "day": 11,
+    "topic": "Binary Search"
+   }
+  },
+  "slug": "67-matrix-median",
+  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "section": "BS on 2D Arrays"
+ }
+]

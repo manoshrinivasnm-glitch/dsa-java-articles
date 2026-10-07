@@ -1,0 +1,209 @@
+[
+ {
+  "id": 1222,
+  "title": "Introduction to Graph",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 351,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "1222-introduction-to-graph",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 2870,
+  "title": "Graph Representation | C++",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 352,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "2870-graph-representation-c",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 2871,
+  "title": "Graph Representation | Java",
+  "difficulty": "Easy",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 353,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   }
+  },
+  "slug": "2871-graph-representation-java",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 528,
+  "title": "Connected Components",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 354,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   },
+   "blind75": {
+    "order": 34,
+    "no": 34,
+    "topic": "Graph"
+   }
+  },
+  "slug": "528-connected-components",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 529,
+  "title": "Traversal Techniques",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 355,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 154,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "529-traversal-techniques",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 2831,
+  "title": "DFS",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 356,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Learning"
+   },
+   "sde": {
+    "order": 153,
+    "day": 23,
+    "topic": "Graph"
+   }
+  },
+  "slug": "2831-dfs",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Learning"
+ },
+ {
+  "id": 535,
+  "title": "Number of provinces",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 357,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "535-number-of-provinces",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 2830,
+  "title": "Connected Components Problem in Matrix",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 358,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "2830-connected-components-problem-in-matrix",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 536,
+  "title": "Rotten Oranges",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 359,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   },
+   "sde": {
+    "order": 88,
+    "day": 14,
+    "topic": "Stack and Queue Part-II"
+   }
+  },
+  "slug": "536-rotten-oranges",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 531,
+  "title": "Flood fill algorithm",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 360,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "531-flood-fill-algorithm",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ },
+ {
+  "id": 2817,
+  "title": "Cycle Detection in Undirected Graph (bfs)",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 361,
+    "step": 15,
+    "step_name": "Graphs [Concepts & Problems]",
+    "section": "Problems on BFS/DFS"
+   }
+  },
+  "slug": "2817-cycle-detection-in-undirected-graph-bfs",
+  "topic": "Graphs [Concepts & Problems]",
+  "section": "Problems on BFS/DFS"
+ }
+]

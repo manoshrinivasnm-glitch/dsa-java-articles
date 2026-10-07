@@ -1,0 +1,34 @@
+[
+ {
+  "id": 821,
+  "title": "Permutations of a String",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 55,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "821-permutations-of-a-string",
+  "topic": "Recursion and Backtracking",
+  "section": ""
+ },
+ {
+  "id": 2757,
+  "title": "Word Break (print all ways)",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "sde": {
+    "order": 60,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "2757-word-break-print-all-ways",
+  "topic": "Recursion and Backtracking",
+  "section": ""
+ }
+]

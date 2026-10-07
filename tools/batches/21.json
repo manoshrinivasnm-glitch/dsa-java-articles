@@ -1,0 +1,156 @@
+[
+ {
+  "id": 874,
+  "title": "Word Search",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 198,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "blind75": {
+    "order": 50,
+    "no": 50,
+    "topic": "Matrix"
+   }
+  },
+  "slug": "874-word-search",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 870,
+  "title": "N Queen",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 199,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 56,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "870-n-queen",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 872,
+  "title": "Rat in a Maze",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 200,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 59,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "872-rat-in-a-maze",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 4,
+  "title": "Word Break",
+  "difficulty": "Medium",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 201,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 182,
+    "day": 26,
+    "topic": "Dynamic Programming Part-II"
+   },
+   "blind75": {
+    "order": 20,
+    "no": 20,
+    "topic": "Dynamic Programming"
+   }
+  },
+  "slug": "4-word-break",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 869,
+  "title": "M Coloring Problem",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 202,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 58,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "869-m-coloring-problem",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 873,
+  "title": "Sudoku Solver",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 203,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   },
+   "sde": {
+    "order": 57,
+    "day": 10,
+    "topic": "Recursion and Backtracking"
+   }
+  },
+  "slug": "873-sudoku-solver",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ },
+ {
+  "id": 3,
+  "title": "Expression Add Operators",
+  "difficulty": "Hard",
+  "aliases": [],
+  "sheets": {
+   "a2z": {
+    "order": 204,
+    "step": 7,
+    "step_name": "Recursion [PatternWise]",
+    "section": "Trying out all Combos / Hard"
+   }
+  },
+  "slug": "3-expression-add-operators",
+  "topic": "Recursion [PatternWise]",
+  "section": "Trying out all Combos / Hard"
+ }
+]
