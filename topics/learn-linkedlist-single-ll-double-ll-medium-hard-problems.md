@@ -32,19 +32,19 @@ title: "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]"
 <tr><td>616</td><td><a href="{{ "/p/616.html" | relative_url }}">Sort LL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
 <tr><td>629</td><td><a href="{{ "/p/629.html" | relative_url }}">Sort a Linked List of 0's 1's and 2's</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
 <tr><td>2846</td><td><a href="{{ "/p/2846.html" | relative_url }}">Find the intersection point of Y LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>617</td><td>Add one to a number represented by LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>625</td><td>Add two numbers in Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
+<tr><td>617</td><td><a href="{{ "/p/617.html" | relative_url }}">Add one to a number represented by LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
+<tr><td>625</td><td><a href="{{ "/p/625.html" | relative_url }}">Add two numbers in Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Medium Problems of DLL</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>609</td><td>Delete all occurrences of a key in DLL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
-<tr class="todo"><td>452</td><td>Find Pairs with Given Sum in Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
-<tr class="todo"><td>610</td><td>Remove duplicates from sorted DLL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
+<tr><td>609</td><td><a href="{{ "/p/609.html" | relative_url }}">Delete all occurrences of a key in DLL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
+<tr><td>452</td><td><a href="{{ "/p/452.html" | relative_url }}">Find Pairs with Given Sum in Doubly Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
+<tr><td>610</td><td><a href="{{ "/p/610.html" | relative_url }}">Remove duplicates from sorted DLL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of DLL</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Hard Problems of LL</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>2842</td><td>Reverse LL in group of given size K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>2843</td><td>Rotate a LL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>2841</td><td>Flattening of LL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
-<tr class="todo"><td>611</td><td>Clone a LL with random and next pointer <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z SDE</td></tr>
+<tr><td>2842</td><td><a href="{{ "/p/2842.html" | relative_url }}">Reverse LL in group of given size K</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
+<tr><td>2843</td><td><a href="{{ "/p/2843.html" | relative_url }}">Rotate a LL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
+<tr><td>2841</td><td><a href="{{ "/p/2841.html" | relative_url }}">Flattening of LL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z</td></tr>
+<tr><td>611</td><td><a href="{{ "/p/611.html" | relative_url }}">Clone a LL with random and next pointer</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>A2Z SDE</td></tr>
 </tbody></table>
