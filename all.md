@@ -41,7 +41,7 @@ title: All problems
 <tr><td>367</td><td><a href="{{ "/p/367.html" | relative_url }}">Count all Digits of a Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>376</td><td><a href="{{ "/p/376.html" | relative_url }}">Reverse a number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr><td>374</td><td><a href="{{ "/p/374.html" | relative_url }}">Palindrome Number</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>372</td><td>GCD of Two Numbers <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
+<tr><td>372</td><td><a href="{{ "/p/372.html" | relative_url }}">GCD of Two Numbers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>366</td><td>Check if the Number is Armstrong <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>2807</td><td>Print all Divisors <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
 <tr class="todo"><td>365</td><td>Check for Prime Number <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Know Basic Maths</td><td>A2Z</td></tr>
@@ -64,7 +64,7 @@ title: All problems
 <tr><td>881</td><td><a href="{{ "/p/881.html" | relative_url }}">Recursive Bubble Sort</a></td><td><span class="badge badge-easy">Easy</span></td><td>Sorting-II</td><td>A2Z</td></tr>
 <tr><td>882</td><td><a href="{{ "/p/882.html" | relative_url }}">Recursive Insertion Sort</a></td><td><span class="badge badge-easy">Easy</span></td><td>Sorting-II</td><td>A2Z</td></tr>
 <tr><td>946</td><td><a href="{{ "/p/946.html" | relative_url }}">Quick Sorting</a></td><td><span class="badge badge-easy">Easy</span></td><td>Sorting-II</td><td>A2Z</td></tr>
-<tr class="todo"><td>38</td><td>Largest Element <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>38</td><td><a href="{{ "/p/38.html" | relative_url }}">Largest Element</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>43</td><td>Second Largest Element <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>379</td><td>Check if the Array is Sorted II <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>2764</td><td>Remove duplicates from Sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>

@@ -4,7 +4,7 @@ title: "Solve Problems on Arrays [Easy -> Medium -> Hard]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Easy</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>38</td><td>Largest Element <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
+<tr><td>38</td><td><a href="{{ "/p/38.html" | relative_url }}">Largest Element</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>43</td><td>Second Largest Element <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>379</td><td>Check if the Array is Sorted II <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>
 <tr class="todo"><td>2764</td><td>Remove duplicates from Sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>A2Z</td></tr>

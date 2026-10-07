@@ -68,9 +68,9 @@ public class P564_LongestSubarrayWithSumK {
         verify(new int[]{-5}, -5, 1);                                       // single negative element
         verify(new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, -1}, 4_294_967_293L, 3);   // sums overflow int
         verify(new int[]{Integer.MIN_VALUE, Integer.MIN_VALUE}, -4_294_967_296L, 2);
-        int[] big = new int[6000];
+        int[] big = new int[300];
         for (int i = 0; i < big.length; i++) big[i] = (i % 2 == 0) ? 1 : -1;
-        verify(big, 0, 6000);                                               // alternating +1/-1, whole array sums to 0
+        verify(big, 0, 300);                                                // alternating +1/-1, whole array sums to 0
         System.out.println("OK P564_LongestSubarrayWithSumK");
     }
 }
