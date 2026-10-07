@@ -144,13 +144,13 @@ title: All problems
 <tr><td>398</td><td><a href="{{ "/p/398.html" | relative_url }}">Rotate String</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>2809</td><td><a href="{{ "/p/2809.html" | relative_url }}">Check if two strings are anagram of each other</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>A2Z</td></tr>
 <tr><td>399</td><td><a href="{{ "/p/399.html" | relative_url }}">Sort Characters by Frequency</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>674</td><td>Maximum Nesting Depth of the Parentheses <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>903</td><td>Roman to Integer <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>974</td><td>String to Integer (atoi) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2394</td><td>Count Number of Substrings <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>638</td><td>Longest Palindromic Substring <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>993</td><td>Sum of Beauty of All Substrings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>984</td><td>Reverse every word in a string <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>674</td><td><a href="{{ "/p/674.html" | relative_url }}">Maximum Nesting Depth of the Parentheses</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
+<tr><td>903</td><td><a href="{{ "/p/903.html" | relative_url }}">Roman to Integer</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>974</td><td><a href="{{ "/p/974.html" | relative_url }}">String to Integer (atoi)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
+<tr><td>2394</td><td><a href="{{ "/p/2394.html" | relative_url }}">Count Number of Substrings</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
+<tr><td>638</td><td><a href="{{ "/p/638.html" | relative_url }}">Longest Palindromic Substring</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z B75</td></tr>
+<tr><td>993</td><td><a href="{{ "/p/993.html" | relative_url }}">Sum of Beauty of All Substrings</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z</td></tr>
+<tr><td>984</td><td><a href="{{ "/p/984.html" | relative_url }}">Reverse every word in a string</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>A2Z SDE</td></tr>
 <tr><td>1237</td><td><a href="{{ "/p/1237.html" | relative_url }}">Introduction to Singly LinkedList</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
 <tr><td>356</td><td><a href="{{ "/p/356.html" | relative_url }}">Insertion at the head of Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
 <tr><td>352</td><td><a href="{{ "/p/352.html" | relative_url }}">Deletion of the head of LL</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn 1D LinkedList</td><td>A2Z</td></tr>
