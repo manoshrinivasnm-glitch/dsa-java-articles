@@ -61,7 +61,7 @@ title: "Learn the basics"
 </tbody></table>
 <h2>Learn Basic Recursion</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>2401</td><td>Understand recursion by print something N times <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
+<tr><td>2401</td><td><a href="{{ "/p/2401.html" | relative_url }}">Understand recursion by print something N times</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr class="todo"><td>2405</td><td>Print name N times using recursion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>850</td><td><a href="{{ "/p/850.html" | relative_url }}">Print 1 to N using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>
 <tr><td>852</td><td><a href="{{ "/p/852.html" | relative_url }}">Print N to 1 using Recursion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learn Basic Recursion</td><td>A2Z</td></tr>

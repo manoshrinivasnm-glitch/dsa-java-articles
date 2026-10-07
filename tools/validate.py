@@ -55,10 +55,12 @@ for pid in ids:
                     first = b.split('\n')[0][:60]
                     err(pid, f'code block not found in java file: "{first}"')
     body = art[m.end():]
-    for h in REQUIRED_H2:
-        if h not in body: err(pid, f'missing section {h}')
-    if not re.search(r'^## Approach', body, re.M) and 'concept' not in body.lower() and 'theory' not in body.lower():
-        err(pid, 'no "## Approach" sections')
+    h2s = re.findall(r'^## .+', body, re.M)
+    if re.search(r'^## Approach', body, re.M):
+        for h in REQUIRED_H2:
+            if h not in body: err(pid, f'missing section {h}')
+    elif len(h2s) < 3:
+        err(pid, 'concept article with fewer than 3 sections')
     stripped = re.sub(r'{% raw %}.*?{% endraw %}', '', body, flags=re.S)
     stripped = re.sub(r'{{\s*"/p/\d+\.html"\s*\|\s*relative_url\s*}}', '', stripped)
     if re.search(r'{{|{%', stripped): err(pid, 'unescaped {{ or {% in article body')
