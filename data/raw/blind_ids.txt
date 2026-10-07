@@ -1,0 +1,75 @@
+37|Two Sum
+301|Best time to buy and sell stock
+2392|Contains Duplicate
+2404|Product of Array Except Self
+2760|Kadane's Algorithm, maximum subarray sum
+24|Maximum Product Subarray in an Array
+83|Find minimum in Rotated Sorted Array
+87|Search in rotated sorted array-I
+27|3 Sum
+2396|Container with most water
+2411|Sum of Two Integers
+2402|Number of 1 Bits
+2393|Counting Bits
+44|Find missing number
+2406|Reverse Bits
+287|Climbing stairs
+316|Coin change II
+636|Longest Increasing Subsequence
+308|Longest common subsequence
+4|Word Break
+864|Combination Sum
+291|Maximum sum of non adjacent elements
+290|House robber
+2397|Decode Ways
+297|Grid unique paths
+542|Jump Game - I
+188|Clone Graph
+504|Course Schedule I
+2403|Pacific Atlantic Water Flow
+2833|Number of islands(Do in Grid and Graph Both)
+563|Longest Consecutive Sequence in an Array
+503|Alien Dictionary
+495|Graph Valid Tree
+528|Connected Components
+546|Insert Interval
+712|Merge Intervals
+550|Non-overlapping Intervals
+21|Find the repeating and missing number
+709|Meeting Rooms
+710|Meeting Rooms II
+627|Reverse a LL
+620|Detect a loop in LL
+613|Merge two Sorted Lists
+713|Merge K Sorted Arrays
+626|Remove Nth node from the back of the LL
+2407|Reorder List
+911|Set Matrix Zeroes
+33|Print the matrix in spiral manner
+35|Rotate matrix by 90 degrees
+874|Word Search
+2857|Longest Substring Without Repeating Characters
+927|Longest Repeating Character Replacement
+931|Minimum Window Substring
+400|Valid Anagram
+559|Group Words by Anagrams
+966|Balanced Paranthesis
+374|Palindrome Number
+638|Longest Palindromic Substring
+2794|Palindromic Substrings
+331|Encode and Decode Strings
+131|Maximum Depth in BT
+129|Check if two trees are identical or not
+2783|Invert/Flip Binary Tree (Create)
+132|Maximum path sum
+134|Level Order Traversal
+112|Serialize and De-serialize BT
+2408|Subtree of Another Tree
+2781|Construct the Binary Tree from Postorder and Inorder Traversal
+100|Check if a tree is a BST or not
+2776|Find K-th smallest element in BST
+106|LCA in BST
+1028|Trie Implementation and Operations
+1027|Trie Implementation and Advanced Operations
+1018|Top K Frequent Elements
+566|Find Median from Data Stream

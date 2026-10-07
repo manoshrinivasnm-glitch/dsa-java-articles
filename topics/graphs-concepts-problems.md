@@ -1,0 +1,75 @@
+---
+title: "Graphs [Concepts & Problems]"
+---
+<p><a href="{{ "/" | relative_url }}">← All topics</a></p>
+<h2>Learning</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>1222</td><td>Introduction to Graph <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr class="todo"><td>2870</td><td>Graph Representation | C++ <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr class="todo"><td>2871</td><td>Graph Representation | Java <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr class="todo"><td>528</td><td>Connected Components <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z B75</td></tr>
+<tr class="todo"><td>529</td><td>Traversal Techniques <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr class="todo"><td>2831</td><td>DFS <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+</tbody></table>
+<h2>Problems on BFS/DFS</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>535</td><td>Number of provinces <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>2830</td><td>Connected Components Problem in Matrix <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>536</td><td>Rotten Oranges <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z SDE</td></tr>
+<tr class="todo"><td>531</td><td>Flood fill algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>2817</td><td>Cycle Detection in Undirected Graph (bfs) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>501</td><td>Detect a cycle in an undirected graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>530</td><td>Distance of nearest cell having one <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>537</td><td>Surrounded Regions <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>533</td><td>Number of enclaves <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>509</td><td>Word ladder I <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>510</td><td>Word ladder II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>534</td><td>Number of islands <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>2813</td><td>Bipartite Graph (DFS) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr class="todo"><td>2814</td><td>Cycle Detection in Directed Graph (DFS) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+</tbody></table>
+<h2>Topo Sort and Problems</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>2822</td><td>Topo Sort <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>502</td><td>Topological sort or Kahn's algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>500</td><td>Detect a cycle in a directed graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>504</td><td>Course Schedule I <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z B75</td></tr>
+<tr class="todo"><td>505</td><td>Course Schedule II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>506</td><td>Find eventual safe states <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>503</td><td>Alien Dictionary <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z B75</td></tr>
+</tbody></table>
+<h2>Shortest Path Algorithms and Problems</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>508</td><td>Shortest path in undirected graph with unit weights <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>507</td><td>Shortest path in DAG <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>2827</td><td>Djisktra's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>2828</td><td>Why priority Queue is used in Djisktra's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>527</td><td>Shortest Distance in a Binary Maze <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>525</td><td>Path with minimum effort <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>519</td><td>Cheapest flight within K stops <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>764</td><td>Network Delay Time <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>524</td><td>Number of ways to arrive at destination <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>523</td><td>Minimum multiplications to reach end <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>2826</td><td>Bellman Ford Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>522</td><td>Floyd warshall algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>521</td><td>Find the city with the smallest number of neighbors <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+</tbody></table>
+<h2>MinimumSpanningTree/Disjoint Set and Problems</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>1221</td><td>MST theory <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>2825</td><td>Prim's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>516</td><td>Disjoint Set <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>517</td><td>Find the MST weight <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>515</td><td>Number of operations to make network connected <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>513</td><td>Most stones removed with same row or column <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>511</td><td>Accounts merge <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>514</td><td>Number of islands II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>512</td><td>Making a large island <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr class="todo"><td>1006</td><td>Swim in Rising Water <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+</tbody></table>
+<h2>Other Algorithms</h2>
+<table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
+<tr class="todo"><td>497</td><td>Bridges in graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr class="todo"><td>496</td><td>Articulation point in graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr class="todo"><td>498</td><td>Kosaraju's algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+</tbody></table>

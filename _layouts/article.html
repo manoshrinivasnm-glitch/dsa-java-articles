@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% assign topic_slug = page.topic | slugify %}
+<article class="article">
+  <p class="crumbs">
+    <a href="{{ '/' | relative_url }}">Topics</a> ›
+    <a href="{{ '/topics/' | append: topic_slug | append: '.html' | relative_url }}">{{ page.topic }}</a>
+    {% if page.section and page.section != "" %}› <span>{{ page.section }}</span>{% endif %}
+  </p>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">
+    <span class="badge badge-{{ page.difficulty | downcase }}">{{ page.difficulty }}</span>
+    <span class="pill">TUF&nbsp;ID&nbsp;{{ page.id }}</span>
+    {% for s in page.sheets %}<span class="pill pill-sheet">{{ s | replace: 'a2z', 'A2Z' | replace: 'sde', 'SDE' | replace: 'blind75', 'Blind 75' }}</span>{% endfor %}
+  </p>
+  <p class="links">
+    {% if page.leetcode %}<a href="{{ page.leetcode }}" rel="noopener">LeetCode ↗</a>{% endif %}
+    {% if page.java %}<a href="{{ site.repo_url }}/blob/main/{{ page.java }}" rel="noopener">Java source ↗</a>{% endif %}
+    <a href="{{ site.repo_url }}/edit/main/{{ page.path }}" rel="noopener">Edit this article ↗</a>
+  </p>
+  {{ content }}
+  <nav class="pager">
+    {% if page.prev_id %}<a href="{{ '/p/' | append: page.prev_id | append: '.html' | relative_url }}">← {{ page.prev_title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next_id %}<a href="{{ '/p/' | append: page.next_id | append: '.html' | relative_url }}">{{ page.next_title }} →</a>{% endif %}
+  </nav>
+</article>

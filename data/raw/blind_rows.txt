@@ -1,0 +1,75 @@
+1;;Array;;Two Sum;;Easy;;37
+2;;Array;;Best time to buy and sell stock;;Medium;;301
+3;;Array;;Contains Duplicate;;Easy;;2392
+4;;Array;;Product of Array Except Self;;Easy;;2404
+5;;Array;;Kadane's Algorithm, maximum subarray sum;;Medium;;2760
+6;;Array;;Maximum Product Subarray in an Array;;Hard;;24
+7;;Array;;Find minimum in Rotated Sorted Array;;Easy;;83
+8;;Array;;Search in rotated sorted array-I;;Medium;;87
+9;;Array;;3 Sum;;Medium;;27
+10;;Array;;Container with most water;;Easy;;2396
+11;;Binary;;Sum of Two Integers;;Easy;;2411
+12;;Binary;;Number of 1 Bits;;Easy;;2402
+13;;Binary;;Counting Bits;;Easy;;2393
+14;;Binary;;Find missing number;;Easy;;44
+15;;Binary;;Reverse Bits;;Easy;;2406
+16;;Dynamic Programming;;Climbing stairs;;Medium;;287
+17;;Dynamic Programming;;Coin change II;;Hard;;316
+18;;Dynamic Programming;;Longest Increasing Subsequence;;Medium;;636
+19;;Dynamic Programming;;Longest common subsequence;;Hard;;308
+20;;Dynamic Programming;;Word Break;;Medium;;4
+21;;Dynamic Programming;;Combination Sum;;Medium;;864
+22;;Dynamic Programming;;Maximum sum of non adjacent elements;;Medium;;291
+23;;Dynamic Programming;;House robber;;Medium;;290
+24;;Dynamic Programming;;Decode Ways;;Easy;;2397
+25;;Dynamic Programming;;Grid unique paths;;Medium;;297
+26;;Dynamic Programming;;Jump Game - I;;Easy;;542
+27;;Graph;;Clone Graph;;Medium;;188
+28;;Graph;;Course Schedule I;;Hard;;504
+29;;Graph;;Pacific Atlantic Water Flow;;Easy;;2403
+30;;Graph;;Number of islands(Do in Grid and Graph Both);;Medium;;2833
+31;;Graph;;Longest Consecutive Sequence in an Array;;Medium;;563
+32;;Graph;;Alien Dictionary;;Hard;;503
+33;;Graph;;Graph Valid Tree;;Medium;;495
+34;;Graph;;Connected Components;;Medium;;528
+35;;Interval;;Insert Interval;;Medium;;546
+36;;Interval;;Merge Intervals;;Medium;;712
+37;;Interval;;Non-overlapping Intervals;;Medium;;550
+38;;Interval;;Find the repeating and missing number;;Hard;;21
+39;;Interval;;Meeting Rooms;;Easy;;709
+40;;Interval;;Meeting Rooms II;;Medium;;710
+41;;Linked List;;Reverse a LL;;Medium;;627
+42;;Linked List;;Detect a loop in LL;;Medium;;620
+43;;Linked List;;Merge two Sorted Lists;;Hard;;613
+44;;Linked List;;Merge K Sorted Arrays;;Medium;;713
+45;;Linked List;;Remove Nth node from the back of the LL;;Medium;;626
+46;;Linked List;;Reorder List;;Easy;;2407
+47;;Matrix;;Set Matrix Zeroes;;Medium;;911
+48;;Matrix;;Print the matrix in spiral manner;;Medium;;33
+49;;Matrix;;Rotate matrix by 90 degrees;;Medium;;35
+50;;Matrix;;Word Search;;Hard;;874
+51;;String;;Longest Substring Without Repeating Characters;;Medium;;2857
+52;;String;;Longest Repeating Character Replacement;;Hard;;927
+53;;String;;Minimum Window Substring;;Hard;;931
+54;;String;;Valid Anagram;;Easy;;400
+55;;String;;Group Words by Anagrams;;Medium;;559
+56;;String;;Balanced Paranthesis;;Easy;;966
+57;;String;;Palindrome Number;;Easy;;374
+58;;String;;Longest Palindromic Substring;;Medium;;638
+59;;String;;Palindromic Substrings;;Medium;;2794
+60;;String;;Encode and Decode Strings;;Medium;;331
+61;;Tree;;Maximum Depth in BT;;Medium;;131
+62;;Tree;;Check if two trees are identical or not;;Medium;;129
+63;;Tree;;Invert/Flip Binary Tree (Create);;Medium;;2783
+64;;Tree;;Maximum path sum;;Medium;;132
+65;;Tree;;Level Order Traversal;;Easy;;134
+66;;Tree;;Serialize and De-serialize BT;;Hard;;112
+67;;Tree;;Subtree of Another Tree;;Easy;;2408
+68;;Tree;;Construct the Binary Tree from Postorder and Inorder Traversal;;Hard;;2781
+69;;Tree;;Check if a tree is a BST or not;;Medium;;100
+70;;Tree;;Find K-th smallest element in BST;;Medium;;2776
+71;;Tree;;LCA in BST;;Medium;;106
+72;;Tree;;Trie Implementation and Operations;;Hard;;1028
+73;;Tree;;Trie Implementation and Advanced Operations;;Hard;;1027
+74;;Heap;;Top K Frequent Elements;;Medium;;1018
+75;;Heap;;Find Median from Data Stream;;Hard;;566

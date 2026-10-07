@@ -1,0 +1,191 @@
+911|Set Matrix Zeroes
+813|Pascal's Triangle I
+31|Next Permutation
+29|Kadane's Algorithm
+36|Sort an array of 0's 1's and 2's
+2798|Stock Buy and Sell
+35|Rotate matrix by 90 degrees
+715|Merge Overlapping Subintervals
+25|Merge two sorted arrays without extra space
+465|Find the Duplicate Number
+21|Find the repeating and missing number
+2758|Inversion of Array (Pre-req: Merge Sort)
+69|Search in a 2D matrix
+2855|Pow(x, n)
+22|Majority Element-I
+23|Majority Element-II
+297|Grid unique paths
+26|Reverse Pairs
+37|Two Sum
+28|4 Sum
+563|Longest Consecutive Sequence in an Array
+2837|Largest Subarray with K sum
+562|Count subarrays with given xor K
+929|Longest Substring Without Repeating Characters
+627|Reverse a LL
+448|Find Middle of Linked List
+613|Merge two Sorted Lists
+626|Remove Nth node from the back of the LL
+2848|Add two numbers as LinkedList
+258|Delete Node in a Linked List O(1)
+621|Find the intersection point of Y LL
+620|Detect a loop in LL
+614|Reverse LL in group of given size K
+618|Check if LL is palindrome or not
+622|Find the starting point in LL
+612|Flattening of LL
+615|Rotate a LL
+611|Clone a LL with random and next pointer
+27|3 Sum
+965|Trapping Rainwater
+47|Remove duplicates from sorted array
+42|Maximum Consecutive Ones
+549|N meetings in one room
+548|Minimum number of platforms required for a railway
+547|Job sequencing Problem
+489|Fractional Knapsack
+319|Minimum coins
+541|Assign Cookies
+2805|Subset Sums
+868|Subsets II
+864|Combination Sum
+865|Combination Sum II
+871|Palindrome partitioning
+818|Permutation Sequence
+821|Permutations of a String
+870|N Queen
+873|Sudoku Solver
+869|M Coloring Problem
+872|Rat in a Maze
+2757|Word Break (print all ways)
+2771|The N-th root of an integer
+67|Matrix Median
+90|Single element in sorted array
+2769|Search element in a sorted and rotated array/ find pivot where it is rotated
+77|Median of 2 sorted arrays
+76|Kth element of 2 sorted arrays
+2766|Allocate Minimum Number of Pages
+73|Aggressive Cows
+575|Implement Max Heap
+578|K-th Largest element in an array
+568|Maximum Sum Combination
+566|Find Median from Data Stream
+713|Merge K Sorted Arrays
+1018|Top K Frequent Elements
+390|Implement Stack using Arrays
+387|Implement Queue using Arrays
+2808|Implement Stack using Queue (using single queue)
+389|Implement Queue using Stack
+966|Balanced Paranthesis
+968|Next Greater Element
+936|Sort a Stack
+768|Next Smaller Element
+961|LRU Cache
+960|LFU Cache
+959|Largest rectangle in a histogram
+963|Sliding Window Maximum
+958|Implement Min Stack
+536|Rotten Oranges
+964|Stock span problem
+687|Maximum of Minimums for Every Window Size
+957|Celebrity Problem
+984|Reverse every word in a string
+2852|Longest Palindrome in a string
+903|Roman to Integer
+2861|Implement ATOI/STRSTR
+395|Longest Common Prefix
+979|Rabin Karp Algorithm
+981|Z function
+977|KMP Algorithm or LPS array
+312|Minimum insertions to make string palindrome
+400|Valid Anagram
+982|Count and say
+198|Compare version numbers
+133|Inorder Traversal
+2790|Preorder Traversal
+135|Postorder Traversal
+139|Morris Inorder Traversal
+138|Morris Preorder Traversal
+123|Right/Left View of BT
+115|Bottom view of BT
+124|Top View of BT
+136|Pre, Post, Inorder in one traversal
+125|Vertical Order Traversal
+122|Print root to leaf path in BT
+119|Maximum Width of BT
+134|Level Order Traversal
+131|Maximum Depth in BT
+130|Diameter of Binary Tree
+127|Check for balanced binary tree
+118|LCA in BT
+129|Check if two trees are identical or not
+126|Zig Zag or Spiral Traversal
+116|Boundary Traversal
+132|Maximum path sum
+110|Construct a BT from Preorder and Inorder
+109|Construct a BT from Postorder and Inorder
+2784|Symmetric Binary Tree
+486|Flatten Binary Tree to Linked List
+128|Check for symmetrical BTs
+185|Children Sum Property in Binary Tree
+823|Populating Next Right Pointers in Each Node
+108|Search in BST
+2391|Construct BST from given keys
+101|Construct a BST from a preorder traversal
+100|Check if a tree is a BST or not
+106|LCA in BST
+103|Inorder successor and predecessor in BST
+2779|Floor in a BST
+2777|Ceil in a BST
+2776|Find K-th smallest element in BST
+105|Kth Smallest and Largest element in BST
+99|Two sum in BST
+96|BST iterator
+2773|Size of the largest BST in a Binary Tree
+112|Serialize and De-serialize BT
+62|Binary Tree to Doubly Linked List
+446|Find Median in a Stream
+567|Kth largest element in a stream of running integers
+279|Distinct Numbers in Each Subarray
+2839|K-th largest element in an unsorted array.
+2832|Flood-fill Algorithm
+188|Clone Graph
+2831|DFS
+529|Traversal Techniques
+2818|Detect A cycle in Undirected Graph using BFS
+2819|Detect A cycle in Undirected Graph using DFS
+2816|Detect A cycle in a Directed Graph using DFS
+2815|Detect A cycle in a Directed Graph using BFS
+2820|Topological Sort BFS
+2821|Topological Sort DFS
+2833|Number of islands(Do in Grid and Graph Both)
+499|Bipartite graph
+2812|Bipartite Check using DFS
+2811|Strongly Connected Component(using KosaRaju's algo)
+520|Dijkstra's algorithm
+518|Bellman ford algorithm
+2829|Floyd Warshall Algorithm
+2824|MST using Prim's Algo
+2823|MST using Kruskal's Algo
+2759|Max Product Subarray
+636|Longest Increasing Subsequence
+308|Longest common subsequence
+315|0 and 1 Knapsack
+307|Edit distance
+698|Maximum Sum Increasing Subsequence
+327|Matrix chain multiplication
+2797|Minimum sum path in the matrix
+316|Coin change II
+323|Subset sum equals to target
+322|Rod cutting problem
+1004|Super Egg Drop
+4|Word Break
+2854|Palindrome Partitioning (MCM Variation)
+691|Maximum Profit in Job Scheduling
+1028|Trie Implementation and Operations
+1027|Trie Implementation and Advanced Operations
+1023|Longest Word with All Prefixes
+1026|Number of distinct substrings in a string
+2856|Power Set (this is very important)
+1024|Maximum XOR of two numbers in an array
+1025|Maximum Xor with an element from an array

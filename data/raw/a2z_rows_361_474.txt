@@ -1,0 +1,114 @@
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Cycle Detection in Undirected Graph (bfs);;2817
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Detect a cycle in an undirected graph;;501
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Medium;;Distance of nearest cell having one;;530
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Medium;;Surrounded Regions;;537
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Medium;;Number of enclaves;;533
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Word ladder I;;509
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Word ladder II;;510
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Medium;;Number of islands;;534
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Bipartite Graph (DFS);;2813
+15;;Graphs [Concepts & Problems];;Problems on BFS/DFS;;Hard;;Cycle Detection in Directed Graph (DFS);;2814
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Topo Sort;;2822
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Topological sort or Kahn's algorithm;;502
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Detect a cycle in a directed graph;;500
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Course Schedule I;;504
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Medium;;Course Schedule II;;505
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Find eventual safe states;;506
+15;;Graphs [Concepts & Problems];;Topo Sort and Problems;;Hard;;Alien Dictionary;;503
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Shortest path in undirected graph with unit weights;;508
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Shortest path in DAG;;507
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Djisktra's Algorithm;;2827
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Why priority Queue is used in Djisktra's Algorithm;;2828
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Shortest Distance in a Binary Maze;;527
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Path with minimum effort;;525
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Cheapest flight within K stops;;519
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Medium;;Network Delay Time;;764
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Number of ways to arrive at destination;;524
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Minimum multiplications to reach end;;523
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Bellman Ford Algorithm;;2826
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Floyd warshall algorithm;;522
+15;;Graphs [Concepts & Problems];;Shortest Path Algorithms and Problems;;Hard;;Find the city with the smallest number of neighbors;;521
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Easy;;MST theory;;1221
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Prim's Algorithm;;2825
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Disjoint Set;;516
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Find the MST weight;;517
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Number of operations to make network connected;;515
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Medium;;Most stones removed with same row or column;;513
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Accounts merge;;511
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Number of islands II;;514
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Hard;;Making a large island;;512
+15;;Graphs [Concepts & Problems];;MinimumSpanningTree/Disjoint Set and Problems;;Medium;;Swim in Rising Water;;1006
+15;;Graphs [Concepts & Problems];;Other Algorithms;;Hard;;Bridges in graph;;497
+15;;Graphs [Concepts & Problems];;Other Algorithms;;Hard;;Articulation point in graph;;496
+15;;Graphs [Concepts & Problems];;Other Algorithms;;Hard;;Kosaraju's algorithm;;498
+16;;Dynamic Programming [Patterns and Problems];;Introduction to DP;;Easy;;Introduction to DP;;1195
+16;;Dynamic Programming [Patterns and Problems];;1D DP;;Medium;;Climbing stairs;;287
+16;;Dynamic Programming [Patterns and Problems];;1D DP;;Medium;;Frog Jump;;288
+16;;Dynamic Programming [Patterns and Problems];;1D DP;;Medium;;Frog jump with K distances;;289
+16;;Dynamic Programming [Patterns and Problems];;1D DP;;Medium;;Maximum sum of non adjacent elements;;291
+16;;Dynamic Programming [Patterns and Problems];;1D DP;;Medium;;House robber;;290
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Ninja's training;;292
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Grid Unique Paths : DP on Grids (DP8);;2795
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Unique paths II;;300
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Minimum Falling Path Sum;;298
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Triangle;;299
+16;;Dynamic Programming [Patterns and Problems];;2D/3D DP and DP on Grids;;Medium;;Ninja and his Friends;;769
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Subset sum equal to target (DP- 14);;2804
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Partition equal subset sum;;321
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Partition a set into two subsets with minimum absolute sum difference;;320
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Count subsets with sum K;;318
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Count partitions with given difference;;317
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Easy;;Assign Cookies;;541
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Minimum Coins (DP - 20);;2802
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Target sum;;324
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Coin Change 2 (DP - 22);;2801
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Unbounded knapsack;;325
+16;;Dynamic Programming [Patterns and Problems];;DP on Subsequences;;Hard;;Rod Cutting Problem - (DP - 24);;2803
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Longest common subsequence;;308
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Print Longest Common Subsequence - (DP - 26);;2799
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Longest common substring;;309
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Longest palindromic subsequence;;310
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Minimum insertions to make string palindrome - DP-29;;2800
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Minimum insertions or deletions to convert string A to B;;311
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Shortest common supersequence;;313
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Distinct subsequences;;306
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Edit distance;;307
+16;;Dynamic Programming [Patterns and Problems];;DP on Strings;;Hard;;Wildcard matching;;314
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best time to buy and sell stock;;301
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best time to buy and sell stock II;;302
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best time to buy and sell stock III;;303
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best time to buy and sell stock IV;;304
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best Time to Buy and Sell Stock with Cooldown;;56
+16;;Dynamic Programming [Patterns and Problems];;DP on Stocks;;Medium;;Best time to buy and sell stock with transaction fees;;305
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Longest Increasing Subsequence;;636
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Print Longest Increasing Subsequence;;851
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Longest Increasing Subsequence - (DP-43);;2851
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Largest Divisible Subset;;603
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Longest String Chain;;640
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Longest Bitonic Subsequence;;633
+16;;Dynamic Programming [Patterns and Problems];;DP on LIS;;Medium;;Number of Longest Increasing Subsequences;;780
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Hard;;Matrix chain multiplication;;327
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Hard;;Matrix Chain Multiplication - Bottom-Up - (DP-49);;2806
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Hard;;Minimum cost to cut the stick;;328
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Hard;;Burst balloons;;326
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Medium;;Different Ways to Evaluate a Boolean Expression;;276
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Hard;;Palindrome partitioning II;;329
+16;;Dynamic Programming [Patterns and Problems];;MCM DP - Partition DP;;Medium;;Partition Array for Maximum Sum;;810
+16;;Dynamic Programming [Patterns and Problems];;DP on Squares;;Hard;;Maximum Rectangle Area with all 1's - (DP-55);;2860
+16;;Dynamic Programming [Patterns and Problems];;DP on Squares;;Easy;;Count Square Submatrices with All Ones - (DP-56);;2395
+17;;Tries;;Theory;;Hard;;Trie Implementation and Operations;;1028
+17;;Tries;;Problems;;Hard;;Trie Implementation and Advanced Operations;;1027
+17;;Tries;;Problems;;Medium;;Longest Word with All Prefixes;;1023
+17;;Tries;;Problems;;Medium;;Number of distinct substrings in a string;;1026
+17;;Tries;;Problems;;Easy;;Bit PreRequisites for TRIE Problems;;2390
+17;;Tries;;Problems;;Hard;;Maximum XOR of two numbers in an array;;1024
+17;;Tries;;Problems;;Hard;;Maximum Xor with an element from an array;;1025
+18;;Strings;;Hard Problems;;Hard;;Minimum number of bracket reversals to make an expression balanced;;983
+18;;Strings;;Hard Problems;;Hard;;Count and say;;982
+18;;Strings;;Hard Problems;;Easy;;Hashing In Strings - Theory;;2399
+18;;Strings;;Hard Problems;;Hard;;Rabin Karp Algorithm;;979
+18;;Strings;;Hard Problems;;Hard;;Z function;;981
+18;;Strings;;Hard Problems;;Hard;;KMP Algorithm or LPS array;;977
+18;;Strings;;Hard Problems;;Hard;;Shortest Palindrome;;980
+18;;Strings;;Hard Problems;;Hard;;Longest happy prefix;;978
+18;;Strings;;Hard Problems;;Medium;;Count Palindromic Subsequences;;231

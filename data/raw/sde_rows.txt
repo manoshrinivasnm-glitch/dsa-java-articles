@@ -1,0 +1,191 @@
+1;;Arrays;;Set Matrix Zeroes;;Medium;;911
+1;;Arrays;;Pascal's Triangle I;;Easy;;813
+1;;Arrays;;Next Permutation;;Medium;;31
+1;;Arrays;;Kadane's Algorithm;;Medium;;29
+1;;Arrays;;Sort an array of 0's 1's and 2's;;Medium;;36
+1;;Arrays;;Stock Buy and Sell;;Medium;;2798
+2;;Arrays Part-II;;Rotate matrix by 90 degrees;;Medium;;35
+2;;Arrays Part-II;;Merge Overlapping Subintervals;;Medium;;715
+2;;Arrays Part-II;;Merge two sorted arrays without extra space;;Medium;;25
+2;;Arrays Part-II;;Find the Duplicate Number;;Medium;;465
+2;;Arrays Part-II;;Find the repeating and missing number;;Hard;;21
+2;;Arrays Part-II;;Inversion of Array (Pre-req: Merge Sort);;Hard;;2758
+3;;Arrays Part-III;;Search in a 2D matrix;;Hard;;69
+3;;Arrays Part-III;;Pow(x, n);;Easy;;2855
+3;;Arrays Part-III;;Majority Element-I;;Easy;;22
+3;;Arrays Part-III;;Majority Element-II;;Hard;;23
+3;;Arrays Part-III;;Grid unique paths;;Medium;;297
+3;;Arrays Part-III;;Reverse Pairs;;Hard;;26
+4;;Arrays Part-IV;;Two Sum;;Easy;;37
+4;;Arrays Part-IV;;4 Sum;;Medium;;28
+4;;Arrays Part-IV;;Longest Consecutive Sequence in an Array;;Medium;;563
+4;;Arrays Part-IV;;Largest Subarray with K sum;;Medium;;2837
+4;;Arrays Part-IV;;Count subarrays with given xor K;;Hard;;562
+4;;Arrays Part-IV;;Longest Substring Without Repeating Characters;;Medium;;929
+5;;Linked List;;Reverse a LL;;Medium;;627
+5;;Linked List;;Find Middle of Linked List;;Easy;;448
+5;;Linked List;;Merge two Sorted Lists;;Hard;;613
+5;;Linked List;;Remove Nth node from the back of the LL;;Medium;;626
+5;;Linked List;;Add two numbers as LinkedList;;Medium;;2848
+5;;Linked List;;Delete Node in a Linked List O(1);;Medium;;258
+6;;Linked List Part-II;;Find the intersection point of Y LL;;Medium;;621
+6;;Linked List Part-II;;Detect a loop in LL;;Medium;;620
+6;;Linked List Part-II;;Reverse LL in group of given size K;;Hard;;614
+6;;Linked List Part-II;;Check if LL is palindrome or not;;Medium;;618
+6;;Linked List Part-II;;Find the starting point in LL;;Medium;;622
+6;;Linked List Part-II;;Flattening of LL;;Hard;;612
+7;;Linked List and Arrays;;Rotate a LL;;Hard;;615
+7;;Linked List and Arrays;;Clone a LL with random and next pointer;;Hard;;611
+7;;Linked List and Arrays;;3 Sum;;Medium;;27
+7;;Linked List and Arrays;;Trapping Rainwater;;Hard;;965
+7;;Linked List and Arrays;;Remove duplicates from sorted array;;Easy;;47
+7;;Linked List and Arrays;;Maximum Consecutive Ones;;Easy;;42
+8;;Greedy Algorithm;;N meetings in one room;;Medium;;549
+8;;Greedy Algorithm;;Minimum number of platforms required for a railway;;Medium;;548
+8;;Greedy Algorithm;;Job sequencing Problem;;Medium;;547
+8;;Greedy Algorithm;;Fractional Knapsack;;Medium;;489
+8;;Greedy Algorithm;;Minimum coins;;Hard;;319
+8;;Greedy Algorithm;;Assign Cookies;;Easy;;541
+9;;Recursion;;Subset Sums;;Hard;;2805
+9;;Recursion;;Subsets II;;Medium;;868
+9;;Recursion;;Combination Sum;;Medium;;864
+9;;Recursion;;Combination Sum II;;Medium;;865
+9;;Recursion;;Palindrome partitioning;;Hard;;871
+9;;Recursion;;Permutation Sequence;;Medium;;818
+10;;Recursion and Backtracking;;Permutations of a String;;Medium;;821
+10;;Recursion and Backtracking;;N Queen;;Hard;;870
+10;;Recursion and Backtracking;;Sudoku Solver;;Hard;;873
+10;;Recursion and Backtracking;;M Coloring Problem;;Hard;;869
+10;;Recursion and Backtracking;;Rat in a Maze;;Hard;;872
+10;;Recursion and Backtracking;;Word Break (print all ways);;Medium;;2757
+11;;Binary Search;;The N-th root of an integer;;Medium;;2771
+11;;Binary Search;;Matrix Median;;Hard;;67
+11;;Binary Search;;Single element in sorted array;;Medium;;90
+11;;Binary Search;;Search element in a sorted and rotated array/ find pivot where it is rotated;;Medium;;2769
+11;;Binary Search;;Median of 2 sorted arrays;;Hard;;77
+11;;Binary Search;;Kth element of 2 sorted arrays;;Medium;;76
+11;;Binary Search;;Allocate Minimum Number of Pages;;Hard;;2766
+11;;Binary Search;;Aggressive Cows;;Hard;;73
+12;;Heaps;;Implement Max Heap;;Medium;;575
+12;;Heaps;;K-th Largest element in an array;;Medium;;578
+12;;Heaps;;Maximum Sum Combination;;Hard;;568
+12;;Heaps;;Find Median from Data Stream;;Hard;;566
+12;;Heaps;;Merge K Sorted Arrays;;Medium;;713
+12;;Heaps;;Top K Frequent Elements;;Medium;;1018
+13;;Stack and Queue;;Implement Stack using Arrays;;Easy;;390
+13;;Stack and Queue;;Implement Queue using Arrays;;Easy;;387
+13;;Stack and Queue;;Implement Stack using Queue (using single queue);;Easy;;2808
+13;;Stack and Queue;;Implement Queue using Stack;;Easy;;389
+13;;Stack and Queue;;Balanced Paranthesis;;Easy;;966
+13;;Stack and Queue;;Next Greater Element;;Medium;;968
+13;;Stack and Queue;;Sort a Stack;;Medium;;936
+14;;Stack and Queue Part-II;;Next Smaller Element;;Medium;;768
+14;;Stack and Queue Part-II;;LRU Cache;;Medium;;961
+14;;Stack and Queue Part-II;;LFU Cache;;Hard;;960
+14;;Stack and Queue Part-II;;Largest rectangle in a histogram;;Hard;;959
+14;;Stack and Queue Part-II;;Sliding Window Maximum;;Hard;;963
+14;;Stack and Queue Part-II;;Implement Min Stack;;Hard;;958
+14;;Stack and Queue Part-II;;Rotten Oranges;;Medium;;536
+14;;Stack and Queue Part-II;;Stock span problem;;Hard;;964
+14;;Stack and Queue Part-II;;Maximum of Minimums for Every Window Size;;Medium;;687
+14;;Stack and Queue Part-II;;Celebrity Problem;;Hard;;957
+15;;String;;Reverse every word in a string;;Medium;;984
+15;;String;;Longest Palindrome in a string;;Medium;;2852
+15;;String;;Roman to Integer;;Medium;;903
+15;;String;;Implement ATOI/STRSTR;;Medium;;2861
+15;;String;;Longest Common Prefix;;Easy;;395
+15;;String;;Rabin Karp Algorithm;;Hard;;979
+16;;String Part-II;;Z function;;Hard;;981
+16;;String Part-II;;KMP Algorithm or LPS array;;Hard;;977
+16;;String Part-II;;Minimum insertions to make string palindrome;;Hard;;312
+16;;String Part-II;;Valid Anagram;;Easy;;400
+16;;String Part-II;;Count and say;;Hard;;982
+16;;String Part-II;;Compare version numbers;;Medium;;198
+17;;Binary Tree;;Inorder Traversal;;Easy;;133
+17;;Binary Tree;;Preorder Traversal;;Easy;;2790
+17;;Binary Tree;;Postorder Traversal;;Easy;;135
+17;;Binary Tree;;Morris Inorder Traversal;;Hard;;139
+17;;Binary Tree;;Morris Preorder Traversal;;Hard;;138
+17;;Binary Tree;;Right/Left View of BT;;Medium;;123
+17;;Binary Tree;;Bottom view of BT;;Medium;;115
+17;;Binary Tree;;Top View of BT;;Medium;;124
+17;;Binary Tree;;Pre, Post, Inorder in one traversal;;Easy;;136
+17;;Binary Tree;;Vertical Order Traversal;;Medium;;125
+17;;Binary Tree;;Print root to leaf path in BT;;Medium;;122
+17;;Binary Tree;;Maximum Width of BT;;Medium;;119
+18;;Binary Tree part-II;;Level Order Traversal;;Easy;;134
+18;;Binary Tree part-II;;Maximum Depth in BT;;Medium;;131
+18;;Binary Tree part-II;;Diameter of Binary Tree;;Easy;;130
+18;;Binary Tree part-II;;Check for balanced binary tree;;Medium;;127
+18;;Binary Tree part-II;;LCA in BT;;Hard;;118
+18;;Binary Tree part-II;;Check if two trees are identical or not;;Medium;;129
+18;;Binary Tree part-II;;Zig Zag or Spiral Traversal;;Medium;;126
+18;;Binary Tree part-II;;Boundary Traversal;;Medium;;116
+19;;Binary Tree part-III;;Maximum path sum;;Medium;;132
+19;;Binary Tree part-III;;Construct a BT from Preorder and Inorder;;Hard;;110
+19;;Binary Tree part-III;;Construct a BT from Postorder and Inorder;;Hard;;109
+19;;Binary Tree part-III;;Symmetric Binary Tree;;Medium;;2784
+19;;Binary Tree part-III;;Flatten Binary Tree to Linked List;;Medium;;486
+19;;Binary Tree part-III;;Check for symmetrical BTs;;Medium;;128
+19;;Binary Tree part-III;;Children Sum Property in Binary Tree;;Medium;;185
+20;;Binary Search Tree;;Populating Next Right Pointers in Each Node;;Medium;;823
+20;;Binary Search Tree;;Search in BST;;Easy;;108
+20;;Binary Search Tree;;Construct BST from given keys;;Easy;;2391
+20;;Binary Search Tree;;Construct a BST from a preorder traversal;;Medium;;101
+20;;Binary Search Tree;;Check if a tree is a BST or not;;Medium;;100
+20;;Binary Search Tree;;LCA in BST;;Medium;;106
+20;;Binary Search Tree;;Inorder successor and predecessor in BST;;Medium;;103
+21;;Binary Search Tree Part-II;;Floor in a BST;;Easy;;2779
+21;;Binary Search Tree Part-II;;Ceil in a BST;;Easy;;2777
+21;;Binary Search Tree Part-II;;Find K-th smallest element in BST;;Medium;;2776
+21;;Binary Search Tree Part-II;;Kth Smallest and Largest element in BST;;Medium;;105
+21;;Binary Search Tree Part-II;;Two sum in BST;;Hard;;99
+21;;Binary Search Tree Part-II;;BST iterator;;Hard;;96
+21;;Binary Search Tree Part-II;;Size of the largest BST in a Binary Tree;;Hard;;2773
+21;;Binary Search Tree Part-II;;Serialize and De-serialize BT;;Hard;;112
+22;;Binary Trees[Miscellaneous];;Binary Tree to Doubly Linked List;;Medium;;62
+22;;Binary Trees[Miscellaneous];;Find Median in a Stream;;Medium;;446
+22;;Binary Trees[Miscellaneous];;Kth largest element in a stream of running integers;;Hard;;567
+22;;Binary Trees[Miscellaneous];;Distinct Numbers in Each Subarray;;Medium;;279
+22;;Binary Trees[Miscellaneous];;K-th largest element in an unsorted array.;;Medium;;2839
+22;;Binary Trees[Miscellaneous];;Flood-fill Algorithm;;Medium;;2832
+23;;Graph;;Clone Graph;;Medium;;188
+23;;Graph;;DFS;;Medium;;2831
+23;;Graph;;Traversal Techniques;;Medium;;529
+23;;Graph;;Detect A cycle in Undirected Graph using BFS;;Hard;;2818
+23;;Graph;;Detect A cycle in Undirected Graph using DFS;;Hard;;2819
+23;;Graph;;Detect A cycle in a Directed Graph using DFS;;Hard;;2816
+23;;Graph;;Detect A cycle in a Directed Graph using BFS;;Hard;;2815
+23;;Graph;;Topological Sort BFS;;Hard;;2820
+23;;Graph;;Topological Sort DFS;;Hard;;2821
+23;;Graph;;Number of islands(Do in Grid and Graph Both);;Medium;;2833
+23;;Graph;;Bipartite graph;;Hard;;499
+23;;Graph;;Bipartite Check using DFS;;Hard;;2812
+24;;Graph Part-II;;Strongly Connected Component(using KosaRaju's algo);;Hard;;2811
+24;;Graph Part-II;;Dijkstra's algorithm;;Hard;;520
+24;;Graph Part-II;;Bellman ford algorithm;;Hard;;518
+24;;Graph Part-II;;Floyd Warshall Algorithm;;Hard;;2829
+24;;Graph Part-II;;MST using Prim's Algo;;Hard;;2824
+24;;Graph Part-II;;MST using Kruskal's Algo;;Hard;;2823
+25;;Dynamic Programming;;Max Product Subarray;;Hard;;2759
+25;;Dynamic Programming;;Longest Increasing Subsequence;;Medium;;636
+25;;Dynamic Programming;;Longest common subsequence;;Hard;;308
+25;;Dynamic Programming;;0 and 1 Knapsack;;Hard;;315
+25;;Dynamic Programming;;Edit distance;;Hard;;307
+25;;Dynamic Programming;;Maximum Sum Increasing Subsequence;;Medium;;698
+25;;Dynamic Programming;;Matrix chain multiplication;;Hard;;327
+26;;Dynamic Programming Part-II;;Minimum sum path in the matrix;;Medium;;2797
+26;;Dynamic Programming Part-II;;Coin change II;;Hard;;316
+26;;Dynamic Programming Part-II;;Subset sum equals to target;;Hard;;323
+26;;Dynamic Programming Part-II;;Rod cutting problem;;Hard;;322
+26;;Dynamic Programming Part-II;;Super Egg Drop;;Medium;;1004
+26;;Dynamic Programming Part-II;;Word Break;;Medium;;4
+26;;Dynamic Programming Part-II;;Palindrome Partitioning (MCM Variation);;Hard;;2854
+26;;Dynamic Programming Part-II;;Maximum Profit in Job Scheduling;;Medium;;691
+27;;Trie;;Trie Implementation and Operations;;Hard;;1028
+27;;Trie;;Trie Implementation and Advanced Operations;;Hard;;1027
+27;;Trie;;Longest Word with All Prefixes;;Medium;;1023
+27;;Trie;;Number of distinct substrings in a string;;Medium;;1026
+27;;Trie;;Power Set (this is very important);;Medium;;2856
+27;;Trie;;Maximum XOR of two numbers in an array;;Hard;;1024
+27;;Trie;;Maximum Xor with an element from an array;;Hard;;1025

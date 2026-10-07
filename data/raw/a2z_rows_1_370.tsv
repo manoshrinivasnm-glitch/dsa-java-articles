@@ -1,0 +1,378 @@
+Title: A2Z Progress
+URL: https://docs.google.com/spreadsheets/d/1XtUDbWgIwsC-C6Om3ypSlq9HzL2DqoIuI_lffQisjv0/gviz/tq?tqx=out:html&gid=0
+Source element: <body>
+---
+Step No	Step	Sub-step	Difficulty	Status	Revision	Problem	Revision	Notes	Resource	YouTube	LeetCode	TUF ID		Summary (live)	
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✗	✗	Input Output	✗	 	Article	Video	 	425	 	Solved	73 / 474
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	Cpp Basics	✗	 	Article	Video	 	1211	 	Marked for revision	204
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	If ElseIf	✗	 	Article	Video	 	424	 	Easy solved	44 / 152
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	Switch Case	✗	 	Article	Video	 	429	 	Medium solved	27 / 186
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✔	What are arrays, strings?	✔	 	Article	Video	 	2869	 	Hard solved	2 / 136
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	For loops	✗	 	Article	Video	 	2867	 	With notes	34
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	While loops	✗	 	Article	Video	 	2868	 	Total problems	474 rows | links: 450 article, 401 video, 264 leetcode
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✔	✗	Functions (Pass by Reference and Value)	✗	 	Article	Video	 	2866	 	 	 
+1	Learn the basics	Things to Know in C++/Java/Python or any language	Easy	✗	✔	Theory with examples	✔	 	Article	Video	 	1219	 	 	 
+1	Learn the basics	Build-up Logical Thinking	Easy	✗	✔	Easy and Medium	✔	 	Article	Video	 	1216	 	 	 
+1	Learn the basics	Build-up Logical Thinking	Easy	✗	✗	Hard	✗	 	Article	Video	 	1205	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 1	✗	 	Article	Video	 	401	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 2	✗	 	Article	Video	 	412	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 3	✗	 	Article	Video	 	416	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 4	✗	 	Article	Video	 	417	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 5	✗	 	Article	Video	 	418	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 6	✗	 	Article	Video	 	419	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 7	✗	 	Article	Video	 	420	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 8	✗	 	Article	Video	 	421	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 9	✗	 	Article	Video	 	422	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 10	✗	 	Article	Video	 	402	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 11	✗	 	Article	Video	 	403	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 12	✗	 	Article	Video	 	404	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 13	✗	 	Article	Video	 	405	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 14	✗	 	Article	Video	 	406	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 15	✗	 	Article	Video	 	407	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 16	✗	 	Article	Video	 	408	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 17	✗	 	Article	Video	 	409	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 18	✗	 	Article	Video	 	410	 	 	 
+1	Learn the basics	Patterns	Easy	✗	✗	Pattern 19	✗	 	Article	Video	 	411	 	 	 
+1	Learn the basics	Patterns	Medium	✗	✗	Pattern 20	✗	 	Article	Video	 	413	 	 	 
+1	Learn the basics	Patterns	Medium	✗	✗	Pattern 21	✗	 	Article	Video	 	414	 	 	 
+1	Learn the basics	Patterns	Medium	✗	✗	Pattern 22	✗	 	Article	Video	 	415	 	 	 
+1	Learn the basics	Learn STL/Java-Collections or similar thing in your | language	Easy	✗	✔	STL	✔	 	Article	Video	 	1218	 	 	 
+1	Learn the basics	Learn STL/Java-Collections or similar thing in your | language	Easy	✗	✔	Java Collections	✔	 	Article	 	 	1217	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✔	✗	Count all Digits of a Number	✗	 	Article	Video	 	367	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✔	✔	Reverse a number	✔	 	Article	Video	LeetCode	376	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✔	✗	Palindrome Number	✗	 	Article	Video	LeetCode	374	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✗	✔	GCD of Two Numbers	✔	 	Article	Video	 	372	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✗	✔	Check if the Number is Armstrong	✔	 	Article	Video	LeetCode	366	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✔	✗	Print all Divisors	✗	 	Article	Video	 	2807	 	 	 
+1	Learn the basics	Know Basic Maths	Easy	✗	✔	Check for Prime Number	✔	 	Article	Video	 	365	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Understand recursion by print something N times	✗	 	Article	Video	 	2401	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Print name N times using recursion	✗	 	Article	Video	 	2405	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Print 1 to N using Recursion	✗	 	Article	Video	 	850	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Print N to 1 using Recursion	✗	 	Article	Video	 	852	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Sum of First N Numbers	✗	 	Article	Video	 	386	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Factorial of a given number	✗	 	Article	Video	 	371	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Reverse an array	✗	 	Article	Video	 	342	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✗	Check if String is Palindrome or Not	✗	 	Article	Video	LeetCode	378	 	 	 
+1	Learn the basics	Learn Basic Recursion	Easy	✔	✔	Fibonacci Number	✔	 	Article	Video	LeetCode	381	 	 	 
+1	Learn the basics	Learn Basic Hashing	Easy	✔	✗	Basic Hashing	✗	 	Article	Video	 	1203	 	 	 
+1	Learn the basics	Learn Basic Hashing	Easy	✔	✗	Counting Frequencies of Array Elements	✗	 	Article	 	 	252	 	 	 
+1	Learn the basics	Learn Basic Hashing	Easy	✗	✔	Highest Occurring Element in an Array	✔	 	Article	 	LeetCode	344	 	 	 
+2	Learn Important Sorting Techniques	Sorting-I	Easy	✗	✔	Selection Sort	✔	 	Article	Video	 	947	 	 	 
+2	Learn Important Sorting Techniques	Sorting-I	Easy	✗	✔	Bubble Sort	✔	 	Article	Video	 	943	 	 	 
+2	Learn Important Sorting Techniques	Sorting-I	Easy	✗	✔	Insertion Sorting	✔	 	Article	Video	 	944	 	 	 
+2	Learn Important Sorting Techniques	Sorting-II	Medium	✗	✔	Merge Sorting	✔	 	Article	Video	 	945	 	 	 
+2	Learn Important Sorting Techniques	Sorting-II	Easy	✗	✔	Recursive Bubble Sort	✔	 	Article	 	 	881	 	 	 
+2	Learn Important Sorting Techniques	Sorting-II	Easy	✗	✔	Recursive Insertion Sort	✔	 	Article	 	 	882	 	 	 
+2	Learn Important Sorting Techniques	Sorting-II	Easy	✗	✔	Quick Sorting	✔	 	Article	Video	 	946	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Largest Element	✗	 	Article	Video	 	38	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Second Largest Element	✗	 	Article	Video	 	43	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Check if the Array is Sorted II	✗	should do with swap concept	Article	Video	LeetCode	379	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Remove duplicates from Sorted array	✗	 	Article	Video	LeetCode	2764	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Left Rotate Array by One	✗	 	Article	Video	LeetCode	40	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✔	Left Rotate Array by K Places	✔	 	Article	Video	LeetCode	39	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Move Zeros to End	✗	 	Article	Video	LeetCode	46	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Linear Search	✗	 	Article	Video	 	41	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✗	✗	Union of two sorted arrays	✗	 	Article	Video	 	48	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Find missing number	✗	 	Article	 	 	44	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Easy	✔	✗	Maximum Consecutive Ones	✗	 	Article	Video	LeetCode	42	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Medium	✗	✔	Find the number that appears once, and other numbers twice.	✔	optimal approach xor	Article	Video	LeetCode	2793	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Medium	✗	✔	Longest subarray with given sum K(positives)	✔	WASTE	Article	Video	 	2836	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Easy	Medium	✗	✔	Longest subarray with sum K	✔	 	Article	Video	 	564	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Easy	✔	✗	Two Sum	✗	 	Article	Video	LeetCode	37	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Sort an array of 0's 1's and 2's	✗	dutch national flag algo	Article	Video	LeetCode	2762	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Easy	✔	✗	Majority Element-I	✗	Moore voting algo	Article	Video	LeetCode	22	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✗	✗	Kadane's Algorithm	✗	 	Article	Video	LeetCode	29	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✗	✗	Print subarray with maximum subarray sum (extended version of above problem)	✗	 	Article	Video	 	2761	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Stock Buy and Sell	✗	 	Article	Video	LeetCode	2798	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Rearrange array elements by sign	✗	 	Article	Video	LeetCode	34	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✔	Next Permutation	✔	1. find the breakpointind starting from last index, a[i] < a[i+1] | 2. from i+1 ... n, get the element larger than a[i] but the smallest among i+1 to n them (swap them both). | 3. If that's the last permutation, just reverse the array and return; | 4. sort the array from i+1 to n	Article	Video	LeetCode	31	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Leaders in an Array	✗	 	Article	Video	 	30	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Longest Consecutive Sequence in an Array	✗	 	Article	Video	LeetCode	2835	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Set Matrix Zeroes	✗	 	Article	Video	LeetCode	911	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✗	✗	Rotate matrix by 90 degrees	✗	 	Article	Video	LeetCode	35	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Print the matrix in spiral manner	✗	 	Article	Video	LeetCode	33	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Medium	Medium	✔	✗	Count subarrays with given sum	✗	 	Article	Video	LeetCode	561	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Easy	✗	✗	Pascal's Triangle I	✗	 	Article	Video	LeetCode	813	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✔	✗	Majority Element-II	✗	2 counters, 2 elements	Article	Video	LeetCode	23	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Medium	✔	✗	3 Sum	✗	sort | i,j,k three pointers | that's it	Article	Video	LeetCode	27	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Medium	✔	✗	4 Sum	✗	 	Article	Video	LeetCode	28	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Medium	✔	✗	Largest Subarray with Sum 0	✗	sum == 0 condition	Article	Video	 	605	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✗	✔	Count subarrays with given xor K	✔	 	Article	Video	 	562	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Medium	✔	✗	Merge Overlapping Subintervals	✗	 	Article	Video	LeetCode	715	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Medium	✔	✔	Merge two sorted arrays without extra space	✔	pointer in last	Article	Video	LeetCode	25	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✗	✔	Find the repeating and missing number	✔	 	Article	Video	 	21	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✗	✔	Count Inversions	✔	 	Article	Video	 	20	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✗	✔	Reverse Pairs	✔	 	Article	Video	LeetCode	26	 	 	 
+3	Solve Problems on Arrays [Easy -> Medium -> Hard]	Hard	Hard	✗	✗	Maximum Product Subarray in an Array	✗	 	Article	 	LeetCode	24	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Search X in sorted array	✗	mid = start + (end-start)/2;	Article	Video	LeetCode	81	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Lower Bound	✗	 	Article	Video	 	80	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Upper Bound	✗	just see the upper bound video once just for clarification	Article	Video	 	82	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Search insert position	✗	 	Article	Video	LeetCode	89	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Floor and Ceil in Sorted Array	✗	 	Article	Video	 	86	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✗	✗	First and last occurrence	✗	 	Article	Video	LeetCode	85	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✔	✗	Count Occurrences in a Sorted Array	✗	 	Article	Video	 	229	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Medium	✔	✗	Search in rotated sorted array-I	✗	 	Article	Video	LeetCode	87	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Medium	✗	✗	Search in rotated sorted array-II	✗	if (arr[low] == arr[mid] && arr[mid] == arr[high]) { | low = low + 1; | high = high - 1; | continue; | }	Article	Video	LeetCode	88	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✗	✔	Find minimum in Rotated Sorted Array	✔	 	Article	Video	LeetCode	83	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Easy	✗	✗	Find out how many times the array is rotated	✗	waste	Article	Video	 	84	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Medium	✗	✗	Single element in a Sorted Array	✗	 	Article	Video	LeetCode	2770	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 1D Arrays	Medium	✗	✔	Find peak element	✔	 	Article	Video	LeetCode	75	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✗	Find square root of a number	✗	 	Article	Video	 	92	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✗	Find Nth root of a number	✗	 	Article	Video	 	91	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✔	✗	Koko eating bananas	✗	 	Article	Video	LeetCode	94	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✗	Minimum days to make M bouquets	✗	 	Article	Video	LeetCode	95	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✗	Find the smallest divisor	✗	 	Article	Video	LeetCode	93	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✔	Capacity to Ship Packages Within D Days	✔	 	Article	Video	LeetCode	161	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✔	Kth Missing Positive Number	✔	 	Article	Video	LeetCode	600	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Hard	✗	✗	Aggressive Cows	✗	 	Article	Video	 	73	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Hard	✗	✗	Book Allocation Problem	✗	 	Article	Video	 	74	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Hard	✗	✔	Split array - largest sum	✔	 	Article	Video	LeetCode	79	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✔	Painter's Partition	✔	 	Article	Video	 	805	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Hard	✗	✔	Minimize Max Distance to Gas Station	✔	 	Article	Video	LeetCode	78	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Hard	✗	✔	Median of 2 sorted arrays	✔	optimal	 	Video	LeetCode	77	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on Answers	Medium	✗	✔	Kth element of 2 sorted arrays	✔	 	Article	Video	 	2767	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 2D Arrays	Easy	✗	✔	Find row with maximum 1's	✔	 	Article	Video	 	66	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 2D Arrays	Hard	✗	✔	Search in a 2D matrix	✔	optimal approach	Article	Video	LeetCode	69	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 2D Arrays	Hard	✗	✔	Search in 2D matrix - II	✔	modai fo next three problems	Article	Video	LeetCode	68	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 2D Arrays	Medium	✗	✔	Find Peak Element - II	✔	 	Article	Video	LeetCode	65	 	 	 
+4	Binary Search [1D, 2D Arrays, Search Space]	BS on 2D Arrays	Hard	✗	✔	Matrix Median	✔	 	Article	Video	 	67	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Medium	✗	✗	Remove Outermost Parentheses	✗	 	Article	 	LeetCode	892	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Medium	✗	✗	Reverse words in a given string / Palindrome Check	✗	 	Article	 	LeetCode	2863	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Easy	✗	✗	Largest Odd Number in a String	✗	 	Article	 	LeetCode	394	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Easy	✗	✗	Longest Common Prefix	✗	 	Article	 	LeetCode	395	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Easy	✗	✗	Isomorphic String	✗	 	Article	 	LeetCode	393	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Easy	✗	✗	Rotate String	✗	 	Article	 	LeetCode	398	 	 	 
+5	Strings [Basic and Medium]	Basic and Easy String Problems	Easy	✗	✗	Check if two strings are anagram of each other	✗	 	Article	 	LeetCode	2809	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Easy	✗	✗	Sort Characters by Frequency	✗	 	Article	 	LeetCode	399	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✗	Maximum Nesting Depth of the Parentheses	✗	 	Article	 	LeetCode	674	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✗	Roman to Integer	✗	 	Article	 	LeetCode	903	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✔	String to Integer (atoi)	✔	 	Article	 	LeetCode	974	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Easy	✗	✔	Count Number of Substrings	✔	 	Article	 	 	2394	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✔	Longest Palindromic Substring	✔	 	 	 	LeetCode	638	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✔	Sum of Beauty of All Substrings	✔	 	Article	 	LeetCode	993	 	 	 
+5	Strings [Basic and Medium]	Medium String Problems	Medium	✗	✗	Reverse every word in a string	✗	 	Article	 	LeetCode	984	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn 1D LinkedList	Easy	✗	✗	Introduction to Singly LinkedList	✗	 	Article	Video	 	1237	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn 1D LinkedList	Easy	✗	✗	Insertion at the head of Linked List	✗	 	Article	Video	 	356	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn 1D LinkedList	Easy	✗	✗	Deletion of the head of LL	✗	 	Article	Video	LeetCode	352	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn 1D LinkedList	Easy	✗	✗	Find the length of the Linked List	✗	 	Article	Video	 	470	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn 1D LinkedList	Medium	✗	✗	Search in Linked List	✗	 	Article	Video	 	905	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn Doubly LinkedList	Easy	✗	✗	Introduction to Doubly LL	✗	 	Article	Video	 	1234	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn Doubly LinkedList	Easy	✗	✗	Insert node before head in Doubly Linked List	✗	 	Article	Video	 	361	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn Doubly LinkedList	Easy	✗	✗	Delete head of Doubly Linked List	✗	 	Article	Video	 	348	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Learn Doubly LinkedList	Medium	✗	✔	Reverse a Doubly Linked List	✔	 	Article	Video	 	900	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Easy	✗	✗	Middle of a LinkedList [TortoiseHare Method]	✗	 	Article	Video	LeetCode	2810	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Reverse a LinkedList [Iterative]	✗	 	Article	Video	LeetCode	2850	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Reverse a LL	✗	 	Article	Video	LeetCode	627	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Detect a loop in LL	✗	 	Article	Video	LeetCode	2845	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✔	Find the starting point in LL	✔	 	Article	Video	LeetCode	2847	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Length of loop in LL	✗	 	Article	Video	 	623	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Check if LL is palindrome or not	✗	 	Article	Video	LeetCode	2844	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Segregate odd and even nodes in Linked List	✗	 	Article	Video	LeetCode	628	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✔	Remove Nth node from the back of the LL	✔	 	Article	Video	LeetCode	2849	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✔	Delete the middle node in LL	✔	 	Article	Video	LeetCode	619	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Hard	✗	✔	Sort LL	✔	 	Article	Video	LeetCode	616	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✔	Sort a Linked List of 0's 1's and 2's	✔	 	Article	Video	 	629	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✔	Find the intersection point of Y LL	✔	 	Article	Video	LeetCode	2846	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Add one to a number represented by LL	✗	 	Article	Video	 	617	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of LL	Medium	✗	✗	Add two numbers in Linked List	✗	 	Article	Video	LeetCode	625	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of DLL	Hard	✗	✔	Delete all occurrences of a key in DLL	✔	link not opened	Article	Video	 	609	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of DLL	Medium	✗	✔	Find Pairs with Given Sum in Doubly Linked List	✔	link not opened	Article	Video	 	452	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Medium Problems of DLL	Hard	✗	✔	Remove duplicates from sorted DLL	✔	 	Article	Video	 	610	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Hard Problems of LL	Hard	✗	✔	Reverse LL in group of given size K	✔	 	Article	Video	LeetCode	2842	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Hard Problems of LL	Hard	✗	✔	Rotate a LL	✔	 	Article	Video	LeetCode	2843	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Hard Problems of LL	Hard	✗	✔	Flattening of LL	✔	 	Article	Video	 	2841	 	 	 
+6	Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]	Hard Problems of LL	Hard	✗	✔	Clone a LL with random and next pointer	✔	 	Article	Video	LeetCode	611	 	 	 
+7	Recursion [PatternWise]	Get a Strong Hold	Medium	✔	✗	Recursive Implementation of atoi()	✗	 	Article	 	LeetCode	2862	 	 	 
+7	Recursion [PatternWise]	Get a Strong Hold	Easy	✗	✔	Pow(x, n)	✔	 	Article	Video	LeetCode	2855	 	 	 
+7	Recursion [PatternWise]	Get a Strong Hold	Medium	✗	✗	Count Good Numbers	✗	 	Article	 	LeetCode	222	 	 	 
+7	Recursion [PatternWise]	Get a Strong Hold	Medium	✗	✔	Sort a stack using recursion	✔	 	Article	 	 	2858	 	 	 
+7	Recursion [PatternWise]	Get a Strong Hold	Medium	✗	✗	Reverse a Stack	✗	 	Article	 	 	901	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✗	Generate Binary Strings Without Consecutive 1s	✗	 	Article	 	 	493	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✗	Generate Parentheses	✗	 	Article	 	LeetCode	876	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✗	Power Set	✗	 	Article	Video	 	878	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Easy	✗	✗	Learn All Patterns of Subsequences (Theory)	✗	 	Article	Video	 	2400	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Easy	✗	✗	Count all subsequences with sum K	✗	 	Article	 	 	880	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Easy	✗	✗	Check if there exists a subsequence with sum K	✗	 	Article	 	 	879	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✗	Combination Sum	✗	 	Article	Video	LeetCode	864	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✔	Combination Sum II	✔	 	Article	Video	LeetCode	865	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✔	✗	Subsets I	✗	 	Article	Video	 	867	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✗	Subsets II	✗	 	Article	Video	LeetCode	868	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Medium	✗	✔	Combination Sum III	✔	 	Article	 	LeetCode	866	 	 	 
+7	Recursion [PatternWise]	Subsequences Pattern	Hard	✗	✗	Letter Combinations of a Phone Number	✗	 	Article	 	LeetCode	875	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✗	Palindrome partitioning	✗	 	 	Video	 	871	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✔	✗	Word Search	✗	 	Article	 	LeetCode	874	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✔	N Queen	✔	optimisedddd	Article	Video	LeetCode	870	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✗	Rat in a Maze	✗	 	Article	Video	 	872	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Medium	✗	✔	Word Break	✔	 	 	 	 	4	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✔	M Coloring Problem	✔	 	Article	Video	 	869	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✗	Sudoku Solver	✗	if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == num)	Article	Video	LeetCode	873	 	 	 
+7	Recursion [PatternWise]	Trying out all Combos / Hard	Hard	✗	✔	Expression Add Operators	✔	 	Article	 	LeetCode	3	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Introduction to Bits and Tricks	✗	 	Article	Video	 	1155	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Check if the i-th bit is Set or Not	✗	 	Article	Video	 	177	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Check if a Number is Odd or Not	✗	 	Article	Video	 	171	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Check if a Number is Power of 2 or Not	✗	 	Article	Video	LeetCode	172	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Count the Number of Set Bits	✗	 	Article	Video	 	243	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Set/Unset the rightmost unset bit	✗	 	Article	Video	 	2410	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Easy	✗	✗	Swap Two Numbers	✗	 	Article	Video	 	1005	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Learn Bit Manipulation	Medium	✗	✗	Divide two numbers without multiplication and division	✗	 	Article	Video	LeetCode	140	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Interview Problems	Medium	✗	✗	Minimum Bit Flips to Convert Number	✗	 	Article	Video	LeetCode	141	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Interview Problems	Medium	✗	✗	Single Number - I	✗	 	Article	Video	LeetCode	143	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Interview Problems	Medium	✗	✗	Power Set Bit Manipulation	✗	 	Article	Video	LeetCode	142	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Interview Problems	Medium	✗	✗	XOR of numbers in a given range	✗	 	Article	Video	 	146	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Interview Problems	Medium	✗	✗	Single Number - III	✗	 	Article	Video	 	145	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Advanced Maths	Hard	✗	✗	Print Prime Factors of a Number	✗	 	Article	Video	 	2853	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Advanced Maths	Easy	✗	✗	Divisors of a Number	✗	 	Article	Video	 	370	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Advanced Maths	Hard	✗	✗	Count primes in range L to R	✗	 	Article	Video	LeetCode	651	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Advanced Maths	Hard	✗	✗	Prime factorisation of a Number	✗	 	Article	Video	 	652	 	 	 
+8	Bit Manipulation [Concepts & Problems]	Advanced Maths	Easy	✗	✗	Pow(x,n)	✗	 	Article	Video	LeetCode	877	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement Stack using Arrays	✔	 	Article	Video	 	390	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement Queue using Arrays	✔	 	Article	Video	 	387	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement Stack using Queue	✔	 	Article	Video	LeetCode	392	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement Queue using Stack	✔	 	Article	Video	LeetCode	389	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement stack using Linkedlist	✔	 	Article	Video	 	391	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✔	Implement queue using Linkedlist	✔	 	Article	Video	 	388	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Easy	✗	✗	Balanced Paranthesis	✗	 	Article	Video	LeetCode	966	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Learning	Hard	✗	✔	Implement Min Stack	✔	 	Article	Video	LeetCode	958	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Medium	✗	✔	Infix to Postfix Conversion	✔	 	Article	Video	 	586	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Medium	✗	✔	Prefix to Infix Conversion	✔	 	Article	Video	 	848	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Medium	✗	✔	Prefix to Postfix Conversion	✔	 	Article	Video	 	849	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Medium	✗	✔	Postfix to Prefix Conversion	✔	 	Article	Video	 	825	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Easy	✗	✔	Postfix to Infix Conversion	✔	 	Article	Video	 	824	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Prefix, Infix, PostFix Conversion Problems	Medium	✗	✔	Infix to Prefix Conversion	✔	 	Article	Video	 	587	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✗	Next Greater Element	✗	 	Article	Video	LeetCode	968	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✗	Next Greater Element - 2	✗	 	Article	Video	LeetCode	969	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✗	Next Smaller Element	✗	 	Article	 	 	768	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Easy	✗	✗	Number of Greater Elements to the Right	✗	 	Article	 	 	285	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Hard	✗	✔	Trapping Rainwater	✔	 	Article	Video	LeetCode	965	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✔	Sum of Subarray Minimums	✔	 	Article	Video	LeetCode	971	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✔	Asteroid Collision	✔	 	Article	Video	LeetCode	967	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✔	Sum of Subarray Ranges	✔	 	Article	Video	LeetCode	972	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Medium	✗	✔	Remove K Digits	✔	 	Article	Video	LeetCode	970	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Hard	✗	✔	Largest rectangle in a histogram	✔	 	Article	Video	LeetCode	959	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Monotonic Stack/Queue Problems [VVV. Imp]	Hard	✗	✔	Maximum Rectangles	✔	 	Article	Video	LeetCode	962	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Implementation Problems	Hard	✗	✔	Sliding Window Maximum	✔	 	Article	Video	LeetCode	963	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Implementation Problems	Hard	✗	✔	Stock span problem	✔	 	Article	Video	LeetCode	964	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Implementation Problems	Hard	✗	✗	Celebrity Problem	✗	 	Article	Video	LeetCode	957	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Implementation Problems	Medium	✗	✗	LRU Cache	✗	 	Article	 	 	961	 	 	 
+9	Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]	Implementation Problems	Hard	✗	✔	LFU Cache	✔	 	Article	Video	LeetCode	960	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Medium	✗	✗	Longest Substring Without Repeating Characters	✗	 	Article	Video	LeetCode	2857	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Medium	✗	✗	Max Consecutive Ones III	✗	 	Article	Video	LeetCode	930	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Medium	✗	✔	Fruit Into Baskets	✔	optima study it	Article	Video	LeetCode	926	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Hard	✗	✔	Longest Repeating Character Replacement	✗	 	Article	Video	LeetCode	927	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Hard	✗	✔	Binary Subarrays With Sum	✗	 	Article	Video	LeetCode	923	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Hard	✗	✗	Count number of Nice subarrays	✗	 	Article	Video	LeetCode	924	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Hard	✗	✗	Number of Substrings Containing All Three Characters	✗	 	Article	Video	LeetCode	925	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Medium Problems	Medium	✗	✗	Maximum Points You Can Obtain from Cards	✗	 	Article	Video	LeetCode	922	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Hard Problems	Hard	✗	✗	Longest Substring With At Most K Distinct Characters	✗	 	Article	Video	LeetCode	928	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Hard Problems	Medium	✗	✔	Subarrays with K Different Integers	✗	 	Article	Video	LeetCode	988	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Hard Problems	Hard	✗	✔	Minimum Window Substring	✔	 	 	Video	LeetCode	931	 	 	 
+10	Sliding Window & Two Pointer Combined Problems	Hard Problems	Hard	✗	✔	Minimum Window Subsequence	✔	Too tough	 	 	LeetCode	754	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Learning	Easy	✗	✔	Heaps (Theory Video)	✔	 	Article	 	 	1223	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Learning	Medium	✗	✔	Implement Min Heap	✔	 	 	 	 	576	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Learning	Medium	✗	✔	Check if an array represents a min heap	✔	 	Article	 	 	571	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Learning	Medium	✗	✔	Convert Min Heap to Max Heap	✔	 	 	 	 	572	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Medium	✗	✗	K-th Largest element in an array	✗	Optimal approach need to study	Article	 	 	578	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Medium	✗	✗	Kth smallest element in an array [use priority queue]	✗	quick select need to learn. this is the optimal	Article	 	 	2840	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Easy	✗	✔	Sort K sorted array	✔	 	Article	 	 	2409	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Hard	✗	✔	Merge K sorted Lists	✗	 	Article	 	LeetCode	569	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Easy	✗	✗	Replace Elements by Their Rank	✗	 	Article	 	 	898	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Medium	✗	✔	Task Scheduler	✔	 	Article	 	LeetCode	1008	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Medium Problems	Medium	✗	✔	Hand of Straights	✔	 	Article	 	LeetCode	556	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Medium	✗	✔	Design Twitter	✔	 	Article	 	LeetCode	565	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Medium	✗	✔	Minimum Cost to Connect Sticks	✔	article not found	Article	 	 	755	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Hard	✗	✔	Kth largest element in a stream of running integers	✗	 	Article	 	LeetCode	2838	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Hard	✗	✔	Maximum Sum Combination	✗	optimal solution seems trickier	Article	 	 	568	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Hard	✗	✔	Find Median from Data Stream	✗	 	Article	 	LeetCode	566	 	 	 
+11	Heaps [Learning, Medium, Hard Problems]	Hard Problems	Medium	✗	✔	Top K Frequent Elements	✔	bucket sorting	Article	 	LeetCode	1018	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Easy Problems	Easy	✗	✗	Assign Cookies	✗	 	Article	Video	LeetCode	2834	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Easy Problems	Medium	✗	✗	Fractional Knapsack	✗	 	Article	Video	 	489	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Easy Problems	Easy	✗	✔	Lemonade Change	✗	 	Article	Video	LeetCode	543	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Easy Problems	Hard	✗	✔	Valid Paranthesis Checker	✔	 	Article	Video	LeetCode	545	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✗	N meetings in one room	✗	 	Article	Video	 	549	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Easy	✗	✗	Jump Game - I	✗	 	Article	Video	LeetCode	542	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✗	Jump Game II	✗	 	Article	Video	LeetCode	595	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✗	Minimum number of platforms required for a railway	✗	 	Article	Video	 	548	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✔	Job sequencing Problem	✔	dsu is optimal	Article	Video	https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1	547	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Hard	✗	✔	Candy	✗	 	Article	Video	LeetCode	544	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✗	Shortest Job First	✗	 	Article	Video	 	551	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✔	Program for Least Recently Used (LRU) Page Replacement Algorithm	✔	 	Article	 	 	2859	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✔	Insert Interval	✔	 	Article	Video	LeetCode	546	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✗	Merge Intervals	✗	 	Article	Video	LeetCode	712	 	 	 
+12	Greedy Algorithms [Easy, Medium/Hard]	Medium/Hard	Medium	✗	✔	Non-overlapping Intervals	✗	 	Article	Video	LeetCode	550	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✗	Introduction to Trees	✗	 	Article	Video	 	2865	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✗	Binary Tree Representation in Java	✗	 	Article	Video	 	2864	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✔	✔	Pre, Post, Inorder in one traversal	✔	 	Article	Video	 	136	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✗	Preorder Traversal	✗	 	Article	Video	LeetCode	137	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✗	Inorder Traversal of Binary Tree	✗	 	Article	Video	LeetCode	2785	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✗	Postorder Traversal	✗	 	Article	Video	LeetCode	135	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✔	✗	Level Order Traversal	✗	 	Article	Video	LeetCode	134	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✔	Iterative Preorder Traversal of Binary Tree	✔	 	Article	Video	LeetCode	2872	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✔	Iterative Inorder Traversal of Binary Tree	✔	 	Article	Video	LeetCode	2786	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✔	Post-order Traversal of Binary Tree using 2 stack	✔	 	Article	Video	LeetCode	2788	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✔	Post-order Traversal of Binary Tree using 1 stack	✔	 	Article	Video	LeetCode	2787	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Traversals	Easy	✗	✔	Preorder, Inorder, and Postorder Traversal in one Traversal	✔	 	Article	Video	 	2789	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✗	Maximum Depth in BT	✗	 	Article	Video	LeetCode	131	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Check for balanced binary tree	✔	 	Article	Video	LeetCode	127	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Easy	✗	✔	Diameter of Binary Tree	✔	 	Article	Video	LeetCode	130	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Maximum path sum	✔	 	Article	Video	LeetCode	132	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✗	Check if two trees are identical or not	✗	 	Article	Video	LeetCode	129	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✗	Zig Zag or Spiral Traversal	✗	 	Article	Video	LeetCode	126	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Boundary Traversal	✔	 	Article	Video	LeetCode	116	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Vertical Order Traversal	✔	 	Article	Video	LeetCode	125	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Top View of BT	✔	 	Article	Video	 	124	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Bottom view of BT	✔	 	Article	Video	 	115	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✔	Right/Left View of Binary Tree	✔	 	Article	Video	LeetCode	2782	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Medium Problems	Medium	✗	✗	Symmetric Binary Tree	✗	 	Article	Video	LeetCode	2784	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Medium	✗	✗	Print root to leaf path in BT	✗	 	Article	Video	 	122	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✗	LCA in BT	✗	 	Article	Video	LeetCode	118	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Medium	✗	✔	Maximum Width of BT	✔	 	Article	Video	LeetCode	119	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Medium	✗	✗	Children Sum Property in Binary Tree	✗	I didn't understand the question	Article	Video	 	185	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✗	Print all nodes at a distance of K in BT	✗	 	Article	Video	LeetCode	121	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✗	Minimum time taken to burn the BT from a given Node	✗	 	Article	Video	 	120	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Easy	✗	✔	Count total nodes in a complete BT	✔	 	Article	Video	LeetCode	117	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Medium	✗	✔	Requirements needed to construct a unique BT	✔	 	 	Video	 	111	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✔	Construct a BT from Preorder and Inorder	✔	 	Article	Video	LeetCode	110	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✔	Construct the Binary Tree from Postorder and Inorder Traversal	✔	 	Article	Video	LeetCode	2781	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✔	Serialize and De-serialize BT	✔	modaiii	Article	Video	LeetCode	112	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✔	Morris Preorder Traversal of a Binary Tree	✔	 	Article	Video	LeetCode	2791	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Hard	✗	✔	Morris Inorder Traversal of a Binary Tree	✔	 	Article	Video	LeetCode	2792	 	 	 
+13	Binary Trees [Traversals, Medium and Hard Problems]	Hard Problems	Medium	✗	✔	Flatten Binary Tree to Linked List	✔	 	Article	Video	LeetCode	486	 	 	 
+14	Binary Search Trees [Concept and Problems]	Concepts	Easy	✗	✗	Introduction to BST	✗	 	Article	Video	 	1153	 	 	 
+14	Binary Search Trees [Concept and Problems]	Concepts	Easy	✗	✗	Search in a Binary Search Tree	✗	 	Article	Video	LeetCode	2780	 	 	 
+14	Binary Search Trees [Concept and Problems]	Concepts	Easy	✗	✗	Find Min/Max in BST	✗	 	Article	 	 	2398	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Easy	✗	✗	Floor and Ceil in a BST	✗	 	 	Video	 	107	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Easy	✗	✗	Floor in a Binary Search Tree	✗	 	Article	Video	 	2778	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	Insert a given node in BST	✔	 	 	Video	LeetCode	104	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	Delete a node in BST	✔	 	 	Video	LeetCode	102	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	Kth Smallest and Largest element in BST	✔	 	Article	Video	LeetCode	105	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	Check if a tree is a BST or not	✔	 	 	Video	LeetCode	100	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	LCA in BST	✔	 	 	Video	LeetCode	106	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✔	Construct a BST from a preorder traversal	✔	 	 	Video	LeetCode	101	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Medium	✗	✗	Inorder Successor/Predecessor in BST	✗	 	Article	Video	LeetCode	2775	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Hard	✗	✗	Merge 2 BST's	✗	 	Article	Video	LeetCode	2772	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Hard	✗	✔	Two Sum In BST | Check if there exists a pair with Sum K	✔	 	Article	Video	LeetCode	2774	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Hard	✗	✔	Correct BST with two nodes swapped	✔	 	 	Video	LeetCode	97	 	 	 
+14	Binary Search Trees [Concept and Problems]	Practice Problems	Hard	✗	✔	Largest BST in Binary Tree	✔	 	 	Video	LeetCode	98	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Easy	✗	✗	Introduction to Graph	✗	 	Article	Video	 	1222	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Easy	✔	✗	Graph Representation | C++	✗	 	Article	Video	 	2870	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Easy	✗	✗	Graph Representation | Java	✗	 	Article	Video	 	2871	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Medium	✗	✗	Connected Components	✗	 	Article	 	 	528	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Medium	✔	✗	Traversal Techniques	✗	 	Article	Video	 	529	 	 	 
+15	Graphs [Concepts & Problems]	Learning	Medium	✔	✗	DFS	✗	 	Article	Video	 	2831	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✔	Number of provinces	✔	 	Article	Video	LeetCode	535	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✔	Connected Components Problem in Matrix	✔	 	Article	 	 	2830	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✔	Rotten Oranges	✔	 	Article	Video	LeetCode	536	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✗	Flood fill algorithm	✗	 	 	 	LeetCode	531	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✔	Cycle Detection in Undirected Graph (bfs)	✔	 	Article	Video	 	2817	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✔	Detect a cycle in an undirected graph	✔	 	Article	Video	LeetCode	501	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✔	Distance of nearest cell having one	✔	 	Article	Video	LeetCode	530	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✔	Surrounded Regions	✔	 	Article	Video	LeetCode	537	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✗	Number of enclaves	✗	 	Article	Video	LeetCode	533	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✗	Word ladder I	✗	 	Article	Video	LeetCode	509	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✔	Word ladder II	✔	 	Article	Video	LeetCode	510	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Medium	✗	✗	Number of islands	✗	 	Article	Video	LeetCode	534	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✔	Bipartite Graph (DFS)	✔	 	Article	Video	LeetCode	2813	 	 	 
+15	Graphs [Concepts & Problems]	Problems on BFS/DFS	Hard	✗	✗	Cycle Detection in Directed Graph (DFS)	✗	 	Article	Video	LeetCode	2814	 	 	 
+15	Graphs [Concepts & Problems]	Topo Sort a
+
+[truncated to 50000 chars]
