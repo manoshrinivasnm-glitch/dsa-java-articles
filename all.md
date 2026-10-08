@@ -345,14 +345,14 @@ title: All problems
 <tr><td>104</td><td><a href="{{ "/p/104.html" | relative_url }}">Insert a given node in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z</td></tr>
 <tr><td>102</td><td><a href="{{ "/p/102.html" | relative_url }}">Delete a node in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z</td></tr>
 <tr><td>105</td><td><a href="{{ "/p/105.html" | relative_url }}">Kth Smallest and Largest element in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>100</td><td>Check if a tree is a BST or not <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>106</td><td>LCA in BST <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>101</td><td>Construct a BST from a preorder traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2775</td><td>Inorder Successor/Predecessor in BST <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2772</td><td>Merge 2 BST's <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2774</td><td>Two Sum In BST | Check if there exists a pair with Sum K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>97</td><td>Correct BST with two nodes swapped <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>98</td><td>Largest BST in Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
+<tr><td>100</td><td><a href="{{ "/p/100.html" | relative_url }}">Check if a tree is a BST or not</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>106</td><td><a href="{{ "/p/106.html" | relative_url }}">LCA in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>101</td><td><a href="{{ "/p/101.html" | relative_url }}">Construct a BST from a preorder traversal</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2775</td><td><a href="{{ "/p/2775.html" | relative_url }}">Inorder Successor/Predecessor in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>A2Z</td></tr>
+<tr><td>2772</td><td><a href="{{ "/p/2772.html" | relative_url }}">Merge 2 BST's</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
+<tr><td>2774</td><td><a href="{{ "/p/2774.html" | relative_url }}">Two Sum In BST | Check if there exists a pair with Sum K</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
+<tr><td>97</td><td><a href="{{ "/p/97.html" | relative_url }}">Correct BST with two nodes swapped</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
+<tr><td>98</td><td><a href="{{ "/p/98.html" | relative_url }}">Largest BST in Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>1222</td><td>Introduction to Graph <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
 <tr class="todo"><td>2870</td><td>Graph Representation | C++ <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
 <tr class="todo"><td>2871</td><td>Graph Representation | Java <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
