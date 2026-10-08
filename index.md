@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>332 of 583 problems written (57%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:57%"></span></div>
+<p>342 of 583 problems written (59%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:59%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -17,7 +17,7 @@ permalink: /
 <li><a href="{{ "/topics/sliding-window-two-pointer-combined-problems.html" | relative_url }}">Sliding Window & Two Pointer Combined Problems</a><span class="count">12 / 12 written</span></li>
 <li><a href="{{ "/topics/heaps-learning-medium-hard-problems.html" | relative_url }}">Heaps [Learning, Medium, Hard Problems]</a><span class="count">17 / 17 written</span></li>
 <li><a href="{{ "/topics/greedy-algorithms-easy-medium-hard.html" | relative_url }}">Greedy Algorithms [Easy, Medium/Hard]</a><span class="count">15 / 15 written</span></li>
-<li><a href="{{ "/topics/binary-trees-traversals-medium-and-hard-problems.html" | relative_url }}">Binary Trees [Traversals, Medium and Hard Problems]</a><span class="count">28 / 38 written</span></li>
+<li><a href="{{ "/topics/binary-trees-traversals-medium-and-hard-problems.html" | relative_url }}">Binary Trees [Traversals, Medium and Hard Problems]</a><span class="count">38 / 38 written</span></li>
 <li><a href="{{ "/topics/binary-search-trees-concept-and-problems.html" | relative_url }}">Binary Search Trees [Concept and Problems]</a><span class="count">8 / 16 written</span></li>
 <li><a href="{{ "/topics/graphs-concepts-problems.html" | relative_url }}">Graphs [Concepts & Problems]</a><span class="count">0 / 53 written</span></li>
 <li><a href="{{ "/topics/dynamic-programming-patterns-and-problems.html" | relative_url }}">Dynamic Programming [Patterns and Problems]</a><span class="count">0 / 55 written</span></li>

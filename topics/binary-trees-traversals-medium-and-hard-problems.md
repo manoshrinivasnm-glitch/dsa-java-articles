@@ -4,16 +4,16 @@ title: "Binary Trees [Traversals, Medium and Hard Problems]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Traversals</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>2865</td><td>Introduction to Trees <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2864</td><td>Binary Tree Representation in Java <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>136</td><td>Pre, Post, Inorder in one traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>137</td><td>Preorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2785</td><td>Inorder Traversal of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>135</td><td>Postorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>134</td><td>Level Order Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>2872</td><td>Iterative Preorder Traversal of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2786</td><td>Iterative Inorder Traversal of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2788</td><td>Post-order Traversal of Binary Tree using 2 stack <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2865</td><td><a href="{{ "/p/2865.html" | relative_url }}">Introduction to Trees</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2864</td><td><a href="{{ "/p/2864.html" | relative_url }}">Binary Tree Representation in Java</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>136</td><td><a href="{{ "/p/136.html" | relative_url }}">Pre, Post, Inorder in one traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE</td></tr>
+<tr><td>137</td><td><a href="{{ "/p/137.html" | relative_url }}">Preorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2785</td><td><a href="{{ "/p/2785.html" | relative_url }}">Inorder Traversal of Binary Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>135</td><td><a href="{{ "/p/135.html" | relative_url }}">Postorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE</td></tr>
+<tr><td>134</td><td><a href="{{ "/p/134.html" | relative_url }}">Level Order Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE B75</td></tr>
+<tr><td>2872</td><td><a href="{{ "/p/2872.html" | relative_url }}">Iterative Preorder Traversal of Binary Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2786</td><td><a href="{{ "/p/2786.html" | relative_url }}">Iterative Inorder Traversal of Binary Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2788</td><td><a href="{{ "/p/2788.html" | relative_url }}">Post-order Traversal of Binary Tree using 2 stack</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr><td>2787</td><td><a href="{{ "/p/2787.html" | relative_url }}">Post-order Traversal of Binary Tree using 1 stack</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr><td>2789</td><td><a href="{{ "/p/2789.html" | relative_url }}">Preorder, Inorder, and Postorder Traversal in one Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 </tbody></table>
