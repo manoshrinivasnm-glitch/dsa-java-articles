@@ -30,17 +30,17 @@ title: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementa
 <tr><td>285</td><td><a href="{{ "/p/285.html" | relative_url }}">Number of Greater Elements to the Right</a></td><td><span class="badge badge-easy">Easy</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 <tr><td>965</td><td><a href="{{ "/p/965.html" | relative_url }}">Trapping Rainwater</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
 <tr><td>971</td><td><a href="{{ "/p/971.html" | relative_url }}">Sum of Subarray Minimums</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>967</td><td>Asteroid Collision <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>972</td><td>Sum of Subarray Ranges <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>970</td><td>Remove K Digits <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>959</td><td>Largest rectangle in a histogram <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>962</td><td>Maximum Rectangles <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>967</td><td><a href="{{ "/p/967.html" | relative_url }}">Asteroid Collision</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>972</td><td><a href="{{ "/p/972.html" | relative_url }}">Sum of Subarray Ranges</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>970</td><td><a href="{{ "/p/970.html" | relative_url }}">Remove K Digits</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>959</td><td><a href="{{ "/p/959.html" | relative_url }}">Largest rectangle in a histogram</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
+<tr><td>962</td><td><a href="{{ "/p/962.html" | relative_url }}">Maximum Rectangles</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Implementation Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>963</td><td>Sliding Window Maximum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>964</td><td>Stock span problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>957</td><td>Celebrity Problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>961</td><td>LRU Cache <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>960</td><td>LFU Cache <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
+<tr><td>963</td><td><a href="{{ "/p/963.html" | relative_url }}">Sliding Window Maximum</a></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
+<tr><td>964</td><td><a href="{{ "/p/964.html" | relative_url }}">Stock span problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
+<tr><td>957</td><td><a href="{{ "/p/957.html" | relative_url }}">Celebrity Problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
+<tr><td>961</td><td><a href="{{ "/p/961.html" | relative_url }}">LRU Cache</a></td><td><span class="badge badge-medium">Medium</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
+<tr><td>960</td><td><a href="{{ "/p/960.html" | relative_url }}">LFU Cache</a></td><td><span class="badge badge-hard">Hard</span></td><td>Implementation Problems</td><td>A2Z SDE</td></tr>
 </tbody></table>
