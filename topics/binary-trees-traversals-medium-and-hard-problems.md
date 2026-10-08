@@ -40,12 +40,12 @@ title: "Binary Trees [Traversals, Medium and Hard Problems]"
 <tr><td>185</td><td><a href="{{ "/p/185.html" | relative_url }}">Children Sum Property in Binary Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
 <tr><td>121</td><td><a href="{{ "/p/121.html" | relative_url }}">Print all nodes at a distance of K in BT</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr><td>120</td><td><a href="{{ "/p/120.html" | relative_url }}">Minimum time taken to burn the BT from a given Node</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>117</td><td>Count total nodes in a complete BT <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>111</td><td>Requirements needed to construct a unique BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>110</td><td>Construct a BT from Preorder and Inorder <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2781</td><td>Construct the Binary Tree from Postorder and Inorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>112</td><td>Serialize and De-serialize BT <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>2791</td><td>Morris Preorder Traversal of a Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2792</td><td>Morris Inorder Traversal of a Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>486</td><td>Flatten Binary Tree to Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>117</td><td><a href="{{ "/p/117.html" | relative_url }}">Count total nodes in a complete BT</a></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>111</td><td><a href="{{ "/p/111.html" | relative_url }}">Requirements needed to construct a unique BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>110</td><td><a href="{{ "/p/110.html" | relative_url }}">Construct a BT from Preorder and Inorder</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2781</td><td><a href="{{ "/p/2781.html" | relative_url }}">Construct the Binary Tree from Postorder and Inorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z B75</td></tr>
+<tr><td>112</td><td><a href="{{ "/p/112.html" | relative_url }}">Serialize and De-serialize BT</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>2791</td><td><a href="{{ "/p/2791.html" | relative_url }}">Morris Preorder Traversal of a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>2792</td><td><a href="{{ "/p/2792.html" | relative_url }}">Morris Inorder Traversal of a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>486</td><td><a href="{{ "/p/486.html" | relative_url }}">Flatten Binary Tree to Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
 </tbody></table>
