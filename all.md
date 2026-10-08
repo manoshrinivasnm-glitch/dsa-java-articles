@@ -468,18 +468,18 @@ title: All problems
 <tr><td>2390</td><td><a href="{{ "/p/2390.html" | relative_url }}">Bit PreRequisites for TRIE Problems</a></td><td><span class="badge badge-easy">Easy</span></td><td>Problems</td><td>A2Z</td></tr>
 <tr><td>1024</td><td><a href="{{ "/p/1024.html" | relative_url }}">Maximum XOR of two numbers in an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
 <tr><td>1025</td><td><a href="{{ "/p/1025.html" | relative_url }}">Maximum Xor with an element from an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>983</td><td>Minimum number of bracket reversals to make an expression balanced <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>982</td><td>Count and say <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2399</td><td>Hashing In Strings - Theory <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>979</td><td>Rabin Karp Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>981</td><td>Z function <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>977</td><td>KMP Algorithm or LPS array <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>980</td><td>Shortest Palindrome <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>978</td><td>Longest happy prefix <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>231</td><td>Count Palindromic Subsequences <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>36</td><td>Sort an array of 0's 1's and 2's <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>465</td><td>Find the Duplicate Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2758</td><td>Inversion of Array (Pre-req: Merge Sort) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>983</td><td><a href="{{ "/p/983.html" | relative_url }}">Minimum number of bracket reversals to make an expression balanced</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>982</td><td><a href="{{ "/p/982.html" | relative_url }}">Count and say</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2399</td><td><a href="{{ "/p/2399.html" | relative_url }}">Hashing In Strings - Theory</a></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>979</td><td><a href="{{ "/p/979.html" | relative_url }}">Rabin Karp Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>981</td><td><a href="{{ "/p/981.html" | relative_url }}">Z function</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>977</td><td><a href="{{ "/p/977.html" | relative_url }}">KMP Algorithm or LPS array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>980</td><td><a href="{{ "/p/980.html" | relative_url }}">Shortest Palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>978</td><td><a href="{{ "/p/978.html" | relative_url }}">Longest happy prefix</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>231</td><td><a href="{{ "/p/231.html" | relative_url }}">Count Palindromic Subsequences</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>36</td><td><a href="{{ "/p/36.html" | relative_url }}">Sort an array of 0's 1's and 2's</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>465</td><td><a href="{{ "/p/465.html" | relative_url }}">Find the Duplicate Number</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2758</td><td><a href="{{ "/p/2758.html" | relative_url }}">Inversion of Array (Pre-req: Merge Sort)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr><td>297</td><td><a href="{{ "/p/297.html" | relative_url }}">Grid unique paths</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr><td>563</td><td><a href="{{ "/p/563.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr><td>2837</td><td><a href="{{ "/p/2837.html" | relative_url }}">Largest Subarray with K sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
