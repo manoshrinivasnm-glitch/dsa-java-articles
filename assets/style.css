@@ -53,3 +53,21 @@ blockquote{margin:1em 0;padding:.5em 1em;border-left:4px solid var(--accent);bac
 .highlight .na{color:#7ee787}
 .highlight .o{color:#ff7b72}
 .highlight .c,.highlight .c1,.highlight .cm,.highlight .cp{color:#8b949e}}
+/* article actions: jump to optimal code */
+:root{--btn-bg:#0b57d0;--btn-fg:#ffffff;--ok:#1a7f37}
+@media (prefers-color-scheme:dark){:root{--btn-bg:#8ab4f8;--btn-fg:#121417;--ok:#4cc38a}}
+.actions{margin:.6em 0 0}
+.jump-optimal{font:inherit;font-size:.92rem;font-weight:600;padding:7px 14px;border:0;border-radius:8px;background:var(--btn-bg);color:var(--btn-fg);cursor:pointer}
+.jump-optimal:hover{filter:brightness(1.08)}
+.jump-optimal:focus-visible,.copy-btn:focus-visible{outline:2px solid var(--btn-bg);outline-offset:2px}
+.jump-optimal[hidden]{display:none}
+/* code block toolbar with copy button */
+.code-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);background:var(--code-bg);border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;padding:4px 6px 4px 12px}
+.has-bar pre{margin-top:0;border-top-left-radius:0;border-top-right-radius:0}
+.highlighter-rouge{margin:1em 0;scroll-margin-top:12px}
+.highlighter-rouge pre{margin-bottom:0}
+.copy-btn{font:inherit;font-size:.78rem;line-height:1.4;padding:2px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);cursor:pointer;min-width:64px}
+.copy-btn:hover{border-color:var(--muted)}
+.copy-btn.copied{color:var(--ok);border-color:var(--ok)}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--btn-bg)}100%{box-shadow:0 0 0 3px transparent}}
+.flash{animation:flash 1.6s ease-out;border-radius:8px}
