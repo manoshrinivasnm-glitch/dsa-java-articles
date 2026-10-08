@@ -550,15 +550,15 @@ title: All problems
 <tr class="todo"><td>2833</td><td>Number of islands(Do in Grid and Graph Both) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>499</td><td>Bipartite graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2812</td><td>Bipartite Check using DFS <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2811</td><td>Strongly Connected Component(using KosaRaju's algo) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>520</td><td>Dijkstra's algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>518</td><td>Bellman ford algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2829</td><td>Floyd Warshall Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2824</td><td>MST using Prim's Algo <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2823</td><td>MST using Kruskal's Algo <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2759</td><td>Max Product Subarray <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>315</td><td>0 and 1 Knapsack <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>698</td><td>Maximum Sum Increasing Subsequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2811</td><td><a href="{{ "/p/2811.html" | relative_url }}">Strongly Connected Component(using KosaRaju's algo)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>520</td><td><a href="{{ "/p/520.html" | relative_url }}">Dijkstra's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>518</td><td><a href="{{ "/p/518.html" | relative_url }}">Bellman ford algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2829</td><td><a href="{{ "/p/2829.html" | relative_url }}">Floyd Warshall Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2824</td><td><a href="{{ "/p/2824.html" | relative_url }}">MST using Prim's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2823</td><td><a href="{{ "/p/2823.html" | relative_url }}">MST using Kruskal's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2759</td><td><a href="{{ "/p/2759.html" | relative_url }}">Max Product Subarray</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>315</td><td><a href="{{ "/p/315.html" | relative_url }}">0 and 1 Knapsack</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>698</td><td><a href="{{ "/p/698.html" | relative_url }}">Maximum Sum Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2797</td><td>Minimum sum path in the matrix <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>316</td><td>Coin change II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>323</td><td>Subset sum equals to target <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
@@ -575,7 +575,7 @@ title: All problems
 <tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>2406</td><td><a href="{{ "/p/2406.html" | relative_url }}">Reverse Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2397</td><td>Decode Ways <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2397</td><td><a href="{{ "/p/2397.html" | relative_url }}">Decode Ways</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2403</td><td>Pacific Atlantic Water Flow <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>495</td><td>Graph Valid Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr><td>709</td><td><a href="{{ "/p/709.html" | relative_url }}">Meeting Rooms</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
