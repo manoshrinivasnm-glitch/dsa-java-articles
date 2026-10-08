@@ -461,13 +461,13 @@ title: All problems
 <tr><td>810</td><td><a href="{{ "/p/810.html" | relative_url }}">Partition Array for Maximum Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
 <tr><td>2860</td><td><a href="{{ "/p/2860.html" | relative_url }}">Maximum Rectangle Area with all 1's - (DP-55)</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Squares</td><td>A2Z</td></tr>
 <tr><td>2395</td><td><a href="{{ "/p/2395.html" | relative_url }}">Count Square Submatrices with All Ones - (DP-56)</a></td><td><span class="badge badge-easy">Easy</span></td><td>DP on Squares</td><td>A2Z</td></tr>
-<tr class="todo"><td>1028</td><td>Trie Implementation and Operations <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Theory</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>1027</td><td>Trie Implementation and Advanced Operations <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>1023</td><td>Longest Word with All Prefixes <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>1026</td><td>Number of distinct substrings in a string <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2390</td><td>Bit PreRequisites for TRIE Problems <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>1024</td><td>Maximum XOR of two numbers in an array <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>1025</td><td>Maximum Xor with an element from an array <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
+<tr><td>1028</td><td><a href="{{ "/p/1028.html" | relative_url }}">Trie Implementation and Operations</a></td><td><span class="badge badge-hard">Hard</span></td><td>Theory</td><td>A2Z SDE B75</td></tr>
+<tr><td>1027</td><td><a href="{{ "/p/1027.html" | relative_url }}">Trie Implementation and Advanced Operations</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>1023</td><td><a href="{{ "/p/1023.html" | relative_url }}">Longest Word with All Prefixes</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems</td><td>A2Z SDE</td></tr>
+<tr><td>1026</td><td><a href="{{ "/p/1026.html" | relative_url }}">Number of distinct substrings in a string</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2390</td><td><a href="{{ "/p/2390.html" | relative_url }}">Bit PreRequisites for TRIE Problems</a></td><td><span class="badge badge-easy">Easy</span></td><td>Problems</td><td>A2Z</td></tr>
+<tr><td>1024</td><td><a href="{{ "/p/1024.html" | relative_url }}">Maximum XOR of two numbers in an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
+<tr><td>1025</td><td><a href="{{ "/p/1025.html" | relative_url }}">Maximum Xor with an element from an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>983</td><td>Minimum number of bracket reversals to make an expression balanced <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>982</td><td>Count and say <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>2399</td><td>Hashing In Strings - Theory <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
