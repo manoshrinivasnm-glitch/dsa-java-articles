@@ -46,20 +46,20 @@ title: "Graphs [Concepts & Problems]"
 <tr class="todo"><td>2828</td><td>Why priority Queue is used in Djisktra's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>527</td><td>Shortest Distance in a Binary Maze <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>525</td><td>Path with minimum effort <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>519</td><td>Cheapest flight within K stops <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>764</td><td>Network Delay Time <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>524</td><td>Number of ways to arrive at destination <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>523</td><td>Minimum multiplications to reach end <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2826</td><td>Bellman Ford Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>522</td><td>Floyd warshall algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>521</td><td>Find the city with the smallest number of neighbors <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>519</td><td><a href="{{ "/p/519.html" | relative_url }}">Cheapest flight within K stops</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>764</td><td><a href="{{ "/p/764.html" | relative_url }}">Network Delay Time</a></td><td><span class="badge badge-medium">Medium</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>524</td><td><a href="{{ "/p/524.html" | relative_url }}">Number of ways to arrive at destination</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>523</td><td><a href="{{ "/p/523.html" | relative_url }}">Minimum multiplications to reach end</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>2826</td><td><a href="{{ "/p/2826.html" | relative_url }}">Bellman Ford Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>522</td><td><a href="{{ "/p/522.html" | relative_url }}">Floyd warshall algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>521</td><td><a href="{{ "/p/521.html" | relative_url }}">Find the city with the smallest number of neighbors</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>MinimumSpanningTree/Disjoint Set and Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1221</td><td>MST theory <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2825</td><td>Prim's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>516</td><td>Disjoint Set <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>517</td><td>Find the MST weight <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>1221</td><td><a href="{{ "/p/1221.html" | relative_url }}">MST theory</a></td><td><span class="badge badge-easy">Easy</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>2825</td><td><a href="{{ "/p/2825.html" | relative_url }}">Prim's Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>516</td><td><a href="{{ "/p/516.html" | relative_url }}">Disjoint Set</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>517</td><td><a href="{{ "/p/517.html" | relative_url }}">Find the MST weight</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr><td>515</td><td><a href="{{ "/p/515.html" | relative_url }}">Number of operations to make network connected</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr><td>513</td><td><a href="{{ "/p/513.html" | relative_url }}">Most stones removed with same row or column</a></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr><td>511</td><td><a href="{{ "/p/511.html" | relative_url }}">Accounts merge</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
