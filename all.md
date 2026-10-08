@@ -484,11 +484,11 @@ title: All problems
 <tr><td>563</td><td><a href="{{ "/p/563.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr><td>2837</td><td><a href="{{ "/p/2837.html" | relative_url }}">Largest Subarray with K sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>929</td><td><a href="{{ "/p/929.html" | relative_url }}">Longest Substring Without Repeating Characters</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>448</td><td>Find Middle of Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>613</td><td>Merge two Sorted Lists <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>626</td><td>Remove Nth node from the back of the LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>2848</td><td>Add two numbers as LinkedList <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>258</td><td>Delete Node in a Linked List O(1) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>448</td><td><a href="{{ "/p/448.html" | relative_url }}">Find Middle of Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>613</td><td><a href="{{ "/p/613.html" | relative_url }}">Merge two Sorted Lists</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>626</td><td><a href="{{ "/p/626.html" | relative_url }}">Remove Nth node from the back of the LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>2848</td><td><a href="{{ "/p/2848.html" | relative_url }}">Add two numbers as LinkedList</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>258</td><td><a href="{{ "/p/258.html" | relative_url }}">Delete Node in a Linked List O(1)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>621</td><td>Find the intersection point of Y LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>620</td><td>Detect a loop in LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>614</td><td>Reverse LL in group of given size K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
@@ -580,7 +580,7 @@ title: All problems
 <tr class="todo"><td>495</td><td>Graph Valid Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>709</td><td>Meeting Rooms <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>710</td><td>Meeting Rooms II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2407</td><td>Reorder List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2407</td><td><a href="{{ "/p/2407.html" | relative_url }}">Reorder List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>559</td><td>Group Words by Anagrams <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2794</td><td>Palindromic Substrings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>331</td><td>Encode and Decode Strings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
