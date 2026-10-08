@@ -517,17 +517,17 @@ title: All problems
 <tr class="todo"><td>312</td><td>Minimum insertions to make string palindrome <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>400</td><td>Valid Anagram <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>198</td><td>Compare version numbers <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>133</td><td>Inorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2790</td><td>Preorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>139</td><td>Morris Inorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>138</td><td>Morris Preorder Traversal <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>123</td><td>Right/Left View of BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>109</td><td>Construct a BT from Postorder and Inorder <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>128</td><td>Check for symmetrical BTs <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>823</td><td>Populating Next Right Pointers in Each Node <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>108</td><td>Search in BST <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2391</td><td>Construct BST from given keys <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>103</td><td>Inorder successor and predecessor in BST <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>133</td><td><a href="{{ "/p/133.html" | relative_url }}">Inorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>2790</td><td><a href="{{ "/p/2790.html" | relative_url }}">Preorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>139</td><td><a href="{{ "/p/139.html" | relative_url }}">Morris Inorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>138</td><td><a href="{{ "/p/138.html" | relative_url }}">Morris Preorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>123</td><td><a href="{{ "/p/123.html" | relative_url }}">Right/Left View of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>109</td><td><a href="{{ "/p/109.html" | relative_url }}">Construct a BT from Postorder and Inorder</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>128</td><td><a href="{{ "/p/128.html" | relative_url }}">Check for symmetrical BTs</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>823</td><td><a href="{{ "/p/823.html" | relative_url }}">Populating Next Right Pointers in Each Node</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>108</td><td><a href="{{ "/p/108.html" | relative_url }}">Search in BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>2391</td><td><a href="{{ "/p/2391.html" | relative_url }}">Construct BST from given keys</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>103</td><td><a href="{{ "/p/103.html" | relative_url }}">Inorder successor and predecessor in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>2779</td><td><a href="{{ "/p/2779.html" | relative_url }}">Floor in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr><td>2777</td><td><a href="{{ "/p/2777.html" | relative_url }}">Ceil in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr><td>2776</td><td><a href="{{ "/p/2776.html" | relative_url }}">Find K-th smallest element in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
