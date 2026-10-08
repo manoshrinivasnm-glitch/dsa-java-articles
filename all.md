@@ -417,17 +417,17 @@ title: All problems
 <tr><td>300</td><td><a href="{{ "/p/300.html" | relative_url }}">Unique paths II</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
 <tr><td>298</td><td><a href="{{ "/p/298.html" | relative_url }}">Minimum Falling Path Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
 <tr><td>299</td><td><a href="{{ "/p/299.html" | relative_url }}">Triangle</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>769</td><td>Ninja and his Friends <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>2804</td><td>Subset sum equal to target (DP- 14) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>321</td><td>Partition equal subset sum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>320</td><td>Partition a set into two subsets with minimum absolute sum difference <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>318</td><td>Count subsets with sum K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>317</td><td>Count partitions with given difference <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>541</td><td>Assign Cookies <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>DP on Subsequences</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2802</td><td>Minimum Coins (DP - 20) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>324</td><td>Target sum <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>2801</td><td>Coin Change 2 (DP - 22) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
-<tr class="todo"><td>325</td><td>Unbounded knapsack <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>769</td><td><a href="{{ "/p/769.html" | relative_url }}">Ninja and his Friends</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>2804</td><td><a href="{{ "/p/2804.html" | relative_url }}">Subset sum equal to target (DP- 14)</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>321</td><td><a href="{{ "/p/321.html" | relative_url }}">Partition equal subset sum</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>320</td><td><a href="{{ "/p/320.html" | relative_url }}">Partition a set into two subsets with minimum absolute sum difference</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>318</td><td><a href="{{ "/p/318.html" | relative_url }}">Count subsets with sum K</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>317</td><td><a href="{{ "/p/317.html" | relative_url }}">Count partitions with given difference</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>541</td><td><a href="{{ "/p/541.html" | relative_url }}">Assign Cookies</a></td><td><span class="badge badge-easy">Easy</span></td><td>DP on Subsequences</td><td>A2Z SDE</td></tr>
+<tr><td>2802</td><td><a href="{{ "/p/2802.html" | relative_url }}">Minimum Coins (DP - 20)</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>324</td><td><a href="{{ "/p/324.html" | relative_url }}">Target sum</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>2801</td><td><a href="{{ "/p/2801.html" | relative_url }}">Coin Change 2 (DP - 22)</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
+<tr><td>325</td><td><a href="{{ "/p/325.html" | relative_url }}">Unbounded knapsack</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
 <tr class="todo"><td>2803</td><td>Rod Cutting Problem - (DP - 24) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>A2Z</td></tr>
 <tr class="todo"><td>308</td><td>Longest common subsequence <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Strings</td><td>A2Z SDE B75</td></tr>
 <tr class="todo"><td>2799</td><td>Print Longest Common Subsequence - (DP - 26) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Strings</td><td>A2Z</td></tr>
