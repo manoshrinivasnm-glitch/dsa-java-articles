@@ -559,18 +559,18 @@ title: All problems
 <tr><td>2759</td><td><a href="{{ "/p/2759.html" | relative_url }}">Max Product Subarray</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr><td>315</td><td><a href="{{ "/p/315.html" | relative_url }}">0 and 1 Knapsack</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr><td>698</td><td><a href="{{ "/p/698.html" | relative_url }}">Maximum Sum Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2797</td><td>Minimum sum path in the matrix <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>316</td><td>Coin change II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>323</td><td>Subset sum equals to target <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>322</td><td>Rod cutting problem <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>1004</td><td>Super Egg Drop <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2854</td><td>Palindrome Partitioning (MCM Variation) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>691</td><td>Maximum Profit in Job Scheduling <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2856</td><td>Power Set (this is very important) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2392</td><td>Contains Duplicate <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2404</td><td>Product of Array Except Self <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2760</td><td>Kadane's Algorithm, maximum subarray sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2396</td><td>Container with most water <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2797</td><td><a href="{{ "/p/2797.html" | relative_url }}">Minimum sum path in the matrix</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>316</td><td><a href="{{ "/p/316.html" | relative_url }}">Coin change II</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>323</td><td><a href="{{ "/p/323.html" | relative_url }}">Subset sum equals to target</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>322</td><td><a href="{{ "/p/322.html" | relative_url }}">Rod cutting problem</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>1004</td><td><a href="{{ "/p/1004.html" | relative_url }}">Super Egg Drop</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2854</td><td><a href="{{ "/p/2854.html" | relative_url }}">Palindrome Partitioning (MCM Variation)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>691</td><td><a href="{{ "/p/691.html" | relative_url }}">Maximum Profit in Job Scheduling</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2856</td><td><a href="{{ "/p/2856.html" | relative_url }}">Power Set (this is very important)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2392</td><td><a href="{{ "/p/2392.html" | relative_url }}">Contains Duplicate</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2404</td><td><a href="{{ "/p/2404.html" | relative_url }}">Product of Array Except Self</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2760</td><td><a href="{{ "/p/2760.html" | relative_url }}">Kadane's Algorithm, maximum subarray sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>2396</td><td><a href="{{ "/p/2396.html" | relative_url }}">Container with most water</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>2411</td><td><a href="{{ "/p/2411.html" | relative_url }}">Sum of Two Integers</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
