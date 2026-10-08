@@ -480,10 +480,10 @@ title: All problems
 <tr class="todo"><td>36</td><td>Sort an array of 0's 1's and 2's <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>465</td><td>Find the Duplicate Number <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2758</td><td>Inversion of Array (Pre-req: Merge Sort) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>297</td><td>Grid unique paths <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>563</td><td>Longest Consecutive Sequence in an Array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>2837</td><td>Largest Subarray with K sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>929</td><td>Longest Substring Without Repeating Characters <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>297</td><td><a href="{{ "/p/297.html" | relative_url }}">Grid unique paths</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>563</td><td><a href="{{ "/p/563.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>2837</td><td><a href="{{ "/p/2837.html" | relative_url }}">Largest Subarray with K sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>929</td><td><a href="{{ "/p/929.html" | relative_url }}">Longest Substring Without Repeating Characters</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>448</td><td>Find Middle of Linked List <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>613</td><td>Merge two Sorted Lists <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>626</td><td>Remove Nth node from the back of the LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>

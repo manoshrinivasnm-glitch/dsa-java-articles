@@ -2,7 +2,7 @@
 title: Topics
 permalink: /
 ---
-<p>458 of 583 problems written (79%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<p>462 of 583 problems written (79%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
 <div class="progress"><span style="width:79%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
@@ -25,8 +25,8 @@ permalink: /
 <li><a href="{{ "/topics/strings.html" | relative_url }}">Strings</a><span class="count">0 / 9 written</span></li>
 <li><a href="{{ "/topics/arrays.html" | relative_url }}">Arrays</a><span class="count">0 / 1 written</span></li>
 <li><a href="{{ "/topics/arrays-part-ii.html" | relative_url }}">Arrays Part-II</a><span class="count">0 / 2 written</span></li>
-<li><a href="{{ "/topics/arrays-part-iii.html" | relative_url }}">Arrays Part-III</a><span class="count">0 / 1 written</span></li>
-<li><a href="{{ "/topics/arrays-part-iv.html" | relative_url }}">Arrays Part-IV</a><span class="count">0 / 3 written</span></li>
+<li><a href="{{ "/topics/arrays-part-iii.html" | relative_url }}">Arrays Part-III</a><span class="count">1 / 1 written</span></li>
+<li><a href="{{ "/topics/arrays-part-iv.html" | relative_url }}">Arrays Part-IV</a><span class="count">3 / 3 written</span></li>
 <li><a href="{{ "/topics/linked-list.html" | relative_url }}">Linked List</a><span class="count">0 / 6 written</span></li>
 <li><a href="{{ "/topics/linked-list-part-ii.html" | relative_url }}">Linked List Part-II</a><span class="count">0 / 6 written</span></li>
 <li><a href="{{ "/topics/linked-list-and-arrays.html" | relative_url }}">Linked List and Arrays</a><span class="count">0 / 2 written</span></li>
