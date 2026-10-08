@@ -75,13 +75,17 @@
   var heading = approaches.filter(function (h) { return /\boptimal\b/i.test(h.textContent); })[0]
     || approaches[approaches.length - 1];
 
-  // first code block between this heading and the next h2
-  var target = null;
+  // the first Java block between this heading and the next h2 (else the first code block of any kind)
+  var target = null, anyBlock = null;
   for (var el = heading.nextElementSibling; el && el.tagName !== 'H2'; el = el.nextElementSibling) {
-    if (el.matches('div.highlighter-rouge')) { target = el; break; }
-    var inner = el.querySelector && el.querySelector('div.highlighter-rouge');
-    if (inner) { target = inner; break; }
+    var found = el.matches('div.highlighter-rouge') ? [el] : Array.prototype.slice.call(el.querySelectorAll ? el.querySelectorAll('div.highlighter-rouge') : []);
+    for (var k = 0; k < found.length; k++) {
+      anyBlock = anyBlock || found[k];
+      if (/\blanguage-java\b/.test(found[k].className)) { target = found[k]; break; }
+    }
+    if (target) break;
   }
+  target = target || anyBlock;
   target = target || heading;
   target.id = target.id || 'optimal-code';
 
