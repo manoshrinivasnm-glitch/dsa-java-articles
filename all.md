@@ -284,14 +284,14 @@ title: All problems
 <tr class="todo"><td>568</td><td>Maximum Sum Combination <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>566</td><td>Find Median from Data Stream <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
 <tr class="todo"><td>1018</td><td>Top K Frequent Elements <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>2834</td><td>Assign Cookies <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>489</td><td>Fractional Knapsack <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Easy Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>543</td><td>Lemonade Change <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>545</td><td>Valid Paranthesis Checker <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Easy Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>549</td><td>N meetings in one room <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>542</td><td>Jump Game - I <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>595</td><td>Jump Game II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>548</td><td>Minimum number of platforms required for a railway <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
+<tr><td>2834</td><td><a href="{{ "/p/2834.html" | relative_url }}">Assign Cookies</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>
+<tr><td>489</td><td><a href="{{ "/p/489.html" | relative_url }}">Fractional Knapsack</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy Problems</td><td>A2Z SDE</td></tr>
+<tr><td>543</td><td><a href="{{ "/p/543.html" | relative_url }}">Lemonade Change</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>
+<tr><td>545</td><td><a href="{{ "/p/545.html" | relative_url }}">Valid Paranthesis Checker</a></td><td><span class="badge badge-hard">Hard</span></td><td>Easy Problems</td><td>A2Z</td></tr>
+<tr><td>549</td><td><a href="{{ "/p/549.html" | relative_url }}">N meetings in one room</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
+<tr><td>542</td><td><a href="{{ "/p/542.html" | relative_url }}">Jump Game - I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
+<tr><td>595</td><td><a href="{{ "/p/595.html" | relative_url }}">Jump Game II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
+<tr><td>548</td><td><a href="{{ "/p/548.html" | relative_url }}">Minimum number of platforms required for a railway</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>547</td><td>Job sequencing Problem <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>544</td><td>Candy <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
 <tr class="todo"><td>551</td><td>Shortest Job First <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
