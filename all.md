@@ -309,16 +309,16 @@ title: All problems
 <tr class="todo"><td>2872</td><td>Iterative Preorder Traversal of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr class="todo"><td>2786</td><td>Iterative Inorder Traversal of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr class="todo"><td>2788</td><td>Post-order Traversal of Binary Tree using 2 stack <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2787</td><td>Post-order Traversal of Binary Tree using 1 stack <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>2789</td><td>Preorder, Inorder, and Postorder Traversal in one Traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
-<tr class="todo"><td>131</td><td>Maximum Depth in BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>127</td><td>Check for balanced binary tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>130</td><td>Diameter of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>132</td><td>Maximum path sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>129</td><td>Check if two trees are identical or not <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>126</td><td>Zig Zag or Spiral Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>116</td><td>Boundary Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>125</td><td>Vertical Order Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2787</td><td><a href="{{ "/p/2787.html" | relative_url }}">Post-order Traversal of Binary Tree using 1 stack</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>2789</td><td><a href="{{ "/p/2789.html" | relative_url }}">Preorder, Inorder, and Postorder Traversal in one Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
+<tr><td>131</td><td><a href="{{ "/p/131.html" | relative_url }}">Maximum Depth in BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>127</td><td><a href="{{ "/p/127.html" | relative_url }}">Check for balanced binary tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>130</td><td><a href="{{ "/p/130.html" | relative_url }}">Diameter of Binary Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>132</td><td><a href="{{ "/p/132.html" | relative_url }}">Maximum path sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>129</td><td><a href="{{ "/p/129.html" | relative_url }}">Check if two trees are identical or not</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>126</td><td><a href="{{ "/p/126.html" | relative_url }}">Zig Zag or Spiral Traversal</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>116</td><td><a href="{{ "/p/116.html" | relative_url }}">Boundary Traversal</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>125</td><td><a href="{{ "/p/125.html" | relative_url }}">Vertical Order Traversal</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
 <tr><td>124</td><td><a href="{{ "/p/124.html" | relative_url }}">Top View of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
 <tr><td>115</td><td><a href="{{ "/p/115.html" | relative_url }}">Bottom view of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
 <tr><td>2782</td><td><a href="{{ "/p/2782.html" | relative_url }}">Right/Left View of Binary Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
