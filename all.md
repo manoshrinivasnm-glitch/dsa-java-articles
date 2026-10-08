@@ -468,122 +468,122 @@ title: All problems
 <tr><td>2390</td><td><a href="{{ "/p/2390.html" | relative_url }}">Bit PreRequisites for TRIE Problems</a></td><td><span class="badge badge-easy">Easy</span></td><td>Problems</td><td>A2Z</td></tr>
 <tr><td>1024</td><td><a href="{{ "/p/1024.html" | relative_url }}">Maximum XOR of two numbers in an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
 <tr><td>1025</td><td><a href="{{ "/p/1025.html" | relative_url }}">Maximum Xor with an element from an array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems</td><td>A2Z SDE</td></tr>
-<tr><td>983</td><td><a href="{{ "/p/983.html" | relative_url }}">Minimum number of bracket reversals to make an expression balanced</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr><td>982</td><td><a href="{{ "/p/982.html" | relative_url }}">Count and say</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr><td>2399</td><td><a href="{{ "/p/2399.html" | relative_url }}">Hashing In Strings - Theory</a></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr><td>979</td><td><a href="{{ "/p/979.html" | relative_url }}">Rabin Karp Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr><td>981</td><td><a href="{{ "/p/981.html" | relative_url }}">Z function</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr><td>977</td><td><a href="{{ "/p/977.html" | relative_url }}">KMP Algorithm or LPS array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr><td>980</td><td><a href="{{ "/p/980.html" | relative_url }}">Shortest Palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr><td>978</td><td><a href="{{ "/p/978.html" | relative_url }}">Longest happy prefix</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr><td>231</td><td><a href="{{ "/p/231.html" | relative_url }}">Count Palindromic Subsequences</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr><td>36</td><td><a href="{{ "/p/36.html" | relative_url }}">Sort an array of 0's 1's and 2's</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>465</td><td><a href="{{ "/p/465.html" | relative_url }}">Find the Duplicate Number</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2758</td><td><a href="{{ "/p/2758.html" | relative_url }}">Inversion of Array (Pre-req: Merge Sort)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>297</td><td><a href="{{ "/p/297.html" | relative_url }}">Grid unique paths</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>563</td><td><a href="{{ "/p/563.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>2837</td><td><a href="{{ "/p/2837.html" | relative_url }}">Largest Subarray with K sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>929</td><td><a href="{{ "/p/929.html" | relative_url }}">Longest Substring Without Repeating Characters</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>448</td><td><a href="{{ "/p/448.html" | relative_url }}">Find Middle of Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>613</td><td><a href="{{ "/p/613.html" | relative_url }}">Merge two Sorted Lists</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>626</td><td><a href="{{ "/p/626.html" | relative_url }}">Remove Nth node from the back of the LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>2848</td><td><a href="{{ "/p/2848.html" | relative_url }}">Add two numbers as LinkedList</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>258</td><td><a href="{{ "/p/258.html" | relative_url }}">Delete Node in a Linked List O(1)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>621</td><td><a href="{{ "/p/621.html" | relative_url }}">Find the intersection point of Y LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>620</td><td><a href="{{ "/p/620.html" | relative_url }}">Detect a loop in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>614</td><td><a href="{{ "/p/614.html" | relative_url }}">Reverse LL in group of given size K</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>618</td><td><a href="{{ "/p/618.html" | relative_url }}">Check if LL is palindrome or not</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>622</td><td><a href="{{ "/p/622.html" | relative_url }}">Find the starting point in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>612</td><td><a href="{{ "/p/612.html" | relative_url }}">Flattening of LL</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>615</td><td><a href="{{ "/p/615.html" | relative_url }}">Rotate a LL</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>47</td><td><a href="{{ "/p/47.html" | relative_url }}">Remove duplicates from sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>319</td><td><a href="{{ "/p/319.html" | relative_url }}">Minimum coins</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2805</td><td><a href="{{ "/p/2805.html" | relative_url }}">Subset Sums</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>818</td><td><a href="{{ "/p/818.html" | relative_url }}">Permutation Sequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>821</td><td><a href="{{ "/p/821.html" | relative_url }}">Permutations of a String</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2757</td><td><a href="{{ "/p/2757.html" | relative_url }}">Word Break (print all ways)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2771</td><td><a href="{{ "/p/2771.html" | relative_url }}">The N-th root of an integer</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>90</td><td><a href="{{ "/p/90.html" | relative_url }}">Single element in sorted array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2769</td><td><a href="{{ "/p/2769.html" | relative_url }}">Search element in a sorted and rotated array/ find pivot where it is rotated</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>76</td><td><a href="{{ "/p/76.html" | relative_url }}">Kth element of 2 sorted arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2766</td><td><a href="{{ "/p/2766.html" | relative_url }}">Allocate Minimum Number of Pages</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>575</td><td><a href="{{ "/p/575.html" | relative_url }}">Implement Max Heap</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>713</td><td><a href="{{ "/p/713.html" | relative_url }}">Merge K Sorted Arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>2808</td><td><a href="{{ "/p/2808.html" | relative_url }}">Implement Stack using Queue (using single queue)</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>936</td><td><a href="{{ "/p/936.html" | relative_url }}">Sort a Stack</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>687</td><td><a href="{{ "/p/687.html" | relative_url }}">Maximum of Minimums for Every Window Size</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2852</td><td><a href="{{ "/p/2852.html" | relative_url }}">Longest Palindrome in a string</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2861</td><td><a href="{{ "/p/2861.html" | relative_url }}">Implement ATOI/STRSTR</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>312</td><td><a href="{{ "/p/312.html" | relative_url }}">Minimum insertions to make string palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>400</td><td><a href="{{ "/p/400.html" | relative_url }}">Valid Anagram</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>198</td><td><a href="{{ "/p/198.html" | relative_url }}">Compare version numbers</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>133</td><td><a href="{{ "/p/133.html" | relative_url }}">Inorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>2790</td><td><a href="{{ "/p/2790.html" | relative_url }}">Preorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>139</td><td><a href="{{ "/p/139.html" | relative_url }}">Morris Inorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>138</td><td><a href="{{ "/p/138.html" | relative_url }}">Morris Preorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>123</td><td><a href="{{ "/p/123.html" | relative_url }}">Right/Left View of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>109</td><td><a href="{{ "/p/109.html" | relative_url }}">Construct a BT from Postorder and Inorder</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>128</td><td><a href="{{ "/p/128.html" | relative_url }}">Check for symmetrical BTs</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>823</td><td><a href="{{ "/p/823.html" | relative_url }}">Populating Next Right Pointers in Each Node</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>108</td><td><a href="{{ "/p/108.html" | relative_url }}">Search in BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>2391</td><td><a href="{{ "/p/2391.html" | relative_url }}">Construct BST from given keys</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>103</td><td><a href="{{ "/p/103.html" | relative_url }}">Inorder successor and predecessor in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2779</td><td><a href="{{ "/p/2779.html" | relative_url }}">Floor in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>2777</td><td><a href="{{ "/p/2777.html" | relative_url }}">Ceil in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr><td>2776</td><td><a href="{{ "/p/2776.html" | relative_url }}">Find K-th smallest element in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>99</td><td><a href="{{ "/p/99.html" | relative_url }}">Two sum in BST</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>96</td><td><a href="{{ "/p/96.html" | relative_url }}">BST iterator</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2773</td><td><a href="{{ "/p/2773.html" | relative_url }}">Size of the largest BST in a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>62</td><td><a href="{{ "/p/62.html" | relative_url }}">Binary Tree to Doubly Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>446</td><td><a href="{{ "/p/446.html" | relative_url }}">Find Median in a Stream</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>567</td><td><a href="{{ "/p/567.html" | relative_url }}">Kth largest element in a stream of running integers</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>279</td><td><a href="{{ "/p/279.html" | relative_url }}">Distinct Numbers in Each Subarray</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2839</td><td><a href="{{ "/p/2839.html" | relative_url }}">K-th largest element in an unsorted array.</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2832</td><td><a href="{{ "/p/2832.html" | relative_url }}">Flood-fill Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>188</td><td><a href="{{ "/p/188.html" | relative_url }}">Clone Graph</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>2818</td><td><a href="{{ "/p/2818.html" | relative_url }}">Detect A cycle in Undirected Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2819</td><td><a href="{{ "/p/2819.html" | relative_url }}">Detect A cycle in Undirected Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2816</td><td><a href="{{ "/p/2816.html" | relative_url }}">Detect A cycle in a Directed Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2815</td><td><a href="{{ "/p/2815.html" | relative_url }}">Detect A cycle in a Directed Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2820</td><td><a href="{{ "/p/2820.html" | relative_url }}">Topological Sort BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2821</td><td><a href="{{ "/p/2821.html" | relative_url }}">Topological Sort DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2833</td><td><a href="{{ "/p/2833.html" | relative_url }}">Number of islands(Do in Grid and Graph Both)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>499</td><td><a href="{{ "/p/499.html" | relative_url }}">Bipartite graph</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2812</td><td><a href="{{ "/p/2812.html" | relative_url }}">Bipartite Check using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2811</td><td><a href="{{ "/p/2811.html" | relative_url }}">Strongly Connected Component(using KosaRaju's algo)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>520</td><td><a href="{{ "/p/520.html" | relative_url }}">Dijkstra's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>518</td><td><a href="{{ "/p/518.html" | relative_url }}">Bellman ford algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2829</td><td><a href="{{ "/p/2829.html" | relative_url }}">Floyd Warshall Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2824</td><td><a href="{{ "/p/2824.html" | relative_url }}">MST using Prim's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2823</td><td><a href="{{ "/p/2823.html" | relative_url }}">MST using Kruskal's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>2759</td><td><a href="{{ "/p/2759.html" | relative_url }}">Max Product Subarray</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>315</td><td><a href="{{ "/p/315.html" | relative_url }}">0 and 1 Knapsack</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>698</td><td><a href="{{ "/p/698.html" | relative_url }}">Maximum Sum Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2797</td><td><a href="{{ "/p/2797.html" | relative_url }}">Minimum sum path in the matrix</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>316</td><td><a href="{{ "/p/316.html" | relative_url }}">Coin change II</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE B75</td></tr>
-<tr><td>323</td><td><a href="{{ "/p/323.html" | relative_url }}">Subset sum equals to target</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>322</td><td><a href="{{ "/p/322.html" | relative_url }}">Rod cutting problem</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>1004</td><td><a href="{{ "/p/1004.html" | relative_url }}">Super Egg Drop</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2854</td><td><a href="{{ "/p/2854.html" | relative_url }}">Palindrome Partitioning (MCM Variation)</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr><td>691</td><td><a href="{{ "/p/691.html" | relative_url }}">Maximum Profit in Job Scheduling</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2856</td><td><a href="{{ "/p/2856.html" | relative_url }}">Power Set (this is very important)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr><td>2392</td><td><a href="{{ "/p/2392.html" | relative_url }}">Contains Duplicate</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2404</td><td><a href="{{ "/p/2404.html" | relative_url }}">Product of Array Except Self</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2760</td><td><a href="{{ "/p/2760.html" | relative_url }}">Kadane's Algorithm, maximum subarray sum</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>2396</td><td><a href="{{ "/p/2396.html" | relative_url }}">Container with most water</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2411</td><td><a href="{{ "/p/2411.html" | relative_url }}">Sum of Two Integers</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2406</td><td><a href="{{ "/p/2406.html" | relative_url }}">Reverse Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2397</td><td><a href="{{ "/p/2397.html" | relative_url }}">Decode Ways</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>2403</td><td><a href="{{ "/p/2403.html" | relative_url }}">Pacific Atlantic Water Flow</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>495</td><td><a href="{{ "/p/495.html" | relative_url }}">Graph Valid Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>709</td><td><a href="{{ "/p/709.html" | relative_url }}">Meeting Rooms</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>710</td><td><a href="{{ "/p/710.html" | relative_url }}">Meeting Rooms II</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>2407</td><td><a href="{{ "/p/2407.html" | relative_url }}">Reorder List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr><td>559</td><td><a href="{{ "/p/559.html" | relative_url }}">Group Words by Anagrams</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>2794</td><td><a href="{{ "/p/2794.html" | relative_url }}">Palindromic Substrings</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>331</td><td><a href="{{ "/p/331.html" | relative_url }}">Encode and Decode Strings</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>2783</td><td><a href="{{ "/p/2783.html" | relative_url }}">Invert/Flip Binary Tree (Create)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr><td>2408</td><td><a href="{{ "/p/2408.html" | relative_url }}">Subtree of Another Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>983</td><td><a href="{{ "/p/983.html" | relative_url }}">Minimum number of bracket reversals to make an expression balanced</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z</td></tr>
+<tr><td>982</td><td><a href="{{ "/p/982.html" | relative_url }}">Count and say</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2399</td><td><a href="{{ "/p/2399.html" | relative_url }}">Hashing In Strings - Theory</a></td><td><span class="badge badge-easy">Easy</span></td><td>Hard String Problems</td><td>A2Z</td></tr>
+<tr><td>979</td><td><a href="{{ "/p/979.html" | relative_url }}">Rabin Karp Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>981</td><td><a href="{{ "/p/981.html" | relative_url }}">Z function</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>977</td><td><a href="{{ "/p/977.html" | relative_url }}">KMP Algorithm or LPS array</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z SDE</td></tr>
+<tr><td>980</td><td><a href="{{ "/p/980.html" | relative_url }}">Shortest Palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z</td></tr>
+<tr><td>978</td><td><a href="{{ "/p/978.html" | relative_url }}">Longest happy prefix</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>A2Z</td></tr>
+<tr><td>231</td><td><a href="{{ "/p/231.html" | relative_url }}">Count Palindromic Subsequences</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard String Problems</td><td>A2Z</td></tr>
+<tr><td>36</td><td><a href="{{ "/p/36.html" | relative_url }}">Sort an array of 0's 1's and 2's</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>SDE</td></tr>
+<tr><td>465</td><td><a href="{{ "/p/465.html" | relative_url }}">Find the Duplicate Number</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>SDE</td></tr>
+<tr><td>2758</td><td><a href="{{ "/p/2758.html" | relative_url }}">Inversion of Array (Pre-req: Merge Sort)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>SDE</td></tr>
+<tr><td>297</td><td><a href="{{ "/p/297.html" | relative_url }}">Grid unique paths</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>SDE B75</td></tr>
+<tr><td>563</td><td><a href="{{ "/p/563.html" | relative_url }}">Longest Consecutive Sequence in an Array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>SDE B75</td></tr>
+<tr><td>2837</td><td><a href="{{ "/p/2837.html" | relative_url }}">Largest Subarray with K sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy</td><td>SDE</td></tr>
+<tr><td>929</td><td><a href="{{ "/p/929.html" | relative_url }}">Longest Substring Without Repeating Characters</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>448</td><td><a href="{{ "/p/448.html" | relative_url }}">Find Middle of Linked List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>613</td><td><a href="{{ "/p/613.html" | relative_url }}">Merge two Sorted Lists</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems of LL</td><td>SDE B75</td></tr>
+<tr><td>626</td><td><a href="{{ "/p/626.html" | relative_url }}">Remove Nth node from the back of the LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE B75</td></tr>
+<tr><td>2848</td><td><a href="{{ "/p/2848.html" | relative_url }}">Add two numbers as LinkedList</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>258</td><td><a href="{{ "/p/258.html" | relative_url }}">Delete Node in a Linked List O(1)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>621</td><td><a href="{{ "/p/621.html" | relative_url }}">Find the intersection point of Y LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>620</td><td><a href="{{ "/p/620.html" | relative_url }}">Detect a loop in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE B75</td></tr>
+<tr><td>614</td><td><a href="{{ "/p/614.html" | relative_url }}">Reverse LL in group of given size K</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>SDE</td></tr>
+<tr><td>618</td><td><a href="{{ "/p/618.html" | relative_url }}">Check if LL is palindrome or not</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>622</td><td><a href="{{ "/p/622.html" | relative_url }}">Find the starting point in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems of LL</td><td>SDE</td></tr>
+<tr><td>612</td><td><a href="{{ "/p/612.html" | relative_url }}">Flattening of LL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>SDE</td></tr>
+<tr><td>615</td><td><a href="{{ "/p/615.html" | relative_url }}">Rotate a LL</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems of LL</td><td>SDE</td></tr>
+<tr><td>47</td><td><a href="{{ "/p/47.html" | relative_url }}">Remove duplicates from sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>SDE</td></tr>
+<tr><td>319</td><td><a href="{{ "/p/319.html" | relative_url }}">Minimum coins</a></td><td><span class="badge badge-hard">Hard</span></td><td>Easy Problems</td><td>SDE</td></tr>
+<tr><td>2805</td><td><a href="{{ "/p/2805.html" | relative_url }}">Subset Sums</a></td><td><span class="badge badge-hard">Hard</span></td><td>Subsequences Pattern</td><td>SDE</td></tr>
+<tr><td>818</td><td><a href="{{ "/p/818.html" | relative_url }}">Permutation Sequence</a></td><td><span class="badge badge-medium">Medium</span></td><td>Trying out all Combos / Hard</td><td>SDE</td></tr>
+<tr><td>821</td><td><a href="{{ "/p/821.html" | relative_url }}">Permutations of a String</a></td><td><span class="badge badge-medium">Medium</span></td><td>Trying out all Combos / Hard</td><td>SDE</td></tr>
+<tr><td>2757</td><td><a href="{{ "/p/2757.html" | relative_url }}">Word Break (print all ways)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Trying out all Combos / Hard</td><td>SDE</td></tr>
+<tr><td>2771</td><td><a href="{{ "/p/2771.html" | relative_url }}">The N-th root of an integer</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>SDE</td></tr>
+<tr><td>90</td><td><a href="{{ "/p/90.html" | relative_url }}">Single element in sorted array</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>SDE</td></tr>
+<tr><td>2769</td><td><a href="{{ "/p/2769.html" | relative_url }}">Search element in a sorted and rotated array/ find pivot where it is rotated</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on 1D Arrays</td><td>SDE</td></tr>
+<tr><td>76</td><td><a href="{{ "/p/76.html" | relative_url }}">Kth element of 2 sorted arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td>BS on Answers</td><td>SDE</td></tr>
+<tr><td>2766</td><td><a href="{{ "/p/2766.html" | relative_url }}">Allocate Minimum Number of Pages</a></td><td><span class="badge badge-hard">Hard</span></td><td>BS on Answers</td><td>SDE</td></tr>
+<tr><td>575</td><td><a href="{{ "/p/575.html" | relative_url }}">Implement Max Heap</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>SDE</td></tr>
+<tr><td>713</td><td><a href="{{ "/p/713.html" | relative_url }}">Merge K Sorted Arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE B75</td></tr>
+<tr><td>2808</td><td><a href="{{ "/p/2808.html" | relative_url }}">Implement Stack using Queue (using single queue)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>SDE</td></tr>
+<tr><td>936</td><td><a href="{{ "/p/936.html" | relative_url }}">Sort a Stack</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>SDE</td></tr>
+<tr><td>687</td><td><a href="{{ "/p/687.html" | relative_url }}">Maximum of Minimums for Every Window Size</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>SDE</td></tr>
+<tr><td>2852</td><td><a href="{{ "/p/2852.html" | relative_url }}">Longest Palindrome in a string</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>SDE</td></tr>
+<tr><td>2861</td><td><a href="{{ "/p/2861.html" | relative_url }}">Implement ATOI/STRSTR</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>SDE</td></tr>
+<tr><td>312</td><td><a href="{{ "/p/312.html" | relative_url }}">Minimum insertions to make string palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard String Problems</td><td>SDE</td></tr>
+<tr><td>400</td><td><a href="{{ "/p/400.html" | relative_url }}">Valid Anagram</a></td><td><span class="badge badge-easy">Easy</span></td><td>Basic and Easy String Problems</td><td>SDE B75</td></tr>
+<tr><td>198</td><td><a href="{{ "/p/198.html" | relative_url }}">Compare version numbers</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>SDE</td></tr>
+<tr><td>133</td><td><a href="{{ "/p/133.html" | relative_url }}">Inorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>SDE</td></tr>
+<tr><td>2790</td><td><a href="{{ "/p/2790.html" | relative_url }}">Preorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>SDE</td></tr>
+<tr><td>139</td><td><a href="{{ "/p/139.html" | relative_url }}">Morris Inorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>138</td><td><a href="{{ "/p/138.html" | relative_url }}">Morris Preorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>123</td><td><a href="{{ "/p/123.html" | relative_url }}">Right/Left View of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>109</td><td><a href="{{ "/p/109.html" | relative_url }}">Construct a BT from Postorder and Inorder</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>128</td><td><a href="{{ "/p/128.html" | relative_url }}">Check for symmetrical BTs</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>823</td><td><a href="{{ "/p/823.html" | relative_url }}">Populating Next Right Pointers in Each Node</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>108</td><td><a href="{{ "/p/108.html" | relative_url }}">Search in BST</a></td><td><span class="badge badge-easy">Easy</span></td><td>Concepts</td><td>SDE</td></tr>
+<tr><td>2391</td><td><a href="{{ "/p/2391.html" | relative_url }}">Construct BST from given keys</a></td><td><span class="badge badge-easy">Easy</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>103</td><td><a href="{{ "/p/103.html" | relative_url }}">Inorder successor and predecessor in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>2779</td><td><a href="{{ "/p/2779.html" | relative_url }}">Floor in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>2777</td><td><a href="{{ "/p/2777.html" | relative_url }}">Ceil in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>2776</td><td><a href="{{ "/p/2776.html" | relative_url }}">Find K-th smallest element in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td>Practice Problems</td><td>SDE B75</td></tr>
+<tr><td>99</td><td><a href="{{ "/p/99.html" | relative_url }}">Two sum in BST</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>96</td><td><a href="{{ "/p/96.html" | relative_url }}">BST iterator</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>2773</td><td><a href="{{ "/p/2773.html" | relative_url }}">Size of the largest BST in a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td>Practice Problems</td><td>SDE</td></tr>
+<tr><td>62</td><td><a href="{{ "/p/62.html" | relative_url }}">Binary Tree to Doubly Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>446</td><td><a href="{{ "/p/446.html" | relative_url }}">Find Median in a Stream</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>567</td><td><a href="{{ "/p/567.html" | relative_url }}">Kth largest element in a stream of running integers</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>SDE</td></tr>
+<tr><td>279</td><td><a href="{{ "/p/279.html" | relative_url }}">Distinct Numbers in Each Subarray</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>2839</td><td><a href="{{ "/p/2839.html" | relative_url }}">K-th largest element in an unsorted array.</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>SDE</td></tr>
+<tr><td>2832</td><td><a href="{{ "/p/2832.html" | relative_url }}">Flood-fill Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>188</td><td><a href="{{ "/p/188.html" | relative_url }}">Clone Graph</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE B75</td></tr>
+<tr><td>2818</td><td><a href="{{ "/p/2818.html" | relative_url }}">Detect A cycle in Undirected Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2819</td><td><a href="{{ "/p/2819.html" | relative_url }}">Detect A cycle in Undirected Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2816</td><td><a href="{{ "/p/2816.html" | relative_url }}">Detect A cycle in a Directed Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2815</td><td><a href="{{ "/p/2815.html" | relative_url }}">Detect A cycle in a Directed Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2820</td><td><a href="{{ "/p/2820.html" | relative_url }}">Topological Sort BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2821</td><td><a href="{{ "/p/2821.html" | relative_url }}">Topological Sort DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2833</td><td><a href="{{ "/p/2833.html" | relative_url }}">Number of islands(Do in Grid and Graph Both)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE B75</td></tr>
+<tr><td>499</td><td><a href="{{ "/p/499.html" | relative_url }}">Bipartite graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2812</td><td><a href="{{ "/p/2812.html" | relative_url }}">Bipartite Check using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2811</td><td><a href="{{ "/p/2811.html" | relative_url }}">Strongly Connected Component(using KosaRaju's algo)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>SDE</td></tr>
+<tr><td>520</td><td><a href="{{ "/p/520.html" | relative_url }}">Dijkstra's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
+<tr><td>518</td><td><a href="{{ "/p/518.html" | relative_url }}">Bellman ford algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
+<tr><td>2829</td><td><a href="{{ "/p/2829.html" | relative_url }}">Floyd Warshall Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
+<tr><td>2824</td><td><a href="{{ "/p/2824.html" | relative_url }}">MST using Prim's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>SDE</td></tr>
+<tr><td>2823</td><td><a href="{{ "/p/2823.html" | relative_url }}">MST using Kruskal's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>SDE</td></tr>
+<tr><td>2759</td><td><a href="{{ "/p/2759.html" | relative_url }}">Max Product Subarray</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard</td><td>SDE</td></tr>
+<tr><td>315</td><td><a href="{{ "/p/315.html" | relative_url }}">0 and 1 Knapsack</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>SDE</td></tr>
+<tr><td>698</td><td><a href="{{ "/p/698.html" | relative_url }}">Maximum Sum Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>SDE</td></tr>
+<tr><td>2797</td><td><a href="{{ "/p/2797.html" | relative_url }}">Minimum sum path in the matrix</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>SDE</td></tr>
+<tr><td>316</td><td><a href="{{ "/p/316.html" | relative_url }}">Coin change II</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>SDE B75</td></tr>
+<tr><td>323</td><td><a href="{{ "/p/323.html" | relative_url }}">Subset sum equals to target</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>SDE</td></tr>
+<tr><td>322</td><td><a href="{{ "/p/322.html" | relative_url }}">Rod cutting problem</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Subsequences</td><td>SDE</td></tr>
+<tr><td>1004</td><td><a href="{{ "/p/1004.html" | relative_url }}">Super Egg Drop</a></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>SDE</td></tr>
+<tr><td>2854</td><td><a href="{{ "/p/2854.html" | relative_url }}">Palindrome Partitioning (MCM Variation)</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>SDE</td></tr>
+<tr><td>691</td><td><a href="{{ "/p/691.html" | relative_url }}">Maximum Profit in Job Scheduling</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>SDE</td></tr>
+<tr><td>2856</td><td><a href="{{ "/p/2856.html" | relative_url }}">Power Set (this is very important)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Subsequences Pattern</td><td>SDE</td></tr>
+<tr><td>2392</td><td><a href="{{ "/p/2392.html" | relative_url }}">Contains Duplicate</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy</td><td>B75</td></tr>
+<tr><td>2404</td><td><a href="{{ "/p/2404.html" | relative_url }}">Product of Array Except Self</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium</td><td>B75</td></tr>
+<tr><td>2760</td><td><a href="{{ "/p/2760.html" | relative_url }}">Kadane's Algorithm, maximum subarray sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium</td><td>B75</td></tr>
+<tr><td>2396</td><td><a href="{{ "/p/2396.html" | relative_url }}">Container with most water</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>B75</td></tr>
+<tr><td>2411</td><td><a href="{{ "/p/2411.html" | relative_url }}">Sum of Two Integers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2406</td><td><a href="{{ "/p/2406.html" | relative_url }}">Reverse Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2397</td><td><a href="{{ "/p/2397.html" | relative_url }}">Decode Ways</a></td><td><span class="badge badge-easy">Easy</span></td><td>1D DP</td><td>B75</td></tr>
+<tr><td>2403</td><td><a href="{{ "/p/2403.html" | relative_url }}">Pacific Atlantic Water Flow</a></td><td><span class="badge badge-easy">Easy</span></td><td>Problems on BFS/DFS</td><td>B75</td></tr>
+<tr><td>495</td><td><a href="{{ "/p/495.html" | relative_url }}">Graph Valid Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>B75</td></tr>
+<tr><td>709</td><td><a href="{{ "/p/709.html" | relative_url }}">Meeting Rooms</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium/Hard</td><td>B75</td></tr>
+<tr><td>710</td><td><a href="{{ "/p/710.html" | relative_url }}">Meeting Rooms II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>B75</td></tr>
+<tr><td>2407</td><td><a href="{{ "/p/2407.html" | relative_url }}">Reorder List</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems of LL</td><td>B75</td></tr>
+<tr><td>559</td><td><a href="{{ "/p/559.html" | relative_url }}">Group Words by Anagrams</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>B75</td></tr>
+<tr><td>2794</td><td><a href="{{ "/p/2794.html" | relative_url }}">Palindromic Substrings</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>B75</td></tr>
+<tr><td>331</td><td><a href="{{ "/p/331.html" | relative_url }}">Encode and Decode Strings</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium String Problems</td><td>B75</td></tr>
+<tr><td>2783</td><td><a href="{{ "/p/2783.html" | relative_url }}">Invert/Flip Binary Tree (Create)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>B75</td></tr>
+<tr><td>2408</td><td><a href="{{ "/p/2408.html" | relative_url }}">Subtree of Another Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>B75</td></tr>
 </tbody></table>

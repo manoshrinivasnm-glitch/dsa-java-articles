@@ -13,7 +13,7 @@
    }
   },
   "slug": "425-input-output",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -30,7 +30,7 @@
    }
   },
   "slug": "1211-cpp-basics",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -47,7 +47,7 @@
    }
   },
   "slug": "424-if-elseif",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -64,7 +64,7 @@
    }
   },
   "slug": "429-switch-case",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -81,7 +81,7 @@
    }
   },
   "slug": "2869-what-are-arrays-strings",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -98,7 +98,7 @@
    }
   },
   "slug": "2867-for-loops",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -115,7 +115,7 @@
    }
   },
   "slug": "2868-while-loops",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -132,7 +132,7 @@
    }
   },
   "slug": "2866-functions-pass-by-reference-and-value",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -149,7 +149,7 @@
    }
   },
   "slug": "1219-theory-with-examples",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Things to Know in C++/Java/Python or any language"
  },
  {
@@ -166,7 +166,7 @@
    }
   },
   "slug": "1216-easy-and-medium",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Build-up Logical Thinking"
  },
  {
@@ -183,7 +183,7 @@
    }
   },
   "slug": "1205-hard",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Build-up Logical Thinking"
  },
  {
@@ -200,7 +200,7 @@
    }
   },
   "slug": "401-pattern-1",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -217,7 +217,7 @@
    }
   },
   "slug": "412-pattern-2",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -234,7 +234,7 @@
    }
   },
   "slug": "416-pattern-3",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -251,7 +251,7 @@
    }
   },
   "slug": "417-pattern-4",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -268,7 +268,7 @@
    }
   },
   "slug": "418-pattern-5",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -285,7 +285,7 @@
    }
   },
   "slug": "419-pattern-6",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -302,7 +302,7 @@
    }
   },
   "slug": "420-pattern-7",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -319,7 +319,7 @@
    }
   },
   "slug": "421-pattern-8",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -336,7 +336,7 @@
    }
   },
   "slug": "422-pattern-9",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -353,7 +353,7 @@
    }
   },
   "slug": "402-pattern-10",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -370,7 +370,7 @@
    }
   },
   "slug": "403-pattern-11",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -387,7 +387,7 @@
    }
   },
   "slug": "404-pattern-12",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -404,7 +404,7 @@
    }
   },
   "slug": "405-pattern-13",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -421,7 +421,7 @@
    }
   },
   "slug": "406-pattern-14",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -438,7 +438,7 @@
    }
   },
   "slug": "407-pattern-15",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -455,7 +455,7 @@
    }
   },
   "slug": "408-pattern-16",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -472,7 +472,7 @@
    }
   },
   "slug": "409-pattern-17",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -489,7 +489,7 @@
    }
   },
   "slug": "410-pattern-18",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -506,7 +506,7 @@
    }
   },
   "slug": "411-pattern-19",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -523,7 +523,7 @@
    }
   },
   "slug": "413-pattern-20",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -540,7 +540,7 @@
    }
   },
   "slug": "414-pattern-21",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -557,7 +557,7 @@
    }
   },
   "slug": "415-pattern-22",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Patterns"
  },
  {
@@ -574,7 +574,7 @@
    }
   },
   "slug": "1218-stl",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn STL/Java-Collections or similar thing in your | language"
  },
  {
@@ -591,7 +591,7 @@
    }
   },
   "slug": "1217-java-collections",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn STL/Java-Collections or similar thing in your | language"
  },
  {
@@ -608,7 +608,7 @@
    }
   },
   "slug": "367-count-all-digits-of-a-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -625,7 +625,7 @@
    }
   },
   "slug": "376-reverse-a-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -647,7 +647,7 @@
    }
   },
   "slug": "374-palindrome-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -664,7 +664,7 @@
    }
   },
   "slug": "372-gcd-of-two-numbers",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -681,7 +681,7 @@
    }
   },
   "slug": "366-check-if-the-number-is-armstrong",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -698,7 +698,7 @@
    }
   },
   "slug": "2807-print-all-divisors",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -715,7 +715,7 @@
    }
   },
   "slug": "365-check-for-prime-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Know Basic Maths"
  },
  {
@@ -732,7 +732,7 @@
    }
   },
   "slug": "2401-understand-recursion-by-print-something-n-times",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -749,7 +749,7 @@
    }
   },
   "slug": "2405-print-name-n-times-using-recursion",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -766,7 +766,7 @@
    }
   },
   "slug": "850-print-1-to-n-using-recursion",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -783,7 +783,7 @@
    }
   },
   "slug": "852-print-n-to-1-using-recursion",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -800,7 +800,7 @@
    }
   },
   "slug": "386-sum-of-first-n-numbers",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -817,7 +817,7 @@
    }
   },
   "slug": "371-factorial-of-a-given-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -834,7 +834,7 @@
    }
   },
   "slug": "342-reverse-an-array",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -851,7 +851,7 @@
    }
   },
   "slug": "378-check-if-string-is-palindrome-or-not",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -868,7 +868,7 @@
    }
   },
   "slug": "381-fibonacci-number",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Recursion"
  },
  {
@@ -885,7 +885,7 @@
    }
   },
   "slug": "1203-basic-hashing",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Hashing"
  },
  {
@@ -902,7 +902,7 @@
    }
   },
   "slug": "252-counting-frequencies-of-array-elements",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Hashing"
  },
  {
@@ -919,7 +919,7 @@
    }
   },
   "slug": "344-highest-occurring-element-in-an-array",
-  "topic": "Learn the basics",
+  "topic": "Basics",
   "section": "Learn Basic Hashing"
  },
  {
@@ -936,7 +936,7 @@
    }
   },
   "slug": "947-selection-sort",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-I"
  },
  {
@@ -953,7 +953,7 @@
    }
   },
   "slug": "943-bubble-sort",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-I"
  },
  {
@@ -970,7 +970,7 @@
    }
   },
   "slug": "944-insertion-sorting",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-I"
  },
  {
@@ -987,7 +987,7 @@
    }
   },
   "slug": "945-merge-sorting",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-II"
  },
  {
@@ -1004,7 +1004,7 @@
    }
   },
   "slug": "881-recursive-bubble-sort",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-II"
  },
  {
@@ -1021,7 +1021,7 @@
    }
   },
   "slug": "882-recursive-insertion-sort",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-II"
  },
  {
@@ -1038,7 +1038,7 @@
    }
   },
   "slug": "946-quick-sorting",
-  "topic": "Learn Important Sorting Techniques",
+  "topic": "Sorting",
   "section": "Sorting-II"
  },
  {
@@ -1055,7 +1055,7 @@
    }
   },
   "slug": "38-largest-element",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1072,7 +1072,7 @@
    }
   },
   "slug": "43-second-largest-element",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1089,7 +1089,7 @@
    }
   },
   "slug": "379-check-if-the-array-is-sorted-ii",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1106,7 +1106,7 @@
    }
   },
   "slug": "2764-remove-duplicates-from-sorted-array",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1123,7 +1123,7 @@
    }
   },
   "slug": "40-left-rotate-array-by-one",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1140,7 +1140,7 @@
    }
   },
   "slug": "39-left-rotate-array-by-k-places",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1157,7 +1157,7 @@
    }
   },
   "slug": "46-move-zeros-to-end",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1174,7 +1174,7 @@
    }
   },
   "slug": "41-linear-search",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1191,7 +1191,7 @@
    }
   },
   "slug": "48-union-of-two-sorted-arrays",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1213,7 +1213,7 @@
    }
   },
   "slug": "44-find-missing-number",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1235,7 +1235,7 @@
    }
   },
   "slug": "42-maximum-consecutive-ones",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1252,7 +1252,7 @@
    }
   },
   "slug": "2793-find-the-number-that-appears-once-and-other-numbers-twice",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1269,7 +1269,7 @@
    }
   },
   "slug": "2836-longest-subarray-with-given-sum-k-positives",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1286,7 +1286,7 @@
    }
   },
   "slug": "564-longest-subarray-with-sum-k",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Easy"
  },
  {
@@ -1313,7 +1313,7 @@
    }
   },
   "slug": "37-two-sum",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1330,7 +1330,7 @@
    }
   },
   "slug": "2762-sort-an-array-of-0s-1s-and-2s",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1352,7 +1352,7 @@
    }
   },
   "slug": "22-majority-element-i",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1374,7 +1374,7 @@
    }
   },
   "slug": "29-kadanes-algorithm",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1391,7 +1391,7 @@
    }
   },
   "slug": "2761-print-subarray-with-maximum-subarray-sum-extended-version-of",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1413,7 +1413,7 @@
    }
   },
   "slug": "2798-stock-buy-and-sell",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1430,7 +1430,7 @@
    }
   },
   "slug": "34-rearrange-array-elements-by-sign",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1452,7 +1452,7 @@
    }
   },
   "slug": "31-next-permutation",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1469,7 +1469,7 @@
    }
   },
   "slug": "30-leaders-in-an-array",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1486,7 +1486,7 @@
    }
   },
   "slug": "2835-longest-consecutive-sequence-in-an-array",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1513,7 +1513,7 @@
    }
   },
   "slug": "911-set-matrix-zeroes",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1540,7 +1540,7 @@
    }
   },
   "slug": "35-rotate-matrix-by-90-degrees",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1562,7 +1562,7 @@
    }
   },
   "slug": "33-print-the-matrix-in-spiral-manner",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1579,7 +1579,7 @@
    }
   },
   "slug": "561-count-subarrays-with-given-sum",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Medium"
  },
  {
@@ -1601,7 +1601,7 @@
    }
   },
   "slug": "813-pascals-triangle-i",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1623,7 +1623,7 @@
    }
   },
   "slug": "23-majority-element-ii",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1650,7 +1650,7 @@
    }
   },
   "slug": "27-3-sum",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1672,7 +1672,7 @@
    }
   },
   "slug": "28-4-sum",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1689,7 +1689,7 @@
    }
   },
   "slug": "605-largest-subarray-with-sum-0",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1711,7 +1711,7 @@
    }
   },
   "slug": "562-count-subarrays-with-given-xor-k",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1733,7 +1733,7 @@
    }
   },
   "slug": "715-merge-overlapping-subintervals",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1755,7 +1755,7 @@
    }
   },
   "slug": "25-merge-two-sorted-arrays-without-extra-space",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1782,7 +1782,7 @@
    }
   },
   "slug": "21-find-the-repeating-and-missing-number",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1799,7 +1799,7 @@
    }
   },
   "slug": "20-count-inversions",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1821,7 +1821,7 @@
    }
   },
   "slug": "26-reverse-pairs",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1843,7 +1843,7 @@
    }
   },
   "slug": "24-maximum-product-subarray-in-an-array",
-  "topic": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+  "topic": "Arrays",
   "section": "Hard"
  },
  {
@@ -1860,7 +1860,7 @@
    }
   },
   "slug": "81-search-x-in-sorted-array",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1877,7 +1877,7 @@
    }
   },
   "slug": "80-lower-bound",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1894,7 +1894,7 @@
    }
   },
   "slug": "82-upper-bound",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1911,7 +1911,7 @@
    }
   },
   "slug": "89-search-insert-position",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1928,7 +1928,7 @@
    }
   },
   "slug": "86-floor-and-ceil-in-sorted-array",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1945,7 +1945,7 @@
    }
   },
   "slug": "85-first-and-last-occurrence",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1962,7 +1962,7 @@
    }
   },
   "slug": "229-count-occurrences-in-a-sorted-array",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -1984,7 +1984,7 @@
    }
   },
   "slug": "87-search-in-rotated-sorted-array-i",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2001,7 +2001,7 @@
    }
   },
   "slug": "88-search-in-rotated-sorted-array-ii",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2023,7 +2023,7 @@
    }
   },
   "slug": "83-find-minimum-in-rotated-sorted-array",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2040,7 +2040,7 @@
    }
   },
   "slug": "84-find-out-how-many-times-the-array-is-rotated",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2057,7 +2057,7 @@
    }
   },
   "slug": "2770-single-element-in-a-sorted-array",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2074,7 +2074,7 @@
    }
   },
   "slug": "75-find-peak-element",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 1D Arrays"
  },
  {
@@ -2091,7 +2091,7 @@
    }
   },
   "slug": "92-find-square-root-of-a-number",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2108,7 +2108,7 @@
    }
   },
   "slug": "91-find-nth-root-of-a-number",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2125,7 +2125,7 @@
    }
   },
   "slug": "94-koko-eating-bananas",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2142,7 +2142,7 @@
    }
   },
   "slug": "95-minimum-days-to-make-m-bouquets",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2159,7 +2159,7 @@
    }
   },
   "slug": "93-find-the-smallest-divisor",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2176,7 +2176,7 @@
    }
   },
   "slug": "161-capacity-to-ship-packages-within-d-days",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2193,7 +2193,7 @@
    }
   },
   "slug": "600-kth-missing-positive-number",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2215,7 +2215,7 @@
    }
   },
   "slug": "73-aggressive-cows",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2232,7 +2232,7 @@
    }
   },
   "slug": "74-book-allocation-problem",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2249,7 +2249,7 @@
    }
   },
   "slug": "79-split-array-largest-sum",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2266,7 +2266,7 @@
    }
   },
   "slug": "805-painters-partition",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2283,7 +2283,7 @@
    }
   },
   "slug": "78-minimize-max-distance-to-gas-station",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2305,7 +2305,7 @@
    }
   },
   "slug": "77-median-of-2-sorted-arrays",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2322,7 +2322,7 @@
    }
   },
   "slug": "2767-kth-element-of-2-sorted-arrays",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on Answers"
  },
  {
@@ -2339,7 +2339,7 @@
    }
   },
   "slug": "66-find-row-with-maximum-1s",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 2D Arrays"
  },
  {
@@ -2361,7 +2361,7 @@
    }
   },
   "slug": "69-search-in-a-2d-matrix",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 2D Arrays"
  },
  {
@@ -2378,7 +2378,7 @@
    }
   },
   "slug": "68-search-in-2d-matrix-ii",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 2D Arrays"
  },
  {
@@ -2395,7 +2395,7 @@
    }
   },
   "slug": "65-find-peak-element-ii",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 2D Arrays"
  },
  {
@@ -2417,7 +2417,7 @@
    }
   },
   "slug": "67-matrix-median",
-  "topic": "Binary Search [1D, 2D Arrays, Search Space]",
+  "topic": "Binary Search",
   "section": "BS on 2D Arrays"
  },
  {
@@ -2434,7 +2434,7 @@
    }
   },
   "slug": "892-remove-outermost-parentheses",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2451,7 +2451,7 @@
    }
   },
   "slug": "2863-reverse-words-in-a-given-string-palindrome-check",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2468,7 +2468,7 @@
    }
   },
   "slug": "394-largest-odd-number-in-a-string",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2490,7 +2490,7 @@
    }
   },
   "slug": "395-longest-common-prefix",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2507,7 +2507,7 @@
    }
   },
   "slug": "393-isomorphic-string",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2524,7 +2524,7 @@
    }
   },
   "slug": "398-rotate-string",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2541,7 +2541,7 @@
    }
   },
   "slug": "2809-check-if-two-strings-are-anagram-of-each-other",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Basic and Easy String Problems"
  },
  {
@@ -2558,7 +2558,7 @@
    }
   },
   "slug": "399-sort-characters-by-frequency",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2575,7 +2575,7 @@
    }
   },
   "slug": "674-maximum-nesting-depth-of-the-parentheses",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2597,7 +2597,7 @@
    }
   },
   "slug": "903-roman-to-integer",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2614,7 +2614,7 @@
    }
   },
   "slug": "974-string-to-integer-atoi",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2631,7 +2631,7 @@
    }
   },
   "slug": "2394-count-number-of-substrings",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2653,7 +2653,7 @@
    }
   },
   "slug": "638-longest-palindromic-substring",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2670,7 +2670,7 @@
    }
   },
   "slug": "993-sum-of-beauty-of-all-substrings",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2692,7 +2692,7 @@
    }
   },
   "slug": "984-reverse-every-word-in-a-string",
-  "topic": "Strings [Basic and Medium]",
+  "topic": "Strings",
   "section": "Medium String Problems"
  },
  {
@@ -2709,7 +2709,7 @@
    }
   },
   "slug": "1237-introduction-to-singly-linkedlist",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn 1D LinkedList"
  },
  {
@@ -2726,7 +2726,7 @@
    }
   },
   "slug": "356-insertion-at-the-head-of-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn 1D LinkedList"
  },
  {
@@ -2743,7 +2743,7 @@
    }
   },
   "slug": "352-deletion-of-the-head-of-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn 1D LinkedList"
  },
  {
@@ -2760,7 +2760,7 @@
    }
   },
   "slug": "470-find-the-length-of-the-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn 1D LinkedList"
  },
  {
@@ -2777,7 +2777,7 @@
    }
   },
   "slug": "905-search-in-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn 1D LinkedList"
  },
  {
@@ -2794,7 +2794,7 @@
    }
   },
   "slug": "1234-introduction-to-doubly-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn Doubly LinkedList"
  },
  {
@@ -2811,7 +2811,7 @@
    }
   },
   "slug": "361-insert-node-before-head-in-doubly-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn Doubly LinkedList"
  },
  {
@@ -2828,7 +2828,7 @@
    }
   },
   "slug": "348-delete-head-of-doubly-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn Doubly LinkedList"
  },
  {
@@ -2845,7 +2845,7 @@
    }
   },
   "slug": "900-reverse-a-doubly-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Learn Doubly LinkedList"
  },
  {
@@ -2862,7 +2862,7 @@
    }
   },
   "slug": "2810-middle-of-a-linkedlist-tortoisehare-method",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2879,7 +2879,7 @@
    }
   },
   "slug": "2850-reverse-a-linkedlist-iterative",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2906,7 +2906,7 @@
    }
   },
   "slug": "627-reverse-a-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2923,7 +2923,7 @@
    }
   },
   "slug": "2845-detect-a-loop-in-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2940,7 +2940,7 @@
    }
   },
   "slug": "2847-find-the-starting-point-in-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2957,7 +2957,7 @@
    }
   },
   "slug": "623-length-of-loop-in-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2974,7 +2974,7 @@
    }
   },
   "slug": "2844-check-if-ll-is-palindrome-or-not",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -2991,7 +2991,7 @@
    }
   },
   "slug": "628-segregate-odd-and-even-nodes-in-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3008,7 +3008,7 @@
    }
   },
   "slug": "2849-remove-nth-node-from-the-back-of-the-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3025,7 +3025,7 @@
    }
   },
   "slug": "619-delete-the-middle-node-in-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3042,7 +3042,7 @@
    }
   },
   "slug": "616-sort-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3059,7 +3059,7 @@
    }
   },
   "slug": "629-sort-a-linked-list-of-0s-1s-and-2s",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3076,7 +3076,7 @@
    }
   },
   "slug": "2846-find-the-intersection-point-of-y-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3093,7 +3093,7 @@
    }
   },
   "slug": "617-add-one-to-a-number-represented-by-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3110,7 +3110,7 @@
    }
   },
   "slug": "625-add-two-numbers-in-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of LL"
  },
  {
@@ -3127,7 +3127,7 @@
    }
   },
   "slug": "609-delete-all-occurrences-of-a-key-in-dll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of DLL"
  },
  {
@@ -3144,7 +3144,7 @@
    }
   },
   "slug": "452-find-pairs-with-given-sum-in-doubly-linked-list",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of DLL"
  },
  {
@@ -3161,7 +3161,7 @@
    }
   },
   "slug": "610-remove-duplicates-from-sorted-dll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Medium Problems of DLL"
  },
  {
@@ -3178,7 +3178,7 @@
    }
   },
   "slug": "2842-reverse-ll-in-group-of-given-size-k",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Hard Problems of LL"
  },
  {
@@ -3195,7 +3195,7 @@
    }
   },
   "slug": "2843-rotate-a-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Hard Problems of LL"
  },
  {
@@ -3212,7 +3212,7 @@
    }
   },
   "slug": "2841-flattening-of-ll",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Hard Problems of LL"
  },
  {
@@ -3234,7 +3234,7 @@
    }
   },
   "slug": "611-clone-a-ll-with-random-and-next-pointer",
-  "topic": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+  "topic": "Linked List",
   "section": "Hard Problems of LL"
  },
  {
@@ -3251,7 +3251,7 @@
    }
   },
   "slug": "2862-recursive-implementation-of-atoi",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Get a Strong Hold"
  },
  {
@@ -3273,7 +3273,7 @@
    }
   },
   "slug": "2855-pow-x-n",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Get a Strong Hold"
  },
  {
@@ -3290,7 +3290,7 @@
    }
   },
   "slug": "222-count-good-numbers",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Get a Strong Hold"
  },
  {
@@ -3307,7 +3307,7 @@
    }
   },
   "slug": "2858-sort-a-stack-using-recursion",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Get a Strong Hold"
  },
  {
@@ -3324,7 +3324,7 @@
    }
   },
   "slug": "901-reverse-a-stack",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Get a Strong Hold"
  },
  {
@@ -3341,7 +3341,7 @@
    }
   },
   "slug": "493-generate-binary-strings-without-consecutive-1s",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3358,7 +3358,7 @@
    }
   },
   "slug": "876-generate-parentheses",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3375,7 +3375,7 @@
    }
   },
   "slug": "878-power-set",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3392,7 +3392,7 @@
    }
   },
   "slug": "2400-learn-all-patterns-of-subsequences-theory",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3409,7 +3409,7 @@
    }
   },
   "slug": "880-count-all-subsequences-with-sum-k",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3426,7 +3426,7 @@
    }
   },
   "slug": "879-check-if-there-exists-a-subsequence-with-sum-k",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3453,7 +3453,7 @@
    }
   },
   "slug": "864-combination-sum",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3475,7 +3475,7 @@
    }
   },
   "slug": "865-combination-sum-ii",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3492,7 +3492,7 @@
    }
   },
   "slug": "867-subsets-i",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3514,7 +3514,7 @@
    }
   },
   "slug": "868-subsets-ii",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3531,7 +3531,7 @@
    }
   },
   "slug": "866-combination-sum-iii",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3548,7 +3548,7 @@
    }
   },
   "slug": "875-letter-combinations-of-a-phone-number",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Subsequences Pattern"
  },
  {
@@ -3570,7 +3570,7 @@
    }
   },
   "slug": "871-palindrome-partitioning",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3592,7 +3592,7 @@
    }
   },
   "slug": "874-word-search",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3614,7 +3614,7 @@
    }
   },
   "slug": "870-n-queen",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3636,7 +3636,7 @@
    }
   },
   "slug": "872-rat-in-a-maze",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3663,7 +3663,7 @@
    }
   },
   "slug": "4-word-break",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3685,7 +3685,7 @@
    }
   },
   "slug": "869-m-coloring-problem",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3707,7 +3707,7 @@
    }
   },
   "slug": "873-sudoku-solver",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3724,7 +3724,7 @@
    }
   },
   "slug": "3-expression-add-operators",
-  "topic": "Recursion [PatternWise]",
+  "topic": "Recursion and Backtracking",
   "section": "Trying out all Combos / Hard"
  },
  {
@@ -3741,7 +3741,7 @@
    }
   },
   "slug": "1155-introduction-to-bits-and-tricks",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3758,7 +3758,7 @@
    }
   },
   "slug": "177-check-if-the-i-th-bit-is-set-or-not",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3775,7 +3775,7 @@
    }
   },
   "slug": "171-check-if-a-number-is-odd-or-not",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3792,7 +3792,7 @@
    }
   },
   "slug": "172-check-if-a-number-is-power-of-2-or-not",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3809,7 +3809,7 @@
    }
   },
   "slug": "243-count-the-number-of-set-bits",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3826,7 +3826,7 @@
    }
   },
   "slug": "2410-set-unset-the-rightmost-unset-bit",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3843,7 +3843,7 @@
    }
   },
   "slug": "1005-swap-two-numbers",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3860,7 +3860,7 @@
    }
   },
   "slug": "140-divide-two-numbers-without-multiplication-and-division",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Learn Bit Manipulation"
  },
  {
@@ -3877,7 +3877,7 @@
    }
   },
   "slug": "141-minimum-bit-flips-to-convert-number",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Interview Problems"
  },
  {
@@ -3894,7 +3894,7 @@
    }
   },
   "slug": "143-single-number-i",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Interview Problems"
  },
  {
@@ -3911,7 +3911,7 @@
    }
   },
   "slug": "142-power-set-bit-manipulation",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Interview Problems"
  },
  {
@@ -3928,7 +3928,7 @@
    }
   },
   "slug": "146-xor-of-numbers-in-a-given-range",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Interview Problems"
  },
  {
@@ -3945,7 +3945,7 @@
    }
   },
   "slug": "145-single-number-iii",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Interview Problems"
  },
  {
@@ -3962,7 +3962,7 @@
    }
   },
   "slug": "2853-print-prime-factors-of-a-number",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Advanced Maths"
  },
  {
@@ -3979,7 +3979,7 @@
    }
   },
   "slug": "370-divisors-of-a-number",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Advanced Maths"
  },
  {
@@ -3996,7 +3996,7 @@
    }
   },
   "slug": "651-count-primes-in-range-l-to-r",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Advanced Maths"
  },
  {
@@ -4013,7 +4013,7 @@
    }
   },
   "slug": "652-prime-factorisation-of-a-number",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Advanced Maths"
  },
  {
@@ -4030,7 +4030,7 @@
    }
   },
   "slug": "877-pow-x-n",
-  "topic": "Bit Manipulation [Concepts & Problems]",
+  "topic": "Bit Manipulation",
   "section": "Advanced Maths"
  },
  {
@@ -4052,7 +4052,7 @@
    }
   },
   "slug": "390-implement-stack-using-arrays",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4074,7 +4074,7 @@
    }
   },
   "slug": "387-implement-queue-using-arrays",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4091,7 +4091,7 @@
    }
   },
   "slug": "392-implement-stack-using-queue",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4113,7 +4113,7 @@
    }
   },
   "slug": "389-implement-queue-using-stack",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4130,7 +4130,7 @@
    }
   },
   "slug": "391-implement-stack-using-linkedlist",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4147,7 +4147,7 @@
    }
   },
   "slug": "388-implement-queue-using-linkedlist",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4174,7 +4174,7 @@
    }
   },
   "slug": "966-balanced-paranthesis",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4196,7 +4196,7 @@
    }
   },
   "slug": "958-implement-min-stack",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Learning"
  },
  {
@@ -4213,7 +4213,7 @@
    }
   },
   "slug": "586-infix-to-postfix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4230,7 +4230,7 @@
    }
   },
   "slug": "848-prefix-to-infix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4247,7 +4247,7 @@
    }
   },
   "slug": "849-prefix-to-postfix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4264,7 +4264,7 @@
    }
   },
   "slug": "825-postfix-to-prefix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4281,7 +4281,7 @@
    }
   },
   "slug": "824-postfix-to-infix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4298,7 +4298,7 @@
    }
   },
   "slug": "587-infix-to-prefix-conversion",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Prefix, Infix, PostFix Conversion Problems"
  },
  {
@@ -4320,7 +4320,7 @@
    }
   },
   "slug": "968-next-greater-element",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4337,7 +4337,7 @@
    }
   },
   "slug": "969-next-greater-element-2",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4359,7 +4359,7 @@
    }
   },
   "slug": "768-next-smaller-element",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4376,7 +4376,7 @@
    }
   },
   "slug": "285-number-of-greater-elements-to-the-right",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4398,7 +4398,7 @@
    }
   },
   "slug": "965-trapping-rainwater",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4415,7 +4415,7 @@
    }
   },
   "slug": "971-sum-of-subarray-minimums",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4432,7 +4432,7 @@
    }
   },
   "slug": "967-asteroid-collision",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4449,7 +4449,7 @@
    }
   },
   "slug": "972-sum-of-subarray-ranges",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4466,7 +4466,7 @@
    }
   },
   "slug": "970-remove-k-digits",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4488,7 +4488,7 @@
    }
   },
   "slug": "959-largest-rectangle-in-a-histogram",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4505,7 +4505,7 @@
    }
   },
   "slug": "962-maximum-rectangles",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
@@ -4527,7 +4527,7 @@
    }
   },
   "slug": "963-sliding-window-maximum",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Implementation Problems"
  },
  {
@@ -4549,7 +4549,7 @@
    }
   },
   "slug": "964-stock-span-problem",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Implementation Problems"
  },
  {
@@ -4571,7 +4571,7 @@
    }
   },
   "slug": "957-celebrity-problem",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Implementation Problems"
  },
  {
@@ -4593,7 +4593,7 @@
    }
   },
   "slug": "961-lru-cache",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Implementation Problems"
  },
  {
@@ -4615,7 +4615,7 @@
    }
   },
   "slug": "960-lfu-cache",
-  "topic": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+  "topic": "Stacks and Queues",
   "section": "Implementation Problems"
  },
  {
@@ -4637,7 +4637,7 @@
    }
   },
   "slug": "2857-longest-substring-without-repeating-characters",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4654,7 +4654,7 @@
    }
   },
   "slug": "930-max-consecutive-ones-iii",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4671,7 +4671,7 @@
    }
   },
   "slug": "926-fruit-into-baskets",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4693,7 +4693,7 @@
    }
   },
   "slug": "927-longest-repeating-character-replacement",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4710,7 +4710,7 @@
    }
   },
   "slug": "923-binary-subarrays-with-sum",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4727,7 +4727,7 @@
    }
   },
   "slug": "924-count-number-of-nice-subarrays",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4744,7 +4744,7 @@
    }
   },
   "slug": "925-number-of-substrings-containing-all-three-characters",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4761,7 +4761,7 @@
    }
   },
   "slug": "922-maximum-points-you-can-obtain-from-cards",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Medium Problems"
  },
  {
@@ -4778,7 +4778,7 @@
    }
   },
   "slug": "928-longest-substring-with-at-most-k-distinct-characters",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Hard Problems"
  },
  {
@@ -4795,7 +4795,7 @@
    }
   },
   "slug": "988-subarrays-with-k-different-integers",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Hard Problems"
  },
  {
@@ -4817,7 +4817,7 @@
    }
   },
   "slug": "931-minimum-window-substring",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Hard Problems"
  },
  {
@@ -4834,7 +4834,7 @@
    }
   },
   "slug": "754-minimum-window-subsequence",
-  "topic": "Sliding Window & Two Pointer Combined Problems",
+  "topic": "Sliding Window and Two Pointers",
   "section": "Hard Problems"
  },
  {
@@ -4851,7 +4851,7 @@
    }
   },
   "slug": "1223-heaps-theory-video",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Learning"
  },
  {
@@ -4868,7 +4868,7 @@
    }
   },
   "slug": "576-implement-min-heap",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Learning"
  },
  {
@@ -4885,7 +4885,7 @@
    }
   },
   "slug": "571-check-if-an-array-represents-a-min-heap",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Learning"
  },
  {
@@ -4902,7 +4902,7 @@
    }
   },
   "slug": "572-convert-min-heap-to-max-heap",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Learning"
  },
  {
@@ -4924,7 +4924,7 @@
    }
   },
   "slug": "578-k-th-largest-element-in-an-array",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -4941,7 +4941,7 @@
    }
   },
   "slug": "2840-kth-smallest-element-in-an-array-use-priority-queue",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -4958,7 +4958,7 @@
    }
   },
   "slug": "2409-sort-k-sorted-array",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -4975,7 +4975,7 @@
    }
   },
   "slug": "569-merge-k-sorted-lists",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -4992,7 +4992,7 @@
    }
   },
   "slug": "898-replace-elements-by-their-rank",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -5009,7 +5009,7 @@
    }
   },
   "slug": "1008-task-scheduler",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -5026,7 +5026,7 @@
    }
   },
   "slug": "556-hand-of-straights",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Medium Problems"
  },
  {
@@ -5043,7 +5043,7 @@
    }
   },
   "slug": "565-design-twitter",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5060,7 +5060,7 @@
    }
   },
   "slug": "755-minimum-cost-to-connect-sticks",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5077,7 +5077,7 @@
    }
   },
   "slug": "2838-kth-largest-element-in-a-stream-of-running-integers",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5099,7 +5099,7 @@
    }
   },
   "slug": "568-maximum-sum-combination",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5126,7 +5126,7 @@
    }
   },
   "slug": "566-find-median-from-data-stream",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5153,7 +5153,7 @@
    }
   },
   "slug": "1018-top-k-frequent-elements",
-  "topic": "Heaps [Learning, Medium, Hard Problems]",
+  "topic": "Heaps",
   "section": "Hard Problems"
  },
  {
@@ -5170,7 +5170,7 @@
    }
   },
   "slug": "2834-assign-cookies",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Easy Problems"
  },
  {
@@ -5192,7 +5192,7 @@
    }
   },
   "slug": "489-fractional-knapsack",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Easy Problems"
  },
  {
@@ -5209,7 +5209,7 @@
    }
   },
   "slug": "543-lemonade-change",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Easy Problems"
  },
  {
@@ -5226,7 +5226,7 @@
    }
   },
   "slug": "545-valid-paranthesis-checker",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Easy Problems"
  },
  {
@@ -5248,7 +5248,7 @@
    }
   },
   "slug": "549-n-meetings-in-one-room",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5270,7 +5270,7 @@
    }
   },
   "slug": "542-jump-game-i",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5287,7 +5287,7 @@
    }
   },
   "slug": "595-jump-game-ii",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5309,7 +5309,7 @@
    }
   },
   "slug": "548-minimum-number-of-platforms-required-for-a-railway",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5331,7 +5331,7 @@
    }
   },
   "slug": "547-job-sequencing-problem",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5348,7 +5348,7 @@
    }
   },
   "slug": "544-candy",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5365,7 +5365,7 @@
    }
   },
   "slug": "551-shortest-job-first",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5382,7 +5382,7 @@
    }
   },
   "slug": "2859-program-for-least-recently-used-lru-page-replacement-algorit",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5404,7 +5404,7 @@
    }
   },
   "slug": "546-insert-interval",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5426,7 +5426,7 @@
    }
   },
   "slug": "712-merge-intervals",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5448,7 +5448,7 @@
    }
   },
   "slug": "550-non-overlapping-intervals",
-  "topic": "Greedy Algorithms [Easy, Medium/Hard]",
+  "topic": "Greedy Algorithms",
   "section": "Medium/Hard"
  },
  {
@@ -5465,7 +5465,7 @@
    }
   },
   "slug": "2865-introduction-to-trees",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5482,7 +5482,7 @@
    }
   },
   "slug": "2864-binary-tree-representation-in-java",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5504,7 +5504,7 @@
    }
   },
   "slug": "136-pre-post-inorder-in-one-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5521,7 +5521,7 @@
    }
   },
   "slug": "137-preorder-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5538,7 +5538,7 @@
    }
   },
   "slug": "2785-inorder-traversal-of-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5560,7 +5560,7 @@
    }
   },
   "slug": "135-postorder-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5587,7 +5587,7 @@
    }
   },
   "slug": "134-level-order-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5604,7 +5604,7 @@
    }
   },
   "slug": "2872-iterative-preorder-traversal-of-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5621,7 +5621,7 @@
    }
   },
   "slug": "2786-iterative-inorder-traversal-of-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5638,7 +5638,7 @@
    }
   },
   "slug": "2788-post-order-traversal-of-binary-tree-using-2-stack",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5655,7 +5655,7 @@
    }
   },
   "slug": "2787-post-order-traversal-of-binary-tree-using-1-stack",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5672,7 +5672,7 @@
    }
   },
   "slug": "2789-preorder-inorder-and-postorder-traversal-in-one-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Traversals"
  },
  {
@@ -5699,7 +5699,7 @@
    }
   },
   "slug": "131-maximum-depth-in-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5721,7 +5721,7 @@
    }
   },
   "slug": "127-check-for-balanced-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5743,7 +5743,7 @@
    }
   },
   "slug": "130-diameter-of-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5770,7 +5770,7 @@
    }
   },
   "slug": "132-maximum-path-sum",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5797,7 +5797,7 @@
    }
   },
   "slug": "129-check-if-two-trees-are-identical-or-not",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5819,7 +5819,7 @@
    }
   },
   "slug": "126-zig-zag-or-spiral-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5841,7 +5841,7 @@
    }
   },
   "slug": "116-boundary-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5863,7 +5863,7 @@
    }
   },
   "slug": "125-vertical-order-traversal",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5885,7 +5885,7 @@
    }
   },
   "slug": "124-top-view-of-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5907,7 +5907,7 @@
    }
   },
   "slug": "115-bottom-view-of-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5924,7 +5924,7 @@
    }
   },
   "slug": "2782-right-left-view-of-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5946,7 +5946,7 @@
    }
   },
   "slug": "2784-symmetric-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Medium Problems"
  },
  {
@@ -5968,7 +5968,7 @@
    }
   },
   "slug": "122-print-root-to-leaf-path-in-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -5990,7 +5990,7 @@
    }
   },
   "slug": "118-lca-in-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6012,7 +6012,7 @@
    }
   },
   "slug": "119-maximum-width-of-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6034,7 +6034,7 @@
    }
   },
   "slug": "185-children-sum-property-in-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6051,7 +6051,7 @@
    }
   },
   "slug": "121-print-all-nodes-at-a-distance-of-k-in-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6068,7 +6068,7 @@
    }
   },
   "slug": "120-minimum-time-taken-to-burn-the-bt-from-a-given-node",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6085,7 +6085,7 @@
    }
   },
   "slug": "117-count-total-nodes-in-a-complete-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6102,7 +6102,7 @@
    }
   },
   "slug": "111-requirements-needed-to-construct-a-unique-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6124,7 +6124,7 @@
    }
   },
   "slug": "110-construct-a-bt-from-preorder-and-inorder",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6146,7 +6146,7 @@
    }
   },
   "slug": "2781-construct-the-binary-tree-from-postorder-and-inorder-travers",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6173,7 +6173,7 @@
    }
   },
   "slug": "112-serialize-and-de-serialize-bt",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6190,7 +6190,7 @@
    }
   },
   "slug": "2791-morris-preorder-traversal-of-a-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6207,7 +6207,7 @@
    }
   },
   "slug": "2792-morris-inorder-traversal-of-a-binary-tree",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6229,7 +6229,7 @@
    }
   },
   "slug": "486-flatten-binary-tree-to-linked-list",
-  "topic": "Binary Trees [Traversals, Medium and Hard Problems]",
+  "topic": "Binary Trees",
   "section": "Hard Problems"
  },
  {
@@ -6246,7 +6246,7 @@
    }
   },
   "slug": "1153-introduction-to-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Concepts"
  },
  {
@@ -6263,7 +6263,7 @@
    }
   },
   "slug": "2780-search-in-a-binary-search-tree",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Concepts"
  },
  {
@@ -6280,7 +6280,7 @@
    }
   },
   "slug": "2398-find-min-max-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Concepts"
  },
  {
@@ -6297,7 +6297,7 @@
    }
   },
   "slug": "107-floor-and-ceil-in-a-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6314,7 +6314,7 @@
    }
   },
   "slug": "2778-floor-in-a-binary-search-tree",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6331,7 +6331,7 @@
    }
   },
   "slug": "104-insert-a-given-node-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6348,7 +6348,7 @@
    }
   },
   "slug": "102-delete-a-node-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6370,7 +6370,7 @@
    }
   },
   "slug": "105-kth-smallest-and-largest-element-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6397,7 +6397,7 @@
    }
   },
   "slug": "100-check-if-a-tree-is-a-bst-or-not",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6424,7 +6424,7 @@
    }
   },
   "slug": "106-lca-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6446,7 +6446,7 @@
    }
   },
   "slug": "101-construct-a-bst-from-a-preorder-traversal",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6463,7 +6463,7 @@
    }
   },
   "slug": "2775-inorder-successor-predecessor-in-bst",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6480,7 +6480,7 @@
    }
   },
   "slug": "2772-merge-2-bsts",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6497,7 +6497,7 @@
    }
   },
   "slug": "2774-two-sum-in-bst-check-if-there-exists-a-pair-with-sum-k",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6514,7 +6514,7 @@
    }
   },
   "slug": "97-correct-bst-with-two-nodes-swapped",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6531,7 +6531,7 @@
    }
   },
   "slug": "98-largest-bst-in-binary-tree",
-  "topic": "Binary Search Trees [Concept and Problems]",
+  "topic": "Binary Search Trees",
   "section": "Practice Problems"
  },
  {
@@ -6548,7 +6548,7 @@
    }
   },
   "slug": "1222-introduction-to-graph",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6565,7 +6565,7 @@
    }
   },
   "slug": "2870-graph-representation-c",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6582,7 +6582,7 @@
    }
   },
   "slug": "2871-graph-representation-java",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6604,7 +6604,7 @@
    }
   },
   "slug": "528-connected-components",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6626,7 +6626,7 @@
    }
   },
   "slug": "529-traversal-techniques",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6648,7 +6648,7 @@
    }
   },
   "slug": "2831-dfs",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Learning"
  },
  {
@@ -6665,7 +6665,7 @@
    }
   },
   "slug": "535-number-of-provinces",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6682,7 +6682,7 @@
    }
   },
   "slug": "2830-connected-components-problem-in-matrix",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6704,7 +6704,7 @@
    }
   },
   "slug": "536-rotten-oranges",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6721,7 +6721,7 @@
    }
   },
   "slug": "531-flood-fill-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6738,7 +6738,7 @@
    }
   },
   "slug": "2817-cycle-detection-in-undirected-graph-bfs",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6755,7 +6755,7 @@
    }
   },
   "slug": "501-detect-a-cycle-in-an-undirected-graph",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6772,7 +6772,7 @@
    }
   },
   "slug": "530-distance-of-nearest-cell-having-one",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6789,7 +6789,7 @@
    }
   },
   "slug": "537-surrounded-regions",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6806,7 +6806,7 @@
    }
   },
   "slug": "533-number-of-enclaves",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6823,7 +6823,7 @@
    }
   },
   "slug": "509-word-ladder-i",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6840,7 +6840,7 @@
    }
   },
   "slug": "510-word-ladder-ii",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6857,7 +6857,7 @@
    }
   },
   "slug": "534-number-of-islands",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6874,7 +6874,7 @@
    }
   },
   "slug": "2813-bipartite-graph-dfs",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6891,7 +6891,7 @@
    }
   },
   "slug": "2814-cycle-detection-in-directed-graph-dfs",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Problems on BFS/DFS"
  },
  {
@@ -6908,7 +6908,7 @@
    }
   },
   "slug": "2822-topo-sort",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -6925,7 +6925,7 @@
    }
   },
   "slug": "502-topological-sort-or-kahns-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -6942,7 +6942,7 @@
    }
   },
   "slug": "500-detect-a-cycle-in-a-directed-graph",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -6964,7 +6964,7 @@
    }
   },
   "slug": "504-course-schedule-i",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -6981,7 +6981,7 @@
    }
   },
   "slug": "505-course-schedule-ii",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -6998,7 +6998,7 @@
    }
   },
   "slug": "506-find-eventual-safe-states",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -7020,7 +7020,7 @@
    }
   },
   "slug": "503-alien-dictionary",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Topo Sort and Problems"
  },
  {
@@ -7037,7 +7037,7 @@
    }
   },
   "slug": "508-shortest-path-in-undirected-graph-with-unit-weights",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7054,7 +7054,7 @@
    }
   },
   "slug": "507-shortest-path-in-dag",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7071,7 +7071,7 @@
    }
   },
   "slug": "2827-djisktras-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7088,7 +7088,7 @@
    }
   },
   "slug": "2828-why-priority-queue-is-used-in-djisktras-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7105,7 +7105,7 @@
    }
   },
   "slug": "527-shortest-distance-in-a-binary-maze",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7122,7 +7122,7 @@
    }
   },
   "slug": "525-path-with-minimum-effort",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7139,7 +7139,7 @@
    }
   },
   "slug": "519-cheapest-flight-within-k-stops",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7156,7 +7156,7 @@
    }
   },
   "slug": "764-network-delay-time",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7173,7 +7173,7 @@
    }
   },
   "slug": "524-number-of-ways-to-arrive-at-destination",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7190,7 +7190,7 @@
    }
   },
   "slug": "523-minimum-multiplications-to-reach-end",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7207,7 +7207,7 @@
    }
   },
   "slug": "2826-bellman-ford-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7224,7 +7224,7 @@
    }
   },
   "slug": "522-floyd-warshall-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7241,7 +7241,7 @@
    }
   },
   "slug": "521-find-the-city-with-the-smallest-number-of-neighbors",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Shortest Path Algorithms and Problems"
  },
  {
@@ -7258,7 +7258,7 @@
    }
   },
   "slug": "1221-mst-theory",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7275,7 +7275,7 @@
    }
   },
   "slug": "2825-prims-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7292,7 +7292,7 @@
    }
   },
   "slug": "516-disjoint-set",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7309,7 +7309,7 @@
    }
   },
   "slug": "517-find-the-mst-weight",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7326,7 +7326,7 @@
    }
   },
   "slug": "515-number-of-operations-to-make-network-connected",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7343,7 +7343,7 @@
    }
   },
   "slug": "513-most-stones-removed-with-same-row-or-column",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7360,7 +7360,7 @@
    }
   },
   "slug": "511-accounts-merge",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7377,7 +7377,7 @@
    }
   },
   "slug": "514-number-of-islands-ii",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7394,7 +7394,7 @@
    }
   },
   "slug": "512-making-a-large-island",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7411,7 +7411,7 @@
    }
   },
   "slug": "1006-swim-in-rising-water",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
@@ -7428,7 +7428,7 @@
    }
   },
   "slug": "497-bridges-in-graph",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Other Algorithms"
  },
  {
@@ -7445,7 +7445,7 @@
    }
   },
   "slug": "496-articulation-point-in-graph",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Other Algorithms"
  },
  {
@@ -7462,7 +7462,7 @@
    }
   },
   "slug": "498-kosarajus-algorithm",
-  "topic": "Graphs [Concepts & Problems]",
+  "topic": "Graphs",
   "section": "Other Algorithms"
  },
  {
@@ -7479,7 +7479,7 @@
    }
   },
   "slug": "1195-introduction-to-dp",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "Introduction to DP"
  },
  {
@@ -7501,7 +7501,7 @@
    }
   },
   "slug": "287-climbing-stairs",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "1D DP"
  },
  {
@@ -7518,7 +7518,7 @@
    }
   },
   "slug": "288-frog-jump",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "1D DP"
  },
  {
@@ -7535,7 +7535,7 @@
    }
   },
   "slug": "289-frog-jump-with-k-distances",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "1D DP"
  },
  {
@@ -7557,7 +7557,7 @@
    }
   },
   "slug": "291-maximum-sum-of-non-adjacent-elements",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "1D DP"
  },
  {
@@ -7579,7 +7579,7 @@
    }
   },
   "slug": "290-house-robber",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "1D DP"
  },
  {
@@ -7596,7 +7596,7 @@
    }
   },
   "slug": "292-ninjas-training",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7613,7 +7613,7 @@
    }
   },
   "slug": "2795-grid-unique-paths-dp-on-grids-dp8",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7630,7 +7630,7 @@
    }
   },
   "slug": "300-unique-paths-ii",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7647,7 +7647,7 @@
    }
   },
   "slug": "298-minimum-falling-path-sum",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7664,7 +7664,7 @@
    }
   },
   "slug": "299-triangle",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7681,7 +7681,7 @@
    }
   },
   "slug": "769-ninja-and-his-friends",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "2D/3D DP and DP on Grids"
  },
  {
@@ -7698,7 +7698,7 @@
    }
   },
   "slug": "2804-subset-sum-equal-to-target-dp-14",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7715,7 +7715,7 @@
    }
   },
   "slug": "321-partition-equal-subset-sum",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7732,7 +7732,7 @@
    }
   },
   "slug": "320-partition-a-set-into-two-subsets-with-minimum-absolute-sum-d",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7749,7 +7749,7 @@
    }
   },
   "slug": "318-count-subsets-with-sum-k",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7766,7 +7766,7 @@
    }
   },
   "slug": "317-count-partitions-with-given-difference",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7788,7 +7788,7 @@
    }
   },
   "slug": "541-assign-cookies",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7805,7 +7805,7 @@
    }
   },
   "slug": "2802-minimum-coins-dp-20",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7822,7 +7822,7 @@
    }
   },
   "slug": "324-target-sum",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7839,7 +7839,7 @@
    }
   },
   "slug": "2801-coin-change-2-dp-22",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7856,7 +7856,7 @@
    }
   },
   "slug": "325-unbounded-knapsack",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7873,7 +7873,7 @@
    }
   },
   "slug": "2803-rod-cutting-problem-dp-24",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Subsequences"
  },
  {
@@ -7900,7 +7900,7 @@
    }
   },
   "slug": "308-longest-common-subsequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -7917,7 +7917,7 @@
    }
   },
   "slug": "2799-print-longest-common-subsequence-dp-26",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -7934,7 +7934,7 @@
    }
   },
   "slug": "309-longest-common-substring",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -7951,7 +7951,7 @@
    }
   },
   "slug": "310-longest-palindromic-subsequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -7968,7 +7968,7 @@
    }
   },
   "slug": "2800-minimum-insertions-to-make-string-palindrome-dp-29",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -7985,7 +7985,7 @@
    }
   },
   "slug": "311-minimum-insertions-or-deletions-to-convert-string-a-to-b",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -8002,7 +8002,7 @@
    }
   },
   "slug": "313-shortest-common-supersequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -8019,7 +8019,7 @@
    }
   },
   "slug": "306-distinct-subsequences",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -8041,7 +8041,7 @@
    }
   },
   "slug": "307-edit-distance",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -8058,7 +8058,7 @@
    }
   },
   "slug": "314-wildcard-matching",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Strings"
  },
  {
@@ -8080,7 +8080,7 @@
    }
   },
   "slug": "301-best-time-to-buy-and-sell-stock",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8097,7 +8097,7 @@
    }
   },
   "slug": "302-best-time-to-buy-and-sell-stock-ii",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8114,7 +8114,7 @@
    }
   },
   "slug": "303-best-time-to-buy-and-sell-stock-iii",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8131,7 +8131,7 @@
    }
   },
   "slug": "304-best-time-to-buy-and-sell-stock-iv",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8148,7 +8148,7 @@
    }
   },
   "slug": "56-best-time-to-buy-and-sell-stock-with-cooldown",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8165,7 +8165,7 @@
    }
   },
   "slug": "305-best-time-to-buy-and-sell-stock-with-transaction-fees",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Stocks"
  },
  {
@@ -8192,7 +8192,7 @@
    }
   },
   "slug": "636-longest-increasing-subsequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8209,7 +8209,7 @@
    }
   },
   "slug": "851-print-longest-increasing-subsequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8226,7 +8226,7 @@
    }
   },
   "slug": "2851-longest-increasing-subsequence-dp-43",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8243,7 +8243,7 @@
    }
   },
   "slug": "603-largest-divisible-subset",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8260,7 +8260,7 @@
    }
   },
   "slug": "640-longest-string-chain",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8277,7 +8277,7 @@
    }
   },
   "slug": "633-longest-bitonic-subsequence",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8294,7 +8294,7 @@
    }
   },
   "slug": "780-number-of-longest-increasing-subsequences",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on LIS"
  },
  {
@@ -8316,7 +8316,7 @@
    }
   },
   "slug": "327-matrix-chain-multiplication",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8333,7 +8333,7 @@
    }
   },
   "slug": "2806-matrix-chain-multiplication-bottom-up-dp-49",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8350,7 +8350,7 @@
    }
   },
   "slug": "328-minimum-cost-to-cut-the-stick",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8367,7 +8367,7 @@
    }
   },
   "slug": "326-burst-balloons",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8384,7 +8384,7 @@
    }
   },
   "slug": "276-different-ways-to-evaluate-a-boolean-expression",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8401,7 +8401,7 @@
    }
   },
   "slug": "329-palindrome-partitioning-ii",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8418,7 +8418,7 @@
    }
   },
   "slug": "810-partition-array-for-maximum-sum",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "MCM DP - Partition DP"
  },
  {
@@ -8435,7 +8435,7 @@
    }
   },
   "slug": "2860-maximum-rectangle-area-with-all-1s-dp-55",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Squares"
  },
  {
@@ -8452,7 +8452,7 @@
    }
   },
   "slug": "2395-count-square-submatrices-with-all-ones-dp-56",
-  "topic": "Dynamic Programming [Patterns and Problems]",
+  "topic": "Dynamic Programming",
   "section": "DP on Squares"
  },
  {
@@ -8629,7 +8629,7 @@
   },
   "slug": "983-minimum-number-of-bracket-reversals-to-make-an-expression-ba",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 982,
@@ -8651,7 +8651,7 @@
   },
   "slug": "982-count-and-say",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 2399,
@@ -8668,7 +8668,7 @@
   },
   "slug": "2399-hashing-in-strings-theory",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 979,
@@ -8690,7 +8690,7 @@
   },
   "slug": "979-rabin-karp-algorithm",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 981,
@@ -8712,7 +8712,7 @@
   },
   "slug": "981-z-function",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 977,
@@ -8734,7 +8734,7 @@
   },
   "slug": "977-kmp-algorithm-or-lps-array",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 980,
@@ -8751,7 +8751,7 @@
   },
   "slug": "980-shortest-palindrome",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 978,
@@ -8768,7 +8768,7 @@
   },
   "slug": "978-longest-happy-prefix",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 231,
@@ -8785,7 +8785,7 @@
   },
   "slug": "231-count-palindromic-subsequences",
   "topic": "Strings",
-  "section": "Hard Problems"
+  "section": "Hard String Problems"
  },
  {
   "id": 36,
@@ -8801,7 +8801,7 @@
   },
   "slug": "36-sort-an-array-of-0s-1s-and-2s",
   "topic": "Arrays",
-  "section": ""
+  "section": "Medium"
  },
  {
   "id": 465,
@@ -8816,8 +8816,8 @@
    }
   },
   "slug": "465-find-the-duplicate-number",
-  "topic": "Arrays Part-II",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Medium"
  },
  {
   "id": 2758,
@@ -8832,8 +8832,8 @@
    }
   },
   "slug": "2758-inversion-of-array-pre-req-merge-sort",
-  "topic": "Arrays Part-II",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Hard"
  },
  {
   "id": 297,
@@ -8853,8 +8853,8 @@
    }
   },
   "slug": "297-grid-unique-paths",
-  "topic": "Arrays Part-III",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "2D/3D DP and DP on Grids"
  },
  {
   "id": 563,
@@ -8874,8 +8874,8 @@
    }
   },
   "slug": "563-longest-consecutive-sequence-in-an-array",
-  "topic": "Arrays Part-IV",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Medium"
  },
  {
   "id": 2837,
@@ -8890,8 +8890,8 @@
    }
   },
   "slug": "2837-largest-subarray-with-k-sum",
-  "topic": "Arrays Part-IV",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Easy"
  },
  {
   "id": 929,
@@ -8906,8 +8906,8 @@
    }
   },
   "slug": "929-longest-substring-without-repeating-characters",
-  "topic": "Arrays Part-IV",
-  "section": ""
+  "topic": "Sliding Window and Two Pointers",
+  "section": "Medium Problems"
  },
  {
   "id": 448,
@@ -8923,7 +8923,7 @@
   },
   "slug": "448-find-middle-of-linked-list",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 613,
@@ -8944,7 +8944,7 @@
   },
   "slug": "613-merge-two-sorted-lists",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 626,
@@ -8965,7 +8965,7 @@
   },
   "slug": "626-remove-nth-node-from-the-back-of-the-ll",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 2848,
@@ -8981,7 +8981,7 @@
   },
   "slug": "2848-add-two-numbers-as-linkedlist",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 258,
@@ -8997,7 +8997,7 @@
   },
   "slug": "258-delete-node-in-a-linked-list-o-1",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 621,
@@ -9012,8 +9012,8 @@
    }
   },
   "slug": "621-find-the-intersection-point-of-y-ll",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Medium Problems of LL"
  },
  {
   "id": 620,
@@ -9033,8 +9033,8 @@
    }
   },
   "slug": "620-detect-a-loop-in-ll",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Medium Problems of LL"
  },
  {
   "id": 614,
@@ -9049,8 +9049,8 @@
    }
   },
   "slug": "614-reverse-ll-in-group-of-given-size-k",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Hard Problems of LL"
  },
  {
   "id": 618,
@@ -9065,8 +9065,8 @@
    }
   },
   "slug": "618-check-if-ll-is-palindrome-or-not",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Medium Problems of LL"
  },
  {
   "id": 622,
@@ -9081,8 +9081,8 @@
    }
   },
   "slug": "622-find-the-starting-point-in-ll",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Medium Problems of LL"
  },
  {
   "id": 612,
@@ -9097,8 +9097,8 @@
    }
   },
   "slug": "612-flattening-of-ll",
-  "topic": "Linked List Part-II",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Hard Problems of LL"
  },
  {
   "id": 615,
@@ -9113,8 +9113,8 @@
    }
   },
   "slug": "615-rotate-a-ll",
-  "topic": "Linked List and Arrays",
-  "section": ""
+  "topic": "Linked List",
+  "section": "Hard Problems of LL"
  },
  {
   "id": 47,
@@ -9129,8 +9129,8 @@
    }
   },
   "slug": "47-remove-duplicates-from-sorted-array",
-  "topic": "Linked List and Arrays",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Easy"
  },
  {
   "id": 319,
@@ -9145,8 +9145,8 @@
    }
   },
   "slug": "319-minimum-coins",
-  "topic": "Greedy Algorithm",
-  "section": ""
+  "topic": "Greedy Algorithms",
+  "section": "Easy Problems"
  },
  {
   "id": 2805,
@@ -9161,8 +9161,8 @@
    }
   },
   "slug": "2805-subset-sums",
-  "topic": "Recursion",
-  "section": ""
+  "topic": "Recursion and Backtracking",
+  "section": "Subsequences Pattern"
  },
  {
   "id": 818,
@@ -9177,8 +9177,8 @@
    }
   },
   "slug": "818-permutation-sequence",
-  "topic": "Recursion",
-  "section": ""
+  "topic": "Recursion and Backtracking",
+  "section": "Trying out all Combos / Hard"
  },
  {
   "id": 821,
@@ -9194,7 +9194,7 @@
   },
   "slug": "821-permutations-of-a-string",
   "topic": "Recursion and Backtracking",
-  "section": ""
+  "section": "Trying out all Combos / Hard"
  },
  {
   "id": 2757,
@@ -9210,7 +9210,7 @@
   },
   "slug": "2757-word-break-print-all-ways",
   "topic": "Recursion and Backtracking",
-  "section": ""
+  "section": "Trying out all Combos / Hard"
  },
  {
   "id": 2771,
@@ -9226,7 +9226,7 @@
   },
   "slug": "2771-the-n-th-root-of-an-integer",
   "topic": "Binary Search",
-  "section": ""
+  "section": "BS on Answers"
  },
  {
   "id": 90,
@@ -9242,7 +9242,7 @@
   },
   "slug": "90-single-element-in-sorted-array",
   "topic": "Binary Search",
-  "section": ""
+  "section": "BS on 1D Arrays"
  },
  {
   "id": 2769,
@@ -9258,7 +9258,7 @@
   },
   "slug": "2769-search-element-in-a-sorted-and-rotated-array-find-pivot-wher",
   "topic": "Binary Search",
-  "section": ""
+  "section": "BS on 1D Arrays"
  },
  {
   "id": 76,
@@ -9274,7 +9274,7 @@
   },
   "slug": "76-kth-element-of-2-sorted-arrays",
   "topic": "Binary Search",
-  "section": ""
+  "section": "BS on Answers"
  },
  {
   "id": 2766,
@@ -9290,7 +9290,7 @@
   },
   "slug": "2766-allocate-minimum-number-of-pages",
   "topic": "Binary Search",
-  "section": ""
+  "section": "BS on Answers"
  },
  {
   "id": 575,
@@ -9306,7 +9306,7 @@
   },
   "slug": "575-implement-max-heap",
   "topic": "Heaps",
-  "section": ""
+  "section": "Learning"
  },
  {
   "id": 713,
@@ -9327,7 +9327,7 @@
   },
   "slug": "713-merge-k-sorted-arrays",
   "topic": "Heaps",
-  "section": ""
+  "section": "Medium Problems"
  },
  {
   "id": 2808,
@@ -9342,8 +9342,8 @@
    }
   },
   "slug": "2808-implement-stack-using-queue-using-single-queue",
-  "topic": "Stack and Queue",
-  "section": ""
+  "topic": "Stacks and Queues",
+  "section": "Learning"
  },
  {
   "id": 936,
@@ -9358,8 +9358,8 @@
    }
   },
   "slug": "936-sort-a-stack",
-  "topic": "Stack and Queue",
-  "section": ""
+  "topic": "Stacks and Queues",
+  "section": "Learning"
  },
  {
   "id": 687,
@@ -9374,8 +9374,8 @@
    }
   },
   "slug": "687-maximum-of-minimums-for-every-window-size",
-  "topic": "Stack and Queue Part-II",
-  "section": ""
+  "topic": "Stacks and Queues",
+  "section": "Monotonic Stack/Queue Problems [VVV. Imp]"
  },
  {
   "id": 2852,
@@ -9390,8 +9390,8 @@
    }
   },
   "slug": "2852-longest-palindrome-in-a-string",
-  "topic": "String",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 2861,
@@ -9406,8 +9406,8 @@
    }
   },
   "slug": "2861-implement-atoi-strstr",
-  "topic": "String",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 312,
@@ -9422,8 +9422,8 @@
    }
   },
   "slug": "312-minimum-insertions-to-make-string-palindrome",
-  "topic": "String Part-II",
-  "section": ""
+  "topic": "Strings",
+  "section": "Hard String Problems"
  },
  {
   "id": 400,
@@ -9443,8 +9443,8 @@
    }
   },
   "slug": "400-valid-anagram",
-  "topic": "String Part-II",
-  "section": ""
+  "topic": "Strings",
+  "section": "Basic and Easy String Problems"
  },
  {
   "id": 198,
@@ -9459,8 +9459,8 @@
    }
   },
   "slug": "198-compare-version-numbers",
-  "topic": "String Part-II",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 133,
@@ -9475,8 +9475,8 @@
    }
   },
   "slug": "133-inorder-traversal",
-  "topic": "Binary Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Traversals"
  },
  {
   "id": 2790,
@@ -9491,8 +9491,8 @@
    }
   },
   "slug": "2790-preorder-traversal",
-  "topic": "Binary Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Traversals"
  },
  {
   "id": 139,
@@ -9507,8 +9507,8 @@
    }
   },
   "slug": "139-morris-inorder-traversal",
-  "topic": "Binary Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Hard Problems"
  },
  {
   "id": 138,
@@ -9523,8 +9523,8 @@
    }
   },
   "slug": "138-morris-preorder-traversal",
-  "topic": "Binary Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Hard Problems"
  },
  {
   "id": 123,
@@ -9539,8 +9539,8 @@
    }
   },
   "slug": "123-right-left-view-of-bt",
-  "topic": "Binary Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Medium Problems"
  },
  {
   "id": 109,
@@ -9555,8 +9555,8 @@
    }
   },
   "slug": "109-construct-a-bt-from-postorder-and-inorder",
-  "topic": "Binary Tree part-III",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Hard Problems"
  },
  {
   "id": 128,
@@ -9571,8 +9571,8 @@
    }
   },
   "slug": "128-check-for-symmetrical-bts",
-  "topic": "Binary Tree part-III",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Medium Problems"
  },
  {
   "id": 823,
@@ -9587,8 +9587,8 @@
    }
   },
   "slug": "823-populating-next-right-pointers-in-each-node",
-  "topic": "Binary Search Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Medium Problems"
  },
  {
   "id": 108,
@@ -9603,8 +9603,8 @@
    }
   },
   "slug": "108-search-in-bst",
-  "topic": "Binary Search Tree",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Concepts"
  },
  {
   "id": 2391,
@@ -9619,8 +9619,8 @@
    }
   },
   "slug": "2391-construct-bst-from-given-keys",
-  "topic": "Binary Search Tree",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 103,
@@ -9635,8 +9635,8 @@
    }
   },
   "slug": "103-inorder-successor-and-predecessor-in-bst",
-  "topic": "Binary Search Tree",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 2779,
@@ -9651,8 +9651,8 @@
    }
   },
   "slug": "2779-floor-in-a-bst",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 2777,
@@ -9667,8 +9667,8 @@
    }
   },
   "slug": "2777-ceil-in-a-bst",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 2776,
@@ -9688,8 +9688,8 @@
    }
   },
   "slug": "2776-find-k-th-smallest-element-in-bst",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 99,
@@ -9704,8 +9704,8 @@
    }
   },
   "slug": "99-two-sum-in-bst",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 96,
@@ -9720,8 +9720,8 @@
    }
   },
   "slug": "96-bst-iterator",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 2773,
@@ -9736,8 +9736,8 @@
    }
   },
   "slug": "2773-size-of-the-largest-bst-in-a-binary-tree",
-  "topic": "Binary Search Tree Part-II",
-  "section": ""
+  "topic": "Binary Search Trees",
+  "section": "Practice Problems"
  },
  {
   "id": 62,
@@ -9752,8 +9752,8 @@
    }
   },
   "slug": "62-binary-tree-to-doubly-linked-list",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Hard Problems"
  },
  {
   "id": 446,
@@ -9768,8 +9768,8 @@
    }
   },
   "slug": "446-find-median-in-a-stream",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Heaps",
+  "section": "Hard Problems"
  },
  {
   "id": 567,
@@ -9784,8 +9784,8 @@
    }
   },
   "slug": "567-kth-largest-element-in-a-stream-of-running-integers",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Heaps",
+  "section": "Hard Problems"
  },
  {
   "id": 279,
@@ -9800,8 +9800,8 @@
    }
   },
   "slug": "279-distinct-numbers-in-each-subarray",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Sliding Window and Two Pointers",
+  "section": "Medium Problems"
  },
  {
   "id": 2839,
@@ -9816,8 +9816,8 @@
    }
   },
   "slug": "2839-k-th-largest-element-in-an-unsorted-array",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Heaps",
+  "section": "Medium Problems"
  },
  {
   "id": 2832,
@@ -9832,8 +9832,8 @@
    }
   },
   "slug": "2832-flood-fill-algorithm",
-  "topic": "Binary Trees[Miscellaneous]",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 188,
@@ -9853,8 +9853,8 @@
    }
   },
   "slug": "188-clone-graph",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 2818,
@@ -9869,8 +9869,8 @@
    }
   },
   "slug": "2818-detect-a-cycle-in-undirected-graph-using-bfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 2819,
@@ -9885,8 +9885,8 @@
    }
   },
   "slug": "2819-detect-a-cycle-in-undirected-graph-using-dfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 2816,
@@ -9901,8 +9901,8 @@
    }
   },
   "slug": "2816-detect-a-cycle-in-a-directed-graph-using-dfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Topo Sort and Problems"
  },
  {
   "id": 2815,
@@ -9917,8 +9917,8 @@
    }
   },
   "slug": "2815-detect-a-cycle-in-a-directed-graph-using-bfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Topo Sort and Problems"
  },
  {
   "id": 2820,
@@ -9933,8 +9933,8 @@
    }
   },
   "slug": "2820-topological-sort-bfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Topo Sort and Problems"
  },
  {
   "id": 2821,
@@ -9949,8 +9949,8 @@
    }
   },
   "slug": "2821-topological-sort-dfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Topo Sort and Problems"
  },
  {
   "id": 2833,
@@ -9970,8 +9970,8 @@
    }
   },
   "slug": "2833-number-of-islands-do-in-grid-and-graph-both",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 499,
@@ -9986,8 +9986,8 @@
    }
   },
   "slug": "499-bipartite-graph",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 2812,
@@ -10002,8 +10002,8 @@
    }
   },
   "slug": "2812-bipartite-check-using-dfs",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 2811,
@@ -10018,8 +10018,8 @@
    }
   },
   "slug": "2811-strongly-connected-component-using-kosarajus-algo",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Other Algorithms"
  },
  {
   "id": 520,
@@ -10034,8 +10034,8 @@
    }
   },
   "slug": "520-dijkstras-algorithm",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Shortest Path Algorithms and Problems"
  },
  {
   "id": 518,
@@ -10050,8 +10050,8 @@
    }
   },
   "slug": "518-bellman-ford-algorithm",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Shortest Path Algorithms and Problems"
  },
  {
   "id": 2829,
@@ -10066,8 +10066,8 @@
    }
   },
   "slug": "2829-floyd-warshall-algorithm",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Shortest Path Algorithms and Problems"
  },
  {
   "id": 2824,
@@ -10082,8 +10082,8 @@
    }
   },
   "slug": "2824-mst-using-prims-algo",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
   "id": 2823,
@@ -10098,8 +10098,8 @@
    }
   },
   "slug": "2823-mst-using-kruskals-algo",
-  "topic": "Graph Part-II",
-  "section": ""
+  "topic": "Graphs",
+  "section": "MinimumSpanningTree/Disjoint Set and Problems"
  },
  {
   "id": 2759,
@@ -10114,8 +10114,8 @@
    }
   },
   "slug": "2759-max-product-subarray",
-  "topic": "Dynamic Programming",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Hard"
  },
  {
   "id": 315,
@@ -10131,7 +10131,7 @@
   },
   "slug": "315-0-and-1-knapsack",
   "topic": "Dynamic Programming",
-  "section": ""
+  "section": "DP on Subsequences"
  },
  {
   "id": 698,
@@ -10147,7 +10147,7 @@
   },
   "slug": "698-maximum-sum-increasing-subsequence",
   "topic": "Dynamic Programming",
-  "section": ""
+  "section": "DP on LIS"
  },
  {
   "id": 2797,
@@ -10162,8 +10162,8 @@
    }
   },
   "slug": "2797-minimum-sum-path-in-the-matrix",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "2D/3D DP and DP on Grids"
  },
  {
   "id": 316,
@@ -10183,8 +10183,8 @@
    }
   },
   "slug": "316-coin-change-ii",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "DP on Subsequences"
  },
  {
   "id": 323,
@@ -10199,8 +10199,8 @@
    }
   },
   "slug": "323-subset-sum-equals-to-target",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "DP on Subsequences"
  },
  {
   "id": 322,
@@ -10215,8 +10215,8 @@
    }
   },
   "slug": "322-rod-cutting-problem",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "DP on Subsequences"
  },
  {
   "id": 1004,
@@ -10231,8 +10231,8 @@
    }
   },
   "slug": "1004-super-egg-drop",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "MCM DP - Partition DP"
  },
  {
   "id": 2854,
@@ -10247,8 +10247,8 @@
    }
   },
   "slug": "2854-palindrome-partitioning-mcm-variation",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "MCM DP - Partition DP"
  },
  {
   "id": 691,
@@ -10263,8 +10263,8 @@
    }
   },
   "slug": "691-maximum-profit-in-job-scheduling",
-  "topic": "Dynamic Programming Part-II",
-  "section": ""
+  "topic": "Dynamic Programming",
+  "section": "1D DP"
  },
  {
   "id": 2856,
@@ -10279,8 +10279,8 @@
    }
   },
   "slug": "2856-power-set-this-is-very-important",
-  "topic": "Trie",
-  "section": ""
+  "topic": "Recursion and Backtracking",
+  "section": "Subsequences Pattern"
  },
  {
   "id": 2392,
@@ -10295,8 +10295,8 @@
    }
   },
   "slug": "2392-contains-duplicate",
-  "topic": "Array",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Easy"
  },
  {
   "id": 2404,
@@ -10311,8 +10311,8 @@
    }
   },
   "slug": "2404-product-of-array-except-self",
-  "topic": "Array",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Medium"
  },
  {
   "id": 2760,
@@ -10327,8 +10327,8 @@
    }
   },
   "slug": "2760-kadanes-algorithm-maximum-subarray-sum",
-  "topic": "Array",
-  "section": ""
+  "topic": "Arrays",
+  "section": "Medium"
  },
  {
   "id": 2396,
@@ -10343,8 +10343,8 @@
    }
   },
   "slug": "2396-container-with-most-water",
-  "topic": "Array",
-  "section": ""
+  "topic": "Sliding Window and Two Pointers",
+  "section": "Medium Problems"
  },
  {
   "id": 2411,
@@ -10359,8 +10359,8 @@
    }
   },
   "slug": "2411-sum-of-two-integers",
-  "topic": "Binary",
-  "section": ""
+  "topic": "Bit Manipulation",
+  "section": "Interview Problems"
  },
  {
   "id": 2402,
@@ -10375,8 +10375,8 @@
    }
   },
   "slug": "2402-number-of-1-bits",
-  "topic": "Binary",
-  "section": ""
+  "topic": "Bit Manipulation",
+  "section": "Interview Problems"
  },
  {
   "id": 2393,
@@ -10391,8 +10391,8 @@
    }
   },
   "slug": "2393-counting-bits",
-  "topic": "Binary",
-  "section": ""
+  "topic": "Bit Manipulation",
+  "section": "Interview Problems"
  },
  {
   "id": 2406,
@@ -10407,8 +10407,8 @@
    }
   },
   "slug": "2406-reverse-bits",
-  "topic": "Binary",
-  "section": ""
+  "topic": "Bit Manipulation",
+  "section": "Interview Problems"
  },
  {
   "id": 2397,
@@ -10424,7 +10424,7 @@
   },
   "slug": "2397-decode-ways",
   "topic": "Dynamic Programming",
-  "section": ""
+  "section": "1D DP"
  },
  {
   "id": 2403,
@@ -10439,8 +10439,8 @@
    }
   },
   "slug": "2403-pacific-atlantic-water-flow",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 495,
@@ -10455,8 +10455,8 @@
    }
   },
   "slug": "495-graph-valid-tree",
-  "topic": "Graph",
-  "section": ""
+  "topic": "Graphs",
+  "section": "Problems on BFS/DFS"
  },
  {
   "id": 709,
@@ -10471,8 +10471,8 @@
    }
   },
   "slug": "709-meeting-rooms",
-  "topic": "Interval",
-  "section": ""
+  "topic": "Greedy Algorithms",
+  "section": "Medium/Hard"
  },
  {
   "id": 710,
@@ -10487,8 +10487,8 @@
    }
   },
   "slug": "710-meeting-rooms-ii",
-  "topic": "Interval",
-  "section": ""
+  "topic": "Greedy Algorithms",
+  "section": "Medium/Hard"
  },
  {
   "id": 2407,
@@ -10504,7 +10504,7 @@
   },
   "slug": "2407-reorder-list",
   "topic": "Linked List",
-  "section": ""
+  "section": "Medium Problems of LL"
  },
  {
   "id": 559,
@@ -10519,8 +10519,8 @@
    }
   },
   "slug": "559-group-words-by-anagrams",
-  "topic": "String",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 2794,
@@ -10535,8 +10535,8 @@
    }
   },
   "slug": "2794-palindromic-substrings",
-  "topic": "String",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 331,
@@ -10551,8 +10551,8 @@
    }
   },
   "slug": "331-encode-and-decode-strings",
-  "topic": "String",
-  "section": ""
+  "topic": "Strings",
+  "section": "Medium String Problems"
  },
  {
   "id": 2783,
@@ -10567,8 +10567,8 @@
    }
   },
   "slug": "2783-invert-flip-binary-tree-create",
-  "topic": "Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Medium Problems"
  },
  {
   "id": 2408,
@@ -10583,7 +10583,7 @@
    }
   },
   "slug": "2408-subtree-of-another-tree",
-  "topic": "Tree",
-  "section": ""
+  "topic": "Binary Trees",
+  "section": "Medium Problems"
  }
 ]

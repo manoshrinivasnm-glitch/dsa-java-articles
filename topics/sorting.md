@@ -1,5 +1,5 @@
 ---
-title: "Learn Important Sorting Techniques"
+title: "Sorting"
 ---
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Sorting-I</h2>

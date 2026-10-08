@@ -29,6 +29,9 @@ for p in problems:
 
 done_total = sum(1 for p in problems if written(p))
 os.makedirs(os.path.join(ROOT, 'topics'), exist_ok=True)
+# drop topic pages for topics that no longer exist (e.g. after merging)
+for f in os.listdir(os.path.join(ROOT, 'topics')):
+    if f.endswith('.md'): os.remove(os.path.join(ROOT, 'topics', f))
 
 def row(p):
     cls = '' if written(p) else ' class="todo"'

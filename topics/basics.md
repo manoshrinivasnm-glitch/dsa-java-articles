@@ -1,5 +1,5 @@
 ---
-title: "Learn the basics"
+title: "Basics"
 ---
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Things to Know in C++/Java/Python or any language</h2>

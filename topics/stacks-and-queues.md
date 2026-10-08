@@ -1,5 +1,5 @@
 ---
-title: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]"
+title: "Stacks and Queues"
 ---
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Learning</h2>
@@ -12,6 +12,8 @@ title: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementa
 <tr><td>388</td><td><a href="{{ "/p/388.html" | relative_url }}">Implement queue using Linkedlist</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
 <tr><td>966</td><td><a href="{{ "/p/966.html" | relative_url }}">Balanced Paranthesis</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE B75</td></tr>
 <tr><td>958</td><td><a href="{{ "/p/958.html" | relative_url }}">Implement Min Stack</a></td><td><span class="badge badge-hard">Hard</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>2808</td><td><a href="{{ "/p/2808.html" | relative_url }}">Implement Stack using Queue (using single queue)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>SDE</td></tr>
+<tr><td>936</td><td><a href="{{ "/p/936.html" | relative_url }}">Sort a Stack</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>SDE</td></tr>
 </tbody></table>
 <h2>Prefix, Infix, PostFix Conversion Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -35,6 +37,7 @@ title: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementa
 <tr><td>970</td><td><a href="{{ "/p/970.html" | relative_url }}">Remove K Digits</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 <tr><td>959</td><td><a href="{{ "/p/959.html" | relative_url }}">Largest rectangle in a histogram</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
 <tr><td>962</td><td><a href="{{ "/p/962.html" | relative_url }}">Maximum Rectangles</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>687</td><td><a href="{{ "/p/687.html" | relative_url }}">Maximum of Minimums for Every Window Size</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>SDE</td></tr>
 </tbody></table>
 <h2>Implementation Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>

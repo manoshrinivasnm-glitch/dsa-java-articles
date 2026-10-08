@@ -1,5 +1,5 @@
 ---
-title: "Graphs [Concepts & Problems]"
+title: "Graphs"
 ---
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Learning</h2>
@@ -27,6 +27,15 @@ title: "Graphs [Concepts & Problems]"
 <tr><td>534</td><td><a href="{{ "/p/534.html" | relative_url }}">Number of islands</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr><td>2813</td><td><a href="{{ "/p/2813.html" | relative_url }}">Bipartite Graph (DFS)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr><td>2814</td><td><a href="{{ "/p/2814.html" | relative_url }}">Cycle Detection in Directed Graph (DFS)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2832</td><td><a href="{{ "/p/2832.html" | relative_url }}">Flood-fill Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>188</td><td><a href="{{ "/p/188.html" | relative_url }}">Clone Graph</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE B75</td></tr>
+<tr><td>2818</td><td><a href="{{ "/p/2818.html" | relative_url }}">Detect A cycle in Undirected Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2819</td><td><a href="{{ "/p/2819.html" | relative_url }}">Detect A cycle in Undirected Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2833</td><td><a href="{{ "/p/2833.html" | relative_url }}">Number of islands(Do in Grid and Graph Both)</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>SDE B75</td></tr>
+<tr><td>499</td><td><a href="{{ "/p/499.html" | relative_url }}">Bipartite graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2812</td><td><a href="{{ "/p/2812.html" | relative_url }}">Bipartite Check using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>SDE</td></tr>
+<tr><td>2403</td><td><a href="{{ "/p/2403.html" | relative_url }}">Pacific Atlantic Water Flow</a></td><td><span class="badge badge-easy">Easy</span></td><td>Problems on BFS/DFS</td><td>B75</td></tr>
+<tr><td>495</td><td><a href="{{ "/p/495.html" | relative_url }}">Graph Valid Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>B75</td></tr>
 </tbody></table>
 <h2>Topo Sort and Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -37,6 +46,10 @@ title: "Graphs [Concepts & Problems]"
 <tr><td>505</td><td><a href="{{ "/p/505.html" | relative_url }}">Course Schedule II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
 <tr><td>506</td><td><a href="{{ "/p/506.html" | relative_url }}">Find eventual safe states</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
 <tr><td>503</td><td><a href="{{ "/p/503.html" | relative_url }}">Alien Dictionary</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z B75</td></tr>
+<tr><td>2816</td><td><a href="{{ "/p/2816.html" | relative_url }}">Detect A cycle in a Directed Graph using DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2815</td><td><a href="{{ "/p/2815.html" | relative_url }}">Detect A cycle in a Directed Graph using BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2820</td><td><a href="{{ "/p/2820.html" | relative_url }}">Topological Sort BFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
+<tr><td>2821</td><td><a href="{{ "/p/2821.html" | relative_url }}">Topological Sort DFS</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>SDE</td></tr>
 </tbody></table>
 <h2>Shortest Path Algorithms and Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -53,6 +66,9 @@ title: "Graphs [Concepts & Problems]"
 <tr><td>2826</td><td><a href="{{ "/p/2826.html" | relative_url }}">Bellman Ford Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
 <tr><td>522</td><td><a href="{{ "/p/522.html" | relative_url }}">Floyd warshall algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
 <tr><td>521</td><td><a href="{{ "/p/521.html" | relative_url }}">Find the city with the smallest number of neighbors</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>A2Z</td></tr>
+<tr><td>520</td><td><a href="{{ "/p/520.html" | relative_url }}">Dijkstra's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
+<tr><td>518</td><td><a href="{{ "/p/518.html" | relative_url }}">Bellman ford algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
+<tr><td>2829</td><td><a href="{{ "/p/2829.html" | relative_url }}">Floyd Warshall Algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Shortest Path Algorithms and Problems</td><td>SDE</td></tr>
 </tbody></table>
 <h2>MinimumSpanningTree/Disjoint Set and Problems</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
@@ -66,10 +82,13 @@ title: "Graphs [Concepts & Problems]"
 <tr><td>514</td><td><a href="{{ "/p/514.html" | relative_url }}">Number of islands II</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr><td>512</td><td><a href="{{ "/p/512.html" | relative_url }}">Making a large island</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr><td>1006</td><td><a href="{{ "/p/1006.html" | relative_url }}">Swim in Rising Water</a></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>2824</td><td><a href="{{ "/p/2824.html" | relative_url }}">MST using Prim's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>SDE</td></tr>
+<tr><td>2823</td><td><a href="{{ "/p/2823.html" | relative_url }}">MST using Kruskal's Algo</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>SDE</td></tr>
 </tbody></table>
 <h2>Other Algorithms</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr><td>497</td><td><a href="{{ "/p/497.html" | relative_url }}">Bridges in graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
 <tr><td>496</td><td><a href="{{ "/p/496.html" | relative_url }}">Articulation point in graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
 <tr><td>498</td><td><a href="{{ "/p/498.html" | relative_url }}">Kosaraju's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr><td>2811</td><td><a href="{{ "/p/2811.html" | relative_url }}">Strongly Connected Component(using KosaRaju's algo)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>SDE</td></tr>
 </tbody></table>

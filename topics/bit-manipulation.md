@@ -1,5 +1,5 @@
 ---
-title: "Bit Manipulation [Concepts & Problems]"
+title: "Bit Manipulation"
 ---
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Learn Bit Manipulation</h2>
@@ -20,6 +20,10 @@ title: "Bit Manipulation [Concepts & Problems]"
 <tr><td>142</td><td><a href="{{ "/p/142.html" | relative_url }}">Power Set Bit Manipulation</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
 <tr><td>146</td><td><a href="{{ "/p/146.html" | relative_url }}">XOR of numbers in a given range</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
 <tr><td>145</td><td><a href="{{ "/p/145.html" | relative_url }}">Single Number - III</a></td><td><span class="badge badge-medium">Medium</span></td><td>Interview Problems</td><td>A2Z</td></tr>
+<tr><td>2411</td><td><a href="{{ "/p/2411.html" | relative_url }}">Sum of Two Integers</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
+<tr><td>2406</td><td><a href="{{ "/p/2406.html" | relative_url }}">Reverse Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td>Interview Problems</td><td>B75</td></tr>
 </tbody></table>
 <h2>Advanced Maths</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>

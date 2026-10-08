@@ -67,6 +67,9 @@ for pid in ids:
     if re.search(r'@@|PLACEHOLDER|\bTODO\b', body): err(pid, 'leftover placeholder (@@ / PLACEHOLDER / TODO) in article')
     words = len(re.sub(r'```.*?```', '', body, flags=re.S).split())
     if words < 500: err(pid, f'article short ({words} words)')
+    for key in ('topic', 'section'):
+        mt = re.search(rf'^{key}:\s*"?(.*?)"?\s*$', fm, re.M)
+        if p and mt and mt.group(1) != p[key]: err(pid, f'{key} {mt.group(1)!r} differs from problems.json {p[key]!r}')
     if p and p['difficulty'] and not re.search(rf'^difficulty:\s*{p["difficulty"]}', fm, re.M): err(pid, 'difficulty differs from problems.json')
 
 print(f'checked {len(ids)} problems, {errors} issue(s)')
