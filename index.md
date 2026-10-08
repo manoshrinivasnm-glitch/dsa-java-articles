@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>520 of 583 problems written (89%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:89%"></span></div>
+<p>531 of 583 problems written (91%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:91%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -28,10 +28,10 @@ permalink: /
 <li><a href="{{ "/topics/arrays-part-iii.html" | relative_url }}">Arrays Part-III</a><span class="count">1 / 1 written</span></li>
 <li><a href="{{ "/topics/arrays-part-iv.html" | relative_url }}">Arrays Part-IV</a><span class="count">3 / 3 written</span></li>
 <li><a href="{{ "/topics/linked-list.html" | relative_url }}">Linked List</a><span class="count">6 / 6 written</span></li>
-<li><a href="{{ "/topics/linked-list-part-ii.html" | relative_url }}">Linked List Part-II</a><span class="count">0 / 6 written</span></li>
-<li><a href="{{ "/topics/linked-list-and-arrays.html" | relative_url }}">Linked List and Arrays</a><span class="count">0 / 2 written</span></li>
-<li><a href="{{ "/topics/greedy-algorithm.html" | relative_url }}">Greedy Algorithm</a><span class="count">0 / 1 written</span></li>
-<li><a href="{{ "/topics/recursion.html" | relative_url }}">Recursion</a><span class="count">0 / 2 written</span></li>
+<li><a href="{{ "/topics/linked-list-part-ii.html" | relative_url }}">Linked List Part-II</a><span class="count">6 / 6 written</span></li>
+<li><a href="{{ "/topics/linked-list-and-arrays.html" | relative_url }}">Linked List and Arrays</a><span class="count">2 / 2 written</span></li>
+<li><a href="{{ "/topics/greedy-algorithm.html" | relative_url }}">Greedy Algorithm</a><span class="count">1 / 1 written</span></li>
+<li><a href="{{ "/topics/recursion.html" | relative_url }}">Recursion</a><span class="count">2 / 2 written</span></li>
 <li><a href="{{ "/topics/recursion-and-backtracking.html" | relative_url }}">Recursion and Backtracking</a><span class="count">2 / 2 written</span></li>
 <li><a href="{{ "/topics/binary-search.html" | relative_url }}">Binary Search</a><span class="count">0 / 5 written</span></li>
 <li><a href="{{ "/topics/heaps.html" | relative_url }}">Heaps</a><span class="count">0 / 2 written</span></li>

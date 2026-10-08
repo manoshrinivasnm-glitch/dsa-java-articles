@@ -489,17 +489,17 @@ title: All problems
 <tr><td>626</td><td><a href="{{ "/p/626.html" | relative_url }}">Remove Nth node from the back of the LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr><td>2848</td><td><a href="{{ "/p/2848.html" | relative_url }}">Add two numbers as LinkedList</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>258</td><td><a href="{{ "/p/258.html" | relative_url }}">Delete Node in a Linked List O(1)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>621</td><td>Find the intersection point of Y LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>620</td><td>Detect a loop in LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>614</td><td>Reverse LL in group of given size K <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>618</td><td>Check if LL is palindrome or not <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>622</td><td>Find the starting point in LL <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>612</td><td>Flattening of LL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>615</td><td>Rotate a LL <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>47</td><td>Remove duplicates from sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>319</td><td>Minimum coins <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2805</td><td>Subset Sums <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>818</td><td>Permutation Sequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>621</td><td><a href="{{ "/p/621.html" | relative_url }}">Find the intersection point of Y LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>620</td><td><a href="{{ "/p/620.html" | relative_url }}">Detect a loop in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>614</td><td><a href="{{ "/p/614.html" | relative_url }}">Reverse LL in group of given size K</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>618</td><td><a href="{{ "/p/618.html" | relative_url }}">Check if LL is palindrome or not</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>622</td><td><a href="{{ "/p/622.html" | relative_url }}">Find the starting point in LL</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>612</td><td><a href="{{ "/p/612.html" | relative_url }}">Flattening of LL</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>615</td><td><a href="{{ "/p/615.html" | relative_url }}">Rotate a LL</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>47</td><td><a href="{{ "/p/47.html" | relative_url }}">Remove duplicates from sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>319</td><td><a href="{{ "/p/319.html" | relative_url }}">Minimum coins</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2805</td><td><a href="{{ "/p/2805.html" | relative_url }}">Subset Sums</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>818</td><td><a href="{{ "/p/818.html" | relative_url }}">Permutation Sequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>821</td><td><a href="{{ "/p/821.html" | relative_url }}">Permutations of a String</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>2757</td><td><a href="{{ "/p/2757.html" | relative_url }}">Word Break (print all ways)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2771</td><td>The N-th root of an integer <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
