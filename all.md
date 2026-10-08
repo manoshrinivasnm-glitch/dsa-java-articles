@@ -534,12 +534,12 @@ title: All problems
 <tr><td>99</td><td><a href="{{ "/p/99.html" | relative_url }}">Two sum in BST</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr><td>96</td><td><a href="{{ "/p/96.html" | relative_url }}">BST iterator</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr><td>2773</td><td><a href="{{ "/p/2773.html" | relative_url }}">Size of the largest BST in a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>62</td><td>Binary Tree to Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>446</td><td>Find Median in a Stream <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>567</td><td>Kth largest element in a stream of running integers <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>279</td><td>Distinct Numbers in Each Subarray <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2839</td><td>K-th largest element in an unsorted array. <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2832</td><td>Flood-fill Algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>62</td><td><a href="{{ "/p/62.html" | relative_url }}">Binary Tree to Doubly Linked List</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>446</td><td><a href="{{ "/p/446.html" | relative_url }}">Find Median in a Stream</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>567</td><td><a href="{{ "/p/567.html" | relative_url }}">Kth largest element in a stream of running integers</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>279</td><td><a href="{{ "/p/279.html" | relative_url }}">Distinct Numbers in Each Subarray</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2839</td><td><a href="{{ "/p/2839.html" | relative_url }}">K-th largest element in an unsorted array.</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2832</td><td><a href="{{ "/p/2832.html" | relative_url }}">Flood-fill Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>188</td><td>Clone Graph <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
 <tr class="todo"><td>2818</td><td>Detect A cycle in Undirected Graph using BFS <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2819</td><td>Detect A cycle in Undirected Graph using DFS <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
