@@ -292,13 +292,13 @@ title: All problems
 <tr><td>542</td><td><a href="{{ "/p/542.html" | relative_url }}">Jump Game - I</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
 <tr><td>595</td><td><a href="{{ "/p/595.html" | relative_url }}">Jump Game II</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
 <tr><td>548</td><td><a href="{{ "/p/548.html" | relative_url }}">Minimum number of platforms required for a railway</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>547</td><td>Job sequencing Problem <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>544</td><td>Candy <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>551</td><td>Shortest Job First <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>2859</td><td>Program for Least Recently Used (LRU) Page Replacement Algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
-<tr class="todo"><td>546</td><td>Insert Interval <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>712</td><td>Merge Intervals <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>550</td><td>Non-overlapping Intervals <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
+<tr><td>547</td><td><a href="{{ "/p/547.html" | relative_url }}">Job sequencing Problem</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z SDE</td></tr>
+<tr><td>544</td><td><a href="{{ "/p/544.html" | relative_url }}">Candy</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
+<tr><td>551</td><td><a href="{{ "/p/551.html" | relative_url }}">Shortest Job First</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
+<tr><td>2859</td><td><a href="{{ "/p/2859.html" | relative_url }}">Program for Least Recently Used (LRU) Page Replacement Algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z</td></tr>
+<tr><td>546</td><td><a href="{{ "/p/546.html" | relative_url }}">Insert Interval</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
+<tr><td>712</td><td><a href="{{ "/p/712.html" | relative_url }}">Merge Intervals</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
+<tr><td>550</td><td><a href="{{ "/p/550.html" | relative_url }}">Non-overlapping Intervals</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium/Hard</td><td>A2Z B75</td></tr>
 <tr class="todo"><td>2865</td><td>Introduction to Trees <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr class="todo"><td>2864</td><td>Binary Tree Representation in Java <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z</td></tr>
 <tr class="todo"><td>136</td><td>Pre, Post, Inorder in one traversal <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Traversals</td><td>A2Z SDE</td></tr>
