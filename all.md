@@ -512,11 +512,11 @@ title: All problems
 <tr><td>2808</td><td><a href="{{ "/p/2808.html" | relative_url }}">Implement Stack using Queue (using single queue)</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr><td>936</td><td><a href="{{ "/p/936.html" | relative_url }}">Sort a Stack</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>687</td><td><a href="{{ "/p/687.html" | relative_url }}">Maximum of Minimums for Every Window Size</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2852</td><td>Longest Palindrome in a string <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2861</td><td>Implement ATOI/STRSTR <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>312</td><td>Minimum insertions to make string palindrome <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>400</td><td>Valid Anagram <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>198</td><td>Compare version numbers <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2852</td><td><a href="{{ "/p/2852.html" | relative_url }}">Longest Palindrome in a string</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2861</td><td><a href="{{ "/p/2861.html" | relative_url }}">Implement ATOI/STRSTR</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>312</td><td><a href="{{ "/p/312.html" | relative_url }}">Minimum insertions to make string palindrome</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>400</td><td><a href="{{ "/p/400.html" | relative_url }}">Valid Anagram</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>198</td><td><a href="{{ "/p/198.html" | relative_url }}">Compare version numbers</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>133</td><td><a href="{{ "/p/133.html" | relative_url }}">Inorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr><td>2790</td><td><a href="{{ "/p/2790.html" | relative_url }}">Preorder Traversal</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr><td>139</td><td><a href="{{ "/p/139.html" | relative_url }}">Morris Inorder Traversal</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
@@ -581,9 +581,9 @@ title: All problems
 <tr><td>709</td><td><a href="{{ "/p/709.html" | relative_url }}">Meeting Rooms</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr><td>710</td><td><a href="{{ "/p/710.html" | relative_url }}">Meeting Rooms II</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr><td>2407</td><td><a href="{{ "/p/2407.html" | relative_url }}">Reorder List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>559</td><td>Group Words by Anagrams <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2794</td><td>Palindromic Substrings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>331</td><td>Encode and Decode Strings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>559</td><td><a href="{{ "/p/559.html" | relative_url }}">Group Words by Anagrams</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>2794</td><td><a href="{{ "/p/2794.html" | relative_url }}">Palindromic Substrings</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>331</td><td><a href="{{ "/p/331.html" | relative_url }}">Encode and Decode Strings</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr><td>2783</td><td><a href="{{ "/p/2783.html" | relative_url }}">Invert/Flip Binary Tree (Create)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr><td>2408</td><td><a href="{{ "/p/2408.html" | relative_url }}">Subtree of Another Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 </tbody></table>
