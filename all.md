@@ -571,19 +571,19 @@ title: All problems
 <tr class="todo"><td>2404</td><td>Product of Array Except Self <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2760</td><td>Kadane's Algorithm, maximum subarray sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2396</td><td>Container with most water <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2411</td><td>Sum of Two Integers <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2402</td><td>Number of 1 Bits <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2393</td><td>Counting Bits <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2406</td><td>Reverse Bits <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2411</td><td><a href="{{ "/p/2411.html" | relative_url }}">Sum of Two Integers</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2402</td><td><a href="{{ "/p/2402.html" | relative_url }}">Number of 1 Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2393</td><td><a href="{{ "/p/2393.html" | relative_url }}">Counting Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2406</td><td><a href="{{ "/p/2406.html" | relative_url }}">Reverse Bits</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2397</td><td>Decode Ways <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2403</td><td>Pacific Atlantic Water Flow <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>495</td><td>Graph Valid Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>709</td><td>Meeting Rooms <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>710</td><td>Meeting Rooms II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>709</td><td><a href="{{ "/p/709.html" | relative_url }}">Meeting Rooms</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>710</td><td><a href="{{ "/p/710.html" | relative_url }}">Meeting Rooms II</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr><td>2407</td><td><a href="{{ "/p/2407.html" | relative_url }}">Reorder List</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>559</td><td>Group Words by Anagrams <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>2794</td><td>Palindromic Substrings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
 <tr class="todo"><td>331</td><td>Encode and Decode Strings <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2783</td><td>Invert/Flip Binary Tree (Create) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
-<tr class="todo"><td>2408</td><td>Subtree of Another Tree <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
+<tr><td>2783</td><td><a href="{{ "/p/2783.html" | relative_url }}">Invert/Flip Binary Tree (Create)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>B75</td></tr>
+<tr><td>2408</td><td><a href="{{ "/p/2408.html" | relative_url }}">Subtree of Another Tree</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>B75</td></tr>
 </tbody></table>
