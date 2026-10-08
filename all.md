@@ -267,15 +267,15 @@ title: All problems
 <tr><td>988</td><td><a href="{{ "/p/988.html" | relative_url }}">Subarrays with K Different Integers</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr><td>931</td><td><a href="{{ "/p/931.html" | relative_url }}">Minimum Window Substring</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z B75</td></tr>
 <tr><td>754</td><td><a href="{{ "/p/754.html" | relative_url }}">Minimum Window Subsequence</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>1223</td><td>Heaps (Theory Video) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>576</td><td>Implement Min Heap <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>571</td><td>Check if an array represents a min heap <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>572</td><td>Convert Min Heap to Max Heap <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>578</td><td>K-th Largest element in an array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2840</td><td>Kth smallest element in an array [use priority queue] <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2409</td><td>Sort K sorted array <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>569</td><td>Merge K sorted Lists <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>898</td><td>Replace Elements by Their Rank <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>1223</td><td><a href="{{ "/p/1223.html" | relative_url }}">Heaps (Theory Video)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>576</td><td><a href="{{ "/p/576.html" | relative_url }}">Implement Min Heap</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>571</td><td><a href="{{ "/p/571.html" | relative_url }}">Check if an array represents a min heap</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>572</td><td><a href="{{ "/p/572.html" | relative_url }}">Convert Min Heap to Max Heap</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>578</td><td><a href="{{ "/p/578.html" | relative_url }}">K-th Largest element in an array</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2840</td><td><a href="{{ "/p/2840.html" | relative_url }}">Kth smallest element in an array [use priority queue]</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>2409</td><td><a href="{{ "/p/2409.html" | relative_url }}">Sort K sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>569</td><td><a href="{{ "/p/569.html" | relative_url }}">Merge K sorted Lists</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>898</td><td><a href="{{ "/p/898.html" | relative_url }}">Replace Elements by Their Rank</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>1008</td><td>Task Scheduler <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>556</td><td>Hand of Straights <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>565</td><td>Design Twitter <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
