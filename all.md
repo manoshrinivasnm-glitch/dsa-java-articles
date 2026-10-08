@@ -364,17 +364,17 @@ title: All problems
 <tr><td>536</td><td><a href="{{ "/p/536.html" | relative_url }}">Rotten Oranges</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z SDE</td></tr>
 <tr><td>531</td><td><a href="{{ "/p/531.html" | relative_url }}">Flood fill algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr><td>2817</td><td><a href="{{ "/p/2817.html" | relative_url }}">Cycle Detection in Undirected Graph (bfs)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>501</td><td>Detect a cycle in an undirected graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>530</td><td>Distance of nearest cell having one <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>537</td><td>Surrounded Regions <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>533</td><td>Number of enclaves <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>509</td><td>Word ladder I <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>510</td><td>Word ladder II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>534</td><td>Number of islands <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2813</td><td>Bipartite Graph (DFS) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2814</td><td>Cycle Detection in Directed Graph (DFS) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2822</td><td>Topo Sort <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>502</td><td>Topological sort or Kahn's algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr><td>501</td><td><a href="{{ "/p/501.html" | relative_url }}">Detect a cycle in an undirected graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>530</td><td><a href="{{ "/p/530.html" | relative_url }}">Distance of nearest cell having one</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>537</td><td><a href="{{ "/p/537.html" | relative_url }}">Surrounded Regions</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>533</td><td><a href="{{ "/p/533.html" | relative_url }}">Number of enclaves</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>509</td><td><a href="{{ "/p/509.html" | relative_url }}">Word ladder I</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>510</td><td><a href="{{ "/p/510.html" | relative_url }}">Word ladder II</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>534</td><td><a href="{{ "/p/534.html" | relative_url }}">Number of islands</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2813</td><td><a href="{{ "/p/2813.html" | relative_url }}">Bipartite Graph (DFS)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2814</td><td><a href="{{ "/p/2814.html" | relative_url }}">Cycle Detection in Directed Graph (DFS)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2822</td><td><a href="{{ "/p/2822.html" | relative_url }}">Topo Sort</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
+<tr><td>502</td><td><a href="{{ "/p/502.html" | relative_url }}">Topological sort or Kahn's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>500</td><td>Detect a cycle in a directed graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>504</td><td>Course Schedule I <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Topo Sort and Problems</td><td>A2Z B75</td></tr>
 <tr class="todo"><td>505</td><td>Course Schedule II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Topo Sort and Problems</td><td>A2Z</td></tr>
