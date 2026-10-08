@@ -2,9 +2,7 @@
 
 | Batch | State |
 |---|---|
-| 01-43, 46 | published (425 articles) |
-| 44, 45, 47 | stopped mid-write at the 50% session-limit stop; drafts on disk, uncommitted. Resume with the "RESUMING AN INTERRUPTED RUN" prompt |
-| 48-62 | not started |
+| 01-50, 53 | published (483 articles) |
+| 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62 | not started (paused at the user's 60% session-limit cap) |
 
-Publish a finished batch: `tools/publish.sh "Batch NN: <topic>" NN [NN...]` (validates, stages only that batch, rebuilds index, commits, pushes).
-Then check GitHub Actions "Java solutions check": the run summary lists every failing class with its error.
+Publish a finished batch: `tools/publish.sh "Batch NN: <topic>" NN` (validates, compiles and runs the batch's Java locally, stages only that batch, rebuilds index, commits, pushes).
