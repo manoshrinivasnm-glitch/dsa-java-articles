@@ -89,8 +89,10 @@
   if (!jump) return;
   jump.hidden = false;
   jump.title = heading.textContent.trim();
+  jump.setAttribute('aria-label', 'Jump to optimal code: ' + heading.textContent.trim());
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function go(smooth) {
-    target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    target.scrollIntoView({ behavior: smooth && !reduceMotion ? 'smooth' : 'auto', block: 'start' });
     target.classList.remove('flash');
     void target.offsetWidth; // restart the animation
     target.classList.add('flash');
