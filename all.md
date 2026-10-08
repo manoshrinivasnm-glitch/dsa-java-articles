@@ -500,8 +500,8 @@ title: All problems
 <tr class="todo"><td>319</td><td>Minimum coins <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2805</td><td>Subset Sums <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>818</td><td>Permutation Sequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>821</td><td>Permutations of a String <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2757</td><td>Word Break (print all ways) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>821</td><td><a href="{{ "/p/821.html" | relative_url }}">Permutations of a String</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2757</td><td><a href="{{ "/p/2757.html" | relative_url }}">Word Break (print all ways)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2771</td><td>The N-th root of an integer <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>90</td><td>Single element in sorted array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2769</td><td>Search element in a sorted and rotated array/ find pivot where it is rotated <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>

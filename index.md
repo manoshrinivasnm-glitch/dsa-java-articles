@@ -2,7 +2,7 @@
 title: Topics
 permalink: /
 ---
-<p>481 of 583 problems written (83%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<p>483 of 583 problems written (83%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
 <div class="progress"><span style="width:83%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
@@ -32,7 +32,7 @@ permalink: /
 <li><a href="{{ "/topics/linked-list-and-arrays.html" | relative_url }}">Linked List and Arrays</a><span class="count">0 / 2 written</span></li>
 <li><a href="{{ "/topics/greedy-algorithm.html" | relative_url }}">Greedy Algorithm</a><span class="count">0 / 1 written</span></li>
 <li><a href="{{ "/topics/recursion.html" | relative_url }}">Recursion</a><span class="count">0 / 2 written</span></li>
-<li><a href="{{ "/topics/recursion-and-backtracking.html" | relative_url }}">Recursion and Backtracking</a><span class="count">0 / 2 written</span></li>
+<li><a href="{{ "/topics/recursion-and-backtracking.html" | relative_url }}">Recursion and Backtracking</a><span class="count">2 / 2 written</span></li>
 <li><a href="{{ "/topics/binary-search.html" | relative_url }}">Binary Search</a><span class="count">0 / 5 written</span></li>
 <li><a href="{{ "/topics/heaps.html" | relative_url }}">Heaps</a><span class="count">0 / 2 written</span></li>
 <li><a href="{{ "/topics/stack-and-queue.html" | relative_url }}">Stack and Queue</a><span class="count">0 / 2 written</span></li>
