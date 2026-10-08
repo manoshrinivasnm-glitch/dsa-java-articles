@@ -4,23 +4,23 @@ title: "Dynamic Programming [Patterns and Problems]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Introduction to DP</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1195</td><td>Introduction to DP <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Introduction to DP</td><td>A2Z</td></tr>
+<tr><td>1195</td><td><a href="{{ "/p/1195.html" | relative_url }}">Introduction to DP</a></td><td><span class="badge badge-easy">Easy</span></td><td>Introduction to DP</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>1D DP</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>287</td><td>Climbing stairs <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>288</td><td>Frog Jump <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>289</td><td>Frog jump with K distances <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>291</td><td>Maximum sum of non adjacent elements <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>290</td><td>House robber <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
+<tr><td>287</td><td><a href="{{ "/p/287.html" | relative_url }}">Climbing stairs</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
+<tr><td>288</td><td><a href="{{ "/p/288.html" | relative_url }}">Frog Jump</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z</td></tr>
+<tr><td>289</td><td><a href="{{ "/p/289.html" | relative_url }}">Frog jump with K distances</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z</td></tr>
+<tr><td>291</td><td><a href="{{ "/p/291.html" | relative_url }}">Maximum sum of non adjacent elements</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
+<tr><td>290</td><td><a href="{{ "/p/290.html" | relative_url }}">House robber</a></td><td><span class="badge badge-medium">Medium</span></td><td>1D DP</td><td>A2Z B75</td></tr>
 </tbody></table>
 <h2>2D/3D DP and DP on Grids</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>292</td><td>Ninja's training <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>2795</td><td>Grid Unique Paths : DP on Grids (DP8) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>300</td><td>Unique paths II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>298</td><td>Minimum Falling Path Sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
-<tr class="todo"><td>299</td><td>Triangle <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>292</td><td><a href="{{ "/p/292.html" | relative_url }}">Ninja's training</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>2795</td><td><a href="{{ "/p/2795.html" | relative_url }}">Grid Unique Paths : DP on Grids (DP8)</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>300</td><td><a href="{{ "/p/300.html" | relative_url }}">Unique paths II</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>298</td><td><a href="{{ "/p/298.html" | relative_url }}">Minimum Falling Path Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
+<tr><td>299</td><td><a href="{{ "/p/299.html" | relative_url }}">Triangle</a></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
 <tr class="todo"><td>769</td><td>Ninja and his Friends <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>2D/3D DP and DP on Grids</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>DP on Subsequences</h2>
