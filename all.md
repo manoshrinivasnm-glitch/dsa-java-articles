@@ -319,16 +319,16 @@ title: All problems
 <tr class="todo"><td>126</td><td>Zig Zag or Spiral Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>116</td><td>Boundary Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>125</td><td>Vertical Order Traversal <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>124</td><td>Top View of BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>115</td><td>Bottom view of BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2782</td><td>Right/Left View of Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2784</td><td>Symmetric Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>122</td><td>Print root to leaf path in BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>118</td><td>LCA in BT <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>119</td><td>Maximum Width of BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>185</td><td>Children Sum Property in Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>121</td><td>Print all nodes at a distance of K in BT <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>120</td><td>Minimum time taken to burn the BT from a given Node <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>124</td><td><a href="{{ "/p/124.html" | relative_url }}">Top View of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>115</td><td><a href="{{ "/p/115.html" | relative_url }}">Bottom view of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>2782</td><td><a href="{{ "/p/2782.html" | relative_url }}">Right/Left View of Binary Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>2784</td><td><a href="{{ "/p/2784.html" | relative_url }}">Symmetric Binary Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z SDE</td></tr>
+<tr><td>122</td><td><a href="{{ "/p/122.html" | relative_url }}">Print root to leaf path in BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>118</td><td><a href="{{ "/p/118.html" | relative_url }}">LCA in BT</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>119</td><td><a href="{{ "/p/119.html" | relative_url }}">Maximum Width of BT</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>185</td><td><a href="{{ "/p/185.html" | relative_url }}">Children Sum Property in Binary Tree</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>121</td><td><a href="{{ "/p/121.html" | relative_url }}">Print all nodes at a distance of K in BT</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>120</td><td><a href="{{ "/p/120.html" | relative_url }}">Minimum time taken to burn the BT from a given Node</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>117</td><td>Count total nodes in a complete BT <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>111</td><td>Requirements needed to construct a unique BT <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>110</td><td>Construct a BT from Preorder and Inorder <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
