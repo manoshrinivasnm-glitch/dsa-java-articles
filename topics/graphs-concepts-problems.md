@@ -60,16 +60,16 @@ title: "Graphs [Concepts & Problems]"
 <tr class="todo"><td>2825</td><td>Prim's Algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>516</td><td>Disjoint Set <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>517</td><td>Find the MST weight <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>515</td><td>Number of operations to make network connected <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>513</td><td>Most stones removed with same row or column <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>511</td><td>Accounts merge <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>514</td><td>Number of islands II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>512</td><td>Making a large island <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>1006</td><td>Swim in Rising Water <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>515</td><td><a href="{{ "/p/515.html" | relative_url }}">Number of operations to make network connected</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>513</td><td><a href="{{ "/p/513.html" | relative_url }}">Most stones removed with same row or column</a></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>511</td><td><a href="{{ "/p/511.html" | relative_url }}">Accounts merge</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>514</td><td><a href="{{ "/p/514.html" | relative_url }}">Number of islands II</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>512</td><td><a href="{{ "/p/512.html" | relative_url }}">Making a large island</a></td><td><span class="badge badge-hard">Hard</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
+<tr><td>1006</td><td><a href="{{ "/p/1006.html" | relative_url }}">Swim in Rising Water</a></td><td><span class="badge badge-medium">Medium</span></td><td>MinimumSpanningTree/Disjoint Set and Problems</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Other Algorithms</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>497</td><td>Bridges in graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
-<tr class="todo"><td>496</td><td>Articulation point in graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
-<tr class="todo"><td>498</td><td>Kosaraju's algorithm <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr><td>497</td><td><a href="{{ "/p/497.html" | relative_url }}">Bridges in graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr><td>496</td><td><a href="{{ "/p/496.html" | relative_url }}">Articulation point in graph</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
+<tr><td>498</td><td><a href="{{ "/p/498.html" | relative_url }}">Kosaraju's algorithm</a></td><td><span class="badge badge-hard">Hard</span></td><td>Other Algorithms</td><td>A2Z</td></tr>
 </tbody></table>
