@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>350 of 583 problems written (60%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:60%"></span></div>
+<p>361 of 583 problems written (62%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:62%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -19,7 +19,7 @@ permalink: /
 <li><a href="{{ "/topics/greedy-algorithms-easy-medium-hard.html" | relative_url }}">Greedy Algorithms [Easy, Medium/Hard]</a><span class="count">15 / 15 written</span></li>
 <li><a href="{{ "/topics/binary-trees-traversals-medium-and-hard-problems.html" | relative_url }}">Binary Trees [Traversals, Medium and Hard Problems]</a><span class="count">38 / 38 written</span></li>
 <li><a href="{{ "/topics/binary-search-trees-concept-and-problems.html" | relative_url }}">Binary Search Trees [Concept and Problems]</a><span class="count">16 / 16 written</span></li>
-<li><a href="{{ "/topics/graphs-concepts-problems.html" | relative_url }}">Graphs [Concepts & Problems]</a><span class="count">0 / 53 written</span></li>
+<li><a href="{{ "/topics/graphs-concepts-problems.html" | relative_url }}">Graphs [Concepts & Problems]</a><span class="count">11 / 53 written</span></li>
 <li><a href="{{ "/topics/dynamic-programming-patterns-and-problems.html" | relative_url }}">Dynamic Programming [Patterns and Problems]</a><span class="count">0 / 55 written</span></li>
 <li><a href="{{ "/topics/tries.html" | relative_url }}">Tries</a><span class="count">0 / 7 written</span></li>
 <li><a href="{{ "/topics/strings.html" | relative_url }}">Strings</a><span class="count">0 / 9 written</span></li>

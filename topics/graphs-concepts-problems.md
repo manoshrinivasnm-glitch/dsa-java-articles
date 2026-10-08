@@ -4,20 +4,20 @@ title: "Graphs [Concepts & Problems]"
 <p><a href="{{ "/" | relative_url }}">← All topics</a></p>
 <h2>Learning</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>1222</td><td>Introduction to Graph <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>2870</td><td>Graph Representation | C++ <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>2871</td><td>Graph Representation | Java <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>528</td><td>Connected Components <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>529</td><td>Traversal Techniques <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2831</td><td>DFS <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>1222</td><td><a href="{{ "/p/1222.html" | relative_url }}">Introduction to Graph</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>2870</td><td><a href="{{ "/p/2870.html" | relative_url }}">Graph Representation | C++</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>2871</td><td><a href="{{ "/p/2871.html" | relative_url }}">Graph Representation | Java</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>528</td><td><a href="{{ "/p/528.html" | relative_url }}">Connected Components</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z B75</td></tr>
+<tr><td>529</td><td><a href="{{ "/p/529.html" | relative_url }}">Traversal Techniques</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>2831</td><td><a href="{{ "/p/2831.html" | relative_url }}">DFS</a></td><td><span class="badge badge-medium">Medium</span></td><td>Learning</td><td>A2Z SDE</td></tr>
 </tbody></table>
 <h2>Problems on BFS/DFS</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>535</td><td>Number of provinces <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2830</td><td>Connected Components Problem in Matrix <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>536</td><td>Rotten Oranges <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>531</td><td>Flood fill algorithm <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2817</td><td>Cycle Detection in Undirected Graph (bfs) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>535</td><td><a href="{{ "/p/535.html" | relative_url }}">Number of provinces</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2830</td><td><a href="{{ "/p/2830.html" | relative_url }}">Connected Components Problem in Matrix</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>536</td><td><a href="{{ "/p/536.html" | relative_url }}">Rotten Oranges</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z SDE</td></tr>
+<tr><td>531</td><td><a href="{{ "/p/531.html" | relative_url }}">Flood fill algorithm</a></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
+<tr><td>2817</td><td><a href="{{ "/p/2817.html" | relative_url }}">Cycle Detection in Undirected Graph (bfs)</a></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr class="todo"><td>501</td><td>Detect a cycle in an undirected graph <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr class="todo"><td>530</td><td>Distance of nearest cell having one <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
 <tr class="todo"><td>537</td><td>Surrounded Regions <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Problems on BFS/DFS</td><td>A2Z</td></tr>
