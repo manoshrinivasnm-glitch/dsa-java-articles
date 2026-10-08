@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>531 of 583 problems written (91%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:91%"></span></div>
+<p>541 of 583 problems written (93%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:93%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -33,10 +33,10 @@ permalink: /
 <li><a href="{{ "/topics/greedy-algorithm.html" | relative_url }}">Greedy Algorithm</a><span class="count">1 / 1 written</span></li>
 <li><a href="{{ "/topics/recursion.html" | relative_url }}">Recursion</a><span class="count">2 / 2 written</span></li>
 <li><a href="{{ "/topics/recursion-and-backtracking.html" | relative_url }}">Recursion and Backtracking</a><span class="count">2 / 2 written</span></li>
-<li><a href="{{ "/topics/binary-search.html" | relative_url }}">Binary Search</a><span class="count">0 / 5 written</span></li>
-<li><a href="{{ "/topics/heaps.html" | relative_url }}">Heaps</a><span class="count">0 / 2 written</span></li>
-<li><a href="{{ "/topics/stack-and-queue.html" | relative_url }}">Stack and Queue</a><span class="count">0 / 2 written</span></li>
-<li><a href="{{ "/topics/stack-and-queue-part-ii.html" | relative_url }}">Stack and Queue Part-II</a><span class="count">0 / 1 written</span></li>
+<li><a href="{{ "/topics/binary-search.html" | relative_url }}">Binary Search</a><span class="count">5 / 5 written</span></li>
+<li><a href="{{ "/topics/heaps.html" | relative_url }}">Heaps</a><span class="count">2 / 2 written</span></li>
+<li><a href="{{ "/topics/stack-and-queue.html" | relative_url }}">Stack and Queue</a><span class="count">2 / 2 written</span></li>
+<li><a href="{{ "/topics/stack-and-queue-part-ii.html" | relative_url }}">Stack and Queue Part-II</a><span class="count">1 / 1 written</span></li>
 <li><a href="{{ "/topics/string.html" | relative_url }}">String</a><span class="count">0 / 5 written</span></li>
 <li><a href="{{ "/topics/string-part-ii.html" | relative_url }}">String Part-II</a><span class="count">0 / 3 written</span></li>
 <li><a href="{{ "/topics/binary-tree.html" | relative_url }}">Binary Tree</a><span class="count">5 / 5 written</span></li>

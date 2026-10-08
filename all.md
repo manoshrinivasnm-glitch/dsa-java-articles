@@ -502,16 +502,16 @@ title: All problems
 <tr><td>818</td><td><a href="{{ "/p/818.html" | relative_url }}">Permutation Sequence</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>821</td><td><a href="{{ "/p/821.html" | relative_url }}">Permutations of a String</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr><td>2757</td><td><a href="{{ "/p/2757.html" | relative_url }}">Word Break (print all ways)</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2771</td><td>The N-th root of an integer <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>90</td><td>Single element in sorted array <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2769</td><td>Search element in a sorted and rotated array/ find pivot where it is rotated <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>76</td><td>Kth element of 2 sorted arrays <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2766</td><td>Allocate Minimum Number of Pages <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>575</td><td>Implement Max Heap <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>713</td><td>Merge K Sorted Arrays <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>2808</td><td>Implement Stack using Queue (using single queue) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>936</td><td>Sort a Stack <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>687</td><td>Maximum of Minimums for Every Window Size <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2771</td><td><a href="{{ "/p/2771.html" | relative_url }}">The N-th root of an integer</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>90</td><td><a href="{{ "/p/90.html" | relative_url }}">Single element in sorted array</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2769</td><td><a href="{{ "/p/2769.html" | relative_url }}">Search element in a sorted and rotated array/ find pivot where it is rotated</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>76</td><td><a href="{{ "/p/76.html" | relative_url }}">Kth element of 2 sorted arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>2766</td><td><a href="{{ "/p/2766.html" | relative_url }}">Allocate Minimum Number of Pages</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>575</td><td><a href="{{ "/p/575.html" | relative_url }}">Implement Max Heap</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>713</td><td><a href="{{ "/p/713.html" | relative_url }}">Merge K Sorted Arrays</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>2808</td><td><a href="{{ "/p/2808.html" | relative_url }}">Implement Stack using Queue (using single queue)</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>936</td><td><a href="{{ "/p/936.html" | relative_url }}">Sort a Stack</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
+<tr><td>687</td><td><a href="{{ "/p/687.html" | relative_url }}">Maximum of Minimums for Every Window Size</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2852</td><td>Longest Palindrome in a string <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2861</td><td>Implement ATOI/STRSTR <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>312</td><td>Minimum insertions to make string palindrome <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
