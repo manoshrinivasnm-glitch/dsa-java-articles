@@ -439,17 +439,17 @@ title: All problems
 <tr class="todo"><td>306</td><td>Distinct subsequences <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Strings</td><td>A2Z</td></tr>
 <tr class="todo"><td>307</td><td>Edit distance <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Strings</td><td>A2Z SDE</td></tr>
 <tr class="todo"><td>314</td><td>Wildcard matching <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Strings</td><td>A2Z</td></tr>
-<tr class="todo"><td>301</td><td>Best time to buy and sell stock <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z B75</td></tr>
-<tr class="todo"><td>302</td><td>Best time to buy and sell stock II <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
-<tr class="todo"><td>303</td><td>Best time to buy and sell stock III <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
-<tr class="todo"><td>304</td><td>Best time to buy and sell stock IV <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
-<tr class="todo"><td>56</td><td>Best Time to Buy and Sell Stock with Cooldown <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
-<tr class="todo"><td>305</td><td>Best time to buy and sell stock with transaction fees <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
-<tr class="todo"><td>636</td><td>Longest Increasing Subsequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>851</td><td>Print Longest Increasing Subsequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
-<tr class="todo"><td>2851</td><td>Longest Increasing Subsequence - (DP-43) <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
-<tr class="todo"><td>603</td><td>Largest Divisible Subset <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
-<tr class="todo"><td>640</td><td>Longest String Chain <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>301</td><td><a href="{{ "/p/301.html" | relative_url }}">Best time to buy and sell stock</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z B75</td></tr>
+<tr><td>302</td><td><a href="{{ "/p/302.html" | relative_url }}">Best time to buy and sell stock II</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
+<tr><td>303</td><td><a href="{{ "/p/303.html" | relative_url }}">Best time to buy and sell stock III</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
+<tr><td>304</td><td><a href="{{ "/p/304.html" | relative_url }}">Best time to buy and sell stock IV</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
+<tr><td>56</td><td><a href="{{ "/p/56.html" | relative_url }}">Best Time to Buy and Sell Stock with Cooldown</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
+<tr><td>305</td><td><a href="{{ "/p/305.html" | relative_url }}">Best time to buy and sell stock with transaction fees</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on Stocks</td><td>A2Z</td></tr>
+<tr><td>636</td><td><a href="{{ "/p/636.html" | relative_url }}">Longest Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z SDE B75</td></tr>
+<tr><td>851</td><td><a href="{{ "/p/851.html" | relative_url }}">Print Longest Increasing Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>2851</td><td><a href="{{ "/p/2851.html" | relative_url }}">Longest Increasing Subsequence - (DP-43)</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>603</td><td><a href="{{ "/p/603.html" | relative_url }}">Largest Divisible Subset</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>640</td><td><a href="{{ "/p/640.html" | relative_url }}">Longest String Chain</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 <tr class="todo"><td>633</td><td>Longest Bitonic Subsequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 <tr class="todo"><td>780</td><td>Number of Longest Increasing Subsequences <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 <tr class="todo"><td>327</td><td>Matrix chain multiplication <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z SDE</td></tr>
