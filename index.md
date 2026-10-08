@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>559 of 583 problems written (96%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:96%"></span></div>
+<p>571 of 583 problems written (98%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:98%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -44,7 +44,7 @@ permalink: /
 <li><a href="{{ "/topics/binary-search-tree.html" | relative_url }}">Binary Search Tree</a><span class="count">4 / 4 written</span></li>
 <li><a href="{{ "/topics/binary-search-tree-part-ii.html" | relative_url }}">Binary Search Tree Part-II</a><span class="count">6 / 6 written</span></li>
 <li><a href="{{ "/topics/binary-trees-miscellaneous.html" | relative_url }}">Binary Trees[Miscellaneous]</a><span class="count">6 / 6 written</span></li>
-<li><a href="{{ "/topics/graph.html" | relative_url }}">Graph</a><span class="count">0 / 12 written</span></li>
+<li><a href="{{ "/topics/graph.html" | relative_url }}">Graph</a><span class="count">12 / 12 written</span></li>
 <li><a href="{{ "/topics/graph-part-ii.html" | relative_url }}">Graph Part-II</a><span class="count">6 / 6 written</span></li>
 <li><a href="{{ "/topics/dynamic-programming.html" | relative_url }}">Dynamic Programming</a><span class="count">4 / 4 written</span></li>
 <li><a href="{{ "/topics/dynamic-programming-part-ii.html" | relative_url }}">Dynamic Programming Part-II</a><span class="count">0 / 7 written</span></li>
