@@ -64,6 +64,7 @@ for pid in ids:
     stripped = re.sub(r'{% raw %}.*?{% endraw %}', '', body, flags=re.S)
     stripped = re.sub(r'{{\s*"/p/\d+\.html"\s*\|\s*relative_url\s*}}', '', stripped)
     if re.search(r'{{|{%', stripped): err(pid, 'unescaped {{ or {% in article body')
+    if re.search(r'@@|PLACEHOLDER|\bTODO\b', body): err(pid, 'leftover placeholder (@@ / PLACEHOLDER / TODO) in article')
     words = len(re.sub(r'```.*?```', '', body, flags=re.S).split())
     if words < 500: err(pid, f'article short ({words} words)')
     if p and p['difficulty'] and not re.search(rf'^difficulty:\s*{p["difficulty"]}', fm, re.M): err(pid, 'difficulty differs from problems.json')

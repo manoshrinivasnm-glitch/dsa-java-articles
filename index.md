@@ -2,8 +2,8 @@
 title: Topics
 permalink: /
 ---
-<p>222 of 583 problems written (38%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
-<div class="progress"><span style="width:38%"></span></div>
+<p>232 of 583 problems written (40%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
+<div class="progress"><span style="width:40%"></span></div>
 <ul class="topic-list">
 <li><a href="{{ "/topics/learn-the-basics.html" | relative_url }}">Learn the basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/learn-important-sorting-techniques.html" | relative_url }}">Learn Important Sorting Techniques</a><span class="count">7 / 7 written</span></li>
@@ -13,7 +13,7 @@ permalink: /
 <li><a href="{{ "/topics/learn-linkedlist-single-ll-double-ll-medium-hard-problems.html" | relative_url }}">Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]</a><span class="count">31 / 31 written</span></li>
 <li><a href="{{ "/topics/recursion-patternwise.html" | relative_url }}">Recursion [PatternWise]</a><span class="count">25 / 25 written</span></li>
 <li><a href="{{ "/topics/bit-manipulation-concepts-problems.html" | relative_url }}">Bit Manipulation [Concepts & Problems]</a><span class="count">18 / 18 written</span></li>
-<li><a href="{{ "/topics/stack-and-queues-learning-pre-in-post-fix-monotonic-stack-implementation.html" | relative_url }}">Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]</a><span class="count">0 / 30 written</span></li>
+<li><a href="{{ "/topics/stack-and-queues-learning-pre-in-post-fix-monotonic-stack-implementation.html" | relative_url }}">Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]</a><span class="count">10 / 30 written</span></li>
 <li><a href="{{ "/topics/sliding-window-two-pointer-combined-problems.html" | relative_url }}">Sliding Window & Two Pointer Combined Problems</a><span class="count">0 / 12 written</span></li>
 <li><a href="{{ "/topics/heaps-learning-medium-hard-problems.html" | relative_url }}">Heaps [Learning, Medium, Hard Problems]</a><span class="count">0 / 17 written</span></li>
 <li><a href="{{ "/topics/greedy-algorithms-easy-medium-hard.html" | relative_url }}">Greedy Algorithms [Easy, Medium/Hard]</a><span class="count">0 / 15 written</span></li>

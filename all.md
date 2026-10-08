@@ -225,16 +225,16 @@ title: All problems
 <tr><td>651</td><td><a href="{{ "/p/651.html" | relative_url }}">Count primes in range L to R</a></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
 <tr><td>652</td><td><a href="{{ "/p/652.html" | relative_url }}">Prime factorisation of a Number</a></td><td><span class="badge badge-hard">Hard</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
 <tr><td>877</td><td><a href="{{ "/p/877.html" | relative_url }}">Pow(x,n)</a></td><td><span class="badge badge-easy">Easy</span></td><td>Advanced Maths</td><td>A2Z</td></tr>
-<tr class="todo"><td>390</td><td>Implement Stack using Arrays <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>387</td><td>Implement Queue using Arrays <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>392</td><td>Implement Stack using Queue <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>389</td><td>Implement Queue using Stack <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>391</td><td>Implement stack using Linkedlist <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>388</td><td>Implement queue using Linkedlist <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
-<tr class="todo"><td>966</td><td>Balanced Paranthesis <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>958</td><td>Implement Min Stack <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Learning</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>586</td><td>Infix to Postfix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>848</td><td>Prefix to Infix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>390</td><td><a href="{{ "/p/390.html" | relative_url }}">Implement Stack using Arrays</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>387</td><td><a href="{{ "/p/387.html" | relative_url }}">Implement Queue using Arrays</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>392</td><td><a href="{{ "/p/392.html" | relative_url }}">Implement Stack using Queue</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>389</td><td><a href="{{ "/p/389.html" | relative_url }}">Implement Queue using Stack</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>391</td><td><a href="{{ "/p/391.html" | relative_url }}">Implement stack using Linkedlist</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>388</td><td><a href="{{ "/p/388.html" | relative_url }}">Implement queue using Linkedlist</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z</td></tr>
+<tr><td>966</td><td><a href="{{ "/p/966.html" | relative_url }}">Balanced Paranthesis</a></td><td><span class="badge badge-easy">Easy</span></td><td>Learning</td><td>A2Z SDE B75</td></tr>
+<tr><td>958</td><td><a href="{{ "/p/958.html" | relative_url }}">Implement Min Stack</a></td><td><span class="badge badge-hard">Hard</span></td><td>Learning</td><td>A2Z SDE</td></tr>
+<tr><td>586</td><td><a href="{{ "/p/586.html" | relative_url }}">Infix to Postfix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>848</td><td><a href="{{ "/p/848.html" | relative_url }}">Prefix to Infix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>849</td><td>Prefix to Postfix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>825</td><td>Postfix to Prefix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
 <tr class="todo"><td>824</td><td>Postfix to Infix Conversion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
