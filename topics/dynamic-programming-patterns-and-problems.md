@@ -66,21 +66,21 @@ title: "Dynamic Programming [Patterns and Problems]"
 <tr><td>2851</td><td><a href="{{ "/p/2851.html" | relative_url }}">Longest Increasing Subsequence - (DP-43)</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 <tr><td>603</td><td><a href="{{ "/p/603.html" | relative_url }}">Largest Divisible Subset</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 <tr><td>640</td><td><a href="{{ "/p/640.html" | relative_url }}">Longest String Chain</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
-<tr class="todo"><td>633</td><td>Longest Bitonic Subsequence <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
-<tr class="todo"><td>780</td><td>Number of Longest Increasing Subsequences <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>633</td><td><a href="{{ "/p/633.html" | relative_url }}">Longest Bitonic Subsequence</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
+<tr><td>780</td><td><a href="{{ "/p/780.html" | relative_url }}">Number of Longest Increasing Subsequences</a></td><td><span class="badge badge-medium">Medium</span></td><td>DP on LIS</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>MCM DP - Partition DP</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>327</td><td>Matrix chain multiplication <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>2806</td><td>Matrix Chain Multiplication - Bottom-Up - (DP-49) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>328</td><td>Minimum cost to cut the stick <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>326</td><td>Burst balloons <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>276</td><td>Different Ways to Evaluate a Boolean Expression <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>329</td><td>Palindrome partitioning II <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
-<tr class="todo"><td>810</td><td>Partition Array for Maximum Sum <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>327</td><td><a href="{{ "/p/327.html" | relative_url }}">Matrix chain multiplication</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z SDE</td></tr>
+<tr><td>2806</td><td><a href="{{ "/p/2806.html" | relative_url }}">Matrix Chain Multiplication - Bottom-Up - (DP-49)</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>328</td><td><a href="{{ "/p/328.html" | relative_url }}">Minimum cost to cut the stick</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>326</td><td><a href="{{ "/p/326.html" | relative_url }}">Burst balloons</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>276</td><td><a href="{{ "/p/276.html" | relative_url }}">Different Ways to Evaluate a Boolean Expression</a></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>329</td><td><a href="{{ "/p/329.html" | relative_url }}">Palindrome partitioning II</a></td><td><span class="badge badge-hard">Hard</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
+<tr><td>810</td><td><a href="{{ "/p/810.html" | relative_url }}">Partition Array for Maximum Sum</a></td><td><span class="badge badge-medium">Medium</span></td><td>MCM DP - Partition DP</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>DP on Squares</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>2860</td><td>Maximum Rectangle Area with all 1's - (DP-55) <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Squares</td><td>A2Z</td></tr>
-<tr class="todo"><td>2395</td><td>Count Square Submatrices with All Ones - (DP-56) <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>DP on Squares</td><td>A2Z</td></tr>
+<tr><td>2860</td><td><a href="{{ "/p/2860.html" | relative_url }}">Maximum Rectangle Area with all 1's - (DP-55)</a></td><td><span class="badge badge-hard">Hard</span></td><td>DP on Squares</td><td>A2Z</td></tr>
+<tr><td>2395</td><td><a href="{{ "/p/2395.html" | relative_url }}">Count Square Submatrices with All Ones - (DP-56)</a></td><td><span class="badge badge-easy">Easy</span></td><td>DP on Squares</td><td>A2Z</td></tr>
 </tbody></table>
