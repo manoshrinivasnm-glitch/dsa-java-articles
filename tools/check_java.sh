@@ -6,7 +6,11 @@ set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 JDK_BIN="$ROOT/tools/jdk/Contents/Home/bin"
 if [ -x "$JDK_BIN/javac" ]; then export PATH="$JDK_BIN:$PATH"; fi
-command -v javac >/dev/null || { echo "javac not found. Install a JDK 17+"; exit 2; }
+# Fall back to the JDK bundled with the VS Code Java extension, if present.
+if ! javac -version >/dev/null 2>&1; then
+  for d in "$HOME"/.vscode/extensions/redhat.java-*/jre/*/bin; do [ -x "$d/javac" ] && export PATH="$d:$PATH" && break; done
+fi
+javac -version >/dev/null 2>&1 || { echo "javac not found. Install a JDK 17+"; exit 2; }
 TIMEOUT=""; command -v timeout >/dev/null && TIMEOUT="timeout 20"
 OUT="$ROOT/out"; rm -rf "$OUT"; mkdir -p "$OUT/classes"
 if [ $# -eq 0 ]; then files=("$ROOT"/java/*.java); else files=(); for c in "$@"; do files+=("$ROOT/java/$c.java"); done; fi

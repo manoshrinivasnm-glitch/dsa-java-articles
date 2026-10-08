@@ -276,14 +276,14 @@ title: All problems
 <tr><td>2409</td><td><a href="{{ "/p/2409.html" | relative_url }}">Sort K sorted array</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
 <tr><td>569</td><td><a href="{{ "/p/569.html" | relative_url }}">Merge K sorted Lists</a></td><td><span class="badge badge-hard">Hard</span></td><td>Medium Problems</td><td>A2Z</td></tr>
 <tr><td>898</td><td><a href="{{ "/p/898.html" | relative_url }}">Replace Elements by Their Rank</a></td><td><span class="badge badge-easy">Easy</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>1008</td><td>Task Scheduler <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>556</td><td>Hand of Straights <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>565</td><td>Design Twitter <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>755</td><td>Minimum Cost to Connect Sticks <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>2838</td><td>Kth largest element in a stream of running integers <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>568</td><td>Maximum Sum Combination <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>566</td><td>Find Median from Data Stream <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
-<tr class="todo"><td>1018</td><td>Top K Frequent Elements <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>1008</td><td><a href="{{ "/p/1008.html" | relative_url }}">Task Scheduler</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>556</td><td><a href="{{ "/p/556.html" | relative_url }}">Hand of Straights</a></td><td><span class="badge badge-medium">Medium</span></td><td>Medium Problems</td><td>A2Z</td></tr>
+<tr><td>565</td><td><a href="{{ "/p/565.html" | relative_url }}">Design Twitter</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>755</td><td><a href="{{ "/p/755.html" | relative_url }}">Minimum Cost to Connect Sticks</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>2838</td><td><a href="{{ "/p/2838.html" | relative_url }}">Kth largest element in a stream of running integers</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z</td></tr>
+<tr><td>568</td><td><a href="{{ "/p/568.html" | relative_url }}">Maximum Sum Combination</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE</td></tr>
+<tr><td>566</td><td><a href="{{ "/p/566.html" | relative_url }}">Find Median from Data Stream</a></td><td><span class="badge badge-hard">Hard</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
+<tr><td>1018</td><td><a href="{{ "/p/1018.html" | relative_url }}">Top K Frequent Elements</a></td><td><span class="badge badge-medium">Medium</span></td><td>Hard Problems</td><td>A2Z SDE B75</td></tr>
 <tr><td>2834</td><td><a href="{{ "/p/2834.html" | relative_url }}">Assign Cookies</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>
 <tr><td>489</td><td><a href="{{ "/p/489.html" | relative_url }}">Fractional Knapsack</a></td><td><span class="badge badge-medium">Medium</span></td><td>Easy Problems</td><td>A2Z SDE</td></tr>
 <tr><td>543</td><td><a href="{{ "/p/543.html" | relative_url }}">Lemonade Change</a></td><td><span class="badge badge-easy">Easy</span></td><td>Easy Problems</td><td>A2Z</td></tr>

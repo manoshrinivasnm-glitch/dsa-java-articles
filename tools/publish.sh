@@ -12,6 +12,9 @@ for b in "$@"; do
     j="$(sed -n 's/^java:[[:space:]]*//p' "p/$id.md" | head -1)"; [ -n "$j" ] && files+=("$j")
   done < <(python3 -c "import json,sys; [print(p['id']) for p in json.load(open('tools/batches/%02d.json' % int(sys.argv[1])))]" "$b")
 done
+# Compile and run this batch's solutions locally before anything is committed.
+classes=(); for f in "${files[@]}"; do case "$f" in java/*.java) c="${f#java/}"; classes+=("${c%.java}");; esac; done
+tools/check_java.sh "${classes[@]}"
 git add -- "${files[@]}"
 python3 tools/build_site.py
 git add -- "${files[@]}" index.md all.md topics tools _data ARTICLE_GUIDE.md README.md .github 2>/dev/null || true
