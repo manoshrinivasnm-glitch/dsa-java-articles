@@ -17,19 +17,19 @@ title: "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementa
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
 <tr><td>586</td><td><a href="{{ "/p/586.html" | relative_url }}">Infix to Postfix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
 <tr><td>848</td><td><a href="{{ "/p/848.html" | relative_url }}">Prefix to Infix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>849</td><td>Prefix to Postfix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>825</td><td>Postfix to Prefix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>824</td><td>Postfix to Infix Conversion <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
-<tr class="todo"><td>587</td><td>Infix to Prefix Conversion <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>849</td><td><a href="{{ "/p/849.html" | relative_url }}">Prefix to Postfix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>825</td><td><a href="{{ "/p/825.html" | relative_url }}">Postfix to Prefix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>824</td><td><a href="{{ "/p/824.html" | relative_url }}">Postfix to Infix Conversion</a></td><td><span class="badge badge-easy">Easy</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
+<tr><td>587</td><td><a href="{{ "/p/587.html" | relative_url }}">Infix to Prefix Conversion</a></td><td><span class="badge badge-medium">Medium</span></td><td>Prefix, Infix, PostFix Conversion Problems</td><td>A2Z</td></tr>
 </tbody></table>
 <h2>Monotonic Stack/Queue Problems [VVV. Imp]</h2>
 <table class="prob-table"><thead><tr><th>ID</th><th>Problem</th><th>Difficulty</th><th>Section</th><th>Sheets</th></tr></thead><tbody>
-<tr class="todo"><td>968</td><td>Next Greater Element <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>969</td><td>Next Greater Element - 2 <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>768</td><td>Next Smaller Element <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>285</td><td>Number of Greater Elements to the Right <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
-<tr class="todo"><td>965</td><td>Trapping Rainwater <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
-<tr class="todo"><td>971</td><td>Sum of Subarray Minimums <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>968</td><td><a href="{{ "/p/968.html" | relative_url }}">Next Greater Element</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
+<tr><td>969</td><td><a href="{{ "/p/969.html" | relative_url }}">Next Greater Element - 2</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>768</td><td><a href="{{ "/p/768.html" | relative_url }}">Next Smaller Element</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
+<tr><td>285</td><td><a href="{{ "/p/285.html" | relative_url }}">Number of Greater Elements to the Right</a></td><td><span class="badge badge-easy">Easy</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
+<tr><td>965</td><td><a href="{{ "/p/965.html" | relative_url }}">Trapping Rainwater</a></td><td><span class="badge badge-hard">Hard</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z SDE</td></tr>
+<tr><td>971</td><td><a href="{{ "/p/971.html" | relative_url }}">Sum of Subarray Minimums</a></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 <tr class="todo"><td>967</td><td>Asteroid Collision <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 <tr class="todo"><td>972</td><td>Sum of Subarray Ranges <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
 <tr class="todo"><td>970</td><td>Remove K Digits <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td>Monotonic Stack/Queue Problems [VVV. Imp]</td><td>A2Z</td></tr>
