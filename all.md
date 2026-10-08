@@ -528,12 +528,12 @@ title: All problems
 <tr class="todo"><td>108</td><td>Search in BST <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>2391</td><td>Construct BST from given keys <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>103</td><td>Inorder successor and predecessor in BST <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2779</td><td>Floor in a BST <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2777</td><td>Ceil in a BST <small>(coming soon)</small></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2776</td><td>Find K-th smallest element in BST <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
-<tr class="todo"><td>99</td><td>Two sum in BST <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>96</td><td>BST iterator <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
-<tr class="todo"><td>2773</td><td>Size of the largest BST in a Binary Tree <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2779</td><td><a href="{{ "/p/2779.html" | relative_url }}">Floor in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>2777</td><td><a href="{{ "/p/2777.html" | relative_url }}">Ceil in a BST</a></td><td><span class="badge badge-easy">Easy</span></td><td></td><td>SDE</td></tr>
+<tr><td>2776</td><td><a href="{{ "/p/2776.html" | relative_url }}">Find K-th smallest element in BST</a></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE B75</td></tr>
+<tr><td>99</td><td><a href="{{ "/p/99.html" | relative_url }}">Two sum in BST</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>96</td><td><a href="{{ "/p/96.html" | relative_url }}">BST iterator</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
+<tr><td>2773</td><td><a href="{{ "/p/2773.html" | relative_url }}">Size of the largest BST in a Binary Tree</a></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>62</td><td>Binary Tree to Doubly Linked List <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>446</td><td>Find Median in a Stream <small>(coming soon)</small></td><td><span class="badge badge-medium">Medium</span></td><td></td><td>SDE</td></tr>
 <tr class="todo"><td>567</td><td>Kth largest element in a stream of running integers <small>(coming soon)</small></td><td><span class="badge badge-hard">Hard</span></td><td></td><td>SDE</td></tr>
