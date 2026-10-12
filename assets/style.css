@@ -98,3 +98,7 @@ blockquote{margin:1em 0;padding:.5em 1em;border-left:4px solid var(--accent);bac
   .prob-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .prob-table td:nth-child(2){min-width:160px}
 }
+@media (max-width:520px){
+  .actions-label{flex-basis:100%}
+  .jump{flex:1 1 0;padding:7px 6px}
+}
