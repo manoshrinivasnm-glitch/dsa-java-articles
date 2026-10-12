@@ -4,6 +4,8 @@ permalink: /
 ---
 <p>583 of 583 problems written (100%). Every article has a brute-force to optimal walkthrough with Java code that compiles and passes its own tests.</p>
 <div class="progress"><span style="width:100%"></span></div>
+<div class="search" data-mode="index" data-index="{{ '/assets/search-index.json' | relative_url }}" data-all="{{ '/all.html' | relative_url }}"><input id="problem-search" type="search" placeholder="Search 583 problems by name, topic or TUF ID" aria-label="Search problems" autocomplete="off" spellcheck="false"><p class="search-status" aria-live="polite"></p></div>
+<ul class="search-results" hidden></ul>
 <ul class="topic-list">
 <li><a href="{{ "/topics/basics.html" | relative_url }}">Basics</a><span class="count">54 / 54 written</span></li>
 <li><a href="{{ "/topics/sorting.html" | relative_url }}">Sorting</a><span class="count">7 / 7 written</span></li>
@@ -23,3 +25,4 @@ permalink: /
 <li><a href="{{ "/topics/dynamic-programming.html" | relative_url }}">Dynamic Programming</a><span class="count">66 / 66 written</span></li>
 <li><a href="{{ "/topics/tries.html" | relative_url }}">Tries</a><span class="count">7 / 7 written</span></li>
 </ul>
+<script src="{{ '/assets/search.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
