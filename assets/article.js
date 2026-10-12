@@ -65,45 +65,78 @@
     wrap.classList.add('has-bar');
   });
 
-  // ---------- jump to the optimal approach ----------
-  // Rule: the first "Approach ..." heading that says "optimal"; otherwise the last approach
-  // (articles run from brute force to the best approach).
+  // ---------- jump to brute / better / optimal ----------
+  // Optimal: the first "Approach ..." heading that says "optimal", else the last approach.
+  // Brute:   the first heading that says "brute", else the first approach.
+  // Better:  a heading that says "better" between those two, else the last approach between them;
+  //          none when the article goes straight from brute force to optimal.
   var approaches = Array.prototype.filter.call(article.querySelectorAll('h2'), function (h) {
     return /^approach\b/i.test(h.textContent.trim());
   });
-  if (!approaches.length) return;
-  var heading = approaches.filter(function (h) { return /\boptimal\b/i.test(h.textContent); })[0]
-    || approaches[approaches.length - 1];
+  var row = document.querySelector('.actions');
+  if (!approaches.length || !row) return;
 
-  // the first Java block between this heading and the next h2 (else the first code block of any kind)
-  var target = null, anyBlock = null;
-  for (var el = heading.nextElementSibling; el && el.tagName !== 'H2'; el = el.nextElementSibling) {
-    var found = el.matches('div.highlighter-rouge') ? [el] : Array.prototype.slice.call(el.querySelectorAll ? el.querySelectorAll('div.highlighter-rouge') : []);
-    for (var k = 0; k < found.length; k++) {
-      anyBlock = anyBlock || found[k];
-      if (/\blanguage-java\b/.test(found[k].className)) { target = found[k]; break; }
-    }
-    if (target) break;
+  function idx(re, from, to) {
+    for (var i = from; i < to; i++) if (re.test(approaches[i].textContent)) return i;
+    return -1;
   }
-  target = target || anyBlock;
-  target = target || heading;
-  target.id = target.id || 'optimal-code';
+  var n = approaches.length;
+  var optimal = idx(/\boptimal\b/i, 0, n);
+  if (optimal < 0) optimal = n - 1;
+  var brute = idx(/\bbrute\b/i, 0, n);
+  if (brute < 0 || brute >= optimal) brute = 0;
+  var better = idx(/\bbetter\b/i, brute + 1, optimal);
+  if (better < 0) better = optimal - 1 > brute ? optimal - 1 : -1;
 
-  var jump = document.querySelector('.jump-optimal');
-  if (!jump) return;
-  jump.hidden = false;
-  jump.title = heading.textContent.trim();
-  jump.setAttribute('aria-label', 'Jump to optimal code: ' + heading.textContent.trim());
+  // the first Java block in a section (else the first code block of any kind, else the heading)
+  function codeOf(heading) {
+    var anyBlock = null;
+    for (var el = heading.nextElementSibling; el && el.tagName !== 'H2'; el = el.nextElementSibling) {
+      var found = el.matches('div.highlighter-rouge') ? [el] : Array.prototype.slice.call(el.querySelectorAll ? el.querySelectorAll('div.highlighter-rouge') : []);
+      for (var k = 0; k < found.length; k++) {
+        anyBlock = anyBlock || found[k];
+        if (/\blanguage-java\b/.test(found[k].className)) return found[k];
+      }
+    }
+    return anyBlock || heading;
+  }
+
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function go(smooth) {
+  function go(target, smooth) {
     target.scrollIntoView({ behavior: smooth && !reduceMotion ? 'smooth' : 'auto', block: 'start' });
     target.classList.remove('flash');
     void target.offsetWidth; // restart the animation
     target.classList.add('flash');
   }
-  jump.addEventListener('click', function () {
-    go(true);
-    if (history.replaceState) history.replaceState(null, '', '#optimal');
+
+  var plan = { brute: brute, better: better, optimal: optimal };
+  var NAMES = { brute: 'brute force', better: 'better', optimal: 'optimal' };
+  var targets = {};
+  Object.keys(plan).forEach(function (key) {
+    var btn = row.querySelector('[data-jump="' + key + '"]');
+    if (!btn) return;
+    var i = plan[key];
+    // a single-approach article: that approach is the optimal one only
+    if (i < 0 || (key !== 'optimal' && i === optimal)) {
+      btn.disabled = true;
+      btn.title = n === 1 ? 'This problem has only one approach'
+        : key === 'better' ? 'This problem goes straight from brute force to the optimal approach'
+        : 'The first approach here is already the optimal one';
+      btn.setAttribute('aria-label', 'Jump to ' + NAMES[key] + ' code (not available)');
+      return;
+    }
+    var heading = approaches[i], target = codeOf(heading), label = heading.textContent.trim();
+    targets[key] = target;
+    if (!target.id) target.id = key + '-code';
+    btn.title = label;
+    btn.setAttribute('aria-label', 'Jump to ' + NAMES[key] + ' code: ' + label);
+    btn.addEventListener('click', function () {
+      go(target, true);
+      if (history.replaceState) history.replaceState(null, '', '#' + key);
+    });
   });
-  if (location.hash === '#optimal') setTimeout(function () { go(false); }, 0);
+  row.hidden = false;
+
+  var h = location.hash.replace('#', '');
+  if (targets[h]) setTimeout(function () { go(targets[h], false); }, 0);
 })();
