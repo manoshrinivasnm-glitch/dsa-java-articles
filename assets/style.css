@@ -84,3 +84,9 @@ blockquote{margin:1em 0;padding:.5em 1em;border-left:4px solid var(--accent);bac
 .result-meta{flex-basis:100%;font-size:.82rem;color:var(--muted)}
 .search-empty{color:var(--muted);font-size:.92rem}
 .prob-table tr[hidden],.prob-table[hidden],h2[hidden]{display:none}
+/* header on narrow screens: keep nav links on one line each and let the bar wrap */
+.site-header nav a{white-space:nowrap}
+@media (max-width:520px){
+  .site-header .wrap{height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:10px}
+  .site-header nav{gap:14px;font-size:.9rem}
+}
