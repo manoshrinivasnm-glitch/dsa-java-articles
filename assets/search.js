@@ -17,7 +17,7 @@
     for (var i = 0; i < toks.length; i++) if (hay.indexOf(toks[i]) === -1) return false;
     return true;
   }
-  function plural(n, word) { return n + ' ' + word + (n === 1 ? '' : 's'); }
+  function plural(n, word, many) { return n + ' ' + (n === 1 ? word : (many || word + 's')); }
 
   // ---- shared keyboard behaviour ----
   document.addEventListener('keydown', function (e) {
@@ -133,7 +133,7 @@
     if (!hits.length) list.appendChild(el('li', 'search-empty', 'No problems match. Try fewer or shorter words.'));
     list.hidden = false;
 
-    var msg = plural(hits.length, 'match') + (hits.length ? '' : '');
+    var msg = plural(hits.length, 'match', 'matches');
     status.textContent = '';
     status.appendChild(document.createTextNode(msg));
     if (hits.length > LIMIT) {
