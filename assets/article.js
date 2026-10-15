@@ -115,6 +115,16 @@
     return anyBlock || heading;
   }
 
+  // the last Java block in a section: the end of that solution's code
+  function endOfCode(heading) {
+    var last = null;
+    for (var el = heading.nextElementSibling; el && el.tagName !== 'H2'; el = el.nextElementSibling) {
+      var found = el.matches('div.highlighter-rouge') ? [el] : Array.prototype.slice.call(el.querySelectorAll ? el.querySelectorAll('div.highlighter-rouge') : []);
+      found.forEach(function (b) { if (/\blanguage-java\b/.test(b.className)) last = b; });
+    }
+    return last;
+  }
+
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function go(target, smooth) {
     target.scrollIntoView({ behavior: smooth && !reduceMotion ? 'smooth' : 'auto', block: 'start' });
@@ -151,7 +161,7 @@
   });
   row.hidden = false;
   ['brute', 'better', 'optimal'].forEach(function (key) {
-    if (targets[key] && targets[key].tagName !== 'H2') addPager(targets[key]);
+    if (targets[key]) addPager(endOfCode(approaches[plan[key]]));
   });
 
   var h = location.hash.replace('#', '');
