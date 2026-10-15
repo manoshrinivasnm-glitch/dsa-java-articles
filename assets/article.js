@@ -65,6 +65,20 @@
     wrap.classList.add('has-bar');
   });
 
+  // ---------- previous / next problem, repeated where readers stop ----------
+  // The layout renders one pager at the bottom; copies go under "Jump to code" and after
+  // the Brute, Better and Optimal solutions.
+  var pager = article.querySelector('nav.pager');
+  var placed = [];
+  function addPager(after) {
+    if (!pager || !after || placed.indexOf(after) !== -1) return;
+    placed.push(after);
+    var copy = pager.cloneNode(true);
+    copy.classList.add('pager-inline');
+    after.insertAdjacentElement('afterend', copy);
+  }
+  addPager(document.querySelector('.actions') || document.querySelector('.links'));
+
   // ---------- jump to brute / better / optimal ----------
   // Optimal: the first "Approach ..." heading that says "optimal", else the last approach.
   // Brute:   the first heading that says "brute", else the first approach.
@@ -136,6 +150,9 @@
     });
   });
   row.hidden = false;
+  ['brute', 'better', 'optimal'].forEach(function (key) {
+    if (targets[key] && targets[key].tagName !== 'H2') addPager(targets[key]);
+  });
 
   var h = location.hash.replace('#', '');
   if (targets[h]) setTimeout(function () { go(targets[h], false); }, 0);

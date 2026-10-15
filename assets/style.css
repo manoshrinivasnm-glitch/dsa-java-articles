@@ -102,3 +102,8 @@ blockquote{margin:1em 0;padding:.5em 1em;border-left:4px solid var(--accent);bac
   .actions-label{flex-basis:100%}
   .jump{flex:1 1 0;padding:7px 6px}
 }
+
+/* previous / next links: bottom pager plus inline copies under Jump to code and after solutions */
+.pager a{max-width:48%}
+.pager .next{margin-left:auto;text-align:right}
+.pager-inline{margin:1em 0 1.4em;padding:.55em 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.9rem}
