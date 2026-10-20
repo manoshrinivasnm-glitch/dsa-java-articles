@@ -3,6 +3,14 @@
   var article = document.querySelector('article.article');
   if (!article) return;
 
+  // ---------- links that leave the site (LeetCode, GitHub) open in a new tab ----------
+  Array.prototype.forEach.call(article.querySelectorAll('a[href]'), function (a) {
+    if (a.host && a.host !== location.host) {
+      a.target = '_blank';
+      if (!/\bnoopener\b/.test(a.rel)) a.rel = (a.rel + ' noopener').trim();
+    }
+  });
+
   // ---------- copy buttons ----------
   function copyText(text, done) {
     if (navigator.clipboard && window.isSecureContext) {
