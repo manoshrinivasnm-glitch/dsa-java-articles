@@ -11,9 +11,9 @@ public class P410_Pattern18 {
     /** Approach 1: nested loops; row i runs from letter n-i to letter n-1 (0-based). O(n^2) time, O(n^2) output. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = n - i; j < n; j++) {
-                if (j > n - i) sb.append(' ');
+        for (int i = 1; i <= n; i++) {          // row i shows the last i of the first n letters
+            for (int j = n - i; j < n; j++) {   // from letter n-i up to letter n-1 (0-based)
+                if (j > n - i) sb.append(' ');  // space before every letter except the first
                 sb.append((char) ('A' + j));
             }
             sb.append('\n');
@@ -24,12 +24,12 @@ public class P410_Pattern18 {
     /** Approach 2: each row is the previous row with one more letter glued on the front. O(n^2) time. */
     static String growLeft(int n) {
         StringBuilder sb = new StringBuilder();
-        StringBuilder row = new StringBuilder();
+        StringBuilder row = new StringBuilder();  // current row, grown at its left end
         for (int i = 1; i <= n; i++) {
-            char ch = (char) ('A' + n - i);
-            if (i > 1) row.insert(0, ' ');
-            row.insert(0, ch);
-            sb.append(row).append('\n');
+            char ch = (char) ('A' + n - i);       // the new letter, one step earlier in the alphabet each row
+            if (i > 1) row.insert(0, ' ');        // separate it from the letters already there
+            row.insert(0, ch);                    // prepend the new letter; the rest of the row is reused
+            sb.append(row).append('\n');          // emit the row as it stands now
         }
         return sb.toString();
     }

@@ -16,12 +16,12 @@ public class P409_Pattern17 {
     /** Approach 1: walk 2i-1 columns with a letter that climbs until the middle and then descends. O(n^2) time. */
     static String twoPhase(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int s = 0; s < n - i; s++) sb.append(' ');
-            char ch = 'A';
-            for (int j = 1; j <= 2 * i - 1; j++) {
+        for (int i = 1; i <= n; i++) {                       // row i is a pyramid row of 2i-1 letters
+            for (int s = 0; s < n - i; s++) sb.append(' ');  // n-i leading spaces centre the row
+            char ch = 'A';                                   // every row starts at A
+            for (int j = 1; j <= 2 * i - 1; j++) {           // A up to the peak letter, then back down
                 sb.append(ch);
-                if (j < i) ch++; else ch--;     // climb for the first i-1 steps, then descend
+                if (j < i) ch++; else ch--;                  // climb for the first i-1 steps, then descend
             }
             sb.append('\n');
         }
@@ -31,10 +31,11 @@ public class P409_Pattern17 {
     /** Approach 2: keep the rising half "AB..X" and append its mirror image without the peak. O(n^2) time. */
     static String mirror(int n) {
         StringBuilder sb = new StringBuilder();
-        StringBuilder up = new StringBuilder();            // grows by one letter per row
+        StringBuilder up = new StringBuilder();  // rising half "AB..X"; grows by one letter per row
         for (int i = 1; i <= n; i++) {
-            up.append((char) ('A' + i - 1));
+            up.append((char) ('A' + i - 1));     // add this row's peak letter
             String down = new StringBuilder(up).reverse().substring(1);   // "X..BA" minus the peak X
+            // leading spaces, then the rising half, then the falling half
             sb.append(" ".repeat(n - i)).append(up).append(down).append('\n');
         }
         return sb.toString();
@@ -44,11 +45,11 @@ public class P409_Pattern17 {
     static String formula(int n) {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= n; i++) {
-            int centre = i - 1;                            // index of the peak within the 2i-1 letters
-            for (int s = 0; s < n - i; s++) sb.append(' ');
-            for (int c = 0; c < 2 * i - 1; c++) {
-                int dist = Math.abs(c - centre);
-                sb.append((char) ('A' + (centre - dist)));
+            int centre = i - 1;                              // index of the peak within the 2i-1 letters
+            for (int s = 0; s < n - i; s++) sb.append(' ');  // n-i leading spaces centre the row
+            for (int c = 0; c < 2 * i - 1; c++) {            // letters rise to the peak and fall again
+                int dist = Math.abs(c - centre);             // how far position c is from the peak
+                sb.append((char) ('A' + (centre - dist)));   // peak letter, minus one per step away
             }
             sb.append('\n');
         }

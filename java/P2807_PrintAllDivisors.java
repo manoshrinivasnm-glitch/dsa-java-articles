@@ -5,36 +5,37 @@ public class P2807_PrintAllDivisors {
 
     /** Approach 1: test every candidate from 1 to n. O(n) time, O(k) space for the k divisors. */
     static List<Integer> bruteForce(int n) {
-        List<Integer> result = new ArrayList<>();
-        for (int d = 1; d <= n; d++) {
-            if (n % d == 0) result.add(d);
+        List<Integer> result = new ArrayList<>();  // divisors, found in increasing order
+        for (int d = 1; d <= n; d++) {             // try every candidate from 1 to n
+            if (n % d == 0) result.add(d);         // d divides n with no remainder
         }
         return result;
     }
 
     /** Approach 2: only test d up to sqrt(n), adding both d and n / d, then sort. O(sqrt(n) + k log k) time, O(k) space. */
     static List<Integer> better(int n) {
-        List<Integer> result = new ArrayList<>();
-        for (int d = 1; (long) d * d <= n; d++) {
-            if (n % d == 0) {
+        List<Integer> result = new ArrayList<>();   // divisors, collected in pairs
+        for (int d = 1; (long) d * d <= n; d++) {   // only d up to sqrt(n); long avoids overflow
+            if (n % d == 0) {                       // d divides n, so its partner n / d does too
                 result.add(d);
-                if (d != n / d) result.add(n / d);
+                if (d != n / d) result.add(n / d);  // skip the twin when d * d == n
             }
         }
-        Collections.sort(result);
+        Collections.sort(result);                   // pairs arrive out of order
         return result;
     }
 
     /** Approach 3: the same sqrt(n) loop, but the large partners go into a second list that is appended in reverse, so no sort is needed. O(sqrt(n)) time, O(k) space. */
     static List<Integer> optimal(int n) {
-        List<Integer> small = new ArrayList<>();
-        List<Integer> large = new ArrayList<>();
-        for (int d = 1; (long) d * d <= n; d++) {
-            if (n % d == 0) {
+        List<Integer> small = new ArrayList<>();   // divisors <= sqrt(n), in increasing order
+        List<Integer> large = new ArrayList<>();   // their partners n / d, in decreasing order
+        for (int d = 1; (long) d * d <= n; d++) {  // only d up to sqrt(n); long avoids overflow
+            if (n % d == 0) {                      // d divides n, so its partner n / d does too
                 small.add(d);
-                if (d != n / d) large.add(n / d);
+                if (d != n / d) large.add(n / d);  // skip the twin when d * d == n
             }
         }
+        // append large in reverse, so the whole list is ascending without a sort
         for (int i = large.size() - 1; i >= 0; i--) small.add(large.get(i));
         return small;
     }

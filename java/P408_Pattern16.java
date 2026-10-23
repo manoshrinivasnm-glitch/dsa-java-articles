@@ -11,10 +11,10 @@ public class P408_Pattern16 {
     /** Approach 1: nested loops; the letter is fixed per row and depends on i only. O(n^2) time, O(n^2) output. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            char ch = (char) ('A' + i - 1);
+        for (int i = 1; i <= n; i++) {       // row i repeats one letter i times
+            char ch = (char) ('A' + i - 1);  // row 1 uses A, row 2 uses B, ...
             for (int j = 0; j < i; j++) {
-                if (j > 0) sb.append(' ');
+                if (j > 0) sb.append(' ');   // space between letters, none before the first
                 sb.append(ch);
             }
             sb.append('\n');
@@ -25,8 +25,9 @@ public class P408_Pattern16 {
     /** Approach 2: one library call per row with String.repeat, then drop the trailing space. O(n^2) time. */
     static String withRepeat(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            char ch = (char) ('A' + i - 1);
+        for (int i = 1; i <= n; i++) {       // row i repeats one letter i times
+            char ch = (char) ('A' + i - 1);  // row 1 uses A, row 2 uses B, ...
+            // "X " written i times, minus the final space
             sb.append((ch + " ").repeat(i).stripTrailing()).append('\n');
         }
         return sb.toString();

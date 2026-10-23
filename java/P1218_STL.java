@@ -29,18 +29,18 @@ public class P1218_STL {
         dq.addFirst(4);                              // dq.push_front(4);  -> [4, 2, 1, 3]
         dq.removeLast();                             // dq.pop_back();     -> [4, 2, 1]
         dq.removeFirst();                            // dq.pop_front();    -> [2, 1]
-        return new ArrayList<>(dq);
+        return new ArrayList<>(dq);                  // copy out front to back
     }
 
     /** std::stack and std::queue -> ArrayDeque used LIFO and FIFO. Returns the stack pops followed by the queue polls. */
     static List<Integer> stackAndQueueDemo() {
         Deque<Integer> st = new ArrayDeque<>();      // stack<int> st;
         Deque<Integer> q = new ArrayDeque<>();       // queue<int> q;
-        for (int x = 1; x <= 3; x++) {
+        for (int x = 1; x <= 3; x++) {               // feed 1, 2, 3 into both
             st.push(x);                              // st.push(x);
             q.offer(x);                              // q.push(x);
         }
-        List<Integer> out = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();       // pop order of the stack, then of the queue
         while (!st.isEmpty()) out.add(st.pop());     // st.top(); st.pop();   -> 3, 2, 1
         while (!q.isEmpty()) out.add(q.poll());      // q.front(); q.pop();   -> 1, 2, 3
         return out;
@@ -50,7 +50,7 @@ public class P1218_STL {
     static List<Integer> priorityQueueDemo(int[] values) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // priority_queue<int>
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();                           // priority_queue<int, vector<int>, greater<int>>
-        for (int v : values) {
+        for (int v : values) {                                 // the same values go into both heaps
             maxHeap.offer(v);
             minHeap.offer(v);
         }
@@ -66,9 +66,9 @@ public class P1218_STL {
         Set<Integer> uset = new HashSet<>();                         // unordered_set<int>: hashed, unique
         TreeMap<Integer, Integer> multiset = new TreeMap<>();        // multiset<int>: sorted, duplicates kept as counts
         for (int v : values) {
-            set.add(v);
+            set.add(v);                                              // a repeated value is ignored
             uset.add(v);
-            multiset.merge(v, 1, Integer::sum);
+            multiset.merge(v, 1, Integer::sum);                      // multiset.insert(v): bump v's count
         }
         List<String> out = new ArrayList<>();
         out.add("set=" + set);
@@ -76,7 +76,7 @@ public class P1218_STL {
         out.add("multiset=" + multiset);
         out.add("set.lower_bound(4)=" + set.ceiling(4));             // first element >= 4, null when none
         out.add("set.upper_bound(4)=" + set.higher(4));              // first element > 4, null when none
-        out.add("multiset.count(4)=" + multiset.getOrDefault(4, 0));
+        out.add("multiset.count(4)=" + multiset.getOrDefault(4, 0));   // 0 when 4 is absent
         return out;
     }
 
@@ -86,20 +86,21 @@ public class P1218_STL {
         Map<String, Integer> umap = new HashMap<>();                 // unordered_map<string, int>: hashed
         for (String w : words) {
             map.merge(w, 1, Integer::sum);                           // map[w]++;
-            umap.merge(w, 1, Integer::sum);
+            umap.merge(w, 1, Integer::sum);                          // same counting, hashed
         }
         List<String> out = new ArrayList<>();
         out.add("map=" + map);
         out.add("umap.size=" + umap.size());
         out.add("count(zzz)=" + map.getOrDefault("zzz", 0));         // reads without inserting, unlike C++ operator[]
-        out.add("firstKey=" + (map.isEmpty() ? "none" : map.firstKey()));
+        out.add("firstKey=" + (map.isEmpty() ? "none" : map.firstKey()));   // smallest key: begin()->first
         return out;
     }
 
     /** vector<pair<int,int>> sorted the way C++ sorts pairs: by first, then by second. */
     static List<Pair> sortPairs(int[][] raw) {
         List<Pair> pairs = new ArrayList<>();
-        for (int[] p : raw) pairs.add(new Pair(p[0], p[1]));
+        for (int[] p : raw) pairs.add(new Pair(p[0], p[1]));  // wrap each {first, second} row as a Pair
+        // by first, ties broken by second: the default order of a C++ pair
         pairs.sort(Comparator.comparingInt(Pair::first).thenComparingInt(Pair::second));
         return pairs;
     }
@@ -108,7 +109,7 @@ public class P1218_STL {
 
     /** std::sort, reverse, min_element, max_element, accumulate, count, find -> Collections and List helpers. */
     static List<String> algorithmDemo(int[] values) {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();                      // boxed copy for Collections helpers
         for (int v : values) list.add(v);
         Collections.sort(list);                                      // sort(v.begin(), v.end());
         String ascending = list.toString();
@@ -130,39 +131,39 @@ public class P1218_STL {
 
     /** std::lower_bound: index of the first element >= x in a sorted array, a.length when there is none. O(log n). */
     static int lowerBound(int[] a, int x) {
-        int lo = 0, hi = a.length;
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (a[mid] < x) lo = mid + 1; else hi = mid;
+        int lo = 0, hi = a.length;                        // answer lies in [lo, hi]; hi = n means "none"
+        while (lo < hi) {                                 // stop when one candidate is left
+            int mid = lo + (hi - lo) / 2;                 // middle, written to avoid int overflow
+            if (a[mid] < x) lo = mid + 1; else hi = mid;  // a[mid] too small: go right; else keep mid
         }
-        return lo;
+        return lo;                                        // first index with a[i] >= x, or n
     }
 
     /** std::upper_bound: index of the first element > x in a sorted array, a.length when there is none. O(log n). */
     static int upperBound(int[] a, int x) {
-        int lo = 0, hi = a.length;
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (a[mid] <= x) lo = mid + 1; else hi = mid;
+        int lo = 0, hi = a.length;                         // answer lies in [lo, hi]; hi = n means "none"
+        while (lo < hi) {                                  // stop when one candidate is left
+            int mid = lo + (hi - lo) / 2;                  // middle, written to avoid int overflow
+            if (a[mid] <= x) lo = mid + 1; else hi = mid;  // a[mid] <= x: go right; else keep mid
         }
-        return lo;
+        return lo;                                         // first index with a[i] > x, or n
     }
 
     /** std::binary_search -> Arrays.binarySearch, which returns an index when found and a negative insertion point otherwise. */
     static boolean binarySearch(int[] a, int x) {
-        return Arrays.binarySearch(a, x) >= 0;
+        return Arrays.binarySearch(a, x) >= 0;  // a negative result means x is absent
     }
 
     /** std::next_permutation: rearrange a into the lexicographically next permutation in place. Returns false, leaving a sorted ascending, when a was already the last one. O(n). */
     static boolean nextPermutation(int[] a) {
         int n = a.length;
-        int i = n - 2;
+        int i = n - 2;                               // scan leftwards for the first a[i] < a[i + 1]
         while (i >= 0 && a[i] >= a[i + 1]) i--;      // 1. a[i + 1..] is the longest non-increasing suffix
         if (i < 0) {
             reverse(a, 0, n - 1);                    //    the whole array is descending: wrap around to the first permutation
             return false;
         }
-        int j = n - 1;
+        int j = n - 1;                               // search the suffix from the right
         while (a[j] <= a[i]) j--;                    // 2. rightmost element larger than a[i]
         swap(a, i, j);                               // 3. put the next larger value at position i
         reverse(a, i + 1, n - 1);                    // 4. make the suffix as small as possible
@@ -181,6 +182,7 @@ public class P1218_STL {
 
     /** __builtin_popcount, __builtin_ctz, __builtin_clz -> Integer.bitCount, numberOfTrailingZeros, numberOfLeadingZeros. */
     static int[] builtins(int x) {
+        // bits set, trailing zeros, leading zeros
         return new int[]{Integer.bitCount(x), Integer.numberOfTrailingZeros(x), Integer.numberOfLeadingZeros(x)};
     }
 

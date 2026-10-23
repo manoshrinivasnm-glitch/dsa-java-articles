@@ -5,50 +5,50 @@ public class P366_CheckIfTheNumberIsArmstrong {
 
     /** Approach 1: walk the characters of the decimal string and raise each digit with Math.pow. O(d) time, O(d) space. */
     static boolean bruteForce(int n) {
-        if (n < 0) return false;
+        if (n < 0) return false;                 // negative numbers are never Armstrong numbers
         String s = Integer.toString(n);
-        int k = s.length();
-        long sum = 0;
-        for (char c : s.toCharArray()) {
-            sum += (long) Math.pow(c - '0', k);
+        int k = s.length();                      // k digits -> raise each digit to the power k
+        long sum = 0;                            // sum of digit^k, long to avoid overflow
+        for (char c : s.toCharArray()) {         // each digit character
+            sum += (long) Math.pow(c - '0', k);  // c - '0' is the digit's value
         }
-        return sum == n;
+        return sum == n;                         // Armstrong if the sum gives back n
     }
 
     /** Approach 2: pure integer arithmetic, digits by % 10 and an integer power loop, with an early exit. O(d^2) time, O(1) space. */
     static boolean optimal(int n) {
-        if (n < 0) return false;
-        int k = countDigits(n);
-        long sum = 0;
-        int x = n;
-        while (x > 0) {
-            sum += power(x % 10, k);
-            if (sum > n) return false;           // the sum only grows, so n can no longer be reached
-            x /= 10;
+        if (n < 0) return false;        // negative numbers are never Armstrong numbers
+        int k = countDigits(n);         // k digits -> raise each digit to the power k
+        long sum = 0;                   // sum of digit^k, long to avoid overflow
+        int x = n;                      // work on a copy, n is needed for the final check
+        while (x > 0) {                 // peel digits off the right end
+            sum += power(x % 10, k);    // add (last digit)^k
+            if (sum > n) return false;  // the sum only grows, so n can no longer be reached
+            x /= 10;                    // drop that digit
         }
-        return sum == n;
+        return sum == n;                // Armstrong if the sum gives back n
     }
 
     static int countDigits(int n) {
         int count = 0;
-        do {
+        do {          // do-while, so 0 counts as one digit
             count++;
-            n /= 10;
+            n /= 10;  // drop the last digit
         } while (n > 0);
         return count;
     }
 
     static long power(int base, int exp) {
         long result = 1;
-        for (int i = 0; i < exp; i++) result *= base;
+        for (int i = 0; i < exp; i++) result *= base;  // exact integer power, unlike Math.pow
         return result;
     }
 
     /** Every Armstrong number in [0, limit], in increasing order. */
     static List<Integer> allUpTo(int limit) {
         List<Integer> out = new ArrayList<>();
-        for (int n = 0; n <= limit; n++) {
-            if (optimal(n)) out.add(n);
+        for (int n = 0; n <= limit; n++) {  // test every number from 0 to limit
+            if (optimal(n)) out.add(n);     // keep the Armstrong numbers
         }
         return out;
     }

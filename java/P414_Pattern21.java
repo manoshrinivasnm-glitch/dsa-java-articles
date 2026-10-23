@@ -16,10 +16,11 @@ public class P414_Pattern21 {
     /** Approach 1: visit every cell and decide star-or-space from its coordinates. O(n^2) time, O(n^2) output. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {           // every row of the n x n square
+            for (int j = 0; j < n; j++) {       // every column in that row
+                // a cell is on the frame if it is in the first/last row or column
                 boolean border = i == 0 || i == n - 1 || j == 0 || j == n - 1;
-                sb.append(border ? '*' : ' ');
+                sb.append(border ? '*' : ' ');  // star on the frame, blank inside
             }
             sb.append('\n');
         }
@@ -28,20 +29,21 @@ public class P414_Pattern21 {
 
     /** Approach 2: only two distinct rows exist (solid and hollow), so build each once and repeat. O(n^2) time. */
     static String withRepeat(int n) {
-        if (n <= 0) return "";
-        if (n == 1) return "*\n";
-        String solid = "*".repeat(n) + "\n";
-        String hollow = "*" + " ".repeat(n - 2) + "*\n";
-        return solid + hollow.repeat(n - 2) + solid;
+        if (n <= 0) return "";                            // no rows at all
+        if (n == 1) return "*\n";                         // a single star: top and bottom are one row
+        String solid = "*".repeat(n) + "\n";              // top and bottom rows: n stars
+        String hollow = "*" + " ".repeat(n - 2) + "*\n";  // each middle row: star, n-2 spaces, star
+        return solid + hollow.repeat(n - 2) + solid;      // top row, the n-2 hollow rows, bottom row
     }
 
     /** General version: rows x cols hollow rectangle, same cell rule as Approach 1. O(rows * cols) time. */
     static String rectangle(int rows, int cols) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < rows; i++) {        // every row
+            for (int j = 0; j < cols; j++) {    // every column in that row
+                // on the frame: first/last row or first/last column
                 boolean border = i == 0 || i == rows - 1 || j == 0 || j == cols - 1;
-                sb.append(border ? '*' : ' ');
+                sb.append(border ? '*' : ' ');  // star on the frame, blank inside
             }
             sb.append('\n');
         }

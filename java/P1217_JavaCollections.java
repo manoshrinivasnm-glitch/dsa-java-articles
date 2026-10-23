@@ -11,7 +11,7 @@ public class P1217_JavaCollections {
 
     /** ArrayList basics: add, insert, set, remove by index versus remove by value, duplicates allowed. */
     static List<Integer> listOperations() {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();      // resizable array, the default List choice
         list.add(10);                                // [10]
         list.add(20);                                // [10, 20]
         list.add(30);                                // [10, 20, 30]
@@ -25,13 +25,13 @@ public class P1217_JavaCollections {
 
     /** ArrayDeque as a stack (LIFO) and as a queue (FIFO). Returns the pop order followed by the poll order. */
     static List<Integer> dequeAsStackAndQueue() {
-        Deque<Integer> stack = new ArrayDeque<>();
-        Deque<Integer> queue = new ArrayDeque<>();
+        Deque<Integer> stack = new ArrayDeque<>();   // used LIFO: the head is the top
+        Deque<Integer> queue = new ArrayDeque<>();   // used FIFO: in at the tail, out at the head
         for (int x = 1; x <= 3; x++) {
             stack.push(x);                           // push adds at the head
             queue.offer(x);                          // offer adds at the tail
         }
-        List<Integer> order = new ArrayList<>();
+        List<Integer> order = new ArrayList<>();     // stack pops, then queue polls
         while (!stack.isEmpty()) order.add(stack.pop());    // 3, 2, 1
         while (!queue.isEmpty()) order.add(queue.poll());   // 1, 2, 3
         return order;
@@ -39,18 +39,18 @@ public class P1217_JavaCollections {
 
     /** Removing while iterating: the Iterator's own remove is safe; list.remove inside a for-each throws ConcurrentModificationException. */
     static List<Integer> removeEvens(List<Integer> input) {
-        List<Integer> list = new ArrayList<>(input);
-        Iterator<Integer> it = list.iterator();
+        List<Integer> list = new ArrayList<>(input);   // copy, so the caller's list is untouched
+        Iterator<Integer> it = list.iterator();        // the safe way to remove while looping
         while (it.hasNext()) {
-            if (it.next() % 2 == 0) it.remove();
+            if (it.next() % 2 == 0) it.remove();       // removes the element next() just returned
         }
         return list;
     }
 
     /** The modern one-liner for the same job. */
     static List<Integer> removeEvensWithRemoveIf(List<Integer> input) {
-        List<Integer> list = new ArrayList<>(input);
-        list.removeIf(v -> v % 2 == 0);
+        List<Integer> list = new ArrayList<>(input);   // copy, so the caller's list is untouched
+        list.removeIf(v -> v % 2 == 0);                // same job in one call, no iterator needed
         return list;
     }
 
@@ -58,10 +58,10 @@ public class P1217_JavaCollections {
 
     /** HashSet removes duplicates, LinkedHashSet keeps insertion order, TreeSet keeps sorted order and answers floor/ceiling/headSet queries. */
     static List<String> setOperations(int[] values, int query) {
-        Set<Integer> hash = new HashSet<>();
-        Set<Integer> linked = new LinkedHashSet<>();
-        TreeSet<Integer> tree = new TreeSet<>();
-        for (int v : values) {
+        Set<Integer> hash = new HashSet<>();          // no order, O(1) add and contains
+        Set<Integer> linked = new LinkedHashSet<>();  // remembers insertion order
+        TreeSet<Integer> tree = new TreeSet<>();      // sorted, O(log n), has floor/ceiling
+        for (int v : values) {                        // a repeated value is ignored by all three
             hash.add(v);
             linked.add(v);
             tree.add(v);
@@ -80,8 +80,9 @@ public class P1217_JavaCollections {
 
     /** Count word frequencies with merge, then list words from most to least frequent, ties broken alphabetically. */
     static List<String> wordsByFrequency(String[] words) {
-        Map<String, Integer> freq = new HashMap<>();
+        Map<String, Integer> freq = new HashMap<>();               // word -> how many times it appears
         for (String w : words) freq.merge(w, 1, Integer::sum);     // freq[w]++ in one call
+        // copy the (word, count) pairs into a list so they can be sorted
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(freq.entrySet());
         entries.sort((a, b) -> {
             if (!a.getValue().equals(b.getValue())) return b.getValue() - a.getValue();   // higher count first
@@ -94,15 +95,15 @@ public class P1217_JavaCollections {
 
     /** TreeMap keeps keys sorted and offers firstKey/lastKey/floorKey/ceilingKey; HashMap is the O(1) default when order does not matter. */
     static List<String> treeMapOperations(int[] keys, int query) {
-        TreeMap<Integer, String> map = new TreeMap<>();
+        TreeMap<Integer, String> map = new TreeMap<>();             // keys kept in sorted order
         for (int k : keys) map.put(k, "v" + k);                     // put overwrites an existing key
         List<String> out = new ArrayList<>();
         out.add("size=" + map.size());
-        out.add("first=" + (map.isEmpty() ? null : map.firstKey()));
-        out.add("last=" + (map.isEmpty() ? null : map.lastKey()));
-        out.add("floorKey(" + query + ")=" + map.floorKey(query));
-        out.add("ceilingKey(" + query + ")=" + map.ceilingKey(query));
-        out.add("get(" + query + ")=" + map.getOrDefault(query, "absent"));
+        out.add("first=" + (map.isEmpty() ? null : map.firstKey()));         // smallest key, null if empty
+        out.add("last=" + (map.isEmpty() ? null : map.lastKey()));           // largest key, null if empty
+        out.add("floorKey(" + query + ")=" + map.floorKey(query));           // largest key <= query, or null
+        out.add("ceilingKey(" + query + ")=" + map.ceilingKey(query));       // smallest key >= query, or null
+        out.add("get(" + query + ")=" + map.getOrDefault(query, "absent"));  // missing key -> "absent"
         return out;
     }
 
@@ -110,13 +111,13 @@ public class P1217_JavaCollections {
 
     /** The k largest values using a min-heap of size k, returned in descending order. O(n log k) time, O(k) space. */
     static List<Integer> kLargest(int[] nums, int k) {
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();   // the k largest so far, smallest on top
         for (int v : nums) {
             minHeap.offer(v);
             if (minHeap.size() > k) minHeap.poll();  // evict the smallest so only the k largest survive
         }
-        List<Integer> out = new ArrayList<>(minHeap);
-        out.sort(Collections.reverseOrder());
+        List<Integer> out = new ArrayList<>(minHeap);   // heap order is not sorted order
+        out.sort(Collections.reverseOrder());           // largest first
         return out;
     }
 
@@ -124,7 +125,8 @@ public class P1217_JavaCollections {
 
     /** Sort by marks descending, then by name ascending, with a chained Comparator. */
     static List<String> rankStudents(List<Student> students) {
-        List<Student> sorted = new ArrayList<>(students);
+        List<Student> sorted = new ArrayList<>(students);  // copy, so the input order is untouched
+        // marks high to low; equal marks fall back to name A to Z
         sorted.sort(Comparator.comparingInt(Student::marks).reversed().thenComparing(Student::name));
         List<String> out = new ArrayList<>();
         for (Student s : sorted) out.add(s.name() + ":" + s.marks());
@@ -135,8 +137,10 @@ public class P1217_JavaCollections {
 
     /** Streams: sum, distinct sorted values and a partition count, all in a declarative pipeline. */
     static String streamSummary(int[] nums) {
-        int sum = Arrays.stream(nums).sum();
+        int sum = Arrays.stream(nums).sum();  // total of all elements
+        // unique values in ascending order
         List<Integer> distinctSorted = Arrays.stream(nums).distinct().sorted().boxed().toList();
+        // count evens (key true) and odds (key false) in one pass
         Map<Boolean, Long> evenOdd = Arrays.stream(nums).boxed()
                 .collect(Collectors.partitioningBy(v -> v % 2 == 0, Collectors.counting()));
         return "sum=" + sum + " distinct=" + distinctSorted + " even=" + evenOdd.get(true) + " odd=" + evenOdd.get(false);
@@ -154,9 +158,9 @@ public class P1217_JavaCollections {
         notes.add("remove(Object) -> " + nums);
 
         List<Integer> fixed = Arrays.asList(1, 2, 3);        // a view over the array: set works, add does not
-        fixed.set(0, 9);
+        fixed.set(0, 9);                                     // allowed: writes through to the array
         try {
-            fixed.add(4);
+            fixed.add(4);                                    // throws: the size is fixed
             notes.add("asList add -> ok");
         } catch (UnsupportedOperationException e) {
             notes.add("asList add -> UnsupportedOperationException");
@@ -164,13 +168,13 @@ public class P1217_JavaCollections {
 
         List<Integer> immutable = List.of(1, 2, 3);          // fully immutable
         try {
-            immutable.set(0, 9);
+            immutable.set(0, 9);                             // throws: no changes allowed at all
             notes.add("List.of set -> ok");
         } catch (UnsupportedOperationException e) {
             notes.add("List.of set -> UnsupportedOperationException");
         }
 
-        Integer a = 127, b = 127, c = 1000, d = 1000;
+        Integer a = 127, b = 127, c = 1000, d = 1000;        // boxed Integer objects, not ints
         notes.add("127 == 127 -> " + (a == b));              // true only because small values are cached
         notes.add("1000.equals(1000) -> " + c.equals(d));    // always compare boxed values with equals
 

@@ -5,32 +5,32 @@ public class P365_CheckForPrimeNumber {
 
     /** Approach 1: count the divisors from 1 to n; a prime has exactly two. O(n) time, O(1) space. */
     static boolean bruteForce(int n) {
-        if (n < 2) return false;
-        int divisors = 0;
-        for (int d = 1; d <= n; d++) {
+        if (n < 2) return false;        // 0, 1 and negatives are not prime
+        int divisors = 0;               // how many numbers divide n
+        for (int d = 1; d <= n; d++) {  // test every d from 1 to n
             if (n % d == 0) divisors++;
         }
-        return divisors == 2;
+        return divisors == 2;           // prime: only 1 and n divide it
     }
 
     /** Approach 2: divisors come in pairs (d, n / d), so a divisor <= sqrt(n) exists whenever any exists. O(sqrt(n)) time, O(1) space. */
     static boolean better(int n) {
-        if (n < 2) return false;
-        for (int d = 2; (long) d * d <= n; d++) {
-            if (n % d == 0) return false;
+        if (n < 2) return false;                   // 0, 1 and negatives are not prime
+        for (int d = 2; (long) d * d <= n; d++) {  // any factor pair has one member <= sqrt(n)
+            if (n % d == 0) return false;          // found a divisor: not prime
         }
-        return true;
+        return true;                               // no divisor up to sqrt(n)
     }
 
     /** Approach 3: deal with 2 and 3, then test only candidates of the form 6k - 1 and 6k + 1. O(sqrt(n)) time with a third of the work, O(1) space. */
     static boolean optimal(int n) {
-        if (n < 2) return false;
-        if (n < 4) return true;                      // 2 and 3
-        if (n % 2 == 0 || n % 3 == 0) return false;
-        for (int d = 5; (long) d * d <= n; d += 6) {
-            if (n % d == 0 || n % (d + 2) == 0) return false;
+        if (n < 2) return false;                               // 0, 1 and negatives are not prime
+        if (n < 4) return true;                                // 2 and 3 are prime
+        if (n % 2 == 0 || n % 3 == 0) return false;            // rule out multiples of 2 and 3
+        for (int d = 5; (long) d * d <= n; d += 6) {           // other primes have the form 6k - 1 or 6k + 1
+            if (n % d == 0 || n % (d + 2) == 0) return false;  // test d = 6k - 1 and d + 2 = 6k + 1
         }
-        return true;
+        return true;                                           // no divisor up to sqrt(n)
     }
 
     // ---------------------------------------------------------------- tests

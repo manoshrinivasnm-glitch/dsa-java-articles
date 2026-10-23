@@ -11,11 +11,11 @@ public class P405_Pattern13 {
     /** Approach 1: a running counter that never resets. O(n^2) time, O(n^2) output. */
     static String counter(int n) {
         StringBuilder sb = new StringBuilder();
-        int next = 1;
-        for (int i = 1; i <= n; i++) {
+        int next = 1;                       // next number to print; it never resets between rows
+        for (int i = 1; i <= n; i++) {      // row i holds i numbers
             for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(next++);
+                if (j > 1) sb.append(' ');  // single space between numbers, none before the first
+                sb.append(next++);          // print the running count, then advance it
             }
             sb.append('\n');
         }
@@ -25,10 +25,10 @@ public class P405_Pattern13 {
     /** Approach 2: the first value of row i is the triangular number T(i-1) + 1, so every row is independent. O(n^2) time. */
     static String formula(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            long first = (long) i * (i - 1) / 2 + 1;   // T(i-1) + 1
-            for (int j = 0; j < i; j++) {
-                if (j > 0) sb.append(' ');
+        for (int i = 1; i <= n; i++) {                // row i holds i numbers
+            long first = (long) i * (i - 1) / 2 + 1;  // first value of row i is T(i-1) + 1
+            for (int j = 0; j < i; j++) {             // the i consecutive values first, first+1, ...
+                if (j > 0) sb.append(' ');            // single space between numbers, none before the first
                 sb.append(first + j);
             }
             sb.append('\n');
@@ -38,7 +38,7 @@ public class P405_Pattern13 {
 
     /** Value printed at row r, position c (both 1-based), without building anything. O(1). */
     static long valueAt(int r, int c) {
-        return (long) r * (r - 1) / 2 + c;
+        return (long) r * (r - 1) / 2 + c;  // rows above hold T(r-1) numbers, then c more
     }
 
     // ---------------------------------------------------------------- tests

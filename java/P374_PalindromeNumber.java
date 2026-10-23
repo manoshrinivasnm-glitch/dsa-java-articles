@@ -5,33 +5,34 @@ public class P374_PalindromeNumber {
 
     /** Approach 1: compare the decimal string with its reverse. O(d) time, O(d) space. */
     static boolean bruteForce(int n) {
-        if (n < 0) return false;
+        if (n < 0) return false;    // the leading '-' has no match at the end
         String s = Integer.toString(n);
-        String reversed = new StringBuilder(s).reverse().toString();
-        return s.equals(reversed);
+        String reversed = new StringBuilder(s).reverse().toString();   // the digits read backwards
+        return s.equals(reversed);  // palindrome if both directions agree
     }
 
     /** Approach 2: reverse the whole number arithmetically (in a long) and compare. O(d) time, O(1) space. */
     static boolean better(int n) {
-        if (n < 0) return false;
-        long rev = 0;
-        int x = n;
-        while (x > 0) {
-            rev = rev * 10 + x % 10;
+        if (n < 0) return false;      // the leading '-' has no match at the end
+        long rev = 0;                 // long: reversing a large int can overflow
+        int x = n;                    // work on a copy, n is needed for the final check
+        while (x > 0) {               // peel digits off the right end
+            rev = rev * 10 + x % 10;  // append x's last digit to rev
             x /= 10;
         }
-        return rev == n;
+        return rev == n;              // palindrome if reversing changes nothing
     }
 
     /** Approach 3: reverse only the second half and compare it with the first half. O(d) time, O(1) space, no overflow possible. */
     static boolean optimal(int n) {
+        // negatives fail; so does a number ending in 0, unless it is 0 itself
         if (n < 0 || (n % 10 == 0 && n != 0)) return false;
-        int rev = 0;
-        while (n > rev) {
-            rev = rev * 10 + n % 10;
+        int rev = 0;                       // reverse of the right half only
+        while (n > rev) {                  // stop once half the digits have moved to rev
+            rev = rev * 10 + n % 10;       // move n's last digit onto rev
             n /= 10;
         }
-        return n == rev || n == rev / 10;
+        return n == rev || n == rev / 10;  // even length: halves match; odd: ignore rev's middle digit
     }
 
     // ---------------------------------------------------------------- tests

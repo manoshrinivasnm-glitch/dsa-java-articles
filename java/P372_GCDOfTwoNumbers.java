@@ -5,43 +5,43 @@ public class P372_GCDOfTwoNumbers {
 
     /** Approach 1: try every candidate from min(a, b) down to 1; the first one that divides both is the answer. O(min(a, b)) time, O(1) space. */
     static int bruteForce(int a, int b) {
-        if (a == 0) return b;
-        if (b == 0) return a;
-        for (int g = Math.min(a, b); g >= 1; g--) {
-            if (a % g == 0 && b % g == 0) return g;
+        if (a == 0) return b;                        // gcd(0, b) = b
+        if (b == 0) return a;                        // gcd(a, 0) = a
+        for (int g = Math.min(a, b); g >= 1; g--) {  // try candidates from the largest possible down
+            if (a % g == 0 && b % g == 0) return g;  // first common divisor is the greatest
         }
-        return 1;
+        return 1;                                    // not reached: g = 1 always divides both
     }
 
     /** Approach 2: Euclid by subtraction, gcd(a, b) = gcd(a - b, b) when a > b. O(max(a, b) / min(a, b)) steps per round, O(max(a, b)) worst case, O(1) space. */
     static int better(int a, int b) {
-        if (a == 0) return b;
-        if (b == 0) return a;
-        while (a != b) {
-            if (a > b) a -= b; else b -= a;
+        if (a == 0) return b;                // gcd(0, b) = b
+        if (b == 0) return a;                // gcd(a, 0) = a
+        while (a != b) {                     // shrink the pair until both are equal
+            if (a > b) a -= b; else b -= a;  // gcd(a, b) = gcd(a - b, b)
         }
-        return a;
+        return a;                            // a == b == the gcd
     }
 
     /** Approach 3: Euclid with modulo, gcd(a, b) = gcd(b, a % b). O(log(min(a, b))) time, O(1) space. */
     static int optimal(int a, int b) {
-        while (b != 0) {
-            int r = a % b;
-            a = b;
+        while (b != 0) {    // Euclid: gcd(a, b) = gcd(b, a % b)
+            int r = a % b;  // remainder of a / b
+            a = b;          // shift the pair: (a, b) -> (b, r)
             b = r;
         }
-        return a;
+        return a;           // b reached 0, so a is the gcd
     }
 
     /** The same algorithm written recursively; the recursion depth is O(log(min(a, b))). */
     static int optimalRecursive(int a, int b) {
-        return b == 0 ? a : optimalRecursive(b, a % b);
+        return b == 0 ? a : optimalRecursive(b, a % b);  // base case b == 0; else recurse on (b, a % b)
     }
 
     /** lcm(a, b) = a / gcd(a, b) * b; dividing before multiplying keeps the intermediate value small. */
     static long lcm(int a, int b) {
-        if (a == 0 || b == 0) return 0;
-        return (long) (a / optimal(a, b)) * b;
+        if (a == 0 || b == 0) return 0;         // lcm with 0 is 0 by convention
+        return (long) (a / optimal(a, b)) * b;  // divide first to keep numbers small; long holds the product
     }
 
     // ---------------------------------------------------------------- tests

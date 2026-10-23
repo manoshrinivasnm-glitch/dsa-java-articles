@@ -20,16 +20,16 @@ public class P413_Pattern20 {
     /** Approach 1: two loops, one for the growing upper wing and one for the shrinking lower wing. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {                      // upper wing, i stars each side
-            for (int j = 0; j < i; j++) sb.append('*');
-            for (int j = 0; j < 2 * (n - i); j++) sb.append(' ');
-            for (int j = 0; j < i; j++) sb.append('*');
+        for (int i = 1; i <= n; i++) {                             // upper wing, i stars each side
+            for (int j = 0; j < i; j++) sb.append('*');            // left block: i stars
+            for (int j = 0; j < 2 * (n - i); j++) sb.append(' ');  // middle gap of 2*(n-i) spaces
+            for (int j = 0; j < i; j++) sb.append('*');            // right block, same as the left
             sb.append('\n');
         }
-        for (int i = n - 1; i >= 1; i--) {                  // lower wing, i stars each side
-            for (int j = 0; j < i; j++) sb.append('*');
-            for (int j = 0; j < 2 * (n - i); j++) sb.append(' ');
-            for (int j = 0; j < i; j++) sb.append('*');
+        for (int i = n - 1; i >= 1; i--) {                         // lower wing, i stars each side
+            for (int j = 0; j < i; j++) sb.append('*');            // left block: i stars
+            for (int j = 0; j < 2 * (n - i); j++) sb.append(' ');  // middle gap of 2*(n-i) spaces
+            for (int j = 0; j < i; j++) sb.append('*');            // right block, same as the left
             sb.append('\n');
         }
         return sb.toString();
@@ -38,9 +38,10 @@ public class P413_Pattern20 {
     /** Approach 2: one loop over 2n-1 rows; stars = n - |n - r| folds both wings into one formula. O(n^2) time. */
     static String formula(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int r = 1; r <= 2 * n - 1; r++) {
-            int stars = n - Math.abs(n - r);                // 1, 2, ..., n, ..., 2, 1
-            String side = "*".repeat(stars);
+        for (int r = 1; r <= 2 * n - 1; r++) {  // 2n-1 rows; row n is the widest
+            int stars = n - Math.abs(n - r);    // 1, 2, ..., n, ..., 2, 1
+            String side = "*".repeat(stars);    // the star block printed on each side
+            // stars, a gap of 2*(n-stars) spaces, stars again
             sb.append(side).append(" ".repeat(2 * (n - stars))).append(side).append('\n');
         }
         return sb.toString();

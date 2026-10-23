@@ -9,11 +9,11 @@ public class P404_Pattern12 {
 
     /** Approach 1: three inner loops per row (left digits, gap, right digits). O(n^2) time, O(n^2) output. */
     static String nestedLoops(int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) sb.append(j);          // 1 2 ... i
-            for (int j = 0; j < 2 * (n - i); j++) sb.append(' '); // shrinking gap
-            for (int j = i; j >= 1; j--) sb.append(j);          // i ... 2 1
+        StringBuilder sb = new StringBuilder();                    // collects all rows of the crown
+        for (int i = 1; i <= n; i++) {                             // one row per i, top to bottom
+            for (int j = 1; j <= i; j++) sb.append(j);             // left half: 1 2 ... i
+            for (int j = 0; j < 2 * (n - i); j++) sb.append(' ');  // gap of 2*(n-i) spaces, shrinking
+            for (int j = i; j >= 1; j--) sb.append(j);             // right half: i ... 2 1, the mirror
             sb.append('\n');
         }
         return sb.toString();
@@ -21,12 +21,13 @@ public class P404_Pattern12 {
 
     /** Approach 2: grow the two halves incrementally and reuse them row after row. O(n^2) time. */
     static String incremental(int n) {
-        StringBuilder sb = new StringBuilder();
-        StringBuilder left = new StringBuilder();   // "12...i"
-        StringBuilder right = new StringBuilder();  // "i...21"
+        StringBuilder sb = new StringBuilder();     // collects all rows of the crown
+        StringBuilder left = new StringBuilder();   // left half so far: "12...i"
+        StringBuilder right = new StringBuilder();  // right half so far: "i...21"
         for (int i = 1; i <= n; i++) {
-            left.append(i);
-            right.insert(0, i);
+            left.append(i);                         // new digit goes at the end of the left half
+            right.insert(0, i);                     // and at the front of the right half
+            // row i = left half + gap of 2*(n-i) spaces + right half
             sb.append(left).append(" ".repeat(2 * (n - i))).append(right).append('\n');
         }
         return sb.toString();

@@ -5,27 +5,27 @@ public class P367_CountAllDigitsOfANumber {
 
     /** Approach 1: convert to a string and read its length. O(d) time, O(d) space. */
     static int bruteForce(int n) {
-        long abs = Math.abs((long) n);
-        return Long.toString(abs).length();
+        long abs = Math.abs((long) n);       // widen first: |Integer.MIN_VALUE| does not fit in an int
+        return Long.toString(abs).length();  // digits = length of the decimal string
     }
 
     /** Approach 2: strip the last digit with integer division until nothing is left. O(d) time, O(1) space. */
     static int better(int n) {
-        long x = Math.abs((long) n);
-        if (x == 0) return 1;
+        long x = Math.abs((long) n);  // widen first: |Integer.MIN_VALUE| does not fit in an int
+        if (x == 0) return 1;         // 0 still has one digit
         int count = 0;
-        while (x > 0) {
-            x /= 10;
-            count++;
+        while (x > 0) {               // until no digits remain
+            x /= 10;                  // drop the last digit
+            count++;                  // and count it
         }
         return count;
     }
 
     /** Approach 3: digits = floor(log10(n)) + 1. O(1) time, O(1) space. */
     static int optimal(int n) {
-        long x = Math.abs((long) n);
-        if (x == 0) return 1;
-        return (int) Math.floor(Math.log10(x)) + 1;
+        long x = Math.abs((long) n);  // widen first: |Integer.MIN_VALUE| does not fit in an int
+        if (x == 0) return 1;         // log10(0) is undefined; 0 has one digit
+        return (int) Math.floor(Math.log10(x)) + 1;   // x has floor(log10 x) + 1 digits
     }
 
     // ---------------------------------------------------------------- tests

@@ -11,10 +11,10 @@ public class P406_Pattern14 {
     /** Approach 1: nested loops with char arithmetic ('A' + j). O(n^2) time, O(n^2) output. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {        // row i holds the first i letters
             for (int j = 0; j < i; j++) {
-                if (j > 0) sb.append(' ');
-                sb.append((char) ('A' + j));
+                if (j > 0) sb.append(' ');    // space between letters, none before the first
+                sb.append((char) ('A' + j));  // j-th letter: A, B, C, ...
             }
             sb.append('\n');
         }
@@ -23,14 +23,14 @@ public class P406_Pattern14 {
 
     /** Approach 2: build the longest row once; every other row is a prefix of it. O(n^2) time. */
     static String prefixOfLastRow(int n) {
-        StringBuilder full = new StringBuilder();          // "A B C ... " with n letters
-        for (int j = 0; j < n; j++) {
-            if (j > 0) full.append(' ');
+        StringBuilder full = new StringBuilder();        // the last row "A B C ..." with all n letters
+        for (int j = 0; j < n; j++) {                    // build it once
+            if (j > 0) full.append(' ');                 // space between letters, none before the first
             full.append((char) ('A' + j));
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            sb.append(full, 0, 2 * i - 1).append('\n');   // i letters and i-1 spaces
+        for (int i = 1; i <= n; i++) {                   // every row is a prefix of that last row
+            sb.append(full, 0, 2 * i - 1).append('\n');  // first 2i-1 chars: i letters and i-1 spaces
         }
         return sb.toString();
     }
