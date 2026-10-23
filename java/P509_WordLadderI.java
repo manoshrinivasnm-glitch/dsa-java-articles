@@ -6,16 +6,16 @@ public class P509_WordLadderI {
     /** Approach 1: BFS where neighbours are found by comparing against every word in the list. O(N^2 * L) time, O(N) space. */
     static int bruteForce(String beginWord, String endWord, List<String> wordList) {
         int n = wordList.size();
-        boolean[] used = new boolean[n];
-        Deque<String> q = new ArrayDeque<>();
+        boolean[] used = new boolean[n];                 // used[i] = wordList[i] was already queued
+        Deque<String> q = new ArrayDeque<>();            // BFS queue: one level per ladder length
         q.offer(beginWord);
         int steps = 1;                                   // words in the ladder so far
         while (!q.isEmpty()) {
-            for (int size = q.size(); size > 0; size--) {
+            for (int size = q.size(); size > 0; size--) {   // process exactly one level
                 String word = q.poll();
-                if (word.equals(endWord)) return steps;
-                for (int i = 0; i < n; i++) {
-                    if (!used[i] && differByOne(word, wordList.get(i))) {
+                if (word.equals(endWord)) return steps;   // first time endWord appears = shortest ladder
+                for (int i = 0; i < n; i++) {            // scan the whole word list: O(N) per word
+                    if (!used[i] && differByOne(word, wordList.get(i))) {   // one letter away -> next rung
                         used[i] = true;
                         q.offer(wordList.get(i));
                     }
@@ -29,7 +29,7 @@ public class P509_WordLadderI {
     static boolean differByOne(String a, String b) {
         if (a.length() != b.length()) return false;
         int diff = 0;
-        for (int i = 0; i < a.length() && diff < 2; i++) {
+        for (int i = 0; i < a.length() && diff < 2; i++) {   // stop early once two letters differ
             if (a.charAt(i) != b.charAt(i)) diff++;
         }
         return diff == 1;
@@ -37,25 +37,25 @@ public class P509_WordLadderI {
 
     /** Approach 2: BFS that generates neighbours by trying all 26 letters at each position. O(N * L * 26 * L) time, O(N * L) space. */
     static int optimal(String beginWord, String endWord, List<String> wordList) {
-        Set<String> unvisited = new HashSet<>(wordList);
-        if (!unvisited.contains(endWord)) return 0;
-        unvisited.remove(beginWord);
+        Set<String> unvisited = new HashSet<>(wordList);   // words not reached yet
+        if (!unvisited.contains(endWord)) return 0;      // endWord unreachable if not in the list
+        unvisited.remove(beginWord);                     // never come back to the start word
         Deque<String> q = new ArrayDeque<>();
         q.offer(beginWord);
-        int steps = 1;
+        int steps = 1;                                   // words in the ladder so far
         while (!q.isEmpty()) {
-            for (int size = q.size(); size > 0; size--) {
+            for (int size = q.size(); size > 0; size--) {   // process exactly one level
                 String word = q.poll();
-                if (word.equals(endWord)) return steps;
+                if (word.equals(endWord)) return steps;   // BFS reaches endWord first along a shortest ladder
                 char[] w = word.toCharArray();
-                for (int i = 0; i < w.length; i++) {
+                for (int i = 0; i < w.length; i++) {     // try every position...
                     char original = w[i];
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                    for (char ch = 'a'; ch <= 'z'; ch++) {   // ...with every letter
                         w[i] = ch;
                         String next = new String(w);
                         if (unvisited.remove(next)) q.offer(next);   // remove() doubles as "mark visited"
                     }
-                    w[i] = original;
+                    w[i] = original;                     // restore before moving to the next position
                 }
             }
             steps++;
@@ -65,29 +65,31 @@ public class P509_WordLadderI {
 
     /** Approach 3: bidirectional BFS, always expanding the smaller frontier. Same worst case, far fewer words in practice. */
     static int bidirectional(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dict = new HashSet<>(wordList);
+        Set<String> dict = new HashSet<>(wordList);      // words neither search has reached yet
         if (!dict.contains(endWord)) return 0;
+        // frontiers growing from each end
         Set<String> front = new HashSet<>(List.of(beginWord)), back = new HashSet<>(List.of(endWord));
         dict.remove(beginWord);
         dict.remove(endWord);
         int steps = 1;                                   // words on both partial ladders, minus one
         while (!front.isEmpty() && !back.isEmpty()) {
+            // always expand the smaller frontier
             if (front.size() > back.size()) { Set<String> t = front; front = back; back = t; }
             Set<String> next = new HashSet<>();
-            for (String word : front) {
+            for (String word : front) {                  // expand every word of the frontier by one step
                 char[] w = word.toCharArray();
                 for (int i = 0; i < w.length; i++) {
                     char original = w[i];
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                    for (char ch = 'a'; ch <= 'z'; ch++) {   // all one-letter changes at position i
                         w[i] = ch;
                         String cand = new String(w);
                         if (back.contains(cand)) return steps + 1;   // the two searches meet
-                        if (dict.remove(cand)) next.add(cand);
+                        if (dict.remove(cand)) next.add(cand);   // new word: add it to the next frontier
                     }
-                    w[i] = original;
+                    w[i] = original;                     // restore before moving to the next position
                 }
             }
-            front = next;
+            front = next;                                // the frontier moves one level further
             steps++;
         }
         return 0;

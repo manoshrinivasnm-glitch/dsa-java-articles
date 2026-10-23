@@ -5,10 +5,10 @@ public class P2827_DjisktrasAlgorithm {
 
     /** Adjacency list of {neighbour, weight} pairs; each undirected edge is stored in both directions. */
     static List<List<int[]>> buildAdj(int V, int[][] edges) {
-        List<List<int[]>> adj = new ArrayList<>();
+        List<List<int[]>> adj = new ArrayList<>();            // adj.get(u) = {neighbour, weight} pairs
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
         for (int[] e : edges) {
-            adj.get(e[0]).add(new int[]{e[1], e[2]});
+            adj.get(e[0]).add(new int[]{e[1], e[2]});         // undirected: store each edge both ways
             adj.get(e[1]).add(new int[]{e[0], e[2]});
         }
         return adj;
@@ -16,21 +16,23 @@ public class P2827_DjisktrasAlgorithm {
 
     /** Replaces the "infinity" marker with -1 for unreachable nodes. */
     static int[] finish(int[] dist) {
+        // unreachable nodes report -1
         for (int i = 0; i < dist.length; i++) if (dist[i] == Integer.MAX_VALUE) dist[i] = -1;
         return dist;
     }
 
     /** Approach 1: relax every edge (both directions) until a full round changes nothing. O(V * E) time, O(V) space. */
     static int[] bruteForce(int V, int[][] edges, int src) {
-        int[] dist = new int[V];
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
+        Arrays.fill(dist, Integer.MAX_VALUE);                 // MAX_VALUE stands for "not reached"
         dist[src] = 0;
-        boolean changed = true;
+        boolean changed = true;                               // repeat until a full pass improves nothing
         while (changed) {
             changed = false;
-            for (int[] e : edges) {
-                for (int d = 0; d < 2; d++) {
+            for (int[] e : edges) {                           // relax every edge...
+                for (int d = 0; d < 2; d++) {                 // ...in both directions
                     int u = e[d], v = e[1 - d];
+                    // u is reached and the edge gives v a shorter route
                     if (dist[u] != Integer.MAX_VALUE && dist[u] + e[2] < dist[v]) {
                         dist[v] = dist[u] + e[2];
                         changed = true;
@@ -44,19 +46,20 @@ public class P2827_DjisktrasAlgorithm {
     /** Approach 2: classic Dijkstra with a linear scan for the closest unfinished node. O(V^2 + E) time, O(V + E) space. */
     static int[] dijkstraArray(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
-        boolean[] done = new boolean[V];
-        for (int iter = 0; iter < V; iter++) {
-            int u = -1;
-            for (int i = 0; i < V; i++) {
+        boolean[] done = new boolean[V];                      // done[u] = dist[u] is final
+        for (int iter = 0; iter < V; iter++) {                // settle one node per iteration
+            int u = -1;                                       // closest unsettled node, -1 if none
+            for (int i = 0; i < V; i++) {                     // linear scan for the closest unsettled node
                 if (!done[i] && dist[i] != Integer.MAX_VALUE && (u == -1 || dist[i] < dist[u])) u = i;
             }
             if (u == -1) break;                               // every remaining node is unreachable
             done[u] = true;                                   // dist[u] is final from here on
             for (int[] e : adj.get(u)) {
-                int v = e[0], w = e[1];
+                int v = e[0], w = e[1];                       // neighbour and edge weight
+                // relax u's edges into unsettled neighbours
                 if (!done[v] && dist[u] + w < dist[v]) dist[v] = dist[u] + w;
             }
         }
@@ -66,20 +69,21 @@ public class P2827_DjisktrasAlgorithm {
     /** Approach 3: Dijkstra with a min-heap of {distance, node} and lazy deletion. O((V + E) log V) time, O(V + E) space. */
     static int[] optimal(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
+        // min-heap of {distance, node}, closest first
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
-        pq.add(new int[]{0, src});
+        pq.add(new int[]{0, src});                            // the source starts at distance 0
         while (!pq.isEmpty()) {
-            int[] top = pq.poll();
-            int d = top[0], u = top[1];
+            int[] top = pq.poll();                            // closest node still waiting in the heap
+            int d = top[0], u = top[1];                       // distance stored with the entry, and its node
             if (d > dist[u]) continue;                        // stale entry: u was settled with a smaller distance
             for (int[] e : adj.get(u)) {
-                int v = e[0], w = e[1];
-                if (d + w < dist[v]) {
+                int v = e[0], w = e[1];                       // neighbour and edge weight
+                if (d + w < dist[v]) {                        // found a shorter route to v through u
                     dist[v] = d + w;
-                    pq.add(new int[]{dist[v], v});
+                    pq.add(new int[]{dist[v], v});            // push the better distance; old copy goes stale
                 }
             }
         }

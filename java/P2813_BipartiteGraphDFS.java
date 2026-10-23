@@ -6,30 +6,33 @@ public class P2813_BipartiteGraphDFS {
     /** Approach 1: try all 2^V colourings and test every edge. O(2^V * (V + E)) time, O(1) extra space. Tiny V only. */
     static boolean bruteForce(int V, List<List<Integer>> adj) {
         for (int mask = 0; mask < (1 << V); mask++) {     // bit u of mask = colour of vertex u
-            boolean ok = true;
+            boolean ok = true;                           // does this colouring split every edge?
             for (int u = 0; u < V && ok; u++) {
                 for (int v : adj.get(u)) {
+                    // an edge inside one colour class: colouring fails
                     if (((mask >> u) & 1) == ((mask >> v) & 1)) { ok = false; break; }
                 }
             }
-            if (ok) return true;
+            if (ok) return true;                         // found a valid 2-colouring
         }
         return false;
     }
 
     /** Approach 2: BFS colouring, layer by layer. O(V + E) time, O(V) space. */
     static boolean bfs(int V, List<List<Integer>> adj) {
-        int[] color = new int[V];
-        Arrays.fill(color, -1);
+        int[] color = new int[V];                        // color[u] = 0 or 1 once painted
+        Arrays.fill(color, -1);                          // -1 = not coloured yet
         for (int s = 0; s < V; s++) {
-            if (color[s] != -1) continue;
-            color[s] = 0;
+            if (color[s] != -1) continue;                // already painted by an earlier component's BFS
+            color[s] = 0;                                // each new component starts with colour 0
             Deque<Integer> q = new ArrayDeque<>();
             q.offer(s);
             while (!q.isEmpty()) {
                 int u = q.poll();
                 for (int v : adj.get(u)) {
+                    // uncoloured: take the opposite colour and queue it
                     if (color[v] == -1) { color[v] = 1 - color[u]; q.offer(v); }
+                    // same colour on both ends of u-v: not bipartite
                     else if (color[v] == color[u]) return false;
                 }
             }
@@ -39,7 +42,7 @@ public class P2813_BipartiteGraphDFS {
 
     /** Approach 3: DFS colouring; each neighbour gets the opposite colour, and a same-coloured neighbour is a conflict. O(V + E). */
     static boolean dfs(int V, List<List<Integer>> adj) {
-        int[] color = new int[V];
+        int[] color = new int[V];                        // color[u] = 0 or 1 once painted
         Arrays.fill(color, -1);                          // -1 = not coloured yet
         for (int s = 0; s < V; s++) {
             if (color[s] == -1 && !paint(s, 0, adj, color)) return false;   // each component starts fresh
@@ -48,10 +51,10 @@ public class P2813_BipartiteGraphDFS {
     }
 
     static boolean paint(int u, int c, List<List<Integer>> adj, int[] color) {
-        color[u] = c;
+        color[u] = c;                                    // paint u; neighbours must get the other colour
         for (int v : adj.get(u)) {
-            if (color[v] == -1) {
-                if (!paint(v, 1 - c, adj, color)) return false;
+            if (color[v] == -1) {                        // uncoloured neighbour gets the opposite colour
+                if (!paint(v, 1 - c, adj, color)) return false;   // a clash deeper down fails the whole graph
             } else if (color[v] == c) {
                 return false;                            // both ends of edge u-v have the same colour
             }

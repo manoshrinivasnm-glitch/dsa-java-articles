@@ -5,33 +5,36 @@ public class P502_TopologicalSortOrKahnsAlgorithm {
 
     /** Approach 1: keep in-degrees, but scan all vertices for a zero each round. O(V^2 + E) time, O(V) space. */
     static int[] bruteForce(int V, List<List<Integer>> adj) {
-        int[] indeg = new int[V];
+        int[] indeg = new int[V];                        // indeg[v] = edges still pointing into v
+        // count incoming edges for every vertex
         for (int u = 0; u < V; u++) for (int v : adj.get(u)) indeg[v]++;
-        boolean[] placed = new boolean[V];
+        boolean[] placed = new boolean[V];               // vertices already written to the answer
         int[] order = new int[V];
-        for (int k = 0; k < V; k++) {
+        for (int k = 0; k < V; k++) {                    // fill one position per round
             int pick = -1;
+            // linear scan for the smallest free vertex: O(V) per round
             for (int v = 0; v < V && pick == -1; v++) {
-                if (!placed[v] && indeg[v] == 0) pick = v;
+                if (!placed[v] && indeg[v] == 0) pick = v;   // unplaced with no remaining prerequisite
             }
             if (pick == -1) return new int[0];           // every remaining vertex still has an incoming edge: cycle
             placed[pick] = true;
             order[k] = pick;
-            for (int v : adj.get(pick)) indeg[v]--;
+            for (int v : adj.get(pick)) indeg[v]--;      // pick is placed: its edges stop counting
         }
         return order;
     }
 
     /** Approach 2: Kahn's algorithm; a queue holds exactly the vertices whose in-degree has dropped to zero. O(V + E) time. */
     static int[] kahn(int V, List<List<Integer>> adj) {
-        int[] indeg = new int[V];
+        int[] indeg = new int[V];                        // indeg[v] = edges from unplaced vertices into v
         for (int u = 0; u < V; u++) for (int v : adj.get(u)) indeg[v]++;
-        Deque<Integer> q = new ArrayDeque<>();
+        Deque<Integer> q = new ArrayDeque<>();           // vertices whose prerequisites are all placed
+        // start with every vertex that has no incoming edge
         for (int v = 0; v < V; v++) if (indeg[v] == 0) q.offer(v);
         int[] order = new int[V];
-        int k = 0;
+        int k = 0;                                       // how many vertices are placed so far
         while (!q.isEmpty()) {
-            int u = q.poll();
+            int u = q.poll();                            // any ready vertex may go next
             order[k++] = u;
             for (int v : adj.get(u)) {
                 if (--indeg[v] == 0) q.offer(v);         // u was v's last unplaced prerequisite
@@ -42,20 +45,22 @@ public class P502_TopologicalSortOrKahnsAlgorithm {
 
     /** Approach 3: Kahn's with a min-heap, giving the lexicographically smallest order. O((V + E) log V) time. */
     static int[] kahnSmallestFirst(int V, List<List<Integer>> adj) {
-        int[] indeg = new int[V];
+        int[] indeg = new int[V];                        // indeg[v] = edges from unplaced vertices into v
         for (int u = 0; u < V; u++) for (int v : adj.get(u)) indeg[v]++;
+        // min-heap: always release the smallest ready vertex
         PriorityQueue<Integer> pq = new PriorityQueue<>();
+        // every vertex with no incoming edge is ready
         for (int v = 0; v < V; v++) if (indeg[v] == 0) pq.offer(v);
         int[] order = new int[V];
         int k = 0;
         while (!pq.isEmpty()) {
-            int u = pq.poll();
+            int u = pq.poll();                           // smallest ready vertex -> lexicographically first
             order[k++] = u;
             for (int v : adj.get(u)) {
-                if (--indeg[v] == 0) pq.offer(v);
+                if (--indeg[v] == 0) pq.offer(v);        // last prerequisite gone: v becomes ready
             }
         }
-        return k == V ? order : new int[0];
+        return k == V ? order : new int[0];              // fewer than V placed -> cycle, no valid order
     }
 
     // ---------------------------------------------------------------- tests

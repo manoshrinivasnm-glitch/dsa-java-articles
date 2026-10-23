@@ -3,16 +3,18 @@ import java.util.*;
 /** TUF 534 - Number of islands (A2Z: Number of Distinct Islands). Count islands, and count distinct island shapes up to translation. */
 public class P534_NumberOfIslands {
 
-    static final int[] DR = {-1, 0, 1, 0}, DC = {0, 1, 0, -1};
+    static final int[] DR = {-1, 0, 1, 0}, DC = {0, 1, 0, -1};   // row/col offsets for up, right, down, left
 
     /** Warm-up: plain island count. Every unvisited land cell starts a new island that DFS then floods. O(n*m) time and space. */
     static int countIslands(int[][] grid) {
+        // land cells already assigned to an island
         boolean[][] vis = new boolean[grid.length][grid[0].length];
         int islands = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 1 && !vis[i][j]) {
+                if (grid[i][j] == 1 && !vis[i][j]) {     // unvisited land starts a new island
                     islands++;
+                    // flood the whole island so it is not counted again
                     collect(grid, i, j, i, j, vis, new ArrayList<>());
                 }
             }
@@ -22,36 +24,40 @@ public class P534_NumberOfIslands {
 
     /** DFS that marks one island and appends each cell as (row - r0, col - c0), i.e. relative to the island's first cell. */
     static void collect(int[][] grid, int r, int c, int r0, int c0, boolean[][] vis, List<int[]> cells) {
-        if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length) return;
-        if (grid[r][c] == 0 || vis[r][c]) return;
-        vis[r][c] = true;
-        cells.add(new int[]{r - r0, c - c0});
+        if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length) return;   // off the grid
+        if (grid[r][c] == 0 || vis[r][c]) return;        // water, or already part of an island
+        vis[r][c] = true;                                // claim the cell for this island
+        cells.add(new int[]{r - r0, c - c0});            // store the offset from the island's first cell
+        // spread to the four neighbours
         for (int k = 0; k < 4; k++) collect(grid, r + DR[k], c + DC[k], r0, c0, vis, cells);
     }
 
     /** Approach 1: normalise each island, then compare it cell by cell with every distinct shape found so far. O(n*m * D) time. */
     static int bruteForce(int[][] grid) {
         boolean[][] vis = new boolean[grid.length][grid[0].length];
-        List<List<int[]>> shapes = new ArrayList<>();
+        List<List<int[]>> shapes = new ArrayList<>();    // one representative cell list per distinct shape
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] != 1 || vis[i][j]) continue;
+                if (grid[i][j] != 1 || vis[i][j]) continue;   // skip water and land that is already used
                 List<int[]> cells = new ArrayList<>();
-                collect(grid, i, j, i, j, vis, cells);
+                collect(grid, i, j, i, j, vis, cells);   // offsets of every cell of this island
+                // sort so equal shapes give equal lists
                 cells.sort((a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1]));
                 boolean seen = false;
-                for (List<int[]> s : shapes) {
+                for (List<int[]> s : shapes) {           // compare with every shape kept so far
+                    // same offsets -> translated copy of a known shape
                     if (sameShape(s, cells)) { seen = true; break; }
                 }
-                if (!seen) shapes.add(cells);
+                if (!seen) shapes.add(cells);            // a new shape
             }
         }
         return shapes.size();
     }
 
     static boolean sameShape(List<int[]> a, List<int[]> b) {
-        if (a.size() != b.size()) return false;
+        if (a.size() != b.size()) return false;          // different cell counts cannot match
         for (int k = 0; k < a.size(); k++) {
+            // some offset differs
             if (a.get(k)[0] != b.get(k)[0] || a.get(k)[1] != b.get(k)[1]) return false;
         }
         return true;
@@ -60,15 +66,17 @@ public class P534_NumberOfIslands {
     /** Approach 2: turn each island's relative cells (in DFS order) into a string key and drop it in a HashSet. O(n*m) time and space. */
     static int optimal(int[][] grid) {
         boolean[][] vis = new boolean[grid.length][grid[0].length];
-        Set<String> shapes = new HashSet<>();
+        Set<String> shapes = new HashSet<>();            // one string key per distinct shape
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] != 1 || vis[i][j]) continue;
-                List<int[]> cells = new ArrayList<>();
+                if (grid[i][j] != 1 || vis[i][j]) continue;   // skip water and land already used
+                List<int[]> cells = new ArrayList<>();   // offsets of this island's cells
+                // offsets in fixed DFS order, so same shape -> same list
                 collect(grid, i, j, i, j, vis, cells);
                 StringBuilder key = new StringBuilder();
+                // serialise the offsets into a key like "0,0;0,1;"
                 for (int[] cell : cells) key.append(cell[0]).append(',').append(cell[1]).append(';');
-                shapes.add(key.toString());
+                shapes.add(key.toString());              // the set drops duplicate shapes
             }
         }
         return shapes.size();

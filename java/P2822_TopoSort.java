@@ -5,19 +5,20 @@ public class P2822_TopoSort {
 
     /** Approach 1: repeatedly find a vertex with no incoming edge from the unplaced vertices, place it, repeat. O(V * (V + E)) time. */
     static int[] bruteForce(int V, List<List<Integer>> adj) {
-        boolean[] placed = new boolean[V];
-        int[] order = new int[V];
-        for (int k = 0; k < V; k++) {
+        boolean[] placed = new boolean[V];               // vertices already written to the answer
+        int[] order = new int[V];                        // the topological order being built
+        for (int k = 0; k < V; k++) {                    // fill one position per round
             boolean[] hasIncoming = new boolean[V];     // incoming edge from a vertex that is not placed yet
             for (int u = 0; u < V; u++) {
+                // edges from unplaced vertices still block their target
                 if (!placed[u]) for (int v : adj.get(u)) hasIncoming[v] = true;
             }
             int pick = -1;
-            for (int v = 0; v < V && pick == -1; v++) {
+            for (int v = 0; v < V && pick == -1; v++) {   // smallest unblocked, unplaced vertex
                 if (!placed[v] && !hasIncoming[v]) pick = v;
             }
             if (pick == -1) return new int[0];           // impossible in a DAG: every remaining vertex is on or after a cycle
-            placed[pick] = true;
+            placed[pick] = true;                         // place it; its outgoing edges stop counting
             order[k] = pick;
         }
         return order;
@@ -25,20 +26,21 @@ public class P2822_TopoSort {
 
     /** Approach 2: DFS; push a vertex after all its descendants are finished, then pop the stack. O(V + E) time, O(V) space. */
     static int[] optimal(int V, List<List<Integer>> adj) {
-        boolean[] vis = new boolean[V];
-        Deque<Integer> stack = new ArrayDeque<>();
+        boolean[] vis = new boolean[V];                  // vertices the DFS has already entered
+        Deque<Integer> stack = new ArrayDeque<>();       // finished vertices, last finished on top
         for (int s = 0; s < V; s++) {
-            if (!vis[s]) dfs(s, adj, vis, stack);
+            if (!vis[s]) dfs(s, adj, vis, stack);        // start a DFS in every unvisited part
         }
         int[] order = new int[V];
+        // popping reverses finish order -> topological order
         for (int k = 0; k < V; k++) order[k] = stack.pop();
         return order;
     }
 
     static void dfs(int u, List<List<Integer>> adj, boolean[] vis, Deque<Integer> stack) {
-        vis[u] = true;
+        vis[u] = true;                                   // mark on entry so no vertex is visited twice
         for (int v : adj.get(u)) {
-            if (!vis[v]) dfs(v, adj, vis, stack);
+            if (!vis[v]) dfs(v, adj, vis, stack);        // finish all descendants first
         }
         stack.push(u);                                   // everything reachable from u is already on the stack
     }

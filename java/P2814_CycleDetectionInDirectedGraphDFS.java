@@ -5,14 +5,15 @@ public class P2814_CycleDetectionInDirectedGraphDFS {
 
     /** Approach 1: from every vertex s, search whether some path leads back to s. O(V * (V + E)) time, O(V) space. */
     static boolean bruteForce(int V, List<List<Integer>> adj) {
-        for (int s = 0; s < V; s++) {
-            boolean[] seen = new boolean[V];
+        for (int s = 0; s < V; s++) {                    // try each vertex as the start of a cycle
+            boolean[] seen = new boolean[V];             // fresh visited set for every start
             Deque<Integer> stack = new ArrayDeque<>();
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.pop();
+                int u = stack.pop();                     // explore everything reachable from s
                 for (int v : adj.get(u)) {
                     if (v == s) return true;             // walked back to the start
+                    // first visit: mark it and explore it later
                     if (!seen[v]) { seen[v] = true; stack.push(v); }
                 }
             }
@@ -22,19 +23,21 @@ public class P2814_CycleDetectionInDirectedGraphDFS {
 
     /** Approach 2: one DFS with vis[] and pathVis[]; an edge into a vertex on the current path is a back edge. O(V + E). */
     static boolean optimal(int V, List<List<Integer>> adj) {
+        // vis = ever visited, pathVis = on the current DFS path
         boolean[] vis = new boolean[V], pathVis = new boolean[V];
         for (int s = 0; s < V; s++) {
+            // one DFS per unvisited part of the graph
             if (!vis[s] && dfsFindsCycle(s, adj, vis, pathVis)) return true;
         }
         return false;
     }
 
     static boolean dfsFindsCycle(int u, List<List<Integer>> adj, boolean[] vis, boolean[] pathVis) {
-        vis[u] = true;
-        pathVis[u] = true;
+        vis[u] = true;                                   // visited for good
+        pathVis[u] = true;                               // and on the current recursion path
         for (int v : adj.get(u)) {
-            if (!vis[v]) {
-                if (dfsFindsCycle(v, adj, vis, pathVis)) return true;
+            if (!vis[v]) {                               // unvisited: go deeper
+                if (dfsFindsCycle(v, adj, vis, pathVis)) return true;   // a cycle found below: pass it up
             } else if (pathVis[v]) {
                 return true;                             // v is an ancestor of u: the edge u -> v closes a cycle
             }
@@ -49,15 +52,15 @@ public class P2814_CycleDetectionInDirectedGraphDFS {
         int[] nextEdge = new int[V];                     // index of the next neighbour to try
         Deque<Integer> stack = new ArrayDeque<>();
         for (int s = 0; s < V; s++) {
-            if (state[s] != 0) continue;
-            stack.push(s);
+            if (state[s] != 0) continue;                 // already handled by an earlier start
+            stack.push(s);                               // simulate the recursion with an explicit stack
             state[s] = 1;
             while (!stack.isEmpty()) {
-                int u = stack.peek();
-                if (nextEdge[u] < adj.get(u).size()) {
-                    int v = adj.get(u).get(nextEdge[u]++);
-                    if (state[v] == 1) return true;
-                    if (state[v] == 0) { state[v] = 1; stack.push(v); }
+                int u = stack.peek();                    // the vertex whose edges we are walking
+                if (nextEdge[u] < adj.get(u).size()) {   // u still has an untried edge
+                    int v = adj.get(u).get(nextEdge[u]++);   // take that edge and advance u's pointer
+                    if (state[v] == 1) return true;      // v is on the current path: back edge -> cycle
+                    if (state[v] == 0) { state[v] = 1; stack.push(v); }   // new vertex: put it on the path
                 } else {
                     state[u] = 2;                        // all edges of u explored
                     stack.pop();

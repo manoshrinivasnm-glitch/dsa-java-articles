@@ -5,10 +5,11 @@ public class P510_WordLadderII {
 
     /** Approach 1: DFS over all simple ladders, keeping only the shortest ones found. Exponential time, O(N * L) space. */
     static List<List<String>> bruteForce(String beginWord, String endWord, List<String> wordList) {
-        List<List<String>> best = new ArrayList<>();
-        if (!wordList.contains(endWord)) return best;
+        List<List<String>> best = new ArrayList<>();     // every shortest ladder found so far
+        if (!wordList.contains(endWord)) return best;    // endWord missing: no ladder exists
+        // the ladder being built, starting at beginWord
         List<String> path = new ArrayList<>(List.of(beginWord));
-        Set<String> onPath = new HashSet<>(path);
+        Set<String> onPath = new HashSet<>(path);        // words already on the ladder, so none repeats
         explore(beginWord, endWord, wordList, path, onPath, best);
         return best;
     }
@@ -16,17 +17,18 @@ public class P510_WordLadderII {
     static void explore(String word, String endWord, List<String> words, List<String> path,
                         Set<String> onPath, List<List<String>> best) {
         if (!best.isEmpty() && path.size() > best.get(0).size()) return;   // already longer than the best ladder
-        if (word.equals(endWord)) {
+        if (word.equals(endWord)) {                      // completed a ladder
+            // strictly shorter: drop the old answers
             if (!best.isEmpty() && path.size() < best.get(0).size()) best.clear();
-            best.add(new ArrayList<>(path));
+            best.add(new ArrayList<>(path));             // store a copy, path keeps changing
             return;
         }
-        for (String next : words) {
-            if (!onPath.contains(next) && differByOne(word, next)) {
+        for (String next : words) {                      // try every dictionary word as the next rung
+            if (!onPath.contains(next) && differByOne(word, next)) {   // unused and one letter away
                 path.add(next);
                 onPath.add(next);
-                explore(next, endWord, words, path, onPath, best);
-                path.remove(path.size() - 1);
+                explore(next, endWord, words, path, onPath, best);   // extend the ladder from next
+                path.remove(path.size() - 1);            // undo the choice before trying the next word
                 onPath.remove(next);
             }
         }
@@ -35,7 +37,7 @@ public class P510_WordLadderII {
     static boolean differByOne(String a, String b) {
         if (a.length() != b.length()) return false;
         int diff = 0;
-        for (int i = 0; i < a.length() && diff < 2; i++) {
+        for (int i = 0; i < a.length() && diff < 2; i++) {   // stop early once two letters differ
             if (a.charAt(i) != b.charAt(i)) diff++;
         }
         return diff == 1;
@@ -43,32 +45,33 @@ public class P510_WordLadderII {
 
     /** Approach 2: BFS whose queue holds whole ladders; words are retired only after their level ends. Can blow up in memory. */
     static List<List<String>> bfsPaths(String beginWord, String endWord, List<String> wordList) {
-        Set<String> unvisited = new HashSet<>(wordList);
+        Set<String> unvisited = new HashSet<>(wordList);   // words no ladder has used yet
         List<List<String>> result = new ArrayList<>();
         if (!unvisited.contains(endWord)) return result;
         unvisited.remove(beginWord);
-        Deque<List<String>> q = new ArrayDeque<>();
+        Deque<List<String>> q = new ArrayDeque<>();      // queue of partial ladders, not single words
         q.offer(new ArrayList<>(List.of(beginWord)));
-        while (!q.isEmpty() && result.isEmpty()) {
-            List<String> usedThisLevel = new ArrayList<>();
-            for (int size = q.size(); size > 0; size--) {
+        while (!q.isEmpty() && result.isEmpty()) {       // stop after the level that reaches endWord
+            List<String> usedThisLevel = new ArrayList<>();   // words first reached on this level
+            for (int size = q.size(); size > 0; size--) {   // process exactly one level
                 List<String> seq = q.poll();
-                String last = seq.get(seq.size() - 1);
-                if (last.equals(endWord)) { result.add(seq); continue; }
+                String last = seq.get(seq.size() - 1);   // the word this ladder currently ends on
+                if (last.equals(endWord)) { result.add(seq); continue; }   // a complete shortest ladder
                 char[] w = last.toCharArray();
-                for (int i = 0; i < w.length; i++) {
+                for (int i = 0; i < w.length; i++) {     // try every position...
                     char original = w[i];
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                    for (char ch = 'a'; ch <= 'z'; ch++) {   // ...with every letter
                         w[i] = ch;
                         String next = new String(w);
-                        if (unvisited.contains(next)) {
+                        if (unvisited.contains(next)) {   // not used on an earlier level
+                            // copy the ladder and extend it by one word
                             List<String> longer = new ArrayList<>(seq);
                             longer.add(next);
                             q.offer(longer);
                             usedThisLevel.add(next);
                         }
                     }
-                    w[i] = original;
+                    w[i] = original;                     // restore before moving to the next position
                 }
             }
             unvisited.removeAll(usedThisLevel);          // only now: ladders on the same level may share a word
@@ -80,58 +83,58 @@ public class P510_WordLadderII {
     static List<List<String>> optimal(String beginWord, String endWord, List<String> wordList) {
         Set<String> unvisited = new HashSet<>(wordList);
         List<List<String>> result = new ArrayList<>();
-        if (!unvisited.contains(endWord)) return result;
-        unvisited.remove(beginWord);
-        Map<String, Integer> depth = new HashMap<>();
-        depth.put(beginWord, 0);
-        Deque<String> q = new ArrayDeque<>();
+        if (!unvisited.contains(endWord)) return result;   // endWord missing: no ladder exists
+        unvisited.remove(beginWord);                     // beginWord sits on level 0
+        Map<String, Integer> depth = new HashMap<>();    // words BFS has not reached yet
+        depth.put(beginWord, 0);                         // depth[w] = level at which BFS first reached w
+        Deque<String> q = new ArrayDeque<>();            // plain BFS over single words
         q.offer(beginWord);
-        while (!q.isEmpty() && !depth.containsKey(endWord)) {
-            String word = q.poll();
-            int d = depth.get(word);
+        while (!q.isEmpty() && !depth.containsKey(endWord)) {   // stop once endWord's level is known
+            String word = q.poll();                      // next word in BFS order
+            int d = depth.get(word);                     // its level
             char[] w = word.toCharArray();
-            for (int i = 0; i < w.length; i++) {
+            for (int i = 0; i < w.length; i++) {         // try every position...
                 char original = w[i];
-                for (char ch = 'a'; ch <= 'z'; ch++) {
+                for (char ch = 'a'; ch <= 'z'; ch++) {   // ...with every letter
                     w[i] = ch;
                     String next = new String(w);
-                    if (unvisited.remove(next)) {
+                    if (unvisited.remove(next)) {        // first visit: record its level and queue it
                         depth.put(next, d + 1);
                         q.offer(next);
                     }
                 }
-                w[i] = original;
+                w[i] = original;                         // restore before moving to the next position
             }
         }
-        if (!depth.containsKey(endWord)) return result;
-        List<String> path = new ArrayList<>(List.of(endWord));
-        backtrack(endWord, beginWord, depth, path, result);
+        if (!depth.containsKey(endWord)) return result;   // endWord never reached: no ladder
+        List<String> path = new ArrayList<>(List.of(endWord));   // rebuild ladders backwards, endWord first
+        backtrack(endWord, beginWord, depth, path, result);   // walk the levels back down to beginWord
         return result;
     }
 
     static void backtrack(String word, String beginWord, Map<String, Integer> depth,
                           List<String> path, List<List<String>> result) {
-        if (word.equals(beginWord)) {
+        if (word.equals(beginWord)) {                    // walked all the way back: a full ladder
             List<String> seq = new ArrayList<>(path);
             Collections.reverse(seq);                    // path was built from endWord backwards
             result.add(seq);
             return;
         }
-        int d = depth.get(word);
+        int d = depth.get(word);                         // level of the current word
         char[] w = word.toCharArray();
-        for (int i = 0; i < w.length; i++) {
+        for (int i = 0; i < w.length; i++) {             // change one letter at a time...
             char original = w[i];
-            for (char ch = 'a'; ch <= 'z'; ch++) {
+            for (char ch = 'a'; ch <= 'z'; ch++) {       // ...to every possible letter
                 w[i] = ch;
-                String prev = new String(w);
-                Integer pd = depth.get(prev);
+                String prev = new String(w);             // candidate predecessor, one letter away
+                Integer pd = depth.get(prev);            // its BFS level, or null if never reached
                 if (pd != null && pd == d - 1) {         // one level closer to beginWord
                     path.add(prev);
-                    backtrack(prev, beginWord, depth, path, result);
-                    path.remove(path.size() - 1);
+                    backtrack(prev, beginWord, depth, path, result);   // continue backwards from prev
+                    path.remove(path.size() - 1);        // undo the choice before trying another
                 }
             }
-            w[i] = original;
+            w[i] = original;                             // restore before moving to the next position
         }
     }
 

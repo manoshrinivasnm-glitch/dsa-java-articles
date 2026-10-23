@@ -3,15 +3,16 @@ import java.util.*;
 /** TUF 2828 - Why priority Queue is used in Dijkstra's Algorithm. Compares FIFO queue, priority queue and TreeSet frontiers on directed graphs with edges {u, v, w}. */
 public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
 
-    static final int INF = Integer.MAX_VALUE;
+    static final int INF = Integer.MAX_VALUE;                 // marks a node that is not reached yet
 
     /** Final distances plus how many times a node's edges were scanned ("expansions"). */
-    record Run(int[] dist, int expansions) {}
+    record Run(int[] dist, int expansions) {}                 // final distances and the number of expansions
 
     /** Directed adjacency list of {neighbour, weight} pairs. */
     static List<List<int[]>> buildAdj(int V, int[][] edges) {
-        List<List<int[]>> adj = new ArrayList<>();
+        List<List<int[]>> adj = new ArrayList<>();            // adj.get(u) = {v, weight} for each edge u -> v
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
+        // directed edge u -> v with weight e[2]
         for (int[] e : edges) adj.get(e[0]).add(new int[]{e[1], e[2]});
         return adj;
     }
@@ -19,20 +20,22 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
     /** Same loop as Dijkstra but the frontier is a FIFO queue. Correct, yet a node can be expanded many times. */
     static Run fifoQueue(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, INF);
         dist[src] = 0;
+        // plain FIFO queue of {distance, node}: no ordering by cost
         Deque<int[]> queue = new ArrayDeque<>();
         queue.add(new int[]{0, src});
-        int expansions = 0;
+        int expansions = 0;                                   // counts every time a node's edges are scanned
         while (!queue.isEmpty()) {
             int[] top = queue.poll();
-            int d = top[0], u = top[1];
+            int d = top[0], u = top[1];                       // distance stored with the entry, and its node
             if (d > dist[u]) continue;                        // outdated entry
             expansions++;
-            for (int[] e : adj.get(u)) {
-                if (d + e[1] < dist[e[0]]) {
+            for (int[] e : adj.get(u)) {                      // relax each outgoing edge of u
+                if (d + e[1] < dist[e[0]]) {                  // shorter route to e[0] found
                     dist[e[0]] = d + e[1];
+                    // re-queue it, so it may be expanded again later
                     queue.add(new int[]{dist[e[0]], e[0]});
                 }
             }
@@ -43,21 +46,22 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
     /** Dijkstra with a min-heap and lazy deletion: each reachable node is expanded exactly once. O((V + E) log V). */
     static Run priorityQueue(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, INF);
         dist[src] = 0;
+        // min-heap of {distance, node}, closest first
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
         pq.add(new int[]{0, src});
         int expansions = 0;
         while (!pq.isEmpty()) {
-            int[] top = pq.poll();
-            int d = top[0], u = top[1];
+            int[] top = pq.poll();                            // always the closest node still waiting
+            int d = top[0], u = top[1];                       // distance stored with the entry, and its node
             if (d > dist[u]) continue;                        // stale copy left behind by a later improvement
-            expansions++;
-            for (int[] e : adj.get(u)) {
-                if (d + e[1] < dist[e[0]]) {
+            expansions++;                                     // count one expansion of u
+            for (int[] e : adj.get(u)) {                      // relax each outgoing edge of u
+                if (d + e[1] < dist[e[0]]) {                  // shorter route to e[0] found
                     dist[e[0]] = d + e[1];
-                    pq.add(new int[]{dist[e[0]], e[0]});
+                    pq.add(new int[]{dist[e[0]], e[0]});      // the old copy stays in the heap and goes stale
                 }
             }
         }
@@ -67,21 +71,23 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
     /** Dijkstra with an ordered set: the old entry is removed before the improved one is added (a real decrease-key). */
     static Run treeSet(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, INF);
         dist[src] = 0;
+        // ordered set of {distance, node}; ties broken by node id so entries stay distinct
         TreeSet<int[]> set = new TreeSet<>((a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1]));
-        set.add(new int[]{0, src});
+        set.add(new int[]{0, src});                           // the source starts at distance 0
         int expansions = 0;
         while (!set.isEmpty()) {
-            int[] top = set.pollFirst();
+            int[] top = set.pollFirst();                      // smallest-distance entry, removed from the set
             int d = top[0], u = top[1];
             expansions++;                                     // never stale: the set holds one entry per node
             for (int[] e : adj.get(u)) {
-                int v = e[0], nd = d + e[1];
-                if (nd < dist[v]) {
+                int v = e[0], nd = d + e[1];                  // candidate distance to v through u
+                if (nd < dist[v]) {                           // shorter route to v found
+                    // drop v's old entry before inserting the new one
                     if (dist[v] != INF) set.remove(new int[]{dist[v], v});
-                    dist[v] = nd;
+                    dist[v] = nd;                             // v's new best distance
                     set.add(new int[]{nd, v});
                 }
             }
@@ -92,20 +98,21 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
     /** Textbook variant that freezes a node once popped. Right for w >= 0, wrong once a negative edge exists. */
     static int[] settleOnPop(int V, int[][] edges, int src) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, INF);
         dist[src] = 0;
-        boolean[] settled = new boolean[V];
+        boolean[] settled = new boolean[V];                   // settled[u] = dist[u] is final
+        // min-heap of {distance, node}, closest first
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
-        pq.add(new int[]{0, src});
+        pq.add(new int[]{0, src});                            // the source starts at distance 0
         while (!pq.isEmpty()) {
-            int u = pq.poll()[1];
-            if (settled[u]) continue;
+            int u = pq.poll()[1];                             // closest waiting node
+            if (settled[u]) continue;                         // an old duplicate of a node already settled
             settled[u] = true;                                // dist[u] is declared final here
             for (int[] e : adj.get(u)) {
                 int v = e[0];
-                if (!settled[v] && dist[u] + e[1] < dist[v]) {
-                    dist[v] = dist[u] + e[1];
+                if (!settled[v] && dist[u] + e[1] < dist[v]) {   // relaxes only nodes not settled yet
+                    dist[v] = dist[u] + e[1];                 // shorter route to v found
                     pq.add(new int[]{dist[v], v});
                 }
             }
@@ -115,11 +122,12 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
 
     /** Reference answer that tolerates negative edges (no negative cycles): relax all edges V - 1 times. */
     static int[] bellmanFord(int V, int[][] edges, int src) {
-        int[] dist = new int[V];
+        int[] dist = new int[V];                              // dist[v] = best distance known so far
         Arrays.fill(dist, INF);
         dist[src] = 0;
-        for (int round = 1; round < V; round++) {
-            for (int[] e : edges) {
+        for (int round = 1; round < V; round++) {             // V - 1 rounds suffice, negative edges included
+            for (int[] e : edges) {                           // relax every edge in each round
+                // relax the edge if it shortens the route to e[1]
                 if (dist[e[0]] != INF && dist[e[0]] + e[2] < dist[e[1]]) dist[e[1]] = dist[e[0]] + e[2];
             }
         }
@@ -130,9 +138,9 @@ public class P2828_WhyPriorityQueueIsUsedInDjisktrasAlgorit {
     static int[][] diamondChain(int k) {
         List<int[]> edges = new ArrayList<>();
         for (int i = 0; i < k; i++) {
-            int s = 2 * i, m = 2 * i + 1, next = 2 * i + 2;
+            int s = 2 * i, m = 2 * i + 1, next = 2 * i + 2;   // start, middle and next start of diamond i
             edges.add(new int[]{s, next, 2});                 // short in hops, long in cost
-            edges.add(new int[]{s, m, 1});
+            edges.add(new int[]{s, m, 1});                    // s -> m costs 1...
             edges.add(new int[]{m, next, 0});                 // long in hops, short in cost
         }
         return edges.toArray(new int[0][]);
