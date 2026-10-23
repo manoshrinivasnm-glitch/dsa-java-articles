@@ -5,17 +5,18 @@ public class P572_ConvertMinHeapToMaxHeap {
 
     /** Approach 1: sort in descending order; a non-increasing array is always a max heap. O(n log n) time. */
     static void bruteForce(int[] arr) {
-        Arrays.sort(arr);
+        Arrays.sort(arr);                                // ascending order first
+        // reverse it: the array is now non-increasing, so every parent is >= its children
         for (int i = 0, j = arr.length - 1; i < j; i++, j--) swap(arr, i, j);
     }
 
     /** Approach 2: top-down build. arr[0..k-1] is a max heap; insert arr[k] by sifting it up. O(n log n) time, O(1) space. */
     static void better(int[] arr) {
-        for (int k = 1; k < arr.length; k++) {
-            int i = k;
-            while (i > 0 && arr[(i - 1) / 2] < arr[i]) {
-                swap(arr, i, (i - 1) / 2);
-                i = (i - 1) / 2;
+        for (int k = 1; k < arr.length; k++) {            // grow the max heap one element at a time
+            int i = k;                                    // i follows the new element as it rises
+            while (i > 0 && arr[(i - 1) / 2] < arr[i]) {  // parent smaller than child: max-heap order broken
+                swap(arr, i, (i - 1) / 2);                // move the larger value up
+                i = (i - 1) / 2;                          // continue from the parent's slot
             }
         }
     }
@@ -23,17 +24,18 @@ public class P572_ConvertMinHeapToMaxHeap {
     /** Approach 3: bottom-up heapify. Sift down every internal node, from the last one back to the root. O(n) time, O(1) space. */
     static void optimal(int[] arr) {
         int n = arr.length;
+        // leaves are heaps already; fix internal nodes from the last one back to the root
         for (int i = n / 2 - 1; i >= 0; i--) siftDown(arr, n, i);
     }
 
     static void siftDown(int[] arr, int n, int i) {
-        while (true) {
-            int largest = i, l = 2 * i + 1, r = 2 * i + 2;
-            if (l < n && arr[l] > arr[largest]) largest = l;
-            if (r < n && arr[r] > arr[largest]) largest = r;
-            if (largest == i) return;
-            swap(arr, i, largest);
-            i = largest;
+        while (true) {                                      // each pass moves arr[i] down one level
+            int largest = i, l = 2 * i + 1, r = 2 * i + 2;  // assume arr[i] is the largest
+            if (l < n && arr[l] > arr[largest]) largest = l;   // left child exists and is bigger
+            if (r < n && arr[r] > arr[largest]) largest = r;   // right child is bigger still
+            if (largest == i) return;                       // no bigger child: this subtree is a max heap
+            swap(arr, i, largest);                          // the bigger child moves up
+            i = largest;                                    // continue from the new position
         }
     }
 

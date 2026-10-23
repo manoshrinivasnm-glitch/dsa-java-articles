@@ -6,16 +6,16 @@ public class P571_CheckIfAnArrayRepresentsAMinHeap {
     /** Approach 1: straight from the definition, compare every node with every node in its subtree. O(n log n) time, O(1) space. */
     static boolean bruteForce(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                         // compare node i with its whole subtree
             // the descendants of i on each level form one contiguous block of indices [lo, hi]
             long lo = 2L * i + 1, hi = 2L * i + 2;
-            while (lo < n) {
-                long last = Math.min(hi, n - 1);
-                for (long j = lo; j <= last; j++) {
-                    if (arr[(int) j] < arr[i]) return false;
+            while (lo < n) {                                  // walk down one level at a time
+                long last = Math.min(hi, n - 1);              // the block may run past the end of the array
+                for (long j = lo; j <= last; j++) {           // every descendant of i on this level
+                    if (arr[(int) j] < arr[i]) return false;  // a smaller descendant breaks the heap order
                 }
-                lo = 2 * lo + 1;
-                hi = 2 * hi + 2;
+                lo = 2 * lo + 1;                              // first descendant one level lower
+                hi = 2 * hi + 2;                              // last descendant one level lower
             }
         }
         return true;
@@ -23,22 +23,22 @@ public class P571_CheckIfAnArrayRepresentsAMinHeap {
 
     /** Approach 2: recursive check, node against its two children, then both subtrees. O(n) time, O(log n) stack. */
     static boolean recursive(int[] arr) {
-        return isHeapFrom(arr, 0);
+        return isHeapFrom(arr, 0);                            // start the check at the root
     }
 
     static boolean isHeapFrom(int[] arr, int i) {
         int n = arr.length;
-        int l = 2 * i + 1, r = 2 * i + 2;
+        int l = 2 * i + 1, r = 2 * i + 2;                     // children of node i
         if (l >= n) return true;                              // a leaf, or the empty array
-        if (arr[l] < arr[i]) return false;
-        if (r < n && arr[r] < arr[i]) return false;
+        if (arr[l] < arr[i]) return false;                    // left child smaller than its parent
+        if (r < n && arr[r] < arr[i]) return false;           // right child exists and is smaller
         return isHeapFrom(arr, l) && isHeapFrom(arr, r);      // isHeapFrom(arr, r) is true at once when r >= n
     }
 
     /** Approach 3: every non-root element must be >= its parent (i - 1) / 2. O(n) time, O(1) space. */
     static boolean optimal(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[(i - 1) / 2] > arr[i]) return false;
+        for (int i = 1; i < arr.length; i++) {                // every non-root index
+            if (arr[(i - 1) / 2] > arr[i]) return false;      // parent bigger than child: not a min heap
         }
         return true;
     }

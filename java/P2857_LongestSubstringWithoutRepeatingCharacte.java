@@ -5,14 +5,14 @@ public class P2857_LongestSubstringWithoutRepeatingCharacte {
 
     /** Approach 1: grow a substring from every start until a character repeats. O(n^2) time, O(1) space (256-entry table). */
     static int bruteForce(String s) {
-        int n = s.length(), best = 0;
-        for (int i = 0; i < n; i++) {
-            boolean[] seen = new boolean[256];
-            for (int j = i; j < n; j++) {
+        int n = s.length(), best = 0;                  // best = longest repeat-free length seen so far
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            boolean[] seen = new boolean[256];         // characters already used in s[i..j]
+            for (int j = i; j < n; j++) {              // extend the substring one character at a time
                 char c = s.charAt(j);
                 if (seen[c]) break;                    // s[i..j] would contain c twice
                 seen[c] = true;
-                best = Math.max(best, j - i + 1);
+                best = Math.max(best, j - i + 1);      // s[i..j] has no repeats: record its length
             }
         }
         return best;
@@ -20,30 +20,30 @@ public class P2857_LongestSubstringWithoutRepeatingCharacte {
 
     /** Approach 2: sliding window with a set; shrink from the left one step at a time. O(2n) time, O(min(n, alphabet)) space. */
     static int better(String s) {
-        Set<Character> window = new HashSet<>();
-        int l = 0, best = 0;
-        for (int r = 0; r < s.length(); r++) {
+        Set<Character> window = new HashSet<>();       // characters currently inside the window s[l..r]
+        int l = 0, best = 0;                           // l = left edge of the window
+        for (int r = 0; r < s.length(); r++) {         // r = right edge; each step brings in s[r]
             char c = s.charAt(r);
             while (window.contains(c)) {               // drop characters until the old copy of c is gone
                 window.remove(s.charAt(l));
                 l++;
             }
-            window.add(c);
-            best = Math.max(best, r - l + 1);
+            window.add(c);                             // c is now the only copy in the window
+            best = Math.max(best, r - l + 1);          // s[l..r] is repeat-free
         }
         return best;
     }
 
     /** Approach 3: remember the last index of every character and jump the left edge past it. O(n) time, O(1) space. */
     static int optimal(String s) {
-        int[] last = new int[256];
-        Arrays.fill(last, -1);
-        int l = 0, best = 0;
-        for (int r = 0; r < s.length(); r++) {
+        int[] last = new int[256];                     // last[c] = latest index where c appeared
+        Arrays.fill(last, -1);                         // -1 means "not seen yet"
+        int l = 0, best = 0;                           // l = left edge of the window
+        for (int r = 0; r < s.length(); r++) {         // each step brings s[r] into the window
             char c = s.charAt(r);
-            if (last[c] >= l) l = last[c] + 1;        // previous copy is inside the window: jump past it
-            last[c] = r;
-            best = Math.max(best, r - l + 1);
+            if (last[c] >= l) l = last[c] + 1;         // previous copy is inside the window: jump past it
+            last[c] = r;                               // remember where c was seen most recently
+            best = Math.max(best, r - l + 1);          // s[l..r] is repeat-free
         }
         return best;
     }

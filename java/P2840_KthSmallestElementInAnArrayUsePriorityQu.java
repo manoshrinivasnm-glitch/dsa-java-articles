@@ -5,32 +5,33 @@ public class P2840_KthSmallestElementInAnArrayUsePriorityQu {
 
     /** Approach 1: sort a copy and index it. O(n log n) time, O(n) space. */
     static int bruteForce(int[] arr, int k) {
-        int[] a = arr.clone();
-        Arrays.sort(a);
-        return a[k - 1];
+        int[] a = arr.clone();                           // work on a copy; the input stays untouched
+        Arrays.sort(a);                                  // ascending order
+        return a[k - 1];                                 // k-th smallest sits at index k - 1
     }
 
     /** Approach 2: heapify everything into a min-heap, then remove the smallest k - 1 times. O(n + k log n) time, O(n) space. */
     static int better(int[] arr, int k) {
-        List<Integer> all = new ArrayList<>();
+        List<Integer> all = new ArrayList<>();           // copy the values into a collection
         for (int x : arr) all.add(x);
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(all);    // built from a collection in O(n)
-        for (int i = 1; i < k; i++) minHeap.poll();
-        return minHeap.peek();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(all);   // built from a collection in O(n)
+        for (int i = 1; i < k; i++) minHeap.poll();      // remove the k - 1 smallest values
+        return minHeap.peek();                           // the root is now the k-th smallest
     }
 
     /** Approach 3: max-heap holding the k smallest values seen so far; its root is the answer. O(n log k) time, O(k) space. */
     static int optimal(int[] arr, int k) {
+        // max-heap of the k smallest values seen so far
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         for (int x : arr) {
-            if (maxHeap.size() < k) {
+            if (maxHeap.size() < k) {                    // fewer than k kept: take x
                 maxHeap.offer(x);
             } else if (x < maxHeap.peek()) {             // x beats the largest of the current k smallest
-                maxHeap.poll();
-                maxHeap.offer(x);
+                maxHeap.poll();                          // evict the largest of the kept values
+                maxHeap.offer(x);                        // x joins the k smallest
             }
         }
-        return maxHeap.peek();
+        return maxHeap.peek();                           // largest of the k smallest = k-th smallest
     }
 
     // ---------------------------------------------------------------- tests

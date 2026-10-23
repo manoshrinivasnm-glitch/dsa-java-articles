@@ -5,15 +5,16 @@ public class P927_LongestRepeatingCharacterReplacement {
 
     /** Approach 1: every start, extend while (length - most frequent count) <= k. O(n^2) time, O(26) space. */
     static int bruteForce(String s, int k) {
-        int n = s.length(), best = 0;
-        for (int i = 0; i < n; i++) {
-            int[] freq = new int[26];
-            int maxFreq = 0;
+        int n = s.length(), best = 0;                  // best = longest valid substring so far
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            int[] freq = new int[26];                  // letter counts inside s[i..j]
+            int maxFreq = 0;                           // count of the most common letter in s[i..j]
             for (int j = i; j < n; j++) {
+                // add s[j]; it may become the majority letter
                 maxFreq = Math.max(maxFreq, ++freq[s.charAt(j) - 'A']);
                 int changes = (j - i + 1) - maxFreq;   // letters that differ from the majority letter
-                if (changes > k) break;
-                best = Math.max(best, j - i + 1);
+                if (changes > k) break;                // needs more than k replacements: stop extending
+                best = Math.max(best, j - i + 1);      // s[i..j] can become one repeated letter
             }
         }
         return best;
@@ -21,32 +22,33 @@ public class P927_LongestRepeatingCharacterReplacement {
 
     /** Approach 2: shrinking window; after each left step recompute the true max frequency. O(26 n) time, O(26) space. */
     static int better(String s, int k) {
-        int[] freq = new int[26];
-        int l = 0, maxFreq = 0, best = 0;
-        for (int r = 0; r < s.length(); r++) {
+        int[] freq = new int[26];                      // letter counts inside the window s[l..r]
+        int l = 0, maxFreq = 0, best = 0;              // maxFreq = count of the window's most common letter
+        for (int r = 0; r < s.length(); r++) {         // grow the window by one on the right
+            // add s[r]; it may become the majority letter
             maxFreq = Math.max(maxFreq, ++freq[s.charAt(r) - 'A']);
-            while ((r - l + 1) - maxFreq > k) {
-                freq[s.charAt(l) - 'A']--;
+            while ((r - l + 1) - maxFreq > k) {        // needs more than k replacements: shrink
+                freq[s.charAt(l) - 'A']--;             // s[l] leaves the window
                 l++;
-                maxFreq = 0;
+                maxFreq = 0;                           // recount the majority from scratch
                 for (int f : freq) maxFreq = Math.max(maxFreq, f);
             }
-            best = Math.max(best, r - l + 1);
+            best = Math.max(best, r - l + 1);          // the window is valid here
         }
         return best;
     }
 
     /** Approach 3: never-shrinking window with a max frequency that is never decreased. O(n) time, O(26) space. */
     static int optimal(String s, int k) {
-        int[] freq = new int[26];
-        int l = 0, maxFreq = 0, best = 0;
-        for (int r = 0; r < s.length(); r++) {
-            maxFreq = Math.max(maxFreq, ++freq[s.charAt(r) - 'A']);
+        int[] freq = new int[26];                      // letter counts inside the window s[l..r]
+        int l = 0, maxFreq = 0, best = 0;              // maxFreq = highest letter count ever seen
+        for (int r = 0; r < s.length(); r++) {         // grow the window by one on the right
+            maxFreq = Math.max(maxFreq, ++freq[s.charAt(r) - 'A']);   // add s[r]; maxFreq never goes down
             if ((r - l + 1) - maxFreq > k) {           // slide by one; maxFreq may now be stale, which is fine
-                freq[s.charAt(l) - 'A']--;
+                freq[s.charAt(l) - 'A']--;             // s[l] leaves the window
                 l++;
             }
-            best = Math.max(best, r - l + 1);
+            best = Math.max(best, r - l + 1);          // window size never drops, so it tracks the best
         }
         return best;
     }

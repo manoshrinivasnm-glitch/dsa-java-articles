@@ -5,12 +5,12 @@ public class P988_SubarraysWithKDifferentIntegers {
 
     /** Approach 1: every start, extend while the distinct count is at most k. O(n^2) time, O(n) space. */
     static int bruteForce(int[] nums, int k) {
-        int n = nums.length, count = 0;
-        for (int i = 0; i < n; i++) {
-            Set<Integer> seen = new HashSet<>();
+        int n = nums.length, count = 0;                // count = subarrays with exactly k distinct values
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            Set<Integer> seen = new HashSet<>();       // distinct values in nums[i..j]
             for (int j = i; j < n; j++) {
                 seen.add(nums[j]);
-                if (seen.size() == k) count++;
+                if (seen.size() == k) count++;         // exactly k distinct: count it
                 else if (seen.size() > k) break;       // distinct count never drops as j grows
             }
         }
@@ -19,18 +19,19 @@ public class P988_SubarraysWithKDifferentIntegers {
 
     /** Approach 2: exactly(k) = atMostDistinct(k) - atMostDistinct(k - 1). O(n) time, O(n) space. */
     static int optimal(int[] nums, int k) {
+        // exactly k = (at most k) minus (at most k - 1)
         return atMostDistinct(nums, k) - atMostDistinct(nums, k - 1);
     }
 
     static int atMostDistinct(int[] nums, int k) {
-        if (k < 0) return 0;
-        Map<Integer, Integer> freq = new HashMap<>();
+        if (k < 0) return 0;                           // no subarray has fewer than 0 distinct values
+        Map<Integer, Integer> freq = new HashMap<>();  // value -> its count in the window nums[l..r]
         int l = 0, count = 0;
-        for (int r = 0; r < nums.length; r++) {
-            freq.merge(nums[r], 1, Integer::sum);
-            while (freq.size() > k) {
+        for (int r = 0; r < nums.length; r++) {        // grow the window by one on the right
+            freq.merge(nums[r], 1, Integer::sum);      // add nums[r] to the window
+            while (freq.size() > k) {                  // too many distinct values: shrink from the left
                 int x = nums[l];
-                if (freq.merge(x, -1, Integer::sum) == 0) freq.remove(x);
+                if (freq.merge(x, -1, Integer::sum) == 0) freq.remove(x);   // x fully left the window
                 l++;
             }
             count += r - l + 1;                        // starts l..r all give at most k distinct values

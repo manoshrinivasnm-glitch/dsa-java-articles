@@ -5,13 +5,13 @@ public class P926_FruitIntoBaskets {
 
     /** Approach 1: every start, extend while the window has at most two fruit types. O(n^2) time, O(1) extra space (set of size 3). */
     static int bruteForce(int[] fruits) {
-        int n = fruits.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            Set<Integer> types = new HashSet<>();
+        int n = fruits.length, best = 0;               // best = longest valid window so far
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            Set<Integer> types = new HashSet<>();      // distinct fruit types in fruits[i..j]
             for (int j = i; j < n; j++) {
                 types.add(fruits[j]);
                 if (types.size() > 2) break;           // a third type: no longer window from i can work
-                best = Math.max(best, j - i + 1);
+                best = Math.max(best, j - i + 1);      // at most two types: two baskets suffice
             }
         }
         return best;
@@ -19,31 +19,34 @@ public class P926_FruitIntoBaskets {
 
     /** Approach 2: sliding window with a count map, shrinking until at most two types remain. O(2n) time, O(1) space. */
     static int better(int[] fruits) {
-        Map<Integer, Integer> count = new HashMap<>();
-        int l = 0, best = 0;
-        for (int r = 0; r < fruits.length; r++) {
-            count.merge(fruits[r], 1, Integer::sum);
-            while (count.size() > 2) {
+        Map<Integer, Integer> count = new HashMap<>();  // fruit type -> how many of it are in the window
+        int l = 0, best = 0;                            // window is fruits[l..r]
+        for (int r = 0; r < fruits.length; r++) {       // grow the window by one on the right
+            count.merge(fruits[r], 1, Integer::sum);    // add fruit r to the window
+            while (count.size() > 2) {                  // three types: shrink from the left until two remain
                 int f = fruits[l];
+                // a type whose count drops to 0 leaves the window
                 if (count.merge(f, -1, Integer::sum) == 0) count.remove(f);
                 l++;
             }
-            best = Math.max(best, r - l + 1);
+            best = Math.max(best, r - l + 1);           // the window holds at most two types
         }
         return best;
     }
 
     /** Approach 3: window that never shrinks; when it holds three types it slides right by one. O(n) time, O(1) space. */
     static int optimal(int[] fruits) {
-        Map<Integer, Integer> count = new HashMap<>();
-        int l = 0, best = 0;
+        Map<Integer, Integer> count = new HashMap<>();  // fruit type -> how many of it are in the window
+        int l = 0, best = 0;                            // window is fruits[l..r]
         for (int r = 0; r < fruits.length; r++) {
-            count.merge(fruits[r], 1, Integer::sum);
-            if (count.size() > 2) {                    // slide: drop exactly one fruit from the left
+            count.merge(fruits[r], 1, Integer::sum);    // add fruit r to the window
+            if (count.size() > 2) {                     // slide: drop exactly one fruit from the left
                 int f = fruits[l];
+                // a type whose count drops to 0 leaves the window
                 if (count.merge(f, -1, Integer::sum) == 0) count.remove(f);
                 l++;
             }
+            // only a valid window may set a new best
             if (count.size() <= 2) best = Math.max(best, r - l + 1);
         }
         return best;

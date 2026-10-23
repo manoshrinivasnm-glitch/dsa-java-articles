@@ -5,12 +5,12 @@ public class P923_BinarySubarraysWithSum {
 
     /** Approach 1: every start, extend while the running sum has not passed goal. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums, int goal) {
-        int n = nums.length, count = 0;
-        for (int i = 0; i < n; i++) {
-            int sum = 0;
+        int n = nums.length, count = 0;                // count = subarrays found with sum == goal
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            int sum = 0;                               // sum of nums[i..j]
             for (int j = i; j < n; j++) {
                 sum += nums[j];
-                if (sum == goal) count++;
+                if (sum == goal) count++;              // nums[i..j] hits the goal
                 else if (sum > goal) break;            // sums only grow: nothing further from i can match
             }
         }
@@ -19,29 +19,30 @@ public class P923_BinarySubarraysWithSum {
 
     /** Approach 2: prefix sums plus a frequency map of earlier prefixes. O(n) time, O(n) space. */
     static int better(int[] nums, int goal) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();  // prefix sum -> how many earlier prefixes had it
         freq.put(0, 1);                                // the empty prefix
-        int prefix = 0, count = 0;
+        int prefix = 0, count = 0;                     // prefix = sum of everything read so far
         for (int x : nums) {
             prefix += x;
+            // earlier prefixes equal to prefix - goal start a match
             count += freq.getOrDefault(prefix - goal, 0);
-            freq.merge(prefix, 1, Integer::sum);
+            freq.merge(prefix, 1, Integer::sum);       // record this prefix for later positions
         }
         return count;
     }
 
     /** Approach 3: exactly(goal) = atMost(goal) - atMost(goal - 1), each counted by a sliding window. O(n) time, O(1) space. */
     static int optimal(int[] nums, int goal) {
-        return atMost(nums, goal) - atMost(nums, goal - 1);
+        return atMost(nums, goal) - atMost(nums, goal - 1);   // (sum <= goal) minus (sum <= goal - 1)
     }
 
     static int atMost(int[] nums, int goal) {
         if (goal < 0) return 0;                        // no subarray of a 0/1 array has a negative sum
-        int l = 0, sum = 0, count = 0;
-        for (int r = 0; r < nums.length; r++) {
+        int l = 0, sum = 0, count = 0;                 // window is nums[l..r]; sum = its total
+        for (int r = 0; r < nums.length; r++) {        // grow the window by one on the right
             sum += nums[r];
-            while (sum > goal) {
-                sum -= nums[l];
+            while (sum > goal) {                       // sum too big: shrink from the left
+                sum -= nums[l];                        // nums[l] leaves the window
                 l++;
             }
             count += r - l + 1;                        // every start in [l, r] gives a valid subarray ending at r

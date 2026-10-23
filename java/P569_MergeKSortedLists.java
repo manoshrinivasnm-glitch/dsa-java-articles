@@ -4,8 +4,8 @@ import java.util.*;
 public class P569_MergeKSortedLists {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the end
 
         ListNode(int val) {
             this.val = val;
@@ -14,69 +14,73 @@ public class P569_MergeKSortedLists {
 
     /** Approach 1: collect every value, sort, and build a new list. O(N log N) time, O(N) space. */
     static ListNode bruteForce(ListNode[] lists) {
-        List<Integer> values = new ArrayList<>();
-        for (ListNode head : lists) {
+        List<Integer> values = new ArrayList<>();        // every value from every list
+        for (ListNode head : lists) {                    // each list in turn
+            // walk this list and collect its values
             for (ListNode cur = head; cur != null; cur = cur.next) values.add(cur.val);
         }
-        Collections.sort(values);
-        ListNode dummy = new ListNode(0), tail = dummy;
+        Collections.sort(values);                        // one global sort
+        ListNode dummy = new ListNode(0), tail = dummy;  // dummy head; tail = last node of the result
         for (int v : values) {
-            tail.next = new ListNode(v);
+            tail.next = new ListNode(v);                 // append a fresh node with the next value
             tail = tail.next;
         }
-        return dummy.next;
+        return dummy.next;                               // skip the dummy
     }
 
     /** Merges two sorted lists by relinking their nodes. O(len(a) + len(b)) time, O(1) space. */
     static ListNode mergeTwo(ListNode a, ListNode b) {
-        ListNode dummy = new ListNode(0), tail = dummy;
-        while (a != null && b != null) {
-            if (a.val <= b.val) {
-                tail.next = a;
+        ListNode dummy = new ListNode(0), tail = dummy;  // dummy head; tail = last node of the merged list
+        while (a != null && b != null) {                 // both lists still have nodes
+            if (a.val <= b.val) {                        // take the smaller front; <= keeps it stable
+                tail.next = a;                           // link a's front node
                 a = a.next;
             } else {
-                tail.next = b;
+                tail.next = b;                           // link b's front node
                 b = b.next;
             }
-            tail = tail.next;
+            tail = tail.next;                            // tail moves to the node just linked
         }
-        tail.next = (a != null) ? a : b;
-        return dummy.next;
+        tail.next = (a != null) ? a : b;                 // append whatever is left of the other list
+        return dummy.next;                               // skip the dummy
     }
 
     /** Approach 2: fold the lists into the answer one at a time. O(N k) time, O(1) extra space. */
     static ListNode better(ListNode[] lists) {
-        ListNode result = null;
+        ListNode result = null;                          // merged list so far (empty at first)
+        // merge each list into the running result
         for (ListNode head : lists) result = mergeTwo(result, head);
         return result;
     }
 
     /** Approach 3: min-heap holding the current front node of every list. O(N log k) time, O(k) space. */
     static ListNode optimalHeap(ListNode[] lists) {
+        // min-heap ordered by node value
         PriorityQueue<ListNode> heap = new PriorityQueue<>((x, y) -> Integer.compare(x.val, y.val));
-        for (ListNode head : lists) {
-            if (head != null) heap.offer(head);
+        for (ListNode head : lists) {                      // seed the heap with every list's head
+            if (head != null) heap.offer(head);            // empty lists contribute nothing
         }
-        ListNode dummy = new ListNode(0), tail = dummy;
-        while (!heap.isEmpty()) {
-            ListNode node = heap.poll();
-            tail.next = node;
+        ListNode dummy = new ListNode(0), tail = dummy;    // dummy head; tail = last node of the result
+        while (!heap.isEmpty()) {                          // until every node has been placed
+            ListNode node = heap.poll();                   // smallest front node among all lists
+            tail.next = node;                              // append it to the result
             tail = node;
-            if (node.next != null) heap.offer(node.next);
+            if (node.next != null) heap.offer(node.next);  // its successor becomes that list's new front
         }
-        return dummy.next;
+        return dummy.next;                                 // skip the dummy
     }
 
     /** Approach 4: merge the lists in pairs, halving their number every round. O(N log k) time, O(k) space for the copy of the array. */
     static ListNode optimalDivideAndConquer(ListNode[] lists) {
-        if (lists.length == 0) return null;
-        ListNode[] work = lists.clone();
+        if (lists.length == 0) return null;              // no lists: empty result
+        ListNode[] work = lists.clone();                 // copy, so the caller's array is not overwritten
+        // step = gap between the lists paired this round
         for (int step = 1; step < work.length; step *= 2) {
-            for (int i = 0; i + step < work.length; i += 2 * step) {
-                work[i] = mergeTwo(work[i], work[i + step]);
+            for (int i = 0; i + step < work.length; i += 2 * step) {   // pair work[i] with work[i + step]
+                work[i] = mergeTwo(work[i], work[i + step]);   // the merged list stays in slot i
             }
         }
-        return work[0];
+        return work[0];                                  // slot 0 holds the full merge
     }
 
     // ---------------------------------------------------------------- tests

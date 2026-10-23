@@ -5,30 +5,30 @@ public class P2409_SortKSortedArray {
 
     /** Approach 1: ignore the extra information and sort. O(n log n) time. */
     static void bruteForce(int[] arr, int k) {
-        Arrays.sort(arr);
+        Arrays.sort(arr);                                // plain sort; k is not used
     }
 
     /** Approach 2: insertion sort. Each element only travels past a few (fewer than 2k) larger neighbours, so O(n k) time, O(1) space. */
     static void better(int[] arr, int k) {
-        for (int i = 1; i < arr.length; i++) {
-            int x = arr[i], j = i - 1;
-            while (j >= 0 && arr[j] > x) {
+        for (int i = 1; i < arr.length; i++) {           // arr[0..i-1] is already sorted
+            int x = arr[i], j = i - 1;                   // insert x = arr[i] into that sorted prefix
+            while (j >= 0 && arr[j] > x) {               // walk left past larger values (fewer than 2k)
                 arr[j + 1] = arr[j];                     // shift the larger element one step right
                 j--;
             }
-            arr[j + 1] = x;
+            arr[j + 1] = x;                              // drop x into the gap
         }
     }
 
     /** Approach 3: sliding min-heap of k + 1 elements. The smallest of the next k + 1 unplaced values is the next output. O(n log k) time, O(k) space. */
     static void optimal(int[] arr, int k) {
-        PriorityQueue<Integer> heap = new PriorityQueue<>();
-        int write = 0;
+        PriorityQueue<Integer> heap = new PriorityQueue<>();   // window of the next k + 1 unplaced values
+        int write = 0;                                   // next position to fill with a sorted value
         for (int read = 0; read < arr.length; read++) {
-            heap.offer(arr[read]);
+            heap.offer(arr[read]);                       // bring arr[read] into the window
             if (heap.size() > k) arr[write++] = heap.poll();   // write <= read, so that slot was already read
         }
-        while (!heap.isEmpty()) arr[write++] = heap.poll();
+        while (!heap.isEmpty()) arr[write++] = heap.poll();   // flush the rest in ascending order
     }
 
     // ---------------------------------------------------------------- tests

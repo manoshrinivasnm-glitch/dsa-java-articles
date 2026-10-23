@@ -5,34 +5,34 @@ public class P578_KthLargestElementInAnArray {
 
     /** Approach 1: sort ascending; the k-th largest sits at index n - k. O(n log n) time. */
     static int bruteForce(int[] nums, int k) {
-        int[] a = nums.clone();
-        Arrays.sort(a);
-        return a[a.length - k];
+        int[] a = nums.clone();                          // work on a copy; the input stays untouched
+        Arrays.sort(a);                                  // ascending order
+        return a[a.length - k];                          // k-th from the end = k-th largest
     }
 
     /** Approach 2: min-heap holding the k largest values seen so far; its root is the answer. O(n log k) time, O(k) space. */
     static int better(int[] nums, int k) {
-        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        PriorityQueue<Integer> heap = new PriorityQueue<>();   // min-heap of the k largest values so far
         for (int x : nums) {
-            heap.offer(x);
-            if (heap.size() > k) heap.poll();          // drop the smallest of k + 1 candidates
+            heap.offer(x);                               // every value is a candidate
+            if (heap.size() > k) heap.poll();            // drop the smallest of k + 1 candidates
         }
-        return heap.peek();
+        return heap.peek();                              // smallest of the k largest = k-th largest
     }
 
     /** Approach 3: quickselect with a random pivot and a three-way partition. Average O(n) time, O(1) extra space. */
     static int optimal(int[] nums, int k) {
-        int[] a = nums.clone();
+        int[] a = nums.clone();                          // work on a copy; the input stays untouched
         int target = a.length - k;                       // index of the answer in ascending order
-        int lo = 0, hi = a.length - 1;
+        int lo = 0, hi = a.length - 1;                   // the answer lies somewhere in a[lo..hi]
         Random rnd = new Random(12345);                  // fixed seed: reproducible, still a spread of pivots
         while (true) {
-            int pivot = a[lo + rnd.nextInt(hi - lo + 1)];
+            int pivot = a[lo + rnd.nextInt(hi - lo + 1)];   // random pivot from the current range
             int lt = lo, i = lo, gt = hi;                // a[lo..lt-1] < pivot, a[lt..i-1] == pivot, a[gt+1..hi] > pivot
-            while (i <= gt) {
-                if (a[i] < pivot) swap(a, lt++, i++);
-                else if (a[i] > pivot) swap(a, i, gt--);
-                else i++;
+            while (i <= gt) {                            // a[i..gt] is not yet classified
+                if (a[i] < pivot) swap(a, lt++, i++);    // smaller: move it to the left block
+                else if (a[i] > pivot) swap(a, i, gt--);   // larger: move it to the right block; recheck a[i]
+                else i++;                                // equal: it stays in the middle block
             }
             if (target < lt) hi = lt - 1;                // answer is among the smaller values
             else if (target > gt) lo = gt + 1;           // answer is among the larger values

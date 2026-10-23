@@ -5,13 +5,13 @@ public class P924_CountNumberOfNiceSubarrays {
 
     /** Approach 1: every start, extend while the odd count has not passed k. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums, int k) {
-        int n = nums.length, count = 0;
-        for (int i = 0; i < n; i++) {
-            int odd = 0;
+        int n = nums.length, count = 0;                // count = nice subarrays found
+        for (int i = 0; i < n; i++) {                  // try every start index i
+            int odd = 0;                               // odd numbers in nums[i..j]
             for (int j = i; j < n; j++) {
                 odd += nums[j] & 1;                    // & 1 is 1 for odd values, negatives included
-                if (odd == k) count++;
-                else if (odd > k) break;
+                if (odd == k) count++;                 // exactly k odd numbers: a nice subarray
+                else if (odd > k) break;               // the odd count never drops, so stop
             }
         }
         return count;
@@ -20,28 +20,28 @@ public class P924_CountNumberOfNiceSubarrays {
     /** Approach 2: prefix counts of odd numbers, with an array of how often each prefix count occurred. O(n) time, O(n) space. */
     static int better(int[] nums, int k) {
         int[] freq = new int[nums.length + 1];         // prefix odd counts lie in 0..n
-        freq[0] = 1;
-        int odd = 0, count = 0;
+        freq[0] = 1;                                   // the empty prefix has 0 odd numbers
+        int odd = 0, count = 0;                        // odd = odd numbers read so far
         for (int x : nums) {
             odd += x & 1;
-            if (odd >= k) count += freq[odd - k];
-            freq[odd]++;
+            if (odd >= k) count += freq[odd - k];      // pair with earlier prefixes holding odd - k odds
+            freq[odd]++;                               // record this prefix count for later positions
         }
         return count;
     }
 
     /** Approach 3: exactly(k) = atMost(k) - atMost(k - 1) with a sliding window on parities. O(n) time, O(1) space. */
     static int optimal(int[] nums, int k) {
-        return atMost(nums, k) - atMost(nums, k - 1);
+        return atMost(nums, k) - atMost(nums, k - 1);  // exactly k = (at most k) minus (at most k - 1)
     }
 
     static int atMost(int[] nums, int k) {
-        if (k < 0) return 0;
-        int l = 0, odd = 0, count = 0;
-        for (int r = 0; r < nums.length; r++) {
-            odd += nums[r] & 1;
-            while (odd > k) {
-                odd -= nums[l] & 1;
+        if (k < 0) return 0;                           // no subarray has fewer than 0 odd numbers
+        int l = 0, odd = 0, count = 0;                 // window is nums[l..r]; odd = its odd numbers
+        for (int r = 0; r < nums.length; r++) {        // grow the window by one on the right
+            odd += nums[r] & 1;                        // count nums[r] if it is odd
+            while (odd > k) {                          // too many odd numbers: shrink from the left
+                odd -= nums[l] & 1;                    // nums[l] leaves the window
                 l++;
             }
             count += r - l + 1;                        // subarrays ending at r with at most k odd numbers

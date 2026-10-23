@@ -5,40 +5,44 @@ public class P922_MaximumPointsYouCanObtainFromCards {
 
     /** Approach 1: try every split (left cards, k - left right cards) and sum each from scratch. O(k^2) time, O(1) space. */
     static int bruteForce(int[] cardPoints, int k) {
-        int n = cardPoints.length, best = Integer.MIN_VALUE;
+        int n = cardPoints.length, best = Integer.MIN_VALUE;   // best = largest total found
+        // take `left` cards from the front, the rest from the back
         for (int left = 0; left <= k; left++) {
             int sum = 0;
-            for (int i = 0; i < left; i++) sum += cardPoints[i];
+            for (int i = 0; i < left; i++) sum += cardPoints[i];   // front cards: indices 0..left-1
+            // back cards: the last k - left cards
             for (int i = 0; i < k - left; i++) sum += cardPoints[n - 1 - i];
-            best = Math.max(best, sum);
+            best = Math.max(best, sum);                 // keep the best split
         }
         return best;
     }
 
     /** Approach 2: start with the first k cards, then trade the innermost left card for the next right card, k times. O(k) time, O(1) space. */
     static int optimal(int[] cardPoints, int k) {
+        // leftSum / rightSum = points taken from the front / the back
         int n = cardPoints.length, leftSum = 0, rightSum = 0;
-        for (int i = 0; i < k; i++) leftSum += cardPoints[i];
+        for (int i = 0; i < k; i++) leftSum += cardPoints[i];   // start with all k cards from the front
         int best = leftSum;
-        for (int i = k - 1; i >= 0; i--) {
-            leftSum -= cardPoints[i];                  // give back the innermost left card
-            rightSum += cardPoints[n - k + i];         // take one more card from the right end
-            best = Math.max(best, leftSum + rightSum);
+        for (int i = k - 1; i >= 0; i--) {              // move the split one card at a time toward the back
+            leftSum -= cardPoints[i];                   // give back the innermost left card
+            rightSum += cardPoints[n - k + i];          // take one more card from the right end
+            best = Math.max(best, leftSum + rightSum);  // total for this split
         }
         return best;
     }
 
     /** Approach 3: the cards left behind form one window of n - k cards; minimise its sum. O(n) time, O(1) space. */
     static int minWindowComplement(int[] cardPoints, int k) {
-        int n = cardPoints.length, w = n - k, total = 0;
-        for (int x : cardPoints) total += x;
+        int n = cardPoints.length, w = n - k, total = 0;  // w = cards that stay behind on the table
+        for (int x : cardPoints) total += x;              // sum of every card
         int windowSum = 0;
-        for (int i = 0; i < w; i++) windowSum += cardPoints[i];
-        int minWindow = windowSum;
-        for (int i = w; i < n; i++) {
-            windowSum += cardPoints[i] - cardPoints[i - w];
+        for (int i = 0; i < w; i++) windowSum += cardPoints[i];   // sum of the first window of w cards
+        int minWindow = windowSum;                        // cheapest window seen so far
+        for (int i = w; i < n; i++) {                     // slide the window one step right
+            windowSum += cardPoints[i] - cardPoints[i - w];   // add the entering card, drop the leaving one
             minWindow = Math.min(minWindow, windowSum);
         }
+        // the k taken cards = all cards minus the cheapest window
         return total - minWindow;
     }
 
