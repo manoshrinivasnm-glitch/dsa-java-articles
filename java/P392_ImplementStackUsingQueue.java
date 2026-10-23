@@ -5,35 +5,35 @@ public class P392_ImplementStackUsingQueue {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntStack {
-        void push(int x);
-        int pop();
-        int top();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x on top
+        int pop();          // remove and return the top element
+        int top();          // read the top element without removing it
+        boolean isEmpty();  // true when the stack holds nothing
+        int size();         // number of elements stored
     }
 
     /** Approach 1: two queues, cheap push. pop moves the first n-1 elements to the spare queue, takes the last one, swaps. push O(1), pop and top O(n). */
     static class TwoQueuesCostlyPop implements IntStack {
-        private Queue<Integer> q1 = new ArrayDeque<>();     // holds the stack, oldest at the front
-        private Queue<Integer> q2 = new ArrayDeque<>();     // always empty between operations
+        private Queue<Integer> q1 = new ArrayDeque<>();  // holds the stack, oldest at the front
+        private Queue<Integer> q2 = new ArrayDeque<>();  // always empty between operations
 
         public void push(int x) {
-            q1.offer(x);
+            q1.offer(x);                                 // newest joins the back: O(1)
         }
 
         public int pop() {
-            if (q1.isEmpty()) throw new NoSuchElementException("stack underflow");
-            while (q1.size() > 1) q2.offer(q1.poll());      // everything except the most recent element
-            int x = q1.poll();                              // the most recent element is the stack top
-            Queue<Integer> t = q1;                          // swap roles; q2 is empty again
+            if (q1.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            while (q1.size() > 1) q2.offer(q1.poll());   // everything except the most recent element
+            int x = q1.poll();                           // the most recent element is the stack top
+            Queue<Integer> t = q1;                       // swap roles; q2 is empty again
             q1 = q2;
             q2 = t;
             return x;
         }
 
         public int top() {
-            int x = pop();
-            q1.offer(x);                                    // re-append: it is the newest element again
+            int x = pop();                               // take the top off to find it
+            q1.offer(x);                                 // re-append: it is the newest element again
             return x;
         }
 
@@ -48,25 +48,25 @@ public class P392_ImplementStackUsingQueue {
 
     /** Approach 2: two queues, costly push. x goes into the empty spare queue, the old contents follow it, then the queues swap. push O(n), pop and top O(1). */
     static class TwoQueuesCostlyPush implements IntStack {
-        private Queue<Integer> q1 = new ArrayDeque<>();     // holds the stack, newest at the front
-        private Queue<Integer> q2 = new ArrayDeque<>();     // always empty between operations
+        private Queue<Integer> q1 = new ArrayDeque<>();  // holds the stack, newest at the front
+        private Queue<Integer> q2 = new ArrayDeque<>();  // always empty between operations
 
         public void push(int x) {
-            q2.offer(x);                                    // x first, so it ends up at the front
-            while (!q1.isEmpty()) q2.offer(q1.poll());      // older elements behind it, order kept
-            Queue<Integer> t = q1;
+            q2.offer(x);                                 // x first, so it ends up at the front
+            while (!q1.isEmpty()) q2.offer(q1.poll());   // older elements behind it, order kept
+            Queue<Integer> t = q1;                       // swap roles; q2 is empty again
             q1 = q2;
             q2 = t;
         }
 
         public int pop() {
-            if (q1.isEmpty()) throw new NoSuchElementException("stack underflow");
-            return q1.poll();
+            if (q1.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            return q1.poll();                            // the front is the newest element
         }
 
         public int top() {
-            if (q1.isEmpty()) throw new NoSuchElementException("stack is empty");
-            return q1.peek();
+            if (q1.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return q1.peek();                            // newest element, left in place
         }
 
         public boolean isEmpty() {
@@ -80,21 +80,21 @@ public class P392_ImplementStackUsingQueue {
 
     /** Approach 3: a single queue. After enqueueing x, rotate the other n-1 elements behind it so x sits at the front. push O(n), rest O(1). */
     static class OneQueue implements IntStack {
-        private final Queue<Integer> q = new ArrayDeque<>();   // newest at the front
+        private final Queue<Integer> q = new ArrayDeque<>();  // newest at the front
 
         public void push(int x) {
-            q.offer(x);
+            q.offer(x);                                       // x joins at the back
             for (int i = 1; i < q.size(); i++) q.offer(q.poll());   // n-1 rotations move x to the front
         }
 
         public int pop() {
-            if (q.isEmpty()) throw new NoSuchElementException("stack underflow");
-            return q.poll();
+            if (q.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            return q.poll();                                  // the front is the newest element
         }
 
         public int top() {
-            if (q.isEmpty()) throw new NoSuchElementException("stack is empty");
-            return q.peek();
+            if (q.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return q.peek();                                  // newest element, left in place
         }
 
         public boolean isEmpty() {

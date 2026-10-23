@@ -6,8 +6,8 @@ public class P370_DivisorsOfANumber {
     /** Approach 1: test every candidate from 1 to n. O(n) time, O(k) space for k divisors. */
     static List<Integer> bruteForce(int n) {
         List<Integer> divisors = new ArrayList<>();
-        for (int d = 1; d <= n; d++) {
-            if (n % d == 0) divisors.add(d);
+        for (int d = 1; d <= n; d++) {        // every candidate from 1 to n
+            if (n % d == 0) divisors.add(d);  // d divides n evenly, already in increasing order
         }
         return divisors;
     }
@@ -15,44 +15,45 @@ public class P370_DivisorsOfANumber {
     /** Approach 2: divisors come in pairs (d, n / d), so scanning d up to sqrt(n) finds them all; sort at the end. O(sqrt(n) + k log k) time. */
     static List<Integer> better(int n) {
         List<Integer> divisors = new ArrayList<>();
-        for (long d = 1; d * d <= n; d++) {
-            if (n % d == 0) {
-                divisors.add((int) d);
-                if (d != n / d) divisors.add((int) (n / d));
+        for (long d = 1; d * d <= n; d++) {                   // each pair (d, n / d) has d <= sqrt(n)
+            if (n % d == 0) {                                 // d is a divisor, so n / d is one too
+                divisors.add((int) d);                        // the small half of the pair
+                if (d != n / d) divisors.add((int) (n / d));  // the large half, skipped when d * d == n
             }
         }
-        Collections.sort(divisors);
+        Collections.sort(divisors);                           // the pairs were added out of order
         return divisors;
     }
 
     /** Approach 3: same scan, but the small halves are already increasing and the large halves decreasing, so merge instead of sorting. O(sqrt(n)) time. */
     static List<Integer> optimal(int n) {
-        List<Integer> small = new ArrayList<>();
-        List<Integer> large = new ArrayList<>();
-        for (long d = 1; d * d <= n; d++) {
+        List<Integer> small = new ArrayList<>();           // divisors <= sqrt(n), found in increasing order
+        List<Integer> large = new ArrayList<>();           // their partners n / d, found in decreasing order
+        for (long d = 1; d * d <= n; d++) {                // each pair (d, n / d) has d <= sqrt(n)
             if (n % d == 0) {
-                small.add((int) d);
-                if (d != n / d) large.add((int) (n / d));
+                small.add((int) d);                        // the small half of the pair
+                if (d != n / d) large.add((int) (n / d));  // the large half, skipped when d * d == n
             }
         }
+        // append the large halves reversed -> fully sorted
         for (int i = large.size() - 1; i >= 0; i--) small.add(large.get(i));
         return small;
     }
 
     /** Variant: count the divisors without listing them. If n = p1^e1 * ... * pk^ek then d(n) = (e1 + 1) * ... * (ek + 1). O(sqrt(n)) time. */
     static int countDivisors(int n) {
-        int count = 1;
-        for (long p = 2; p * p <= n; p++) {
-            if (n % p == 0) {
-                int exponent = 0;
-                while (n % p == 0) {
+        int count = 1;                       // product of (exponent + 1) over the primes found
+        for (long p = 2; p * p <= n; p++) {  // smallest remaining divisor is always prime
+            if (n % p == 0) {                // p is a prime factor of n
+                int exponent = 0;            // how many times p divides n
+                while (n % p == 0) {         // divide p out completely
                     n /= p;
                     exponent++;
                 }
-                count *= exponent + 1;
+                count *= exponent + 1;       // e + 1 choices for the power of p in a divisor
             }
         }
-        if (n > 1) count *= 2;        // one leftover prime with exponent 1
+        if (n > 1) count *= 2;               // one leftover prime with exponent 1
         return count;
     }
 

@@ -5,11 +5,11 @@ public class P652_PrimeFactorisationOfANumber {
 
     /** Approach 1: for d = 2, 3, 4, ... divide n by d as many times as possible. O(n) time when n is prime. */
     static List<Integer> bruteForce(int n) {
-        List<Integer> factors = new ArrayList<>();
-        for (int d = 2; d <= n; d++) {
-            while (n % d == 0) {
-                factors.add(d);
-                n /= d;
+        List<Integer> factors = new ArrayList<>();  // prime factors with repeats, smallest first
+        for (int d = 2; d <= n; d++) {              // try every d; n shrinks as factors come out
+            while (n % d == 0) {                    // d can only divide n now if d is prime
+                factors.add(d);                     // record one copy of d
+                n /= d;                             // and divide it out
             }
         }
         return factors;
@@ -18,22 +18,23 @@ public class P652_PrimeFactorisationOfANumber {
     /** Approach 2: trial division only up to sqrt(remaining n); whatever is left above 1 is itself prime. O(sqrt(n)) time. */
     static List<Integer> better(int n) {
         List<Integer> factors = new ArrayList<>();
-        for (long d = 2; d * d <= n; d++) {
-            while (n % d == 0) {
-                factors.add((int) d);
-                n /= d;
+        for (long d = 2; d * d <= n; d++) {  // a composite remainder has a factor <= sqrt(n)
+            while (n % d == 0) {             // pull out every copy of d
+                factors.add((int) d);        // d is prime: smaller primes were already removed
+                n /= d;                      // shrink n so the loop bound shrinks too
             }
         }
-        if (n > 1) factors.add(n);
+        if (n > 1) factors.add(n);           // a leftover above 1 is a single large prime
         return factors;
     }
 
     /** Precompute the smallest prime factor of every number up to limit (a sieve). O(limit log log limit) time, O(limit) space. */
     static int[] smallestPrimeFactors(int limit) {
-        int[] spf = new int[limit + 1];
-        for (int i = 2; i <= limit; i++) {
-            if (spf[i] == 0) {                                // i is prime
-                spf[i] = i;
+        int[] spf = new int[limit + 1];                       // smallest prime factor of each x, 0 = unset
+        for (int i = 2; i <= limit; i++) {                    // by now every composite i has been marked
+            if (spf[i] == 0) {                                // still unset -> i is prime
+                spf[i] = i;                                   // a prime is its own smallest factor
+                // smaller multiples of i were already reached by smaller primes
                 for (long j = (long) i * i; j <= limit; j += i) {
                     if (spf[(int) j] == 0) spf[(int) j] = i;  // first prime to reach j is its smallest factor
                 }
@@ -45,10 +46,10 @@ public class P652_PrimeFactorisationOfANumber {
     /** Approach 3: with spf precomputed, peel off the smallest prime factor until n becomes 1. O(log n) time per query. */
     static List<Integer> optimal(int n, int[] spf) {
         List<Integer> factors = new ArrayList<>();
-        while (n > 1) {
-            int p = spf[n];
-            factors.add(p);
-            n /= p;
+        while (n > 1) {      // until every prime factor has been peeled off
+            int p = spf[n];  // smallest prime factor of what is left
+            factors.add(p);  // emitted in non-decreasing order
+            n /= p;          // remove it and continue with the quotient
         }
         return factors;
     }

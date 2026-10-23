@@ -5,95 +5,100 @@ public class P958_ImplementMinStack {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface MinStack {
-        void push(int x);
-        void pop();
-        int top();
-        int getMin();
+        void push(int x);  // add x on top
+        void pop();        // remove the top element
+        int top();         // read the top element
+        int getMin();      // smallest value currently in the stack
     }
 
     /** Approach 1: every entry stores the value together with the minimum of everything at or below it. O(1) per operation, 2n ints. */
     static class PairMinStack implements MinStack {
-        private final Deque<int[]> stack = new ArrayDeque<>();   // each entry is {value, min of this entry and all below}
+        // each entry is {value, min of this entry and all below}
+        private final Deque<int[]> stack = new ArrayDeque<>();
 
         public void push(int x) {
+            // minimum of x and everything already below it
             int min = stack.isEmpty() ? x : Math.min(x, stack.peek()[1]);
-            stack.push(new int[]{x, min});
+            stack.push(new int[]{x, min});  // store the value with that running minimum
         }
 
         public void pop() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack underflow");
-            stack.pop();
+            if (stack.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            stack.pop();  // the entry below still knows its own minimum
         }
 
         public int top() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");
-            return stack.peek()[0];
+            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return stack.peek()[0];  // the value half of the entry
         }
 
         public int getMin() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");
-            return stack.peek()[1];
+            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return stack.peek()[1];  // the minimum half of the top entry
         }
     }
 
     /** Approach 2: a second stack that records a value only when it is a new minimum (<= the current one). Smaller when minimums are rare. */
     static class TwoStackMinStack implements MinStack {
-        private final Deque<Integer> values = new ArrayDeque<>();
+        private final Deque<Integer> values = new ArrayDeque<>();  // every pushed value, in stack order
         private final Deque<Integer> mins = new ArrayDeque<>();    // non-increasing from bottom to top
 
         public void push(int x) {
-            values.push(x);
-            if (mins.isEmpty() || x <= mins.peek()) mins.push(x);  // <= so that duplicate minimums are counted
+            values.push(x);  // every value goes onto the main stack
+            // <= so that duplicate minimums are counted
+            if (mins.isEmpty() || x <= mins.peek()) mins.push(x);
         }
 
         public void pop() {
-            if (values.isEmpty()) throw new NoSuchElementException("stack underflow");
-            int x = values.pop();
-            if (x == mins.peek()) mins.pop();                      // the popped value was the current minimum
+            if (values.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            int x = values.pop();              // the value being removed
+            if (x == mins.peek()) mins.pop();  // the popped value was the current minimum
         }
 
         public int top() {
-            if (values.isEmpty()) throw new NoSuchElementException("stack is empty");
+            if (values.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
             return values.peek();
         }
 
         public int getMin() {
-            if (mins.isEmpty()) throw new NoSuchElementException("stack is empty");
-            return mins.peek();
+            if (mins.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return mins.peek();  // the top of mins is the current minimum
         }
     }
 
     /** Approach 3: one stack of longs plus the current minimum. A new minimum x is stored encoded as 2x - oldMin, which is below x and so marks itself. O(1) extra space. */
     static class EncodedMinStack implements MinStack {
+        // plain values, or encoded markers where the minimum dropped
         private final Deque<Long> stack = new ArrayDeque<>();
-        private long min;                        // valid whenever the stack is non-empty
+        private long min;                                      // valid whenever the stack is non-empty
 
         public void push(int x) {
-            if (stack.isEmpty()) {
+            if (stack.isEmpty()) {         // first element: it is the minimum
                 stack.push((long) x);
                 min = x;
-            } else if (x >= min) {
-                stack.push((long) x);            // ordinary value, stored as is
-            } else {
-                stack.push(2L * x - min);        // encoded: strictly less than the new minimum x
-                min = x;
+            } else if (x >= min) {         // x does not beat the minimum
+                stack.push((long) x);      // ordinary value, stored as is
+            } else {                       // x is a new minimum
+                stack.push(2L * x - min);  // encoded: strictly less than the new minimum x
+                min = x;                   // the old minimum can be recovered from the encoded entry
             }
         }
 
         public void pop() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack underflow");
-            long t = stack.pop();
-            if (t < min) min = 2 * min - t;      // encoded entry: undo the encoding to recover the previous minimum
+            if (stack.isEmpty()) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            long t = stack.pop();  // the entry being removed
+            // encoded entry: undo the encoding to recover the previous minimum
+            if (t < min) min = 2 * min - t;
         }
 
         public int top() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");
-            long t = stack.peek();
+            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
+            long t = stack.peek();               // stored entry, possibly encoded
             return (int) (t < min ? min : t);    // an encoded entry means the real value is the current minimum
         }
 
         public int getMin() {
-            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");
+            if (stack.isEmpty()) throw new NoSuchElementException("stack is empty");   // nothing to read
             return (int) min;
         }
     }

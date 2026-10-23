@@ -5,35 +5,36 @@ public class P390_ImplementStackUsingArrays {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntStack {
-        void push(int x);
-        int pop();
-        int top();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x on top
+        int pop();          // remove and return the top element
+        int top();          // read the top element without removing it
+        boolean isEmpty();  // true when the stack holds nothing
+        int size();         // number of elements stored
     }
 
     /** Approach 1: fixed-capacity array. Every operation is O(1); push on a full stack throws. */
     static class FixedArrayStack implements IntStack {
-        private final int[] data;
-        private int topIndex = -1;               // index of the current top, -1 when empty
+        private final int[] data;      // slots 0..topIndex hold the elements, bottom first
+        private int topIndex = -1;     // index of the current top, -1 when empty
 
         FixedArrayStack(int capacity) {
-            data = new int[capacity];
+            data = new int[capacity];  // capacity never changes after this
         }
 
         public void push(int x) {
+            // every slot is used: no room for another element
             if (topIndex == data.length - 1) throw new IllegalStateException("stack overflow");
-            data[++topIndex] = x;
+            data[++topIndex] = x;  // move top up one slot, then store x there
         }
 
         public int pop() {
-            if (topIndex == -1) throw new NoSuchElementException("stack underflow");
-            return data[topIndex--];
+            if (topIndex == -1) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            return data[topIndex--];  // return the top, then step down (the slot is reused later)
         }
 
         public int top() {
-            if (topIndex == -1) throw new NoSuchElementException("stack is empty");
-            return data[topIndex];
+            if (topIndex == -1) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return data[topIndex];  // peek only: topIndex does not move
         }
 
         public boolean isEmpty() {
@@ -41,30 +42,32 @@ public class P390_ImplementStackUsingArrays {
         }
 
         public int size() {
-            return topIndex + 1;
+            return topIndex + 1;  // indices 0..topIndex are in use
         }
     }
 
     /** Approach 2: growable array that doubles when full and halves when a quarter full. push is amortised O(1). */
     static class DynamicArrayStack implements IntStack {
-        private int[] data = new int[2];
-        private int topIndex = -1;
+        private int[] data = new int[2];  // starts tiny and grows on demand
+        private int topIndex = -1;        // index of the current top, -1 when empty
 
         public void push(int x) {
+            // full: double the capacity so pushes stay amortised O(1)
             if (topIndex == data.length - 1) data = Arrays.copyOf(data, data.length * 2);
-            data[++topIndex] = x;
+            data[++topIndex] = x;  // move top up one slot, then store x there
         }
 
         public int pop() {
-            if (topIndex == -1) throw new NoSuchElementException("stack underflow");
-            int x = data[topIndex--];
+            if (topIndex == -1) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            int x = data[topIndex--];  // take the top and step down
+            // only a quarter used: halve the array (waiting for a quarter, not half, avoids resize thrashing)
             if (data.length > 2 && topIndex + 1 <= data.length / 4) data = Arrays.copyOf(data, data.length / 2);
             return x;
         }
 
         public int top() {
-            if (topIndex == -1) throw new NoSuchElementException("stack is empty");
-            return data[topIndex];
+            if (topIndex == -1) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return data[topIndex];  // peek only: topIndex does not move
         }
 
         public boolean isEmpty() {
@@ -72,11 +75,11 @@ public class P390_ImplementStackUsingArrays {
         }
 
         public int size() {
-            return topIndex + 1;
+            return topIndex + 1;  // indices 0..topIndex are in use
         }
 
         int capacity() {
-            return data.length;
+            return data.length;   // current array length, used by the tests
         }
     }
 

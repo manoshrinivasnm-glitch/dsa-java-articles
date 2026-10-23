@@ -6,41 +6,41 @@ public class P143_SingleNumberI {
     /** Approach 1: for every element, count its occurrences with a second scan. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums) {
         int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            int count = 0;
+        for (int i = 0; i < n; i++) {             // try each element as the candidate
+            int count = 0;                        // how many times nums[i] appears
             for (int j = 0; j < n; j++) {
-                if (nums[j] == nums[i]) count++;
+                if (nums[j] == nums[i]) count++;  // another copy of the candidate
             }
-            if (count == 1) return nums[i];
+            if (count == 1) return nums[i];       // seen exactly once: the single number
         }
-        return -1;
+        return -1;                                // unreachable for valid input
     }
 
     /** Approach 2: count occurrences in a HashMap, then return the key whose count is 1. O(n) time, O(n) space. */
     static int better(int[] nums) {
-        Map<Integer, Integer> freq = new HashMap<>();
-        for (int x : nums) freq.merge(x, 1, Integer::sum);
-        for (Map.Entry<Integer, Integer> e : freq.entrySet()) {
+        Map<Integer, Integer> freq = new HashMap<>();            // value -> how many times it appears
+        for (int x : nums) freq.merge(x, 1, Integer::sum);       // count every value in one pass
+        for (Map.Entry<Integer, Integer> e : freq.entrySet()) {  // find the value seen only once
             if (e.getValue() == 1) return e.getKey();
         }
-        return -1;
+        return -1;                                               // unreachable for valid input
     }
 
     /** Approach 2 (variant): sort so that pairs sit side by side; the first even index whose partner differs is the answer. O(n log n) time. */
     static int betterSorting(int[] nums) {
-        int[] a = nums.clone();
-        Arrays.sort(a);
+        int[] a = nums.clone();                               // copy so the caller's array is not reordered
+        Arrays.sort(a);                                       // equal values now sit side by side
         int n = a.length;
-        for (int i = 0; i < n; i += 2) {
-            if (i == n - 1 || a[i] != a[i + 1]) return a[i];
+        for (int i = 0; i < n; i += 2) {                      // pairs fill (0,1), (2,3), ... so step by two
+            if (i == n - 1 || a[i] != a[i + 1]) return a[i];  // lone last slot or broken pair: the answer
         }
-        return -1;
+        return -1;                                            // unreachable for valid input
     }
 
     /** Approach 3: XOR everything; equal pairs cancel to 0 and only the single element survives. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
-        int xor = 0;
-        for (int x : nums) xor ^= x;
+        int xor = 0;                  // 0 is the XOR identity
+        for (int x : nums) xor ^= x;  // pairs cancel (x ^ x = 0), the single value survives
         return xor;
     }
 

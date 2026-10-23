@@ -5,8 +5,8 @@ public class P651_CountPrimesInRangeLToR {
 
     /** Approach 1: trial-divide every number in the range. O((R - L + 1) * sqrt(R)) time, O(1) space. */
     static int bruteForce(int l, int r) {
-        int count = 0;
-        for (int x = l; x <= r; x++) {
+        int count = 0;                  // primes seen in [L, R] so far
+        for (int x = l; x <= r; x++) {  // test every number in the range on its own
             if (isPrime(x)) count++;
         }
         return count;
@@ -14,30 +14,31 @@ public class P651_CountPrimesInRangeLToR {
 
     /** Trial-division primality test. O(sqrt(x)) time. */
     static boolean isPrime(int x) {
-        if (x < 2) return false;
-        for (long d = 2; d * d <= x; d++) {
-            if (x % d == 0) return false;
+        if (x < 2) return false;             // 0 and 1 are not prime
+        for (long d = 2; d * d <= x; d++) {  // a composite x has a divisor <= sqrt(x)
+            if (x % d == 0) return false;    // found a divisor: not prime
         }
-        return true;
+        return true;                         // no divisor up to sqrt(x)
     }
 
     /** Approach 2: sieve of Eratosthenes up to R, then count the unmarked numbers in [L, R]. O(R log log R) time, O(R) space. */
     static int better(int l, int r) {
-        boolean[] composite = sieve(r);
+        boolean[] composite = sieve(r);              // one sieve answers "is x prime?" for every x <= R
         int count = 0;
-        for (int x = Math.max(l, 2); x <= r; x++) {
-            if (!composite[x]) count++;
+        for (int x = Math.max(l, 2); x <= r; x++) {  // 0 and 1 are never prime, so start at 2
+            if (!composite[x]) count++;              // unmarked by the sieve -> prime
         }
         return count;
     }
 
     /** composite[x] is true when x is not prime, for 0 <= x <= n (0 and 1 are marked as not prime). */
     static boolean[] sieve(int n) {
-        boolean[] composite = new boolean[Math.max(n, 1) + 1];
-        composite[0] = true;
+        boolean[] composite = new boolean[Math.max(n, 1) + 1];  // room for index n even when n is 0
+        composite[0] = true;                                    // 0 and 1 are not prime
         composite[1] = true;
-        for (long p = 2; p * p <= n; p++) {
-            if (!composite[(int) p]) {
+        for (long p = 2; p * p <= n; p++) {                     // only primes <= sqrt(n) cross anything out
+            if (!composite[(int) p]) {                          // p is still unmarked, so it is prime
+                // cross out p's multiples; smaller ones were already hit by smaller primes
                 for (long multiple = p * p; multiple <= n; multiple += p) composite[(int) multiple] = true;
             }
         }
@@ -46,14 +47,16 @@ public class P651_CountPrimesInRangeLToR {
 
     /** Approach 3: sieve once up to the largest R, build prefix counts, then answer every query in O(1). O(N log log N + Q) time. */
     static int[] optimal(int[][] queries) {
-        int maxR = 0;
+        int maxR = 0;                               // the sieve must reach the largest R asked about
         for (int[] q : queries) maxR = Math.max(maxR, q[1]);
-        boolean[] composite = sieve(maxR);
-        int[] primesUpTo = new int[maxR + 1];              // primesUpTo[x] = number of primes in [0, x]
+        boolean[] composite = sieve(maxR);          // sieve once for all queries
+        int[] primesUpTo = new int[maxR + 1];       // primesUpTo[x] = number of primes in [0, x]
+        // running count of primes up to x
         for (int x = 1; x <= maxR; x++) primesUpTo[x] = primesUpTo[x - 1] + (composite[x] ? 0 : 1);
         int[] answers = new int[queries.length];
-        for (int i = 0; i < queries.length; i++) {
+        for (int i = 0; i < queries.length; i++) {  // each query is now a prefix-count difference
             int l = queries[i][0], r = queries[i][1];
+            // primes in [0, R] minus primes in [0, L - 1]
             answers[i] = primesUpTo[r] - (l > 0 ? primesUpTo[l - 1] : 0);
         }
         return answers;

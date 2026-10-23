@@ -5,16 +5,16 @@ public class P877_PowXN {
 
     /** Approach 1: multiply x by itself |n| times, invert at the end when n is negative. O(|n|) time, O(1) space. */
     static double bruteForce(double x, int n) {
-        long times = Math.abs((long) n);          // long: Math.abs(Integer.MIN_VALUE) stays negative in int
-        double result = 1.0;
-        for (long i = 0; i < times; i++) result *= x;
-        return n < 0 ? 1.0 / result : result;
+        long times = Math.abs((long) n);               // long: abs(Integer.MIN_VALUE) overflows in int
+        double result = 1.0;                           // x^0 = 1
+        for (long i = 0; i < times; i++) result *= x;  // one multiplication per unit of |n|
+        return n < 0 ? 1.0 / result : result;          // x^-n = 1 / x^n
     }
 
     /** Approach 2: recursive binary exponentiation: x^n = (x^(n/2))^2, times x once more when n is odd. O(log n) time and stack. */
     static double better(double x, int n) {
-        long exponent = n;                        // long so that -Integer.MIN_VALUE is representable
-        if (exponent < 0) {
+        long exponent = n;   // long so that -Integer.MIN_VALUE is representable
+        if (exponent < 0) {  // x^-n = (1/x)^n, so flip to a positive exponent
             x = 1.0 / x;
             exponent = -exponent;
         }
@@ -22,23 +22,23 @@ public class P877_PowXN {
     }
 
     private static double powRecursive(double x, long n) {
-        if (n == 0) return 1.0;
-        double half = powRecursive(x, n / 2);
-        return (n % 2 == 0) ? half * half : half * half * x;
+        if (n == 0) return 1.0;                               // base case: x^0 = 1
+        double half = powRecursive(x, n / 2);                 // solve the half-size problem once and reuse it
+        return (n % 2 == 0) ? half * half : half * half * x;  // square it, plus one extra x when n is odd
     }
 
     /** Approach 3: iterative binary exponentiation over the bits of n. O(log n) time, O(1) space. */
     static double optimal(double x, int n) {
-        long exponent = n;
-        if (exponent < 0) {
+        long exponent = n;                         // long so that -Integer.MIN_VALUE is representable
+        if (exponent < 0) {                        // x^-n = (1/x)^n, so flip to a positive exponent
             x = 1.0 / x;
             exponent = -exponent;
         }
-        double result = 1.0;
-        while (exponent > 0) {
-            if ((exponent & 1) == 1) result *= x;   // this bit of n is set, so x^(2^k) belongs in the answer
-            x *= x;                                 // x^(2^k) -> x^(2^(k+1))
-            exponent >>= 1;
+        double result = 1.0;                       // product of the powers picked so far
+        while (exponent > 0) {                     // one step per bit of n, lowest bit first
+            if ((exponent & 1) == 1) result *= x;  // this bit of n is set, so x^(2^k) belongs in the answer
+            x *= x;                                // x^(2^k) -> x^(2^(k+1))
+            exponent >>= 1;                        // move on to the next bit
         }
         return result;
     }

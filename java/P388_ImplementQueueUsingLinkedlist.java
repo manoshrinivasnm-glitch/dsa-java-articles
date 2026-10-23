@@ -5,17 +5,17 @@ public class P388_ImplementQueueUsingLinkedlist {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntQueue {
-        void push(int x);
-        int pop();
-        int peek();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x at the rear
+        int pop();          // remove and return the front element
+        int peek();         // read the front element without removing it
+        boolean isEmpty();  // true when the queue holds nothing
+        int size();         // number of elements stored
     }
 
     /** One cell of the singly linked list. */
     static class Node {
-        int val;
-        Node next;
+        int val;    // the value stored in this cell
+        Node next;  // the next cell, or null at the end of the list
 
         Node(int val) {
             this.val = val;
@@ -24,32 +24,32 @@ public class P388_ImplementQueueUsingLinkedlist {
 
     /** Approach 1: only a head pointer. push walks to the end of the list: O(n); pop and peek work at the head: O(1). */
     static class HeadOnlyQueue implements IntQueue {
-        private Node head;                       // front of the queue
-        private int count = 0;
+        private Node head;      // front of the queue
+        private int count = 0;  // number of nodes, so size() is O(1)
 
         public void push(int x) {
             Node node = new Node(x);
-            if (head == null) {
+            if (head == null) {                           // empty queue: the new node is the front
                 head = node;
-            } else {
+            } else {                                      // otherwise append after the current rear
                 Node cur = head;
-                while (cur.next != null) cur = cur.next;   // find the rear every time
-                cur.next = node;
+                while (cur.next != null) cur = cur.next;  // find the rear every time
+                cur.next = node;                          // the new node becomes the rear
             }
             count++;
         }
 
         public int pop() {
-            if (head == null) throw new NoSuchElementException("queue underflow");
-            int x = head.val;
-            head = head.next;
+            if (head == null) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            int x = head.val;  // the oldest element sits at the head
+            head = head.next;  // the next node becomes the front
             count--;
             return x;
         }
 
         public int peek() {
-            if (head == null) throw new NoSuchElementException("queue is empty");
-            return head.val;
+            if (head == null) throw new NoSuchElementException("queue is empty");   // nothing to read
+            return head.val;  // the front, left in place
         }
 
         public boolean isEmpty() {
@@ -63,33 +63,33 @@ public class P388_ImplementQueueUsingLinkedlist {
 
     /** Approach 2: head and tail pointers. push appends after tail, pop removes head: both O(1). */
     static class HeadTailQueue implements IntQueue {
-        private Node head;                       // front: where pop happens
-        private Node tail;                       // rear: where push happens
-        private int count = 0;
+        private Node head;      // front: where pop happens
+        private Node tail;      // rear: where push happens
+        private int count = 0;  // number of nodes, so size() is O(1)
 
         public void push(int x) {
             Node node = new Node(x);
-            if (tail == null) {                  // empty queue: the new node is both front and rear
+            if (tail == null) {    // empty queue: the new node is both front and rear
                 head = node;
             } else {
-                tail.next = node;
+                tail.next = node;  // link it after the current rear
             }
-            tail = node;
+            tail = node;           // either way the new node is the rear now
             count++;
         }
 
         public int pop() {
-            if (head == null) throw new NoSuchElementException("queue underflow");
-            int x = head.val;
-            head = head.next;
-            if (head == null) tail = null;       // removed the last node: the rear must not dangle
+            if (head == null) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            int x = head.val;               // the oldest element sits at the head
+            head = head.next;               // the next node becomes the front
+            if (head == null) tail = null;  // removed the last node: the rear must not dangle
             count--;
             return x;
         }
 
         public int peek() {
-            if (head == null) throw new NoSuchElementException("queue is empty");
-            return head.val;
+            if (head == null) throw new NoSuchElementException("queue is empty");   // nothing to read
+            return head.val;  // the front, left in place
         }
 
         public boolean isEmpty() {

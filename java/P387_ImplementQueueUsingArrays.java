@@ -5,37 +5,38 @@ public class P387_ImplementQueueUsingArrays {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntQueue {
-        void push(int x);
-        int pop();
-        int peek();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x at the rear
+        int pop();          // remove and return the front element
+        int peek();         // read the front element without removing it
+        boolean isEmpty();  // true when the queue holds nothing
+        int size();         // number of elements stored
     }
 
     /** Approach 1: the front is always index 0, so pop shifts every element one slot left. push O(1), pop O(n). */
     static class ShiftingArrayQueue implements IntQueue {
-        private final int[] data;
-        private int count = 0;                   // elements live in data[0 .. count-1], oldest at 0
+        private final int[] data;      // fixed storage; the front always sits at index 0
+        private int count = 0;         // elements live in data[0 .. count-1], oldest at 0
 
         ShiftingArrayQueue(int capacity) {
-            data = new int[capacity];
+            data = new int[capacity];  // capacity never changes after this
         }
 
         public void push(int x) {
+            // every slot is used: no room at the rear
             if (count == data.length) throw new IllegalStateException("queue overflow");
-            data[count++] = x;
+            data[count++] = x;  // append right after the newest element
         }
 
         public int pop() {
-            if (count == 0) throw new NoSuchElementException("queue underflow");
-            int front = data[0];
-            for (int i = 1; i < count; i++) data[i - 1] = data[i];   // O(n) shift
+            if (count == 0) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            int front = data[0];  // the oldest element is always at index 0
+            for (int i = 1; i < count; i++) data[i - 1] = data[i];   // close the gap: O(n) shift left
             count--;
             return front;
         }
 
         public int peek() {
-            if (count == 0) throw new NoSuchElementException("queue is empty");
+            if (count == 0) throw new NoSuchElementException("queue is empty");   // nothing to read
             return data[0];
         }
 
@@ -50,30 +51,31 @@ public class P387_ImplementQueueUsingArrays {
 
     /** Approach 2: circular buffer. front moves forward on pop, rear is derived as (front + count) mod capacity. All O(1). */
     static class CircularArrayQueue implements IntQueue {
-        private final int[] data;
-        private int front = 0;                   // index of the oldest element
-        private int count = 0;                   // how many slots are in use
+        private final int[] data;      // fixed storage, used as a ring
+        private int front = 0;         // index of the oldest element
+        private int count = 0;         // how many slots are in use
 
         CircularArrayQueue(int capacity) {
-            data = new int[capacity];
+            data = new int[capacity];  // capacity never changes after this
         }
 
         public void push(int x) {
+            // every slot is used: no room at the rear
             if (count == data.length) throw new IllegalStateException("queue overflow");
-            data[(front + count) % data.length] = x;   // wraps around to reuse freed slots
+            data[(front + count) % data.length] = x;  // rear slot, wrapping around to reuse freed slots
             count++;
         }
 
         public int pop() {
-            if (count == 0) throw new NoSuchElementException("queue underflow");
-            int x = data[front];
-            front = (front + 1) % data.length;
+            if (count == 0) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            int x = data[front];                // the oldest element
+            front = (front + 1) % data.length;  // advance front, wrapping from the last slot to 0
             count--;
             return x;
         }
 
         public int peek() {
-            if (count == 0) throw new NoSuchElementException("queue is empty");
+            if (count == 0) throw new NoSuchElementException("queue is empty");   // nothing to read
             return data[front];
         }
 
@@ -88,33 +90,34 @@ public class P387_ImplementQueueUsingArrays {
 
     /** Approach 3: circular buffer that doubles when full, copying elements out in FIFO order. push amortised O(1). */
     static class DynamicCircularQueue implements IntQueue {
-        private int[] data = new int[2];
-        private int front = 0;
-        private int count = 0;
+        private int[] data = new int[2];  // ring buffer that starts tiny and grows on demand
+        private int front = 0;            // index of the oldest element
+        private int count = 0;            // how many slots are in use
 
         public void push(int x) {
-            if (count == data.length) grow();
-            data[(front + count) % data.length] = x;
+            if (count == data.length) grow();         // ring is full: double it before writing
+            data[(front + count) % data.length] = x;  // rear slot, wrapping around to reuse freed slots
             count++;
         }
 
         private void grow() {
-            int[] bigger = new int[data.length * 2];
-            for (int i = 0; i < count; i++) bigger[i] = data[(front + i) % data.length];   // unwrap: oldest lands at 0
+            int[] bigger = new int[data.length * 2];  // twice the room
+            // copy in FIFO order, unwrapping the ring: oldest lands at 0
+            for (int i = 0; i < count; i++) bigger[i] = data[(front + i) % data.length];
             data = bigger;
-            front = 0;
+            front = 0;                                // the ring starts at index 0 again
         }
 
         public int pop() {
-            if (count == 0) throw new NoSuchElementException("queue underflow");
-            int x = data[front];
-            front = (front + 1) % data.length;
+            if (count == 0) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            int x = data[front];                // the oldest element
+            front = (front + 1) % data.length;  // advance front, wrapping from the last slot to 0
             count--;
             return x;
         }
 
         public int peek() {
-            if (count == 0) throw new NoSuchElementException("queue is empty");
+            if (count == 0) throw new NoSuchElementException("queue is empty");   // nothing to read
             return data[front];
         }
 
@@ -127,7 +130,7 @@ public class P387_ImplementQueueUsingArrays {
         }
 
         int capacity() {
-            return data.length;
+            return data.length;  // current array length, used by the tests
         }
     }
 

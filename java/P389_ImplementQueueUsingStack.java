@@ -5,32 +5,32 @@ public class P389_ImplementQueueUsingStack {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntQueue {
-        void push(int x);
-        int pop();
-        int peek();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x at the rear
+        int pop();          // remove and return the front element
+        int peek();         // read the front element without removing it
+        boolean isEmpty();  // true when the queue holds nothing
+        int size();         // number of elements stored
     }
 
     /** Approach 1: costly push. Empty the stack into a helper, push x at the bottom, pour everything back. push O(n), pop and peek O(1). */
     static class CostlyPushQueue implements IntQueue {
-        private final Deque<Integer> stack = new ArrayDeque<>();    // top of stack is always the oldest element
-        private final Deque<Integer> helper = new ArrayDeque<>();
+        private final Deque<Integer> stack = new ArrayDeque<>();   // top is always the oldest element
+        private final Deque<Integer> helper = new ArrayDeque<>();  // scratch space, used only during push
 
         public void push(int x) {
-            while (!stack.isEmpty()) helper.push(stack.pop());      // reverse into helper
-            stack.push(x);                                          // x becomes the bottom
-            while (!helper.isEmpty()) stack.push(helper.pop());     // old elements back on top, oldest ends on top
+            while (!stack.isEmpty()) helper.push(stack.pop());   // reverse into helper
+            stack.push(x);                                       // x becomes the bottom
+            while (!helper.isEmpty()) stack.push(helper.pop());  // pour back: the oldest ends on top again
         }
 
         public int pop() {
-            if (stack.isEmpty()) throw new NoSuchElementException("queue underflow");
-            return stack.pop();
+            if (stack.isEmpty()) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            return stack.pop();  // the oldest element is on top
         }
 
         public int peek() {
-            if (stack.isEmpty()) throw new NoSuchElementException("queue is empty");
-            return stack.peek();
+            if (stack.isEmpty()) throw new NoSuchElementException("queue is empty");   // nothing to read
+            return stack.peek();  // oldest element, left in place
         }
 
         public boolean isEmpty() {
@@ -44,37 +44,38 @@ public class P389_ImplementQueueUsingStack {
 
     /** Approach 2: input and output stacks. Pushes go to input; pops come from output, refilled by reversing input only when it runs dry. Amortised O(1) everywhere. */
     static class AmortizedQueue implements IntQueue {
-        private final Deque<Integer> input = new ArrayDeque<>();    // newest on top
-        private final Deque<Integer> output = new ArrayDeque<>();   // oldest on top
+        private final Deque<Integer> input = new ArrayDeque<>();   // newest on top
+        private final Deque<Integer> output = new ArrayDeque<>();  // oldest on top
 
         public void push(int x) {
-            input.push(x);
+            input.push(x);  // O(1): just stack it on input
         }
 
         private void refillOutputIfEmpty() {
-            if (output.isEmpty()) {
-                while (!input.isEmpty()) output.push(input.pop());  // one reversal flips newest-first into oldest-first
+            if (output.isEmpty()) {  // refill only when dry, or newer elements would cover older ones
+                // one reversal flips newest-first into oldest-first
+                while (!input.isEmpty()) output.push(input.pop());
             }
         }
 
         public int pop() {
-            refillOutputIfEmpty();
-            if (output.isEmpty()) throw new NoSuchElementException("queue underflow");
-            return output.pop();
+            refillOutputIfEmpty();  // make sure output's top is the oldest element
+            if (output.isEmpty()) throw new NoSuchElementException("queue underflow");   // nothing to remove
+            return output.pop();    // the oldest element overall
         }
 
         public int peek() {
-            refillOutputIfEmpty();
-            if (output.isEmpty()) throw new NoSuchElementException("queue is empty");
-            return output.peek();
+            refillOutputIfEmpty();  // make sure output's top is the oldest element
+            if (output.isEmpty()) throw new NoSuchElementException("queue is empty");   // nothing to read
+            return output.peek();   // oldest element, left in place
         }
 
         public boolean isEmpty() {
-            return input.isEmpty() && output.isEmpty();
+            return input.isEmpty() && output.isEmpty();  // elements may sit in either stack
         }
 
         public int size() {
-            return input.size() + output.size();
+            return input.size() + output.size();         // elements may sit in either stack
         }
     }
 

@@ -5,44 +5,46 @@ public class P146_XOROfNumbersInAGivenRange {
 
     /** Approach 1: XOR every number from L to R one by one. O(R - L) time, O(1) space. */
     static int bruteForce(int l, int r) {
-        int xor = 0;
-        for (long i = l; i <= r; i++) xor ^= (int) i;    // long counter: i++ would overflow when r == Integer.MAX_VALUE
+        int xor = 0;                                     // running XOR of the numbers seen so far
+        // long counter: i++ would overflow when r == Integer.MAX_VALUE
+        for (long i = l; i <= r; i++) xor ^= (int) i;
         return xor;
     }
 
     /** Approach 2: decide each bit on its own by counting how many numbers in [L, R] have it set. 31 counts, each O(1). */
     static int better(int l, int r) {
-        int result = 0;
-        for (int bit = 0; bit < 31; bit++) {
+        int result = 0;                               // answer, assembled one bit at a time
+        for (int bit = 0; bit < 31; bit++) {          // every bit a non-negative int can use
+            // how many numbers in [L, R] have this bit set
             long ones = countSetBit(r, bit) - countSetBit(l - 1, bit);
-            if ((ones & 1) == 1) result |= 1 << bit;      // an odd number of 1s XORs to 1
+            if ((ones & 1) == 1) result |= 1 << bit;  // an odd number of 1s XORs to 1
         }
         return result;
     }
 
     /** How many integers in [0, n] have bit `bit` set (0 when n < 0). */
     static long countSetBit(int n, int bit) {
-        if (n < 0) return 0;
-        long period = 1L << (bit + 1);                    // the bit repeats: `half` zeros, then `half` ones
+        if (n < 0) return 0;                    // empty prefix [0, -1] has no numbers
+        long period = 1L << (bit + 1);          // the bit repeats: `half` zeros, then `half` ones
         long half = 1L << bit;
-        long full = (n + 1L) / period * half;             // complete periods contribute `half` ones each
-        long rem = (n + 1L) % period;                     // the unfinished period at the end
-        return full + Math.max(0, rem - half);
+        long full = (n + 1L) / period * half;   // complete periods contribute `half` ones each
+        long rem = (n + 1L) % period;           // the unfinished period at the end
+        return full + Math.max(0, rem - half);  // the leftover adds ones only past its zero half
     }
 
     /** Approach 3: XOR of 0..n repeats every 4 numbers, so XOR(L..R) = XOR(0..R) ^ XOR(0..L-1). O(1) time. */
     static int optimal(int l, int r) {
-        return xorUpTo(r) ^ xorUpTo(l - 1);
+        return xorUpTo(r) ^ xorUpTo(l - 1);  // XOR(0..L-1) cancels everything below L
     }
 
     /** XOR of all integers in [0, n]; 0 when n < 0. */
     static int xorUpTo(int n) {
-        if (n < 0) return 0;
-        return switch (n % 4) {
-            case 0 -> n;
-            case 1 -> 1;
-            case 2 -> n + 1;
-            default -> 0;
+        if (n < 0) return 0;     // empty prefix when L == 0
+        return switch (n % 4) {  // XOR(0..n) cycles with period 4
+            case 0 -> n;         // n % 4 == 0: 0..n-1 cancels to 0, leaving n
+            case 1 -> 1;         // n % 4 == 1: (n - 1) ^ n = 1
+            case 2 -> n + 1;     // n % 4 == 2: 1 ^ n = n + 1
+            default -> 0;        // n % 4 == 3: n ^ n = 0
         };
     }
 

@@ -5,17 +5,17 @@ public class P391_ImplementStackUsingLinkedlist {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface IntStack {
-        void push(int x);
-        int pop();
-        int top();
-        boolean isEmpty();
-        int size();
+        void push(int x);   // add x on top
+        int pop();          // remove and return the top element
+        int top();          // read the top element without removing it
+        boolean isEmpty();  // true when the stack holds nothing
+        int size();         // number of elements stored
     }
 
     /** One cell of the singly linked list. */
     static class Node {
-        int val;
-        Node next;
+        int val;    // the value stored in this cell
+        Node next;  // the next cell, or null at the end of the list
 
         Node(int val) {
             this.val = val;
@@ -24,40 +24,40 @@ public class P391_ImplementStackUsingLinkedlist {
 
     /** Approach 1: the tail is the top. Every push, pop and top walks the whole list: O(n) each. */
     static class TailLinkedStack implements IntStack {
-        private Node head;                       // bottom of the stack
-        private int count = 0;
+        private Node head;      // bottom of the stack
+        private int count = 0;  // number of nodes, so size() is O(1)
 
         public void push(int x) {
             Node node = new Node(x);
-            if (head == null) {
+            if (head == null) {                           // empty stack: the new node is both bottom and top
                 head = node;
-            } else {
+            } else {                                      // otherwise append after the current tail
                 Node cur = head;
-                while (cur.next != null) cur = cur.next;   // walk to the tail
-                cur.next = node;
+                while (cur.next != null) cur = cur.next;  // walk to the tail
+                cur.next = node;                          // the new node becomes the top
             }
             count++;
         }
 
         public int pop() {
-            if (head == null) throw new NoSuchElementException("stack underflow");
+            if (head == null) throw new NoSuchElementException("stack underflow");   // nothing to remove
             count--;
-            if (head.next == null) {             // single node: the tail is the head itself
+            if (head.next == null) {                       // single node: the tail is the head itself
                 int x = head.val;
-                head = null;
+                head = null;                               // the stack is now empty
                 return x;
             }
-            Node cur = head;
-            while (cur.next.next != null) cur = cur.next;   // stop at the second-last node
-            int x = cur.next.val;
-            cur.next = null;                     // unlink the old tail
+            Node cur = head;                               // find the node just before the tail
+            while (cur.next.next != null) cur = cur.next;  // stop at the second-last node
+            int x = cur.next.val;                          // the tail holds the top value
+            cur.next = null;                               // unlink the old tail
             return x;
         }
 
         public int top() {
-            if (head == null) throw new NoSuchElementException("stack is empty");
+            if (head == null) throw new NoSuchElementException("stack is empty");   // nothing to read
             Node cur = head;
-            while (cur.next != null) cur = cur.next;
+            while (cur.next != null) cur = cur.next;  // walk to the tail, which is the top
             return cur.val;
         }
 
@@ -72,27 +72,27 @@ public class P391_ImplementStackUsingLinkedlist {
 
     /** Approach 2: the head is the top. push, pop and top touch only the head: O(1) each. */
     static class HeadLinkedStack implements IntStack {
-        private Node head;                       // top of the stack
-        private int count = 0;
+        private Node head;      // top of the stack
+        private int count = 0;  // number of nodes, so size() is O(1)
 
         public void push(int x) {
             Node node = new Node(x);
-            node.next = head;                    // new node points at the old top
-            head = node;
+            node.next = head;  // new node points at the old top
+            head = node;       // and becomes the new top
             count++;
         }
 
         public int pop() {
-            if (head == null) throw new NoSuchElementException("stack underflow");
-            int x = head.val;
-            head = head.next;                    // the old top is now unreachable and gets collected
+            if (head == null) throw new NoSuchElementException("stack underflow");   // nothing to remove
+            int x = head.val;  // the top value
+            head = head.next;  // the old top is now unreachable and gets collected
             count--;
             return x;
         }
 
         public int top() {
-            if (head == null) throw new NoSuchElementException("stack is empty");
-            return head.val;
+            if (head == null) throw new NoSuchElementException("stack is empty");   // nothing to read
+            return head.val;  // the head is the top: O(1)
         }
 
         public boolean isEmpty() {
