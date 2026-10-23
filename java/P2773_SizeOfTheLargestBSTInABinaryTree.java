@@ -11,26 +11,26 @@ public class P2773_SizeOfTheLargestBSTInABinaryTree {
 
     /** Approach 1: at each node, validate the whole subtree; if it is a BST it beats anything inside it. O(n * h) time, O(h) stack. */
     static int bruteForce(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null) return 0;                      // empty tree: no BST at all
         if (isBST(root, Long.MIN_VALUE, Long.MAX_VALUE)) return size(root);   // nothing strictly inside can be larger
-        return Math.max(bruteForce(root.left), bruteForce(root.right));
+        return Math.max(bruteForce(root.left), bruteForce(root.right));      // root fails: best of the two sides
     }
 
     static boolean isBST(TreeNode node, long lo, long hi) {          // every key must lie strictly between lo and hi
-        if (node == null) return true;
-        if (node.val <= lo || node.val >= hi) return false;
-        return isBST(node.left, lo, node.val) && isBST(node.right, node.val, hi);
+        if (node == null) return true;                   // an empty subtree is a valid BST
+        if (node.val <= lo || node.val >= hi) return false;   // key breaks a bound set by an ancestor
+        return isBST(node.left, lo, node.val) && isBST(node.right, node.val, hi);   // tighten one bound per side
     }
 
     static int size(TreeNode node) {
-        return node == null ? 0 : 1 + size(node.left) + size(node.right);
+        return node == null ? 0 : 1 + size(node.left) + size(node.right);   // this node plus both subtrees
     }
 
     /** What a parent needs to know about a child subtree. min and max are meaningful only when isBST is true. */
     static final class Info {
-        final boolean isBST;
-        final int size;
-        final long min, max;
+        final boolean isBST;                             // is this whole subtree a strict BST?
+        final int size;                                  // its node count (used only when isBST)
+        final long min, max;                             // its smallest and largest keys
 
         Info(boolean isBST, int size, long min, long max) {
             this.isBST = isBST;
@@ -42,18 +42,20 @@ public class P2773_SizeOfTheLargestBSTInABinaryTree {
 
     /** Approach 2: optimal. One post-order pass; each node combines its children's summaries in O(1). O(n) time, O(h) stack. */
     static int optimal(TreeNode root) {
-        int[] best = {0};
-        summarize(root, best);
+        int[] best = {0};                                // size of the largest BST subtree seen so far
+        summarize(root, best);                           // visits every node once, updating best
         return best[0];
     }
 
     static Info summarize(TreeNode node, int[] best) {
         if (node == null) return new Info(true, 0, Long.MAX_VALUE, Long.MIN_VALUE);   // empty: fits under any parent
-        Info l = summarize(node.left, best);
+        Info l = summarize(node.left, best);             // post-order: children first
         Info r = summarize(node.right, best);
+        // both sides are BSTs and node sits strictly between the left's max and the right's min
         if (l.isBST && r.isBST && l.max < node.val && node.val < r.min) {
-            int size = l.size + r.size + 1;
-            best[0] = Math.max(best[0], size);
+            int size = l.size + r.size + 1;              // node plus both subtrees
+            best[0] = Math.max(best[0], size);           // a new candidate answer
+            // min/max with node.val handles an empty child, whose min/max are the sentinels
             return new Info(true, size, Math.min(l.min, node.val), Math.max(r.max, node.val));
         }
         return new Info(false, 0, 0, 0);                 // no ancestor can be a BST either

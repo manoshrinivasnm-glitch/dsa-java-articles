@@ -11,58 +11,58 @@ public class P96_BSTIterator {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface InorderIterator {
-        boolean hasNext();
-        int next();
+        boolean hasNext();                               // is there a key we have not returned yet?
+        int next();                                      // the smallest key not returned yet
     }
 
     /** Approach 1: flatten the whole in-order sequence up front. O(n) constructor, O(1) next and hasNext, O(n) space. */
     static class FlattenedIterator implements InorderIterator {
-        private final List<Integer> keys = new ArrayList<>();
+        private final List<Integer> keys = new ArrayList<>();   // every key, in ascending order
         private int pos = 0;                             // index of the next key to hand out
 
         FlattenedIterator(TreeNode root) {
-            fill(root);
+            fill(root);                                  // do all the work up front
         }
 
         private void fill(TreeNode node) {
-            if (node == null) return;
-            fill(node.left);
-            keys.add(node.val);
-            fill(node.right);
+            if (node == null) return;                    // empty subtree adds nothing
+            fill(node.left);                             // smaller keys first
+            keys.add(node.val);                          // then this key
+            fill(node.right);                            // then the larger keys
         }
 
         public boolean hasNext() {
-            return pos < keys.size();
+            return pos < keys.size();                    // some keys are still unread
         }
 
         public int next() {
             if (!hasNext()) throw new NoSuchElementException("no more keys");
-            return keys.get(pos++);
+            return keys.get(pos++);                      // hand out this key and advance
         }
     }
 
     /** Approach 2: optimal. A stack holds the path of ancestors still waiting to be visited. Amortised O(1) next, O(1) hasNext, O(h) space. */
     static class StackIterator implements InorderIterator {
-        private final Deque<TreeNode> stack = new ArrayDeque<>();
+        private final Deque<TreeNode> stack = new ArrayDeque<>();   // nodes not yet returned; top = next key
 
         StackIterator(TreeNode root) {
-            pushLeftChain(root);
+            pushLeftChain(root);                         // the smallest key is at the end of the left path
         }
 
         private void pushLeftChain(TreeNode node) {
             while (node != null) {                       // the smallest unvisited key ends up on top
-                stack.push(node);
+                stack.push(node);                        // returned after all of its left subtree
                 node = node.left;
             }
         }
 
         public boolean hasNext() {
-            return !stack.isEmpty();
+            return !stack.isEmpty();                     // an empty stack means every key was returned
         }
 
         public int next() {
             if (stack.isEmpty()) throw new NoSuchElementException("no more keys");
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();                 // the smallest key not returned yet
             pushLeftChain(node.right);                   // the successor is the leftmost node of the right subtree
             return node.val;
         }
@@ -73,32 +73,34 @@ public class P96_BSTIterator {
         private TreeNode cur;                            // the next key comes from cur or from its left subtree
 
         MorrisIterator(TreeNode root) {
-            cur = root;
+            cur = root;                                  // start the walk at the root
         }
 
         public boolean hasNext() {
-            return cur != null;
+            return cur != null;                          // the walk ends when cur runs off the tree
         }
 
         public int next() {
-            while (cur != null) {
+            while (cur != null) {                        // walk until the next key is found
                 if (cur.left == null) {                  // nothing smaller is pending: cur is next
                     int val = cur.val;
                     cur = cur.right;                     // a real right child or a thread to the successor
                     return val;
                 }
                 TreeNode pred = cur.left;                // in-order predecessor: rightmost node of the left subtree
+                // go right until the last node, or until the thread we left earlier
                 while (pred.right != null && pred.right != cur) pred = pred.right;
                 if (pred.right == null) {
                     pred.right = cur;                    // first arrival: thread back, then go left
                     cur = cur.left;
                 } else {
                     pred.right = null;                   // second arrival: left subtree is done, restore the tree
-                    int val = cur.val;
-                    cur = cur.right;
+                    int val = cur.val;                   // cur comes right after its left subtree
+                    cur = cur.right;                     // resume from the larger keys next time
                     return val;
                 }
             }
+            // cur ran off the tree: every key has been returned
             throw new NoSuchElementException("no more keys");
         }
     }

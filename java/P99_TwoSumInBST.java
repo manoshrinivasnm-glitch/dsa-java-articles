@@ -11,79 +11,81 @@ public class P99_TwoSumInBST {
 
     /** Approach 1: for every node, binary-search the tree for its complement. O(n * h) time, O(h) stack. */
     static boolean bruteForce(TreeNode root, int k) {
-        return hasPartner(root, root, k);
+        return hasPartner(root, root, k);        // try every node as the first of the pair
     }
 
     static boolean hasPartner(TreeNode node, TreeNode root, int k) {
-        if (node == null) return false;
+        if (node == null) return false;                  // empty subtree: no pair starts here
         long need = (long) k - node.val;                 // long: k - val can overflow int
-        if (need != node.val && contains(root, need)) return true;   // distinct keys: need == val would be this same node
-        return hasPartner(node.left, root, k) || hasPartner(node.right, root, k);
+        // distinct keys: need == val would be this same node, so it does not count
+        if (need != node.val && contains(root, need)) return true;
+        return hasPartner(node.left, root, k) || hasPartner(node.right, root, k);   // try the rest of the tree
     }
 
     static boolean contains(TreeNode root, long key) {
         TreeNode cur = root;
-        while (cur != null) {
+        while (cur != null) {                            // ordinary BST search from the root
             if (cur.val == key) return true;
-            cur = key < cur.val ? cur.left : cur.right;
+            cur = key < cur.val ? cur.left : cur.right;  // only one side can hold key
         }
-        return false;
+        return false;                                    // fell off the tree: key is absent
     }
 
     /** Approach 2: in-order gives the keys sorted, then the classic two-pointer sweep. O(n) time, O(n) space. */
     static boolean better(TreeNode root, int k) {
-        List<Integer> sorted = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>();        // every key, in increasing order
         inorder(root, sorted);
-        int lo = 0, hi = sorted.size() - 1;
-        while (lo < hi) {
-            long sum = (long) sorted.get(lo) + sorted.get(hi);
+        int lo = 0, hi = sorted.size() - 1;              // smallest and largest keys not ruled out yet
+        while (lo < hi) {                                // two different positions still left
+            long sum = (long) sorted.get(lo) + sorted.get(hi);   // long: the sum can overflow int
             if (sum == k) return true;
-            if (sum < k) lo++; else hi--;
+            if (sum < k) lo++; else hi--;                // sum too small: raise lo; too big: lower hi
         }
-        return false;
+        return false;                                    // the pointers met without a match
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                        // empty subtree adds nothing
+        inorder(node.left, out);                         // smaller keys first
+        out.add(node.val);                               // then this key
+        inorder(node.right, out);                        // then the larger keys
     }
 
     /** Approach 3: two lazy BST iterators (ascending and descending) act as the two pointers without building the list. O(n) time, O(h) space. */
     static boolean optimal(TreeNode root, int k) {
-        if (root == null) return false;
-        BSTIterator ascending = new BSTIterator(root, false);
-        BSTIterator descending = new BSTIterator(root, true);
-        int lo = ascending.next(), hi = descending.next();
+        if (root == null) return false;                  // empty tree has no pair
+        BSTIterator ascending = new BSTIterator(root, false);   // yields keys smallest first
+        BSTIterator descending = new BSTIterator(root, true);   // yields keys largest first
+        int lo = ascending.next(), hi = descending.next();      // smallest and largest keys
         while (lo < hi) {                                // distinct keys: lo < hi means two different nodes
-            long sum = (long) lo + hi;
+            long sum = (long) lo + hi;                   // long: the sum can overflow int
             if (sum == k) return true;
+            // too small -> next bigger low key; too big -> next smaller high key
             if (sum < k) lo = ascending.next(); else hi = descending.next();
         }
-        return false;
+        return false;                                    // the two pointers met without a match
     }
 
     /** In-order iterator holding at most h nodes; reverse = true yields keys from largest to smallest. */
     static class BSTIterator {
-        private final Deque<TreeNode> stack = new ArrayDeque<>();
-        private final boolean reverse;
+        private final Deque<TreeNode> stack = new ArrayDeque<>();   // top is always the next key to return
+        private final boolean reverse;                   // false: ascending, true: descending
 
         BSTIterator(TreeNode root, boolean reverse) {
             this.reverse = reverse;
-            pushChain(root);
+            pushChain(root);                             // the first key is at the end of this path
         }
 
         int next() {
-            TreeNode node = stack.pop();
-            pushChain(reverse ? node.left : node.right);
+            TreeNode node = stack.pop();                 // the next key in this iterator's order
+            pushChain(reverse ? node.left : node.right); // the keys right after node live in this subtree
             return node.val;
         }
 
         private void pushChain(TreeNode node) {      // the leftmost (or rightmost) path below node
             while (node != null) {
-                stack.push(node);
-                node = reverse ? node.right : node.left;
+                stack.push(node);                        // returned later, after everything below it
+                node = reverse ? node.right : node.left; // step toward the smallest (or largest) key
             }
         }
     }

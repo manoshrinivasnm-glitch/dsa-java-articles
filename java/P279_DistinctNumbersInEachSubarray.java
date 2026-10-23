@@ -6,12 +6,12 @@ public class P279_DistinctNumbersInEachSubarray {
     /** Approach 1: brute force, build a fresh set for every window. O(n * k) time, O(k) space. */
     static int[] bruteForce(int[] nums, int k) {
         int n = nums.length;
-        if (k <= 0 || k > n) return new int[0];
-        int[] ans = new int[n - k + 1];
-        for (int i = 0; i + k <= n; i++) {
-            Set<Integer> seen = new HashSet<>();
-            for (int j = i; j < i + k; j++) seen.add(nums[j]);
-            ans[i] = seen.size();
+        if (k <= 0 || k > n) return new int[0];                 // no window of size k fits
+        int[] ans = new int[n - k + 1];                         // one answer per window start
+        for (int i = 0; i + k <= n; i++) {                      // window nums[i..i+k-1]
+            Set<Integer> seen = new HashSet<>();                // a fresh set for every window
+            for (int j = i; j < i + k; j++) seen.add(nums[j]);  // duplicates collapse into one entry
+            ans[i] = seen.size();                               // set size = distinct values in the window
         }
         return ans;
     }
@@ -19,15 +19,16 @@ public class P279_DistinctNumbersInEachSubarray {
     /** Approach 2: optimal, slide the window and keep value -> count in a HashMap; distinct = map size. O(n) time, O(k) space. */
     static int[] optimal(int[] nums, int k) {
         int n = nums.length;
-        if (k <= 0 || k > n) return new int[0];
+        if (k <= 0 || k > n) return new int[0];                 // no window of size k fits
         int[] ans = new int[n - k + 1];
-        Map<Integer, Integer> freq = new HashMap<>();
-        for (int r = 0; r < n; r++) {
+        Map<Integer, Integer> freq = new HashMap<>();           // value -> copies in the current window
+        for (int r = 0; r < n; r++) {                           // r = right end of the window
             freq.merge(nums[r], 1, Integer::sum);               // nums[r] enters the window
             int l = r - k + 1;                                  // left end of the window ending at r
             if (l < 0) continue;                                // window not full yet
-            ans[l] = freq.size();
-            freq.computeIfPresent(nums[l], (v, c) -> c == 1 ? null : c - 1);   // nums[l] leaves; null removes the key
+            ans[l] = freq.size();                               // only values still present are keys
+            // nums[l] leaves; returning null removes the key once its count would hit 0
+            freq.computeIfPresent(nums[l], (v, c) -> c == 1 ? null : c - 1);
         }
         return ans;
     }
@@ -35,18 +36,18 @@ public class P279_DistinctNumbersInEachSubarray {
     /** Approach 3: optimal for a small value range, same window with a plain count array. O(n + range) time. */
     static int[] optimalCountArray(int[] nums, int k) {
         int n = nums.length;
-        if (k <= 0 || k > n) return new int[0];
+        if (k <= 0 || k > n) return new int[0];                 // no window of size k fits
         int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        for (int x : nums) { min = Math.min(min, x); max = Math.max(max, x); }
+        for (int x : nums) { min = Math.min(min, x); max = Math.max(max, x); }   // the value range
         if ((long) max - min + 1 > 10_000_000) return optimal(nums, k);   // range too wide for an array
         int[] count = new int[max - min + 1];                 // count[x - min] = copies of x in the window
         int[] ans = new int[n - k + 1];
-        int distinct = 0;
-        for (int r = 0; r < n; r++) {
+        int distinct = 0;                                       // values with a nonzero count right now
+        for (int r = 0; r < n; r++) {                           // r = right end of the window
             if (count[nums[r] - min]++ == 0) distinct++;        // first copy entering
-            int l = r - k + 1;
-            if (l < 0) continue;
-            ans[l] = distinct;
+            int l = r - k + 1;                                  // left end of the window ending at r
+            if (l < 0) continue;                                // window not full yet
+            ans[l] = distinct;                                  // record before nums[l] leaves
             if (--count[nums[l] - min] == 0) distinct--;        // last copy leaving
         }
         return ans;

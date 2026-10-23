@@ -11,37 +11,37 @@ public class P2779_FloorInABST {
 
     /** Approach 1: the in-order sequence is sorted, so the floor is the last key in it that is <= x. O(n) time, O(n) space. */
     static int bruteForce(TreeNode root, int x) {
-        List<Integer> sorted = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>(); // every key, in increasing order
         inorder(root, sorted);
-        int floor = -1;
-        for (int key : sorted) {
+        int floor = -1;                          // -1 means no key <= x seen yet
+        for (int key : sorted) {                 // walk the keys from smallest to largest
             if (key > x) break;                  // sorted: every later key is too big as well
-            floor = key;
+            floor = key;                         // fits, and larger than every earlier key that fit
         }
         return floor;
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                // empty subtree adds nothing
+        inorder(node.left, out);                 // smaller keys first
+        out.add(node.val);                       // then this key
+        inorder(node.right, out);                // then the larger keys
     }
 
     /** Approach 2: recursive descent into the single subtree that can still hold the answer. O(h) time, O(h) stack. */
     static int recursive(TreeNode root, int x) {
-        if (root == null) return -1;
-        if (root.val == x) return x;
+        if (root == null) return -1;                        // fell off the tree: no floor down this path
+        if (root.val == x) return x;                        // exact match is the best possible floor
         if (root.val > x) return recursive(root.left, x);   // root and its whole right subtree are too big
         int closer = recursive(root.right, x);              // root fits; anything closer must be on its right
-        return closer != -1 ? closer : root.val;
+        return closer != -1 ? closer : root.val;            // prefer the closer key, else root itself
     }
 
     /** Approach 3: iterative descent that remembers the last key where we went right. O(h) time, O(1) space. */
     static int optimal(TreeNode root, int x) {
-        int floor = -1;
+        int floor = -1;                          // best key <= x found so far (-1 = none)
         TreeNode cur = root;
-        while (cur != null) {
+        while (cur != null) {                    // walk one root-to-leaf path
             if (cur.val == x) return x;          // cannot do better than an exact match
             if (cur.val < x) {
                 floor = cur.val;                 // a candidate, and larger than every earlier candidate

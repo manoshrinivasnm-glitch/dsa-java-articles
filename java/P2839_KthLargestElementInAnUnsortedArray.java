@@ -5,9 +5,9 @@ public class P2839_KthLargestElementInAnUnsortedArray {
 
     /** Approach 1: brute force, sort a copy and index from the end. O(n log n) time, O(n) space. */
     static int bruteForce(int[] nums, int k) {
-        int[] a = nums.clone();
-        Arrays.sort(a);
-        return a[a.length - k];
+        int[] a = nums.clone();                                 // sort a copy, leave the input untouched
+        Arrays.sort(a);                                         // ascending order
+        return a[a.length - k];                                 // k-th from the end is the k-th largest
     }
 
     /** Approach 2: better, a min-heap that never holds more than the k largest seen so far. O(n log k) time, O(k) space. */
@@ -17,22 +17,23 @@ public class P2839_KthLargestElementInAnUnsortedArray {
             heap.offer(x);
             if (heap.size() > k) heap.poll();                   // throw away the smallest, it cannot be the answer
         }
-        return heap.peek();
+        return heap.peek();                                     // smallest of the k largest = k-th largest
     }
 
     /** Approach 3: optimal, quickselect with a random pivot and three-way partition. O(n) expected time, O(n) for the copy. */
     static int optimal(int[] nums, int k) {
         int[] a = nums.clone();                                 // drop the clone if the caller allows mutation
         int target = a.length - k;                              // index of the answer in ascending order
-        int lo = 0, hi = a.length - 1;
+        int lo = 0, hi = a.length - 1;                          // the part of a that still holds the answer
         Random rng = new Random(2839);                          // fixed seed: reproducible, still breaks sorted input
         while (true) {
-            int pivot = a[lo + rng.nextInt(hi - lo + 1)];
-            int lt = lo, i = lo, gt = hi;                       // a[lo..lt-1] < pivot, a[lt..i-1] == pivot, a[gt+1..hi] > pivot
-            while (i <= gt) {
-                if (a[i] < pivot) swap(a, lt++, i++);
-                else if (a[i] > pivot) swap(a, i, gt--);
-                else i++;
+            int pivot = a[lo + rng.nextInt(hi - lo + 1)];       // random value from the live range
+            // a[lo..lt-1] < pivot, a[lt..i-1] == pivot, a[gt+1..hi] > pivot
+            int lt = lo, i = lo, gt = hi;
+            while (i <= gt) {                                   // a[i..gt] is not classified yet
+                if (a[i] < pivot) swap(a, lt++, i++);           // smaller: grow the left block
+                else if (a[i] > pivot) swap(a, i, gt--);        // larger: send to the right; recheck a[i]
+                else i++;                                       // equal: already in the middle block
             }
             if (target < lt) hi = lt - 1;                       // answer is among the smaller values
             else if (target > gt) lo = gt + 1;                  // answer is among the larger values
@@ -41,7 +42,7 @@ public class P2839_KthLargestElementInAnUnsortedArray {
     }
 
     static void swap(int[] a, int i, int j) {
-        int t = a[i];
+        int t = a[i];                                           // exchange a[i] and a[j]
         a[i] = a[j];
         a[j] = t;
     }

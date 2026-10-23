@@ -4,38 +4,38 @@ import java.util.*;
 public class P446_FindMedianInAStream {
 
     interface MedianFinder {
-        void addNum(int num);
-        double findMedian();
+        void addNum(int num);                                   // take the next number from the stream
+        double findMedian();                                    // median of every number added so far
     }
 
     /** Approach 1: brute force, keep everything unsorted and sort a copy on every query. add O(1), query O(n log n). */
     static class SortOnQuery implements MedianFinder {
-        private final List<Integer> nums = new ArrayList<>();
+        private final List<Integer> nums = new ArrayList<>();   // every number, in arrival order
 
         public void addNum(int num) {
-            nums.add(num);
+            nums.add(num);                                      // no ordering work at insert time
         }
 
         public double findMedian() {
             int n = nums.size();
             if (n == 0) throw new IllegalStateException("stream is empty");
-            int[] a = new int[n];
+            int[] a = new int[n];                               // a copy, so the stored list stays untouched
             for (int i = 0; i < n; i++) a[i] = nums.get(i);
-            Arrays.sort(a);
-            if (n % 2 == 1) return a[n / 2];
+            Arrays.sort(a);                                     // all the work happens per query
+            if (n % 2 == 1) return a[n / 2];                    // odd count: the single middle value
             return ((long) a[n / 2 - 1] + a[n / 2]) / 2.0;      // long: the sum can overflow int
         }
     }
 
     /** Approach 2: better, keep the list sorted by inserting at the binary-searched position. add O(n), query O(1). */
     static class SortedInsert implements MedianFinder {
-        private final List<Integer> sorted = new ArrayList<>();
+        private final List<Integer> sorted = new ArrayList<>(); // every number so far, kept in ascending order
 
         public void addNum(int num) {
             int lo = 0, hi = sorted.size();                     // find the first index holding a value > num
-            while (lo < hi) {
-                int mid = (lo + hi) >>> 1;
-                if (sorted.get(mid) <= num) lo = mid + 1; else hi = mid;
+            while (lo < hi) {                                   // answer lies in [lo, hi]
+                int mid = (lo + hi) >>> 1;                      // unsigned shift: no overflow on lo + hi
+                if (sorted.get(mid) <= num) lo = mid + 1; else hi = mid;   // <= num: answer is right of mid
             }
             sorted.add(lo, num);                                // shifts the tail one step right: O(n)
         }
@@ -43,8 +43,8 @@ public class P446_FindMedianInAStream {
         public double findMedian() {
             int n = sorted.size();
             if (n == 0) throw new IllegalStateException("stream is empty");
-            if (n % 2 == 1) return sorted.get(n / 2);
-            return ((long) sorted.get(n / 2 - 1) + sorted.get(n / 2)) / 2.0;
+            if (n % 2 == 1) return sorted.get(n / 2);           // odd count: the single middle value
+            return ((long) sorted.get(n / 2 - 1) + sorted.get(n / 2)) / 2.0;   // even: average the two middles
         }
     }
 
@@ -54,15 +54,16 @@ public class P446_FindMedianInAStream {
         private final PriorityQueue<Integer> high = new PriorityQueue<>();                          // larger half, min on top
 
         public void addNum(int num) {
+            // no bigger than the smaller half's max -> it belongs in the smaller half
             if (low.isEmpty() || num <= low.peek()) low.offer(num); else high.offer(num);
             if (low.size() > high.size() + 1) high.offer(low.poll());     // rebalance: low may hold one extra
-            else if (high.size() > low.size()) low.offer(high.poll());
+            else if (high.size() > low.size()) low.offer(high.poll());    // high may never hold more than low
         }
 
         public double findMedian() {
             if (low.isEmpty()) throw new IllegalStateException("stream is empty");
-            if (low.size() > high.size()) return low.peek();
-            return ((long) low.peek() + high.peek()) / 2.0;
+            if (low.size() > high.size()) return low.peek();    // odd count: the extra one is the middle
+            return ((long) low.peek() + high.peek()) / 2.0;     // even: average the two tops
         }
     }
 

@@ -11,14 +11,14 @@ public class P2776_FindKthSmallestElementInBST {
 
     /** Approach 1: ignore the BST property, collect every key, sort, index. O(n log n) time, O(n) space. */
     static int bruteForce(TreeNode root, int k) {
-        List<Integer> keys = new ArrayList<>();
+        List<Integer> keys = new ArrayList<>();  // every key in the tree, in no particular order
         collect(root, keys);
-        Collections.sort(keys);
-        return k >= 1 && k <= keys.size() ? keys.get(k - 1) : -1;
+        Collections.sort(keys);                  // now keys.get(i) is the (i + 1)-th smallest
+        return k >= 1 && k <= keys.size() ? keys.get(k - 1) : -1;   // -1 when k is out of range
     }
 
     static void collect(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                // empty subtree adds nothing
         out.add(node.val);                       // any traversal order works: we sort afterwards
         collect(node.left, out);
         collect(node.right, out);
@@ -28,54 +28,55 @@ public class P2776_FindKthSmallestElementInBST {
     static int recursiveInorder(TreeNode root, int k) {
         int[] state = {k, -1};                   // {visits still needed, answer}
         visit(root, state);
-        return state[1];
+        return state[1];                         // stays -1 if the tree has fewer than k nodes
     }
 
     static void visit(TreeNode node, int[] state) {
-        if (node == null || state[0] == 0) return;
-        visit(node.left, state);
+        if (node == null || state[0] == 0) return;   // empty subtree, or the answer is already known
+        visit(node.left, state);                 // smaller keys are visited first
         if (state[0] == 0) return;               // the answer was found in the left subtree
         if (--state[0] == 0) {                   // this node is the k-th in sorted order
-            state[1] = node.val;
+            state[1] = node.val;                 // record it; the early returns stop the walk
             return;
         }
-        visit(node.right, state);
+        visit(node.right, state);                // then the larger keys
     }
 
     /** Approach 3: iterative in-order with an explicit stack; the k-th pop is the answer. O(h + k) time, O(h) space. */
     static int iterativeInorder(TreeNode root, int k) {
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();   // ancestors whose key is not visited yet
         TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
+        while (cur != null || !stack.isEmpty()) { // until every node has been visited
             while (cur != null) {                // walk to the smallest key not yet visited
                 stack.push(cur);
                 cur = cur.left;
             }
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();         // the next key in ascending order
             if (--k == 0) return node.val;       // pops come out in ascending order
-            cur = node.right;
+            cur = node.right;                    // its right subtree holds the next larger keys
         }
-        return -1;
+        return -1;                               // fewer than k nodes
     }
 
     /** Approach 4: Morris in-order. Threads replace the stack; the walk runs to the end so every thread is removed. O(n) time, O(1) extra space. */
     static int morris(TreeNode root, int k) {
-        int count = 0, answer = -1;
+        int count = 0, answer = -1;              // keys visited so far, and the k-th one once found
         TreeNode cur = root;
         while (cur != null) {
-            if (cur.left == null) {
-                if (++count == k) answer = cur.val;
+            if (cur.left == null) {              // nothing smaller left to visit: visit cur now
+                if (++count == k) answer = cur.val;   // keep walking so every thread gets removed
                 cur = cur.right;                 // a real right child or a thread back to the successor
             } else {
                 TreeNode pred = cur.left;        // in-order predecessor: rightmost node of the left subtree
+                // go right until the last node, or until the thread we left earlier
                 while (pred.right != null && pred.right != cur) pred = pred.right;
                 if (pred.right == null) {
                     pred.right = cur;            // first arrival: leave a thread so we can come back
                     cur = cur.left;
                 } else {
                     pred.right = null;           // second arrival: left subtree done, remove the thread
-                    if (++count == k) answer = cur.val;
-                    cur = cur.right;
+                    if (++count == k) answer = cur.val;   // cur comes right after its left subtree
+                    cur = cur.right;             // move on to the larger keys
                 }
             }
         }
