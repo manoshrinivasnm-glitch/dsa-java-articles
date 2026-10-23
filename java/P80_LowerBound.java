@@ -5,22 +5,22 @@ public class P80_LowerBound {
 
     /** Approach 1: scan from the left until an element >= x shows up. O(n) time, O(1) space. */
     static int bruteForce(int[] arr, int x) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= x) return i;
+        for (int i = 0; i < arr.length; i++) {  // check indices from left to right
+            if (arr[i] >= x) return i;          // the first element >= x is the lower bound
         }
-        return arr.length;
+        return arr.length;                      // every element is smaller than x
     }
 
     /** Approach 2: binary search that remembers the best candidate seen so far. O(log n) time, O(1) space. */
     static int optimal(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = arr.length;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) {
-                ans = mid;            // mid qualifies; a smaller qualifying index may exist on the left
-                hi = mid - 1;
+        int lo = 0, hi = arr.length - 1, ans = arr.length;   // ans starts at n in case no element qualifies
+        while (lo <= hi) {                 // search until the range [lo, hi] is empty
+            int mid = lo + (hi - lo) / 2;  // middle index, written to avoid int overflow
+            if (arr[mid] >= x) {           // arr[mid] is large enough to be the answer
+                ans = mid;                 // mid qualifies; a smaller qualifying index may exist on the left
+                hi = mid - 1;              // so keep searching in the left half
             } else {
-                lo = mid + 1;         // arr[mid] < x, so every index <= mid is too small
+                lo = mid + 1;              // arr[mid] < x, so every index <= mid is too small
             }
         }
         return ans;
@@ -28,13 +28,13 @@ public class P80_LowerBound {
 
     /** Approach 3: binary search on the half-open range [lo, hi); the pointers meet exactly at the answer. */
     static int optimalHalfOpen(int[] arr, int x) {
-        int lo = 0, hi = arr.length;      // invariant: the answer lies in [lo, hi]
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) hi = mid;  // mid itself may be the answer, so keep it inside the range
-            else lo = mid + 1;            // mid is too small, so exclude it
+        int lo = 0, hi = arr.length;       // invariant: the answer lies in [lo, hi]
+        while (lo < hi) {                  // stop when lo and hi meet at the answer
+            int mid = lo + (hi - lo) / 2;  // lower middle, so mid < hi and the range always shrinks
+            if (arr[mid] >= x) hi = mid;   // mid itself may be the answer, so keep it inside the range
+            else lo = mid + 1;             // mid is too small, so exclude it
         }
-        return lo;
+        return lo;                         // lo == hi: first index with arr[i] >= x
     }
 
     // ---------------------------------------------------------------- tests

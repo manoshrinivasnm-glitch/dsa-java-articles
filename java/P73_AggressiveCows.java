@@ -5,39 +5,39 @@ public class P73_AggressiveCows {
 
     /** Can we place all cows in sorted stalls with every adjacent pair at least `dist` apart? Greedy: take the leftmost legal stall. O(n). */
     static boolean canPlace(int[] stalls, int cows, int dist) {
-        int count = 1, last = stalls[0];
+        int count = 1, last = stalls[0];     // the first cow goes in the first stall
         for (int i = 1; i < stalls.length; i++) {
-            if (stalls[i] - last >= dist) {
-                count++;
-                last = stalls[i];
+            if (stalls[i] - last >= dist) {  // far enough from the previous cow
+                count++;                     // place a cow here
+                last = stalls[i];            // later gaps are measured from this stall
             }
         }
-        return count >= cows;
+        return count >= cows;                // true if every cow found a stall
     }
 
     /** Approach 1: sort, then try every distance 1, 2, 3, ... until placement fails. O(n log n + n * (max - min)) time. */
     static int bruteForce(int[] stalls, int cows) {
-        int[] a = stalls.clone();
+        int[] a = stalls.clone();                     // sort a copy, leaving the input untouched
         Arrays.sort(a);
         int n = a.length;
-        int best = 0;
-        for (int d = 1; d <= a[n - 1] - a[0]; d++) {
-            if (canPlace(a, cows, d)) best = d;
-            else break;
+        int best = 0;                                 // largest distance that worked so far
+        for (int d = 1; d <= a[n - 1] - a[0]; d++) {  // distances up to the full span
+            if (canPlace(a, cows, d)) best = d;       // d works
+            else break;                               // if d fails, every larger d fails too
         }
         return best;
     }
 
     /** Approach 2: sort, then binary search the largest feasible distance in [1, max - min]. O(n log n + n log(max - min)) time. */
     static int optimal(int[] stalls, int cows) {
-        int[] a = stalls.clone();
+        int[] a = stalls.clone();                   // sort a copy, leaving the input untouched
         Arrays.sort(a);
         int n = a.length;
-        int lo = 1, hi = a[n - 1] - a[0], ans = 0;
-        while (lo <= hi) {
+        int lo = 1, hi = a[n - 1] - a[0], ans = 0;  // the answer lies between 1 and the full span
+        while (lo <= hi) {                          // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            if (canPlace(a, cows, mid)) { ans = mid; lo = mid + 1; }
-            else hi = mid - 1;
+            if (canPlace(a, cows, mid)) { ans = mid; lo = mid + 1; }   // mid works: record it, try larger
+            else hi = mid - 1;                      // mid is too large: try smaller
         }
         return ans;
     }

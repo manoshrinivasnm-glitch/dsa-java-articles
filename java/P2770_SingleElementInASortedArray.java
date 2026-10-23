@@ -6,42 +6,43 @@ public class P2770_SingleElementInASortedArray {
     /** Approach 1: linear scan, the element that differs from both neighbours is the answer. O(n) time, O(1) space. */
     static int bruteForce(int[] arr) {
         int n = arr.length;
-        if (n == 1) return arr[0];
-        for (int i = 0; i < n; i++) {
-            if (i == 0) {
-                if (arr[0] != arr[1]) return arr[0];
-            } else if (i == n - 1) {
-                if (arr[n - 1] != arr[n - 2]) return arr[n - 1];
-            } else if (arr[i] != arr[i - 1] && arr[i] != arr[i + 1]) {
+        if (n == 1) return arr[0];                                // a lone element is the single one
+        for (int i = 0; i < n; i++) {                             // test each index against its neighbours
+            if (i == 0) {                                         // first index has only a right neighbour
+                if (arr[0] != arr[1]) return arr[0];              // differs from its only neighbour
+            } else if (i == n - 1) {                              // last index has only a left neighbour
+                if (arr[n - 1] != arr[n - 2]) return arr[n - 1];  // differs from its only neighbour
+            } else if (arr[i] != arr[i - 1] && arr[i] != arr[i + 1]) {   // differs from both neighbours
                 return arr[i];
             }
         }
-        return -1;
+        return -1;                                                // not reached for valid input
     }
 
     /** Approach 2: XOR every element; equal pairs cancel to 0 and only the single value survives. O(n) time, O(1) space. */
     static int better(int[] arr) {
-        int x = 0;
-        for (int v : arr) x ^= v;
-        return x;
+        int x = 0;                 // XOR of everything seen so far
+        for (int v : arr) x ^= v;  // each equal pair cancels itself out
+        return x;                  // only the unpaired value survives
     }
 
     /** Approach 3: binary search using the index parity of the pairs. O(log n) time, O(1) space. */
     static int optimal(int[] arr) {
         int n = arr.length;
-        if (n == 1) return arr[0];
-        if (arr[0] != arr[1]) return arr[0];
-        if (arr[n - 1] != arr[n - 2]) return arr[n - 1];
-        int lo = 1, hi = n - 2;
-        while (lo <= hi) {
+        if (n == 1) return arr[0];            // a lone element is the single one
+        if (arr[0] != arr[1]) return arr[0];  // the single element sits at the left edge
+        if (arr[n - 1] != arr[n - 2]) return arr[n - 1];   // the single element sits at the right edge
+        int lo = 1, hi = n - 2;               // edges are done, so mid - 1 and mid + 1 stay in range
+        while (lo <= hi) {                    // search until the range is empty
             int mid = lo + (hi - lo) / 2;
+            // mid matches neither neighbour, so it is the single element
             if (arr[mid] != arr[mid - 1] && arr[mid] != arr[mid + 1]) return arr[mid];
             // Left of the single element every pair starts at an even index: (0,1), (2,3), ...
             boolean inLeftHalf = (mid % 2 == 1) ? arr[mid] == arr[mid - 1] : arr[mid] == arr[mid + 1];
-            if (inLeftHalf) lo = mid + 1;
-            else hi = mid - 1;
+            if (inLeftHalf) lo = mid + 1;     // pairs still intact: the single element is to the right
+            else hi = mid - 1;                // pairing already broken: it is to the left
         }
-        return -1;
+        return -1;                            // not reached for valid input
     }
 
     // ---------------------------------------------------------------- tests

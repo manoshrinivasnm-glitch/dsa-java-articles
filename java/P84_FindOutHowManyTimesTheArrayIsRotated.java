@@ -5,42 +5,42 @@ public class P84_FindOutHowManyTimesTheArrayIsRotated {
 
     /** Approach 1: linear scan for the index of the smallest element. O(n) time, O(1) space. */
     static int bruteForce(int[] nums) {
-        int minIdx = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < nums[minIdx]) minIdx = i;
+        int minIdx = 0;                              // index of the smallest value so far
+        for (int i = 1; i < nums.length; i++) {      // check every other index
+            if (nums[i] < nums[minIdx]) minIdx = i;  // found a smaller value
         }
-        return minIdx;
+        return minIdx;                               // the minimum's index equals the rotation count
     }
 
     /** Approach 2: binary search; each step records the index of the sorted half's minimum and discards that half. */
     static int optimal(int[] nums) {
-        int lo = 0, hi = nums.length - 1, minIdx = 0;   // index 0 is a valid first candidate
-        while (lo <= hi) {
+        int lo = 0, hi = nums.length - 1, minIdx = 0;  // index 0 is a valid first candidate
+        while (lo <= hi) {                             // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[lo] <= nums[hi]) {                   // whole range sorted: nums[lo] is its minimum
-                if (nums[lo] < nums[minIdx]) minIdx = lo;
-                break;
+            if (nums[lo] <= nums[hi]) {                // whole range sorted: nums[lo] is its minimum
+                if (nums[lo] < nums[minIdx]) minIdx = lo;   // keep the index of the smaller value
+                break;                                 // nothing smaller can remain, so stop
             }
-            if (nums[lo] <= nums[mid]) {                  // left half sorted: nums[lo] is its minimum, drop it
-                if (nums[lo] < nums[minIdx]) minIdx = lo;
-                lo = mid + 1;
-            } else {                                      // right half sorted: nums[mid] is its minimum, drop it
-                if (nums[mid] < nums[minIdx]) minIdx = mid;
-                hi = mid - 1;
+            if (nums[lo] <= nums[mid]) {               // left half sorted: nums[lo] is its minimum, drop it
+                if (nums[lo] < nums[minIdx]) minIdx = lo;   // keep the index of the smaller value
+                lo = mid + 1;                          // continue in the right half
+            } else {                                   // right half sorted: nums[mid] is its minimum, drop it
+                if (nums[mid] < nums[minIdx]) minIdx = mid;   // keep the index of the smaller value
+                hi = mid - 1;                          // continue in the left part
             }
         }
-        return minIdx;
+        return minIdx;                                 // rotation count = index of the minimum
     }
 
     /** Approach 3: compare mid with the right end; lo and hi converge on the minimum's index. O(log n) time. */
     static int optimalCompareRight(int[] nums) {
         int lo = 0, hi = nums.length - 1;
-        while (lo < hi) {
+        while (lo < hi) {                            // stop when one index is left: the minimum
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] > nums[hi]) lo = mid + 1;       // the drop is strictly right of mid
-            else hi = mid;                                // nums[mid] < nums[hi]: minimum is mid or left of it
+            if (nums[mid] > nums[hi]) lo = mid + 1;  // the drop is strictly right of mid
+            else hi = mid;                           // nums[mid] < nums[hi]: minimum is mid or left of it
         }
-        return lo;
+        return lo;                                   // index of the minimum = number of rotations
     }
 
     // ---------------------------------------------------------------- tests

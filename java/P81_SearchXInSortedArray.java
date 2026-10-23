@@ -5,36 +5,36 @@ public class P81_SearchXInSortedArray {
 
     /** Approach 1: scan from the left; stop early once the values pass target. O(n) time, O(1) space. */
     static int bruteForce(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) return i;
+        for (int i = 0; i < nums.length; i++) {  // walk the values from smallest to largest
+            if (nums[i] == target) return i;     // found target
             if (nums[i] > target) return -1;     // sorted: nothing after this index can equal target
         }
-        return -1;
+        return -1;                               // every value was smaller than target
     }
 
     /** Approach 2: iterative binary search. O(log n) time, O(1) space. */
     static int optimal(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;         // never overflows, unlike (lo + hi) / 2
-            if (nums[mid] == target) return mid;
-            if (nums[mid] < target) lo = mid + 1; // target can only be to the right of mid
-            else hi = mid - 1;                    // target can only be to the left of mid
+        int lo = 0, hi = nums.length - 1;          // search range [lo, hi], inclusive at both ends
+        while (lo <= hi) {                         // while the range still holds at least one index
+            int mid = lo + (hi - lo) / 2;          // never overflows, unlike (lo + hi) / 2
+            if (nums[mid] == target) return mid;   // found target at mid
+            if (nums[mid] < target) lo = mid + 1;  // target can only be to the right of mid
+            else hi = mid - 1;                     // target can only be to the left of mid
         }
-        return -1;
+        return -1;                                 // range became empty: target is absent
     }
 
     /** Approach 3: recursive binary search. O(log n) time, O(log n) stack space. */
     static int optimalRecursive(int[] nums, int target) {
-        return search(nums, 0, nums.length - 1, target);
+        return search(nums, 0, nums.length - 1, target);  // start with the whole array as the range
     }
 
     private static int search(int[] nums, int lo, int hi, int target) {
-        if (lo > hi) return -1;                   // empty range: target is not here
-        int mid = lo + (hi - lo) / 2;
-        if (nums[mid] == target) return mid;
-        if (nums[mid] < target) return search(nums, mid + 1, hi, target);
-        return search(nums, lo, mid - 1, target);
+        if (lo > hi) return -1;                    // empty range: target is not here
+        int mid = lo + (hi - lo) / 2;              // middle of the current range
+        if (nums[mid] == target) return mid;       // found target at mid
+        if (nums[mid] < target) return search(nums, mid + 1, hi, target);   // target is right of mid
+        return search(nums, lo, mid - 1, target);  // otherwise search the left half
     }
 
     // ---------------------------------------------------------------- tests

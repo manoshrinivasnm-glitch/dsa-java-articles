@@ -5,22 +5,22 @@ public class P89_SearchInsertPosition {
 
     /** Approach 1: walk left to right until an element >= target. O(n) time, O(1) space. */
     static int bruteForce(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= target) return i;
+        for (int i = 0; i < nums.length; i++) {  // check positions from left to right
+            if (nums[i] >= target) return i;     // target is here, or belongs just before nums[i]
         }
-        return nums.length;
+        return nums.length;                      // target is larger than everything: insert at the end
     }
 
     /** Approach 2: binary search for the lower bound of target. O(log n) time, O(1) space. */
     static int optimal(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1, ans = nums.length;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (nums[mid] >= target) {
-                ans = mid;            // mid works; a smaller index may also work, so look left
+        int lo = 0, hi = nums.length - 1, ans = nums.length;   // ans = n if target exceeds every element
+        while (lo <= hi) {                 // search until the range [lo, hi] is empty
+            int mid = lo + (hi - lo) / 2;  // middle index, written to avoid int overflow
+            if (nums[mid] >= target) {     // target goes at mid or somewhere to its left
+                ans = mid;                 // mid works; a smaller index may also work, so look left
                 hi = mid - 1;
             } else {
-                lo = mid + 1;         // nums[mid] < target, so target belongs after mid
+                lo = mid + 1;              // nums[mid] < target, so target belongs after mid
             }
         }
         return ans;
@@ -28,14 +28,14 @@ public class P89_SearchInsertPosition {
 
     /** Approach 3: classic binary search; when it ends without a hit, lo is the insert position. */
     static int optimalClassic(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1;
-        while (lo <= hi) {
+        int lo = 0, hi = nums.length - 1;          // search range [lo, hi], inclusive
+        while (lo <= hi) {                         // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return mid;
-            if (nums[mid] < target) lo = mid + 1;
-            else hi = mid - 1;
+            if (nums[mid] == target) return mid;   // target is present: return its own index
+            if (nums[mid] < target) lo = mid + 1;  // target is right of mid
+            else hi = mid - 1;                     // target is left of mid
         }
-        return lo;                    // here hi == lo - 1: nums[hi] < target < nums[lo]
+        return lo;                                 // here hi == lo - 1: nums[hi] < target < nums[lo]
     }
 
     // ---------------------------------------------------------------- tests

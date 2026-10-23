@@ -5,11 +5,11 @@ public class P85_FirstAndLastOccurrence {
 
     /** Approach 1: linear scan that records the first and the last hit. O(n) time, O(1) space. */
     static int[] bruteForce(int[] arr, int x) {
-        int first = -1, last = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-                if (first == -1) first = i;   // only the first hit sets this
-                last = i;                     // every hit moves this forward
+        int first = -1, last = -1;              // -1 until x is seen
+        for (int i = 0; i < arr.length; i++) {  // scan every index
+            if (arr[i] == x) {                  // a copy of x
+                if (first == -1) first = i;     // only the first hit sets this
+                last = i;                       // every hit moves this forward
             }
         }
         return new int[]{first, last};
@@ -18,49 +18,49 @@ public class P85_FirstAndLastOccurrence {
     /** Approach 2: lower bound is the first index, upper bound minus one is the last. O(log n) time, O(1) space. */
     static int[] optimalBounds(int[] arr, int x) {
         int n = arr.length;
-        int first = lowerBound(arr, x);
+        int first = lowerBound(arr, x);     // first index with a value >= x
         if (first == n || arr[first] != x) return new int[]{-1, -1};   // x is not in the array at all
-        int last = upperBound(arr, x) - 1;
+        int last = upperBound(arr, x) - 1;  // the index just before the first value > x
         return new int[]{first, last};
     }
 
-    private static int lowerBound(int[] arr, int x) {     // first index with arr[i] >= x, or n
-        int lo = 0, hi = arr.length;
-        while (lo < hi) {
+    private static int lowerBound(int[] arr, int x) {  // first index with arr[i] >= x, or n
+        int lo = 0, hi = arr.length;                   // half-open range [lo, hi)
+        while (lo < hi) {                              // stop when lo and hi meet at the answer
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) hi = mid;
-            else lo = mid + 1;
+            if (arr[mid] >= x) hi = mid;               // mid may be the answer: keep it
+            else lo = mid + 1;                         // arr[mid] < x: drop mid
         }
         return lo;
     }
 
-    private static int upperBound(int[] arr, int x) {     // first index with arr[i] > x, or n
-        int lo = 0, hi = arr.length;
-        while (lo < hi) {
+    private static int upperBound(int[] arr, int x) {  // first index with arr[i] > x, or n
+        int lo = 0, hi = arr.length;                   // half-open range [lo, hi)
+        while (lo < hi) {                              // stop when lo and hi meet at the answer
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] > x) hi = mid;
-            else lo = mid + 1;
+            if (arr[mid] > x) hi = mid;                // mid may be the answer: keep it
+            else lo = mid + 1;                         // arr[mid] <= x: drop mid
         }
         return lo;
     }
 
     /** Approach 3: two purpose-built binary searches that only remember indices equal to x. O(log n) time. */
     static int[] optimalDirect(int[] arr, int x) {
-        int first = firstOccurrence(arr, x);
-        if (first == -1) return new int[]{-1, -1};
-        return new int[]{first, lastOccurrence(arr, x)};
+        int first = firstOccurrence(arr, x);              // leftmost index of x, or -1
+        if (first == -1) return new int[]{-1, -1};        // x is absent
+        return new int[]{first, lastOccurrence(arr, x)};  // x exists, so a last copy exists too
     }
 
     private static int firstOccurrence(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;  // ans holds the leftmost match seen so far
+        while (lo <= hi) {                          // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] == x) {
-                ans = mid;            // found one; an earlier copy may still exist on the left
+            if (arr[mid] == x) {                    // a copy of x sits at mid
+                ans = mid;                          // found one; an earlier copy may still exist on the left
                 hi = mid - 1;
-            } else if (arr[mid] < x) {
+            } else if (arr[mid] < x) {              // x lies to the right of mid
                 lo = mid + 1;
-            } else {
+            } else {                                // arr[mid] > x: x lies to the left of mid
                 hi = mid - 1;
             }
         }
@@ -68,15 +68,15 @@ public class P85_FirstAndLastOccurrence {
     }
 
     private static int lastOccurrence(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;  // ans holds the rightmost match seen so far
+        while (lo <= hi) {                          // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] == x) {
-                ans = mid;            // found one; a later copy may still exist on the right
+            if (arr[mid] == x) {                    // a copy of x sits at mid
+                ans = mid;                          // found one; a later copy may still exist on the right
                 lo = mid + 1;
-            } else if (arr[mid] < x) {
+            } else if (arr[mid] < x) {              // x lies to the right of mid
                 lo = mid + 1;
-            } else {
+            } else {                                // arr[mid] > x: x lies to the left of mid
                 hi = mid - 1;
             }
         }

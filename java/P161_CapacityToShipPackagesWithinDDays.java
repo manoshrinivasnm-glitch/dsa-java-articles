@@ -5,10 +5,10 @@ public class P161_CapacityToShipPackagesWithinDDays {
 
     /** Days needed with capacity cap, loading greedily: a new day starts only when the next package does not fit. O(n). */
     static int daysNeeded(int[] weights, int cap) {
-        int days = 1;
-        long load = 0;
+        int days = 1;                                  // the first day is already open
+        long load = 0;                                 // weight loaded on the current day
         for (int w : weights) {
-            if (load + w > cap) { days++; load = 0; }
+            if (load + w > cap) { days++; load = 0; }  // w does not fit: ship it on a new day
             load += w;
         }
         return days;
@@ -17,22 +17,22 @@ public class P161_CapacityToShipPackagesWithinDDays {
     /** Approach 1: try every capacity from the heaviest package up to the total weight. O(n * (sum - max)) time, O(1) space. */
     static int bruteForce(int[] weights, int days) {
         int max = 0, sum = 0;
-        for (int w : weights) { max = Math.max(max, w); sum += w; }
-        for (int cap = max; cap <= sum; cap++) {
-            if (daysNeeded(weights, cap) <= days) return cap;
+        for (int w : weights) { max = Math.max(max, w); sum += w; }   // heaviest package and total weight
+        for (int cap = max; cap <= sum; cap++) {               // below max the heaviest package never fits
+            if (daysNeeded(weights, cap) <= days) return cap;  // the first capacity that fits is the minimum
         }
-        return sum;
+        return sum;                                            // capacity sum ships everything in one day
     }
 
     /** Approach 2: binary search on the capacity in [max, sum]; daysNeeded only decreases as cap grows. O(n log(sum)) time, O(1) space. */
     static int optimal(int[] weights, int days) {
         int max = 0, sum = 0;
-        for (int w : weights) { max = Math.max(max, w); sum += w; }
-        int lo = max, hi = sum, ans = sum;
-        while (lo <= hi) {
+        for (int w : weights) { max = Math.max(max, w); sum += w; }  // heaviest package and total weight
+        int lo = max, hi = sum, ans = sum;                           // cap = sum always works (one day)
+        while (lo <= hi) {                                           // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            if (daysNeeded(weights, mid) <= days) { ans = mid; hi = mid - 1; }
-            else lo = mid + 1;
+            if (daysNeeded(weights, mid) <= days) { ans = mid; hi = mid - 1; }   // fits: try a smaller cap
+            else lo = mid + 1;                                       // too slow: need more capacity
         }
         return ans;
     }

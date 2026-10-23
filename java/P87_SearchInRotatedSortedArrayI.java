@@ -5,8 +5,8 @@ public class P87_SearchInRotatedSortedArrayI {
 
     /** Approach 1: linear scan that ignores the structure entirely. O(n) time, O(1) space. */
     static int bruteForce(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) return i;
+        for (int i = 0; i < nums.length; i++) {  // check every index
+            if (nums[i] == target) return i;     // found target
         }
         return -1;
     }
@@ -14,43 +14,43 @@ public class P87_SearchInRotatedSortedArrayI {
     /** Approach 2: find the rotation point, then binary search the sorted segment that can hold target. */
     static int better(int[] nums, int target) {
         int n = nums.length;
-        if (n == 0) return -1;
+        if (n == 0) return -1;                       // empty array: nothing to search
         // step 1: index of the smallest element (the rotation point)
         int lo = 0, hi = n - 1;
-        while (lo < hi) {
+        while (lo < hi) {                            // shrink until one index is left: the minimum
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] > nums[hi]) lo = mid + 1;   // the drop is to the right of mid
-            else hi = mid;                            // nums[mid] < nums[hi]: minimum is mid or left of it
+            if (nums[mid] > nums[hi]) lo = mid + 1;  // the drop is to the right of mid
+            else hi = mid;                           // nums[mid] < nums[hi]: minimum is mid or left of it
         }
-        int pivot = lo;
+        int pivot = lo;                              // nums[pivot..n-1] and nums[0..pivot-1] are each sorted
         // step 2: choose the sorted segment whose value range contains target
-        if (target >= nums[pivot] && target <= nums[n - 1]) {
+        if (target >= nums[pivot] && target <= nums[n - 1]) {   // target lies in the right segment's range
             lo = pivot; hi = n - 1;
         } else {
-            lo = 0; hi = pivot - 1;
+            lo = 0; hi = pivot - 1;                  // otherwise only the left segment can hold it
         }
         // step 3: ordinary binary search inside [lo, hi]
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return mid;
-            if (nums[mid] < target) lo = mid + 1;
-            else hi = mid - 1;
+            if (nums[mid] == target) return mid;     // found target
+            if (nums[mid] < target) lo = mid + 1;    // target is right of mid
+            else hi = mid - 1;                       // target is left of mid
         }
         return -1;
     }
 
     /** Approach 3: one binary search; at every step one half is sorted and decides where target can be. */
     static int optimal(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1;
-        while (lo <= hi) {
+        int lo = 0, hi = nums.length - 1;         // search range [lo, hi], inclusive
+        while (lo <= hi) {                        // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return mid;
-            if (nums[lo] <= nums[mid]) {                                  // left half [lo, mid] is sorted
+            if (nums[mid] == target) return mid;  // found target
+            if (nums[lo] <= nums[mid]) {          // left half [lo, mid] is sorted
                 if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;   // target fits in the left half
-                else lo = mid + 1;                                        // otherwise it must be on the right
-            } else {                                                      // right half [mid, hi] is sorted
+                else lo = mid + 1;                // otherwise it must be on the right
+            } else {                              // right half [mid, hi] is sorted
                 if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;   // target fits in the right half
-                else hi = mid - 1;                                        // otherwise it must be on the left
+                else hi = mid - 1;                // otherwise it must be on the left
             }
         }
         return -1;

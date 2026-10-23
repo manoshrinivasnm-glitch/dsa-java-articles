@@ -5,30 +5,30 @@ public class P229_CountOccurrencesInASortedArray {
 
     /** Approach 1: count matches in one pass. O(n) time, O(1) space. */
     static int bruteForce(int[] arr, int x) {
-        int count = 0;
+        int count = 0;            // copies of x seen so far
         for (int v : arr) {
-            if (v == x) count++;
+            if (v == x) count++;  // count each copy of x
         }
         return count;
     }
 
     /** Approach 2: last occurrence - first occurrence + 1, each found by binary search. O(log n) time, O(1) space. */
     static int optimal(int[] arr, int x) {
-        int first = firstOccurrence(arr, x);
-        if (first == -1) return 0;                       // not present at all
-        return lastOccurrence(arr, x) - first + 1;
+        int first = firstOccurrence(arr, x);        // leftmost index of x, or -1
+        if (first == -1) return 0;                  // not present at all
+        return lastOccurrence(arr, x) - first + 1;  // size of the index range [first, last]
     }
 
     private static int firstOccurrence(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;  // ans holds the leftmost match seen so far
+        while (lo <= hi) {                          // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] == x) {
-                ans = mid;            // found one; keep looking for an earlier copy
+            if (arr[mid] == x) {                    // a copy of x sits at mid
+                ans = mid;                          // found one; keep looking for an earlier copy
                 hi = mid - 1;
-            } else if (arr[mid] < x) {
+            } else if (arr[mid] < x) {              // x lies to the right of mid
                 lo = mid + 1;
-            } else {
+            } else {                                // arr[mid] > x: x lies to the left of mid
                 hi = mid - 1;
             }
         }
@@ -36,15 +36,15 @@ public class P229_CountOccurrencesInASortedArray {
     }
 
     private static int lastOccurrence(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;  // ans holds the rightmost match seen so far
+        while (lo <= hi) {                          // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] == x) {
-                ans = mid;            // found one; keep looking for a later copy
+            if (arr[mid] == x) {                    // a copy of x sits at mid
+                ans = mid;                          // found one; keep looking for a later copy
                 lo = mid + 1;
-            } else if (arr[mid] < x) {
+            } else if (arr[mid] < x) {              // x lies to the right of mid
                 lo = mid + 1;
-            } else {
+            } else {                                // arr[mid] > x: x lies to the left of mid
                 hi = mid - 1;
             }
         }
@@ -53,25 +53,25 @@ public class P229_CountOccurrencesInASortedArray {
 
     /** Approach 3: upperBound(x) - lowerBound(x), with no special case for "absent". O(log n) time, O(1) space. */
     static int optimalBounds(int[] arr, int x) {
-        return upperBound(arr, x) - lowerBound(arr, x);
+        return upperBound(arr, x) - lowerBound(arr, x);  // copies of x fill exactly [lowerBound, upperBound)
     }
 
-    private static int lowerBound(int[] arr, int x) {     // first index with arr[i] >= x, or n
-        int lo = 0, hi = arr.length;
-        while (lo < hi) {
+    private static int lowerBound(int[] arr, int x) {  // first index with arr[i] >= x, or n
+        int lo = 0, hi = arr.length;                   // half-open range [lo, hi)
+        while (lo < hi) {                              // stop when lo and hi meet at the answer
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) hi = mid;
-            else lo = mid + 1;
+            if (arr[mid] >= x) hi = mid;               // mid may be the answer: keep it
+            else lo = mid + 1;                         // arr[mid] < x: drop mid
         }
         return lo;
     }
 
-    private static int upperBound(int[] arr, int x) {     // first index with arr[i] > x, or n
-        int lo = 0, hi = arr.length;
-        while (lo < hi) {
+    private static int upperBound(int[] arr, int x) {  // first index with arr[i] > x, or n
+        int lo = 0, hi = arr.length;                   // half-open range [lo, hi)
+        while (lo < hi) {                              // stop when lo and hi meet at the answer
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] > x) hi = mid;
-            else lo = mid + 1;
+            if (arr[mid] > x) hi = mid;                // mid may be the answer: keep it
+            else lo = mid + 1;                         // arr[mid] <= x: drop mid
         }
         return lo;
     }

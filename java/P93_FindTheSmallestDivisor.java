@@ -5,30 +5,30 @@ public class P93_FindTheSmallestDivisor {
 
     /** Sum of ceil(x / d) over the array. long: n values each up to 10^6 can exceed int when d is small. O(n). */
     static long sumWithDivisor(int[] nums, int d) {
-        long sum = 0;
-        for (int x : nums) sum += ((long) x + d - 1) / d;
+        long sum = 0;                                      // total of the rounded-up quotients
+        for (int x : nums) sum += ((long) x + d - 1) / d;  // ceil(x / d) using integers only
         return sum;
     }
 
     /** Approach 1: try d = 1, 2, 3, ... up to the largest element. O(n * max) time, O(1) space. */
     static int bruteForce(int[] nums, int threshold) {
         int max = 0;
-        for (int x : nums) max = Math.max(max, x);
-        for (int d = 1; d <= max; d++) {
-            if (sumWithDivisor(nums, d) <= threshold) return d;
+        for (int x : nums) max = Math.max(max, x);  // d = max makes every quotient 1
+        for (int d = 1; d <= max; d++) {            // try divisors from the smallest up
+            if (sumWithDivisor(nums, d) <= threshold) return d;   // first d that fits is the answer
         }
-        return -1;
+        return -1;                                  // threshold < n: no divisor can work
     }
 
     /** Approach 2: binary search on d in [1, max]; the sum only shrinks as d grows. O(n log max) time, O(1) space. */
     static int optimal(int[] nums, int threshold) {
         int max = 0;
-        for (int x : nums) max = Math.max(max, x);
-        int lo = 1, hi = max, ans = -1;
-        while (lo <= hi) {
+        for (int x : nums) max = Math.max(max, x);  // d = max gives the lowest possible sum
+        int lo = 1, hi = max, ans = -1;             // ans stays -1 if no divisor works
+        while (lo <= hi) {                          // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            if (sumWithDivisor(nums, mid) <= threshold) { ans = mid; hi = mid - 1; }
-            else lo = mid + 1;
+            if (sumWithDivisor(nums, mid) <= threshold) { ans = mid; hi = mid - 1; }   // fits: try smaller d
+            else lo = mid + 1;                      // sum too large: need a bigger d
         }
         return ans;
     }

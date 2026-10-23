@@ -5,35 +5,35 @@ public class P600_KthMissingPositiveNumber {
 
     /** Approach 1: count upwards from 1, skipping values present in the array, until k numbers are missing. O(n + k) time, O(n) space. */
     static int bruteForce(int[] arr, int k) {
-        Set<Integer> present = new HashSet<>();
+        Set<Integer> present = new HashSet<>();     // fast membership test for the array values
         for (int x : arr) present.add(x);
-        int missing = 0, num = 0;
-        while (missing < k) {
+        int missing = 0, num = 0;                   // num walks 1, 2, 3, ...; missing counts the gaps
+        while (missing < k) {                       // stop at the k-th missing number
             num++;
-            if (!present.contains(num)) missing++;
+            if (!present.contains(num)) missing++;  // num is not in the array
         }
-        return num;
+        return num;                                 // the k-th missing number
     }
 
     /** Approach 2: one pass; every element not larger than the running answer pushes the answer up by one. O(n) time, O(1) space. */
     static int better(int[] arr, int k) {
-        for (int x : arr) {
-            if (x <= k) k++;
-            else break;
+        for (int x : arr) {   // values in increasing order
+            if (x <= k) k++;  // x sits at or below the answer, pushing it up by one
+            else break;       // every later x is larger than the answer too
         }
-        return k;
+        return k;             // k now holds the answer
     }
 
     /** Approach 3: binary search on the index using missing(i) = arr[i] - (i + 1). O(log n) time, O(1) space. */
     static int optimal(int[] arr, int k) {
         int lo = 0, hi = arr.length - 1;
-        while (lo <= hi) {
+        while (lo <= hi) {                       // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            int missing = arr[mid] - (mid + 1);   // positives missing before arr[mid]
-            if (missing < k) lo = mid + 1;
-            else hi = mid - 1;
+            int missing = arr[mid] - (mid + 1);  // positives missing before arr[mid]
+            if (missing < k) lo = mid + 1;       // fewer than k gaps so far: answer is to the right
+            else hi = mid - 1;                   // k or more gaps: answer is to the left
         }
-        return lo + k;                             // equivalently hi + 1 + k
+        return lo + k;                           // lo array values lie below the answer, so it is k + lo
     }
 
     // ---------------------------------------------------------------- tests

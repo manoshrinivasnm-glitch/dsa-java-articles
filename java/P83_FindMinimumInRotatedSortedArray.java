@@ -5,26 +5,26 @@ public class P83_FindMinimumInRotatedSortedArray {
 
     /** Approach 1: look at every element. O(n) time, O(1) space. */
     static int bruteForce(int[] nums) {
-        int best = nums[0];
-        for (int v : nums) best = Math.min(best, v);
+        int best = nums[0];                           // smallest value seen so far
+        for (int v : nums) best = Math.min(best, v);  // check every element
         return best;
     }
 
     /** Approach 2: binary search; at each step take the minimum of the sorted half and discard that half. */
     static int optimal(int[] nums) {
-        int lo = 0, hi = nums.length - 1, ans = Integer.MAX_VALUE;
-        while (lo <= hi) {
+        int lo = 0, hi = nums.length - 1, ans = Integer.MAX_VALUE;   // ans: smallest value seen so far
+        while (lo <= hi) {                // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[lo] <= nums[hi]) {              // whole range sorted: its first element is the smallest
+            if (nums[lo] <= nums[hi]) {   // whole range sorted: its first element is the smallest
                 ans = Math.min(ans, nums[lo]);
-                break;
+                break;                    // nothing smaller can remain, so stop
             }
-            if (nums[lo] <= nums[mid]) {             // left half sorted: nums[lo] is its minimum, drop it
+            if (nums[lo] <= nums[mid]) {  // left half sorted: nums[lo] is its minimum, drop it
                 ans = Math.min(ans, nums[lo]);
-                lo = mid + 1;
-            } else {                                 // right half sorted: nums[mid] is its minimum, drop it
+                lo = mid + 1;             // continue in the right half
+            } else {                      // right half sorted: nums[mid] is its minimum, drop it
                 ans = Math.min(ans, nums[mid]);
-                hi = mid - 1;
+                hi = mid - 1;             // continue in the left part
             }
         }
         return ans;
@@ -33,12 +33,12 @@ public class P83_FindMinimumInRotatedSortedArray {
     /** Approach 3: compare mid with the right end; lo and hi converge on the minimum. O(log n) time, O(1) space. */
     static int optimalCompareRight(int[] nums) {
         int lo = 0, hi = nums.length - 1;
-        while (lo < hi) {
+        while (lo < hi) {                            // stop when one index is left: the minimum
             int mid = lo + (hi - lo) / 2;
             if (nums[mid] > nums[hi]) lo = mid + 1;  // the drop is strictly right of mid
             else hi = mid;                           // nums[mid] < nums[hi]: minimum is mid or left of it
         }
-        return nums[lo];
+        return nums[lo];                             // lo == hi: the minimum
     }
 
     // ---------------------------------------------------------------- tests

@@ -5,35 +5,35 @@ public class P91_FindNthRootOfANumber {
 
     /** Compares x^n with m without overflow: -1 if x^n < m, 0 if equal, 1 if greater. O(n) time. */
     static int comparePower(int x, int n, int m) {
-        long ans = 1;
+        long ans = 1;               // x^i built one factor at a time
         for (int i = 0; i < n; i++) {
             ans *= x;
-            if (ans > m) return 1;    // already too big; with x >= 1 it can only grow further
+            if (ans > m) return 1;  // already too big; with x >= 1 it can only grow further
         }
-        return ans == m ? 0 : -1;
+        return ans == m ? 0 : -1;   // exactly m, or still below it
     }
 
     /** Approach 1: try x = 1, 2, 3, ... until x^n reaches or passes m. O(m^(1/n) * n) time, O(1) space. */
     static int bruteForce(int n, int m) {
-        for (int x = 1; x <= m; x++) {
-            int c = comparePower(x, n, m);
-            if (c == 0) return x;
-            if (c > 0) return -1;     // x^n already exceeds m, so no larger x can work either
+        for (int x = 1; x <= m; x++) {      // try every candidate root
+            int c = comparePower(x, n, m);  // compare x^n with m
+            if (c == 0) return x;           // x^n == m: found the root
+            if (c > 0) return -1;           // x^n already exceeds m, so no larger x can work either
         }
-        return -1;
+        return -1;                          // no integer root exists
     }
 
     /** Approach 2: binary search on x in [1, m]; x^n grows with x, so the comparison is monotonic. O(n log m) time, O(1) space. */
     static int optimal(int n, int m) {
-        int lo = 1, hi = m;
-        while (lo <= hi) {
+        int lo = 1, hi = m;                   // the root, if any, lies in [1, m]
+        while (lo <= hi) {                    // search until the range is empty
             int mid = lo + (hi - lo) / 2;
-            int c = comparePower(mid, n, m);
-            if (c == 0) return mid;
-            if (c < 0) lo = mid + 1;
-            else hi = mid - 1;
+            int c = comparePower(mid, n, m);  // compare mid^n with m safely
+            if (c == 0) return mid;           // mid^n == m: found the root
+            if (c < 0) lo = mid + 1;          // mid^n < m: the root is larger
+            else hi = mid - 1;                // mid^n > m: the root is smaller
         }
-        return -1;
+        return -1;                            // no integer x has x^n == m
     }
 
     // ---------------------------------------------------------------- tests

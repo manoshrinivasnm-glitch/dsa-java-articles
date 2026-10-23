@@ -6,7 +6,7 @@ public class P88_SearchInRotatedSortedArrayII {
     /** Approach 1: linear scan. O(n) time, O(1) space. */
     static boolean bruteForce(int[] nums, int target) {
         for (int v : nums) {
-            if (v == target) return true;
+            if (v == target) return true;  // found it
         }
         return false;
     }
@@ -14,20 +14,20 @@ public class P88_SearchInRotatedSortedArrayII {
     /** Approach 2: binary search on the sorted half; shrink both ends when duplicates hide which half is sorted. */
     static boolean optimal(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1;
-        while (lo <= hi) {
+        while (lo <= hi) {                                         // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return true;
-            if (nums[lo] == nums[mid] && nums[mid] == nums[hi]) {   // cannot tell which half is sorted
-                lo++;                                                // both ends equal nums[mid] != target,
-                hi--;                                                // so dropping them loses nothing
+            if (nums[mid] == target) return true;                  // found target
+            if (nums[lo] == nums[mid] && nums[mid] == nums[hi]) {  // cannot tell which half is sorted
+                lo++;                                              // both ends equal nums[mid] != target,
+                hi--;                                              // so dropping them loses nothing
                 continue;
             }
-            if (nums[lo] <= nums[mid]) {                                  // left half [lo, mid] is sorted
-                if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;
-                else lo = mid + 1;
-            } else {                                                      // right half [mid, hi] is sorted
-                if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;
-                else hi = mid - 1;
+            if (nums[lo] <= nums[mid]) {                           // left half [lo, mid] is sorted
+                if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;   // target fits in the left half
+                else lo = mid + 1;                                 // otherwise it must be on the right
+            } else {                                               // right half [mid, hi] is sorted
+                if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;   // target fits in the right half
+                else hi = mid - 1;                                 // otherwise it must be on the left
             }
         }
         return false;

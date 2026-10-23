@@ -5,22 +5,22 @@ public class P82_UpperBound {
 
     /** Approach 1: scan from the left until an element > x shows up. O(n) time, O(1) space. */
     static int bruteForce(int[] arr, int x) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > x) return i;
+        for (int i = 0; i < arr.length; i++) {  // check indices from left to right
+            if (arr[i] > x) return i;           // the first element > x is the upper bound
         }
-        return arr.length;
+        return arr.length;                      // no element is larger than x
     }
 
     /** Approach 2: binary search that remembers the best candidate seen so far. O(log n) time, O(1) space. */
     static int optimal(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = arr.length;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (arr[mid] > x) {
-                ans = mid;            // mid qualifies; a smaller qualifying index may exist on the left
-                hi = mid - 1;
+        int lo = 0, hi = arr.length - 1, ans = arr.length;   // ans starts at n in case no element is larger
+        while (lo <= hi) {                 // search until the range [lo, hi] is empty
+            int mid = lo + (hi - lo) / 2;  // middle index, written to avoid int overflow
+            if (arr[mid] > x) {            // arr[mid] is strictly larger than x
+                ans = mid;                 // mid qualifies; a smaller qualifying index may exist on the left
+                hi = mid - 1;              // so keep searching in the left half
             } else {
-                lo = mid + 1;         // arr[mid] <= x, so every index <= mid is ruled out
+                lo = mid + 1;              // arr[mid] <= x, so every index <= mid is ruled out
             }
         }
         return ans;
@@ -28,18 +28,18 @@ public class P82_UpperBound {
 
     /** Approach 3: for integers, upperBound(x) == lowerBound(x + 1). O(log n) time, O(1) space. */
     static int viaLowerBound(int[] arr, int x) {
-        if (x == Integer.MAX_VALUE) return arr.length;   // no int is greater than x, and x + 1 would overflow
-        return lowerBound(arr, x + 1);
+        if (x == Integer.MAX_VALUE) return arr.length;  // no int is greater than x, and x + 1 would overflow
+        return lowerBound(arr, x + 1);                  // first index holding a value >= x + 1, i.e. > x
     }
 
-    private static int lowerBound(int[] arr, int x) {     // first index with arr[i] >= x, or n
-        int lo = 0, hi = arr.length;
-        while (lo < hi) {
+    private static int lowerBound(int[] arr, int x) {  // first index with arr[i] >= x, or n
+        int lo = 0, hi = arr.length;                   // half-open range [lo, hi); hi = n is a valid answer
+        while (lo < hi) {                              // stop when lo and hi meet at the answer
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) hi = mid;
-            else lo = mid + 1;
+            if (arr[mid] >= x) hi = mid;               // mid may be the answer: keep it in range
+            else lo = mid + 1;                         // arr[mid] < x: drop mid and everything left of it
         }
-        return lo;
+        return lo;                                     // lo == hi: first index with arr[i] >= x
     }
 
     // ---------------------------------------------------------------- tests

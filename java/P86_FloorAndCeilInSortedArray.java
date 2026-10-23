@@ -5,42 +5,43 @@ public class P86_FloorAndCeilInSortedArray {
 
     /** Approach 1: one linear pass that tracks both answers. O(n) time, O(1) space. */
     static int[] bruteForce(int[] arr, int x) {
-        int floor = -1, ceil = -1;
-        for (int v : arr) {
-            if (v <= x) floor = v;             // values only grow, so the last one <= x is the floor
-            if (v >= x) { ceil = v; break; }   // the first value >= x is the smallest such value
+        int floor = -1, ceil = -1;            // -1 means not found yet
+        for (int v : arr) {                   // values arrive in ascending order
+            if (v <= x) floor = v;            // values only grow, so the last one <= x is the floor
+            if (v >= x) { ceil = v; break; }  // the first value >= x is the smallest such value
         }
         return new int[]{floor, ceil};
     }
 
     /** Approach 2: two independent binary searches, one per answer. O(log n) time, O(1) space. */
     static int[] optimal(int[] arr, int x) {
+        // each answer gets its own O(log n) search
         return new int[]{floorBinarySearch(arr, x), ceilBinarySearch(arr, x)};
     }
 
     private static int floorBinarySearch(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;   // ans stays -1 if every value is > x
+        while (lo <= hi) {        // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] <= x) {
-                ans = arr[mid];       // candidate; a larger qualifying value may exist on the right
+            if (arr[mid] <= x) {  // arr[mid] can serve as the floor
+                ans = arr[mid];   // candidate; a larger qualifying value may exist on the right
                 lo = mid + 1;
             } else {
-                hi = mid - 1;         // arr[mid] > x, so everything from mid onward is too big
+                hi = mid - 1;     // arr[mid] > x, so everything from mid onward is too big
             }
         }
         return ans;
     }
 
     private static int ceilBinarySearch(int[] arr, int x) {
-        int lo = 0, hi = arr.length - 1, ans = -1;
-        while (lo <= hi) {
+        int lo = 0, hi = arr.length - 1, ans = -1;   // ans stays -1 if every value is < x
+        while (lo <= hi) {        // search until the range [lo, hi] is empty
             int mid = lo + (hi - lo) / 2;
-            if (arr[mid] >= x) {
-                ans = arr[mid];       // candidate; a smaller qualifying value may exist on the left
+            if (arr[mid] >= x) {  // arr[mid] can serve as the ceil
+                ans = arr[mid];   // candidate; a smaller qualifying value may exist on the left
                 hi = mid - 1;
             } else {
-                lo = mid + 1;         // arr[mid] < x, so everything up to mid is too small
+                lo = mid + 1;     // arr[mid] < x, so everything up to mid is too small
             }
         }
         return ans;
@@ -49,16 +50,16 @@ public class P86_FloorAndCeilInSortedArray {
     /** Approach 3: a single lower-bound search yields both answers. O(log n) time, O(1) space. */
     static int[] optimalLowerBound(int[] arr, int x) {
         int n = arr.length;
-        int lb = 0, hi = n;                           // lower bound: first index with arr[idx] >= x, or n
-        while (lb < hi) {
+        int lb = 0, hi = n;                      // lower bound: first index with arr[idx] >= x, or n
+        while (lb < hi) {                        // half-open search: lb and hi meet at the answer
             int mid = lb + (hi - lb) / 2;
-            if (arr[mid] >= x) hi = mid;
-            else lb = mid + 1;
+            if (arr[mid] >= x) hi = mid;         // mid may be the lower bound: keep it
+            else lb = mid + 1;                   // arr[mid] < x: drop mid
         }
-        int ceil = lb < n ? arr[lb] : -1;
+        int ceil = lb < n ? arr[lb] : -1;        // the lower bound holds the smallest value >= x
         int floor;
-        if (lb < n && arr[lb] == x) floor = x;        // x itself is present, so it is its own floor
-        else floor = lb > 0 ? arr[lb - 1] : -1;       // every index before lb holds a value < x
+        if (lb < n && arr[lb] == x) floor = x;   // x itself is present, so it is its own floor
+        else floor = lb > 0 ? arr[lb - 1] : -1;  // every index before lb holds a value < x
         return new int[]{floor, ceil};
     }
 
