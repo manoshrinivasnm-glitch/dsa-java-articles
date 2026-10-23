@@ -5,17 +5,17 @@ public class P2402_NumberOf1Bits {
 
     /** Approach 1: test each of the 32 bit positions. O(32) time, O(1) space. */
     static int bruteForce(int n) {
-        int count = 0;
-        for (int i = 0; i < 32; i++) {
-            if (((n >>> i) & 1) == 1) count++;
+        int count = 0;                             // 1 bits found so far
+        for (int i = 0; i < 32; i++) {             // every position of the 32-bit word
+            if (((n >>> i) & 1) == 1) count++;     // bit i is set
         }
         return count;
     }
 
     /** Approach 2: Brian Kernighan's loop, n & (n - 1) clears the lowest set bit. O(k) time for k set bits, O(1) space. */
     static int optimal(int n) {
-        int count = 0;
-        while (n != 0) {
+        int count = 0;      // 1 bits removed so far
+        while (n != 0) {    // one round per set bit
             n &= n - 1;     // drop the lowest 1
             count++;
         }

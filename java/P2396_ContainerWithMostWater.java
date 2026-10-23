@@ -5,10 +5,10 @@ public class P2396_ContainerWithMostWater {
 
     /** Approach 1: try every pair of lines. O(n^2) time, O(1) space. */
     static long bruteForce(int[] height) {
-        long best = 0;
-        for (int i = 0; i < height.length; i++) {
-            for (int j = i + 1; j < height.length; j++) {
-                long area = (long) Math.min(height[i], height[j]) * (j - i);
+        long best = 0;                                       // most water found so far
+        for (int i = 0; i < height.length; i++) {            // left line
+            for (int j = i + 1; j < height.length; j++) {    // right line, always to the right of i
+                long area = (long) Math.min(height[i], height[j]) * (j - i);   // shorter line times the width
                 best = Math.max(best, area);
             }
         }
@@ -17,13 +17,13 @@ public class P2396_ContainerWithMostWater {
 
     /** Approach 2: two pointers from the ends, always moving the shorter line inward. O(n) time, O(1) space. */
     static long optimal(int[] height) {
-        long best = 0;
-        int i = 0, j = height.length - 1;
-        while (i < j) {
-            long area = (long) Math.min(height[i], height[j]) * (j - i);
+        long best = 0;                                       // most water found so far
+        int i = 0, j = height.length - 1;                    // start with the widest pair
+        while (i < j) {                                      // until the pointers meet
+            long area = (long) Math.min(height[i], height[j]) * (j - i);   // shorter line times the width
             best = Math.max(best, area);
-            if (height[i] < height[j]) i++;                  // the shorter line cannot do better with any closer partner
-            else j--;
+            if (height[i] < height[j]) i++;                  // shorter left line: no closer partner helps it
+            else j--;                                        // right line is shorter (or equal): drop it
         }
         return best;
     }

@@ -5,11 +5,11 @@ public class P2393_CountingBits {
 
     /** Approach 1: count the bits of every number on its own with Kernighan's loop. O(n log n) time, O(1) extra space. */
     static int[] bruteForce(int n) {
-        int[] ans = new int[n + 1];
-        for (int i = 0; i <= n; i++) {
-            int x = i, count = 0;
-            while (x != 0) {
-                x &= x - 1;     // drop the lowest 1
+        int[] ans = new int[n + 1];         // ans[i]: number of 1 bits in i
+        for (int i = 0; i <= n; i++) {      // every number from 0 to n
+            int x = i, count = 0;           // count the bits of i on a copy
+            while (x != 0) {                // one round per set bit
+                x &= x - 1;                 // drop the lowest 1
                 count++;
             }
             ans[i] = count;
@@ -19,15 +19,15 @@ public class P2393_CountingBits {
 
     /** Approach 2: DP on the last bit. i >> 1 is i without its last bit and is smaller, so its answer is known. O(n) time, O(1) extra space. */
     static int[] optimalShift(int n) {
-        int[] ans = new int[n + 1];
-        for (int i = 1; i <= n; i++) ans[i] = ans[i >> 1] + (i & 1);
+        int[] ans = new int[n + 1];               // ans[i]: number of 1 bits in i; ans[0] = 0
+        for (int i = 1; i <= n; i++) ans[i] = ans[i >> 1] + (i & 1);   // bits of i / 2, plus i's last bit
         return ans;
     }
 
     /** Approach 3: DP on the lowest set bit. i & (i - 1) is i with its lowest 1 removed. O(n) time, O(1) extra space. */
     static int[] optimalLowestBit(int n) {
-        int[] ans = new int[n + 1];
-        for (int i = 1; i <= n; i++) ans[i] = ans[i & (i - 1)] + 1;
+        int[] ans = new int[n + 1];               // ans[i]: number of 1 bits in i; ans[0] = 0
+        for (int i = 1; i <= n; i++) ans[i] = ans[i & (i - 1)] + 1;   // i minus its lowest 1, plus that 1
         return ans;
     }
 

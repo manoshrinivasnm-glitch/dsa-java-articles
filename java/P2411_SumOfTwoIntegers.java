@@ -5,10 +5,10 @@ public class P2411_SumOfTwoIntegers {
 
     /** Approach 1: simulate a 32-bit ripple-carry adder, one bit position at a time. O(32) time, O(1) space. */
     static int rippleCarry(int a, int b) {
-        int result = 0, carry = 0;
+        int result = 0, carry = 0;                    // bits of the sum so far; carry is 0 or 1
         for (int mask = 1; mask != 0; mask <<= 1) {   // 32 rounds: after bit 31 the 1 falls off the top
-            int x = (a & mask) != 0 ? 1 : 0;
-            int y = (b & mask) != 0 ? 1 : 0;
+            int x = (a & mask) != 0 ? 1 : 0;          // bit of a at this position
+            int y = (b & mask) != 0 ? 1 : 0;          // bit of b at this position
             if ((x ^ y ^ carry) == 1) result |= mask;  // sum bit of a full adder
             carry = (x & y) | (carry & (x ^ y));       // carry into the next position
         }
@@ -17,7 +17,7 @@ public class P2411_SumOfTwoIntegers {
 
     /** Approach 2: XOR adds without carries, (a & b) << 1 is the carries; repeat until no carry is left. O(32) time, O(1) space. */
     static int optimal(int a, int b) {
-        while (b != 0) {
+        while (b != 0) {                // repeat until no carry is left
             int carry = (a & b) << 1;   // where both bits are 1, a carry moves one position left
             a = a ^ b;                  // add every position, ignoring carries
             b = carry;                  // the carries still have to be added
@@ -27,13 +27,13 @@ public class P2411_SumOfTwoIntegers {
 
     /** Approach 3: the same identity written recursively, a + b == (a ^ b) + ((a & b) << 1). O(32) time, O(32) stack. */
     static int recursive(int a, int b) {
-        if (b == 0) return a;
-        return recursive(a ^ b, (a & b) << 1);
+        if (b == 0) return a;                         // no carry left: a is the sum
+        return recursive(a ^ b, (a & b) << 1);        // sum without carries, plus the carries
     }
 
     /** Follow-up: a - b == a + (-b), and in two's complement -b == ~b + 1. */
     static int subtract(int a, int b) {
-        return optimal(a, optimal(~b, 1));
+        return optimal(a, optimal(~b, 1));            // ~b + 1 is -b; then add it to a
     }
 
     // ---------------------------------------------------------------- tests

@@ -5,31 +5,31 @@ public class P2392_ContainsDuplicate {
 
     /** Approach 1: compare every pair. O(n^2) time, O(1) space. */
     static boolean bruteForce(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] == nums[j]) return true;
+        for (int i = 0; i < nums.length; i++) {                  // first element of the pair
+            for (int j = i + 1; j < nums.length; j++) {          // later elements only: each pair once
+                if (nums[i] == nums[j]) return true;             // same value twice: duplicate found
             }
         }
-        return false;
+        return false;                                            // every pair differs
     }
 
     /** Approach 2: sort a copy, equal values become neighbours. O(n log n) time, O(n) space for the copy. */
     static boolean better(int[] nums) {
         int[] a = nums.clone();                                  // do not reorder the caller's array
-        Arrays.sort(a);
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] == a[i - 1]) return true;
+        Arrays.sort(a);                                          // equal values end up next to each other
+        for (int i = 1; i < a.length; i++) {                     // compare each value with its left neighbour
+            if (a[i] == a[i - 1]) return true;                   // two equal neighbours: duplicate
         }
-        return false;
+        return false;                                            // no neighbours matched
     }
 
     /** Approach 3: one pass with a HashSet. O(n) average time, O(n) space. */
     static boolean optimal(int[] nums) {
-        Set<Integer> seen = new HashSet<>();
+        Set<Integer> seen = new HashSet<>();                     // values met so far
         for (int x : nums) {
-            if (!seen.add(x)) return true;                       // add() returns false when x is already present
+            if (!seen.add(x)) return true;                       // add() is false when x was already there
         }
-        return false;
+        return false;                                            // every value was new
     }
 
     // ---------------------------------------------------------------- tests

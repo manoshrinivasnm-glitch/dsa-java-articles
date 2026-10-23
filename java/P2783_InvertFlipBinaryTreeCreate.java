@@ -11,36 +11,36 @@ public class P2783_InvertFlipBinaryTreeCreate {
 
     /** Approach 1: recursion, in place. Invert both subtrees, then swap them. O(n) time, O(h) stack. */
     static TreeNode recursive(TreeNode root) {
-        if (root == null) return null;
-        TreeNode left = recursive(root.left);
-        TreeNode right = recursive(root.right);
-        root.left = right;
-        root.right = left;
+        if (root == null) return null;            // empty subtree: nothing to flip
+        TreeNode left = recursive(root.left);     // mirror the left subtree first
+        TreeNode right = recursive(root.right);   // mirror the right subtree
+        root.left = right;                        // swap: the mirrored right goes on the left
+        root.right = left;                        // and the mirrored left goes on the right
         return root;
     }
 
     /** Approach 2: iterative BFS, in place. Visit every node once and swap its two children. O(n) time, O(w) space. */
     static TreeNode iterative(TreeNode root) {
-        if (root == null) return null;
-        Deque<TreeNode> queue = new ArrayDeque<>();
+        if (root == null) return null;                     // empty tree: nothing to flip
+        Deque<TreeNode> queue = new ArrayDeque<>();        // nodes whose children still need swapping
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            TreeNode tmp = node.left;           // swap the children of this node
+            TreeNode tmp = node.left;                      // swap the children of this node
             node.left = node.right;
             node.right = tmp;
-            if (node.left != null) queue.add(node.left);
+            if (node.left != null) queue.add(node.left);   // children get their own swap later
             if (node.right != null) queue.add(node.right);
         }
-        return root;
+        return root;                                       // the same root, now mirrored
     }
 
     /** Approach 3: create a new mirrored tree and leave the input untouched. O(n) time, O(n) new nodes plus O(h) stack. */
     static TreeNode createMirror(TreeNode root) {
-        if (root == null) return null;
-        TreeNode copy = new TreeNode(root.val);
-        copy.left = createMirror(root.right);   // the mirror's left side is built from the original's right side
-        copy.right = createMirror(root.left);
+        if (root == null) return null;            // empty subtree mirrors to empty
+        TreeNode copy = new TreeNode(root.val);   // a fresh node, so the input stays untouched
+        copy.left = createMirror(root.right);     // the mirror's left side comes from the original's right
+        copy.right = createMirror(root.left);     // and its right side from the original's left
         return copy;
     }
 

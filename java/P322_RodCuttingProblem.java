@@ -5,13 +5,14 @@ public class P322_RodCuttingProblem {
 
     /** Approach 1: try every length for the first piece, recurse on the rest. O(2^n) time, O(n) stack. */
     static int recursion(int[] price) {
-        return best(price.length, price);
+        return best(price.length, price);                        // best value for the whole rod
     }
 
     static int best(int len, int[] price) {
         if (len == 0) return 0;                                  // nothing left to sell
-        int result = 0;
+        int result = 0;                                          // best total over the choices tried so far
         for (int k = 1; k <= len; k++) {                         // first piece has length k
+            // sell a piece of length k, then cut the remaining len - k optimally
             result = Math.max(result, price[k - 1] + best(len - k, price));
         }
         return result;
@@ -19,31 +20,33 @@ public class P322_RodCuttingProblem {
 
     /** Approach 2: memoise best(len). O(n^2) time, O(n) space. */
     static int memoization(int[] price) {
-        int[] dp = new int[price.length + 1];
-        Arrays.fill(dp, -1);
-        return memo(price.length, price, dp);
+        int[] dp = new int[price.length + 1];                    // dp[len]: best value for a rod of length len
+        Arrays.fill(dp, -1);                                     // -1 marks "not computed yet"
+        return memo(price.length, price, dp);                    // best value for the whole rod
     }
 
     static int memo(int len, int[] price, int[] dp) {
-        if (len == 0) return 0;
-        if (dp[len] != -1) return dp[len];
-        int result = 0;
-        for (int k = 1; k <= len; k++) {
+        if (len == 0) return 0;                                  // nothing left to sell
+        if (dp[len] != -1) return dp[len];                       // solved before: reuse the stored answer
+        int result = 0;                                          // best total over the choices tried so far
+        for (int k = 1; k <= len; k++) {                         // first piece has length k
+            // sell a piece of length k, then cut the remaining len - k optimally
             result = Math.max(result, price[k - 1] + memo(len - k, price, dp));
         }
-        return dp[len] = result;
+        return dp[len] = result;                                 // store before returning
     }
 
     /** Approach 3: fill best[len] for len = 1..n bottom-up. O(n^2) time, O(n) space. */
     static int tabulation(int[] price) {
         int n = price.length;
-        int[] best = new int[n + 1];                             // best[len]: maximum value for a rod of length len
-        for (int len = 1; len <= n; len++) {
-            for (int k = 1; k <= len; k++) {
+        int[] best = new int[n + 1];                             // best[len]: max value for a rod of length len
+        for (int len = 1; len <= n; len++) {                     // shorter rods first: best[len - k] is ready
+            for (int k = 1; k <= len; k++) {                     // first piece has length k
+                // sell a piece of length k; the remaining len - k is already solved
                 best[len] = Math.max(best[len], price[k - 1] + best[len - k]);
             }
         }
-        return best[n];
+        return best[n];                                          // best value for the whole rod
     }
 
     // ---------------------------------------------------------------- tests

@@ -12,12 +12,14 @@ public class P2408_SubtreeOfAnotherTree {
     /** Approach 1: try every node of root as the top of a match and compare from there. O(n * m) time, O(h) stack. */
     static boolean bruteForce(TreeNode root, TreeNode subRoot) {
         if (subRoot == null) return true;           // the empty tree is a subtree of every tree
-        if (root == null) return false;
+        if (root == null) return false;             // root ran out but subRoot did not
+        // a match starts at this node, or somewhere in the left or right subtree
         return isSame(root, subRoot) || bruteForce(root.left, subRoot) || bruteForce(root.right, subRoot);
     }
 
     static boolean isSame(TreeNode p, TreeNode q) {
-        if (p == null || q == null) return p == q;
+        if (p == null || q == null) return p == q;   // equal only if both are missing
+        // same value here, and identical left and right subtrees
         return p.val == q.val && isSame(p.left, q.left) && isSame(p.right, q.right);
     }
 
@@ -25,42 +27,44 @@ public class P2408_SubtreeOfAnotherTree {
     static final long NULL = Long.MAX_VALUE;        // no int value can equal this marker
 
     static boolean optimal(TreeNode root, TreeNode subRoot) {
-        List<Long> text = new ArrayList<>(), pattern = new ArrayList<>();
+        List<Long> text = new ArrayList<>(), pattern = new ArrayList<>();   // preorder tokens of each tree
         serialize(root, text);
         serialize(subRoot, pattern);
-        return kmpContains(toArray(text), toArray(pattern));
+        return kmpContains(toArray(text), toArray(pattern));   // pattern found inside text -> subtree
     }
 
     static void serialize(TreeNode node, List<Long> out) {
-        if (node == null) {
-            out.add(NULL);
+        if (node == null) {                         // missing child
+            out.add(NULL);                          // the marker keeps different shapes apart
             return;
         }
-        out.add((long) node.val);
+        out.add((long) node.val);                   // preorder: the node, then left, then right
         serialize(node.left, out);
         serialize(node.right, out);
     }
 
     static long[] toArray(List<Long> list) {
         long[] a = new long[list.size()];
-        for (int i = 0; i < a.length; i++) a[i] = list.get(i);
+        for (int i = 0; i < a.length; i++) a[i] = list.get(i);   // unbox for fast comparisons
         return a;
     }
 
     static boolean kmpContains(long[] text, long[] pattern) {
         int m = pattern.length;
-        int[] lps = new int[m];        // lps[i]: longest proper prefix of pattern[0..i] that is also a suffix of it
-        int len = 0;
-        for (int i = 1; i < m; i++) {
+        // lps[i]: longest proper prefix of pattern[0..i] that is also a suffix of it
+        int[] lps = new int[m];
+        int len = 0;                                  // length of the prefix matched so far
+        for (int i = 1; i < m; i++) {                 // fill lps for every position
+            // mismatch: fall back to the next shorter prefix that still matches
             while (len > 0 && pattern[i] != pattern[len]) len = lps[len - 1];
-            if (pattern[i] == pattern[len]) len++;
+            if (pattern[i] == pattern[len]) len++;    // the matched prefix grows by one
             lps[i] = len;
         }
-        int j = 0;                     // how many pattern tokens the current window matches
-        for (long token : text) {
-            while (j > 0 && token != pattern[j]) j = lps[j - 1];
-            if (token == pattern[j]) j++;
-            if (j == m) return true;
+        int j = 0;                                    // how many pattern tokens the current window matches
+        for (long token : text) {                     // scan the text one token at a time
+            while (j > 0 && token != pattern[j]) j = lps[j - 1];   // mismatch: fall back to a shorter match
+            if (token == pattern[j]) j++;             // one more token matched
+            if (j == m) return true;                  // whole pattern matched: subRoot found
         }
         return false;
     }

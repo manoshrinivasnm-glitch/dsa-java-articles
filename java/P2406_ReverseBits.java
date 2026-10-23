@@ -5,15 +5,16 @@ public class P2406_ReverseBits {
 
     /** Approach 1: write n as a 32-character binary string, reverse the string, parse it back as unsigned. O(32) time, O(32) space. */
     static int bruteForce(int n) {
+        // all 32 bits, left-padded with zeros (toBinaryString drops leading zeros)
         String bits = String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0');
-        String reversed = new StringBuilder(bits).reverse().toString();
-        return Integer.parseUnsignedInt(reversed, 2);
+        String reversed = new StringBuilder(bits).reverse().toString();   // bit 0 now leads, bit 31 trails
+        return Integer.parseUnsignedInt(reversed, 2);            // unsigned, so a leading 1 cannot overflow
     }
 
     /** Approach 2: pop the lowest bit of n and push it onto the result, 32 times. O(32) time, O(1) space. */
     static int bitByBit(int n) {
-        int result = 0;
-        for (int i = 0; i < 32; i++) {
+        int result = 0;                         // n's bits read so far, in reverse order
+        for (int i = 0; i < 32; i++) {          // one round per bit
             result = (result << 1) | (n & 1);   // push n's lowest bit onto the right end of result
             n >>>= 1;                           // unsigned shift, so the sign bit is never copied in
         }
@@ -31,19 +32,19 @@ public class P2406_ReverseBits {
     }
 
     /** Approach 4 (called many times): reverse each of the 4 bytes with a 256-entry table built once. O(1) per call. */
-    static final int[] REVERSED_BYTE = buildByteTable();
+    static final int[] REVERSED_BYTE = buildByteTable();      // entry b: byte b with its 8 bits reversed
 
     static int[] buildByteTable() {
-        int[] table = new int[256];
+        int[] table = new int[256];                           // one entry per possible byte value
         for (int b = 0; b < 256; b++) table[b] = bitByBit(b) >>> 24;   // the 8 bits of b land in the top byte
         return table;
     }
 
     static int byteTable(int n) {
-        return (REVERSED_BYTE[n & 0xff] << 24)
-                | (REVERSED_BYTE[(n >>> 8) & 0xff] << 16)
-                | (REVERSED_BYTE[(n >>> 16) & 0xff] << 8)
-                | REVERSED_BYTE[n >>> 24];
+        return (REVERSED_BYTE[n & 0xff] << 24)                // byte 0 (lowest) -> byte 3 (highest)
+                | (REVERSED_BYTE[(n >>> 8) & 0xff] << 16)     // byte 1 -> byte 2
+                | (REVERSED_BYTE[(n >>> 16) & 0xff] << 8)     // byte 2 -> byte 1
+                | REVERSED_BYTE[n >>> 24];                    // byte 3 -> byte 0 (>>> keeps it 0..255)
     }
 
     // ---------------------------------------------------------------- tests

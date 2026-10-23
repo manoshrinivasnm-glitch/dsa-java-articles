@@ -7,10 +7,10 @@ public class P2404_ProductOfArrayExceptSelf {
     static int[] bruteForce(int[] nums) {
         int n = nums.length;
         int[] ans = new int[n];
-        for (int i = 0; i < n; i++) {
-            int p = 1;
+        for (int i = 0; i < n; i++) {                        // build the answer for index i
+            int p = 1;                                       // product of every element except nums[i]
             for (int j = 0; j < n; j++) {
-                if (j != i) p *= nums[j];
+                if (j != i) p *= nums[j];                    // leave nums[i] itself out
             }
             ans[i] = p;
         }
@@ -20,27 +20,29 @@ public class P2404_ProductOfArrayExceptSelf {
     /** Approach 2: prefix and suffix product arrays. O(n) time, O(n) extra space. */
     static int[] better(int[] nums) {
         int n = nums.length;
-        int[] prefix = new int[n], suffix = new int[n];      // prefix[i] = nums[0..i-1], suffix[i] = nums[i+1..n-1]
+        int[] prefix = new int[n], suffix = new int[n];      // products to the left / right of each index
+        // prefix[i]: product of everything left of i (the empty product 1 at i = 0)
         for (int i = 0; i < n; i++) prefix[i] = i == 0 ? 1 : prefix[i - 1] * nums[i - 1];
+        // suffix[i]: product of everything right of i (the empty product 1 at the end)
         for (int i = n - 1; i >= 0; i--) suffix[i] = i == n - 1 ? 1 : suffix[i + 1] * nums[i + 1];
         int[] ans = new int[n];
-        for (int i = 0; i < n; i++) ans[i] = prefix[i] * suffix[i];
+        for (int i = 0; i < n; i++) ans[i] = prefix[i] * suffix[i];   // left part times right part
         return ans;
     }
 
     /** Approach 3: prefix products in the output array, suffix as one running variable. O(n) time, O(1) extra space. */
     static int[] optimal(int[] nums) {
         int n = nums.length;
-        int[] ans = new int[n];
-        int left = 1;
+        int[] ans = new int[n];                              // holds left products first, then the answer
+        int left = 1;                                        // product of nums[0..i-1]
         for (int i = 0; i < n; i++) {                        // ans[i] = product of everything left of i
-            ans[i] = left;
-            left *= nums[i];
+            ans[i] = left;                                   // left part only, for now
+            left *= nums[i];                                 // include nums[i] for the next index
         }
-        int right = 1;
+        int right = 1;                                       // product of nums[i+1..n-1]
         for (int i = n - 1; i >= 0; i--) {                   // multiply in the product of everything right of i
-            ans[i] *= right;
-            right *= nums[i];
+            ans[i] *= right;                                 // times the right part: ans[i] is final
+            right *= nums[i];                                // include nums[i] for the index to the left
         }
         return ans;
     }

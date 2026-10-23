@@ -5,12 +5,12 @@ public class P2760_KadanesAlgorithmMaximumSubarraySum {
 
     /** Approach 1: every (i, j) pair, summing the subarray from scratch. O(n^3) time, O(1) space. */
     static long bruteForce(int[] nums) {
-        long best = Long.MIN_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length; j++) {
-                long sum = 0;
+        long best = Long.MIN_VALUE;                          // largest subarray sum seen so far
+        for (int i = 0; i < nums.length; i++) {              // subarray start
+            for (int j = i; j < nums.length; j++) {          // subarray end
+                long sum = 0;                                // sum of nums[i..j], rebuilt from scratch
                 for (int k = i; k <= j; k++) sum += nums[k];
-                best = Math.max(best, sum);
+                best = Math.max(best, sum);                  // keep the best
             }
         }
         return best;
@@ -18,12 +18,12 @@ public class P2760_KadanesAlgorithmMaximumSubarraySum {
 
     /** Approach 2: fix the start, extend the end while keeping a running sum. O(n^2) time, O(1) space. */
     static long better(int[] nums) {
-        long best = Long.MIN_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            long sum = 0;
-            for (int j = i; j < nums.length; j++) {
+        long best = Long.MIN_VALUE;                          // largest subarray sum seen so far
+        for (int i = 0; i < nums.length; i++) {              // subarray start
+            long sum = 0;                                    // running sum of nums[i..j]
+            for (int j = i; j < nums.length; j++) {          // grow the end one step at a time
                 sum += nums[j];                              // sum of nums[i..j] reuses nums[i..j-1]
-                best = Math.max(best, sum);
+                best = Math.max(best, sum);                  // every nums[i..j] is a candidate
             }
         }
         return best;
@@ -31,11 +31,11 @@ public class P2760_KadanesAlgorithmMaximumSubarraySum {
 
     /** Approach 3: Kadane - drop the running sum the moment it goes negative. O(n) time, O(1) space. */
     static long optimal(int[] nums) {
-        long best = Long.MIN_VALUE;
-        long cur = 0;                                        // best sum of a subarray ending at the current index
+        long best = Long.MIN_VALUE;                          // largest subarray sum seen so far
+        long cur = 0;                                        // best sum ending at the current index
         for (int x : nums) {
-            cur += x;
-            best = Math.max(best, cur);                      // record before resetting, so all-negative arrays work
+            cur += x;                                        // extend the subarray ending here by x
+            best = Math.max(best, cur);                      // record first, so an all-negative array works
             if (cur < 0) cur = 0;                            // a negative prefix can only hurt what comes next
         }
         return best;

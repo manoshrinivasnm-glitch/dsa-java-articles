@@ -5,9 +5,9 @@ public class P710_MeetingRoomsII {
 
     /** Approach 1: the busiest moment is always some meeting's start; count the meetings running at every start. O(n^2) time, O(1) space. */
     static int bruteForce(int[][] intervals) {
-        int best = 0;
-        for (int[] m : intervals) {
-            int t = m[0], running = 0;
+        int best = 0;                                           // most meetings running at once
+        for (int[] m : intervals) {                             // check the moment each meeting starts
+            int t = m[0], running = 0;                          // running: meetings in progress at t
             for (int[] other : intervals) {
                 if (other[0] <= t && t < other[1]) running++;   // other is in progress at time t
             }
@@ -18,30 +18,31 @@ public class P710_MeetingRoomsII {
 
     /** Approach 2: sort by start and keep a min-heap of end times, one entry per room in use. O(n log n) time, O(n) space. */
     static int minHeap(int[][] intervals) {
-        int[][] a = intervals.clone();
-        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));
-        PriorityQueue<Integer> ends = new PriorityQueue<>();      // end time of the meeting in each occupied room
+        int[][] a = intervals.clone();                            // sort a copy, keep the caller's order
+        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));    // handle meetings in start order
+        PriorityQueue<Integer> ends = new PriorityQueue<>();      // end time of each occupied room's meeting
         for (int[] m : a) {
-            if (!ends.isEmpty() && ends.peek() <= m[0]) ends.poll(); // the room that frees up first is free: reuse it
-            ends.add(m[1]);
+            // the room that frees up first is free: reuse it
+            if (!ends.isEmpty() && ends.peek() <= m[0]) ends.poll();
+            ends.add(m[1]);                                       // this meeting holds a room until m[1]
         }
-        return ends.size();                                        // the heap never shrinks, so this is its peak size
+        return ends.size();                                       // size never drops, so this is the peak
     }
 
     /** Approach 3: chronological sweep. Sort starts and ends separately and merge them as events. O(n log n) time, O(n) space. */
     static int sweep(int[][] intervals) {
         int n = intervals.length;
-        int[] starts = new int[n], ends = new int[n];
+        int[] starts = new int[n], ends = new int[n];   // start and end times, sorted separately
         for (int i = 0; i < n; i++) {
             starts[i] = intervals[i][0];
             ends[i] = intervals[i][1];
         }
-        Arrays.sort(starts);
-        Arrays.sort(ends);
-        int inUse = 0, best = 0, j = 0;
-        for (int i = 0; i < n; i++) {
+        Arrays.sort(starts);                 // starts in time order
+        Arrays.sort(ends);                   // ends in time order, no longer tied to their starts
+        int inUse = 0, best = 0, j = 0;      // rooms busy now, peak so far, next end to use
+        for (int i = 0; i < n; i++) {        // each start in time order
             while (ends[j] <= starts[i]) {   // meetings that ended by now give their rooms back (ends win ties)
-                inUse--;
+                inUse--;                     // a room frees up
                 j++;
             }
             inUse++;                         // the meeting starting at starts[i] takes a room

@@ -4,10 +4,10 @@ import java.util.*;
 public class P2854_PalindromePartitioningMCMVariation {
 
     static boolean isPalindrome(String s, int i, int j) {
-        while (i < j) {
-            if (s.charAt(i++) != s.charAt(j--)) return false;
+        while (i < j) {                                           // walk both ends toward the middle
+            if (s.charAt(i++) != s.charAt(j--)) return false;     // mismatched pair: not a palindrome
         }
-        return true;
+        return true;                                              // every pair matched
     }
 
     /** Approach 1: choose the first palindromic piece, recurse on the rest. Exponential time, O(n) stack. */
@@ -16,9 +16,10 @@ public class P2854_PalindromePartitioningMCMVariation {
     }
 
     static int pieces(int i, String s) {                          // fewest palindromic pieces for s[i..]
-        if (i == s.length()) return 0;
-        int best = Integer.MAX_VALUE;
-        for (int j = i; j < s.length(); j++) {
+        if (i == s.length()) return 0;                            // nothing left: no more pieces needed
+        int best = Integer.MAX_VALUE;                             // fewest pieces over every first-piece choice
+        for (int j = i; j < s.length(); j++) {                    // first piece is s[i..j]
+            // only a palindromic piece is allowed; then split the rest s[j+1..] as well as possible
             if (isPalindrome(s, i, j)) best = Math.min(best, 1 + pieces(j + 1, s));
         }
         return best;
@@ -26,52 +27,54 @@ public class P2854_PalindromePartitioningMCMVariation {
 
     /** Approach 2: memoise pieces(i). O(n^3) time worst case (n states, n ends, O(n) check), O(n) space. */
     static int memoization(String s) {
-        int[] dp = new int[s.length()];
-        Arrays.fill(dp, -1);
-        return memo(0, s, dp) - 1;
+        int[] dp = new int[s.length()];                           // dp[i]: fewest pieces for s[i..]
+        Arrays.fill(dp, -1);                                      // -1 marks "not computed yet"
+        return memo(0, s, dp) - 1;                                // cuts = pieces - 1
     }
 
     static int memo(int i, String s, int[] dp) {
-        if (i == s.length()) return 0;
-        if (dp[i] != -1) return dp[i];
-        int best = Integer.MAX_VALUE;
-        for (int j = i; j < s.length(); j++) {
+        if (i == s.length()) return 0;                            // nothing left: no more pieces needed
+        if (dp[i] != -1) return dp[i];                            // solved before: reuse the stored answer
+        int best = Integer.MAX_VALUE;                             // fewest pieces over every first-piece choice
+        for (int j = i; j < s.length(); j++) {                    // first piece is s[i..j]
+            // only a palindromic piece is allowed; then split the rest s[j+1..] as well as possible
             if (isPalindrome(s, i, j)) best = Math.min(best, 1 + memo(j + 1, s, dp));
         }
-        return dp[i] = best;
+        return dp[i] = best;                                      // store before returning
     }
 
     /** Approach 3: bottom-up from the right end. O(n^3) time worst case, O(n) space. */
     static int tabulation(String s) {
         int n = s.length();
         int[] dp = new int[n + 1];                                // dp[i]: fewest pieces for s[i..n-1]; dp[n] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            int best = Integer.MAX_VALUE;
-            for (int j = i; j < n; j++) {
+        for (int i = n - 1; i >= 0; i--) {                        // right to left, so dp[j + 1] is ready
+            int best = Integer.MAX_VALUE;                         // fewest pieces for s[i..]
+            for (int j = i; j < n; j++) {                         // first piece is s[i..j]
+                // a palindromic first piece s[i..j], then the best split of s[j+1..] from the table
                 if (isPalindrome(s, i, j)) best = Math.min(best, 1 + dp[j + 1]);
             }
             dp[i] = best;
         }
-        return dp[0] - 1;
+        return dp[0] - 1;                                         // cuts = pieces - 1
     }
 
     /** Approach 4: tabulation with an O(1) palindrome lookup built in the same loop. O(n^2) time, O(n^2) space. */
     static int optimal(String s) {
         int n = s.length();
         boolean[][] pal = new boolean[n][n];                      // pal[i][j]: s[i..j] is a palindrome
-        int[] dp = new int[n + 1];
-        for (int i = n - 1; i >= 0; i--) {
-            int best = Integer.MAX_VALUE;
-            for (int j = i; j < n; j++) {
+        int[] dp = new int[n + 1];                                // dp[i]: fewest pieces for s[i..n-1]
+        for (int i = n - 1; i >= 0; i--) {                        // right to left: row i + 1 is already done
+            int best = Integer.MAX_VALUE;                         // fewest pieces for s[i..]
+            for (int j = i; j < n; j++) {                         // first piece is s[i..j]
                 // ends match and the inside is empty, one character, or already known to be a palindrome
                 if (s.charAt(i) == s.charAt(j) && (j - i < 2 || pal[i + 1][j - 1])) {
-                    pal[i][j] = true;
-                    best = Math.min(best, 1 + dp[j + 1]);
+                    pal[i][j] = true;                             // remember it for the rows above
+                    best = Math.min(best, 1 + dp[j + 1]);         // s[i..j] works as the first piece
                 }
             }
             dp[i] = best;
         }
-        return dp[0] - 1;
+        return dp[0] - 1;                                         // cuts = pieces - 1
     }
 
     // ---------------------------------------------------------------- tests
