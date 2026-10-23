@@ -11,13 +11,13 @@ public class P2790_PreorderTraversal {
 
     /** Approach 1: recursion. O(n) time, O(h) call-stack space. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();   // collects the values in preorder
         preorder(root, out);
         return out;
     }
 
     static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;       // empty subtree: nothing to add
         out.add(node.val);              // 1. the node itself, before anything below it
         preorder(node.left, out);       // 2. its whole left subtree
         preorder(node.right, out);      // 3. then its whole right subtree
@@ -26,14 +26,14 @@ public class P2790_PreorderTraversal {
     /** Approach 2: explicit stack; push right before left so left is popped first. O(n) time, O(h) space. */
     static List<Integer> iterative(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        if (root == null) return out;                         // empty tree: empty answer
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes still to visit; the top is next
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();                      // pop the next node and visit it at once
             out.add(node.val);
             if (node.right != null) stack.push(node.right);   // LIFO: pushed first, processed last
-            if (node.left != null) stack.push(node.left);
+            if (node.left != null) stack.push(node.left);     // left on top: its subtree comes out next
         }
         return out;
     }

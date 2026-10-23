@@ -13,10 +13,10 @@ public class P103_InorderSuccessorAndPredecessorInBST {
 
     /** Approach 1: write the inorder (sorted) sequence to a list and scan it. O(n) time, O(n) space. */
     static int[] bruteForce(TreeNode root, int key) {
-        List<Integer> sorted = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>();                // all keys in ascending order
         collect(root, sorted);
-        int pred = NONE, succ = NONE;
-        for (int v : sorted) {
+        int pred = NONE, succ = NONE;                            // answers so far; NONE if missing
+        for (int v : sorted) {                                   // scan the sorted keys from smallest
             if (v < key) pred = v;                               // last value below key wins
             else if (v > key) { succ = v; break; }               // first value above key wins
         }
@@ -24,17 +24,17 @@ public class P103_InorderSuccessorAndPredecessorInBST {
     }
 
     static void collect(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                            // empty subtree: nothing to add
         collect(node.left, out);
-        out.add(node.val);
+        out.add(node.val);                                   // left, node, right: ascending order
         collect(node.right, out);
     }
 
     /** Approach 2: one descent; when key is found, finish with the extremes of its two subtrees. O(h) time, O(1) space. */
     static int[] oneDescent(TreeNode root, int key) {
-        int pred = NONE, succ = NONE;
+        int pred = NONE, succ = NONE;                            // best candidates seen on the path
         TreeNode cur = root;
-        while (cur != null) {
+        while (cur != null) {                                    // walk down from the root
             if (cur.val < key) {                                 // candidate predecessor, look for a larger one
                 pred = cur.val;
                 cur = cur.right;
@@ -52,7 +52,7 @@ public class P103_InorderSuccessorAndPredecessorInBST {
                     while (t.left != null) t = t.left;           // minimum of the right subtree
                     succ = t.val;
                 }
-                break;
+                break;                                           // missing subtree: the path candidate stands
             }
         }
         return new int[]{pred, succ};
@@ -60,12 +60,12 @@ public class P103_InorderSuccessorAndPredecessorInBST {
 
     /** Approach 3: two independent descents, one per answer; never needs the "found" case. O(h) time, O(1) space. */
     static int[] twoDescents(TreeNode root, int key) {
-        return new int[]{predecessor(root, key), successor(root, key)};
+        return new int[]{predecessor(root, key), successor(root, key)};   // one descent per answer
     }
 
     static int predecessor(TreeNode root, int key) {
-        int best = NONE;
-        for (TreeNode cur = root; cur != null; ) {
+        int best = NONE;                                         // largest value below key seen so far
+        for (TreeNode cur = root; cur != null; ) {               // one path from the root down
             if (cur.val < key) {
                 best = cur.val;                                  // valid, and everything left of it is smaller still
                 cur = cur.right;
@@ -77,13 +77,13 @@ public class P103_InorderSuccessorAndPredecessorInBST {
     }
 
     static int successor(TreeNode root, int key) {
-        int best = NONE;
-        for (TreeNode cur = root; cur != null; ) {
+        int best = NONE;                                     // smallest value above key seen so far
+        for (TreeNode cur = root; cur != null; ) {           // one path from the root down
             if (cur.val > key) {
-                best = cur.val;
+                best = cur.val;                              // valid; everything right of it is larger still
                 cur = cur.left;
             } else {
-                cur = cur.right;
+                cur = cur.right;                             // too small (or equal): answer is further right
             }
         }
         return best;

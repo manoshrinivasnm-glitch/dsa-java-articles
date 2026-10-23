@@ -11,46 +11,47 @@ public class P128_CheckForSymmetricalBTs {
 
     /** Approach 1: build a mirrored copy of the tree and compare it with the original. O(n) time, O(n) extra space. */
     static boolean mirrorAndCompare(TreeNode root) {
-        return identical(root, mirrorCopy(root));
+        return identical(root, mirrorCopy(root));   // symmetric exactly when it equals its own mirror
     }
 
     static TreeNode mirrorCopy(TreeNode node) {
-        if (node == null) return null;
-        TreeNode m = new TreeNode(node.val);
+        if (node == null) return null;                       // an empty subtree mirrors to an empty one
+        TreeNode m = new TreeNode(node.val);                 // same value, sides swapped below
         m.left = mirrorCopy(node.right);                     // children swap sides at every level
         m.right = mirrorCopy(node.left);
         return m;
     }
 
     static boolean identical(TreeNode a, TreeNode b) {
-        if (a == null || b == null) return a == b;
+        if (a == null || b == null) return a == b;   // both null: equal; exactly one null: not
+        // same value and the same subtrees on each side
         return a.val == b.val && identical(a.left, b.left) && identical(a.right, b.right);
     }
 
     /** Approach 2: recursively compare the left subtree with the right subtree as mirror images. O(n) time, O(h) space. */
     static boolean recursive(TreeNode root) {
-        return root == null || isMirror(root.left, root.right);
+        return root == null || isMirror(root.left, root.right);   // empty tree, or two mirrored halves
     }
 
     static boolean isMirror(TreeNode a, TreeNode b) {
         if (a == null || b == null) return a == b;           // both missing is fine, exactly one missing is not
-        return a.val == b.val
+        return a.val == b.val                                // mirrored nodes carry the same value
                 && isMirror(a.left, b.right)                 // outer pair
                 && isMirror(a.right, b.left);                // inner pair
     }
 
     /** Approach 3: the same pairwise comparison driven by a queue of node pairs. O(n) time, O(w) space. */
     static boolean iterative(TreeNode root) {
-        if (root == null) return true;
-        Deque<TreeNode[]> queue = new ArrayDeque<>();
-        queue.add(new TreeNode[]{root.left, root.right});
+        if (root == null) return true;                      // an empty tree is symmetric
+        Deque<TreeNode[]> queue = new ArrayDeque<>();       // pairs of nodes that must mirror each other
+        queue.add(new TreeNode[]{root.left, root.right});   // start with the two halves of the root
         while (!queue.isEmpty()) {
             TreeNode[] pair = queue.poll();
             TreeNode a = pair[0], b = pair[1];
-            if (a == null && b == null) continue;
-            if (a == null || b == null || a.val != b.val) return false;
-            queue.add(new TreeNode[]{a.left, b.right});
-            queue.add(new TreeNode[]{a.right, b.left});
+            if (a == null && b == null) continue;           // both missing: this pair matches
+            if (a == null || b == null || a.val != b.val) return false;   // shape or value differs
+            queue.add(new TreeNode[]{a.left, b.right});     // outer pair
+            queue.add(new TreeNode[]{a.right, b.left});     // inner pair
         }
         return true;
     }

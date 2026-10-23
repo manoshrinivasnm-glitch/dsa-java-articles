@@ -6,17 +6,17 @@ public class P2794_PalindromicSubstrings {
     /** Approach 1: check every substring with two pointers. O(n^3) time, O(1) extra space. */
     static int bruteForce(String s) {
         int n = s.length(), count = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                if (isPalindrome(s, i, j)) count++;
+        for (int i = 0; i < n; i++) {                 // every start index
+            for (int j = i; j < n; j++) {             // every end index from i onward
+                if (isPalindrome(s, i, j)) count++;   // each palindromic s[i..j] counts once
             }
         }
         return count;
     }
 
     static boolean isPalindrome(String s, int lo, int hi) {
-        while (lo < hi) {
-            if (s.charAt(lo++) != s.charAt(hi--)) return false;
+        while (lo < hi) {                                         // walk both ends toward the middle
+            if (s.charAt(lo++) != s.charAt(hi--)) return false;   // a mismatched pair means not a palindrome
         }
         return true;
     }
@@ -24,11 +24,12 @@ public class P2794_PalindromicSubstrings {
     /** Approach 2: pal[i][j] from pal[i+1][j-1], i from right to left so the inner range is ready. O(n^2) time and space. */
     static int better(String s) {
         int n = s.length(), count = 0;
-        boolean[][] pal = new boolean[n][n];
-        for (int i = n - 1; i >= 0; i--) {
+        boolean[][] pal = new boolean[n][n];   // pal[i][j] is true when s[i..j] is a palindrome
+        for (int i = n - 1; i >= 0; i--) {     // right to left, so row i + 1 is already filled
             for (int j = i; j < n; j++) {
+                // ends match and the inside is a palindrome (or too short to matter)
                 pal[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 2 || pal[i + 1][j - 1]);
-                if (pal[i][j]) count++;
+                if (pal[i][j]) count++;        // count every palindromic substring
             }
         }
         return count;
@@ -46,9 +47,10 @@ public class P2794_PalindromicSubstrings {
 
     /** Each successful expansion step uncovers exactly one new palindrome around this centre. */
     static int countFrom(String s, int lo, int hi) {
-        int found = 0;
+        int found = 0;   // palindromes found around this centre
+        // ends still match: s[lo..hi] is a palindrome
         while (lo >= 0 && hi < s.length() && s.charAt(lo) == s.charAt(hi)) {
-            found++;
+            found++;     // count it, then widen by one on each side
             lo--;
             hi++;
         }

@@ -11,29 +11,29 @@ public class P138_MorrisPreorderTraversal {
 
     /** Approach 1: recursion. O(n) time, O(h) call-stack space. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();   // collects the values in preorder
         preorder(root, out);
         return out;
     }
 
     static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        out.add(node.val);
-        preorder(node.left, out);
-        preorder(node.right, out);
+        if (node == null) return;    // empty subtree: nothing to add
+        out.add(node.val);           // the node itself first
+        preorder(node.left, out);    // then its whole left subtree
+        preorder(node.right, out);   // then its whole right subtree
     }
 
     /** Approach 2: explicit stack, right child pushed before left. O(n) time, O(h) space. */
     static List<Integer> iterative(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        if (root == null) return out;                         // empty tree: empty answer
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes still to visit; the top is next
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();                      // pop the next node and visit it at once
             out.add(node.val);
-            if (node.right != null) stack.push(node.right);
-            if (node.left != null) stack.push(node.left);
+            if (node.right != null) stack.push(node.right);   // pushed first, so popped after the left side
+            if (node.left != null) stack.push(node.left);     // left on top: its subtree comes out next
         }
         return out;
     }
@@ -41,22 +41,23 @@ public class P138_MorrisPreorderTraversal {
     /** Approach 3: Morris traversal; record a node on its first arrival. O(n) time, O(1) extra space. */
     static List<Integer> morris(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        TreeNode cur = root;
-        while (cur != null) {
+        TreeNode cur = root;                         // current node of the walk
+        while (cur != null) {                        // the walk ends after the rightmost node
             if (cur.left == null) {                  // no left subtree: visit and move right
                 out.add(cur.val);
                 cur = cur.right;                     // real child or a thread back up
                 continue;
             }
             TreeNode pred = cur.left;                // rightmost node of the left subtree
+            // walk to the rightmost node, stopping if it already threads back to cur
             while (pred.right != null && pred.right != cur) pred = pred.right;
             if (pred.right == null) {                // first arrival: preorder visits the node now
                 out.add(cur.val);
                 pred.right = cur;                    // thread to find the way back after the left subtree
-                cur = cur.left;
+                cur = cur.left;                      // go explore the left subtree
             } else {                                 // second arrival: already visited, just clean up
-                pred.right = null;
-                cur = cur.right;
+                pred.right = null;                   // remove the thread, restoring the tree
+                cur = cur.right;                     // left side done: move to the right subtree
             }
         }
         return out;

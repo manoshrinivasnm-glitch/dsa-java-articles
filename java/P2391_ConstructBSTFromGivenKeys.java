@@ -11,23 +11,23 @@ public class P2391_ConstructBSTFromGivenKeys {
 
     /** Approach 1: middle key becomes the root; recurse on copied halves. O(n log n) time, O(n) extra space. */
     static TreeNode bruteForce(int[] keys) {
-        if (keys.length == 0) return null;
+        if (keys.length == 0) return null;                                // no keys: empty subtree
         int mid = (keys.length - 1) / 2;                                  // left-middle for even lengths
-        TreeNode root = new TreeNode(keys[mid]);
-        root.left = bruteForce(Arrays.copyOfRange(keys, 0, mid));
-        root.right = bruteForce(Arrays.copyOfRange(keys, mid + 1, keys.length));
+        TreeNode root = new TreeNode(keys[mid]);                          // middle key is the root
+        root.left = bruteForce(Arrays.copyOfRange(keys, 0, mid));         // the smaller keys
+        root.right = bruteForce(Arrays.copyOfRange(keys, mid + 1, keys.length));   // the larger keys
         return root;
     }
 
     /** Approach 2: same idea on index bounds, no copying. O(n) time, O(log n) stack. */
     static TreeNode optimal(int[] keys) {
-        return build(keys, 0, keys.length - 1);
+        return build(keys, 0, keys.length - 1);   // build from the whole array
     }
 
     static TreeNode build(int[] keys, int lo, int hi) {
-        if (lo > hi) return null;
+        if (lo > hi) return null;                                        // empty range: no subtree
         int mid = lo + (hi - lo) / 2;                                     // same left-middle choice as above
-        TreeNode root = new TreeNode(keys[mid]);
+        TreeNode root = new TreeNode(keys[mid]);                         // middle key is the root
         root.left = build(keys, lo, mid - 1);                            // keys smaller than keys[mid]
         root.right = build(keys, mid + 1, hi);                           // keys larger than keys[mid]
         return root;

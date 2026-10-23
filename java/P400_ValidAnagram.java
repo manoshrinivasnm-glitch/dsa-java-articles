@@ -5,53 +5,53 @@ public class P400_ValidAnagram {
 
     /** Approach 1: for each letter of s, cross off one unused equal letter of t. O(n^2) time, O(n) space. */
     static boolean bruteForce(String s, String t) {
-        if (s.length() != t.length()) return false;
-        boolean[] used = new boolean[t.length()];
-        for (int i = 0; i < s.length(); i++) {
+        if (s.length() != t.length()) return false;     // different lengths can never be anagrams
+        boolean[] used = new boolean[t.length()];       // used[j]: letter j of t is already matched
+        for (int i = 0; i < s.length(); i++) {          // match each letter of s in turn
             boolean found = false;
             for (int j = 0; j < t.length(); j++) {
-                if (!used[j] && t.charAt(j) == s.charAt(i)) {
+                if (!used[j] && t.charAt(j) == s.charAt(i)) {   // an unspent equal letter in t
                     used[j] = true;                     // this letter of t is now spent
                     found = true;
                     break;
                 }
             }
-            if (!found) return false;
+            if (!found) return false;                   // no partner left for s[i]
         }
-        return true;
+        return true;                                    // every letter of s found a partner
     }
 
     /** Approach 2: anagrams become the same string once their letters are sorted. O(n log n) time, O(n) space. */
     static boolean better(String s, String t) {
-        if (s.length() != t.length()) return false;
+        if (s.length() != t.length()) return false;   // different lengths can never be anagrams
         char[] a = s.toCharArray(), b = t.toCharArray();
-        Arrays.sort(a);
+        Arrays.sort(a);                               // sort both letter arrays
         Arrays.sort(b);
-        return Arrays.equals(a, b);
+        return Arrays.equals(a, b);                   // anagrams sort to the same sequence
     }
 
     /** Approach 3: one array of 26 counters, +1 for s and -1 for t; all must end at zero. O(n) time, O(1) space. */
     static boolean optimal(String s, String t) {
-        if (s.length() != t.length()) return false;
-        int[] count = new int[26];
+        if (s.length() != t.length()) return false;   // different lengths can never be anagrams
+        int[] count = new int[26];                    // letter balance: +1 for s, -1 for t
         for (int i = 0; i < s.length(); i++) {
             count[s.charAt(i) - 'a']++;
             count[t.charAt(i) - 'a']--;
         }
         for (int c : count) {
-            if (c != 0) return false;
+            if (c != 0) return false;                 // a letter occurs more often in one string
         }
         return true;
     }
 
     /** Follow-up: arbitrary Unicode. Count code points (not chars) in a hash map. O(n) time, O(distinct symbols) space. */
     static boolean unicode(String s, String t) {
-        Map<Integer, Integer> count = new HashMap<>();
-        s.codePoints().forEach(cp -> count.merge(cp, 1, Integer::sum));
-        for (int cp : t.codePoints().toArray()) {
+        Map<Integer, Integer> count = new HashMap<>();   // code point -> copies still unmatched
+        s.codePoints().forEach(cp -> count.merge(cp, 1, Integer::sum));   // count every code point of s
+        for (int cp : t.codePoints().toArray()) {       // spend one copy per code point of t
             Integer c = count.get(cp);
             if (c == null) return false;                // t uses a symbol s has run out of
-            if (c == 1) count.remove(cp);
+            if (c == 1) count.remove(cp);               // last copy spent: drop the key
             else count.put(cp, c - 1);
         }
         return count.isEmpty();                         // anything left over appears in s but not in t

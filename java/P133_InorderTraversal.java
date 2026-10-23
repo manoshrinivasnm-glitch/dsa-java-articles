@@ -11,13 +11,13 @@ public class P133_InorderTraversal {
 
     /** Approach 1: recursion. O(n) time, O(h) call-stack space. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();   // collects the values in inorder
         inorder(root, out);
         return out;
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;      // empty subtree: nothing to add
         inorder(node.left, out);       // 1. everything smaller in a BST, everything "before" in general
         out.add(node.val);             // 2. the node itself
         inorder(node.right, out);      // 3. everything after
@@ -26,9 +26,9 @@ public class P133_InorderTraversal {
     /** Approach 2: explicit stack that plays the role of the call stack. O(n) time, O(h) space. */
     static List<Integer> iterative(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
+        Deque<TreeNode> stack = new ArrayDeque<>();   // nodes still waiting to be visited
+        TreeNode cur = root;               // next node to explore
+        while (cur != null || !stack.isEmpty()) {   // something left to explore or to visit
             while (cur != null) {          // push the whole left spine; each node waits for its left subtree
                 stack.push(cur);
                 cur = cur.left;

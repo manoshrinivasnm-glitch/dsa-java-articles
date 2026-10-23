@@ -11,33 +11,39 @@ public class P109_ConstructABTFromPostorderAndInorder {
 
     /** Approach 1: recursion, root located in inorder by a linear scan. O(n^2) worst-case time, O(h) extra space. */
     static TreeNode bruteForce(int[] inorder, int[] postorder) {
+        // build from the full ranges of both arrays
         return buildScan(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
 
     static TreeNode buildScan(int[] in, int inLo, int inHi, int[] post, int postLo, int postHi) {
-        if (inLo > inHi) return null;
+        if (inLo > inHi) return null;                        // empty range: no subtree
         TreeNode root = new TreeNode(post[postHi]);          // postorder ends with the root
-        int k = inLo;
+        int k = inLo;                                        // search inorder for the root
         while (in[k] != root.val) k++;                       // root splits inorder into left | root | right
-        int leftSize = k - inLo;
+        int leftSize = k - inLo;                             // number of nodes in the left subtree
+        // left subtree: the first leftSize entries of the postorder range
         root.left = buildScan(in, inLo, k - 1, post, postLo, postLo + leftSize - 1);
+        // right subtree: the rest of the range, minus the root at the end
         root.right = buildScan(in, k + 1, inHi, post, postLo + leftSize, postHi - 1);
         return root;
     }
 
     /** Approach 2: same recursion, root positions taken from a HashMap. O(n) time, O(n) space. */
     static TreeNode optimal(int[] inorder, int[] postorder) {
-        Map<Integer, Integer> pos = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) pos.put(inorder[i], i);
+        Map<Integer, Integer> pos = new HashMap<>();                       // value -> its index in inorder
+        for (int i = 0; i < inorder.length; i++) pos.put(inorder[i], i);   // index every value once
+        // build from the full ranges of both arrays
         return buildMap(0, inorder.length - 1, postorder, 0, postorder.length - 1, pos);
     }
 
     static TreeNode buildMap(int inLo, int inHi, int[] post, int postLo, int postHi, Map<Integer, Integer> pos) {
-        if (inLo > inHi) return null;
-        TreeNode root = new TreeNode(post[postHi]);
+        if (inLo > inHi) return null;                        // empty range: no subtree
+        TreeNode root = new TreeNode(post[postHi]);          // postorder ends with the root
         int k = pos.get(root.val);                           // O(1) instead of a scan
-        int leftSize = k - inLo;
+        int leftSize = k - inLo;                             // number of nodes in the left subtree
+        // left subtree: the first leftSize entries of the postorder range
         root.left = buildMap(inLo, k - 1, post, postLo, postLo + leftSize - 1, pos);
+        // right subtree: the rest of the range, minus the root at the end
         root.right = buildMap(k + 1, inHi, post, postLo + leftSize, postHi - 1, pos);
         return root;
     }

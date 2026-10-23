@@ -5,24 +5,25 @@ public class P198_CompareVersionNumbers {
 
     /** Approach 1: split on '.', parse each revision, pad the shorter list with zeros. O(n + m) time and space. */
     static int splitAndParse(String version1, String version2) {
-        String[] a = version1.split("\\."), b = version2.split("\\.");
-        int len = Math.max(a.length, b.length);
+        String[] a = version1.split("\\."), b = version2.split("\\.");   // the revisions of each version
+        int len = Math.max(a.length, b.length);                  // compare up to the longer revision list
         for (int i = 0; i < len; i++) {
             int x = i < a.length ? Integer.parseInt(a[i]) : 0;   // parseInt drops leading zeros: "001" -> 1
             int y = i < b.length ? Integer.parseInt(b[i]) : 0;
-            if (x != y) return x < y ? -1 : 1;
+            if (x != y) return x < y ? -1 : 1;                   // first unequal revision decides
         }
-        return 0;
+        return 0;                                                // every revision is equal
     }
 
     /** Approach 2: walk both strings with two pointers, building one revision at a time. O(n + m) time, O(1) space. */
     static int optimal(String version1, String version2) {
-        int i = 0, j = 0, n = version1.length(), m = version2.length();
-        while (i < n || j < m) {
+        int i = 0, j = 0, n = version1.length(), m = version2.length();   // one pointer per version string
+        while (i < n || j < m) {                                 // until both strings are used up
             int x = 0, y = 0;                                    // an exhausted string contributes 0
+            // parse the next revision of each version, stopping at '.' or the end
             while (i < n && version1.charAt(i) != '.') x = x * 10 + (version1.charAt(i++) - '0');
             while (j < m && version2.charAt(j) != '.') y = y * 10 + (version2.charAt(j++) - '0');
-            if (x != y) return x < y ? -1 : 1;
+            if (x != y) return x < y ? -1 : 1;                   // first unequal revision decides
             i++;                                                 // step over the '.' (or past the end)
             j++;
         }
@@ -31,20 +32,20 @@ public class P198_CompareVersionNumbers {
 
     /** Approach 3: never convert. Strip leading zeros, then more digits wins, else compare digit by digit. O(n + m) time, O(1) space. */
     static int digitStrings(String version1, String version2) {
-        int i = 0, j = 0, n = version1.length(), m = version2.length();
-        while (i < n || j < m) {
+        int i = 0, j = 0, n = version1.length(), m = version2.length();   // one pointer per version string
+        while (i < n || j < m) {                                 // until both strings are used up
             while (i < n && version1.charAt(i) == '0') i++;      // leading zeros carry no value
             while (j < m && version2.charAt(j) == '0') j++;
-            int si = i, sj = j;
-            while (i < n && version1.charAt(i) != '.') i++;
+            int si = i, sj = j;                                  // first significant digit of each revision
+            while (i < n && version1.charAt(i) != '.') i++;      // move to the end of this revision
             while (j < m && version2.charAt(j) != '.') j++;
             int lenX = i - si, lenY = j - sj;                    // number of significant digits (0 means the value 0)
-            if (lenX != lenY) return lenX < lenY ? -1 : 1;
+            if (lenX != lenY) return lenX < lenY ? -1 : 1;       // more significant digits wins
             for (int k = 0; k < lenX; k++) {                     // same length: the first differing digit decides
                 char cx = version1.charAt(si + k), cy = version2.charAt(sj + k);
                 if (cx != cy) return cx < cy ? -1 : 1;
             }
-            i++;
+            i++;                                                 // step over the '.' (or past the end)
             j++;
         }
         return 0;

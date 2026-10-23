@@ -11,17 +11,17 @@ public class P823_PopulatingNextRightPointersInEachNode {
 
     /** Approach 1: level order traversal with a queue; link each node to the one dequeued after it. O(n) time, O(n) space. */
     static Node levelOrder(Node root) {
-        if (root == null) return null;
-        Deque<Node> queue = new ArrayDeque<>();
+        if (root == null) return null;                       // empty tree: nothing to link
+        Deque<Node> queue = new ArrayDeque<>();              // nodes of the coming levels, in level order
         queue.add(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            Node prev = null;
+        while (!queue.isEmpty()) {                           // one iteration per level
+            int size = queue.size();                         // exactly the nodes of the current level
+            Node prev = null;                                // previous node on this level, if any
             for (int i = 0; i < size; i++) {
                 Node node = queue.poll();
                 if (prev != null) prev.next = node;          // the last node of the level keeps next == null
-                prev = node;
-                if (node.left != null) queue.add(node.left);
+                prev = node;                                 // node is the left neighbour of the next one
+                if (node.left != null) queue.add(node.left);   // children form the next level
                 if (node.right != null) queue.add(node.right);
             }
         }
@@ -30,7 +30,7 @@ public class P823_PopulatingNextRightPointersInEachNode {
 
     /** Approach 2: recursion; a node wires its own children, using its next pointer for the gap between cousins. O(n) time, O(log n) stack. */
     static Node recursive(Node root) {
-        connect(root);
+        connect(root);   // wire every level; root.next stays null
         return root;
     }
 
@@ -38,17 +38,17 @@ public class P823_PopulatingNextRightPointersInEachNode {
         if (node == null || node.left == null) return;      // perfect tree: no left child means a leaf
         node.left.next = node.right;                         // siblings
         if (node.next != null) node.right.next = node.next.left;   // cousins across the parent boundary
-        connect(node.left);
-        connect(node.right);
+        connect(node.left);                                 // wire the levels below, left half
+        connect(node.right);                                // then the right half
     }
 
     /** Approach 3: walk each level as a linked list (already built) and wire the level below. O(n) time, O(1) extra space. */
     static Node optimal(Node root) {
-        Node leftmost = root;
-        while (leftmost != null && leftmost.left != null) {
-            for (Node cur = leftmost; cur != null; cur = cur.next) {
-                cur.left.next = cur.right;
-                if (cur.next != null) cur.right.next = cur.next.left;
+        Node leftmost = root;                                // first node of the level being walked
+        while (leftmost != null && leftmost.left != null) {   // stop at the leaves: no level below
+            for (Node cur = leftmost; cur != null; cur = cur.next) {   // walk this level via next pointers
+                cur.left.next = cur.right;                   // siblings
+                if (cur.next != null) cur.right.next = cur.next.left;   // cousins across the parent boundary
             }
             leftmost = leftmost.left;                        // first node of the next level
         }

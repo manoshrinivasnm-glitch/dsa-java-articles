@@ -6,15 +6,15 @@ public class P312_MinimumInsertionsToMakeStringPalindrome {
     /** Approach 1: test prefixes from the longest down; the first palindrome is the one to keep. O(n^2) time, O(1) space. */
     static int bruteForce(String s) {
         int n = s.length();
-        for (int k = n; k > 0; k--) {
+        for (int k = n; k > 0; k--) {                      // try the longest prefix first
             if (isPalindrome(s, 0, k - 1)) return n - k;   // keep s[0..k), mirror the other n - k characters in front
         }
         return 0;                                          // only reached when s is empty
     }
 
     static boolean isPalindrome(String s, int lo, int hi) {
-        while (lo < hi) {
-            if (s.charAt(lo++) != s.charAt(hi--)) return false;
+        while (lo < hi) {                                         // walk both ends toward the middle
+            if (s.charAt(lo++) != s.charAt(hi--)) return false;   // a mismatched pair means not a palindrome
         }
         return true;
     }
@@ -22,6 +22,7 @@ public class P312_MinimumInsertionsToMakeStringPalindrome {
     /** Approach 2: rolling hashes of each prefix read forwards and backwards; equal hashes mean a palindrome. O(n) time, O(1) space. */
     static int rollingHash(String s) {
         final long B = 131, M1 = 1_000_000_007L, M2 = 998_244_353L;   // base and two prime moduli
+        // forward/reverse hashes and powers of B, per modulus
         long fwd1 = 0, fwd2 = 0, rev1 = 0, rev2 = 0, pow1 = 1, pow2 = 1;
         int best = 0;                                      // longest palindromic prefix found so far
         for (int i = 0; i < s.length(); i++) {
@@ -30,26 +31,27 @@ public class P312_MinimumInsertionsToMakeStringPalindrome {
             fwd2 = (fwd2 * B + c) % M2;
             rev1 = (rev1 + c * pow1) % M1;                 // s[0..i] read right to left: new character is the highest power
             rev2 = (rev2 + c * pow2) % M2;
-            pow1 = pow1 * B % M1;
+            pow1 = pow1 * B % M1;                          // weight for the next reverse-hash digit
             pow2 = pow2 * B % M2;
-            if (fwd1 == rev1 && fwd2 == rev2) best = i + 1;
+            if (fwd1 == rev1 && fwd2 == rev2) best = i + 1;   // both hashes agree: s[0..i] is a palindrome
         }
-        return s.length() - best;
+        return s.length() - best;                          // mirror everything after that prefix in front
     }
 
     /** Approach 3: KMP prefix function of s + '$' + reverse(s); its last value is the longest palindromic prefix. O(n) time and space. */
     static int optimal(String s) {
         int n = s.length();
-        if (n == 0) return 0;
+        if (n == 0) return 0;                                  // empty string is already a palindrome
         String t = s + '$' + new StringBuilder(s).reverse();   // '$' must not occur in s
-        int[] lps = new int[t.length()];
-        int len = 0;
+        int[] lps = new int[t.length()];                       // border lengths of t, as in KMP
+        int len = 0;                                           // length of the prefix currently matched
         for (int i = 1; i < t.length(); i++) {
+            // mismatch: fall back to a shorter border
             while (len > 0 && t.charAt(i) != t.charAt(len)) len = lps[len - 1];
-            if (t.charAt(i) == t.charAt(len)) len++;
-            lps[i] = len;
+            if (t.charAt(i) == t.charAt(len)) len++;           // next character extends the border
+            lps[i] = len;                                      // border length for t[0..i]
         }
-        return n - lps[t.length() - 1];
+        return n - lps[t.length() - 1];                        // last lps = longest palindromic prefix of s
     }
 
     // ---------------------------------------------------------------- tests

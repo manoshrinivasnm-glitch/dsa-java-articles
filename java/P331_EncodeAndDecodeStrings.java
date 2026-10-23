@@ -5,12 +5,12 @@ public class P331_EncodeAndDecodeStrings {
 
     /** Approach 1 (encode): double every '#' inside a word, then end the word with "#;". O(total length) time. */
     static String encodeEscaped(List<String> strs) {
-        StringBuilder sb = new StringBuilder();
-        for (String s : strs) {
+        StringBuilder sb = new StringBuilder();         // the single encoded string
+        for (String s : strs) {                         // encode each word in order
             for (int i = 0; i < s.length(); i++) {
                 char c = s.charAt(i);
                 if (c == '#') sb.append("##");          // escaped '#'
-                else sb.append(c);
+                else sb.append(c);                      // any other character is copied as is
             }
             sb.append("#;");                            // '#' followed by anything except '#' ends a word
         }
@@ -19,21 +19,21 @@ public class P331_EncodeAndDecodeStrings {
 
     /** Approach 1 (decode): read left to right; "##" is a literal '#', "#;" closes the current word. O(total length) time. */
     static List<String> decodeEscaped(String s) {
-        List<String> out = new ArrayList<>();
-        StringBuilder cur = new StringBuilder();
-        int i = 0;
+        List<String> out = new ArrayList<>();           // decoded words
+        StringBuilder cur = new StringBuilder();        // the word being rebuilt
+        int i = 0;                                      // read position in the encoded string
         while (i < s.length()) {
             char c = s.charAt(i);
-            if (c != '#') {
+            if (c != '#') {                             // ordinary character: part of the word
                 cur.append(c);
                 i++;
             } else if (s.charAt(i + 1) == '#') {        // a '#' is never the last character of a valid encoding
                 cur.append('#');
-                i += 2;
-            } else {
+                i += 2;                                 // skip the escaped pair
+            } else {                                    // "#;": the current word is finished
                 out.add(cur.toString());
-                cur.setLength(0);
-                i += 2;
+                cur.setLength(0);                       // start an empty next word
+                i += 2;                                 // skip both characters of "#;"
             }
         }
         return out;
@@ -42,6 +42,7 @@ public class P331_EncodeAndDecodeStrings {
     /** Approach 2 (encode): write each word as length + '#' + word. O(total length) time, no escaping needed. */
     static String encode(List<String> strs) {
         StringBuilder sb = new StringBuilder();
+        // header = length and '#', then the raw word
         for (String s : strs) sb.append(s.length()).append('#').append(s);
         return sb.toString();
     }
@@ -49,16 +50,16 @@ public class P331_EncodeAndDecodeStrings {
     /** Approach 2 (decode): read digits up to the first '#', then copy exactly that many characters blindly. O(total length) time. */
     static List<String> decode(String s) {
         List<String> out = new ArrayList<>();
-        int i = 0;
+        int i = 0;                                      // start of the next header
         while (i < s.length()) {
-            int len = 0;
+            int len = 0;                                // word length read from the header
             while (s.charAt(i) != '#') {                // the header contains only digits
-                len = len * 10 + (s.charAt(i) - '0');
+                len = len * 10 + (s.charAt(i) - '0');   // accumulate the decimal length
                 i++;
             }
             i++;                                        // skip the '#' that ends the header
             out.add(s.substring(i, i + len));           // the payload may contain '#' or digits; we never look at it
-            i += len;
+            i += len;                                   // jump to the next header
         }
         return out;
     }

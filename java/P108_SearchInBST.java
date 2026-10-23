@@ -11,24 +11,25 @@ public class P108_SearchInBST {
 
     /** Approach 1: search the whole tree, ignoring the ordering. O(n) time, O(h) stack. */
     static TreeNode bruteForce(TreeNode root, int val) {
-        if (root == null || root.val == val) return root;
-        TreeNode found = bruteForce(root.left, val);
-        return found != null ? found : bruteForce(root.right, val);
+        if (root == null || root.val == val) return root;             // empty subtree, or val found here
+        TreeNode found = bruteForce(root.left, val);                  // look on the left first
+        return found != null ? found : bruteForce(root.right, val);   // not on the left: try the right
     }
 
     /** Approach 2: recursion that follows only the side that can contain val. O(h) time, O(h) stack. */
     static TreeNode recursive(TreeNode root, int val) {
-        if (root == null || root.val == val) return root;
+        if (root == null || root.val == val) return root;   // empty subtree, or val found here
+        // BST order: only one side can contain val
         return val < root.val ? recursive(root.left, val) : recursive(root.right, val);
     }
 
     /** Approach 3: the same single downward path as a loop. O(h) time, O(1) space. */
     static TreeNode iterative(TreeNode root, int val) {
-        TreeNode cur = root;
-        while (cur != null && cur.val != val) {
+        TreeNode cur = root;                                 // walks a single path down from the root
+        while (cur != null && cur.val != val) {              // stop at val, or when we fall off the tree
             cur = val < cur.val ? cur.left : cur.right;      // discard the half that cannot hold val
         }
-        return cur;
+        return cur;                                          // the node holding val, or null
     }
 
     // ---------------------------------------------------------------- helpers
