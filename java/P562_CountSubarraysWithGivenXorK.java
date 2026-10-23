@@ -6,11 +6,11 @@ public class P562_CountSubarraysWithGivenXorK {
     /** Approach 1: every starting index, extend and keep a running xor. O(n^2) time, O(1) space. */
     static long bruteForce(int[] nums, int k) {
         long count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int xr = 0;
+        for (int i = 0; i < nums.length; i++) {          // i = first index of the subarray
+            int xr = 0;                                  // xor of nums[i..j], grown one element at a time
             for (int j = i; j < nums.length; j++) {
-                xr ^= nums[j];
-                if (xr == k) count++;
+                xr ^= nums[j];                           // extend the subarray to end at j
+                if (xr == k) count++;                    // nums[i..j] has xor k
             }
         }
         return count;
@@ -18,14 +18,14 @@ public class P562_CountSubarraysWithGivenXorK {
 
     /** Approach 2: prefix xor and a frequency map of earlier prefixes. O(n) time, O(n) space. */
     static long optimal(int[] nums, int k) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();    // prefix xor -> how often it has occurred so far
         freq.put(0, 1);                                  // the empty prefix has xor 0
-        int xr = 0;
+        int xr = 0;                                      // xor of every element seen so far
         long count = 0;
         for (int x : nums) {
             xr ^= x;
             count += freq.getOrDefault(xr ^ k, 0);       // earlier prefixes p with p ^ xr == k
-            freq.merge(xr, 1, Integer::sum);
+            freq.merge(xr, 1, Integer::sum);             // record this prefix for later positions
         }
         return count;
     }

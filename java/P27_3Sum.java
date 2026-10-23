@@ -6,13 +6,13 @@ public class P27_3Sum {
     /** Approach 1: try every triple and de-duplicate with a set of sorted triplets. O(n^3) time, O(k) space for k triplets. */
     static List<List<Integer>> bruteForce(int[] nums) {
         int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
+        Set<List<Integer>> set = new HashSet<>();                  // sorted triplets, so duplicates collapse
+        for (int i = 0; i < n; i++) {                              // every index triple i < j < k
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
-                    if ((long) nums[i] + nums[j] + nums[k] == 0) {
+                    if ((long) nums[i] + nums[j] + nums[k] == 0) { // long: the sum can overflow int
                         int[] t = {nums[i], nums[j], nums[k]};
-                        Arrays.sort(t);
+                        Arrays.sort(t);                            // same values in any order -> same key
                         set.add(List.of(t[0], t[1], t[2]));
                     }
                 }
@@ -24,17 +24,18 @@ public class P27_3Sum {
     /** Approach 2: fix i, then one pass over j with a hash set of the values strictly between i and j. O(n^2) time, O(n) space. */
     static List<List<Integer>> better(int[] nums) {
         int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
+        Set<List<Integer>> set = new HashSet<>();          // sorted triplets, so duplicates collapse
+        for (int i = 0; i < n; i++) {                      // nums[i] is the first member
             Set<Integer> seen = new HashSet<>();           // values nums[i+1 .. j-1]
             for (int j = i + 1; j < n; j++) {
                 long need = -(long) nums[i] - nums[j];     // third value that would complete the triplet
+                // need must fit in an int to be in the set; then check it sits between i and j
                 if (need >= Integer.MIN_VALUE && need <= Integer.MAX_VALUE && seen.contains((int) need)) {
                     int[] t = {nums[i], nums[j], (int) need};
-                    Arrays.sort(t);
+                    Arrays.sort(t);                        // same values in any order -> same key
                     set.add(List.of(t[0], t[1], t[2]));
                 }
-                seen.add(nums[j]);
+                seen.add(nums[j]);                         // nums[j] can be the middle value for later j
             }
         }
         return sorted(set);
@@ -43,20 +44,20 @@ public class P27_3Sum {
     /** Approach 3: sort, fix i, two pointers on the rest, skip duplicates as we go. O(n^2) time, O(1) extra space. */
     static List<List<Integer>> optimal(int[] nums) {
         int[] a = nums.clone();
-        Arrays.sort(a);
+        Arrays.sort(a);                                    // enables two pointers; groups duplicates
         int n = a.length;
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 0; i < n - 2; i++) {                  // a[i] is the smallest value of the triplet
             if (i > 0 && a[i] == a[i - 1]) continue;      // same first value was already handled
             if (a[i] > 0) break;                           // three positives can never sum to zero
-            int lo = i + 1, hi = n - 1;
+            int lo = i + 1, hi = n - 1;                    // search the rest from both ends
             while (lo < hi) {
                 long sum = (long) a[i] + a[lo] + a[hi];
-                if (sum < 0) lo++;
-                else if (sum > 0) hi--;
-                else {
+                if (sum < 0) lo++;                         // too small: move to a bigger value
+                else if (sum > 0) hi--;                    // too big: move to a smaller value
+                else {                                     // found a triplet
                     res.add(List.of(a[i], a[lo], a[hi]));
-                    lo++;
+                    lo++;                                  // move both ends past the pair just used
                     hi--;
                     while (lo < hi && a[lo] == a[lo - 1]) lo++;   // skip equal second values
                     while (lo < hi && a[hi] == a[hi + 1]) hi--;   // skip equal third values

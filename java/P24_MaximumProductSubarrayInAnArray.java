@@ -6,11 +6,11 @@ public class P24_MaximumProductSubarrayInAnArray {
     /** Approach 1: every starting index, extend the subarray and keep a running product. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums) {
         int n = nums.length;
-        int best = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            long prod = 1;
+        int best = Integer.MIN_VALUE;                          // any real product beats this
+        for (int i = 0; i < n; i++) {                          // i = first index of the subarray
+            long prod = 1;                                     // product of nums[i..j]
             for (int j = i; j < n; j++) {
-                prod *= nums[j];
+                prod *= nums[j];                               // extend the subarray to end at j
                 if (prod > best) best = (int) prod;
             }
         }
@@ -21,24 +21,24 @@ public class P24_MaximumProductSubarrayInAnArray {
     static int optimalPrefixSuffix(int[] nums) {
         int n = nums.length;
         int best = Integer.MIN_VALUE;
-        long prefix = 1, suffix = 1;
+        long prefix = 1, suffix = 1;                           // running products from each end
         for (int i = 0; i < n; i++) {
             if (prefix == 0) prefix = 1;                       // a zero ended the previous run: start fresh
             if (suffix == 0) suffix = 1;
             prefix *= nums[i];                                 // product of nums[(last zero)+1 .. i]
             suffix *= nums[n - 1 - i];                         // product of nums[n-1-i .. (next zero)-1]
-            best = (int) Math.max(best, Math.max(prefix, suffix));
+            best = (int) Math.max(best, Math.max(prefix, suffix));   // optimum is a prefix or suffix of a run
         }
         return best;
     }
 
     /** Approach 3: Kadane-style scan that carries both the largest and the smallest product ending here. O(n) time, O(1) space. */
     static int optimalMinMax(int[] nums) {
-        int best = nums[0];
-        long curMax = nums[0], curMin = nums[0];
+        int best = nums[0];                                    // the subarray {nums[0]} alone
+        long curMax = nums[0], curMin = nums[0];               // extreme products of subarrays ending at 0
         for (int i = 1; i < nums.length; i++) {
             long x = nums[i];
-            long a = curMax * x, b = curMin * x;
+            long a = curMax * x, b = curMin * x;               // extend both; a negative x swaps their roles
             curMax = Math.max(x, Math.max(a, b));              // largest product of a subarray ending at i
             curMin = Math.min(x, Math.min(a, b));              // smallest product of a subarray ending at i
             best = (int) Math.max(best, curMax);

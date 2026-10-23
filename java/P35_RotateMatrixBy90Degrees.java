@@ -6,7 +6,7 @@ public class P35_RotateMatrixBy90Degrees {
     /** Approach 1: copy every cell into a fresh matrix at its rotated position. O(n^2) time, O(n^2) space. */
     static int[][] bruteForce(int[][] matrix) {
         int n = matrix.length;
-        int[][] rotated = new int[n][n];
+        int[][] rotated = new int[n][n];                // fresh output, so no cell is overwritten early
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 rotated[j][n - 1 - i] = matrix[i][j];   // row i of the input becomes column n-1-i of the output
@@ -19,14 +19,14 @@ public class P35_RotateMatrixBy90Degrees {
     static int[][] optimal(int[][] matrix) {
         int n = matrix.length;
         for (int i = 0; i < n; i++) {                   // transpose: swap across the main diagonal
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {           // j > i only, so each pair is swapped once
                 int t = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = t;
             }
         }
         for (int[] row : matrix) {                      // reverse each row
-            for (int lo = 0, hi = n - 1; lo < hi; lo++, hi--) {
+            for (int lo = 0, hi = n - 1; lo < hi; lo++, hi--) {   // swap the ends, moving inward
                 int t = row[lo];
                 row[lo] = row[hi];
                 row[hi] = t;
@@ -38,10 +38,10 @@ public class P35_RotateMatrixBy90Degrees {
     /** Approach 3: rotate four cells at a time, ring by ring, from the outside in. O(n^2) time, O(1) space. */
     static int[][] optimalCycles(int[][] matrix) {
         int n = matrix.length;
-        for (int layer = 0; layer < n / 2; layer++) {
-            int first = layer, last = n - 1 - layer;
-            for (int k = first; k < last; k++) {
-                int offset = k - first;
+        for (int layer = 0; layer < n / 2; layer++) {                       // each ring, outermost first
+            int first = layer, last = n - 1 - layer;                        // ring bounds (row and column)
+            for (int k = first; k < last; k++) {                            // each 4-cell cycle in this ring
+                int offset = k - first;                                     // distance from the ring's corner
                 int top = matrix[first][k];                                 // save top
                 matrix[first][k] = matrix[last - offset][first];            // left   -> top
                 matrix[last - offset][first] = matrix[last][last - offset]; // bottom -> left

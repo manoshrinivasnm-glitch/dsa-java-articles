@@ -5,11 +5,11 @@ public class P2835_LongestConsecutiveSequenceInAnArray {
 
     /** Approach 1: from every element keep looking for value + 1 with a linear search. O(n^2) time in the common case, O(1) space. */
     static int bruteForce(int[] nums) {
-        int longest = 0;
-        for (int x : nums) {
-            int len = 1;
+        int longest = 0;                             // best run length found so far
+        for (int x : nums) {                         // try every element as the start of a run
+            int len = 1;                             // the run starting at x contains x itself
             long next = (long) x + 1;                // long: x + 1 overflows int for Integer.MAX_VALUE
-            while (contains(nums, next)) {
+            while (contains(nums, next)) {           // keep extending while the next value exists
                 len++;
                 next++;
             }
@@ -19,20 +19,20 @@ public class P2835_LongestConsecutiveSequenceInAnArray {
     }
 
     private static boolean contains(int[] nums, long value) {
-        for (int v : nums) if (v == value) return true;
+        for (int v : nums) if (v == value) return true;   // linear search: O(n) per lookup
         return false;
     }
 
     /** Approach 2: sort a copy, then count runs while skipping duplicates. O(n log n) time, O(n) for the copy (O(1) if sorting in place is allowed). */
     static int better(int[] nums) {
-        if (nums.length == 0) return 0;
-        int[] a = nums.clone();
-        Arrays.sort(a);
-        int longest = 1, len = 1;
+        if (nums.length == 0) return 0;              // empty array: no run at all
+        int[] a = nums.clone();                      // sort a copy so the input is untouched
+        Arrays.sort(a);                              // consecutive values become neighbours
+        int longest = 1, len = 1;                    // len = length of the run ending at a[i]
         for (int i = 1; i < a.length; i++) {
             if (a[i] == a[i - 1]) continue;          // duplicate: neither extends nor breaks the run
             if ((long) a[i] - a[i - 1] == 1) len++;  // long: the difference can overflow int
-            else len = 1;
+            else len = 1;                            // a gap: a new run starts at a[i]
             longest = Math.max(longest, len);
         }
         return longest;
@@ -40,17 +40,18 @@ public class P2835_LongestConsecutiveSequenceInAnArray {
 
     /** Approach 3: hash set; count a run only from its smallest element (the one whose predecessor is absent). O(n) time, O(n) space. */
     static int optimal(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();          // O(1) membership tests; also drops duplicates
         for (int x : nums) set.add(x);
         int longest = 0;
         for (int x : set) {
             if (x != Integer.MIN_VALUE && set.contains(x - 1)) continue;   // not the start of a run
-            int cur = x, len = 1;
+            int cur = x, len = 1;                    // x starts a run: walk it upward
+            // the MAX_VALUE guard stops cur + 1 from overflowing
             while (cur != Integer.MAX_VALUE && set.contains(cur + 1)) {
                 cur++;
                 len++;
             }
-            longest = Math.max(longest, len);
+            longest = Math.max(longest, len);        // each run is walked once, so O(n) overall
         }
         return longest;
     }

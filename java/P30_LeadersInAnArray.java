@@ -7,15 +7,15 @@ public class P30_LeadersInAnArray {
     static List<Integer> bruteForce(int[] nums) {
         int n = nums.length;
         List<Integer> leaders = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            boolean leader = true;
-            for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < n; i++) {                // test every element as a candidate leader
+            boolean leader = true;                   // stays true unless something to the right beats it
+            for (int j = i + 1; j < n; j++) {        // look at everything to the right of i
                 if (nums[j] >= nums[i]) {            // something to the right is at least as big
                     leader = false;
-                    break;
+                    break;                           // one counterexample is enough
                 }
             }
-            if (leader) leaders.add(nums[i]);
+            if (leader) leaders.add(nums[i]);        // nothing to the right reached it
         }
         return leaders;
     }
@@ -24,13 +24,13 @@ public class P30_LeadersInAnArray {
     static List<Integer> optimal(int[] nums) {
         int n = nums.length;
         List<Integer> leaders = new ArrayList<>();
-        if (n == 0) return leaders;
-        int maxRight = nums[n - 1];
+        if (n == 0) return leaders;                  // empty input: no leaders
+        int maxRight = nums[n - 1];                  // largest value seen so far, scanning from the right
         leaders.add(maxRight);                       // the last element has nothing to its right
-        for (int i = n - 2; i >= 0; i--) {
-            if (nums[i] > maxRight) {
+        for (int i = n - 2; i >= 0; i--) {           // walk right to left
+            if (nums[i] > maxRight) {                // beats everything to its right, so it is a leader
                 leaders.add(nums[i]);
-                maxRight = nums[i];
+                maxRight = nums[i];                  // the bar rises for elements further left
             }
         }
         Collections.reverse(leaders);                // collected right to left; restore left-to-right order

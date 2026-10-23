@@ -5,13 +5,13 @@ public class P21_FindTheRepeatingAndMissingNumber {
 
     /** Approach 1: for every value 1..n count how often it occurs. O(n^2) time, O(1) space. */
     static int[] bruteForce(int[] arr) {
-        int n = arr.length, repeating = -1, missing = -1;
-        for (int v = 1; v <= n; v++) {
+        int n = arr.length, repeating = -1, missing = -1;     // -1 = not found yet
+        for (int v = 1; v <= n; v++) {                        // every value that should be present
             int count = 0;
-            for (int x : arr) if (x == v) count++;
-            if (count == 2) repeating = v;
-            else if (count == 0) missing = v;
-            if (repeating != -1 && missing != -1) break;
+            for (int x : arr) if (x == v) count++;            // count v with a full scan
+            if (count == 2) repeating = v;                    // v appears twice
+            else if (count == 0) missing = v;                 // v never appears
+            if (repeating != -1 && missing != -1) break;      // both found: stop early
         }
         return new int[]{repeating, missing};
     }
@@ -19,30 +19,30 @@ public class P21_FindTheRepeatingAndMissingNumber {
     /** Approach 2: frequency array indexed by value. O(n) time, O(n) space. */
     static int[] better(int[] arr) {
         int n = arr.length;
-        int[] freq = new int[n + 1];
-        for (int x : arr) freq[x]++;
+        int[] freq = new int[n + 1];                          // freq[v] = occurrences of v (index 0 unused)
+        for (int x : arr) freq[x]++;                          // tally every value in one pass
         int repeating = -1, missing = -1;
-        for (int v = 1; v <= n; v++) {
-            if (freq[v] == 2) repeating = v;
-            else if (freq[v] == 0) missing = v;
+        for (int v = 1; v <= n; v++) {                        // read the tally for each expected value
+            if (freq[v] == 2) repeating = v;                  // seen twice
+            else if (freq[v] == 0) missing = v;               // never seen
         }
         return new int[]{repeating, missing};
     }
 
     /** Approach 3: two equations from the sum and the sum of squares. O(n) time, O(1) space. */
     static int[] optimalMath(int[] arr) {
-        long n = arr.length;
+        long n = arr.length;                             // long: the sums below overflow int
         long sn = n * (n + 1) / 2;                       // 1 + 2 + ... + n
         long s2n = n * (n + 1) * (2 * n + 1) / 6;        // 1^2 + 2^2 + ... + n^2
-        long s = 0, s2 = 0;
+        long s = 0, s2 = 0;                              // actual sum and sum of squares of arr
         for (int v : arr) {
             s += v;
-            s2 += (long) v * v;
+            s2 += (long) v * v;                          // cast first so v * v does not overflow
         }
         long diff = s - sn;                              // x - y   (x repeating, y missing)
         long sumXY = (s2 - s2n) / diff;                  // x + y   since x^2 - y^2 = (x - y)(x + y)
-        long x = (diff + sumXY) / 2;
-        long y = x - diff;
+        long x = (diff + sumXY) / 2;                     // add the two equations to isolate x
+        long y = x - diff;                               // then y follows from x - y
         return new int[]{(int) x, (int) y};
     }
 
@@ -51,14 +51,15 @@ public class P21_FindTheRepeatingAndMissingNumber {
         int n = arr.length, xr = 0;
         for (int i = 0; i < n; i++) xr ^= arr[i] ^ (i + 1);   // every value pairs off except x and y: xr = x ^ y
         int bit = xr & -xr;                                   // lowest bit where x and y differ
-        int zero = 0, one = 0;
-        for (int i = 0; i < n; i++) {
+        int zero = 0, one = 0;                                // xor of each bucket: bit clear / bit set
+        for (int i = 0; i < n; i++) {                         // bucket both the array values and 1..n
             if ((arr[i] & bit) != 0) one ^= arr[i]; else zero ^= arr[i];
             if (((i + 1) & bit) != 0) one ^= (i + 1); else zero ^= (i + 1);
         }
+        // pairs cancel inside each bucket, so one and zero are x and y in some order
         int count = 0;                                        // decide which bucket holds the repeating number
         for (int v : arr) if (v == one) count++;
-        return count == 2 ? new int[]{one, zero} : new int[]{zero, one};
+        return count == 2 ? new int[]{one, zero} : new int[]{zero, one};   // the value seen twice comes first
     }
 
     // ---------------------------------------------------------------- tests

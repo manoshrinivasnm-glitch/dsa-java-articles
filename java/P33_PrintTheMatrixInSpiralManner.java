@@ -7,21 +7,21 @@ public class P33_PrintTheMatrixInSpiralManner {
     static List<Integer> simulation(int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
         int n = matrix.length, m = n == 0 ? 0 : matrix[0].length;
-        if (n == 0 || m == 0) return ans;
-        boolean[][] visited = new boolean[n][m];
+        if (n == 0 || m == 0) return ans;             // empty matrix: nothing to print
+        boolean[][] visited = new boolean[n][m];      // cells already printed
         int[] dr = {0, 1, 0, -1};                     // right, down, left, up
         int[] dc = {1, 0, -1, 0};
-        int r = 0, c = 0, dir = 0;
-        for (int step = 0; step < n * m; step++) {
+        int r = 0, c = 0, dir = 0;                    // start top-left, heading right
+        for (int step = 0; step < n * m; step++) {    // one step per cell
             ans.add(matrix[r][c]);
             visited[r][c] = true;
-            int nr = r + dr[dir], nc = c + dc[dir];
-            if (nr < 0 || nr >= n || nc < 0 || nc >= m || visited[nr][nc]) {
+            int nr = r + dr[dir], nc = c + dc[dir];   // where we would go next without turning
+            if (nr < 0 || nr >= n || nc < 0 || nc >= m || visited[nr][nc]) {   // off the grid or already seen
                 dir = (dir + 1) % 4;                  // turn clockwise
                 nr = r + dr[dir];
                 nc = c + dc[dir];
             }
-            r = nr;
+            r = nr;                                   // move to the next cell
             c = nc;
         }
         return ans;
@@ -31,12 +31,12 @@ public class P33_PrintTheMatrixInSpiralManner {
     static List<Integer> optimal(int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
         int n = matrix.length, m = n == 0 ? 0 : matrix[0].length;
-        int top = 0, bottom = n - 1, left = 0, right = m - 1;
-        while (top <= bottom && left <= right) {
+        int top = 0, bottom = n - 1, left = 0, right = m - 1;                    // unprinted block's edges
+        while (top <= bottom && left <= right) {                                 // some cells remain
             for (int j = left; j <= right; j++) ans.add(matrix[top][j]);        // top row, left to right
-            top++;
+            top++;                                                               // that row is done
             for (int i = top; i <= bottom; i++) ans.add(matrix[i][right]);      // right column, top to bottom
-            right--;
+            right--;                                                             // that column is done
             if (top <= bottom) {                                                 // bottom row, right to left
                 for (int j = right; j >= left; j--) ans.add(matrix[bottom][j]);
                 bottom--;

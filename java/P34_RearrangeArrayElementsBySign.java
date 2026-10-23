@@ -6,13 +6,13 @@ public class P34_RearrangeArrayElementsBySign {
     /** Approach 1: split into a positive list and a negative list, then interleave them. O(n) time, O(n) extra space for the two lists. */
     static int[] bruteForce(int[] nums) {
         int n = nums.length;
-        List<Integer> pos = new ArrayList<>();
-        List<Integer> neg = new ArrayList<>();
+        List<Integer> pos = new ArrayList<>();       // positives, in their original order
+        List<Integer> neg = new ArrayList<>();       // negatives, in their original order
         for (int x : nums) {
-            if (x > 0) pos.add(x); else neg.add(x);
+            if (x > 0) pos.add(x); else neg.add(x);  // sort each element into its bucket
         }
         int[] ans = new int[n];
-        for (int i = 0; i < n / 2; i++) {
+        for (int i = 0; i < n / 2; i++) {            // pair i: i-th positive, then i-th negative
             ans[2 * i] = pos.get(i);                 // positives go to even indices
             ans[2 * i + 1] = neg.get(i);             // negatives go to odd indices
         }
@@ -23,14 +23,14 @@ public class P34_RearrangeArrayElementsBySign {
     static int[] optimal(int[] nums) {
         int n = nums.length;
         int[] ans = new int[n];
-        int posIdx = 0, negIdx = 1;
+        int posIdx = 0, negIdx = 1;                  // next free even slot and next free odd slot
         for (int x : nums) {
-            if (x > 0) {
+            if (x > 0) {                             // positive: place it at the next even index
                 ans[posIdx] = x;
-                posIdx += 2;
-            } else {
+                posIdx += 2;                         // skip the odd slot reserved for a negative
+            } else {                                 // negative: place it at the next odd index
                 ans[negIdx] = x;
-                negIdx += 2;
+                negIdx += 2;                         // skip the even slot reserved for a positive
             }
         }
         return ans;
@@ -39,20 +39,20 @@ public class P34_RearrangeArrayElementsBySign {
     /** Variant: the two counts may differ. Alternate while both kinds remain, then append the leftovers in their original order. O(n) time, O(n) space. */
     static int[] unequalCounts(int[] nums) {
         int n = nums.length;
-        List<Integer> pos = new ArrayList<>();
-        List<Integer> neg = new ArrayList<>();
+        List<Integer> pos = new ArrayList<>();       // positives, in their original order
+        List<Integer> neg = new ArrayList<>();       // negatives, in their original order
         for (int x : nums) {
-            if (x > 0) pos.add(x); else neg.add(x);
+            if (x > 0) pos.add(x); else neg.add(x);  // sort each element into its bucket
         }
         int[] ans = new int[n];
         int k = Math.min(pos.size(), neg.size());   // number of complete (positive, negative) pairs
         for (int i = 0; i < k; i++) {
-            ans[2 * i] = pos.get(i);
-            ans[2 * i + 1] = neg.get(i);
+            ans[2 * i] = pos.get(i);                 // positive at the even index of pair i
+            ans[2 * i + 1] = neg.get(i);             // negative right after it
         }
-        int idx = 2 * k;
-        for (int i = k; i < pos.size(); i++) ans[idx++] = pos.get(i);
-        for (int i = k; i < neg.size(); i++) ans[idx++] = neg.get(i);
+        int idx = 2 * k;                             // first slot after the alternating part
+        for (int i = k; i < pos.size(); i++) ans[idx++] = pos.get(i);   // leftover positives, if any
+        for (int i = k; i < neg.size(); i++) ans[idx++] = neg.get(i);   // leftover negatives, if any
         return ans;
     }
 

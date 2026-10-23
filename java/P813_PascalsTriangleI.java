@@ -7,29 +7,29 @@ public class P813_PascalsTriangleI {
 
     /** Build the rows one by one with additions and read the cell. O(r^2) time, O(r) space. */
     static long elementBrute(int r, int c) {
-        long[] row = {1};
-        for (int i = 2; i <= r; i++) {
-            long[] next = new long[i];
-            next[0] = 1;
+        long[] row = {1};                           // row 1 of the triangle
+        for (int i = 2; i <= r; i++) {              // build rows 2..r, each from the one above
+            long[] next = new long[i];              // row i has i entries
+            next[0] = 1;                            // both ends of every row are 1
             next[i - 1] = 1;
-            for (int j = 1; j < i - 1; j++) next[j] = row[j - 1] + row[j];
-            row = next;
+            for (int j = 1; j < i - 1; j++) next[j] = row[j - 1] + row[j];   // sum of the two cells above
+            row = next;                             // only the previous row is ever needed
         }
-        return row[c - 1];
+        return row[c - 1];                          // c is 1-indexed
     }
 
     /** The cell is C(r-1, c-1); compute it directly. O(c) time, O(1) space. */
     static long elementOptimal(int r, int c) {
-        return nCr(r - 1, c - 1);
+        return nCr(r - 1, c - 1);                   // switch from 1-indexed to 0-indexed
     }
 
     /** C(n, k) as n/1 * (n-1)/2 * ... ; after i steps the product is exactly C(n, i), so every division is exact. */
     static long nCr(int n, int k) {
-        if (k < 0 || k > n) return 0;
+        if (k < 0 || k > n) return 0;               // no way to choose that many
         k = Math.min(k, n - k);                     // C(n, k) == C(n, n-k): use the shorter loop
-        long res = 1;
+        long res = 1;                               // C(n, 0)
         for (int i = 0; i < k; i++) {
-            res = res * (n - i) / (i + 1);
+            res = res * (n - i) / (i + 1);          // C(n, i) -> C(n, i + 1); the division is exact
         }
         return res;
     }
@@ -38,17 +38,17 @@ public class P813_PascalsTriangleI {
 
     /** Compute every entry of row r independently with nCr. O(r^2) time, O(r) for the answer. */
     static long[] rowBrute(int r) {
-        long[] row = new long[r];
-        for (int c = 1; c <= r; c++) row[c - 1] = nCr(r - 1, c - 1);
+        long[] row = new long[r];                   // row r has r entries
+        for (int c = 1; c <= r; c++) row[c - 1] = nCr(r - 1, c - 1);   // each entry costs its own O(c) loop
         return row;
     }
 
     /** Each entry follows from the previous one: row[c] = row[c-1] * (r-c) / c. O(r) time, O(r) for the answer. */
     static long[] rowOptimal(int r) {
-        long[] row = new long[r];
-        row[0] = 1;
+        long[] row = new long[r];                   // row r has r entries
+        row[0] = 1;                                 // every row starts with 1
         for (int c = 1; c < r; c++) {
-            row[c] = row[c - 1] * (r - c) / c;
+            row[c] = row[c - 1] * (r - c) / c;      // next binomial from the previous one; division is exact
         }
         return row;
     }
@@ -57,22 +57,22 @@ public class P813_PascalsTriangleI {
 
     /** Compute every cell with nCr. O(n^3) time, O(n^2) for the answer. */
     static long[][] triangleBrute(int n) {
-        long[][] tri = new long[n][];
+        long[][] tri = new long[n][];               // jagged: row r has r entries
         for (int r = 1; r <= n; r++) {
             tri[r - 1] = new long[r];
-            for (int c = 1; c <= r; c++) tri[r - 1][c - 1] = nCr(r - 1, c - 1);
+            for (int c = 1; c <= r; c++) tri[r - 1][c - 1] = nCr(r - 1, c - 1);   // each cell from scratch
         }
         return tri;
     }
 
     /** Build each row from the row above: every inner cell is the sum of the two cells over it. O(n^2) time, O(n^2) for the answer. */
     static long[][] triangleOptimal(int n) {
-        long[][] tri = new long[n][];
+        long[][] tri = new long[n][];               // jagged: row r (0-indexed) has r + 1 entries
         for (int r = 0; r < n; r++) {
             tri[r] = new long[r + 1];
-            tri[r][0] = 1;
-            tri[r][r] = 1;
-            for (int c = 1; c < r; c++) tri[r][c] = tri[r - 1][c - 1] + tri[r - 1][c];
+            tri[r][0] = 1;                          // left edge
+            tri[r][r] = 1;                          // right edge
+            for (int c = 1; c < r; c++) tri[r][c] = tri[r - 1][c - 1] + tri[r - 1][c];   // sum of cells above
         }
         return tri;
     }

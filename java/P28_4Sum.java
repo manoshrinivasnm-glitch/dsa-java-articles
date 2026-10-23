@@ -6,14 +6,15 @@ public class P28_4Sum {
     /** Approach 1: try every quadruple and de-duplicate with a set. O(n^4) time, O(k) space for k quadruplets. */
     static List<List<Integer>> bruteForce(int[] nums, int target) {
         int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
+        Set<List<Integer>> set = new HashSet<>();                  // sorted quadruplets; duplicates collapse
+        for (int i = 0; i < n; i++) {                              // every index quadruple i < j < k < l
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
                     for (int l = k + 1; l < n; l++) {
+                        // long: four ints can overflow int
                         if ((long) nums[i] + nums[j] + nums[k] + nums[l] == target) {
                             int[] q = {nums[i], nums[j], nums[k], nums[l]};
-                            Arrays.sort(q);
+                            Arrays.sort(q);                        // same values in any order -> same key
                             set.add(List.of(q[0], q[1], q[2], q[3]));
                         }
                     }
@@ -26,18 +27,18 @@ public class P28_4Sum {
     /** Approach 2: fix i and j, then one pass over k with a hash set of the values strictly between j and k. O(n^3) time, O(n) space. */
     static List<List<Integer>> better(int[] nums, int target) {
         int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
+        Set<List<Integer>> set = new HashSet<>();            // sorted quadruplets, so duplicates collapse
+        for (int i = 0; i < n; i++) {                        // nums[i] and nums[j] are the first two members
             for (int j = i + 1; j < n; j++) {
                 Set<Long> seen = new HashSet<>();            // values nums[j+1 .. k-1]
                 for (int k = j + 1; k < n; k++) {
-                    long need = (long) target - nums[i] - nums[j] - nums[k];
-                    if (seen.contains(need)) {
+                    long need = (long) target - nums[i] - nums[j] - nums[k];   // the missing fourth value
+                    if (seen.contains(need)) {               // it appeared between j and k
                         int[] q = {nums[i], nums[j], nums[k], (int) need};
-                        Arrays.sort(q);
+                        Arrays.sort(q);                      // same values in any order -> same key
                         set.add(List.of(q[0], q[1], q[2], q[3]));
                     }
-                    seen.add((long) nums[k]);
+                    seen.add((long) nums[k]);                // nums[k] can be the fourth value for later k
                 }
             }
         }
@@ -47,21 +48,21 @@ public class P28_4Sum {
     /** Approach 3: sort, fix i and j (skipping duplicates), two pointers for the last two. O(n^3) time, O(1) extra space. */
     static List<List<Integer>> optimal(int[] nums, int target) {
         int[] a = nums.clone();
-        Arrays.sort(a);
+        Arrays.sort(a);                                        // enables two pointers; groups duplicates
         int n = a.length;
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < n - 3; i++) {
+        for (int i = 0; i < n - 3; i++) {                      // a[i] is the smallest value
             if (i > 0 && a[i] == a[i - 1]) continue;          // same first value already handled
-            for (int j = i + 1; j < n - 2; j++) {
+            for (int j = i + 1; j < n - 2; j++) {              // a[j] is the second smallest
                 if (j > i + 1 && a[j] == a[j - 1]) continue;  // same second value already handled for this i
-                int lo = j + 1, hi = n - 1;
+                int lo = j + 1, hi = n - 1;                    // search the rest from both ends
                 while (lo < hi) {
-                    long sum = (long) a[i] + a[j] + a[lo] + a[hi];
-                    if (sum < target) lo++;
-                    else if (sum > target) hi--;
-                    else {
+                    long sum = (long) a[i] + a[j] + a[lo] + a[hi];   // long: the sum can overflow int
+                    if (sum < target) lo++;                    // too small: move to a bigger value
+                    else if (sum > target) hi--;               // too big: move to a smaller value
+                    else {                                     // found a quadruplet
                         res.add(List.of(a[i], a[j], a[lo], a[hi]));
-                        lo++;
+                        lo++;                                  // move both ends past the pair just used
                         hi--;
                         while (lo < hi && a[lo] == a[lo - 1]) lo++;   // skip equal third values
                         while (lo < hi && a[hi] == a[hi + 1]) hi--;   // skip equal fourth values

@@ -6,14 +6,15 @@ public class P715_MergeOverlappingSubintervals {
     /** Approach 1: sort, then for each interval not yet covered scan forward and swallow everything that overlaps. O(n log n + n^2) time, O(n) space. */
     static int[][] bruteForce(int[][] intervals) {
         int n = intervals.length;
-        int[][] a = sortedCopy(intervals);
-        List<int[]> res = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            if (!res.isEmpty() && a[i][1] <= res.get(res.size() - 1)[1]) continue;   // already inside the last merged interval
-            int start = a[i][0], end = a[i][1];
-            for (int j = i + 1; j < n; j++) {
-                if (a[j][0] <= end) end = Math.max(end, a[j][1]);
-                else break;                                                          // sorted by start: nothing later can overlap
+        int[][] a = sortedCopy(intervals);               // sorted by start: overlaps become neighbours
+        List<int[]> res = new ArrayList<>();             // merged intervals, in order
+        for (int i = 0; i < n; i++) {                    // try to start a new merged interval at a[i]
+            // already inside the last merged interval
+            if (!res.isEmpty() && a[i][1] <= res.get(res.size() - 1)[1]) continue;
+            int start = a[i][0], end = a[i][1];          // the merged interval begins as a[i]
+            for (int j = i + 1; j < n; j++) {            // swallow every later interval that overlaps
+                if (a[j][0] <= end) end = Math.max(end, a[j][1]);   // overlaps: stretch the end if needed
+                else break;                              // sorted by start: nothing later can overlap
             }
             res.add(new int[]{start, end});
         }
@@ -22,10 +23,10 @@ public class P715_MergeOverlappingSubintervals {
 
     /** Approach 2: sort, then one pass that either extends the last merged interval or starts a new one. O(n log n) time, O(n) space. */
     static int[][] optimal(int[][] intervals) {
-        int[][] a = sortedCopy(intervals);
-        List<int[]> res = new ArrayList<>();
+        int[][] a = sortedCopy(intervals);                           // sorted by start
+        List<int[]> res = new ArrayList<>();                         // merged so far; only the last can grow
         for (int[] cur : a) {
-            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {
+            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {   // starts after the last one ends
                 res.add(new int[]{cur[0], cur[1]});                  // gap before cur: start a new interval
             } else {
                 int[] last = res.get(res.size() - 1);
@@ -38,7 +39,8 @@ public class P715_MergeOverlappingSubintervals {
     /** Copy of the input sorted by start, then by end, so the caller's array is untouched. */
     static int[][] sortedCopy(int[][] intervals) {
         int[][] a = new int[intervals.length][];
-        for (int i = 0; i < intervals.length; i++) a[i] = intervals[i].clone();
+        for (int i = 0; i < intervals.length; i++) a[i] = intervals[i].clone();   // copy each pair
+        // order by start; ties broken by end
         Arrays.sort(a, (x, y) -> x[0] != y[0] ? Integer.compare(x[0], y[0]) : Integer.compare(x[1], y[1]));
         return a;
     }

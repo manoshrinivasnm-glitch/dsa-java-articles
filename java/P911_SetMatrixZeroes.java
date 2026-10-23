@@ -6,11 +6,11 @@ public class P911_SetMatrixZeroes {
     /** Approach 1: read the zero positions from an untouched copy and clear rows/columns in the original. O(n*m*(n+m)) time, O(n*m) space. */
     static void bruteForce(int[][] matrix) {
         int n = matrix.length, m = n == 0 ? 0 : matrix[0].length;
-        int[][] original = new int[n][];
+        int[][] original = new int[n][];             // untouched copy: new zeros must not spread further
         for (int i = 0; i < n; i++) original[i] = matrix[i].clone();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (original[i][j] == 0) {
+                if (original[i][j] == 0) {           // an original zero: wipe its row and column
                     for (int c = 0; c < m; c++) matrix[i][c] = 0;   // whole row i
                     for (int r = 0; r < n; r++) matrix[r][j] = 0;   // whole column j
                 }
@@ -21,18 +21,18 @@ public class P911_SetMatrixZeroes {
     /** Approach 2: remember which rows and which columns contain a zero, then clear them in a second pass. O(n*m) time, O(n+m) space. */
     static void better(int[][] matrix) {
         int n = matrix.length, m = n == 0 ? 0 : matrix[0].length;
-        boolean[] zeroRow = new boolean[n], zeroCol = new boolean[m];
-        for (int i = 0; i < n; i++) {
+        boolean[] zeroRow = new boolean[n], zeroCol = new boolean[m];   // rows / columns that hold a zero
+        for (int i = 0; i < n; i++) {                // pass 1: record where the zeros are
             for (int j = 0; j < m; j++) {
                 if (matrix[i][j] == 0) {
-                    zeroRow[i] = true;
-                    zeroCol[j] = true;
+                    zeroRow[i] = true;               // row i must be cleared
+                    zeroCol[j] = true;               // column j must be cleared
                 }
             }
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                // pass 2: clear every marked row and column
             for (int j = 0; j < m; j++) {
-                if (zeroRow[i] || zeroCol[j]) matrix[i][j] = 0;
+                if (zeroRow[i] || zeroCol[j]) matrix[i][j] = 0;   // cell lies in a marked row or column
             }
         }
     }
@@ -40,10 +40,10 @@ public class P911_SetMatrixZeroes {
     /** Approach 3: use row 0 and column 0 as the marker arrays, plus one flag for column 0 itself. O(n*m) time, O(1) space. */
     static void optimal(int[][] matrix) {
         int n = matrix.length, m = n == 0 ? 0 : matrix[0].length;
-        if (n == 0 || m == 0) return;
+        if (n == 0 || m == 0) return;                // empty matrix: nothing to do
         boolean col0 = false;                        // does column 0 need to become zero?
-        for (int i = 0; i < n; i++) {
-            if (matrix[i][0] == 0) col0 = true;
+        for (int i = 0; i < n; i++) {                // pass 1: record markers
+            if (matrix[i][0] == 0) col0 = true;      // column 0 has its own flag, not matrix[0][0]
             for (int j = 1; j < m; j++) {
                 if (matrix[i][j] == 0) {
                     matrix[i][0] = 0;                // row marker for row i
@@ -53,7 +53,7 @@ public class P911_SetMatrixZeroes {
         }
         for (int i = 1; i < n; i++) {                // inner cells: read the markers
             for (int j = 1; j < m; j++) {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) matrix[i][j] = 0;
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) matrix[i][j] = 0;   // its row or column is marked
             }
         }
         if (matrix[0][0] == 0) {                     // matrix[0][0] is the marker for row 0

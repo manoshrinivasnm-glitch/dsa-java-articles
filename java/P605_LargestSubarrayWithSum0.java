@@ -5,12 +5,12 @@ public class P605_LargestSubarrayWithSum0 {
 
     /** Approach 1: every starting index, extend the subarray and keep a running sum. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
+        int n = nums.length, best = 0;                   // best = longest zero-sum length so far
+        for (int i = 0; i < n; i++) {                    // i = first index of the subarray
+            long sum = 0;                                // sum of nums[i..j], grown one element at a time
             for (int j = i; j < n; j++) {
-                sum += nums[j];
-                if (sum == 0) best = Math.max(best, j - i + 1);
+                sum += nums[j];                          // extend the subarray to end at j
+                if (sum == 0) best = Math.max(best, j - i + 1);   // nums[i..j] sums to zero
             }
         }
         return best;
@@ -18,13 +18,13 @@ public class P605_LargestSubarrayWithSum0 {
 
     /** Approach 2: prefix sums and a map from prefix value to its first index. O(n) time, O(n) space. */
     static int optimal(int[] nums) {
-        Map<Long, Integer> firstSeen = new HashMap<>();
+        Map<Long, Integer> firstSeen = new HashMap<>();  // prefix sum -> earliest index where it occurred
         firstSeen.put(0L, -1);                           // the empty prefix has sum 0 and ends at index -1
-        long prefix = 0;
+        long prefix = 0;                                 // sum of nums[0..i]
         int best = 0;
         for (int i = 0; i < nums.length; i++) {
             prefix += nums[i];
-            Integer first = firstSeen.get(prefix);
+            Integer first = firstSeen.get(prefix);       // earliest index with this same prefix sum
             if (first != null) best = Math.max(best, i - first);   // nums[first+1 .. i] sums to zero
             else firstSeen.put(prefix, i);                         // keep only the earliest index
         }

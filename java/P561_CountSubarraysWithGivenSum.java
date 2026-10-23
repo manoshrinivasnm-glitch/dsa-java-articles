@@ -6,11 +6,11 @@ public class P561_CountSubarraysWithGivenSum {
     /** Approach 1: enumerate every (i, j) and add up the elements between them. O(n^3) time, O(1) space. */
     static int bruteForce(int[] nums, int k) {
         int n = nums.length, count = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+        for (int i = 0; i < n; i++) {                // i = first index of the subarray
+            for (int j = i; j < n; j++) {            // j = last index of the subarray
                 long sum = 0;
-                for (int p = i; p <= j; p++) sum += nums[p];
-                if (sum == k) count++;
+                for (int p = i; p <= j; p++) sum += nums[p];   // add up nums[i..j] from scratch
+                if (sum == k) count++;               // this subarray hits the target
             }
         }
         return count;
@@ -19,11 +19,11 @@ public class P561_CountSubarraysWithGivenSum {
     /** Approach 2: fix the start, extend the end, keep a running sum. O(n^2) time, O(1) space. */
     static int better(int[] nums, int k) {
         int n = nums.length, count = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
+        for (int i = 0; i < n; i++) {                // i = first index of the subarray
+            long sum = 0;                            // sum of nums[i..j], grown one element at a time
             for (int j = i; j < n; j++) {
-                sum += nums[j];
-                if (sum == k) count++;
+                sum += nums[j];                      // extend the subarray by one element
+                if (sum == k) count++;               // nums[i..j] hits the target
             }
         }
         return count;
@@ -32,13 +32,13 @@ public class P561_CountSubarraysWithGivenSum {
     /** Approach 3: prefix sums in a hash map. The subarray ending here sums to k exactly when an earlier prefix equals (currentPrefix - k). O(n) time, O(n) space. */
     static int optimal(int[] nums, int k) {
         Map<Long, Integer> freq = new HashMap<>();   // prefix sum -> how many times it has occurred so far
-        freq.put(0L, 1);                             // the empty prefix, so subarrays starting at index 0 are counted
-        long prefix = 0;
+        freq.put(0L, 1);                             // empty prefix: counts subarrays starting at index 0
+        long prefix = 0;                             // sum of every element seen so far
         int count = 0;
         for (int x : nums) {
             prefix += x;
-            count += freq.getOrDefault(prefix - k, 0);
-            freq.merge(prefix, 1, Integer::sum);
+            count += freq.getOrDefault(prefix - k, 0);   // one per subarray ending here that sums to k
+            freq.merge(prefix, 1, Integer::sum);     // record this prefix for later positions
         }
         return count;
     }

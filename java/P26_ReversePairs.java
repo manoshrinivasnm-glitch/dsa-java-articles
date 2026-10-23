@@ -5,10 +5,10 @@ public class P26_ReversePairs {
 
     /** Approach 1: check every pair. O(n^2) time, O(1) space. */
     static long bruteForce(int[] nums) {
-        long count = 0;
+        long count = 0;                                          // long: up to n(n-1)/2 pairs
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if ((long) nums[i] > 2L * nums[j]) count++;
+            for (int j = i + 1; j < nums.length; j++) {          // every j to the right of i
+                if ((long) nums[i] > 2L * nums[j]) count++;      // long: 2 * nums[j] can overflow int
             }
         }
         return count;
@@ -17,12 +17,13 @@ public class P26_ReversePairs {
     /** Approach 2: merge sort with a separate counting pass before each merge. O(n log n) time, O(n) space. */
     static long optimal(int[] nums) {
         int[] a = nums.clone();                                  // sorting happens on a copy
-        return mergeSortCount(a, new int[a.length], 0, a.length - 1);
+        return mergeSortCount(a, new int[a.length], 0, a.length - 1);   // one shared buffer for every merge
     }
 
     static long mergeSortCount(int[] a, int[] tmp, int lo, int hi) {
-        if (lo >= hi) return 0;
+        if (lo >= hi) return 0;                                  // 0 or 1 element: no pairs
         int mid = lo + (hi - lo) / 2;
+        // pairs inside each half; both halves come back sorted
         long count = mergeSortCount(a, tmp, lo, mid) + mergeSortCount(a, tmp, mid + 1, hi);
         int j = mid + 1;                                         // counting pass: both halves are sorted
         for (int i = lo; i <= mid; i++) {
@@ -30,14 +31,14 @@ public class P26_ReversePairs {
             count += j - (mid + 1);                              // a[mid+1 .. j-1] all satisfy a[i] > 2 * a[j]
         }
         int i = lo, k = lo;                                      // ordinary merge
-        j = mid + 1;
+        j = mid + 1;                                             // restart the right head for merging
         while (i <= mid && j <= hi) {
-            if (a[i] <= a[j]) tmp[k++] = a[i++];
+            if (a[i] <= a[j]) tmp[k++] = a[i++];                 // take the smaller head
             else tmp[k++] = a[j++];
         }
-        while (i <= mid) tmp[k++] = a[i++];
+        while (i <= mid) tmp[k++] = a[i++];                      // copy whatever is left of either half
         while (j <= hi) tmp[k++] = a[j++];
-        System.arraycopy(tmp, lo, a, lo, hi - lo + 1);
+        System.arraycopy(tmp, lo, a, lo, hi - lo + 1);           // a[lo..hi] is now sorted
         return count;
     }
 
