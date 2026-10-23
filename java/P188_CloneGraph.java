@@ -5,16 +5,16 @@ import java.util.function.*;
 public class P188_CloneGraph {
 
     static class Node {
-        int val;
-        List<Node> neighbors = new ArrayList<>();
+        int val;                                         // the node's label
+        List<Node> neighbors = new ArrayList<>();        // nodes this one has an edge to
         Node(int val) { this.val = val; }
     }
 
     /** Approach 1: collect every node first, create all copies, then wire the edges. O(V + E) time, O(V) space. */
     static Node twoPass(Node node) {
-        if (node == null) return null;
-        List<Node> all = new ArrayList<>();
-        Set<Node> seen = new HashSet<>();
+        if (node == null) return null;                   // empty graph: nothing to copy
+        List<Node> all = new ArrayList<>();              // every original node, in BFS order
+        Set<Node> seen = new HashSet<>();                // nodes already queued, so none is visited twice
         Deque<Node> queue = new ArrayDeque<>();
         seen.add(node);
         queue.add(node);
@@ -22,43 +22,43 @@ public class P188_CloneGraph {
             Node cur = queue.poll();
             all.add(cur);
             for (Node nb : cur.neighbors) {
-                if (seen.add(nb)) queue.add(nb);
+                if (seen.add(nb)) queue.add(nb);         // add() is true only the first time we meet nb
             }
         }
-        Map<Node, Node> copy = new HashMap<>();
-        for (Node orig : all) copy.put(orig, new Node(orig.val));
+        Map<Node, Node> copy = new HashMap<>();          // original node -> its clone
+        for (Node orig : all) copy.put(orig, new Node(orig.val));   // create every clone, no edges yet
         for (Node orig : all) {                          // pass 2: copy each adjacency list
             Node c = copy.get(orig);
-            for (Node nb : orig.neighbors) c.neighbors.add(copy.get(nb));
+            for (Node nb : orig.neighbors) c.neighbors.add(copy.get(nb));   // point at the clone, never the original
         }
-        return copy.get(node);
+        return copy.get(node);                           // the clone of the node we were given
     }
 
     /** Approach 2: recursive DFS that creates a copy the first time it meets a node. O(V + E) time, O(V) space. */
     static Node cloneDfs(Node node) {
-        return dfs(node, new HashMap<>());
+        return dfs(node, new HashMap<>());               // the map remembers every clone made so far
     }
 
     static Node dfs(Node node, Map<Node, Node> copy) {
         if (node == null) return null;
         Node done = copy.get(node);
         if (done != null) return done;                   // already copied: reuse it, this closes cycles
-        Node c = new Node(node.val);
+        Node c = new Node(node.val);                     // first visit: make the clone
         copy.put(node, c);                               // register BEFORE recursing into neighbours
-        for (Node nb : node.neighbors) c.neighbors.add(dfs(nb, copy));
+        for (Node nb : node.neighbors) c.neighbors.add(dfs(nb, copy));   // clone each neighbour and link it
         return c;
     }
 
     /** Approach 3: iterative BFS with the same original-to-copy map. O(V + E) time, O(V) space. */
     static Node cloneBfs(Node node) {
-        if (node == null) return null;
-        Map<Node, Node> copy = new HashMap<>();
-        copy.put(node, new Node(node.val));
-        Deque<Node> queue = new ArrayDeque<>();
+        if (node == null) return null;                   // empty graph: nothing to copy
+        Map<Node, Node> copy = new HashMap<>();          // original node -> its clone (doubles as "visited")
+        copy.put(node, new Node(node.val));              // clone the start node up front
+        Deque<Node> queue = new ArrayDeque<>();          // originals whose edges still need copying
         queue.add(node);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                       // visit each original once, in BFS order
             Node cur = queue.poll();
-            Node c = copy.get(cur);
+            Node c = copy.get(cur);                      // cur's clone, whose neighbour list we fill now
             for (Node nb : cur.neighbors) {
                 Node nbCopy = copy.get(nb);
                 if (nbCopy == null) {                    // first sighting: create it and schedule a visit
@@ -66,10 +66,10 @@ public class P188_CloneGraph {
                     copy.put(nb, nbCopy);
                     queue.add(nb);
                 }
-                c.neighbors.add(nbCopy);
+                c.neighbors.add(nbCopy);                 // link the clones, mirroring the original edge
             }
         }
-        return copy.get(node);
+        return copy.get(node);                           // the clone of the node we were given
     }
 
     // ---------------------------------------------------------------- tests

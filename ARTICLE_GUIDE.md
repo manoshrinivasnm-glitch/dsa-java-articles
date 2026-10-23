@@ -67,3 +67,28 @@ static void check(boolean cond, String msg) {
 ```
 
 Verify with `tools/check_java.sh P37_TwoSum` (all files: `tools/check_java.sh`). Then run `python3 tools/build_site.py` to refresh the index and prev/next links.
+
+## Code comments (every Java block shown in an article)
+
+Every important line of code shown in an article carries a short plain-English comment saying what it
+does or why. Model: `java/P188_CloneGraph.java` and `p/188.md`.
+
+- Comment the lines a reader would pause on: what a key variable or data structure holds, what a loop
+  walks over, what case an `if` detects, why a pointer moves or a value updates, what a non-obvious
+  `return` gives back, and every base case in recursion.
+- Skip lines that explain themselves: braces, `i++`, `queue.add(x)` right after the comment that
+  explains the queue, a plain `return ans;`.
+- Explain intent, not syntax: `// skip duplicates so each triplet is reported once`, not `// increment j`.
+- Short, present tense, ASCII only (write `->`, not an arrow character), no Liquid (`{{` or `{%`).
+- Trailing comment on the same line when the whole line stays under about 110 characters; otherwise
+  put the comment on its own line directly above, at the same indentation. Align trailing comments
+  within a method when it is easy to do.
+- Never put a new comment line above a method signature or class declaration (the Javadoc stays
+  where it is); comments go inside the body or at the end of a line.
+- Change comments only. No reformatting, renaming, reordering or literal changes. Keep existing
+  comments, improving them only if they are unclear.
+
+Workflow per problem: edit `java/P<id>_*.java`, then
+`python3 tools/codecomments.py check <id>` (must report 0 code changes),
+`python3 tools/codecomments.py sync <id>` (rewrites the article's java blocks from the Java file),
+then compile and run the class.

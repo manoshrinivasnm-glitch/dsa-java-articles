@@ -12,6 +12,9 @@ for b in "$@"; do
     j="$(sed -n 's/^java:[[:space:]]*//p' "p/$id.md" | head -1)"; [ -n "$j" ] && files+=("$j")
   done < <(python3 -c "import json,sys; [print(p['id']) for p in json.load(open('tools/batches/%02d.json' % int(sys.argv[1])))]" "$b")
 done
+# A comment-only pass must never change code: compare against the committed Java.
+ids=(); for b in "$@"; do while IFS= read -r id; do ids+=("$id"); done < <(python3 -c "import json,sys; [print(p['id']) for p in json.load(open('tools/batches/%02d.json' % int(sys.argv[1])))]" "$b"); done
+python3 tools/codecomments.py check "${ids[@]}"
 # Compile and run this batch's solutions locally before anything is committed.
 classes=(); for f in "${files[@]}"; do case "$f" in java/*.java) c="${f#java/}"; classes+=("${c%.java}");; esac; done
 tools/check_java.sh "${classes[@]}"
