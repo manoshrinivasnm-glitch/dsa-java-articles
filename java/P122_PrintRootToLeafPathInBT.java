@@ -11,52 +11,53 @@ public class P122_PrintRootToLeafPathInBT {
 
     /** Approach 1: pass a fresh copy of the path into every recursive call. O(n * h) time and space. */
     static List<List<Integer>> bruteForce(TreeNode root) {
-        List<List<Integer>> paths = new ArrayList<>();
-        copyDfs(root, new ArrayList<>(), paths);
+        List<List<Integer>> paths = new ArrayList<>();   // every root-to-leaf path found
+        copyDfs(root, new ArrayList<>(), paths);         // start with an empty path at the root
         return paths;
     }
 
     static void copyDfs(TreeNode node, List<Integer> pathSoFar, List<List<Integer>> paths) {
-        if (node == null) return;
-        List<Integer> path = new ArrayList<>(pathSoFar);          // every call owns its own copy
-        path.add(node.val);
-        if (node.left == null && node.right == null) { paths.add(path); return; }
+        if (node == null) return;                        // empty subtree: no path here
+        List<Integer> path = new ArrayList<>(pathSoFar);   // every call owns its own copy
+        path.add(node.val);                              // extend the copy with this node
+        if (node.left == null && node.right == null) { paths.add(path); return; }   // leaf: path is complete
         copyDfs(node.left, path, paths);
         copyDfs(node.right, path, paths);
     }
 
     /** Approach 2: backtracking with one shared path: add on the way down, remove on the way back up. O(n + L * h) time, O(h) extra space. */
     static List<List<Integer>> optimal(TreeNode root) {
-        List<List<Integer>> paths = new ArrayList<>();
-        backtrack(root, new ArrayList<>(), paths);
+        List<List<Integer>> paths = new ArrayList<>();   // every root-to-leaf path found
+        backtrack(root, new ArrayList<>(), paths);       // one shared path, reused by every call
         return paths;
     }
 
     static void backtrack(TreeNode node, List<Integer> path, List<List<Integer>> paths) {
-        if (node == null) return;
-        path.add(node.val);
-        if (node.left == null && node.right == null) {
-            paths.add(new ArrayList<>(path));                     // snapshot: path keeps changing after this
-        } else {
+        if (node == null) return;                        // empty subtree: nothing to do
+        path.add(node.val);                              // going down: extend the shared path
+        if (node.left == null && node.right == null) {   // a leaf: the path is complete
+            paths.add(new ArrayList<>(path));            // snapshot: path keeps changing after this
+        } else {                                         // not a leaf: explore both subtrees
             backtrack(node.left, path, paths);
             backtrack(node.right, path, paths);
         }
-        path.remove(path.size() - 1);                             // undo before returning to the parent
+        path.remove(path.size() - 1);                    // undo before returning to the parent
     }
 
     /** Variant: path from the root to the first node holding target (empty if absent). O(n) time, O(h) space. */
     static List<Integer> pathToNode(TreeNode root, int target) {
-        List<Integer> path = new ArrayList<>();
-        findPath(root, target, path);
+        List<Integer> path = new ArrayList<>();          // will hold the root-to-target path
+        findPath(root, target, path);                    // leaves path empty if target is absent
         return path;
     }
 
     static boolean findPath(TreeNode node, int target, List<Integer> path) {
-        if (node == null) return false;
-        path.add(node.val);
-        if (node.val == target) return true;
+        if (node == null) return false;                  // dead end: target not here
+        path.add(node.val);                              // tentatively put this node on the path
+        if (node.val == target) return true;             // found: the path is complete
+        // target found below: keep this node on the path
         if (findPath(node.left, target, path) || findPath(node.right, target, path)) return true;
-        path.remove(path.size() - 1);                             // target is not below this node
+        path.remove(path.size() - 1);                    // target is not below this node
         return false;
     }
 

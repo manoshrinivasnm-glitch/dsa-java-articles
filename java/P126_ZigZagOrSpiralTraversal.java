@@ -12,22 +12,22 @@ public class P126_ZigZagOrSpiralTraversal {
     /** Approach 1: ordinary level-order traversal, then reverse every second level. O(n) time, O(w) extra space. */
     static List<List<Integer>> reverseAlternateLevels(TreeNode root) {
         List<List<Integer>> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> q = new ArrayDeque<>();
+        if (root == null) return out;                    // empty tree: no levels
+        Deque<TreeNode> q = new ArrayDeque<>();          // BFS queue, processed one level at a time
         q.add(root);
-        boolean leftToRight = true;
+        boolean leftToRight = true;                      // reading direction of the current level
         while (!q.isEmpty()) {
-            int size = q.size();
-            List<Integer> row = new ArrayList<>();
+            int size = q.size();                         // nodes queued now form exactly one level
+            List<Integer> row = new ArrayList<>();       // this level's values, left to right
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
                 row.add(node.val);
-                if (node.left != null) q.add(node.left);
+                if (node.left != null) q.add(node.left);   // queue the next level, left to right
                 if (node.right != null) q.add(node.right);
             }
-            if (!leftToRight) Collections.reverse(row);
+            if (!leftToRight) Collections.reverse(row);  // every second level is read right to left
             out.add(row);
-            leftToRight = !leftToRight;
+            leftToRight = !leftToRight;                  // flip the direction for the next level
         }
         return out;
     }
@@ -35,27 +35,27 @@ public class P126_ZigZagOrSpiralTraversal {
     /** Approach 2: two stacks. Popping a stack reverses the order, and pushing children left-then-right or right-then-left decides the next level's direction. O(n) time, O(w) space. */
     static List<List<Integer>> twoStacks(TreeNode root) {
         List<List<Integer>> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> cur = new ArrayDeque<>();
+        if (root == null) return out;                    // empty tree: no levels
+        Deque<TreeNode> cur = new ArrayDeque<>();        // stack holding the current level
         cur.push(root);
-        boolean leftToRight = true;
+        boolean leftToRight = true;                      // reading direction of the current level
         while (!cur.isEmpty()) {
-            Deque<TreeNode> next = new ArrayDeque<>();
+            Deque<TreeNode> next = new ArrayDeque<>();   // children collected for the next level
             List<Integer> row = new ArrayList<>();
             while (!cur.isEmpty()) {
-                TreeNode node = cur.pop();
+                TreeNode node = cur.pop();               // pop order is this level's reading order
                 row.add(node.val);
-                if (leftToRight) {
+                if (leftToRight) {                       // next level reads right to left: push left first
                     if (node.left != null) next.push(node.left);
                     if (node.right != null) next.push(node.right);
-                } else {
+                } else {                                 // next level reads left to right: push right first
                     if (node.right != null) next.push(node.right);
                     if (node.left != null) next.push(node.left);
                 }
             }
             out.add(row);
-            cur = next;
-            leftToRight = !leftToRight;
+            cur = next;                                  // move down to the next level
+            leftToRight = !leftToRight;                  // flip the direction
         }
         return out;
     }
@@ -63,21 +63,21 @@ public class P126_ZigZagOrSpiralTraversal {
     /** Approach 3: level-order traversal that writes each value straight into its final slot, index i going left to right or size - 1 - i going right to left. O(n) time, O(w) space, no reversal pass. */
     static List<List<Integer>> optimal(TreeNode root) {
         List<List<Integer>> out = new ArrayList<>();
-        if (root == null) return out;
+        if (root == null) return out;                    // empty tree: no levels
         Deque<TreeNode> q = new ArrayDeque<>();
         q.add(root);
-        boolean leftToRight = true;
+        boolean leftToRight = true;                      // reading direction of the current level
         while (!q.isEmpty()) {
-            int size = q.size();
-            Integer[] row = new Integer[size];
+            int size = q.size();                         // number of nodes in this level
+            Integer[] row = new Integer[size];           // one slot per node of this level
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
-                row[leftToRight ? i : size - 1 - i] = node.val;
+                row[leftToRight ? i : size - 1 - i] = node.val;   // drop the value into its final slot
                 if (node.left != null) q.add(node.left);
                 if (node.right != null) q.add(node.right);
             }
-            out.add(new ArrayList<>(Arrays.asList(row)));
-            leftToRight = !leftToRight;
+            out.add(new ArrayList<>(Arrays.asList(row)));   // save the finished level
+            leftToRight = !leftToRight;                  // flip the direction for the next level
         }
         return out;
     }

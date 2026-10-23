@@ -11,14 +11,17 @@ public class P132_MaximumPathSum {
 
     /** Best sum of a downward path that starts at node (node included, may stop anywhere); 0 for an empty tree. O(size of subtree). */
     static int maxDown(TreeNode node) {
-        if (node == null) return 0;
+        if (node == null) return 0;                      // empty tree: nothing to add
+        // best downward sum from either child
         int bestChild = Math.max(maxDown(node.left), maxDown(node.right));
-        return node.val + Math.max(bestChild, 0);
+        return node.val + Math.max(bestChild, 0);        // skip the children if they only lower the sum
     }
 
     /** Approach 1: brute force. Try every node as the highest point of the path: its value plus the best non-negative downward gain on each side. O(n^2) worst case, O(h) stack. Requires a non-empty tree. */
     static int bruteForce(TreeNode root) {
+        // path whose highest point is root, negative sides dropped
         int best = root.val + Math.max(0, maxDown(root.left)) + Math.max(0, maxDown(root.right));
+        // or a path whose highest point lies inside a subtree
         if (root.left != null) best = Math.max(best, bruteForce(root.left));
         if (root.right != null) best = Math.max(best, bruteForce(root.right));
         return best;
@@ -26,13 +29,13 @@ public class P132_MaximumPathSum {
 
     /** Approach 2: one post-order pass. Each call returns the gain its node can offer the parent and updates the best path that bends at the node. O(n) time, O(h) stack. Requires a non-empty tree. */
     static int optimal(TreeNode root) {
-        int[] best = {Integer.MIN_VALUE};
-        gain(root, best);
+        int[] best = {Integer.MIN_VALUE};                // best path so far; works for all-negative values
+        gain(root, best);                                // one pass fills best
         return best[0];
     }
 
     static int gain(TreeNode node, int[] best) {
-        if (node == null) return 0;
+        if (node == null) return 0;                      // empty subtree offers no gain
         int left = Math.max(0, gain(node.left, best));     // a negative branch is better dropped
         int right = Math.max(0, gain(node.right, best));
         best[0] = Math.max(best[0], node.val + left + right);  // path bending here uses both sides

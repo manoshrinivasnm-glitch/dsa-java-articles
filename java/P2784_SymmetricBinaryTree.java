@@ -11,42 +11,44 @@ public class P2784_SymmetricBinaryTree {
 
     /** Approach 1: serialize the tree twice (left-first and right-first preorder, with null markers) and compare. O(n) time, O(n) space. */
     static boolean bruteForce(TreeNode root) {
+        // two preorders: the normal one and the mirrored one (right child first)
         List<Integer> leftFirst = new ArrayList<>(), rightFirst = new ArrayList<>();
         serialize(root, true, leftFirst);
         serialize(root, false, rightFirst);
-        return leftFirst.equals(rightFirst);
+        return leftFirst.equals(rightFirst);             // a symmetric tree reads the same both ways
     }
 
     static void serialize(TreeNode node, boolean leftFirst, List<Integer> out) {
-        if (node == null) { out.add(null); return; }              // the null marker keeps the shape in the list
-        out.add(node.val);
-        serialize(leftFirst ? node.left : node.right, leftFirst, out);
-        serialize(leftFirst ? node.right : node.left, leftFirst, out);
+        if (node == null) { out.add(null); return; }     // the null marker keeps the shape in the list
+        out.add(node.val);                               // the node first (preorder)
+        serialize(leftFirst ? node.left : node.right, leftFirst, out);   // the first child for this direction
+        serialize(leftFirst ? node.right : node.left, leftFirst, out);   // then the other child
     }
 
     /** Approach 2: recursion on mirrored pairs (outer with outer, inner with inner). O(n) time, O(h) space. */
     static boolean recursive(TreeNode root) {
-        return root == null || isMirror(root.left, root.right);
+        return root == null || isMirror(root.left, root.right);   // empty, or both halves mirror each other
     }
 
     static boolean isMirror(TreeNode a, TreeNode b) {
-        if (a == null || b == null) return a == b;                // both missing is fine, exactly one missing is not
+        if (a == null || b == null) return a == b;       // both missing is fine, exactly one missing is not
+        // equal values, outer children mirror and inner children mirror
         return a.val == b.val && isMirror(a.left, b.right) && isMirror(a.right, b.left);
     }
 
     /** Approach 3: the same pairing done iteratively with a queue of node pairs. O(n) time, O(w) space. */
     static boolean iterative(TreeNode root) {
-        if (root == null) return true;
-        Queue<TreeNode> q = new LinkedList<>();                   // LinkedList accepts null entries; ArrayDeque does not
-        q.add(root.left);
+        if (root == null) return true;                   // an empty tree is symmetric
+        Queue<TreeNode> q = new LinkedList<>();          // LinkedList allows nulls; ArrayDeque does not
+        q.add(root.left);                                // the two halves form the first pair
         q.add(root.right);
         while (!q.isEmpty()) {
-            TreeNode a = q.poll(), b = q.poll();                  // entries always come in mirrored pairs
-            if (a == null && b == null) continue;
-            if (a == null || b == null || a.val != b.val) return false;
-            q.add(a.left);
+            TreeNode a = q.poll(), b = q.poll();         // entries always come in mirrored pairs
+            if (a == null && b == null) continue;        // both missing: this pair matches
+            if (a == null || b == null || a.val != b.val) return false;   // one missing, or values differ
+            q.add(a.left);                               // outer pair: a.left with b.right
             q.add(b.right);
-            q.add(a.right);
+            q.add(a.right);                              // inner pair: a.right with b.left
             q.add(b.left);
         }
         return true;

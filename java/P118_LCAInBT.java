@@ -11,53 +11,57 @@ public class P118_LCAInBT {
 
     /** Approach 1: find the root-to-node path of p and of q; the last node the two paths share is the LCA. O(n) time, O(n) space. */
     static TreeNode bruteForce(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> pathP = new ArrayList<>(), pathQ = new ArrayList<>();
-        if (!pathTo(root, p, pathP) || !pathTo(root, q, pathQ)) return null;
-        TreeNode lca = null;
+        List<TreeNode> pathP = new ArrayList<>(), pathQ = new ArrayList<>();   // root-to-p and root-to-q
+        if (!pathTo(root, p, pathP) || !pathTo(root, q, pathQ)) return null;   // p or q is missing from tree
+        TreeNode lca = null;                             // deepest node shared so far
+        // walk both paths while they still agree
         for (int i = 0; i < pathP.size() && i < pathQ.size() && pathP.get(i) == pathQ.get(i); i++) {
-            lca = pathP.get(i);                                   // still on the shared prefix
+            lca = pathP.get(i);                          // still on the shared prefix
         }
         return lca;
     }
 
     static boolean pathTo(TreeNode node, TreeNode target, List<TreeNode> path) {
-        if (node == null) return false;
-        path.add(node);
-        if (node == target) return true;
+        if (node == null) return false;                  // dead end: target not here
+        path.add(node);                                  // tentatively put this node on the path
+        if (node == target) return true;                 // found: the path is complete
+        // target found below: keep this node on the path
         if (pathTo(node.left, target, path) || pathTo(node.right, target, path)) return true;
-        path.remove(path.size() - 1);                             // target is not below this node
+        path.remove(path.size() - 1);                    // target is not below this node
         return false;
     }
 
     /** Approach 2: record parents with a BFS, put p and all its ancestors in a set, then climb from q until we hit one. O(n) time, O(n) space. */
     static TreeNode parentPointers(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null) return null;
-        Map<TreeNode, TreeNode> parent = new HashMap<>();
-        parent.put(root, null);
-        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (root == null) return null;                   // empty tree: no LCA
+        Map<TreeNode, TreeNode> parent = new HashMap<>();   // child -> parent for every node
+        parent.put(root, null);                          // the root has no parent
+        Queue<TreeNode> queue = new ArrayDeque<>();      // BFS to reach every node once
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
+            // remember each child's parent and visit it later
             if (node.left != null) { parent.put(node.left, node); queue.add(node.left); }
             if (node.right != null) { parent.put(node.right, node); queue.add(node.right); }
         }
-        if (!parent.containsKey(p) || !parent.containsKey(q)) return null;
-        Set<TreeNode> ancestorsOfP = new HashSet<>();
-        for (TreeNode a = p; a != null; a = parent.get(a)) ancestorsOfP.add(a);   // p counts as its own ancestor
-        for (TreeNode b = q; b != null; b = parent.get(b)) {
-            if (ancestorsOfP.contains(b)) return b;               // first shared ancestor on the way up is the lowest
+        if (!parent.containsKey(p) || !parent.containsKey(q)) return null;   // p or q is not in the tree
+        Set<TreeNode> ancestorsOfP = new HashSet<>();    // p and every node above it
+        // climb from p to the root; p counts as its own ancestor
+        for (TreeNode a = p; a != null; a = parent.get(a)) ancestorsOfP.add(a);
+        for (TreeNode b = q; b != null; b = parent.get(b)) {   // climb from q toward the root
+            if (ancestorsOfP.contains(b)) return b;      // first shared ancestor on the way up is the lowest
         }
         return null;
     }
 
     /** Approach 3: one post-order recursion that reports p, q, or their LCA from each subtree. O(n) time, O(h) space. */
     static TreeNode optimal(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root == p || root == q) return root;
-        TreeNode left = optimal(root.left, p, q);
-        TreeNode right = optimal(root.right, p, q);
-        if (left == null) return right;
-        if (right == null) return left;
-        return root;                                              // p and q were found on different sides
+        if (root == null || root == p || root == q) return root;   // empty, or hit p or q: report it upward
+        TreeNode left = optimal(root.left, p, q);        // what the left subtree found (null if nothing)
+        TreeNode right = optimal(root.right, p, q);      // what the right subtree found (null if nothing)
+        if (left == null) return right;                  // nothing on the left: pass up the right result
+        if (right == null) return left;                  // nothing on the right: pass up the left result
+        return root;                                     // p and q were found on different sides
     }
 
     // ---------------------------------------------------------------- helpers

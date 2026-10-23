@@ -12,15 +12,15 @@ public class P2782_RightLeftViewOfBinaryTree {
     /** Approach 1 (right view): level-order BFS; the last node of each level is the one visible from the right. O(n) time, O(w) space. */
     static List<Integer> rightViewBfs(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-        if (root == null) return ans;
-        Queue<TreeNode> q = new ArrayDeque<>();
+        if (root == null) return ans;                         // empty tree: nothing visible
+        Queue<TreeNode> q = new ArrayDeque<>();               // BFS queue, one level at a time
         q.add(root);
         while (!q.isEmpty()) {
-            int size = q.size();                                  // number of nodes on the current level
+            int size = q.size();                              // number of nodes on the current level
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
-                if (i == size - 1) ans.add(node.val);             // last node of this level
-                if (node.left != null) q.add(node.left);
+                if (i == size - 1) ans.add(node.val);         // last node of this level
+                if (node.left != null) q.add(node.left);      // children queued left to right
                 if (node.right != null) q.add(node.right);
             }
         }
@@ -30,15 +30,15 @@ public class P2782_RightLeftViewOfBinaryTree {
     /** Approach 1 (left view): the same BFS, keeping the first node of each level instead. O(n) time, O(w) space. */
     static List<Integer> leftViewBfs(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-        if (root == null) return ans;
-        Queue<TreeNode> q = new ArrayDeque<>();
+        if (root == null) return ans;                         // empty tree: nothing visible
+        Queue<TreeNode> q = new ArrayDeque<>();               // BFS queue, one level at a time
         q.add(root);
         while (!q.isEmpty()) {
-            int size = q.size();
+            int size = q.size();                              // number of nodes on the current level
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
-                if (i == 0) ans.add(node.val);                    // first node of this level
-                if (node.left != null) q.add(node.left);
+                if (i == 0) ans.add(node.val);                // first node of this level
+                if (node.left != null) q.add(node.left);      // children queued left to right
                 if (node.right != null) q.add(node.right);
             }
         }
@@ -47,30 +47,30 @@ public class P2782_RightLeftViewOfBinaryTree {
 
     /** Approach 2 (right view): DFS visiting right before left; the first node reached at each depth is the answer. O(n) time, O(h) space. */
     static List<Integer> rightViewDfs(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
-        rightDfs(root, 0, ans);
+        List<Integer> ans = new ArrayList<>();                // ans[d] = right-most node at depth d
+        rightDfs(root, 0, ans);                               // start at the root, depth 0
         return ans;
     }
 
     static void rightDfs(TreeNode node, int depth, List<Integer> ans) {
-        if (node == null) return;
-        if (depth == ans.size()) ans.add(node.val);               // first time we reach this depth
-        rightDfs(node.right, depth + 1, ans);
-        rightDfs(node.left, depth + 1, ans);
+        if (node == null) return;                             // empty subtree: nothing to see
+        if (depth == ans.size()) ans.add(node.val);           // first time we reach this depth
+        rightDfs(node.right, depth + 1, ans);                 // right side first, so it claims each depth
+        rightDfs(node.left, depth + 1, ans);                  // left only fills depths the right missed
     }
 
     /** Approach 2 (left view): DFS visiting left before right. O(n) time, O(h) space. */
     static List<Integer> leftViewDfs(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
-        leftDfs(root, 0, ans);
+        List<Integer> ans = new ArrayList<>();                // ans[d] = left-most node at depth d
+        leftDfs(root, 0, ans);                                // start at the root, depth 0
         return ans;
     }
 
     static void leftDfs(TreeNode node, int depth, List<Integer> ans) {
-        if (node == null) return;
-        if (depth == ans.size()) ans.add(node.val);
-        leftDfs(node.left, depth + 1, ans);
-        leftDfs(node.right, depth + 1, ans);
+        if (node == null) return;                             // empty subtree: nothing to see
+        if (depth == ans.size()) ans.add(node.val);           // first time we reach this depth
+        leftDfs(node.left, depth + 1, ans);                   // left side first, so it claims each depth
+        leftDfs(node.right, depth + 1, ans);                  // right only fills depths the left missed
     }
 
     // ---------------------------------------------------------------- helpers

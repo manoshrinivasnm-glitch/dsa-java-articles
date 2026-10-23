@@ -18,70 +18,72 @@ public class P2789_PreorderInorderAndPostorderTraversalIn {
 
     /** Approach 1: three independent recursive traversals. O(n) time per walk (3 walks), O(h) stack. */
     static List<List<Integer>> threeTraversals(TreeNode root) {
+        // one list per traversal order
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
-        preorder(root, pre);
-        inorder(root, in);
-        postorder(root, post);
+        preorder(root, pre);                             // root, left, right
+        inorder(root, in);                               // left, root, right
+        postorder(root, post);                           // left, right, root
         return List.of(pre, in, post);
     }
 
     static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        out.add(node.val);
+        if (node == null) return;                        // empty subtree: nothing to add
+        out.add(node.val);                               // record the node before its children
         preorder(node.left, out);
         preorder(node.right, out);
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                        // empty subtree: nothing to add
         inorder(node.left, out);
-        out.add(node.val);
+        out.add(node.val);                               // record the node between its two subtrees
         inorder(node.right, out);
     }
 
     static void postorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                        // empty subtree: nothing to add
         postorder(node.left, out);
         postorder(node.right, out);
-        out.add(node.val);
+        out.add(node.val);                               // record the node after both subtrees
     }
 
     /** Approach 2: one recursive walk. Each node is met before its left subtree, between its subtrees and after its right subtree; record it in pre, in and post at those three moments. O(n) time, O(h) stack. */
     static List<List<Integer>> oneRecursiveWalk(TreeNode root) {
+        // all three lists are filled by one walk
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
         walk(root, pre, in, post);
         return List.of(pre, in, post);
     }
 
     static void walk(TreeNode node, List<Integer> pre, List<Integer> in, List<Integer> post) {
-        if (node == null) return;
-        pre.add(node.val);
+        if (node == null) return;                        // empty subtree: nothing to record
+        pre.add(node.val);                               // first meeting, before the left subtree -> preorder
         walk(node.left, pre, in, post);
-        in.add(node.val);
+        in.add(node.val);                                // back from the left subtree -> inorder
         walk(node.right, pre, in, post);
-        post.add(node.val);
+        post.add(node.val);                              // back from the right subtree -> postorder
     }
 
     /** Approach 3: one iterative walk with a stack of (node, state). State 1 = first visit (preorder), 2 = back from the left subtree (inorder), 3 = back from the right subtree (postorder). O(n) time, O(h) space. */
     static List<List<Integer>> oneIterativeWalk(TreeNode root) {
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
-        if (root == null) return List.of(pre, in, post);
-        Deque<Pair> st = new ArrayDeque<>();
-        st.push(new Pair(root, 1));
+        if (root == null) return List.of(pre, in, post);   // empty tree: three empty lists
+        Deque<Pair> st = new ArrayDeque<>();             // (node, how many times we have met it)
+        st.push(new Pair(root, 1));                      // the root, met for the first time
         while (!st.isEmpty()) {
             Pair top = st.pop();
-            if (top.state == 1) {
+            if (top.state == 1) {                        // first visit -> preorder
                 pre.add(top.node.val);
-                top.state = 2;
-                st.push(top);
-                if (top.node.left != null) st.push(new Pair(top.node.left, 1));
-            } else if (top.state == 2) {
+                top.state = 2;                           // next time we see it, its left side is done
+                st.push(top);                            // put it back under its left child
+                if (top.node.left != null) st.push(new Pair(top.node.left, 1));   // explore left next
+            } else if (top.state == 2) {                 // back from the left subtree -> inorder
                 in.add(top.node.val);
-                top.state = 3;
+                top.state = 3;                           // next time we see it, its right side is done
                 st.push(top);
-                if (top.node.right != null) st.push(new Pair(top.node.right, 1));
+                if (top.node.right != null) st.push(new Pair(top.node.right, 1));   // explore right next
             } else {
-                post.add(top.node.val);
+                post.add(top.node.val);                  // state 3: both subtrees done -> postorder, drop it
             }
         }
         return List.of(pre, in, post);

@@ -16,58 +16,60 @@ public class P116_BoundaryTraversal {
     /** Approach 1: three separate walks (left boundary, leaves, right boundary). The boundary walks skip leaves so the leaf walk owns them. O(n) time, O(h) space. */
     static List<Integer> threeParts(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        if (!isLeaf(root)) out.add(root.val);      // a lone root is added by the leaf walk instead
-        addLeftBoundary(root, out);
-        addLeaves(root, out);
-        addRightBoundary(root, out);
+        if (root == null) return out;                    // empty tree: no boundary
+        if (!isLeaf(root)) out.add(root.val);            // a lone root is added by the leaf walk instead
+        addLeftBoundary(root, out);                      // left edge top-down, without leaves
+        addLeaves(root, out);                            // every leaf, left to right
+        addRightBoundary(root, out);                     // right edge bottom-up, without leaves
         return out;
     }
 
     static void addLeftBoundary(TreeNode root, List<Integer> out) {
-        TreeNode cur = root.left;
-        while (cur != null) {
-            if (!isLeaf(cur)) out.add(cur.val);
-            cur = cur.left != null ? cur.left : cur.right;
+        TreeNode cur = root.left;                        // the root is already added
+        while (cur != null) {                            // walk down the left edge
+            if (!isLeaf(cur)) out.add(cur.val);          // leaves are left to addLeaves
+            cur = cur.left != null ? cur.left : cur.right;   // stay on the edge: prefer left, else right
         }
     }
 
     static void addLeaves(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        if (isLeaf(node)) {
+        if (node == null) return;                        // empty subtree: no leaves
+        if (isLeaf(node)) {                              // a leaf: record it and stop
             out.add(node.val);
             return;
         }
-        addLeaves(node.left, out);
+        addLeaves(node.left, out);                       // left subtree's leaves come before the right's
         addLeaves(node.right, out);
     }
 
     static void addRightBoundary(TreeNode root, List<Integer> out) {
-        List<Integer> tmp = new ArrayList<>();
-        TreeNode cur = root.right;
-        while (cur != null) {
-            if (!isLeaf(cur)) tmp.add(cur.val);
-            cur = cur.right != null ? cur.right : cur.left;
+        List<Integer> tmp = new ArrayList<>();           // right edge top-down, reversed at the end
+        TreeNode cur = root.right;                       // the root is already added
+        while (cur != null) {                            // walk down the right edge
+            if (!isLeaf(cur)) tmp.add(cur.val);          // leaves are left to addLeaves
+            cur = cur.right != null ? cur.right : cur.left;   // stay on the edge: prefer right, else left
         }
-        for (int i = tmp.size() - 1; i >= 0; i--) out.add(tmp.get(i));   // bottom-up
+        for (int i = tmp.size() - 1; i >= 0; i--) out.add(tmp.get(i));   // add them bottom-up
     }
 
     /** Approach 2: one DFS carrying two flags. Left-boundary nodes are emitted on the way down, right-boundary nodes on the way back up, every other leaf when it is reached. O(n) time, O(h) stack. */
     static List<Integer> singleDfs(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        out.add(root.val);
-        dfs(root.left, true, false, out);
-        dfs(root.right, false, true, out);
+        if (root == null) return out;                    // empty tree: no boundary
+        out.add(root.val);                               // the root is always on the boundary
+        dfs(root.left, true, false, out);                // left subtree starts on the left edge
+        dfs(root.right, false, true, out);               // right subtree starts on the right edge
         return out;
     }
 
     static void dfs(TreeNode node, boolean onLeft, boolean onRight, List<Integer> out) {
-        if (node == null) return;
-        if (onLeft || (!onRight && isLeaf(node))) out.add(node.val);    // pre-order moment
+        if (node == null) return;                        // empty subtree: nothing to add
+        if (onLeft || (!onRight && isLeaf(node))) out.add(node.val);  // left edge, or leaf off the right edge
+        // the left child is on the right edge only if there is no right child
         dfs(node.left, onLeft, onRight && node.right == null, out);
+        // the right child is on the left edge only if there is no left child
         dfs(node.right, onLeft && node.left == null, onRight, out);
-        if (onRight) out.add(node.val);                                 // post-order moment
+        if (onRight) out.add(node.val);                               // right edge: emit on the way back up
     }
 
     // ---------------------------------------------------------------- helpers

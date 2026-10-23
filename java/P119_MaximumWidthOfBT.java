@@ -11,36 +11,38 @@ public class P119_MaximumWidthOfBT {
 
     /** Approach 1: brute force. Level order that keeps explicit null placeholders between the two ends of each level. Exponential in the worst case. */
     static int bruteForce(TreeNode root) {
-        if (root == null) return 0;
-        List<TreeNode> level = new ArrayList<>();
+        if (root == null) return 0;                      // empty tree has width 0
+        List<TreeNode> level = new ArrayList<>();        // current level, trimmed at both ends
         level.add(root);
-        int best = 0;
+        int best = 0;                                    // widest level so far
         while (!level.isEmpty()) {
-            best = Math.max(best, level.size());                  // the level is trimmed, so its size is its width
-            List<TreeNode> next = new ArrayList<>();
+            best = Math.max(best, level.size());         // the level is trimmed, so its size is its width
+            List<TreeNode> next = new ArrayList<>();     // next level, with null gaps kept
             for (TreeNode node : level) {
-                next.add(node == null ? null : node.left);        // a gap has two gap children
+                next.add(node == null ? null : node.left);   // a gap has two gap children
                 next.add(node == null ? null : node.right);
             }
-            int lo = 0, hi = next.size() - 1;                     // trim placeholders at both ends
-            while (lo <= hi && next.get(lo) == null) lo++;
-            while (hi >= lo && next.get(hi) == null) hi--;
-            level = new ArrayList<>(next.subList(lo, hi + 1));
+            int lo = 0, hi = next.size() - 1;            // trim placeholders at both ends
+            while (lo <= hi && next.get(lo) == null) lo++;   // skip leading gaps
+            while (hi >= lo && next.get(hi) == null) hi--;   // skip trailing gaps
+            level = new ArrayList<>(next.subList(lo, hi + 1));   // keep only the span between the two ends
         }
         return best;
     }
 
     /** Approach 2: DFS numbering nodes like a heap, re-based on the leftmost index of each depth. O(n) time, O(h) space. */
     static int dfs(TreeNode root) {
-        return (int) dfsWidth(root, 0, 0L, new ArrayList<>());
+        return (int) dfsWidth(root, 0, 0L, new ArrayList<>());   // root: depth 0, index 0
     }
 
     static long dfsWidth(TreeNode node, int depth, long index, List<Long> firstAtDepth) {
-        if (node == null) return 0;
-        if (depth == firstAtDepth.size()) firstAtDepth.add(index);   // preorder meets the leftmost node of a depth first
-        long first = firstAtDepth.get(depth);
-        long width = index - first + 1;
-        long childBase = 2 * (index - first);                     // children numbered relative to the leftmost node
+        if (node == null) return 0;                      // empty subtree adds no width
+        // preorder meets the leftmost node of a depth first
+        if (depth == firstAtDepth.size()) firstAtDepth.add(index);
+        long first = firstAtDepth.get(depth);            // leftmost index at this depth
+        long width = index - first + 1;                  // span from the leftmost node to this one
+        long childBase = 2 * (index - first);            // children numbered relative to the leftmost node
+        // children take 2i and 2i + 1, so a missing node still leaves its gap
         width = Math.max(width, dfsWidth(node.left, depth + 1, childBase, firstAtDepth));
         width = Math.max(width, dfsWidth(node.right, depth + 1, childBase + 1, firstAtDepth));
         return width;
@@ -48,24 +50,25 @@ public class P119_MaximumWidthOfBT {
 
     /** Approach 3: level-order BFS carrying heap indices, re-based to start at 0 on every level. O(n) time, O(w) space. */
     static int optimal(TreeNode root) {
-        if (root == null) return 0;
-        Queue<TreeNode> nodes = new ArrayDeque<>();
-        Queue<Long> indices = new ArrayDeque<>();
+        if (root == null) return 0;                      // empty tree has width 0
+        Queue<TreeNode> nodes = new ArrayDeque<>();      // BFS queue of nodes
+        Queue<Long> indices = new ArrayDeque<>();        // heap index of each queued node, kept in step
         nodes.add(root);
         indices.add(0L);
-        long best = 0;
+        long best = 0;                                   // widest level so far
         while (!nodes.isEmpty()) {
-            int size = nodes.size();
-            long first = indices.peek();                          // index of the leftmost node on this level
-            long last = 0;
+            int size = nodes.size();                     // number of nodes on this level
+            long first = indices.peek();                 // index of the leftmost node on this level
+            long last = 0;                               // re-based index of the latest node polled
             for (int i = 0; i < size; i++) {
                 TreeNode node = nodes.poll();
-                long idx = indices.poll() - first;                // re-base so this level starts at 0
+                long idx = indices.poll() - first;       // re-base so this level starts at 0
                 last = idx;
+                // children take 2i and 2i + 1, so gaps keep their width
                 if (node.left != null) { nodes.add(node.left); indices.add(2 * idx); }
                 if (node.right != null) { nodes.add(node.right); indices.add(2 * idx + 1); }
             }
-            best = Math.max(best, last + 1);                      // last is already relative to the leftmost node
+            best = Math.max(best, last + 1);             // last is already relative to the leftmost node
         }
         return (int) best;
     }

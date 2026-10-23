@@ -11,41 +11,44 @@ public class P129_CheckIfTwoTreesAreIdenticalOrNot {
 
     /** Approach 1: serialize both trees in preorder with a null marker for every missing child, then compare the sequences. O(n + m) time and space. */
     static boolean bySerialization(TreeNode p, TreeNode q) {
+        // preorder sequences, null marks a missing child
         List<Integer> a = new ArrayList<>(), b = new ArrayList<>();
         serialize(p, a);
         serialize(q, b);
-        return a.equals(b);
+        return a.equals(b);                              // same sequence means same shape and values
     }
 
     static void serialize(TreeNode node, List<Integer> out) {
         if (node == null) {
-            out.add(null);                 // the marker that pins down the shape
+            out.add(null);                               // the marker that pins down the shape
             return;
         }
-        out.add(node.val);
+        out.add(node.val);                               // preorder: the node first, then its subtrees
         serialize(node.left, out);
         serialize(node.right, out);
     }
 
     /** Approach 2: recursion. Both empty, or both present with equal values and identical left and right subtrees. O(min(n, m)) time, O(h) stack. */
     static boolean recursive(TreeNode p, TreeNode q) {
-        if (p == null || q == null) return p == q;
+        if (p == null || q == null) return p == q;       // if either is empty, both must be empty
+        // same value and identical subtrees on both sides
         return p.val == q.val && recursive(p.left, q.left) && recursive(p.right, q.right);
     }
 
     /** Approach 3: iterative BFS over pairs of nodes that sit at the same position in both trees. O(min(n, m)) time, O(w) space. */
     static boolean iterative(TreeNode p, TreeNode q) {
-        Deque<TreeNode[]> queue = new ArrayDeque<>();
+        Deque<TreeNode[]> queue = new ArrayDeque<>();    // pairs of nodes at the same position in both trees
         queue.add(new TreeNode[]{p, q});
         while (!queue.isEmpty()) {
             TreeNode[] pair = queue.poll();
             TreeNode a = pair[0], b = pair[1];
-            if (a == null && b == null) continue;
+            if (a == null && b == null) continue;        // both missing here: this position matches
+            // one is missing, or the values differ
             if (a == null || b == null || a.val != b.val) return false;
-            queue.add(new TreeNode[]{a.left, b.left});
+            queue.add(new TreeNode[]{a.left, b.left});   // children are compared pair by pair later
             queue.add(new TreeNode[]{a.right, b.right});
         }
-        return true;
+        return true;                                     // every position matched
     }
 
     // ---------------------------------------------------------------- helpers

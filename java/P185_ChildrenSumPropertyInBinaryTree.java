@@ -14,42 +14,48 @@ public class P185_ChildrenSumPropertyInBinaryTree {
 
     /** Check: does every non-leaf node equal the sum of its children? O(n) time, O(h) space. */
     static boolean satisfies(TreeNode node) {
-        if (node == null || (node.left == null && node.right == null)) return true;   // leaves have nothing to match
+        // leaves have nothing to match
+        if (node == null || (node.left == null && node.right == null)) return true;
+        // sum of the children; a missing child counts as 0
         int sum = (node.left == null ? 0 : node.left.val) + (node.right == null ? 0 : node.right.val);
+        // this node matches, and so does every node below it
         return node.val == sum && satisfies(node.left) && satisfies(node.right);
     }
 
     /** Approach 1: post-order fix-up; a parent that is too small is raised, a parent that is too big pushes its surplus down one path. O(n * h) time, O(h) space. */
     static void bruteForce(TreeNode node) {
-        if (node == null || (node.left == null && node.right == null)) return;
-        bruteForce(node.left);                                    // both subtrees already satisfy the property
+        if (node == null || (node.left == null && node.right == null)) return;   // nothing to fix here
+        bruteForce(node.left);                           // both subtrees already satisfy the property
         bruteForce(node.right);
+        // sum of the children; a missing child counts as 0
         int sum = (node.left == null ? 0 : node.left.val) + (node.right == null ? 0 : node.right.val);
-        if (sum > node.val) node.val = sum;                       // raise the parent
-        else if (sum < node.val) pushDown(node, node.val - sum);  // raise a child instead, and repair below it
+        if (sum > node.val) node.val = sum;              // raise the parent
+        else if (sum < node.val) pushDown(node, node.val - sum);   // raise a child instead, repair below it
     }
 
     static void pushDown(TreeNode node, int diff) {
-        TreeNode child = node.left != null ? node.left : node.right;
-        while (child != null) {                                   // walk one path down to a leaf
-            child.val += diff;                                    // each raised node needs one raised child below it
-            child = child.left != null ? child.left : child.right;
+        TreeNode child = node.left != null ? node.left : node.right;   // go into one child, left if present
+        while (child != null) {                          // walk one path down to a leaf
+            child.val += diff;                           // each raised node needs one raised child below it
+            child = child.left != null ? child.left : child.right;   // keep going down the same way
         }
     }
 
     /** Approach 2: one DFS. Going down, lift the children to at least the parent's value; coming up, set the parent to the children's sum. O(n) time, O(h) space. */
     static void optimal(TreeNode node) {
-        if (node == null) return;
+        if (node == null) return;                        // empty subtree: nothing to fix
+        // sum of the children; a missing child counts as 0
         int childSum = (node.left == null ? 0 : node.left.val) + (node.right == null ? 0 : node.right.val);
         if (childSum >= node.val) {
-            node.val = childSum;                                  // children already cover the parent
+            node.val = childSum;                         // children already cover the parent
         } else {
-            if (node.left != null) node.left.val = node.val;      // lift each child to the parent's value
+            if (node.left != null) node.left.val = node.val;   // lift each child to the parent's value
             if (node.right != null) node.right.val = node.val;
         }
-        optimal(node.left);
+        optimal(node.left);                              // fix both subtrees with the lifted values
         optimal(node.right);
-        if (node.left != null || node.right != null) {            // a leaf keeps its value
+        if (node.left != null || node.right != null) {   // a leaf keeps its value
+            // coming back up: the parent becomes its children's final sum
             node.val = (node.left == null ? 0 : node.left.val) + (node.right == null ? 0 : node.right.val);
         }
     }

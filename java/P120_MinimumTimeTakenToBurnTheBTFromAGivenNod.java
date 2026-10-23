@@ -14,90 +14,93 @@ public class P120_MinimumTimeTakenToBurnTheBTFromAGivenNod {
 
     /** Approach 1: brute force. Store every node's root path and take the largest distance from start. O(n * h) time and space. */
     static int bruteForce(TreeNode root, TreeNode start) {
-        Map<TreeNode, List<TreeNode>> pathOf = new HashMap<>();
-        collectPaths(root, new ArrayList<>(), pathOf);
-        List<TreeNode> ps = pathOf.get(start);
-        if (ps == null) return -1;                                // start is not in the tree
-        int worst = 0;
-        for (List<TreeNode> pv : pathOf.values()) {
-            int common = 0;                                       // nodes shared by both root paths
+        Map<TreeNode, List<TreeNode>> pathOf = new HashMap<>();   // node -> its root-to-node path
+        collectPaths(root, new ArrayList<>(), pathOf);   // fill pathOf for every node
+        List<TreeNode> ps = pathOf.get(start);           // root path of start
+        if (ps == null) return -1;                       // start is not in the tree
+        int worst = 0;                                   // farthest distance from start so far
+        for (List<TreeNode> pv : pathOf.values()) {      // check every node
+            int common = 0;                              // nodes shared by both root paths
+            // count the shared prefix of the two paths
             while (common < ps.size() && common < pv.size() && ps.get(common) == pv.get(common)) common++;
+            // edges from start up to the shared part, plus down to this node
             worst = Math.max(worst, ps.size() + pv.size() - 2 * common);
         }
         return worst;
     }
 
     static void collectPaths(TreeNode node, List<TreeNode> path, Map<TreeNode, List<TreeNode>> pathOf) {
-        if (node == null) return;
-        path.add(node);
-        pathOf.put(node, new ArrayList<>(path));
+        if (node == null) return;                        // empty subtree: nothing to record
+        path.add(node);                                  // extend the current root path
+        pathOf.put(node, new ArrayList<>(path));         // store a snapshot for this node
         collectPaths(node.left, path, pathOf);
         collectPaths(node.right, path, pathOf);
-        path.remove(path.size() - 1);
+        path.remove(path.size() - 1);                    // undo before returning to the parent
     }
 
     /** Approach 2: record parent links, then simulate the fire with a level-by-level BFS from start. O(n) time, O(n) space. */
     static int parentMapBfs(TreeNode root, TreeNode start) {
-        Map<TreeNode, TreeNode> parent = new HashMap<>();
-        fillParents(root, null, parent);
-        if (!parent.containsKey(start)) return -1;
-        Set<TreeNode> burnt = new HashSet<>();
-        Queue<TreeNode> q = new ArrayDeque<>();
+        Map<TreeNode, TreeNode> parent = new HashMap<>();   // child -> parent, so the fire can also move up
+        fillParents(root, null, parent);                 // record every node's parent
+        if (!parent.containsKey(start)) return -1;       // start is not in the tree
+        Set<TreeNode> burnt = new HashSet<>();           // nodes already on fire
+        Queue<TreeNode> q = new ArrayDeque<>();          // nodes that caught fire in the latest second
         q.add(start);
         burnt.add(start);
-        int time = 0;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            boolean spread = false;                               // did this second set any new node on fire?
+        int time = 0;                                    // seconds in which the fire actually spread
+        while (!q.isEmpty()) {                           // one round of the loop = one second
+            int size = q.size();                         // nodes that can pass the fire on this second
+            boolean spread = false;                      // did this second set any new node on fire?
             for (int i = 0; i < size; i++) {
                 TreeNode node = q.poll();
+                // fire spreads to both children and the parent
                 for (TreeNode next : new TreeNode[]{node.left, node.right, parent.get(node)}) {
-                    if (next != null && burnt.add(next)) {
+                    if (next != null && burnt.add(next)) {   // an unburnt neighbour catches fire
                         q.add(next);
                         spread = true;
                     }
                 }
             }
-            if (spread) time++;
+            if (spread) time++;                          // count only seconds in which fire spread
         }
         return time;
     }
 
     static void fillParents(TreeNode node, TreeNode par, Map<TreeNode, TreeNode> parent) {
-        if (node == null) return;
-        parent.put(node, par);
-        fillParents(node.left, node, parent);
+        if (node == null) return;                        // empty subtree: nothing to record
+        parent.put(node, par);                           // record this node's parent
+        fillParents(node.left, node, parent);            // this node is its children's parent
         fillParents(node.right, node, parent);
     }
 
     /** Approach 3: one post-order DFS combining subtree heights with the distance to start. O(n) time, O(h) space. */
     static int optimal(TreeNode root, TreeNode start) {
-        int[] best = new int[1];
-        int[] top = burnDfs(root, start, best);
-        return top[1] >= 0 ? best[0] : -1;                        // -1 when start was never found
+        int[] best = new int[1];                         // longest burn time found so far
+        int[] top = burnDfs(root, start, best);          // {height, distance to start} of the root
+        return top[1] >= 0 ? best[0] : -1;               // -1 when start was never found
     }
 
     /** Returns {height, dist}: the subtree height in nodes, and the distance from node down to start (-1 if start is not below). */
     static int[] burnDfs(TreeNode node, TreeNode start, int[] best) {
-        if (node == null) return new int[]{0, -1};
-        int[] l = burnDfs(node.left, start, best);
-        int[] r = burnDfs(node.right, start, best);
-        int height = 1 + Math.max(l[0], r[0]);
-        if (node == start) {
-            best[0] = Math.max(best[0], height - 1);              // fire spreading straight down from start
-            return new int[]{height, 0};
+        if (node == null) return new int[]{0, -1};       // empty: height 0, start not here
+        int[] l = burnDfs(node.left, start, best);       // left subtree's {height, dist}
+        int[] r = burnDfs(node.right, start, best);      // right subtree's {height, dist}
+        int height = 1 + Math.max(l[0], r[0]);           // height of this subtree in nodes
+        if (node == start) {                             // the fire starts here
+            best[0] = Math.max(best[0], height - 1);     // fire spreading straight down from start
+            return new int[]{height, 0};                 // start is 0 edges from itself
         }
-        if (l[1] >= 0) {                                          // start is in the left subtree
-            int d = l[1] + 1;
-            best[0] = Math.max(best[0], d + r[0]);                // up to node, then down the right side
+        if (l[1] >= 0) {                                 // start is in the left subtree
+            int d = l[1] + 1;                            // distance from node to start
+            best[0] = Math.max(best[0], d + r[0]);       // up to node, then down the right side
+            return new int[]{height, d};                 // tell the parent how far start is
+        }
+        if (r[1] >= 0) {                                 // start is in the right subtree
+            int d = r[1] + 1;                            // distance from node to start
+            best[0] = Math.max(best[0], d + l[0]);       // up to node, then down the left side
             return new int[]{height, d};
         }
-        if (r[1] >= 0) {                                          // start is in the right subtree
-            int d = r[1] + 1;
-            best[0] = Math.max(best[0], d + l[0]);
-            return new int[]{height, d};
-        }
-        return new int[]{height, -1};
+        return new int[]{height, -1};                    // start is not below this node
     }
 
     // ---------------------------------------------------------------- helpers

@@ -11,41 +11,42 @@ public class P131_MaximumDepthInBT {
 
     /** Approach 1: level-order traversal (BFS); the number of levels is the depth. O(n) time, O(w) space where w is the widest level. */
     static int levelOrder(TreeNode root) {
-        if (root == null) return 0;
-        Deque<TreeNode> q = new ArrayDeque<>();
+        if (root == null) return 0;                      // empty tree has depth 0
+        Deque<TreeNode> q = new ArrayDeque<>();          // BFS queue, processed one level at a time
         q.add(root);
-        int depth = 0;
+        int depth = 0;                                   // levels fully processed so far
         while (!q.isEmpty()) {
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
+            int size = q.size();                         // everything queued now is exactly one level
+            for (int i = 0; i < size; i++) {             // drain just this level
                 TreeNode node = q.poll();
-                if (node.left != null) q.add(node.left);
+                if (node.left != null) q.add(node.left);   // queue the next level's nodes
                 if (node.right != null) q.add(node.right);
             }
-            depth++;
+            depth++;                                     // one more level finished
         }
         return depth;
     }
 
     /** Approach 2: recursion. depth(null) = 0 and depth(node) = 1 + max(depth(left), depth(right)). O(n) time, O(h) stack. */
     static int recursive(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null) return 0;                      // empty subtree adds no depth
+        // this node plus its deeper subtree
         return 1 + Math.max(recursive(root.left), recursive(root.right));
     }
 
     /** Approach 3: iterative DFS with a stack of (node, depth); same answer as recursion without risking a call-stack overflow on a skewed tree. O(n) time, O(h) space. */
     static int iterativeDfs(TreeNode root) {
-        if (root == null) return 0;
-        Deque<TreeNode> nodes = new ArrayDeque<>();
-        Deque<Integer> depths = new ArrayDeque<>();
+        if (root == null) return 0;                      // empty tree has depth 0
+        Deque<TreeNode> nodes = new ArrayDeque<>();      // nodes still to visit
+        Deque<Integer> depths = new ArrayDeque<>();      // depth of each stacked node, kept in step
         nodes.push(root);
-        depths.push(1);
-        int best = 0;
+        depths.push(1);                                  // the root sits at depth 1
+        int best = 0;                                    // deepest depth seen so far
         while (!nodes.isEmpty()) {
             TreeNode node = nodes.pop();
-            int d = depths.pop();
-            best = Math.max(best, d);
-            if (node.left != null) { nodes.push(node.left); depths.push(d + 1); }
+            int d = depths.pop();                        // depth of the node just popped
+            best = Math.max(best, d);                    // keep the maximum
+            if (node.left != null) { nodes.push(node.left); depths.push(d + 1); }   // one level deeper
             if (node.right != null) { nodes.push(node.right); depths.push(d + 1); }
         }
         return best;

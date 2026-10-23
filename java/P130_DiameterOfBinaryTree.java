@@ -11,30 +11,32 @@ public class P130_DiameterOfBinaryTree {
 
     /** Height in nodes: 0 for an empty tree, 1 for a single node. O(size of subtree). */
     static int height(TreeNode node) {
-        if (node == null) return 0;
-        return 1 + Math.max(height(node.left), height(node.right));
+        if (node == null) return 0;                      // empty tree has height 0
+        return 1 + Math.max(height(node.left), height(node.right));   // this node plus its taller subtree
     }
 
     /** Approach 1: brute force. The longest path that bends at a node has height(left) + height(right) edges; try every node as the bend. O(n^2) worst case, O(h) stack. */
     static int bruteForce(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null) return 0;                      // empty tree: no edges
+        // longest path that bends at the root, in edges
         int through = height(root.left) + height(root.right);
+        // or the best diameter lying fully inside one subtree
         return Math.max(through, Math.max(bruteForce(root.left), bruteForce(root.right)));
     }
 
     /** Approach 2: one post-order pass. Compute every height once, bottom-up, and update the best diameter at each node on the way. O(n) time, O(h) stack. */
     static int optimal(TreeNode root) {
-        int[] best = new int[1];
-        heightAndDiameter(root, best);
+        int[] best = new int[1];                         // best diameter so far, updated by the helper
+        heightAndDiameter(root, best);                   // one pass fills best while computing heights
         return best[0];
     }
 
     static int heightAndDiameter(TreeNode node, int[] best) {
-        if (node == null) return 0;
-        int lh = heightAndDiameter(node.left, best);
-        int rh = heightAndDiameter(node.right, best);
-        best[0] = Math.max(best[0], lh + rh);      // longest path that bends at this node
-        return 1 + Math.max(lh, rh);               // what this node offers to its parent
+        if (node == null) return 0;                      // empty subtree: height 0
+        int lh = heightAndDiameter(node.left, best);     // height of the left subtree
+        int rh = heightAndDiameter(node.right, best);    // height of the right subtree
+        best[0] = Math.max(best[0], lh + rh);            // longest path that bends at this node
+        return 1 + Math.max(lh, rh);                     // what this node offers to its parent
     }
 
     // ---------------------------------------------------------------- helpers

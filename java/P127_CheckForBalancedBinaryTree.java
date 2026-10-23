@@ -11,30 +11,30 @@ public class P127_CheckForBalancedBinaryTree {
 
     /** Height in nodes: 0 for an empty tree, 1 for a single node. O(size of subtree). */
     static int height(TreeNode node) {
-        if (node == null) return 0;
-        return 1 + Math.max(height(node.left), height(node.right));
+        if (node == null) return 0;                      // empty tree has height 0
+        return 1 + Math.max(height(node.left), height(node.right));   // this node plus its taller subtree
     }
 
     /** Approach 1: brute force. At every node compare the heights of its two subtrees, then check both children the same way. O(n^2) worst case, O(h) stack. */
     static boolean bruteForce(TreeNode root) {
-        if (root == null) return true;
-        if (Math.abs(height(root.left) - height(root.right)) > 1) return false;
-        return bruteForce(root.left) && bruteForce(root.right);
+        if (root == null) return true;                   // an empty tree is balanced
+        if (Math.abs(height(root.left) - height(root.right)) > 1) return false;   // this node is unbalanced
+        return bruteForce(root.left) && bruteForce(root.right);   // every node below must be balanced too
     }
 
     /** Approach 2: one post-order pass. Return the height of a balanced subtree, or -1 the moment any subtree is unbalanced. O(n) time, O(h) stack. */
     static boolean optimal(TreeNode root) {
-        return checkHeight(root) != -1;
+        return checkHeight(root) != -1;                  // -1 means some subtree was unbalanced
     }
 
     static int checkHeight(TreeNode node) {
-        if (node == null) return 0;
-        int lh = checkHeight(node.left);
-        if (lh == -1) return -1;
-        int rh = checkHeight(node.right);
-        if (rh == -1) return -1;
-        if (Math.abs(lh - rh) > 1) return -1;
-        return 1 + Math.max(lh, rh);
+        if (node == null) return 0;                      // empty subtree: height 0
+        int lh = checkHeight(node.left);                 // left height, or -1 if it is unbalanced
+        if (lh == -1) return -1;                         // left side already failed: stop early
+        int rh = checkHeight(node.right);                // same for the right subtree
+        if (rh == -1) return -1;                         // right side failed: stop early
+        if (Math.abs(lh - rh) > 1) return -1;            // this node itself breaks the rule
+        return 1 + Math.max(lh, rh);                     // balanced: report the real height
     }
 
     // ---------------------------------------------------------------- helpers
