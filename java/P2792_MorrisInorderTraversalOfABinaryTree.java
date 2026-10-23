@@ -11,31 +11,31 @@ public class P2792_MorrisInorderTraversalOfABinaryTree {
 
     /** Approach 1: recursion. O(n) time, O(h) call-stack space. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        inorder(root, out);
+        List<Integer> out = new ArrayList<>();           // values in inorder
+        inorder(root, out);                              // fill the list recursively
         return out;
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                        // past a leaf: nothing to add
+        inorder(node.left, out);                         // left subtree first
+        out.add(node.val);                               // then the root
+        inorder(node.right, out);                        // then the right subtree
     }
 
     /** Approach 2: explicit stack. O(n) time, O(h) space. */
     static List<Integer> iterativeStack(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
+        Deque<TreeNode> stack = new ArrayDeque<>();              // passed going down, not yet visited
+        TreeNode cur = root;                                     // root of the next subtree to explore
+        while (cur != null || !stack.isEmpty()) {                // runs until nothing is left to visit
             while (cur != null) {                                // walk as far left as possible
                 stack.push(cur);
                 cur = cur.left;
             }
-            cur = stack.pop();
-            out.add(cur.val);
-            cur = cur.right;
+            cur = stack.pop();                                   // leftmost node not yet visited
+            out.add(cur.val);                                    // visit it after its left subtree
+            cur = cur.right;                                     // then explore its right subtree
         }
         return out;
     }
@@ -43,21 +43,22 @@ public class P2792_MorrisInorderTraversalOfABinaryTree {
     /** Approach 3: Morris traversal, temporary threads replace the stack. O(n) time, O(1) extra space. */
     static List<Integer> morris(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        TreeNode cur = root;
+        TreeNode cur = root;                                     // walker; threads replace the stack
         while (cur != null) {
-            if (cur.left == null) {
+            if (cur.left == null) {                              // no left subtree: visit and move right
                 out.add(cur.val);
-                cur = cur.right;
+                cur = cur.right;                                 // may follow a thread back up
             } else {
                 TreeNode pred = cur.left;                        // inorder predecessor: rightmost node of the left subtree
+                // walk right to the end, or stop at a thread that already points to cur
                 while (pred.right != null && pred.right != cur) pred = pred.right;
                 if (pred.right == null) {                        // first arrival: leave a thread back, go left
-                    pred.right = cur;
+                    pred.right = cur;                            // thread pred -> cur, to come back later
                     cur = cur.left;
                 } else {                                         // second arrival via the thread: visit, remove it
-                    pred.right = null;
+                    pred.right = null;                           // remove the thread, restoring the tree
                     out.add(cur.val);
-                    cur = cur.right;
+                    cur = cur.right;                             // left side done: continue right
                 }
             }
         }

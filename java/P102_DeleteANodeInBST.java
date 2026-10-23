@@ -11,39 +11,39 @@ public class P102_DeleteANodeInBST {
 
     /** Approach 1: read the keys in sorted order, drop key, rebuild a balanced BST. O(n) time, O(n) space. */
     static TreeNode bruteForce(TreeNode root, int key) {
-        List<Integer> keys = new ArrayList<>();
-        inorder(root, keys);
+        List<Integer> keys = new ArrayList<>();          // every key, in sorted order
+        inorder(root, keys);                             // inorder of a BST is sorted
         keys.remove(Integer.valueOf(key));               // remove the value, not the element at index key
-        return buildBalanced(keys, 0, keys.size() - 1);
+        return buildBalanced(keys, 0, keys.size() - 1);  // rebuild a balanced BST from the rest
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                        // past a leaf: nothing to add
+        inorder(node.left, out);                         // smaller keys first
+        out.add(node.val);                               // then this key
+        inorder(node.right, out);                        // then the larger keys
     }
 
     static TreeNode buildBalanced(List<Integer> keys, int lo, int hi) {
-        if (lo > hi) return null;
-        int mid = (lo + hi) >>> 1;
-        TreeNode node = new TreeNode(keys.get(mid));
-        node.left = buildBalanced(keys, lo, mid - 1);
-        node.right = buildBalanced(keys, mid + 1, hi);
+        if (lo > hi) return null;                        // empty range -> no subtree
+        int mid = (lo + hi) >>> 1;                       // middle index; >>> avoids int overflow
+        TreeNode node = new TreeNode(keys.get(mid));     // the middle key becomes the root
+        node.left = buildBalanced(keys, lo, mid - 1);    // smaller keys build the left half
+        node.right = buildBalanced(keys, mid + 1, hi);   // larger keys build the right half
         return node;
     }
 
     /** Approach 2: recursive; a node with two children takes its inorder successor's value. O(h) time, O(h) stack. */
     static TreeNode successorDelete(TreeNode root, int key) {
         if (root == null) return null;                   // key not found
-        if (key < root.val) {
+        if (key < root.val) {                            // key can only be on the left
             root.left = successorDelete(root.left, key);
-        } else if (key > root.val) {
+        } else if (key > root.val) {                     // or only on the right
             root.right = successorDelete(root.right, key);
-        } else {
+        } else {                                         // found the node to delete
             if (root.left == null) return root.right;    // zero or one child: splice the node out
             if (root.right == null) return root.left;
-            TreeNode succ = root.right;
+            TreeNode succ = root.right;                  // two children: find the inorder successor
             while (succ.left != null) succ = succ.left;  // smallest key in the right subtree
             root.val = succ.val;                         // copy it up ...
             root.right = successorDelete(root.right, succ.val); // ... and delete it below (it has no left child)
@@ -53,29 +53,31 @@ public class P102_DeleteANodeInBST {
 
     /** Approach 3: iterative; find the parent, then replace the node by its left subtree with the right subtree hung under the left subtree's maximum. O(h) time, O(1) space. */
     static TreeNode optimal(TreeNode root, int key) {
-        if (root == null) return null;
-        if (root.val == key) return joinChildren(root);
+        if (root == null) return null;                   // empty tree: nothing to delete
+        if (root.val == key) return joinChildren(root);  // deleting the root: its children take over
         TreeNode cur = root;
-        while (cur != null) {
-            if (key < cur.val) {
+        while (cur != null) {                            // walk down, looking one level ahead for key
+            if (key < cur.val) {                         // key lies to the left
+                // left child is the target: replace it with its joined children
                 if (cur.left != null && cur.left.val == key) { cur.left = joinChildren(cur.left); break; }
                 cur = cur.left;
-            } else {
+            } else {                                     // key lies to the right
+                // right child is the target: replace it with its joined children
                 if (cur.right != null && cur.right.val == key) { cur.right = joinChildren(cur.right); break; }
                 cur = cur.right;
             }
         }
-        return root;
+        return root;                                     // the root itself was not deleted
     }
 
     /** The subtree that replaces a deleted node. */
     static TreeNode joinChildren(TreeNode node) {
-        if (node.left == null) return node.right;
-        if (node.right == null) return node.left;
+        if (node.left == null) return node.right;        // no left child: the right subtree replaces it
+        if (node.right == null) return node.left;        // no right child: the left subtree replaces it
         TreeNode rightmost = node.left;
         while (rightmost.right != null) rightmost = rightmost.right; // largest key of the left subtree
         rightmost.right = node.right;                    // every key on the right is larger than it
-        return node.left;
+        return node.left;                                // left subtree, now carrying the right one
     }
 
     // ---------------------------------------------------------------- tests

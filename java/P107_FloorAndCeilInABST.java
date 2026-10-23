@@ -11,10 +11,10 @@ public class P107_FloorAndCeilInABST {
 
     /** Approach 1: inorder gives the keys sorted; scan them once. O(n) time, O(n) space. Keys are non-negative, so -1 means "none". */
     static int[] bruteForce(TreeNode root, int key) {
-        List<Integer> sorted = new ArrayList<>();
-        inorder(root, sorted);
-        int floor = -1, ceil = -1;
-        for (int v : sorted) {
+        List<Integer> sorted = new ArrayList<>();        // the keys in increasing order
+        inorder(root, sorted);                           // inorder of a BST is sorted
+        int floor = -1, ceil = -1;                       // -1 means none found yet
+        for (int v : sorted) {                           // smallest to largest
             if (v <= key) floor = v;                     // the last value <= key wins
             if (v >= key && ceil == -1) ceil = v;        // the first value >= key wins
         }
@@ -22,22 +22,22 @@ public class P107_FloorAndCeilInABST {
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                        // past a leaf: nothing to add
+        inorder(node.left, out);                         // smaller keys first
+        out.add(node.val);                               // then this key
+        inorder(node.right, out);                        // then the larger keys
     }
 
     /** Approach 2: two root-to-leaf walks that each remember the best candidate seen. O(h) time, O(1) space. */
     static int[] optimal(TreeNode root, int key) {
-        return new int[]{findFloor(root, key), findCeil(root, key)};
+        return new int[]{findFloor(root, key), findCeil(root, key)};   // two independent O(h) walks
     }
 
     static int findFloor(TreeNode root, int key) {
-        int floor = -1;
+        int floor = -1;                                  // best key <= key so far; -1 = none
         TreeNode cur = root;
-        while (cur != null) {
-            if (cur.val == key) return key;
+        while (cur != null) {                            // one root-to-leaf walk
+            if (cur.val == key) return key;              // an exact match is its own floor
             if (cur.val < key) {
                 floor = cur.val;                         // a candidate; anything closer is to its right
                 cur = cur.right;
@@ -49,10 +49,10 @@ public class P107_FloorAndCeilInABST {
     }
 
     static int findCeil(TreeNode root, int key) {
-        int ceil = -1;
+        int ceil = -1;                                   // best key >= key so far; -1 = none
         TreeNode cur = root;
-        while (cur != null) {
-            if (cur.val == key) return key;
+        while (cur != null) {                            // one root-to-leaf walk
+            if (cur.val == key) return key;              // an exact match is its own ceil
             if (cur.val > key) {
                 ceil = cur.val;                          // a candidate; anything closer is to its left
                 cur = cur.left;

@@ -11,34 +11,38 @@ public class P2781_ConstructTheBinaryTreeFromPostorderAndIn {
 
     /** Approach 1: brute force, split recursively and find the root in inorder by a linear scan. O(n^2) worst-case time, O(n) space. */
     static TreeNode bruteForce(int[] inorder, int[] postorder) {
-        return buildScan(postorder, 0, postorder.length - 1, inorder, 0);
+        return buildScan(postorder, 0, postorder.length - 1, inorder, 0);   // start with the whole tree
     }
 
     // builds the tree whose postorder is post[postStart..postEnd] and whose inorder starts at in[inStart]
     static TreeNode buildScan(int[] post, int postStart, int postEnd, int[] in, int inStart) {
-        if (postStart > postEnd) return null;
+        if (postStart > postEnd) return null;                  // empty range -> no subtree
         TreeNode root = new TreeNode(post[postEnd]);           // postorder always ends with the root
         int rootIndex = inStart;
         while (in[rootIndex] != root.val) rootIndex++;         // linear search: O(size of this subtree)
-        int leftSize = rootIndex - inStart;
+        int leftSize = rootIndex - inStart;                    // left subtree size = values left of the root
+        // left subtree: the first leftSize values of this postorder range
         root.left = buildScan(post, postStart, postStart + leftSize - 1, in, inStart);
+        // right subtree: the values between those and the root
         root.right = buildScan(post, postStart + leftSize, postEnd - 1, in, rootIndex + 1);
         return root;
     }
 
     /** Approach 2: optimal, a HashMap from value to inorder index finds every root in O(1). O(n) time, O(n) space. */
     static TreeNode optimal(int[] inorder, int[] postorder) {
-        Map<Integer, Integer> inIndex = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) inIndex.put(inorder[i], i);
-        return buildMap(postorder, 0, postorder.length - 1, 0, inIndex);
+        Map<Integer, Integer> inIndex = new HashMap<>();       // value -> its position in inorder
+        for (int i = 0; i < inorder.length; i++) inIndex.put(inorder[i], i);   // filled once, up front
+        return buildMap(postorder, 0, postorder.length - 1, 0, inIndex);   // start with the whole tree
     }
 
     static TreeNode buildMap(int[] post, int postStart, int postEnd, int inStart, Map<Integer, Integer> inIndex) {
-        if (postStart > postEnd) return null;
-        TreeNode root = new TreeNode(post[postEnd]);
-        int rootIndex = inIndex.get(root.val);
-        int leftSize = rootIndex - inStart;
+        if (postStart > postEnd) return null;                  // empty range -> no subtree
+        TreeNode root = new TreeNode(post[postEnd]);           // postorder always ends with the root
+        int rootIndex = inIndex.get(root.val);                 // O(1) lookup instead of a scan
+        int leftSize = rootIndex - inStart;                    // left subtree size = values left of the root
+        // left subtree: the first leftSize values of this postorder range
         root.left = buildMap(post, postStart, postStart + leftSize - 1, inStart, inIndex);
+        // right subtree: the values between those and the root
         root.right = buildMap(post, postStart + leftSize, postEnd - 1, rootIndex + 1, inIndex);
         return root;
     }

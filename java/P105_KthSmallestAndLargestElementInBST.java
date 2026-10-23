@@ -11,72 +11,72 @@ public class P105_KthSmallestAndLargestElementInBST {
 
     /** Approach 1: collect the keys in any order, sort, index. O(n log n) time, O(n) space. */
     static int[] bruteForce(TreeNode root, int k) {
-        List<Integer> vals = new ArrayList<>();
+        List<Integer> vals = new ArrayList<>();          // every key, in no particular order
         preorder(root, vals);
-        Collections.sort(vals);
+        Collections.sort(vals);                          // sorted, so index k - 1 has rank k
         int n = vals.size();
-        if (k < 1 || k > n) return new int[]{-1, -1};
-        return new int[]{vals.get(k - 1), vals.get(n - k)};
+        if (k < 1 || k > n) return new int[]{-1, -1};    // k out of range: no answer
+        return new int[]{vals.get(k - 1), vals.get(n - k)};   // kth smallest and kth largest
     }
 
     static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        out.add(node.val);
+        if (node == null) return;                        // past a leaf: nothing to add
+        out.add(node.val);                               // any visiting order works here
         preorder(node.left, out);
         preorder(node.right, out);
     }
 
     /** Approach 2: inorder already yields the keys sorted, so no sort is needed. O(n) time, O(n) space. */
     static int[] better(TreeNode root, int k) {
-        List<Integer> sorted = new ArrayList<>();
-        inorder(root, sorted);
+        List<Integer> sorted = new ArrayList<>();        // keys in increasing order
+        inorder(root, sorted);                           // inorder of a BST is sorted
         int n = sorted.size();
-        if (k < 1 || k > n) return new int[]{-1, -1};
-        return new int[]{sorted.get(k - 1), sorted.get(n - k)};
+        if (k < 1 || k > n) return new int[]{-1, -1};    // k out of range: no answer
+        return new int[]{sorted.get(k - 1), sorted.get(n - k)};   // kth from the front, kth from the back
     }
 
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                        // past a leaf: nothing to add
+        inorder(node.left, out);                         // smaller keys first
+        out.add(node.val);                               // then this key
+        inorder(node.right, out);                        // then the larger keys
     }
 
     /** Approach 3: iterative inorder that stops at the kth node, and its mirror image for the largest. O(h + k) time, O(h) space. */
     static int[] optimal(TreeNode root, int k) {
-        return new int[]{kthSmallest(root, k), kthLargest(root, k)};
+        return new int[]{kthSmallest(root, k), kthLargest(root, k)};   // two separate early-stopping walks
     }
 
     static int kthSmallest(TreeNode root, int k) {
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();      // ancestors whose key is not visited yet
         TreeNode cur = root;
-        int count = 0;
-        while (cur != null || !stack.isEmpty()) {
+        int count = 0;                                   // keys visited so far
+        while (cur != null || !stack.isEmpty()) {        // until every node is visited
             while (cur != null) {                        // go as far left as possible
                 stack.push(cur);
                 cur = cur.left;
             }
             cur = stack.pop();                           // the next key in increasing order
-            if (++count == k) return cur.val;
-            cur = cur.right;
+            if (++count == k) return cur.val;            // this is the kth smallest key
+            cur = cur.right;                             // next come the keys in its right subtree
         }
         return -1;                                       // fewer than k keys (or k < 1)
     }
 
     static int kthLargest(TreeNode root, int k) {
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();      // ancestors whose key is not visited yet
         TreeNode cur = root;
-        int count = 0;
-        while (cur != null || !stack.isEmpty()) {
+        int count = 0;                                   // keys visited so far
+        while (cur != null || !stack.isEmpty()) {        // until every node is visited
             while (cur != null) {                        // mirror image: go as far right as possible
                 stack.push(cur);
                 cur = cur.right;
             }
             cur = stack.pop();                           // the next key in decreasing order
-            if (++count == k) return cur.val;
-            cur = cur.left;
+            if (++count == k) return cur.val;            // this is the kth largest key
+            cur = cur.left;                              // next come the keys in its left subtree
         }
-        return -1;
+        return -1;                                       // fewer than k keys (or k < 1)
     }
 
     // ---------------------------------------------------------------- tests

@@ -16,48 +16,50 @@ public class P111_RequirementsNeededToConstructAUniqueBT {
 
     /** The rule. Codes: 1 = preorder, 2 = inorder, 3 = postorder, 4 = level order. O(1). */
     static boolean canConstructUnique(int a, int b) {
-        return a != b && (a == IN || b == IN);
+        return a != b && (a == IN || b == IN);           // two different traversals, one of them inorder
     }
 
     /** One traversal of the tree as a list of values. */
     static List<Integer> traversal(TreeNode root, int type) {
-        List<Integer> out = new ArrayList<>();
-        if (type == LEVEL) {
+        List<Integer> out = new ArrayList<>();           // values in visiting order
+        if (type == LEVEL) {                             // level order: breadth-first with a queue
             Deque<TreeNode> queue = new ArrayDeque<>();
             if (root != null) queue.add(root);
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {                   // each poll visits the next node, level by level
                 TreeNode cur = queue.poll();
                 out.add(cur.val);
-                if (cur.left != null) queue.add(cur.left);
+                if (cur.left != null) queue.add(cur.left);   // children join the back of the queue
                 if (cur.right != null) queue.add(cur.right);
             }
-        } else {
+        } else {                                         // pre, in and post order are all depth-first
             depthFirst(root, type, out);
         }
         return out;
     }
 
     static void depthFirst(TreeNode node, int type, List<Integer> out) {
-        if (node == null) return;
-        if (type == PRE) out.add(node.val);
+        if (node == null) return;                        // past a leaf: nothing to record
+        if (type == PRE) out.add(node.val);              // preorder: record before both subtrees
         depthFirst(node.left, type, out);
-        if (type == IN) out.add(node.val);
+        if (type == IN) out.add(node.val);               // inorder: record between the subtrees
         depthFirst(node.right, type, out);
-        if (type == POST) out.add(node.val);
+        if (type == POST) out.add(node.val);             // postorder: record after both subtrees
     }
 
     /** Why inorder + level order is enough: level[0] is the root, inorder splits the rest. O(n^2) time. */
     static TreeNode buildFromLevelAndInorder(List<Integer> level, List<Integer> inorder) {
-        if (inorder.isEmpty()) return null;
-        int rootVal = level.get(0);
+        if (inorder.isEmpty()) return null;                        // no values -> empty subtree
+        int rootVal = level.get(0);                                // level order always lists the root first
         int split = inorder.indexOf(rootVal);                      // everything before split is in the left subtree
+        // values that belong to the left subtree
         Set<Integer> leftValues = new HashSet<>(inorder.subList(0, split));
         List<Integer> leftLevel = new ArrayList<>(), rightLevel = new ArrayList<>();
-        for (int i = 1; i < level.size(); i++) {
+        for (int i = 1; i < level.size(); i++) {                   // deal the remaining values to their side
             int v = level.get(i);
-            if (leftValues.contains(v)) leftLevel.add(v); else rightLevel.add(v);
+            if (leftValues.contains(v)) leftLevel.add(v); else rightLevel.add(v);   // order is preserved
         }
         TreeNode root = new TreeNode(rootVal);
+        // rebuild both sides the same way
         root.left = buildFromLevelAndInorder(leftLevel, inorder.subList(0, split));
         root.right = buildFromLevelAndInorder(rightLevel, inorder.subList(split + 1, inorder.size()));
         return root;
@@ -66,14 +68,14 @@ public class P111_RequirementsNeededToConstructAUniqueBT {
     /** Every binary tree shape with n nodes, each exactly once (there are Catalan(n) of them). */
     static List<TreeNode> allShapes(int n) {
         List<TreeNode> out = new ArrayList<>();
-        if (n == 0) {
+        if (n == 0) {                                    // zero nodes: the only shape is the empty tree
             out.add(null);
             return out;
         }
-        for (int leftSize = 0; leftSize < n; leftSize++) {
-            for (TreeNode left : allShapes(leftSize)) {
+        for (int leftSize = 0; leftSize < n; leftSize++) {   // leftSize nodes go left, the rest go right
+            for (TreeNode left : allShapes(leftSize)) {  // pair every left shape with every right shape
                 for (TreeNode right : allShapes(n - 1 - leftSize)) {
-                    TreeNode root = new TreeNode(0);
+                    TreeNode root = new TreeNode(0);     // new root; values are written in later
                     root.left = left;
                     root.right = right;
                     out.add(root);
@@ -85,45 +87,46 @@ public class P111_RequirementsNeededToConstructAUniqueBT {
 
     /** Copies a shape, writing perm[0], perm[1], ... into its nodes in preorder. */
     static TreeNode labelled(TreeNode shape, int[] perm, int[] next) {
-        if (shape == null) return null;
-        TreeNode node = new TreeNode(perm[next[0]++]);
+        if (shape == null) return null;                  // empty spot in the shape stays empty
+        TreeNode node = new TreeNode(perm[next[0]++]);   // next[0] is a shared counter of values used
         node.left = labelled(shape.left, perm, next);
         node.right = labelled(shape.right, perm, next);
         return node;
     }
 
     static void permutations(int[] a, int k, List<int[]> out) {
-        if (k == a.length) {
+        if (k == a.length) {                             // every position fixed: record this permutation
             out.add(a.clone());
             return;
         }
-        for (int i = k; i < a.length; i++) {
-            int t = a[k]; a[k] = a[i]; a[i] = t;
-            permutations(a, k + 1, out);
-            t = a[k]; a[k] = a[i]; a[i] = t;
+        for (int i = k; i < a.length; i++) {             // try each remaining value at position k
+            int t = a[k]; a[k] = a[i]; a[i] = t;         // swap it into place
+            permutations(a, k + 1, out);                 // permute the positions after k
+            t = a[k]; a[k] = a[i]; a[i] = t;             // swap back to restore the array
         }
     }
 
     static boolean isFull(TreeNode node) {
-        if (node == null) return true;
-        if ((node.left == null) != (node.right == null)) return false;
-        return isFull(node.left) && isFull(node.right);
+        if (node == null) return true;                   // empty tree counts as full
+        if ((node.left == null) != (node.right == null)) return false;   // exactly one child -> not full
+        return isFull(node.left) && isFull(node.right);  // both subtrees must be full too
     }
 
     /** Over all trees holding the values 1..n, the most distinct trees that share one pair of traversals. 1 means "always unique". */
     static int maxTreesSharingTraversals(int n, int a, int b, boolean fullTreesOnly) {
         int[] values = new int[n];
-        for (int i = 0; i < n; i++) values[i] = i + 1;
+        for (int i = 0; i < n; i++) values[i] = i + 1;   // the values 1..n
         List<int[]> perms = new ArrayList<>();
-        permutations(values, 0, perms);
-        Map<List<List<Integer>>, Integer> groups = new HashMap<>();
-        int best = 0;
+        permutations(values, 0, perms);                  // every ordering of the values
+        Map<List<List<Integer>>, Integer> groups = new HashMap<>();   // traversal pair -> tree count
+        int best = 0;                                    // largest group seen so far
         for (TreeNode shape : allShapes(n)) {
-            if (fullTreesOnly && !isFull(shape)) continue;
+            if (fullTreesOnly && !isFull(shape)) continue;   // skip shapes that are not full when asked
             for (int[] perm : perms) {
-                TreeNode tree = labelled(shape, perm, new int[]{0});
+                TreeNode tree = labelled(shape, perm, new int[]{0});   // shape filled with this ordering
+                // the two traversals this tree produces
                 List<List<Integer>> key = List.of(traversal(tree, a), traversal(tree, b));
-                best = Math.max(best, groups.merge(key, 1, Integer::sum));
+                best = Math.max(best, groups.merge(key, 1, Integer::sum));   // count trees per pair
             }
         }
         return best;

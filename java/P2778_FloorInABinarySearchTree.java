@@ -11,33 +11,33 @@ public class P2778_FloorInABinarySearchTree {
 
     /** Approach 1: look at every node and keep the best key <= x. O(n) time, O(h) stack. */
     static int bruteForce(TreeNode root, int x) {
-        if (root == null) return -1;
-        int best = root.val <= x ? root.val : -1;
-        best = Math.max(best, bruteForce(root.left, x));
-        best = Math.max(best, bruteForce(root.right, x));
+        if (root == null) return -1;                     // empty subtree: no floor
+        int best = root.val <= x ? root.val : -1;        // this node counts only if it is <= x
+        best = Math.max(best, bruteForce(root.left, x));   // best from the left subtree
+        best = Math.max(best, bruteForce(root.right, x));   // and from the right subtree
         return best;
     }
 
     /** Approach 2: recursive descent that only enters the one subtree that can hold a better answer. O(h) time, O(h) stack. */
     static int recursive(TreeNode root, int x) {
-        if (root == null) return -1;
-        if (root.val == x) return x;
+        if (root == null) return -1;                          // fell off the tree: no floor here
+        if (root.val == x) return x;                          // an exact match is the floor
         if (root.val > x) return recursive(root.left, x);     // root and its right subtree are all too big
         int closer = recursive(root.right, x);               // root fits; something closer may be on its right
-        return closer != -1 ? closer : root.val;
+        return closer != -1 ? closer : root.val;              // fall back to root if the right has none
     }
 
     /** Approach 3: iterative descent that remembers the last node where we turned right. O(h) time, O(1) space. */
     static int optimal(TreeNode root, int x) {
-        int floor = -1;
+        int floor = -1;                                  // best key <= x so far; -1 = none
         TreeNode cur = root;
-        while (cur != null) {
-            if (cur.val == x) return x;
+        while (cur != null) {                            // one root-to-leaf walk
+            if (cur.val == x) return x;                  // an exact match is the floor
             if (cur.val < x) {
                 floor = cur.val;                         // candidate; every later candidate is larger
                 cur = cur.right;
             } else {
-                cur = cur.left;
+                cur = cur.left;                          // too big: look left for something smaller
             }
         }
         return floor;

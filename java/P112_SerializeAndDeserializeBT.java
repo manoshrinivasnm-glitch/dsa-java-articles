@@ -11,38 +11,38 @@ public class P112_SerializeAndDeserializeBT {
 
     /** Approach 1: level order (BFS); every missing child is written as "#". O(n) time and space for both directions. */
     static String serializeLevelOrder(TreeNode root) {
-        if (root == null) return "";
-        StringBuilder sb = new StringBuilder();
+        if (root == null) return "";                            // empty tree -> empty string
+        StringBuilder sb = new StringBuilder();                 // comma-separated tokens
         Queue<TreeNode> queue = new LinkedList<>();             // LinkedList accepts null entries, ArrayDeque does not
         queue.add(root);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                              // visit nodes level by level, nulls included
             TreeNode cur = queue.poll();
-            if (cur == null) {
+            if (cur == null) {                                  // missing child: write a placeholder
                 sb.append("#,");
                 continue;
             }
-            sb.append(cur.val).append(',');
-            queue.add(cur.left);
+            sb.append(cur.val).append(',');                     // real node: write its value
+            queue.add(cur.left);                                // queue both children, even null ones
             queue.add(cur.right);
         }
         return sb.toString();
     }
 
     static TreeNode deserializeLevelOrder(String data) {
-        if (data.isEmpty()) return null;
-        String[] parts = data.split(",");
-        TreeNode root = new TreeNode(Integer.parseInt(parts[0]));
-        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (data.isEmpty()) return null;                         // empty string -> empty tree
+        String[] parts = data.split(",");                        // tokens in the same level order
+        TreeNode root = new TreeNode(Integer.parseInt(parts[0]));   // the first token is the root
+        Queue<TreeNode> queue = new ArrayDeque<>();              // real nodes whose children are not read yet
         queue.add(root);
-        int i = 1;
+        int i = 1;                                               // index of the next unread token
         while (!queue.isEmpty()) {
             TreeNode cur = queue.poll();                         // the next two tokens are its children
-            if (!parts[i].equals("#")) {
+            if (!parts[i].equals("#")) {                         // left child, unless the token is "#"
                 cur.left = new TreeNode(Integer.parseInt(parts[i]));
-                queue.add(cur.left);
+                queue.add(cur.left);                             // its own children come later
             }
             i++;
-            if (!parts[i].equals("#")) {
+            if (!parts[i].equals("#")) {                         // right child, unless the token is "#"
                 cur.right = new TreeNode(Integer.parseInt(parts[i]));
                 queue.add(cur.right);
             }
@@ -54,32 +54,33 @@ public class P112_SerializeAndDeserializeBT {
     /** Approach 2: preorder DFS with "#" for null; the string is read back with the same recursion. O(n) time, O(n) space. */
     static String serializePreorder(TreeNode root) {
         StringBuilder sb = new StringBuilder();
-        writePreorder(root, sb);
+        writePreorder(root, sb);                                 // root, then left subtree, then right
         return sb.toString();
     }
 
     static void writePreorder(TreeNode node, StringBuilder sb) {
-        if (sb.length() > 0) sb.append(',');
-        if (node == null) {
+        if (sb.length() > 0) sb.append(',');                     // comma before every token except the first
+        if (node == null) {                                      // null child: write a placeholder and stop
             sb.append('#');
             return;
         }
-        sb.append(node.val);
+        sb.append(node.val);                                     // preorder: the value before its subtrees
         writePreorder(node.left, sb);
         writePreorder(node.right, sb);
     }
 
     static TreeNode deserializePreorder(String data) {
+        // tokens are read one at a time
         Iterator<String> tokens = Arrays.asList(data.split(",")).iterator();
-        return readPreorder(tokens);
+        return readPreorder(tokens);                             // rebuild with the same preorder recursion
     }
 
     static TreeNode readPreorder(Iterator<String> tokens) {
-        String token = tokens.next();
-        if (token.equals("#")) return null;
-        TreeNode node = new TreeNode(Integer.parseInt(token));
+        String token = tokens.next();                            // each call takes the next token
+        if (token.equals("#")) return null;                      // placeholder -> empty subtree
+        TreeNode node = new TreeNode(Integer.parseInt(token));   // a real value is this subtree's root
         node.left = readPreorder(tokens);                        // consumes exactly the left subtree's tokens
-        node.right = readPreorder(tokens);
+        node.right = readPreorder(tokens);                       // then the right subtree's tokens
         return node;
     }
 

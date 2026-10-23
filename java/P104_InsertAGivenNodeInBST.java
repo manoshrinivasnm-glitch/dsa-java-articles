@@ -12,26 +12,26 @@ public class P104_InsertAGivenNodeInBST {
     /** Approach 1: recursive descent; each call returns the (possibly new) root of its subtree. O(h) time, O(h) stack. */
     static TreeNode recursive(TreeNode root, int val) {
         if (root == null) return new TreeNode(val);      // fell off the tree: this empty spot is where val belongs
-        if (val < root.val) root.left = recursive(root.left, val);
-        else root.right = recursive(root.right, val);
-        return root;
+        if (val < root.val) root.left = recursive(root.left, val);   // smaller values go left
+        else root.right = recursive(root.right, val);    // larger values go right
+        return root;                                     // this subtree's root never changes
     }
 
     /** Approach 2: iterative descent; stop at the first missing child on the search path and hang the node there. O(h) time, O(1) space. */
     static TreeNode optimal(TreeNode root, int val) {
-        TreeNode node = new TreeNode(val);
-        if (root == null) return node;
+        TreeNode node = new TreeNode(val);               // the new leaf to attach
+        if (root == null) return node;                   // empty tree: the new node is the root
         TreeNode cur = root;
-        while (true) {
-            if (val < cur.val) {
-                if (cur.left == null) { cur.left = node; break; }
+        while (true) {                                   // walk down the search path
+            if (val < cur.val) {                         // val belongs on the left side
+                if (cur.left == null) { cur.left = node; break; }   // empty slot: attach here, done
                 cur = cur.left;
-            } else {
-                if (cur.right == null) { cur.right = node; break; }
+            } else {                                     // val belongs on the right side
+                if (cur.right == null) { cur.right = node; break; }   // empty slot: attach here, done
                 cur = cur.right;
             }
         }
-        return root;
+        return root;                                     // the root never changes
     }
 
     // ---------------------------------------------------------------- tests

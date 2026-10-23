@@ -11,15 +11,15 @@ public class P2398_FindMinMaxInBST {
 
     /** Approach 1: visit every node with an explicit stack and keep a running min and max. O(n) time, O(h) space. */
     static int[] bruteForce(TreeNode root) {
-        if (root == null) return new int[]{-1, -1};
-        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        if (root == null) return new int[]{-1, -1};      // empty tree: -1 for both
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;   // running extremes
+        Deque<TreeNode> stack = new ArrayDeque<>();      // nodes still to visit
         stack.push(root);
-        while (!stack.isEmpty()) {
+        while (!stack.isEmpty()) {                       // visit every node, ignoring the ordering
             TreeNode node = stack.pop();
-            min = Math.min(min, node.val);
+            min = Math.min(min, node.val);               // track the smallest and the largest seen
             max = Math.max(max, node.val);
-            if (node.right != null) stack.push(node.right);
+            if (node.right != null) stack.push(node.right);   // visit the children later
             if (node.left != null) stack.push(node.left);
         }
         return new int[]{min, max};
@@ -27,25 +27,25 @@ public class P2398_FindMinMaxInBST {
 
     /** Approach 2: recurse down the left edge for the min and down the right edge for the max. O(h) time, O(h) stack. */
     static int[] recursive(TreeNode root) {
-        if (root == null) return new int[]{-1, -1};
-        return new int[]{leftmost(root), rightmost(root)};
+        if (root == null) return new int[]{-1, -1};      // empty tree: -1 for both
+        return new int[]{leftmost(root), rightmost(root)};   // min on the leftmost path, max on the rightmost
     }
 
     static int leftmost(TreeNode node) {
-        return node.left == null ? node.val : leftmost(node.left);
+        return node.left == null ? node.val : leftmost(node.left);   // no left child: the minimum
     }
 
     static int rightmost(TreeNode node) {
-        return node.right == null ? node.val : rightmost(node.right);
+        return node.right == null ? node.val : rightmost(node.right);   // no right child: the maximum
     }
 
     /** Approach 3: the same two walks as loops. O(h) time, O(1) space. */
     static int[] optimal(TreeNode root) {
-        if (root == null) return new int[]{-1, -1};
-        TreeNode lo = root, hi = root;
+        if (root == null) return new int[]{-1, -1};      // empty tree: -1 for both
+        TreeNode lo = root, hi = root;                   // walkers for the min and the max
         while (lo.left != null) lo = lo.left;            // smaller keys are always to the left
         while (hi.right != null) hi = hi.right;          // larger keys are always to the right
-        return new int[]{lo.val, hi.val};
+        return new int[]{lo.val, hi.val};                // leftmost and rightmost keys
     }
 
     // ---------------------------------------------------------------- tests

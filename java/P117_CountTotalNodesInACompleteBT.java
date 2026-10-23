@@ -11,21 +11,22 @@ public class P117_CountTotalNodesInACompleteBT {
 
     /** Approach 1: brute force, visit every node. O(n) time, O(log n) recursion depth because a complete tree is balanced. */
     static int bruteForce(TreeNode root) {
-        if (root == null) return 0;
-        return 1 + bruteForce(root.left) + bruteForce(root.right);
+        if (root == null) return 0;                      // empty subtree has no nodes
+        return 1 + bruteForce(root.left) + bruteForce(root.right);   // this node plus both subtrees
     }
 
     /** Approach 2: optimal, a subtree whose leftmost and rightmost depths agree is perfect. O(log^2 n) time, O(log n) space. */
     static int optimal(TreeNode root) {
-        if (root == null) return 0;
-        int lh = leftHeight(root), rh = rightHeight(root);
+        if (root == null) return 0;                      // empty subtree has no nodes
+        int lh = leftHeight(root), rh = rightHeight(root);   // depth along leftmost and rightmost edges
         if (lh == rh) return (1 << lh) - 1;              // perfect subtree: 2^h - 1 nodes, no need to look inside
+        // last level is ragged here: count this node, recurse into both children
         return 1 + optimal(root.left) + optimal(root.right);
     }
 
     static int leftHeight(TreeNode node) {
         int h = 0;
-        while (node != null) {
+        while (node != null) {                           // follow left children down to the bottom
             h++;
             node = node.left;
         }
@@ -34,7 +35,7 @@ public class P117_CountTotalNodesInACompleteBT {
 
     static int rightHeight(TreeNode node) {
         int h = 0;
-        while (node != null) {
+        while (node != null) {                           // follow right children down to the bottom
             h++;
             node = node.right;
         }
@@ -43,12 +44,13 @@ public class P117_CountTotalNodesInACompleteBT {
 
     /** Approach 3: binary search for the last node on the bottom level. O(log^2 n) time, O(1) space. */
     static int optimalBinarySearch(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null) return 0;                       // empty tree
         int d = 0;                                        // depth of the bottom level, root at depth 0
-        for (TreeNode t = root.left; t != null; t = t.left) d++;
+        for (TreeNode t = root.left; t != null; t = t.left) d++;   // leftmost path reaches the bottom level
         int lo = 0, hi = (1 << d) - 1;                    // bottom-level positions; position 0 always exists
         while (lo < hi) {
             int mid = lo + (hi - lo + 1) / 2;             // round up so that lo = mid always makes progress
+            // mid exists -> last node is at mid or right of it; else it is left of mid
             if (exists(root, d, mid)) lo = mid; else hi = mid - 1;
         }
         return (1 << d) - 1 + lo + 1;                     // every level above the bottom, plus positions 0..lo
@@ -56,19 +58,19 @@ public class P117_CountTotalNodesInACompleteBT {
 
     // walks from the root to bottom-level position pos, halving the range [0, 2^d - 1] at every step
     static boolean exists(TreeNode root, int d, int pos) {
-        int lo = 0, hi = (1 << d) - 1;
+        int lo = 0, hi = (1 << d) - 1;                    // bottom-level positions under the current node
         TreeNode node = root;
-        for (int level = 0; level < d; level++) {
-            int mid = lo + (hi - lo) / 2;
-            if (pos <= mid) {
+        for (int level = 0; level < d; level++) {         // one step per level, from the root down to depth d
+            int mid = lo + (hi - lo) / 2;                 // positions lo..mid sit in the left subtree
+            if (pos <= mid) {                             // pos is in the left half: keep [lo, mid]
                 node = node.left;
                 hi = mid;
-            } else {
+            } else {                                      // pos is in the right half: keep [mid + 1, hi]
                 node = node.right;
                 lo = mid + 1;
             }
         }
-        return node != null;
+        return node != null;                              // a missing node means pos is past the last node
     }
 
     // ---------------------------------------------------------------- helpers

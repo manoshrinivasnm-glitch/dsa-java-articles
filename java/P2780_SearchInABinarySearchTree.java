@@ -11,23 +11,24 @@ public class P2780_SearchInABinarySearchTree {
 
     /** Approach 1: ignore the ordering and search the whole tree with DFS. O(n) time, O(h) stack. */
     static TreeNode bruteForce(TreeNode root, int val) {
-        if (root == null) return null;
-        if (root.val == val) return root;
-        TreeNode inLeft = bruteForce(root.left, val);
-        if (inLeft != null) return inLeft;
-        return bruteForce(root.right, val);
+        if (root == null) return null;                    // fell off the tree: not in this subtree
+        if (root.val == val) return root;                 // found it
+        TreeNode inLeft = bruteForce(root.left, val);     // search the whole left subtree
+        if (inLeft != null) return inLeft;                // found on the left
+        return bruteForce(root.right, val);               // otherwise try the right subtree
     }
 
     /** Approach 2: recursive descent that discards one subtree per call. O(h) time, O(h) stack. */
     static TreeNode recursive(TreeNode root, int val) {
-        if (root == null || root.val == val) return root;
+        if (root == null || root.val == val) return root;   // fell off (null) or found: return it
+        // a smaller val can only be on the left, a larger one on the right
         return val < root.val ? recursive(root.left, val) : recursive(root.right, val);
     }
 
     /** Approach 3: the same descent as a loop. O(h) time, O(1) space. */
     static TreeNode optimal(TreeNode root, int val) {
-        TreeNode cur = root;
-        while (cur != null && cur.val != val) {
+        TreeNode cur = root;                              // walker, one level per step
+        while (cur != null && cur.val != val) {           // until found or we fall off the tree
             cur = val < cur.val ? cur.left : cur.right;   // val can only live on one side
         }
         return cur;                                       // the matching node, or null if we fell off

@@ -11,49 +11,49 @@ public class P486_FlattenBinaryTreeToLinkedList {
 
     /** Approach 1: brute force, record the preorder sequence of nodes, then relink them. O(n) time, O(n) space. */
     static void bruteForce(TreeNode root) {
-        List<TreeNode> order = new ArrayList<>();
-        collectPreorder(root, order);
-        for (int i = 0; i < order.size(); i++) {
+        List<TreeNode> order = new ArrayList<>();               // every node, in preorder
+        collectPreorder(root, order);                           // collect them recursively
+        for (int i = 0; i < order.size(); i++) {                // relink them one after another
             TreeNode node = order.get(i);
-            node.left = null;
-            node.right = i + 1 < order.size() ? order.get(i + 1) : null;
+            node.left = null;                                   // the list uses only right pointers
+            node.right = i + 1 < order.size() ? order.get(i + 1) : null;   // next node, or null for the last
         }
     }
 
     static void collectPreorder(TreeNode node, List<TreeNode> order) {
-        if (node == null) return;
-        order.add(node);
+        if (node == null) return;                               // past a leaf: nothing to add
+        order.add(node);                                        // root first, then left, then right
         collectPreorder(node.left, order);
         collectPreorder(node.right, order);
     }
 
     /** Approach 2: better, build the list from its tail in reverse preorder (right, left, root). O(n) time, O(h) recursion space. */
     static void better(TreeNode root) {
-        flattenOnto(root, null);
+        flattenOnto(root, null);                                // nothing follows the whole tree
     }
 
     // flattens the subtree at node, appends tail after it, and returns the head of the result
     static TreeNode flattenOnto(TreeNode node, TreeNode tail) {
-        if (node == null) return tail;
+        if (node == null) return tail;                          // empty subtree: the list is just tail
         tail = flattenOnto(node.right, tail);                   // right subtree comes last in preorder, so do it first
-        tail = flattenOnto(node.left, tail);
-        node.right = tail;
-        node.left = null;
+        tail = flattenOnto(node.left, tail);                    // then the left subtree, ahead of it
+        node.right = tail;                                      // node goes in front of both
+        node.left = null;                                       // the list has no left pointers
         return node;
     }
 
     /** Approach 3: optimal, Morris-style rewiring. O(n) time, O(1) extra space. */
     static void optimal(TreeNode root) {
-        TreeNode cur = root;
+        TreeNode cur = root;                                    // walks down the list as it forms
         while (cur != null) {
-            if (cur.left != null) {
+            if (cur.left != null) {                             // a left subtree must be spliced in
                 TreeNode pred = cur.left;
                 while (pred.right != null) pred = pred.right;   // last node of the left subtree in preorder
                 pred.right = cur.right;                         // the right subtree follows it
                 cur.right = cur.left;                           // the left subtree moves to the right
-                cur.left = null;
+                cur.left = null;                                // the left pointer is no longer used
             }
-            cur = cur.right;
+            cur = cur.right;                                    // next node of the list
         }
     }
 

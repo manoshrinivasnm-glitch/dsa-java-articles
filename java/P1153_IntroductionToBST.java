@@ -5,8 +5,8 @@ public class P1153_IntroductionToBST {
 
     /** A binary tree node. In a BST every key in left is smaller than val and every key in right is larger. */
     static class TreeNode {
-        int val;
-        TreeNode left, right;
+        int val;                                          // the key stored in this node
+        TreeNode left, right;                             // smaller keys go left, larger keys go right
         TreeNode(int val) { this.val = val; }
         TreeNode(int val, TreeNode left, TreeNode right) { this.val = val; this.left = left; this.right = right; }
     }
@@ -14,68 +14,70 @@ public class P1153_IntroductionToBST {
     /** Insert one key by walking down from the root and attaching it where the walk falls off the tree. Duplicates are ignored. O(h) time. */
     static TreeNode insert(TreeNode root, int key) {
         if (root == null) return new TreeNode(key);       // fell off the tree: this is the key's spot
-        if (key < root.val) root.left = insert(root.left, key);
-        else if (key > root.val) root.right = insert(root.right, key);
+        if (key < root.val) root.left = insert(root.left, key);   // smaller keys go left
+        else if (key > root.val) root.right = insert(root.right, key);   // larger keys go right
         return root;                                      // key == root.val: already present, nothing to do
     }
 
     /** Build a BST by inserting the keys in the given order. The order decides the shape. */
     static TreeNode buildByInsertion(int[] keys) {
-        TreeNode root = null;
-        for (int k : keys) root = insert(root, k);
+        TreeNode root = null;                             // start from an empty tree
+        for (int k : keys) root = insert(root, k);        // each key becomes a new leaf
         return root;
     }
 
     /** Build a height-balanced BST from a sorted array: the middle element becomes the root, recursively. O(n) time. */
     static TreeNode buildBalanced(int[] sorted, int lo, int hi) {
-        if (lo > hi) return null;
-        int mid = (lo + hi) >>> 1;
-        TreeNode node = new TreeNode(sorted[mid]);
-        node.left = buildBalanced(sorted, lo, mid - 1);
-        node.right = buildBalanced(sorted, mid + 1, hi);
+        if (lo > hi) return null;                         // empty range -> no subtree
+        int mid = (lo + hi) >>> 1;                        // middle index; >>> avoids int overflow
+        TreeNode node = new TreeNode(sorted[mid]);        // middle key: half the keys on each side
+        node.left = buildBalanced(sorted, lo, mid - 1);   // smaller keys build the left half
+        node.right = buildBalanced(sorted, mid + 1, hi);  // larger keys build the right half
         return node;
     }
 
     /** Inorder traversal (left, node, right). For a BST this lists the keys in increasing order. O(n) time. */
     static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;                         // past a leaf: nothing to add
+        inorder(node.left, out);                          // smaller keys first
+        out.add(node.val);                                // then this key
+        inorder(node.right, out);                         // then the larger keys
     }
 
     /** WRONG check, shown on purpose: it only compares each node with its two children. */
     static boolean isBSTLocalOnly(TreeNode node) {
-        if (node == null) return true;
-        if (node.left != null && node.left.val >= node.val) return false;
-        if (node.right != null && node.right.val <= node.val) return false;
+        if (node == null) return true;                    // empty tree is a valid BST
+        if (node.left != null && node.left.val >= node.val) return false;   // left child must be smaller
+        if (node.right != null && node.right.val <= node.val) return false;   // right child must be larger
+        // checks children only, never ancestors: this is the bug
         return isBSTLocalOnly(node.left) && isBSTLocalOnly(node.right);
     }
 
     /** Correct check: every key must lie strictly inside the (low, high) window inherited from its ancestors. O(n) time. */
     static boolean isBST(TreeNode root) {
-        return isBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return isBST(root, Long.MIN_VALUE, Long.MAX_VALUE);   // no limits yet: the root may be any int
     }
 
     static boolean isBST(TreeNode node, long low, long high) {
-        if (node == null) return true;
-        if (node.val <= low || node.val >= high) return false;
+        if (node == null) return true;                    // empty subtree breaks nothing
+        if (node.val <= low || node.val >= high) return false;   // outside the window set by its ancestors
+        // left keys must stay below node.val, right keys above it
         return isBST(node.left, low, node.val) && isBST(node.right, node.val, high);
     }
 
     /** Search by discarding one subtree at every step. O(h) time, O(1) space. */
     static boolean contains(TreeNode root, int key) {
         TreeNode cur = root;
-        while (cur != null && cur.val != key) {
+        while (cur != null && cur.val != key) {           // stop when found or when we fall off the tree
             cur = key < cur.val ? cur.left : cur.right;   // the key can only be on one side
         }
-        return cur != null;
+        return cur != null;                               // null means the key is absent
     }
 
     /** Height counted in nodes: 0 for an empty tree, 1 for a single node. */
     static int height(TreeNode node) {
-        if (node == null) return 0;
-        return 1 + Math.max(height(node.left), height(node.right));
+        if (node == null) return 0;                       // empty tree has height 0
+        return 1 + Math.max(height(node.left), height(node.right));   // this node plus the taller side
     }
 
     // ---------------------------------------------------------------- tests

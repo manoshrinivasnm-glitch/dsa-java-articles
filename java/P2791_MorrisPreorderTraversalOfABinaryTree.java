@@ -11,26 +11,26 @@ public class P2791_MorrisPreorderTraversalOfABinaryTree {
 
     /** Approach 1: recursion. O(n) time, O(h) call-stack space. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        preorder(root, out);
+        List<Integer> out = new ArrayList<>();           // values in preorder
+        preorder(root, out);                             // fill the list recursively
         return out;
     }
 
     static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        out.add(node.val);
-        preorder(node.left, out);
-        preorder(node.right, out);
+        if (node == null) return;                        // past a leaf: nothing to add
+        out.add(node.val);                               // root first
+        preorder(node.left, out);                        // then the whole left subtree
+        preorder(node.right, out);                       // then the whole right subtree
     }
 
     /** Approach 2: explicit stack. O(n) time, O(h) space. */
     static List<Integer> iterativeStack(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        if (root == null) return out;                           // empty tree -> empty list
+        Deque<TreeNode> stack = new ArrayDeque<>();             // nodes still to visit; the top is next
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode cur = stack.pop();
+            TreeNode cur = stack.pop();                         // visit nodes in root-left-right order
             out.add(cur.val);
             if (cur.right != null) stack.push(cur.right);       // pushed first so the left child is popped first
             if (cur.left != null) stack.push(cur.left);
@@ -41,21 +41,22 @@ public class P2791_MorrisPreorderTraversalOfABinaryTree {
     /** Approach 3: Morris traversal, temporary threads replace the stack. O(n) time, O(1) extra space. */
     static List<Integer> morris(TreeNode root) {
         List<Integer> out = new ArrayList<>();
-        TreeNode cur = root;
+        TreeNode cur = root;                                     // walker; threads replace the stack
         while (cur != null) {
-            if (cur.left == null) {
+            if (cur.left == null) {                              // no left subtree: visit and move right
                 out.add(cur.val);
-                cur = cur.right;
+                cur = cur.right;                                 // may follow a thread back up
             } else {
                 TreeNode pred = cur.left;                        // rightmost node of the left subtree
+                // walk right to the end, or stop at a thread that already points to cur
                 while (pred.right != null && pred.right != cur) pred = pred.right;
                 if (pred.right == null) {                        // first arrival: visit, leave a thread back, go left
                     out.add(cur.val);
-                    pred.right = cur;
-                    cur = cur.left;
+                    pred.right = cur;                            // thread pred -> cur, to come back later
+                    cur = cur.left;                              // now walk the left subtree
                 } else {                                         // second arrival via the thread: left side is done
-                    pred.right = null;
-                    cur = cur.right;
+                    pred.right = null;                           // remove the thread, restoring the tree
+                    cur = cur.right;                             // left side done: continue right
                 }
             }
         }

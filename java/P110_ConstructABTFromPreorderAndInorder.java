@@ -11,34 +11,38 @@ public class P110_ConstructABTFromPreorderAndInorder {
 
     /** Approach 1: brute force, split recursively and find the root in inorder by a linear scan. O(n^2) worst-case time, O(n) space. */
     static TreeNode bruteForce(int[] preorder, int[] inorder) {
-        return buildScan(preorder, 0, preorder.length - 1, inorder, 0);
+        return buildScan(preorder, 0, preorder.length - 1, inorder, 0);   // start with the whole tree
     }
 
     // builds the tree whose preorder is pre[preStart..preEnd] and whose inorder starts at in[inStart]
     static TreeNode buildScan(int[] pre, int preStart, int preEnd, int[] in, int inStart) {
-        if (preStart > preEnd) return null;
+        if (preStart > preEnd) return null;                    // empty range -> no subtree
         TreeNode root = new TreeNode(pre[preStart]);           // preorder always starts with the root
         int rootIndex = inStart;
         while (in[rootIndex] != root.val) rootIndex++;         // linear search: O(size of this subtree)
-        int leftSize = rootIndex - inStart;
+        int leftSize = rootIndex - inStart;                    // left subtree size = values left of the root
+        // left subtree: the next leftSize values in preorder
         root.left = buildScan(pre, preStart + 1, preStart + leftSize, in, inStart);
+        // right subtree: the rest, starting just after the root in inorder
         root.right = buildScan(pre, preStart + leftSize + 1, preEnd, in, rootIndex + 1);
         return root;
     }
 
     /** Approach 2: optimal, a HashMap from value to inorder index finds every root in O(1). O(n) time, O(n) space. */
     static TreeNode optimal(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> inIndex = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) inIndex.put(inorder[i], i);
-        return buildMap(preorder, 0, preorder.length - 1, 0, inIndex);
+        Map<Integer, Integer> inIndex = new HashMap<>();       // value -> its position in inorder
+        for (int i = 0; i < inorder.length; i++) inIndex.put(inorder[i], i);   // filled once, up front
+        return buildMap(preorder, 0, preorder.length - 1, 0, inIndex);   // start with the whole tree
     }
 
     static TreeNode buildMap(int[] pre, int preStart, int preEnd, int inStart, Map<Integer, Integer> inIndex) {
-        if (preStart > preEnd) return null;
-        TreeNode root = new TreeNode(pre[preStart]);
-        int rootIndex = inIndex.get(root.val);
-        int leftSize = rootIndex - inStart;
+        if (preStart > preEnd) return null;                    // empty range -> no subtree
+        TreeNode root = new TreeNode(pre[preStart]);           // preorder always starts with the root
+        int rootIndex = inIndex.get(root.val);                 // O(1) lookup instead of a scan
+        int leftSize = rootIndex - inStart;                    // left subtree size = values left of the root
+        // left subtree: the next leftSize values in preorder
         root.left = buildMap(pre, preStart + 1, preStart + leftSize, inStart, inIndex);
+        // right subtree: the rest, starting just after the root in inorder
         root.right = buildMap(pre, preStart + leftSize + 1, preEnd, rootIndex + 1, inIndex);
         return root;
     }
