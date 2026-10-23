@@ -7,38 +7,38 @@ public class P974_StringToIntegerAtoi {
     static int usingLong(String s) {
         int i = 0, n = s.length();
         while (i < n && s.charAt(i) == ' ') i++;                       // 1. leading spaces (only ' ')
-        int sign = 1;
+        int sign = 1;                                                  // +1 or -1, applied at the end
         if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {     // 2. one optional sign
             if (s.charAt(i) == '-') sign = -1;
-            i++;
+            i++;                                                       // step past the sign character
         }
-        long result = 0;
+        long result = 0;                                               // magnitude; a long can pass MAX safely
         while (i < n && s.charAt(i) >= '0' && s.charAt(i) <= '9') {   // 3. digits until the first non-digit
-            result = result * 10 + (s.charAt(i) - '0');
+            result = result * 10 + (s.charAt(i) - '0');                // append this digit on the right
             if (sign * result > Integer.MAX_VALUE) return Integer.MAX_VALUE;   // 4. clamp as soon as we overflow
-            if (sign * result < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+            if (sign * result < Integer.MIN_VALUE) return Integer.MIN_VALUE;   // same clamp for negatives
             i++;
         }
-        return (int) (sign * result);
+        return (int) (sign * result);                                  // fits in an int, so the cast is safe
     }
 
     /** Approach 2: int only; before appending a digit, test whether result * 10 + digit would exceed the limit. O(n) time, O(1) space. */
     static int optimal(String s) {
         int i = 0, n = s.length();
-        while (i < n && s.charAt(i) == ' ') i++;
+        while (i < n && s.charAt(i) == ' ') i++;                       // skip leading spaces
         int sign = 1;
-        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {     // one optional sign
             if (s.charAt(i) == '-') sign = -1;
             i++;
         }
-        int result = 0;
-        while (i < n && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+        int result = 0;                                                // magnitude so far, never above MAX
+        while (i < n && s.charAt(i) >= '0' && s.charAt(i) <= '9') {   // read digits until a non-digit
             int digit = s.charAt(i) - '0';
             // result * 10 + digit > MAX  <=>  result > (MAX - digit) / 10, and MIN = -(MAX + 1) so the same test clamps negatives
             if (result > (Integer.MAX_VALUE - digit) / 10) {
-                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;   // would overflow: clamp by sign
             }
-            result = result * 10 + digit;
+            result = result * 10 + digit;                              // safe to append now
             i++;
         }
         return sign * result;
@@ -47,22 +47,23 @@ public class P974_StringToIntegerAtoi {
     /** Approach 3: the same parse written recursively, one digit per call. O(n) time, O(d) stack for d digits. */
     static int recursive(String s) {
         int i = 0, n = s.length();
-        while (i < n && s.charAt(i) == ' ') i++;
+        while (i < n && s.charAt(i) == ' ') i++;                       // skip leading spaces
         int sign = 1;
-        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+        if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {     // one optional sign
             if (s.charAt(i) == '-') sign = -1;
             i++;
         }
-        return parseDigits(s, i, sign, 0);
+        return parseDigits(s, i, sign, 0);                             // recursion reads the digits from i on
     }
 
     /** Folds s[i] into acc (the magnitude read so far) if it is a digit and recurses; clamps when the value leaves the int range. */
     private static int parseDigits(String s, int i, int sign, long acc) {
+        // base case: end of string or a non-digit, so the number is complete
         if (i == s.length() || s.charAt(i) < '0' || s.charAt(i) > '9') return (int) (sign * acc);
-        long next = acc * 10 + (s.charAt(i) - '0');
-        if (sign == 1 && next > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        if (sign == -1 && -next < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        return parseDigits(s, i + 1, sign, next);
+        long next = acc * 10 + (s.charAt(i) - '0');                    // append this digit
+        if (sign == 1 && next > Integer.MAX_VALUE) return Integer.MAX_VALUE;     // too big: clamp
+        if (sign == -1 && -next < Integer.MIN_VALUE) return Integer.MIN_VALUE;   // too small: clamp
+        return parseDigits(s, i + 1, sign, next);                      // move on to the next character
     }
 
     // ---------------------------------------------------------------- tests

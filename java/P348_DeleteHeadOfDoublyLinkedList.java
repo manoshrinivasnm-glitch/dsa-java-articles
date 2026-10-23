@@ -4,8 +4,8 @@ import java.util.*;
 public class P348_DeleteHeadOfDoublyLinkedList {
 
     static class Node {
-        int val;
-        Node prev, next;
+        int val;                                    // the value stored in this node
+        Node prev, next;                            // neighbours on each side, null past either end
         Node(int val) { this.val = val; }
         Node(int val, Node prev, Node next) { this.val = val; this.prev = prev; this.next = next; }
     }
@@ -13,7 +13,7 @@ public class P348_DeleteHeadOfDoublyLinkedList {
     /** Delete the head: the second node becomes the head and its prev is cleared. O(1) time, O(1) space. */
     static Node deleteHead(Node head) {
         if (head == null || head.next == null) return null;    // empty or single node: the list becomes empty
-        Node newHead = head.next;
+        Node newHead = head.next;                               // the second node becomes the head
         newHead.prev = null;                                    // the new head has nothing before it
         head.next = null;                                       // detach the old head completely
         return newHead;
@@ -21,31 +21,31 @@ public class P348_DeleteHeadOfDoublyLinkedList {
 
     /** Delete any node we hold a reference to. prev makes this O(1) with no scan. Returns the (possibly new) head. */
     static Node deleteNode(Node head, Node target) {
-        Node before = target.prev, after = target.next;
+        Node before = target.prev, after = target.next;   // target's neighbours on each side
         if (before != null) before.next = after;    // bypass target going forward
         else head = after;                          // target was the head
         if (after != null) after.prev = before;     // bypass target going backward
-        target.prev = null;
+        target.prev = null;                         // fully detach the removed node
         target.next = null;
         return head;
     }
 
     /** Generalisation: delete the k-th node (1-based). k == 1 deletes the head; an out-of-range k leaves the list unchanged. O(k) time. */
     static Node deleteAtPosition(Node head, int k) {
-        if (head == null || k < 1) return head;
+        if (head == null || k < 1) return head;                               // nothing to delete
         Node target = head;
         for (int i = 1; i < k && target != null; i++) target = target.next;  // walk to the k-th node
         if (target == null) return head;                                      // fewer than k nodes
-        return deleteNode(head, target);
+        return deleteNode(head, target);                                      // unlink it with the O(1) delete
     }
 
     /** For contrast: deleting the tail still costs O(n) to reach it, but prev gives the second-last node for free. */
     static Node deleteTail(Node head) {
-        if (head == null || head.next == null) return null;
-        Node tail = head;
-        while (tail.next != null) tail = tail.next;
+        if (head == null || head.next == null) return null;      // empty or single node: nothing remains
+        Node tail = head;                                        // walks to the last node
+        while (tail.next != null) tail = tail.next;              // stop on the last node
         tail.prev.next = null;                                   // the second-last node becomes the tail
-        tail.prev = null;
+        tail.prev = null;                                        // detach the old tail
         return head;
     }
 

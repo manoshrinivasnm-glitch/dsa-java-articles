@@ -5,43 +5,43 @@ public class P984_ReverseEveryWordInAString {
 
     /** Approach 1: split on spaces, drop the empty pieces, reverse the list, join. O(n) time, O(n) space. */
     static String bruteForce(String s) {
-        List<String> words = new ArrayList<>();
-        for (String w : s.split(" ")) {
-            if (!w.isEmpty()) words.add(w);
+        List<String> words = new ArrayList<>();            // the non-empty pieces, left to right
+        for (String w : s.split(" ")) {                    // runs of spaces produce empty pieces
+            if (!w.isEmpty()) words.add(w);                // keep only real words
         }
-        Collections.reverse(words);
-        return String.join(" ", words);
+        Collections.reverse(words);                        // last word first
+        return String.join(" ", words);                    // single spaces between words
     }
 
     /** Approach 2: scan left to right pushing each word on a stack, then pop them all. O(n) time, O(n) space. */
     static String better(String s) {
-        Deque<String> stack = new ArrayDeque<>();
-        int n = s.length(), i = 0;
+        Deque<String> stack = new ArrayDeque<>();          // words in the order read; the top is the last word
+        int n = s.length(), i = 0;                         // i = scan position
         while (i < n) {
             while (i < n && s.charAt(i) == ' ') i++;       // skip separators
             int start = i;
             while (i < n && s.charAt(i) != ' ') i++;       // consume one word
-            if (i > start) stack.push(s.substring(start, i));
+            if (i > start) stack.push(s.substring(start, i));   // a non-empty word ends at i - 1
         }
         StringBuilder sb = new StringBuilder(n);
-        while (!stack.isEmpty()) {
+        while (!stack.isEmpty()) {                         // pop gives the words last to first
             sb.append(stack.pop());
-            if (!stack.isEmpty()) sb.append(' ');
+            if (!stack.isEmpty()) sb.append(' ');          // a space between words, none at the end
         }
         return sb.toString();
     }
 
     /** Approach 3: scan from the right and append each word as soon as its start is found; no intermediate collection. O(n) time, O(n) for the output only. */
     static String optimal(String s) {
-        StringBuilder sb = new StringBuilder(s.length());
-        int j = s.length() - 1;
+        StringBuilder sb = new StringBuilder(s.length());   // the answer, built word by word
+        int j = s.length() - 1;                            // j scans from the right end
         while (j >= 0) {
             while (j >= 0 && s.charAt(j) == ' ') j--;      // skip separators from the right
-            if (j < 0) break;
+            if (j < 0) break;                              // only spaces were left
             int end = j;                                   // last letter of the word
             while (j >= 0 && s.charAt(j) != ' ') j--;      // j + 1 is now the first letter
-            if (sb.length() > 0) sb.append(' ');
-            sb.append(s, j + 1, end + 1);
+            if (sb.length() > 0) sb.append(' ');           // a space before every word but the first
+            sb.append(s, j + 1, end + 1);                  // copy s[j+1..end] onto the answer
         }
         return sb.toString();
     }
@@ -51,28 +51,28 @@ public class P984_ReverseEveryWordInAString {
         char[] a = s.toCharArray();
         int n = a.length;
         int w = 0;                                         // 1. squeeze: write index for the cleaned string
-        for (int r = 0; r < n; r++) {
-            if (a[r] == ' ') {
+        for (int r = 0; r < n; r++) {                      // r = read index
+            if (a[r] == ' ') {                             // a space in the input
                 if (w > 0 && a[w - 1] != ' ') a[w++] = ' ';   // keep exactly one space after a word
             } else {
-                a[w++] = a[r];
+                a[w++] = a[r];                             // a letter is always copied
             }
         }
         if (w > 0 && a[w - 1] == ' ') w--;                 // drop the separator left after the last word
         reverse(a, 0, w - 1);                              // 2. reverse the whole cleaned string
         int start = 0;                                     // 3. reverse each word back to normal
-        for (int i = 0; i <= w; i++) {
-            if (i == w || a[i] == ' ') {
-                reverse(a, start, i - 1);
-                start = i + 1;
+        for (int i = 0; i <= w; i++) {                     // i == w marks the end of the last word
+            if (i == w || a[i] == ' ') {                   // a word ends just before i
+                reverse(a, start, i - 1);                  // flip the word back to reading order
+                start = i + 1;                             // the next word starts after this space
             }
         }
-        return new String(a, 0, w);
+        return new String(a, 0, w);                        // only the first w chars are the answer
     }
 
     /** Reverses a[i..j] in place. */
     private static void reverse(char[] a, int i, int j) {
-        while (i < j) {
+        while (i < j) {                                    // swap the outer pair, then move both ends inward
             char tmp = a[i];
             a[i] = a[j];
             a[j] = tmp;

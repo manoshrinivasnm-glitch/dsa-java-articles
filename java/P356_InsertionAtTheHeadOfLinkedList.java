@@ -4,41 +4,42 @@ import java.util.*;
 public class P356_InsertionAtTheHeadOfLinkedList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                         // the value stored in this node
+        ListNode next;                   // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Insert at the head: create the node, point it at the old head, and it is the new head. O(1) time, O(1) space. */
     static ListNode insertAtHead(ListNode head, int val) {
-        ListNode node = new ListNode(val);
+        ListNode node = new ListNode(val);   // the node that becomes the new head
         node.next = head;                // also correct when head is null: the new node is then the only node
-        return node;
+        return node;                     // the new node is the new head
     }
 
     /** The same operation as a single expression, using the two-argument constructor. O(1) time, O(1) space. */
     static ListNode insertAtHeadOneLiner(ListNode head, int val) {
-        return new ListNode(val, head);
+        return new ListNode(val, head);   // new node whose next is the old head
     }
 
     /** For contrast: insertion at the tail has to walk the whole list to find the last node. O(n) time, O(1) space. */
     static ListNode insertAtTail(ListNode head, int val) {
         ListNode node = new ListNode(val);
-        if (head == null) return node;
-        ListNode temp = head;
-        while (temp.next != null) temp = temp.next;
-        temp.next = node;
+        if (head == null) return node;   // empty list: the new node is the whole list
+        ListNode temp = head;            // walks to the last node
+        while (temp.next != null) temp = temp.next;   // the last node is the one whose next is null
+        temp.next = node;                // hang the new node after the old tail
         return head;
     }
 
     /** Generalisation: insert before the k-th node (1-based). k == 1 is insertion at the head, k == length + 1 appends. O(k) time. */
     static ListNode insertAtPosition(ListNode head, int k, int val) {
         if (k < 1) return head;                                               // no such position: leave the list alone
-        if (k == 1) return new ListNode(val, head);
-        ListNode temp = head;
-        for (int i = 1; i < k - 1 && temp != null; i++) temp = temp.next;    // stop on node k - 1
+        if (k == 1) return new ListNode(val, head);                           // same as insertAtHead
+        ListNode temp = head;                                                 // walks to node k - 1
+        for (int i = 1; i < k - 1 && temp != null; i++) temp = temp.next;     // stop on node k - 1
         if (temp == null) return head;                                        // fewer than k - 1 nodes: position does not exist
+        // splice the new node in between node k - 1 and the old node k
         temp.next = new ListNode(val, temp.next);
         return head;
     }

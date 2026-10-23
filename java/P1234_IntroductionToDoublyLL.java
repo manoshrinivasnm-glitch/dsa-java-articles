@@ -5,22 +5,22 @@ public class P1234_IntroductionToDoublyLL {
 
     /** A node of a doubly linked list: a value plus references to both neighbours (null at either end). */
     static class Node {
-        int val;
-        Node prev, next;
+        int val;                                           // the value stored in this node
+        Node prev, next;                                   // neighbours on each side, null past either end
         Node(int val) { this.val = val; }
         Node(int val, Node prev, Node next) { this.val = val; this.prev = prev; this.next = next; }
     }
 
     /** Build a DLL from an array: attach each new node after the mover and point its prev back at the mover. O(n) time, O(n) space. */
     static Node arrayToDLL(int[] arr) {
-        if (arr.length == 0) return null;
-        Node head = new Node(arr[0]);
+        if (arr.length == 0) return null;                  // an empty array gives an empty list
+        Node head = new Node(arr[0]);                      // the first element becomes the head
         Node mover = head;                                 // always the current last node
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {             // attach the remaining elements one by one
             Node temp = new Node(arr[i]);
             mover.next = temp;                             // forward link
             temp.prev = mover;                             // backward link, the one a singly list does not have
-            mover = temp;
+            mover = temp;                                  // the new node is now the last one
         }
         return head;
     }
@@ -28,59 +28,59 @@ public class P1234_IntroductionToDoublyLL {
     /** Forward traversal: follow next from the head. O(n) time. */
     static int[] toArrayForward(Node head) {
         int n = 0;
-        for (Node t = head; t != null; t = t.next) n++;
-        int[] out = new int[n];
+        for (Node t = head; t != null; t = t.next) n++;    // first pass: count the nodes
+        int[] out = new int[n];                            // an array of exactly the right size
         int i = 0;
-        for (Node t = head; t != null; t = t.next) out[i++] = t.val;
+        for (Node t = head; t != null; t = t.next) out[i++] = t.val;   // second pass: copy values head to tail
         return out;
     }
 
     /** Backward traversal: walk to the tail, then follow prev back to the head. O(n) time. */
     static int[] toArrayBackward(Node head) {
         int n = 0;
-        Node tail = null;
-        for (Node t = head; t != null; t = t.next) { n++; tail = t; }
+        Node tail = null;                                  // the last node seen so far
+        for (Node t = head; t != null; t = t.next) { n++; tail = t; }   // walk forward to the tail, counting
         int[] out = new int[n];
         int i = 0;
-        for (Node t = tail; t != null; t = t.prev) out[i++] = t.val;
+        for (Node t = tail; t != null; t = t.prev) out[i++] = t.val;   // follow prev back to the head
         return out;
     }
 
     /** Render as "null <- 1 <-> 2 <-> 3 -> null", or "null" for the empty list. */
     static String render(Node head) {
-        if (head == null) return "null";
-        StringBuilder sb = new StringBuilder("null <- ");
-        for (Node t = head; t != null; t = t.next) {
+        if (head == null) return "null";                   // the empty list
+        StringBuilder sb = new StringBuilder("null <- ");   // the head has nothing before it
+        for (Node t = head; t != null; t = t.next) {       // forward walk over every node
             sb.append(t.val);
-            sb.append(t.next != null ? " <-> " : " -> null");
+            sb.append(t.next != null ? " <-> " : " -> null");   // two-way link, or the end of the list
         }
         return sb.toString();
     }
 
     /** A DLL is well formed when head.prev is null and every forward link is mirrored by a backward link. O(n) time. */
     static boolean isWellFormed(Node head) {
-        if (head == null) return true;
-        if (head.prev != null) return false;
-        for (Node t = head; t != null; t = t.next) {
-            if (t.next != null && t.next.prev != t) return false;
+        if (head == null) return true;                     // the empty list is trivially well formed
+        if (head.prev != null) return false;               // nothing may come before the head
+        for (Node t = head; t != null; t = t.next) {       // check each node's forward link
+            if (t.next != null && t.next.prev != t) return false;   // the next node must point back at t
         }
-        return true;
+        return true;                                       // every link is mirrored
     }
 
     /** Insert a new node right after `node`. Four links change instead of one, but it is still O(1). */
     static void insertAfter(Node node, int val) {
         Node fresh = new Node(val, node, node.next);       // prev = node, next = node's old successor
         if (node.next != null) node.next.prev = fresh;     // the old successor now looks back at fresh
-        node.next = fresh;
+        node.next = fresh;                                 // node now points forward to fresh
     }
 
     /** Delete a node given only a reference to it. The prev link makes this O(1); a singly list would need a scan. Returns the (possibly new) head. */
     static Node deleteNode(Node head, Node target) {
-        if (target == null) return head;
+        if (target == null) return head;                   // nothing to delete
         if (target.prev != null) target.prev.next = target.next;    // bypass target going forward
         else head = target.next;                                    // target was the head
         if (target.next != null) target.next.prev = target.prev;    // bypass target going backward
-        target.prev = null;
+        target.prev = null;                                         // fully detach the removed node
         target.next = null;
         return head;
     }

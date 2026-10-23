@@ -4,43 +4,43 @@ import java.util.*;
 public class P900_ReverseADoublyLinkedList {
 
     static class Node {
-        int val;
-        Node prev, next;
+        int val;                              // the value stored in this node
+        Node prev, next;                      // neighbours on each side, null past either end
         Node(int val) { this.val = val; }
         Node(int val, Node prev, Node next) { this.val = val; this.prev = prev; this.next = next; }
     }
 
     /** Approach 1: brute force. Push every value on a stack, then overwrite the values front to back. The nodes stay where they are. O(n) time, O(n) space. */
     static Node bruteForce(Node head) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (Node t = head; t != null; t = t.next) stack.push(t.val);
+        Deque<Integer> stack = new ArrayDeque<>();                         // last in, first out
+        for (Node t = head; t != null; t = t.next) stack.push(t.val);      // first pass: push every value
         for (Node t = head; t != null; t = t.next) t.val = stack.pop();    // pops come out in reverse order
-        return head;
+        return head;                                                       // same nodes, values now reversed
     }
 
     /** Approach 2: optimal. Swap prev and next inside every node; the last node visited is the new head. O(n) time, O(1) space. */
     static Node optimal(Node head) {
-        Node current = head;
-        Node newHead = head;
+        Node current = head;                  // walks the list front to back
+        Node newHead = head;                  // the last node flipped so far
         while (current != null) {
             Node oldNext = current.next;      // remember where to go before the links are flipped
             current.next = current.prev;      // flip
             current.prev = oldNext;           // flip
             newHead = current;                // whichever node we flip last is the old tail = new head
-            current = oldNext;
+            current = oldNext;                // continue with the saved old next
         }
         return newHead;
     }
 
     /** Approach 2, the classic TUF form: the same swap, written with a single `last` pointer. O(n) time, O(1) space. */
     static Node optimalClassic(Node head) {
-        if (head == null || head.next == null) return head;
-        Node last = null;
+        if (head == null || head.next == null) return head;   // empty or single node is its own reverse
+        Node last = null;                     // the old prev of the node being flipped
         Node current = head;
-        while (current != null) {
-            last = current.prev;
-            current.prev = current.next;
-            current.next = last;
+        while (current != null) {             // visit every node front to back
+            last = current.prev;              // save the old prev
+            current.prev = current.next;      // prev takes the old next
+            current.next = last;              // next takes the old prev
             current = current.prev;           // prev now holds the old next
         }
         return last.prev;                     // last is the old tail's old prev; after the swap its prev is the old tail

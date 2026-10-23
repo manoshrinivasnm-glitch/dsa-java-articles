@@ -5,17 +5,17 @@ public class P903_RomanToInteger {
 
     /** Approach 1: table of all 13 tokens (7 symbols + 6 subtractive pairs); at each position try the 2-letter token first. O(n) time, O(1) space. */
     static int bruteForce(String s) {
-        Map<String, Integer> table = new HashMap<>();
+        Map<String, Integer> table = new HashMap<>();      // all 13 tokens: 7 symbols + 6 subtractive pairs
         table.put("I", 1);    table.put("IV", 4);    table.put("V", 5);    table.put("IX", 9);
         table.put("X", 10);   table.put("XL", 40);   table.put("L", 50);   table.put("XC", 90);
         table.put("C", 100);  table.put("CD", 400);  table.put("D", 500);  table.put("CM", 900);
         table.put("M", 1000);
-        int total = 0, i = 0, n = s.length();
+        int total = 0, i = 0, n = s.length();              // i = start of the next unread token
         while (i < n) {
-            if (i + 1 < n && table.containsKey(s.substring(i, i + 2))) {
+            if (i + 1 < n && table.containsKey(s.substring(i, i + 2))) {   // a pair such as IV or CM starts here
                 total += table.get(s.substring(i, i + 2));
-                i += 2;
-            } else {
+                i += 2;                                    // consume both letters of the pair
+            } else {                                       // otherwise read a single symbol
                 total += table.get(s.substring(i, i + 1));
                 i += 1;
             }
@@ -33,29 +33,29 @@ public class P903_RomanToInteger {
             case 'C' -> 100;
             case 'D' -> 500;
             case 'M' -> 1000;
-            default -> throw new IllegalArgumentException("not a Roman symbol: " + c);
+            default -> throw new IllegalArgumentException("not a Roman symbol: " + c);   // input is invalid
         };
     }
 
     /** Approach 2: left to right; a symbol smaller than its right neighbour is subtracted, every other symbol is added. O(n) time, O(1) space. */
     static int optimal(String s) {
         int total = 0, n = s.length();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                      // read symbols left to right
             int cur = value(s.charAt(i));
-            if (i + 1 < n && cur < value(s.charAt(i + 1))) total -= cur;
-            else total += cur;
+            if (i + 1 < n && cur < value(s.charAt(i + 1))) total -= cur;   // smaller before larger: IV, XC, CM
+            else total += cur;                             // normal case: just add it
         }
         return total;
     }
 
     /** Approach 3: right to left; a symbol smaller than the one just processed (its right neighbour) is subtracted. O(n) time, O(1) space. */
     static int optimalRightToLeft(String s) {
-        int total = 0, prev = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
+        int total = 0, prev = 0;                           // prev = value of the symbol to the right
+        for (int i = s.length() - 1; i >= 0; i--) {        // read symbols right to left
             int cur = value(s.charAt(i));
-            if (cur < prev) total -= cur;
-            else total += cur;
-            prev = cur;
+            if (cur < prev) total -= cur;                  // smaller than its right neighbour: subtract
+            else total += cur;                             // otherwise add
+            prev = cur;                                    // becomes the right neighbour of the next symbol
         }
         return total;
     }

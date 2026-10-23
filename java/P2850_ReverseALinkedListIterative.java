@@ -4,24 +4,24 @@ import java.util.*;
 public class P2850_ReverseALinkedListIterative {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                            // the value stored in this node
+        ListNode next;                      // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Push the values on a stack and write them back front to back; the nodes stay where they are. O(n) time, O(n) space. */
     static ListNode bruteForce(ListNode head) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);
+        Deque<Integer> stack = new ArrayDeque<>();                             // last in, first out
+        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);      // first pass: push every value
         for (ListNode t = head; t != null; t = t.next) t.val = stack.pop();    // pops come out in reverse order
-        return head;
+        return head;                                                           // values now reversed
     }
 
     /** Approach 2: optimal, iterative. Walk the list once and point every node at its predecessor. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        ListNode prev = null, current = head;
-        while (current != null) {
+        ListNode prev = null, current = head;   // prev: reversed part, current: the rest
+        while (current != null) {           // flip one node per step
             ListNode next = current.next;   // save the rest of the list before cutting the link
             current.next = prev;            // flip this node's pointer
             prev = current;                 // advance both pointers
@@ -32,8 +32,8 @@ public class P2850_ReverseALinkedListIterative {
 
     /** For comparison: the recursive version. Reverse the rest, then hang the head behind it. O(n) time, O(n) stack. */
     static ListNode recursive(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode newHead = recursive(head.next);
+        if (head == null || head.next == null) return head;   // base case: 0 or 1 node is already reversed
+        ListNode newHead = recursive(head.next);   // reverse the rest; newHead is the old tail
         head.next.next = head;              // the old second node now points back at head
         head.next = null;                   // head becomes the tail
         return newHead;

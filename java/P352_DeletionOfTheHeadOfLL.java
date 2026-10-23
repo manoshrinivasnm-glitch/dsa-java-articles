@@ -4,8 +4,8 @@ import java.util.*;
 public class P352_DeletionOfTheHeadOfLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                   // the value stored in this node
+        ListNode next;                             // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
@@ -13,7 +13,7 @@ public class P352_DeletionOfTheHeadOfLL {
     /** Delete the head: the second node becomes the head. O(1) time, O(1) space. */
     static ListNode deleteHead(ListNode head) {
         if (head == null) return null;             // nothing to delete
-        ListNode newHead = head.next;
+        ListNode newHead = head.next;              // the second node (or null) becomes the head
         head.next = null;                          // detach the removed node so it no longer points into the list
         return newHead;
     }
@@ -23,20 +23,20 @@ public class P352_DeletionOfTheHeadOfLL {
         if (head == null || head.next == null) return null;     // empty or single node: the list becomes empty
         ListNode temp = head;
         while (temp.next.next != null) temp = temp.next;        // stop on the second-last node
-        temp.next = null;
+        temp.next = null;                                       // cut off the old tail; temp is the new tail
         return head;
     }
 
     /** Generalisation: delete the k-th node (1-based). k == 1 is deletion of the head; an out-of-range k leaves the list unchanged. O(k) time. */
     static ListNode deleteAtPosition(ListNode head, int k) {
-        if (head == null || k < 1) return head;
-        if (k == 1) return deleteHead(head);
-        ListNode prev = head;
-        for (int i = 1; i < k - 1 && prev != null; i++) prev = prev.next;    // stop on node k - 1
-        if (prev == null || prev.next == null) return head;                  // there is no k-th node
-        ListNode removed = prev.next;
+        if (head == null || k < 1) return head;                               // nothing to delete
+        if (k == 1) return deleteHead(head);                                  // same as deleteHead
+        ListNode prev = head;                                                 // walks to node k - 1
+        for (int i = 1; i < k - 1 && prev != null; i++) prev = prev.next;     // stop on node k - 1
+        if (prev == null || prev.next == null) return head;                   // there is no k-th node
+        ListNode removed = prev.next;                                         // the node being deleted
         prev.next = removed.next;                                             // bypass the k-th node
-        removed.next = null;
+        removed.next = null;                                                  // detach it
         return head;
     }
 

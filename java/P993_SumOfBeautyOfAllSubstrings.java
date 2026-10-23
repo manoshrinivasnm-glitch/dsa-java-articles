@@ -6,11 +6,11 @@ public class P993_SumOfBeautyOfAllSubstrings {
     /** Approach 1: for every substring count its letters from scratch and take max - min. O(n^3) time, O(1) space. */
     static long bruteForce(String s) {
         int n = s.length();
-        long total = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                int[] freq = new int[26];
-                for (int p = i; p <= j; p++) freq[s.charAt(p) - 'a']++;
+        long total = 0;                                    // sum of beauties over all substrings
+        for (int i = 0; i < n; i++) {                      // i = start of the substring
+            for (int j = i; j < n; j++) {                  // j = end of the substring
+                int[] freq = new int[26];                  // letter counts of s[i..j], rebuilt from scratch
+                for (int p = i; p <= j; p++) freq[s.charAt(p) - 'a']++;   // count every letter in s[i..j]
                 total += beauty(freq);
             }
         }
@@ -19,24 +19,24 @@ public class P993_SumOfBeautyOfAllSubstrings {
 
     /** max - min over the non-zero entries of a 26-letter frequency table (0 for an empty table). */
     private static int beauty(int[] freq) {
-        int max = 0, min = Integer.MAX_VALUE;
+        int max = 0, min = Integer.MAX_VALUE;              // min starts high so any real count beats it
         for (int f : freq) {
-            if (f == 0) continue;
+            if (f == 0) continue;                          // letters absent from the substring do not count
             if (f > max) max = f;
             if (f < min) min = f;
         }
-        return max == 0 ? 0 : max - min;
+        return max == 0 ? 0 : max - min;                   // empty table has no beauty
     }
 
     /** Approach 2: fix the start, extend the end one letter at a time, keep the table and rescan its 26 slots. O(26 n^2) time, O(1) space. */
     static long better(String s) {
         int n = s.length();
         long total = 0;
-        for (int i = 0; i < n; i++) {
-            int[] freq = new int[26];
-            for (int j = i; j < n; j++) {
-                freq[s.charAt(j) - 'a']++;
-                total += beauty(freq);
+        for (int i = 0; i < n; i++) {                      // fix the start i
+            int[] freq = new int[26];                      // letter counts of s[i..j], kept between steps
+            for (int j = i; j < n; j++) {                  // grow the substring one letter to the right
+                freq[s.charAt(j) - 'a']++;                 // only the new letter's count changes
+                total += beauty(freq);                     // rescan the 26 counts for max - min
             }
         }
         return total;
@@ -45,21 +45,22 @@ public class P993_SumOfBeautyOfAllSubstrings {
     /** Approach 3: also track how many letters have each frequency, so max and min update in O(1) per step. O(n^2) time, O(n) space. */
     static long optimal(String s) {
         int n = s.length();
-        long total = 0;
-        for (int i = 0; i < n; i++) {
-            int[] freq = new int[26];
+        long total = 0;                                    // sum of beauties over all substrings
+        for (int i = 0; i < n; i++) {                      // fix the start i
+            int[] freq = new int[26];                      // letter counts of s[i..j]
             int[] lettersWith = new int[n + 2];            // lettersWith[f] = how many letters occur exactly f times
-            int maxF = 0, minF = 0;
-            for (int j = i; j < n; j++) {
+            int maxF = 0, minF = 0;                        // highest and lowest non-zero frequency right now
+            for (int j = i; j < n; j++) {                  // grow the substring one letter to the right
                 int c = s.charAt(j) - 'a';
                 int f = freq[c];                           // old frequency of this letter
-                if (f > 0) lettersWith[f]--;
-                freq[c] = f + 1;
-                lettersWith[f + 1]++;
-                if (f + 1 > maxF) maxF = f + 1;
+                if (f > 0) lettersWith[f]--;               // this letter leaves its old frequency group
+                freq[c] = f + 1;                           // its count goes up by one
+                lettersWith[f + 1]++;                      // and joins the next group
+                if (f + 1 > maxF) maxF = f + 1;            // it may be the new most frequent letter
                 if (f == 0) minF = 1;                      // a letter seen for the first time is the rarest
+                // otherwise, if no letter is left at the old minimum, the minimum rises by one
                 else if (f == minF && lettersWith[f] == 0) minF = f + 1;
-                total += maxF - minF;
+                total += maxF - minF;                      // add the beauty of s[i..j]
             }
         }
         return total;

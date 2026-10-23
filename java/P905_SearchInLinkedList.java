@@ -4,43 +4,43 @@ import java.util.*;
 public class P905_SearchInLinkedList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                   // the value stored in this node
+        ListNode next;                             // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: linear scan with a loop, stop at the first match. O(n) time, O(1) space. */
     static boolean searchIterative(ListNode head, int key) {
-        ListNode temp = head;
-        while (temp != null) {
-            if (temp.val == key) return true;
-            temp = temp.next;
+        ListNode temp = head;                      // walking pointer, so head itself never moves
+        while (temp != null) {                     // stop once we step past the last node
+            if (temp.val == key) return true;      // found it: stop early
+            temp = temp.next;                      // move to the next node
         }
-        return false;
+        return false;                              // reached the end without a match
     }
 
     /** Approach 2: recursion. The key is in the list if it is at the head or somewhere in the rest. O(n) time, O(n) stack. */
     static boolean searchRecursive(ListNode head, int key) {
-        if (head == null) return false;
-        if (head.val == key) return true;
-        return searchRecursive(head.next, key);
+        if (head == null) return false;            // base case: empty list, so the key is absent
+        if (head.val == key) return true;          // base case: the key is at the head
+        return searchRecursive(head.next, key);    // otherwise look in the rest of the list
     }
 
     /** Variant: the 0-based position of the first match, or -1 when the key is absent. O(n) time, O(1) space. */
     static int indexOf(ListNode head, int key) {
-        int i = 0;
-        for (ListNode t = head; t != null; t = t.next, i++) {
-            if (t.val == key) return i;
+        int i = 0;                                 // position of the node t
+        for (ListNode t = head; t != null; t = t.next, i++) {   // i always holds t's position
+            if (t.val == key) return i;            // first match: return its position
         }
-        return -1;
+        return -1;                                 // the key never appeared
     }
 
     /** Variant: count every occurrence instead of stopping at the first one. O(n) time, O(1) space. */
     static int countOccurrences(ListNode head, int key) {
-        int count = 0;
-        for (ListNode t = head; t != null; t = t.next) {
-            if (t.val == key) count++;
+        int count = 0;                             // matches seen so far
+        for (ListNode t = head; t != null; t = t.next) {   // visit every node, no early exit
+            if (t.val == key) count++;             // one more match
         }
         return count;
     }

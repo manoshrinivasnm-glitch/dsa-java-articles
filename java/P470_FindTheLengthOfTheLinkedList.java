@@ -4,46 +4,46 @@ import java.util.*;
 public class P470_FindTheLengthOfTheLinkedList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                   // the value stored in this node
+        ListNode next;                             // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: walk the list with a counter. O(n) time, O(1) space. */
     static int lengthIterative(ListNode head) {
-        int count = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            count++;
-            temp = temp.next;
+        int count = 0;                             // nodes counted so far
+        ListNode temp = head;                      // walking pointer, so head itself never moves
+        while (temp != null) {                     // stop once we step past the last node
+            count++;                               // count the node we are on
+            temp = temp.next;                      // move to the next node
         }
         return count;
     }
 
     /** Approach 2: recursion. The length of a list is 1 plus the length of the rest; the empty list has length 0. O(n) time, O(n) stack. */
     static int lengthRecursive(ListNode head) {
-        if (head == null) return 0;
-        return 1 + lengthRecursive(head.next);
+        if (head == null) return 0;                // base case: the empty list has length 0
+        return 1 + lengthRecursive(head.next);     // this node plus the length of the rest
     }
 
     /** Approach 3: keep the size up to date on every change, so asking for it costs O(1). This is what java.util.LinkedList does. */
     static class SizedList {
-        ListNode head;
-        int size;
+        ListNode head;                             // first node, or null when the list is empty
+        int size;                                  // number of nodes, kept exact on every change
 
         void addFirst(int val) {
-            head = new ListNode(val, head);
-            size++;
+            head = new ListNode(val, head);        // new node in front of the old head
+            size++;                                // one more node
         }
 
         void removeFirst() {
-            if (head == null) return;
-            head = head.next;
-            size--;
+            if (head == null) return;              // empty list: nothing to remove
+            head = head.next;                      // the second node becomes the head
+            size--;                                // one node fewer
         }
 
-        int length() { return size; }
+        int length() { return size; }              // O(1): just read the stored count
     }
 
     // ---------------------------------------------------------------- helpers

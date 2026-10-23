@@ -5,46 +5,46 @@ public class P674_MaximumNestingDepthOfTheParentheses {
 
     /** Approach 1: for every '(' recount how many brackets are still open at that point. O(n^2) time, O(1) space. */
     static int bruteForce(String s) {
-        int n = s.length(), best = 0;
+        int n = s.length(), best = 0;                      // best = deepest nesting seen so far
         for (int i = 0; i < n; i++) {
-            if (s.charAt(i) != '(') continue;
+            if (s.charAt(i) != '(') continue;              // depth can only peak right after a '('
             int open = 0;                                  // unmatched '(' in s[0..i], including this one
-            for (int j = 0; j <= i; j++) {
+            for (int j = 0; j <= i; j++) {                 // rescan the whole prefix up to i
                 char c = s.charAt(j);
-                if (c == '(') open++;
-                else if (c == ')') open--;
+                if (c == '(') open++;                      // a bracket opens one level deeper
+                else if (c == ')') open--;                 // a bracket closes, back up one level
             }
-            best = Math.max(best, open);
+            best = Math.max(best, open);                   // the depth at i is the open count
         }
         return best;
     }
 
     /** Approach 2: push every '(' on a stack, pop on ')', remember the tallest the stack ever gets. O(n) time, O(n) space. */
     static int better(String s) {
-        Deque<Character> stack = new ArrayDeque<>();
-        int best = 0;
+        Deque<Character> stack = new ArrayDeque<>();       // every '(' that is still waiting for its ')'
+        int best = 0;                                      // tallest the stack has ever been
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c == '(') {
+            if (c == '(') {                                // opening bracket: one level deeper
                 stack.push(c);
-                best = Math.max(best, stack.size());
-            } else if (c == ')') {
+                best = Math.max(best, stack.size());       // stack size is the current depth
+            } else if (c == ')') {                         // closing bracket matches the latest '('
                 stack.pop();
-            }
+            }                                              // digits and operators do not change depth
         }
         return best;
     }
 
     /** Approach 3: the stack only ever holds '(', so its size is all that matters; keep a counter instead. O(n) time, O(1) space. */
     static int optimal(String s) {
-        int depth = 0, best = 0;
+        int depth = 0, best = 0;                           // depth = brackets open right now
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == '(') {
-                depth++;
-                if (depth > best) best = depth;
+                depth++;                                   // go one level deeper
+                if (depth > best) best = depth;            // record a new deepest level
             } else if (c == ')') {
-                depth--;
+                depth--;                                   // close the innermost open bracket
             }
         }
         return best;

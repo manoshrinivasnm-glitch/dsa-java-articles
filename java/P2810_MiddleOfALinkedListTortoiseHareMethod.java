@@ -4,8 +4,8 @@ import java.util.*;
 public class P2810_MiddleOfALinkedListTortoiseHareMethod {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                            // the value stored in this node
+        ListNode next;                                      // next node in the list, null at the end
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
@@ -13,31 +13,31 @@ public class P2810_MiddleOfALinkedListTortoiseHareMethod {
     /** Approach 1: two passes. Count the nodes, then walk n / 2 steps from the head. O(n) time, O(1) space. */
     static ListNode bruteForce(ListNode head) {
         int n = 0;
-        for (ListNode t = head; t != null; t = t.next) n++;
-        ListNode temp = head;
+        for (ListNode t = head; t != null; t = t.next) n++;   // first pass: count the nodes
+        ListNode temp = head;                               // walks n / 2 steps from the head
         for (int i = 0; i < n / 2; i++) temp = temp.next;   // 0-based index n / 2 is the (second) middle
         return temp;
     }
 
     /** Approach 2: tortoise and hare. slow moves one step while fast moves two; when fast runs off the end, slow is on the middle. O(n) time, O(1) space, one pass. */
     static ListNode optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        ListNode slow = head, fast = head;                  // both start at the head
+        while (fast != null && fast.next != null) {         // stop once fast cannot take two steps
+            slow = slow.next;                               // tortoise: one step
+            fast = fast.next.next;                          // hare: two steps
         }
-        return slow;
+        return slow;                                        // fast covered the list, slow half of it
     }
 
     /** Variant: the first of the two middles for an even length (the same node as optimal for an odd length). Needed when the list is to be split in half. */
     static ListNode optimalFirstMiddle(ListNode head) {
-        if (head == null) return null;
+        if (head == null) return null;                      // the empty list has no middle
         ListNode slow = head, fast = head;
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        while (fast.next != null && fast.next.next != null) {   // stop one step earlier than optimal
+            slow = slow.next;                               // tortoise: one step
+            fast = fast.next.next;                          // hare: two steps
         }
-        return slow;
+        return slow;                                        // the first middle for an even length
     }
 
     // ---------------------------------------------------------------- helpers

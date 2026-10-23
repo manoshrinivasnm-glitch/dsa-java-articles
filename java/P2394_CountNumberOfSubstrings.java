@@ -6,16 +6,16 @@ public class P2394_CountNumberOfSubstrings {
     /** Approach 1: enumerate every substring and count its distinct letters from scratch. O(n^3) time, O(1) space. */
     static long bruteForce(String s, int k) {
         int n = s.length();
-        long count = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                boolean[] seen = new boolean[26];
+        long count = 0;                                    // substrings with exactly k distinct letters
+        for (int i = 0; i < n; i++) {                      // i = start of the substring
+            for (int j = i; j < n; j++) {                  // j = end of the substring
+                boolean[] seen = new boolean[26];          // which letters appear in s[i..j]
                 int distinct = 0;
-                for (int p = i; p <= j; p++) {
+                for (int p = i; p <= j; p++) {             // recount s[i..j] from scratch
                     int c = s.charAt(p) - 'a';
-                    if (!seen[c]) { seen[c] = true; distinct++; }
+                    if (!seen[c]) { seen[c] = true; distinct++; }   // first time this letter shows up
                 }
-                if (distinct == k) count++;
+                if (distinct == k) count++;                // this substring qualifies
             }
         }
         return count;
@@ -25,13 +25,13 @@ public class P2394_CountNumberOfSubstrings {
     static long better(String s, int k) {
         int n = s.length();
         long count = 0;
-        for (int i = 0; i < n; i++) {
-            int[] freq = new int[26];
+        for (int i = 0; i < n; i++) {                      // fix the start i
+            int[] freq = new int[26];                      // letter counts of the window s[i..j]
             int distinct = 0;
-            for (int j = i; j < n; j++) {
+            for (int j = i; j < n; j++) {                  // grow the window one letter to the right
                 int c = s.charAt(j) - 'a';
-                if (freq[c]++ == 0) distinct++;
-                if (distinct == k) count++;
+                if (freq[c]++ == 0) distinct++;            // a brand-new letter joins the window
+                if (distinct == k) count++;                // s[i..j] has exactly k distinct letters
                 else if (distinct > k) break;              // extending further can only add distinct letters
             }
         }
@@ -40,20 +40,20 @@ public class P2394_CountNumberOfSubstrings {
 
     /** Approach 3: exactly(k) = atMost(k) - atMost(k - 1), each computed with one sliding window. O(n) time, O(1) space. */
     static long optimal(String s, int k) {
-        if (k <= 0) return 0;
-        return atMost(s, k) - atMost(s, k - 1);
+        if (k <= 0) return 0;                              // cannot have zero or fewer distinct letters
+        return atMost(s, k) - atMost(s, k - 1);            // at most k minus at most k-1 leaves exactly k
     }
 
     /** Number of substrings with at most k distinct characters. */
     private static long atMost(String s, int k) {
-        if (k <= 0) return 0;
-        int[] freq = new int[26];
-        int distinct = 0;
+        if (k <= 0) return 0;                              // no non-empty substring has at most 0 letters
+        int[] freq = new int[26];                          // letter counts inside the window [left, right]
+        int distinct = 0;                                  // letters with a non-zero count
         long count = 0;
-        for (int left = 0, right = 0; right < s.length(); right++) {
-            if (freq[s.charAt(right) - 'a']++ == 0) distinct++;
+        for (int left = 0, right = 0; right < s.length(); right++) {   // extend the window to the right
+            if (freq[s.charAt(right) - 'a']++ == 0) distinct++;   // adding s[right] may bring in a new letter
             while (distinct > k) {                         // shrink until the window is valid again
-                if (--freq[s.charAt(left) - 'a'] == 0) distinct--;
+                if (--freq[s.charAt(left) - 'a'] == 0) distinct--;   // drop s[left]; maybe its last copy
                 left++;
             }
             count += right - left + 1;                     // every substring ending at right that starts in [left, right]

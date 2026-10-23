@@ -4,25 +4,25 @@ import java.util.*;
 public class P361_InsertNodeBeforeHeadInDoublyLinkedList {
 
     static class Node {
-        int val;
-        Node prev, next;
+        int val;                                 // the value stored in this node
+        Node prev, next;                         // neighbours on each side, null past either end
         Node(int val) { this.val = val; }
         Node(int val, Node prev, Node next) { this.val = val; this.prev = prev; this.next = next; }
     }
 
     /** Insert before the head: the new node's next is the old head, the old head's prev is the new node. O(1) time, O(1) space. */
     static Node insertBeforeHead(Node head, int val) {
-        Node node = new Node(val);
-        node.next = head;
+        Node node = new Node(val);               // the node that becomes the new head
+        node.next = head;                        // forward link: new node -> old head
         if (head != null) head.prev = node;      // the old head now has a predecessor; skip when the list was empty
-        return node;
+        return node;                             // the new node is the new head
     }
 
     /** Insert before any node we hold a reference to. Four links change. Returns the (possibly new) head. O(1) time. */
     static Node insertBeforeNode(Node head, Node target, int val) {
-        Node before = target.prev;
+        Node before = target.prev;                          // node in front of target, or null
         Node node = new Node(val, before, target);          // prev = before, next = target
-        target.prev = node;
+        target.prev = node;                                 // target now looks back at the new node
         if (before != null) before.next = node;             // splice in between
         else head = node;                                   // target was the head, so node is the new head
         return head;
@@ -31,21 +31,21 @@ public class P361_InsertNodeBeforeHeadInDoublyLinkedList {
     /** Generalisation: insert before the k-th node (1-based). k == 1 is insertion before the head. O(k) time. */
     static Node insertBeforePosition(Node head, int k, int val) {
         if (k < 1) return head;                                               // no such position
-        if (k == 1) return insertBeforeHead(head, val);
+        if (k == 1) return insertBeforeHead(head, val);                       // same as insertBeforeHead
         Node target = head;
         for (int i = 1; i < k && target != null; i++) target = target.next;  // walk to the k-th node
         if (target == null) return head;                                      // fewer than k nodes
-        return insertBeforeNode(head, target, val);
+        return insertBeforeNode(head, target, val);                           // splice in before node k
     }
 
     /** For contrast: insertion at the tail has to find the tail first. O(n) time, O(1) space. */
     static Node insertAtTail(Node head, int val) {
         Node node = new Node(val);
-        if (head == null) return node;
-        Node tail = head;
-        while (tail.next != null) tail = tail.next;
-        tail.next = node;
-        node.prev = tail;
+        if (head == null) return node;           // empty list: the new node is the whole list
+        Node tail = head;                        // walks to the last node
+        while (tail.next != null) tail = tail.next;   // stop on the last node
+        tail.next = node;                        // forward link: old tail -> new node
+        node.prev = tail;                        // backward link: new node -> old tail
         return head;
     }
 
