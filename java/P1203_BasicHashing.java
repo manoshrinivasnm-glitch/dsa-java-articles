@@ -5,10 +5,10 @@ public class P1203_BasicHashing {
 
     /** Approach 1: no hashing, rescan the array for every query. O(n * q) time, O(1) extra space. */
     static int[] countQueriesBrute(int[] arr, int[] queries) {
-        int[] answers = new int[queries.length];
-        for (int i = 0; i < queries.length; i++) {
+        int[] answers = new int[queries.length];            // answers[i] is the count for queries[i]
+        for (int i = 0; i < queries.length; i++) {          // answer each query on its own
             int count = 0;
-            for (int v : arr) if (v == queries[i]) count++;
+            for (int v : arr) if (v == queries[i]) count++;  // rescan the whole array: O(n) per query
             answers[i] = count;
         }
         return answers;
@@ -17,8 +17,8 @@ public class P1203_BasicHashing {
     /** Approach 2: array hashing. Needs non-negative, bounded values; hash[v] is how often v occurs. O(n + q + maxValue) time, O(maxValue) space. */
     static int[] countQueriesArrayHash(int[] arr, int[] queries) {
         int maxValue = 0;
-        for (int v : arr) maxValue = Math.max(maxValue, v);
-        int[] hash = new int[maxValue + 1];
+        for (int v : arr) maxValue = Math.max(maxValue, v);             // largest value sets the table size
+        int[] hash = new int[maxValue + 1];                             // hash[v] = how many times v occurs
         for (int v : arr) hash[v]++;                                    // pre-storing step
         int[] answers = new int[queries.length];
         for (int i = 0; i < queries.length; i++) {
@@ -30,7 +30,7 @@ public class P1203_BasicHashing {
 
     /** Approach 3: HashMap hashing for arbitrary keys (negative, huge, sparse). O(n + q) average time, O(distinct values) space. */
     static int[] countQueriesMapHash(int[] arr, int[] queries) {
-        Map<Integer, Integer> hash = new HashMap<>();
+        Map<Integer, Integer> hash = new HashMap<>();                   // value -> how many times it occurs
         for (int v : arr) hash.merge(v, 1, Integer::sum);               // pre-storing step
         int[] answers = new int[queries.length];
         for (int i = 0; i < queries.length; i++) answers[i] = hash.getOrDefault(queries[i], 0);   // fetching step
@@ -40,36 +40,36 @@ public class P1203_BasicHashing {
     /** Approach 4: the same idea with a hand-made table, to see what HashMap does internally. O(n + q) average time. */
     static int[] countQueriesChained(int[] arr, int[] queries) {
         ChainedHashTable table = new ChainedHashTable(16);              // tiny on purpose, so collisions really happen
-        for (int v : arr) table.increment(v);
+        for (int v : arr) table.increment(v);                           // pre-storing step
         int[] answers = new int[queries.length];
-        for (int i = 0; i < queries.length; i++) answers[i] = table.count(queries[i]);
+        for (int i = 0; i < queries.length; i++) answers[i] = table.count(queries[i]);  // fetching step
         return answers;
     }
 
     /** Character hashing for lowercase strings: the slot of c is c - 'a'. O(n) time, O(26) space. */
     static int[] charFrequencyLowercase(String s) {
-        int[] hash = new int[26];
-        for (int i = 0; i < s.length(); i++) hash[s.charAt(i) - 'a']++;
+        int[] hash = new int[26];                                       // hash[k] counts the letter 'a' + k
+        for (int i = 0; i < s.length(); i++) hash[s.charAt(i) - 'a']++;  // 'a' -> 0, 'b' -> 1, ..., 'z' -> 25
         return hash;
     }
 
     /** Character hashing for any 8-bit character: the char code itself is the slot. O(n) time, O(256) space. */
     static int[] charFrequencyAscii(String s) {
-        int[] hash = new int[256];
-        for (int i = 0; i < s.length(); i++) hash[s.charAt(i)]++;
+        int[] hash = new int[256];                                      // one slot per 8-bit character code
+        for (int i = 0; i < s.length(); i++) hash[s.charAt(i)]++;       // the character's code is its own index
         return hash;
     }
 
     /** Division-method hash table with separate chaining: key -> bucket key mod capacity, each bucket is a linked list. */
     static class ChainedHashTable {
         private static class Node {
-            final int key;
-            int count;
-            Node next;
+            final int key;          // the stored value
+            int count;              // how many times key was inserted
+            Node next;              // next entry in the same bucket
             Node(int key, Node next) { this.key = key; this.count = 1; this.next = next; }
         }
 
-        private final Node[] buckets;
+        private final Node[] buckets;   // buckets[b] is the head of chain b
 
         ChainedHashTable(int capacity) { buckets = new Node[capacity]; }
 
@@ -77,18 +77,19 @@ public class P1203_BasicHashing {
         int bucketOf(int key) { return Math.floorMod(key, buckets.length); }
 
         void increment(int key) {
-            int b = bucketOf(key);
-            for (Node cur = buckets[b]; cur != null; cur = cur.next) {
+            int b = bucketOf(key);                                      // the only chain this key can live in
+            for (Node cur = buckets[b]; cur != null; cur = cur.next) {  // walk the chain looking for key
                 if (cur.key == key) { cur.count++; return; }            // key already in this chain
             }
             buckets[b] = new Node(key, buckets[b]);                     // new key: push onto the chain
         }
 
         int count(int key) {
+            // search only the key's own chain
             for (Node cur = buckets[bucketOf(key)]; cur != null; cur = cur.next) {
-                if (cur.key == key) return cur.count;
+                if (cur.key == key) return cur.count;                   // found: report its count
             }
-            return 0;
+            return 0;                                                   // key was never inserted
         }
     }
 

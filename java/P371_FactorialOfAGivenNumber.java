@@ -5,35 +5,35 @@ public class P371_FactorialOfAGivenNumber {
 
     /** Approach 1: multiply up in a loop. O(n) time, O(1) space. */
     static long iterative(int n) {
-        long result = 1;
-        for (int i = 2; i <= n; i++) result *= i;
+        long result = 1;                            // empty product; also the answer for n = 0 and 1
+        for (int i = 2; i <= n; i++) result *= i;   // multiply in 2, 3, ..., n
         return result;
     }
 
     /** Approach 2: functional recursion, n! = n * (n-1)!. O(n) time, O(n) stack. */
     static long recursive(int n) {
         if (n <= 1) return 1;                   // base case: 0! = 1! = 1
-        return n * recursive(n - 1);
+        return n * recursive(n - 1);            // n! = n * (n-1)!
     }
 
     /** Approach 3: parameterised (tail) recursion carrying the product so far. O(n) time, O(n) stack. */
     static long tailRecursive(int n) {
-        return multiplyDown(n, 1);
+        return multiplyDown(n, 1);  // start with an empty product of 1
     }
 
     private static long multiplyDown(int i, long product) {
         if (i <= 1) return product;             // base case: everything has been multiplied in
-        return multiplyDown(i - 1, product * i);
+        return multiplyDown(i - 1, product * i);  // fold i into the product, then handle i - 1
     }
 
     /** Variant asked on some sheets: every factorial number 1!, 2!, 3!, ... that is <= limit. O(k) time for k results. */
     static List<Long> factorialsUpTo(long limit) {
-        List<Long> out = new ArrayList<>();
-        long fact = 1;
-        for (int i = 2; fact <= limit; i++) {
-            out.add(fact);
+        List<Long> out = new ArrayList<>();         // factorial numbers found so far
+        long fact = 1;                              // current factorial (i - 1)!, starting at 1!
+        for (int i = 2; fact <= limit; i++) {       // keep going while the factorial is within the limit
+            out.add(fact);                          // (i-1)! is <= limit, so it qualifies
             if (fact > Long.MAX_VALUE / i) break;   // the next factorial would overflow long
-            fact *= i;
+            fact *= i;                              // step to i!
         }
         return out;
     }

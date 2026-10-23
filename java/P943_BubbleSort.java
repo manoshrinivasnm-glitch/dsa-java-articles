@@ -6,9 +6,9 @@ public class P943_BubbleSort {
     /** Approach 1: textbook bubble sort, always n-1 passes. O(n^2) time in every case, O(1) extra space. */
     static void bubbleSort(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
+        for (int i = 0; i < n - 1; i++) {               // after pass i, the last i + 1 slots are final
+            for (int j = 0; j < n - 1 - i; j++) {       // compare neighbours in the unsorted part only
+                if (arr[j] > arr[j + 1]) {              // out of order: swap so the larger moves right
                     int tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
@@ -20,34 +20,34 @@ public class P943_BubbleSort {
     /** Approach 2: stop as soon as a pass makes no swap. O(n) best case, O(n^2) worst case, O(1) extra space. */
     static void bubbleSortEarlyExit(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            boolean swapped = false;
-            for (int j = 0; j < n - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
+        for (int i = 0; i < n - 1; i++) {               // one pass per iteration
+            boolean swapped = false;                    // did this pass change anything?
+            for (int j = 0; j < n - 1 - i; j++) {       // compare neighbours in the unsorted part only
+                if (arr[j] > arr[j + 1]) {              // out of order: swap the pair
                     int tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
                     swapped = true;
                 }
             }
-            if (!swapped) return;
+            if (!swapped) return;                       // a pass with no swap means the array is sorted
         }
     }
 
     /** Approach 3: remember where the last swap happened; everything after it is already final. O(n) best, O(n^2) worst, O(1) extra space. */
     static void bubbleSortLastSwap(int[] arr) {
-        int end = arr.length - 1;
-        while (end > 0) {
-            int lastSwap = 0;
-            for (int j = 0; j < end; j++) {
-                if (arr[j] > arr[j + 1]) {
+        int end = arr.length - 1;                       // arr[end+1..] is already final
+        while (end > 0) {                               // keep passing while an unsorted prefix remains
+            int lastSwap = 0;                           // where this pass last swapped (0 = no swap)
+            for (int j = 0; j < end; j++) {             // bubble through arr[0..end]
+                if (arr[j] > arr[j + 1]) {              // out of order: swap the pair
                     int tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
-                    lastSwap = j;
+                    lastSwap = j;                       // remember the right-most swap
                 }
             }
-            end = lastSwap;
+            end = lastSwap;                             // nothing moved past lastSwap, so that part is final
         }
     }
 

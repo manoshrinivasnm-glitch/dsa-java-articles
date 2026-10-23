@@ -5,35 +5,35 @@ public class P850_Print1ToNUsingRecursion {
 
     /** Approach 1: the plain loop, kept as the reference answer. O(n) time, O(1) extra space. */
     static List<Integer> iterative(int n) {
-        List<Integer> out = new ArrayList<>();
-        for (int i = 1; i <= n; i++) out.add(i);
+        List<Integer> out = new ArrayList<>();      // the numbers in the order they are printed
+        for (int i = 1; i <= n; i++) out.add(i);    // count up from 1 to n
         return out;
     }
 
     /** Approach 2: parameterised recursion. Carry the current value i, emit it, then recurse with i + 1. O(n) time, O(n) stack. */
     static List<Integer> recursiveForward(int n) {
-        List<Integer> out = new ArrayList<>();
-        forward(1, n, out);
+        List<Integer> out = new ArrayList<>();  // collects what each call prints
+        forward(1, n, out);                     // start counting at 1
         return out;
     }
 
     private static void forward(int i, int n, List<Integer> out) {
         if (i > n) return;          // base case: nothing left to print
-        out.add(i);                 // do the work ...
-        forward(i + 1, n, out);     // ... then recurse
+        out.add(i);                 // print i first ...
+        forward(i + 1, n, out);     // ... then let the next call print i + 1 .. n
     }
 
     /** Approach 3: backtracking. Recurse on n - 1 first, then emit n while the calls unwind. O(n) time, O(n) stack. */
     static List<Integer> recursiveBacktrack(int n) {
-        List<Integer> out = new ArrayList<>();
-        backtrack(n, out);
+        List<Integer> out = new ArrayList<>();  // collects what each call prints
+        backtrack(n, out);                      // start from the top; printing happens while unwinding
         return out;
     }
 
     private static void backtrack(int n, List<Integer> out) {
-        if (n < 1) return;          // base case
-        backtrack(n - 1, out);      // recurse first ...
-        out.add(n);                 // ... print on the way back
+        if (n < 1) return;          // base case: below 1 there is nothing to print
+        backtrack(n - 1, out);      // recurse first, so 1 .. n-1 get printed ...
+        out.add(n);                 // ... then print n on the way back
     }
 
     // ---------------------------------------------------------------- tests

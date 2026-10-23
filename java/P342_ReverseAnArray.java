@@ -6,26 +6,26 @@ public class P342_ReverseAnArray {
     /** Approach 1: copy into a second array back to front. O(n) time, O(n) extra space. */
     static int[] bruteForce(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
-        for (int i = 0; i < n; i++) res[n - 1 - i] = arr[i];
+        int[] res = new int[n];                                 // fresh array for the reversed copy
+        for (int i = 0; i < n; i++) res[n - 1 - i] = arr[i];    // element i lands at its mirror position
         return res;
     }
 
     /** Approach 2: swap from both ends while two pointers move inward. O(n) time, O(1) extra space. */
     static int[] iterativeTwoPointers(int[] arr) {
-        int[] a = arr.clone();
-        int l = 0, r = a.length - 1;
-        while (l < r) {
-            int t = a[l]; a[l] = a[r]; a[r] = t;
-            l++; r--;
+        int[] a = arr.clone();                      // work on a copy so the input stays untouched
+        int l = 0, r = a.length - 1;                // l starts at the front, r at the back
+        while (l < r) {                             // stop once the pointers meet in the middle
+            int t = a[l]; a[l] = a[r]; a[r] = t;    // swap the outer pair
+            l++; r--;                               // move both pointers inward
         }
         return a;
     }
 
     /** Approach 3: the same two pointers, but the loop becomes a recursive call. O(n) time, O(n) stack. */
     static int[] recursiveTwoPointers(int[] arr) {
-        int[] a = arr.clone();
-        reverse(a, 0, a.length - 1);
+        int[] a = arr.clone();                  // work on a copy so the input stays untouched
+        reverse(a, 0, a.length - 1);            // reverse the whole range [0, n-1]
         return a;
     }
 
@@ -37,16 +37,16 @@ public class P342_ReverseAnArray {
 
     /** Approach 4: one index i paired with its mirror n - 1 - i; stop at the middle. O(n) time, O(n) stack. */
     static int[] recursiveOnePointer(int[] arr) {
-        int[] a = arr.clone();
-        reverseFrom(a, 0);
+        int[] a = arr.clone();                  // work on a copy so the input stays untouched
+        reverseFrom(a, 0);                      // start with the first element and its mirror
         return a;
     }
 
     private static void reverseFrom(int[] a, int i) {
         int n = a.length;
         if (i >= n / 2) return;                 // base case: first half done, so the whole array is reversed
-        int t = a[i]; a[i] = a[n - 1 - i]; a[n - 1 - i] = t;
-        reverseFrom(a, i + 1);
+        int t = a[i]; a[i] = a[n - 1 - i]; a[n - 1 - i] = t;  // swap a[i] with its mirror a[n-1-i]
+        reverseFrom(a, i + 1);                  // then handle the next pair inward
     }
 
     // ---------------------------------------------------------------- tests

@@ -5,14 +5,14 @@ public class P386_SumOfFirstNNumbers {
 
     /** Approach 1: add the numbers one by one in a loop. O(n) time, O(1) space. */
     static long iterative(int n) {
-        long sum = 0;
-        for (int i = 1; i <= n; i++) sum += i;
+        long sum = 0;                               // running total; long so large n cannot overflow
+        for (int i = 1; i <= n; i++) sum += i;      // add 1, 2, ..., n one at a time
         return sum;
     }
 
     /** Approach 2: parameterised recursion. Carry the running total down the calls; the base case returns it. O(n) time, O(n) stack. */
     static long parameterised(int n) {
-        return sumDown(n, 0);
+        return sumDown(n, 0);  // start at n with nothing added yet
     }
 
     private static long sumDown(int i, long runningSum) {
@@ -23,13 +23,13 @@ public class P386_SumOfFirstNNumbers {
     /** Approach 3: functional recursion. Trust that the call for n - 1 returns the right answer and add n to it. O(n) time, O(n) stack. */
     static long functional(int n) {
         if (n < 1) return 0;                    // base case: the empty sum is 0
-        return n + functional(n - 1);
+        return n + functional(n - 1);           // sum(n) = n + sum(n - 1)
     }
 
     /** Approach 4: closed form n(n+1)/2, computed in long so the product cannot overflow. O(1) time and space. */
     static long formula(int n) {
-        if (n < 1) return 0;
-        return (long) n * (n + 1L) / 2;
+        if (n < 1) return 0;             // no positive numbers to add
+        return (long) n * (n + 1L) / 2;  // Gauss: pair 1 with n, 2 with n-1, ... each pair sums to n + 1
     }
 
     // ---------------------------------------------------------------- tests

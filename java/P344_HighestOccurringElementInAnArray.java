@@ -6,10 +6,11 @@ public class P344_HighestOccurringElementInAnArray {
     /** Approach 1: count every element by rescanning the array. O(n^2) time, O(1) space. */
     static int bruteForce(int[] arr) {
         int n = arr.length;
-        int best = arr[0], bestCount = 0;
-        for (int i = 0; i < n; i++) {
+        int best = arr[0], bestCount = 0;                               // best value so far and its count
+        for (int i = 0; i < n; i++) {                                   // try every element as the candidate
             int count = 0;
-            for (int j = 0; j < n; j++) if (arr[j] == arr[i]) count++;
+            for (int j = 0; j < n; j++) if (arr[j] == arr[i]) count++;  // rescan to count copies of arr[i]
+            // more frequent wins; on a tie the smaller value wins
             if (count > bestCount || (count == bestCount && arr[i] < best)) {
                 best = arr[i];
                 bestCount = count;
@@ -20,30 +21,31 @@ public class P344_HighestOccurringElementInAnArray {
 
     /** Approach 2: sort a copy so equal values sit together, then measure each run. O(n log n) time, O(n) for the copy. */
     static int better(int[] arr) {
-        int[] a = arr.clone();
-        Arrays.sort(a);
-        int best = a[0], bestCount = 0;
-        int i = 0;
+        int[] a = arr.clone();                                // sort a copy, leave the input alone
+        Arrays.sort(a);                                       // equal values now form one contiguous run
+        int best = a[0], bestCount = 0;                       // most frequent value so far and its count
+        int i = 0;                                            // i is the start of the current run
         while (i < a.length) {
             int j = i;
             while (j < a.length && a[j] == a[i]) j++;         // a[i..j-1] is one run of equal values
-            int count = j - i;
+            int count = j - i;                                // length of this run
             if (count > bestCount) {                          // strict >, so an earlier (smaller) value keeps a tie
                 best = a[i];
                 bestCount = count;
             }
-            i = j;
+            i = j;                                            // jump to the start of the next run
         }
         return best;
     }
 
     /** Approach 3: one pass to count with a hash map, one pass over the map to pick the winner. O(n) average time, O(distinct values) space. */
     static int optimal(int[] arr) {
-        Map<Integer, Integer> freq = new HashMap<>();
-        for (int v : arr) freq.merge(v, 1, Integer::sum);
-        int best = arr[0], bestCount = 0;
-        for (Map.Entry<Integer, Integer> e : freq.entrySet()) {
+        Map<Integer, Integer> freq = new HashMap<>();               // value -> how many times it occurs
+        for (int v : arr) freq.merge(v, 1, Integer::sum);           // pass 1: count every value
+        int best = arr[0], bestCount = 0;                           // most frequent value so far and its count
+        for (Map.Entry<Integer, Integer> e : freq.entrySet()) {     // pass 2: each distinct value once
             int value = e.getKey(), count = e.getValue();
+            // map order is arbitrary, so break ties by the smaller value
             if (count > bestCount || (count == bestCount && value < best)) {
                 best = value;
                 bestCount = count;

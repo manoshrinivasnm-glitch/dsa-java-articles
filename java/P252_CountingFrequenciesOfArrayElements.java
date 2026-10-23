@@ -6,14 +6,14 @@ public class P252_CountingFrequenciesOfArrayElements {
     /** Approach 1: for each unvisited element, scan the rest of the array and count copies. O(n^2) time, O(n) for the visited flags. */
     static Map<Integer, Integer> bruteForce(int[] arr) {
         int n = arr.length;
-        boolean[] visited = new boolean[n];
+        boolean[] visited = new boolean[n];                        // visited[j]: arr[j] already counted
         Map<Integer, Integer> freq = new LinkedHashMap<>();        // insertion order = order of first appearance
         for (int i = 0; i < n; i++) {
             if (visited[i]) continue;                               // already counted as a copy of an earlier element
-            int count = 1;
-            for (int j = i + 1; j < n; j++) {
+            int count = 1;                                         // arr[i] itself
+            for (int j = i + 1; j < n; j++) {                      // count the later copies of arr[i]
                 if (arr[j] == arr[i]) {
-                    visited[j] = true;
+                    visited[j] = true;                             // so arr[j] is not counted again on its own
                     count++;
                 }
             }
@@ -25,11 +25,11 @@ public class P252_CountingFrequenciesOfArrayElements {
     /** Approach 2: counting array, when values are non-negative and bounded by a small maxValue. O(n + maxValue) time and space. */
     static Map<Integer, Integer> countingArray(int[] arr) {
         int maxValue = 0;
-        for (int v : arr) maxValue = Math.max(maxValue, v);
-        int[] count = new int[maxValue + 1];
+        for (int v : arr) maxValue = Math.max(maxValue, v);         // table needs a slot for the max value
+        int[] count = new int[maxValue + 1];                        // count[v] = how many times v occurs
         for (int v : arr) count[v]++;                               // one pass to count
-        Map<Integer, Integer> freq = new LinkedHashMap<>();
-        for (int v : arr) {
+        Map<Integer, Integer> freq = new LinkedHashMap<>();         // keeps the order of first appearance
+        for (int v : arr) {                                         // second pass, in original order
             if (!freq.containsKey(v)) freq.put(v, count[v]);        // report each value once, at its first appearance
         }
         return freq;
@@ -37,7 +37,7 @@ public class P252_CountingFrequenciesOfArrayElements {
 
     /** Approach 3: a hash map works for any values, negative or huge. O(n) average time, O(distinct values) space. */
     static Map<Integer, Integer> hashMap(int[] arr) {
-        Map<Integer, Integer> freq = new LinkedHashMap<>();
+        Map<Integer, Integer> freq = new LinkedHashMap<>();         // value -> count, first-seen order
         for (int v : arr) freq.merge(v, 1, Integer::sum);           // absent -> 1, present -> old + 1
         return freq;
     }
@@ -48,9 +48,9 @@ public class P252_CountingFrequenciesOfArrayElements {
         int n = arr.length;
         for (int i = 0; i < n; i++) arr[i]--;                       // shift values to [0, n - 1] so they are valid indices
         for (int i = 0; i < n; i++) arr[arr[i] % n] += n;           // arr[i] % n is the original value here; add n at its slot
-        Map<Integer, Integer> freq = new LinkedHashMap<>();
-        for (int i = 0; i < n; i++) {
-            int value = input[i];
+        Map<Integer, Integer> freq = new LinkedHashMap<>();         // value -> count, first-seen order
+        for (int i = 0; i < n; i++) {                               // read values from the untouched input
+            int value = input[i];                                   // the original, unmodified value
             if (!freq.containsKey(value)) freq.put(value, arr[value - 1] / n);   // slot v - 1 holds n * count(v) + junk < n
         }
         return freq;

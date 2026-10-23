@@ -5,34 +5,34 @@ public class P852_PrintNTo1UsingRecursion {
 
     /** Approach 1: the plain loop, kept as the reference answer. O(n) time, O(1) extra space. */
     static List<Integer> iterative(int n) {
-        List<Integer> out = new ArrayList<>();
-        for (int i = n; i >= 1; i--) out.add(i);
+        List<Integer> out = new ArrayList<>();      // the numbers in the order they are printed
+        for (int i = n; i >= 1; i--) out.add(i);    // count down from n to 1
         return out;
     }
 
     /** Approach 2: parameterised recursion. Start at i = n, emit i, then recurse with i - 1. O(n) time, O(n) stack. */
     static List<Integer> recursiveForward(int n) {
-        List<Integer> out = new ArrayList<>();
-        forward(n, out);
+        List<Integer> out = new ArrayList<>();  // collects what each call prints
+        forward(n, out);                        // start counting at n
         return out;
     }
 
     private static void forward(int i, List<Integer> out) {
         if (i < 1) return;          // base case: we have gone below 1
-        out.add(i);                 // do the work ...
+        out.add(i);                 // print i first ...
         forward(i - 1, out);        // ... then recurse towards the base case
     }
 
     /** Approach 3: backtracking. Start at i = 1, recurse on i + 1 first, then emit i while unwinding. O(n) time, O(n) stack. */
     static List<Integer> recursiveBacktrack(int n) {
-        List<Integer> out = new ArrayList<>();
-        backtrack(1, n, out);
+        List<Integer> out = new ArrayList<>();  // collects what each call prints
+        backtrack(1, n, out);                   // start at 1; printing happens while unwinding
         return out;
     }
 
     private static void backtrack(int i, int n, List<Integer> out) {
-        if (i > n) return;          // base case
-        backtrack(i + 1, n, out);   // recurse first ...
+        if (i > n) return;          // base case: past n there is nothing to print
+        backtrack(i + 1, n, out);   // recurse first, so i + 1 .. n get printed ...
         out.add(i);                 // ... print on the way back, so n comes out first
     }
 

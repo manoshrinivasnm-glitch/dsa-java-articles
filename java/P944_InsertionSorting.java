@@ -6,13 +6,13 @@ public class P944_InsertionSorting {
     /** Approach 1: insert by swapping the new element leftwards until it is in place. O(n^2) worst, O(n) best, O(1) extra space. */
     static void insertionSortSwaps(int[] arr) {
         int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            int j = i;
-            while (j > 0 && arr[j - 1] > arr[j]) {
+        for (int i = 1; i < n; i++) {                   // arr[0..i-1] is sorted; insert arr[i] into it
+            int j = i;                                  // j is where the new element currently sits
+            while (j > 0 && arr[j - 1] > arr[j]) {      // left neighbour is bigger: swap one step left
                 int tmp = arr[j];
                 arr[j] = arr[j - 1];
                 arr[j - 1] = tmp;
-                j--;
+                j--;                                    // follow the element
             }
         }
     }
@@ -20,29 +20,30 @@ public class P944_InsertionSorting {
     /** Approach 2: hold the new element aside, shift larger elements right, drop it in. Same complexity, about a third of the writes. */
     static void insertionSortShift(int[] arr) {
         int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            int key = arr[i];
-            int j = i - 1;
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
+        for (int i = 1; i < n; i++) {                   // arr[0..i-1] is sorted; insert arr[i] into it
+            int key = arr[i];                           // hold the new element aside
+            int j = i - 1;                              // compare from the right end of the sorted part
+            while (j >= 0 && arr[j] > key) {            // larger than key: it must move right
+                arr[j + 1] = arr[j];                    // shift it right, moving the gap left
                 j--;
             }
-            arr[j + 1] = key;
+            arr[j + 1] = key;                           // drop key into the gap
         }
     }
 
     /** Approach 3: binary search the insertion point, then shift. O(n log n) comparisons, still O(n^2) moves, O(1) extra space. */
     static void insertionSortBinary(int[] arr) {
         int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            int key = arr[i];
+        for (int i = 1; i < n; i++) {             // insert arr[i] into the sorted arr[0..i-1]
+            int key = arr[i];                     // the element to insert
             int lo = 0, hi = i;                   // insertion index lies in [lo, hi]
             while (lo < hi) {
-                int mid = (lo + hi) >>> 1;
+                int mid = (lo + hi) >>> 1;        // middle index, overflow-safe
+                // <= moves past equal values, so key lands after them and the sort stays stable
                 if (arr[mid] <= key) lo = mid + 1; else hi = mid;
             }
-            for (int j = i; j > lo; j--) arr[j] = arr[j - 1];
-            arr[lo] = key;
+            for (int j = i; j > lo; j--) arr[j] = arr[j - 1];  // shift arr[lo..i-1] right by one
+            arr[lo] = key;                        // place key at its insertion point
         }
     }
 

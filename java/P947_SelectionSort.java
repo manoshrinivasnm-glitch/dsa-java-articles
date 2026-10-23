@@ -6,28 +6,28 @@ public class P947_SelectionSort {
     /** Approach 1: repeatedly pick the smallest unused element into a fresh array. O(n^2) time, O(n) extra space. */
     static void selectionSortExtraSpace(int[] arr) {
         int n = arr.length;
-        boolean[] used = new boolean[n];
-        int[] out = new int[n];
-        for (int k = 0; k < n; k++) {
-            int minIdx = -1;
-            for (int i = 0; i < n; i++) {
+        boolean[] used = new boolean[n];            // used[i]: arr[i] is already placed in out
+        int[] out = new int[n];                     // the sorted result, filled left to right
+        for (int k = 0; k < n; k++) {               // out[k] gets the k-th smallest value
+            int minIdx = -1;                        // -1 means "no candidate yet"
+            for (int i = 0; i < n; i++) {           // scan for the smallest unused element
                 if (!used[i] && (minIdx == -1 || arr[i] < arr[minIdx])) minIdx = i;
             }
-            used[minIdx] = true;
+            used[minIdx] = true;                    // take it out of the running
             out[k] = arr[minIdx];
         }
-        System.arraycopy(out, 0, arr, 0, n);
+        System.arraycopy(out, 0, arr, 0, n);        // copy the sorted result back into arr
     }
 
     /** Approach 2: classic in-place selection sort. O(n^2) comparisons, at most n-1 swaps, O(1) extra space. */
     static void selectionSort(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIdx]) minIdx = j;
+        for (int i = 0; i < n - 1; i++) {           // arr[0..i-1] is sorted and final; fill slot i
+            int minIdx = i;                         // index of the smallest value in arr[i..n-1]
+            for (int j = i + 1; j < n; j++) {       // scan the unsorted part
+                if (arr[j] < arr[minIdx]) minIdx = j;  // found a new minimum
             }
-            if (minIdx != i) {
+            if (minIdx != i) {                      // swap only if the minimum is not already in place
                 int tmp = arr[i];
                 arr[i] = arr[minIdx];
                 arr[minIdx] = tmp;
@@ -38,14 +38,15 @@ public class P947_SelectionSort {
     /** Approach 3: stable variant, shift the gap instead of swapping so equal keys keep their order. O(n^2) time, O(1) extra space. */
     static void selectionSortStable(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            int minIdx = i;
+        for (int i = 0; i < n - 1; i++) {           // fill slot i with the smallest remaining value
+            int minIdx = i;                         // index of the smallest value in arr[i..n-1]
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIdx]) minIdx = j;
+                if (arr[j] < arr[minIdx]) minIdx = j;  // strict <, so the first of equal minima wins
             }
-            int min = arr[minIdx];
+            int min = arr[minIdx];                  // lift the minimum out
+            // shift arr[i..minIdx-1] one step right, keeping their order
             for (int k = minIdx; k > i; k--) arr[k] = arr[k - 1];
-            arr[i] = min;
+            arr[i] = min;                           // drop the minimum into the gap at i
         }
     }
 
