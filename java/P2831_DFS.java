@@ -6,31 +6,31 @@ public class P2831_DFS {
     /** Approach 1: recursion. Visit u, then fully explore each unvisited neighbour in order before trying the next one. O(V + E). */
     static List<Integer> recursive(List<List<Integer>> adj, int start) {
         List<Integer> order = new ArrayList<>();
-        dfs(adj, start, new boolean[adj.size()], order);
+        dfs(adj, start, new boolean[adj.size()], order);   // one recursive call explores everything reachable
         return order;
     }
 
     static void dfs(List<List<Integer>> adj, int u, boolean[] visited, List<Integer> order) {
-        visited[u] = true;
-        order.add(u);
-        for (int v : adj.get(u)) {
-            if (!visited[v]) dfs(adj, v, visited, order);
+        visited[u] = true;                                  // mark on entry so no cycle leads back into u
+        order.add(u);                                       // preorder: record u before its neighbours
+        for (int v : adj.get(u)) {                          // neighbours in adjacency-list order
+            if (!visited[v]) dfs(adj, v, visited, order);   // go as deep as possible through v first
         }
     }
 
     /** Approach 2: explicit stack of vertices. Push neighbours in reverse so the first is popped first; skip stale entries. O(V + E) time, O(E) stack. */
     static List<Integer> iterativeStack(List<List<Integer>> adj, int start) {
-        List<Integer> order = new ArrayList<>();
-        boolean[] visited = new boolean[adj.size()];
-        Deque<Integer> stack = new ArrayDeque<>();
+        List<Integer> order = new ArrayList<>();           // vertices in the order DFS visits them
+        boolean[] visited = new boolean[adj.size()];       // set when a vertex is popped and explored
+        Deque<Integer> stack = new ArrayDeque<>();         // LIFO: the newest vertex is explored next
         stack.push(start);
         while (!stack.isEmpty()) {
-            int u = stack.pop();
-            if (visited[u]) continue;                     // pushed more than once; already explored
+            int u = stack.pop();                           // the most recently pushed vertex
+            if (visited[u]) continue;                      // pushed more than once; already explored
             visited[u] = true;
             order.add(u);
             List<Integer> nbrs = adj.get(u);
-            for (int i = nbrs.size() - 1; i >= 0; i--) {
+            for (int i = nbrs.size() - 1; i >= 0; i--) {   // reverse, so the first neighbour pops first
                 int v = nbrs.get(i);
                 if (!visited[v]) stack.push(v);
             }
@@ -42,19 +42,19 @@ public class P2831_DFS {
     static List<Integer> iterativeFrames(List<List<Integer>> adj, int start) {
         List<Integer> order = new ArrayList<>();
         boolean[] visited = new boolean[adj.size()];
-        Deque<int[]> stack = new ArrayDeque<>();
-        visited[start] = true;
+        Deque<int[]> stack = new ArrayDeque<>();   // frames {vertex, index of the next neighbour to try}
+        visited[start] = true;                     // enter start: mark and record it
         order.add(start);
-        stack.push(new int[]{start, 0});
+        stack.push(new int[]{start, 0});           // like calling dfs(start)
         while (!stack.isEmpty()) {
-            int[] top = stack.peek();
+            int[] top = stack.peek();              // the "call" currently running
             List<Integer> nbrs = adj.get(top[0]);
-            if (top[1] == nbrs.size()) {                  // every neighbour tried: "return" from this call
+            if (top[1] == nbrs.size()) {           // every neighbour tried: "return" from this call
                 stack.pop();
                 continue;
             }
-            int v = nbrs.get(top[1]++);
-            if (!visited[v]) {                            // "call" dfs(v)
+            int v = nbrs.get(top[1]++);            // next neighbour; the frame remembers how far it got
+            if (!visited[v]) {                     // "call" dfs(v)
                 visited[v] = true;
                 order.add(v);
                 stack.push(new int[]{v, 0});
@@ -68,16 +68,16 @@ public class P2831_DFS {
         List<Integer> order = new ArrayList<>();
         boolean[] visited = new boolean[adj.size()];
         Deque<Integer> stack = new ArrayDeque<>();
-        visited[start] = true;
+        visited[start] = true;           // marked when pushed, like BFS does
         stack.push(start);
         while (!stack.isEmpty()) {
             int u = stack.pop();
-            order.add(u);
+            order.add(u);                // visit order is the pop order
             List<Integer> nbrs = adj.get(u);
             for (int i = nbrs.size() - 1; i >= 0; i--) {
                 int v = nbrs.get(i);
-                if (!visited[v]) {
-                    visited[v] = true;
+                if (!visited[v]) {       // a vertex already pushed is never pushed again
+                    visited[v] = true;   // BUG: claimed now, so a deeper vertex cannot reach v first
                     stack.push(v);
                 }
             }

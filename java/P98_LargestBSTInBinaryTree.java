@@ -11,19 +11,22 @@ public class P98_LargestBSTInBinaryTree {
 
     /** Approach 1: brute force. Validate the subtree at every node; the first valid one from the top is the biggest on that branch. O(n^2) time, O(h) space. */
     static int bruteForce(TreeNode root) {
-        if (root == null) return 0;
-        if (isBST(root, Long.MIN_VALUE, Long.MAX_VALUE)) return count(root);   // nothing below can be bigger
+        if (root == null) return 0;   // empty tree has no BST nodes
+        // whole subtree is a BST: nothing below beats it
+        if (isBST(root, Long.MIN_VALUE, Long.MAX_VALUE)) return count(root);
+        // otherwise the answer lies wholly on one side
         return Math.max(bruteForce(root.left), bruteForce(root.right));
     }
 
     static boolean isBST(TreeNode node, long low, long high) {
-        if (node == null) return true;
-        if (node.val <= low || node.val >= high) return false;
+        if (node == null) return true;                           // empty subtree breaks no rule
+        if (node.val <= low || node.val >= high) return false;   // key outside what its ancestors allow
+        // left keys stay below this key, right keys above it
         return isBST(node.left, low, node.val) && isBST(node.right, node.val, high);
     }
 
     static int count(TreeNode node) {
-        return node == null ? 0 : 1 + count(node.left) + count(node.right);
+        return node == null ? 0 : 1 + count(node.left) + count(node.right);   // this node plus both subtrees
     }
 
     /** What a subtree reports to its parent. A subtree that is not a BST reports min = -inf and max = +inf so no ancestor can accept it. */
@@ -35,16 +38,18 @@ public class P98_LargestBSTInBinaryTree {
 
     /** Approach 2: optimal. One post-order pass; each node combines its children's (min, max, size) summaries. O(n) time, O(h) space. */
     static int optimal(TreeNode root) {
-        return summarize(root).size;
+        return summarize(root).size;   // size of the largest BST anywhere in the tree
     }
 
     static Info summarize(TreeNode node) {
         if (node == null) return new Info(Long.MAX_VALUE, Long.MIN_VALUE, 0);   // empty: fits under any parent
-        Info left = summarize(node.left);
+        Info left = summarize(node.left);                    // children first (post-order)
         Info right = summarize(node.right);
-        if (left.max < node.val && node.val < right.min) {                      // node joins two BSTs into one
+        if (left.max < node.val && node.val < right.min) {   // node joins two BSTs into one
+            // new range covers both children and node; size counts all of them
             return new Info(Math.min(left.min, node.val), Math.max(right.max, node.val), left.size + right.size + 1);
         }
+        // not a BST: block every ancestor, keep the best size found below
         return new Info(Long.MIN_VALUE, Long.MAX_VALUE, Math.max(left.size, right.size));
     }
 

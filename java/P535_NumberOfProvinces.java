@@ -6,28 +6,29 @@ public class P535_NumberOfProvinces {
     /** Approach 1: Warshall's transitive closure, then count every city that no smaller city can reach. O(n^3) time, O(n^2) space. */
     static int bruteForce(int[][] isConnected) {
         int n = isConnected.length;
-        boolean[][] reach = new boolean[n][n];
+        boolean[][] reach = new boolean[n][n];   // reach[i][j]: city j is reachable from city i
         for (int i = 0; i < n; i++) {
+            // start with direct roads only (and every city reaches itself)
             for (int j = 0; j < n; j++) reach[i][j] = i == j || isConnected[i][j] == 1;
         }
-        for (int k = 0; k < n; k++) {                         // now allow k as a stop in between
+        for (int k = 0; k < n; k++) {            // now allow k as a stop in between
             for (int i = 0; i < n; i++) {
-                if (!reach[i][k]) continue;
+                if (!reach[i][k]) continue;      // i cannot get to k, so k opens no new routes for i
                 for (int j = 0; j < n; j++) {
-                    if (reach[k][j]) reach[i][j] = true;
+                    if (reach[k][j]) reach[i][j] = true;   // i -> k -> j
                 }
             }
         }
         int provinces = 0;
-        for (int j = 0; j < n; j++) {
-            boolean smallest = true;                          // is j the smallest city of its province?
+        for (int j = 0; j < n; j++) {            // count one city per province
+            boolean smallest = true;             // is j the smallest city of its province?
             for (int i = 0; i < j; i++) {
-                if (reach[i][j]) {
+                if (reach[i][j]) {               // a smaller city shares j's province
                     smallest = false;
                     break;
                 }
             }
-            if (smallest) provinces++;
+            if (smallest) provinces++;           // j represents a new province
         }
         return provinces;
     }
@@ -35,19 +36,20 @@ public class P535_NumberOfProvinces {
     /** Approach 2: DFS straight on the matrix. Every DFS started from an unvisited city floods exactly one province. O(n^2). */
     static int optimalDfs(int[][] isConnected) {
         int n = isConnected.length;
-        boolean[] visited = new boolean[n];
+        boolean[] visited = new boolean[n];   // cities already assigned to a province
         int provinces = 0;
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) continue;
-            provinces++;                                      // i belongs to a province nobody has explored yet
-            dfs(isConnected, i, visited);
+        for (int i = 0; i < n; i++) {         // try every city as the start of a new province
+            if (visited[i]) continue;         // already part of a counted province
+            provinces++;                      // i belongs to a province nobody has explored yet
+            dfs(isConnected, i, visited);     // mark the whole province as visited
         }
         return provinces;
     }
 
     static void dfs(int[][] isConnected, int u, boolean[] visited) {
-        visited[u] = true;
-        for (int v = 0; v < isConnected.length; v++) {
+        visited[u] = true;                               // mark before recursing so cycles stop here
+        for (int v = 0; v < isConnected.length; v++) {   // scan u's row of the matrix for neighbours
+            // unvisited neighbour: explore it
             if (isConnected[u][v] == 1 && !visited[v]) dfs(isConnected, v, visited);
         }
     }
@@ -55,16 +57,16 @@ public class P535_NumberOfProvinces {
     /** Approach 3: union-find over the upper triangle. Each union of two different sets merges two provinces. O(n^2 * alpha(n)). */
     static int optimalUnionFind(int[][] isConnected) {
         int n = isConnected.length;
-        int[] parent = new int[n];
-        for (int i = 0; i < n; i++) parent[i] = i;
-        int provinces = n;
+        int[] parent = new int[n];                              // union-find parent links
+        for (int i = 0; i < n; i++) parent[i] = i;              // every city starts as its own province
+        int provinces = n;                                      // n separate provinces before any merge
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {                 // the matrix is symmetric, so j > i is enough
-                if (isConnected[i][j] == 0) continue;
-                int a = find(parent, i), b = find(parent, j);
-                if (a != b) {
-                    parent[a] = b;
-                    provinces--;
+            for (int j = i + 1; j < n; j++) {                   // the matrix is symmetric, so j > i is enough
+                if (isConnected[i][j] == 0) continue;           // no direct road between i and j
+                int a = find(parent, i), b = find(parent, j);   // current province of each city
+                if (a != b) {                                   // different provinces: merge them
+                    parent[a] = b;                              // hang one root under the other
+                    provinces--;                                // two provinces became one
                 }
             }
         }
@@ -72,11 +74,11 @@ public class P535_NumberOfProvinces {
     }
 
     static int find(int[] parent, int x) {
-        while (parent[x] != x) {
-            parent[x] = parent[parent[x]];                    // path halving
+        while (parent[x] != x) {             // climb until we reach the root
+            parent[x] = parent[parent[x]];   // path halving: point x at its grandparent
             x = parent[x];
         }
-        return x;
+        return x;                            // the root names the province
     }
 
     // ---------------------------------------------------------------- tests

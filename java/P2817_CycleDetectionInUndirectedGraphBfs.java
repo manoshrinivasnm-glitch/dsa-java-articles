@@ -5,92 +5,92 @@ public class P2817_CycleDetectionInUndirectedGraphBfs {
 
     /** Approach 1: an edge (u, v) lies on a cycle exactly when v is still reachable from u without it. Test every edge. O(E * (V + E)). */
     static boolean bruteForce(int n, int[][] edges) {
-        for (int skip = 0; skip < edges.length; skip++) {
+        for (int skip = 0; skip < edges.length; skip++) {   // test each edge u - v in turn
             int u = edges[skip][0], v = edges[skip][1];
-            if (u == v) return true;                          // a self-loop is a cycle on its own
-            List<List<Integer>> adj = new ArrayList<>();
+            if (u == v) return true;                        // a self-loop is a cycle on its own
+            List<List<Integer>> adj = new ArrayList<>();    // the graph without edge number skip
             for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
             for (int i = 0; i < edges.length; i++) {
-                if (i == skip) continue;
+                if (i == skip) continue;                    // leave out the edge under test
                 adj.get(edges[i][0]).add(edges[i][1]);
                 adj.get(edges[i][1]).add(edges[i][0]);
             }
-            if (reachable(adj, u, v)) return true;            // another route plus this edge closes a loop
+            if (reachable(adj, u, v)) return true;          // another route plus this edge closes a loop
         }
         return false;
     }
 
     static boolean reachable(List<List<Integer>> adj, int from, int to) {
-        boolean[] seen = new boolean[adj.size()];
+        boolean[] seen = new boolean[adj.size()];   // vertices already queued
         Deque<Integer> queue = new ArrayDeque<>();
         seen[from] = true;
         queue.add(from);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                  // plain BFS from 'from'
             int x = queue.poll();
-            if (x == to) return true;
+            if (x == to) return true;               // found another way to reach 'to'
             for (int y : adj.get(x)) {
-                if (!seen[y]) {
+                if (!seen[y]) {                     // first time we meet y: queue it
                     seen[y] = true;
                     queue.add(y);
                 }
             }
         }
-        return false;
+        return false;                               // 'to' lies in a different component
     }
 
     /** Approach 2: BFS remembering each vertex's parent. A visited neighbour that is not the parent means two routes met: a cycle. O(V + E). */
     static boolean optimalBfs(int n, int[][] edges) {
-        List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> adj = new ArrayList<>();               // adj.get(u) = neighbours of u
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int[] e : edges) {
-            adj.get(e[0]).add(e[1]);
+            adj.get(e[0]).add(e[1]);                               // undirected: store the edge both ways
             adj.get(e[1]).add(e[0]);
         }
-        boolean[] visited = new boolean[n];
+        boolean[] visited = new boolean[n];                        // shared by all BFS runs
         for (int start = 0; start < n; start++) {
-            if (visited[start]) continue;                     // every component needs its own BFS
-            if (bfsFindsCycle(adj, start, visited)) return true;
+            if (visited[start]) continue;                          // every component needs its own BFS
+            if (bfsFindsCycle(adj, start, visited)) return true;   // one cyclic component is enough
         }
-        return false;
+        return false;                                              // no component has a cycle
     }
 
     static boolean bfsFindsCycle(List<List<Integer>> adj, int start, boolean[] visited) {
-        Deque<int[]> queue = new ArrayDeque<>();              // entries are {vertex, parent}
-        visited[start] = true;
-        queue.add(new int[]{start, -1});
+        Deque<int[]> queue = new ArrayDeque<>();   // entries are {vertex, parent}
+        visited[start] = true;                     // mark on enqueue, as in normal BFS
+        queue.add(new int[]{start, -1});           // the start has no parent
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
-            int node = cur[0], parent = cur[1];
+            int node = cur[0], parent = cur[1];    // parent = the vertex that discovered node
             for (int next : adj.get(node)) {
-                if (!visited[next]) {
+                if (!visited[next]) {              // new vertex: node discovered it, so node is its parent
                     visited[next] = true;
                     queue.add(new int[]{next, node});
-                } else if (next != parent) {
-                    return true;                              // reached already by a different route
+                } else if (next != parent) {       // seen before and not the edge we arrived by
+                    return true;                   // reached already by a different route
                 }
             }
         }
-        return false;
+        return false;                              // this component is a tree
     }
 
     /** Approach 3: union-find. An edge whose ends are already in one set closes a cycle. O(E * alpha(n)). */
     static boolean unionFind(int n, int[][] edges) {
-        int[] parent = new int[n];
-        for (int i = 0; i < n; i++) parent[i] = i;
-        for (int[] e : edges) {
-            int a = find(parent, e[0]), b = find(parent, e[1]);
-            if (a == b) return true;                          // u and v were already connected
-            parent[a] = b;
+        int[] parent = new int[n];                   // union-find parent links
+        for (int i = 0; i < n; i++) parent[i] = i;   // every vertex starts in its own set
+        for (int[] e : edges) {                      // add the edges one by one
+            int a = find(parent, e[0]), b = find(parent, e[1]);   // roots of the two ends
+            if (a == b) return true;                 // u and v were already connected
+            parent[a] = b;                           // join the two sets
         }
-        return false;
+        return false;                                // every edge joined two separate trees: a forest
     }
 
     static int find(int[] parent, int x) {
-        while (parent[x] != x) {
-            parent[x] = parent[parent[x]];
+        while (parent[x] != x) {             // climb until we reach the root
+            parent[x] = parent[parent[x]];   // path halving: point x at its grandparent
             x = parent[x];
         }
-        return x;
+        return x;                            // the root names the set
     }
 
     // ---------------------------------------------------------------- tests

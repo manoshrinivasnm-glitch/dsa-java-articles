@@ -5,21 +5,21 @@ public class P2870_GraphRepresentationC {
 
     /** Adjacency matrix for an undirected graph on vertices 1..n: mat[u][v] = 1 when u and v are joined. O(n^2) space. */
     static int[][] adjacencyMatrix(int n, int[][] edges) {
-        int[][] mat = new int[n + 1][n + 1];                 // row and column 0 unused: vertices are 1-based
-        for (int[] e : edges) {
-            mat[e[0]][e[1]] = 1;
-            mat[e[1]][e[0]] = 1;                             // undirected: the matrix is symmetric
+        int[][] mat = new int[n + 1][n + 1];   // row and column 0 unused: vertices are 1-based
+        for (int[] e : edges) {                // each edge {u, v} switches on one cell pair
+            mat[e[0]][e[1]] = 1;               // u is adjacent to v
+            mat[e[1]][e[0]] = 1;               // undirected: the matrix is symmetric
         }
         return mat;
     }
 
     /** Adjacency list for an undirected graph on vertices 1..n. Every edge is stored twice, 2E entries in total. */
     static List<List<Integer>> adjacencyList(int n, int[][] edges) {
-        List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());
+        List<List<Integer>> adj = new ArrayList<>();   // adj.get(u) = neighbours of u
+        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());   // one empty list per vertex, 0 unused
         for (int[] e : edges) {
-            adj.get(e[0]).add(e[1]);
-            adj.get(e[1]).add(e[0]);
+            adj.get(e[0]).add(e[1]);                   // v is a neighbour of u
+            adj.get(e[1]).add(e[0]);                   // and u of v: undirected edges are stored twice
         }
         return adj;
     }
@@ -27,28 +27,28 @@ public class P2870_GraphRepresentationC {
     /** Directed version: edge {u, v} means u -> v only, so it is stored once. E entries in total. */
     static List<List<Integer>> directedList(int n, int[][] edges) {
         List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());
-        for (int[] e : edges) adj.get(e[0]).add(e[1]);
+        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());   // one empty list per vertex, 0 unused
+        for (int[] e : edges) adj.get(e[0]).add(e[1]);             // directed: store u -> v only once
         return adj;
     }
 
     /** Weighted matrix: store the weight instead of 1. 0 still means "no edge", so this assumes non-zero weights. */
     static int[][] weightedMatrix(int n, int[][] wEdges) {
-        int[][] mat = new int[n + 1][n + 1];
+        int[][] mat = new int[n + 1][n + 1];   // 0 means no edge, so weights must be non-zero
         for (int[] e : wEdges) {
-            mat[e[0]][e[1]] = e[2];
-            mat[e[1]][e[0]] = e[2];
+            mat[e[0]][e[1]] = e[2];            // the cell holds the weight instead of 1
+            mat[e[1]][e[0]] = e[2];            // same weight in both directions
         }
         return mat;
     }
 
     /** Weighted list: each entry is {neighbour, weight}, the Java stand-in for C++ pair<int, int>. */
     static List<List<int[]>> weightedList(int n, int[][] wEdges) {
-        List<List<int[]>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());
+        List<List<int[]>> adj = new ArrayList<>();                 // each entry is a pair {neighbour, weight}
+        for (int i = 0; i <= n; i++) adj.add(new ArrayList<>());   // one empty list per vertex, 0 unused
         for (int[] e : wEdges) {
-            adj.get(e[0]).add(new int[]{e[1], e[2]});
-            adj.get(e[1]).add(new int[]{e[0], e[2]});
+            adj.get(e[0]).add(new int[]{e[1], e[2]});              // u reaches v at cost w
+            adj.get(e[1]).add(new int[]{e[0], e[2]});              // and v reaches u at the same cost
         }
         return adj;
     }
@@ -56,34 +56,34 @@ public class P2870_GraphRepresentationC {
     /** Neighbours from a matrix: scan the whole row, O(n) however few neighbours there are. */
     static List<Integer> neighboursFromMatrix(int[][] mat, int u) {
         List<Integer> out = new ArrayList<>();
-        for (int v = 1; v < mat.length; v++) {
-            if (mat[u][v] != 0) out.add(v);
+        for (int v = 1; v < mat.length; v++) {   // scan the whole row of u: O(V) even for few neighbours
+            if (mat[u][v] != 0) out.add(v);      // non-zero cell = edge u - v
         }
         return out;
     }
 
     /** Edges counted from an undirected matrix: every edge sets two cells. */
     static int edgesInMatrix(int[][] mat) {
-        int cells = 0;
+        int cells = 0;                               // non-zero cells in the matrix
         for (int[] row : mat) {
-            for (int x : row) if (x != 0) cells++;
+            for (int x : row) if (x != 0) cells++;   // count the switched-on cells
         }
-        return cells / 2;
+        return cells / 2;                            // undirected: each edge appears as [u][v] and [v][u]
     }
 
     /** Entries stored in an adjacency list: 2E for undirected, E for directed. */
     static int storedEntries(List<? extends List<?>> adj) {
         int total = 0;
-        for (List<?> list : adj) total += list.size();
+        for (List<?> list : adj) total += list.size();   // list sizes add up to 2E for an undirected graph
         return total;
     }
 
     /** Rebuild the matrix from the list: both describe exactly the same graph. */
     static int[][] listToMatrix(List<List<Integer>> adj) {
-        int size = adj.size();
+        int size = adj.size();                        // same vertex numbering as the list
         int[][] mat = new int[size][size];
         for (int u = 0; u < size; u++) {
-            for (int v : adj.get(u)) mat[u][v] = 1;
+            for (int v : adj.get(u)) mat[u][v] = 1;   // one cell per stored neighbour
         }
         return mat;
     }

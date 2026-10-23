@@ -3,24 +3,25 @@ import java.util.*;
 /** TUF 531 - Flood fill algorithm. Repaint the 4-connected region of equal colour that contains (sr, sc). Returns a new image; the input is left untouched. */
 public class P531_FloodFillAlgorithm {
 
-    static final int[][] DIRS = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+    static final int[][] DIRS = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };   // down, up, right, left
 
     /** Approach 1: grow the region by repeated full sweeps until a sweep adds nothing, then paint it. O((n * m)^2) time. */
     static int[][] bruteForce(int[][] image, int sr, int sc, int color) {
         int n = image.length, m = image[0].length;
-        int original = image[sr][sc];
-        boolean[][] inRegion = new boolean[n][m];
+        int original = image[sr][sc];                // only cells of this colour can join the region
+        boolean[][] inRegion = new boolean[n][m];    // cells known to be connected to the start
         inRegion[sr][sc] = true;
-        boolean grew = true;
-        while (grew) {
+        boolean grew = true;                         // did the last sweep add any cell?
+        while (grew) {                               // sweep until the region stops growing
             grew = false;
             for (int r = 0; r < n; r++) {
                 for (int c = 0; c < m; c++) {
-                    if (inRegion[r][c] || image[r][c] != original) continue;
+                    if (inRegion[r][c] || image[r][c] != original) continue;   // already in, or wrong colour
                     for (int[] d : DIRS) {
                         int nr = r + d[0], nc = c + d[1];
+                        // a neighbour inside the grid is already in the region
                         if (nr >= 0 && nr < n && nc >= 0 && nc < m && inRegion[nr][nc]) {
-                            inRegion[r][c] = true;        // same colour and touching the region: it belongs
+                            inRegion[r][c] = true;   // same colour and touching the region: it belongs
                             grew = true;
                             break;
                         }
@@ -28,25 +29,27 @@ public class P531_FloodFillAlgorithm {
                 }
             }
         }
-        int[][] result = copy(image);
+        int[][] result = copy(image);                // paint a copy, leaving the input untouched
         for (int r = 0; r < n; r++) {
-            for (int c = 0; c < m; c++) if (inRegion[r][c]) result[r][c] = color;
+            for (int c = 0; c < m; c++) if (inRegion[r][c]) result[r][c] = color;   // paint the region
         }
         return result;
     }
 
     /** Approach 2: recursive DFS. Repainting a cell doubles as marking it visited. O(n * m) time, recursion up to n * m deep. */
     static int[][] dfs(int[][] image, int sr, int sc, int color) {
-        int[][] img = copy(image);
-        int original = img[sr][sc];
-        if (original != color) paint(img, sr, sc, original, color);   // equal colours: nothing to do, and no way to tell visited cells apart
+        int[][] img = copy(image);    // paint a copy, leaving the input untouched
+        int original = img[sr][sc];   // the colour being replaced
+        // equal colours: nothing to do, and no way to tell visited cells apart
+        if (original != color) paint(img, sr, sc, original, color);
         return img;
     }
 
     static void paint(int[][] img, int r, int c, int original, int color) {
+        // off the image, or not part of the region (painted cells no longer match)
         if (r < 0 || r >= img.length || c < 0 || c >= img[0].length || img[r][c] != original) return;
-        img[r][c] = color;
-        paint(img, r + 1, c, original, color);
+        img[r][c] = color;                       // painting doubles as the visited mark
+        paint(img, r + 1, c, original, color);   // spread to all four neighbours
         paint(img, r - 1, c, original, color);
         paint(img, r, c + 1, original, color);
         paint(img, r, c - 1, original, color);
@@ -54,19 +57,20 @@ public class P531_FloodFillAlgorithm {
 
     /** Approach 3: BFS with an explicit queue. Same O(n * m) time, no recursion depth limit. */
     static int[][] bfs(int[][] image, int sr, int sc, int color) {
-        int[][] img = copy(image);
-        int original = img[sr][sc];
-        if (original == color) return img;
+        int[][] img = copy(image);           // paint a copy, leaving the input untouched
+        int original = img[sr][sc];          // the colour being replaced
+        if (original == color) return img;   // nothing to change, and painted cells would look unvisited
         int n = img.length, m = img[0].length;
-        Deque<int[]> queue = new ArrayDeque<>();
-        img[sr][sc] = color;
+        Deque<int[]> queue = new ArrayDeque<>();   // painted cells whose neighbours still need checking
+        img[sr][sc] = color;                 // paint the start before queueing it
         queue.add(new int[]{sr, sc});
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
             for (int[] d : DIRS) {
                 int nr = cell[0] + d[0], nc = cell[1] + d[1];
+                // skip cells off the image or not in the region
                 if (nr < 0 || nr >= n || nc < 0 || nc >= m || img[nr][nc] != original) continue;
-                img[nr][nc] = color;                      // paint on enqueue so the cell is never queued twice
+                img[nr][nc] = color;         // paint on enqueue so the cell is never queued twice
                 queue.add(new int[]{nr, nc});
             }
         }
@@ -75,7 +79,7 @@ public class P531_FloodFillAlgorithm {
 
     static int[][] copy(int[][] image) {
         int[][] out = new int[image.length][];
-        for (int i = 0; i < image.length; i++) out[i] = image[i].clone();
+        for (int i = 0; i < image.length; i++) out[i] = image[i].clone();   // clone each row: a deep copy
         return out;
     }
 

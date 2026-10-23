@@ -11,45 +11,45 @@ public class P106_LCAInBST {
 
     /** Approach 1: brute force. Ignore the ordering and run the general binary-tree LCA recursion. O(n) time, O(h) space. */
     static TreeNode bruteForce(TreeNode root, int p, int q) {
-        if (root == null || root.val == p || root.val == q) return root;
-        TreeNode left = bruteForce(root.left, p, q);
-        TreeNode right = bruteForce(root.right, p, q);
-        if (left != null && right != null) return root;   // p and q were found on different sides
-        return left != null ? left : right;
+        if (root == null || root.val == p || root.val == q) return root;   // ran out, or found p or q
+        TreeNode left = bruteForce(root.left, p, q);       // what the left subtree found (or null)
+        TreeNode right = bruteForce(root.right, p, q);     // what the right subtree found (or null)
+        if (left != null && right != null) return root;    // p and q were found on different sides
+        return left != null ? left : right;                // pass up whichever side found something
     }
 
     /** Approach 2: better. Record both root-to-node search paths and return the last node they share. O(h) time, O(h) space. */
     static TreeNode better(TreeNode root, int p, int q) {
-        List<TreeNode> pathP = searchPath(root, p);
-        List<TreeNode> pathQ = searchPath(root, q);
-        TreeNode lca = null;
-        for (int i = 0; i < pathP.size() && i < pathQ.size(); i++) {
-            if (pathP.get(i) != pathQ.get(i)) break;          // same node object, not just same key
+        List<TreeNode> pathP = searchPath(root, p);           // root -> p
+        List<TreeNode> pathQ = searchPath(root, q);           // root -> q
+        TreeNode lca = null;                                  // deepest node both paths share so far
+        for (int i = 0; i < pathP.size() && i < pathQ.size(); i++) {   // walk both paths together
+            if (pathP.get(i) != pathQ.get(i)) break;          // paths diverge: the previous node is the LCA
             lca = pathP.get(i);
         }
         return lca;
     }
 
     static List<TreeNode> searchPath(TreeNode root, int key) {
-        List<TreeNode> path = new ArrayList<>();
+        List<TreeNode> path = new ArrayList<>();              // nodes visited on the way to key
         TreeNode cur = root;
         while (cur != null) {
             path.add(cur);
-            if (key == cur.val) break;
-            cur = key < cur.val ? cur.left : cur.right;
+            if (key == cur.val) break;                        // reached the key itself
+            cur = key < cur.val ? cur.left : cur.right;       // normal BST search step
         }
         return path;
     }
 
     /** Approach 3: optimal. Walk down from the root; the first node where p and q stop being on the same side is the LCA. O(h) time, O(1) space. */
     static TreeNode optimal(TreeNode root, int p, int q) {
-        TreeNode cur = root;
+        TreeNode cur = root;                                         // walk down from the root
         while (cur != null) {
-            if (p < cur.val && q < cur.val) cur = cur.left;          // both keys live in the left subtree
+            if (p < cur.val && q < cur.val) cur = cur.left;         // both keys live in the left subtree
             else if (p > cur.val && q > cur.val) cur = cur.right;    // both keys live in the right subtree
             else return cur;                                          // they split here, or one of them is cur
         }
-        return null;
+        return null;                                                 // only reached for an empty tree
     }
 
     // ---------------------------------------------------------------- helpers

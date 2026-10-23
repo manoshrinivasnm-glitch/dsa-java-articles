@@ -5,17 +5,17 @@ public class P529_TraversalTechniques {
 
     /** Approach 1: mark a vertex visited when it comes OUT of the queue. Correct, but a vertex can sit in the queue many times. O(V + E) time, O(E) queue. */
     static List<Integer> markOnPoll(List<List<Integer>> adj, int start) {
-        List<Integer> order = new ArrayList<>();
-        boolean[] visited = new boolean[adj.size()];
-        Deque<Integer> queue = new ArrayDeque<>();
+        List<Integer> order = new ArrayList<>();       // vertices in the order BFS visits them
+        boolean[] visited = new boolean[adj.size()];   // set when a vertex is taken off the queue
+        Deque<Integer> queue = new ArrayDeque<>();     // FIFO: nearer vertices come out first
         queue.add(start);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                     // until nothing is waiting
             int u = queue.poll();
-            if (visited[u]) continue;                     // a stale duplicate: u was already processed
+            if (visited[u]) continue;                  // a stale duplicate: u was already processed
             visited[u] = true;
-            order.add(u);
+            order.add(u);                              // first time u is processed: record it
             for (int v : adj.get(u)) {
-                if (!visited[v]) queue.add(v);
+                if (!visited[v]) queue.add(v);         // v may get queued more than once here
             }
         }
         return order;
@@ -23,17 +23,17 @@ public class P529_TraversalTechniques {
 
     /** Approach 2: mark a vertex visited when it goes INTO the queue. Every vertex is enqueued exactly once. O(V + E) time, O(V) space. */
     static List<Integer> bfs(List<List<Integer>> adj, int start) {
-        List<Integer> order = new ArrayList<>();
-        boolean[] visited = new boolean[adj.size()];
-        Deque<Integer> queue = new ArrayDeque<>();
-        visited[start] = true;
+        List<Integer> order = new ArrayList<>();       // vertices in the order BFS visits them
+        boolean[] visited = new boolean[adj.size()];   // set when a vertex is first queued
+        Deque<Integer> queue = new ArrayDeque<>();     // FIFO: nearer vertices come out first
+        visited[start] = true;                         // mark the start before it enters the queue
         queue.add(start);
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
+        while (!queue.isEmpty()) {                     // until nothing is waiting
+            int u = queue.poll();                      // the oldest waiting vertex
             order.add(u);
-            for (int v : adj.get(u)) {
+            for (int v : adj.get(u)) {                 // look at every neighbour of u
                 if (!visited[v]) {
-                    visited[v] = true;                    // mark now so nobody else enqueues v again
+                    visited[v] = true;                 // mark now so nobody else enqueues v again
                     queue.add(v);
                 }
             }
@@ -43,25 +43,25 @@ public class P529_TraversalTechniques {
 
     /** Approach 3: the same BFS processed one level at a time. levels.get(d) holds every vertex at distance d from start. */
     static List<List<Integer>> bfsLevels(List<List<Integer>> adj, int start) {
-        List<List<Integer>> levels = new ArrayList<>();
+        List<List<Integer>> levels = new ArrayList<>();   // levels.get(d) = vertices at distance d from start
         boolean[] visited = new boolean[adj.size()];
         Deque<Integer> queue = new ArrayDeque<>();
         visited[start] = true;
         queue.add(start);
         while (!queue.isEmpty()) {
-            int size = queue.size();                      // exactly the vertices of the current level
+            int size = queue.size();           // exactly the vertices of the current level
             List<Integer> level = new ArrayList<>();
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {   // take only this level; neighbours queue up behind it
                 int u = queue.poll();
                 level.add(u);
                 for (int v : adj.get(u)) {
-                    if (!visited[v]) {
+                    if (!visited[v]) {         // unseen neighbour: it belongs to the next level
                         visited[v] = true;
                         queue.add(v);
                     }
                 }
             }
-            levels.add(level);
+            levels.add(level);                 // the level is complete
         }
         return levels;
     }
@@ -72,15 +72,15 @@ public class P529_TraversalTechniques {
         List<Integer> order = new ArrayList<>();
         boolean[] visited = new boolean[n];
         Deque<Integer> queue = new ArrayDeque<>();
-        for (int s = 0; s < n; s++) {
-            if (visited[s]) continue;
+        for (int s = 0; s < n; s++) {    // restart BFS so every component is covered
+            if (visited[s]) continue;    // already reached from an earlier start
             visited[s] = true;
             queue.add(s);
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {   // plain BFS from s
                 int u = queue.poll();
                 order.add(u);
                 for (int v : adj.get(u)) {
-                    if (!visited[v]) {
+                    if (!visited[v]) {   // first time we see v: mark it and queue it
                         visited[v] = true;
                         queue.add(v);
                     }

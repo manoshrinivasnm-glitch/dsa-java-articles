@@ -11,56 +11,58 @@ public class P2772_Merge2BSTs {
 
     /** Approach 1: brute force. Dump the keys of both trees into one list and sort it. O((m + n) log(m + n)) time, O(m + n) space. */
     static List<Integer> bruteForce(TreeNode root1, TreeNode root2) {
-        List<Integer> all = new ArrayList<>();
+        List<Integer> all = new ArrayList<>();   // keys of both trees together
         collectInorder(root1, all);
-        collectInorder(root2, all);
-        Collections.sort(all);
+        collectInorder(root2, all);              // appended after the first tree's keys
+        Collections.sort(all);                   // ignore the BST order and just sort
         return all;
     }
 
     static void collectInorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        collectInorder(node.left, out);
+        if (node == null) return;          // missing child: nothing to add
+        collectInorder(node.left, out);    // smaller keys first
         out.add(node.val);
-        collectInorder(node.right, out);
+        collectInorder(node.right, out);   // then larger keys
     }
 
     /** Approach 2: better. In-order gives each tree's keys already sorted; merge the two sorted lists. O(m + n) time, O(m + n) space. */
     static List<Integer> better(TreeNode root1, TreeNode root2) {
-        List<Integer> a = new ArrayList<>(), b = new ArrayList<>();
+        List<Integer> a = new ArrayList<>(), b = new ArrayList<>();   // each tree's keys, already sorted
         collectInorder(root1, a);
         collectInorder(root2, b);
         List<Integer> out = new ArrayList<>(a.size() + b.size());
-        int i = 0, j = 0;
-        while (i < a.size() && j < b.size()) {
-            if (a.get(i) <= b.get(j)) out.add(a.get(i++));
+        int i = 0, j = 0;                                             // next unused index in a and in b
+        while (i < a.size() && j < b.size()) {                        // both lists still have keys
+            if (a.get(i) <= b.get(j)) out.add(a.get(i++));            // take the smaller front key
             else out.add(b.get(j++));
         }
-        while (i < a.size()) out.add(a.get(i++));
-        while (j < b.size()) out.add(b.get(j++));
+        while (i < a.size()) out.add(a.get(i++));                     // copy whatever is left of a
+        while (j < b.size()) out.add(b.get(j++));                     // or of b
         return out;
     }
 
     /** Approach 3: optimal. Run two iterative in-order traversals side by side and always emit the smaller stack top. O(m + n) time, O(h1 + h2) extra space. */
     static List<Integer> optimal(TreeNode root1, TreeNode root2) {
+        // top of each stack = that tree's next key
         Deque<TreeNode> s1 = new ArrayDeque<>(), s2 = new ArrayDeque<>();
-        pushLeft(s1, root1);
+        pushLeft(s1, root1);              // start at each tree's smallest key
         pushLeft(s2, root2);
         List<Integer> out = new ArrayList<>();
-        while (!s1.isEmpty() || !s2.isEmpty()) {
+        while (!s1.isEmpty() || !s2.isEmpty()) {   // until both trees are used up
             Deque<TreeNode> from;
+            // take from tree 1 if its next key is smaller
             if (s2.isEmpty() || (!s1.isEmpty() && s1.peek().val <= s2.peek().val)) from = s1;
-            else from = s2;
+            else from = s2;               // otherwise from tree 2
             TreeNode node = from.pop();
-            out.add(node.val);
-            pushLeft(from, node.right);              // the next key of that tree is the leftmost node of node.right
+            out.add(node.val);            // emit keys in global sorted order
+            pushLeft(from, node.right);   // the next key of that tree is the leftmost node of node.right
         }
         return out;
     }
 
     static void pushLeft(Deque<TreeNode> stack, TreeNode node) {
-        while (node != null) {
-            stack.push(node);
+        while (node != null) {   // slide down the left spine
+            stack.push(node);    // each node waits until its left subtree is done
             node = node.left;
         }
     }

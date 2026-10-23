@@ -3,34 +3,36 @@ import java.util.*;
 /** TUF 536 - Rotten Oranges. 0 = empty, 1 = fresh, 2 = rotten. Each minute rot spreads to 4-neighbours; return minutes until no fresh orange is left, or -1. */
 public class P536_RottenOranges {
 
-    static final int[][] DIRS = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+    static final int[][] DIRS = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };   // down, up, right, left
 
     /** Approach 1: simulate minute by minute, rescanning the whole grid each time. O((n * m)^2) time, O(n * m) space. */
     static int bruteForce(int[][] grid) {
         int n = grid.length, m = grid[0].length;
-        int[][] g = new int[n][];
+        int[][] g = new int[n][];                      // work on a copy so the input stays intact
         for (int i = 0; i < n; i++) g[i] = grid[i].clone();
-        int minutes = 0;
-        while (true) {
-            List<int[]> toRot = new ArrayList<>();
-            for (int r = 0; r < n; r++) {
+        int minutes = 0;                               // minutes simulated so far
+        while (true) {                                 // simulate one minute per round
+            List<int[]> toRot = new ArrayList<>();     // fresh oranges that rot during this minute
+            for (int r = 0; r < n; r++) {              // scan the whole grid every minute
                 for (int c = 0; c < m; c++) {
-                    if (g[r][c] != 1) continue;
+                    if (g[r][c] != 1) continue;        // only fresh oranges can change
                     for (int[] d : DIRS) {
                         int nr = r + d[0], nc = c + d[1];
+                        // neighbour inside the grid and already rotten
                         if (nr >= 0 && nr < n && nc >= 0 && nc < m && g[nr][nc] == 2) {
-                            toRot.add(new int[]{r, c});   // touches an orange that was rotten at the start of this minute
+                            // touches an orange that was rotten at the start of this minute
+                            toRot.add(new int[]{r, c});
                             break;
                         }
                     }
                 }
             }
-            if (toRot.isEmpty()) break;
-            for (int[] p : toRot) g[p[0]][p[1]] = 2;      // apply after the scan, so rot moves one step per minute
+            if (toRot.isEmpty()) break;                // nothing changed: the spread has stopped
+            for (int[] p : toRot) g[p[0]][p[1]] = 2;   // apply after the scan, so rot moves one step per minute
             minutes++;
         }
         for (int[] row : g) {
-            for (int v : row) if (v == 1) return -1;      // some fresh orange can never be reached
+            for (int v : row) if (v == 1) return -1;   // some fresh orange can never be reached
         }
         return minutes;
     }
@@ -38,32 +40,33 @@ public class P536_RottenOranges {
     /** Approach 2: multi-source BFS. All rotten oranges start in the queue; one BFS level = one minute. O(n * m) time and space. */
     static int optimal(int[][] grid) {
         int n = grid.length, m = grid[0].length;
-        int[][] g = new int[n][];
+        int[][] g = new int[n][];                  // work on a copy so the input stays intact
         for (int i = 0; i < n; i++) g[i] = grid[i].clone();
-        Deque<int[]> queue = new ArrayDeque<>();
-        int fresh = 0;
+        Deque<int[]> queue = new ArrayDeque<>();   // rotten cells whose neighbours are still to be infected
+        int fresh = 0;                             // fresh oranges not yet reached
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < m; c++) {
-                if (g[r][c] == 2) queue.add(new int[]{r, c});
+                if (g[r][c] == 2) queue.add(new int[]{r, c});   // rotten oranges are the BFS sources
                 else if (g[r][c] == 1) fresh++;
             }
         }
         int minutes = 0;
-        while (!queue.isEmpty() && fresh > 0) {
-            int size = queue.size();                      // everything in the queue rotted at the same minute
-            for (int k = 0; k < size; k++) {
+        while (!queue.isEmpty() && fresh > 0) {    // one round of this loop = one minute
+            int size = queue.size();               // everything in the queue rotted at the same minute
+            for (int k = 0; k < size; k++) {       // spread from this minute's cells only
                 int[] cell = queue.poll();
                 for (int[] d : DIRS) {
                     int nr = cell[0] + d[0], nc = cell[1] + d[1];
+                    // skip cells off the grid or not fresh
                     if (nr < 0 || nr >= n || nc < 0 || nc >= m || g[nr][nc] != 1) continue;
-                    g[nr][nc] = 2;                        // rot it now so no other cell enqueues it again
+                    g[nr][nc] = 2;                 // rot it now so no other cell enqueues it again
                     fresh--;
                     queue.add(new int[]{nr, nc});
                 }
             }
-            minutes++;
+            minutes++;                             // this minute's spread is done
         }
-        return fresh == 0 ? minutes : -1;
+        return fresh == 0 ? minutes : -1;          // -1 when some orange was never reached
     }
 
     // ---------------------------------------------------------------- tests

@@ -11,45 +11,47 @@ public class P2774_TwoSumInBSTCheckIfThereExistsAPairWithSu {
 
     /** Approach 1: hash set. Traverse once and ask at each node whether its complement was already seen. O(n) time, O(n) space. */
     static boolean withHashSet(TreeNode root, int k) {
-        return findWithSet(root, k, new HashSet<>());
+        return findWithSet(root, k, new HashSet<>());   // the set holds every key visited so far
     }
 
     static boolean findWithSet(TreeNode node, int k, Set<Long> seen) {
-        if (node == null) return false;
-        if (seen.contains((long) k - node.val)) return true;     // long: k - val can overflow int
-        seen.add((long) node.val);                               // add after the check so a node never pairs with itself
+        if (node == null) return false;   // empty subtree has no partner
+        if (seen.contains((long) k - node.val)) return true;   // partner seen earlier; long avoids overflow
+        seen.add((long) node.val);        // add after the check so a node never pairs with itself
+        // stop as soon as either side finds a pair
         return findWithSet(node.left, k, seen) || findWithSet(node.right, k, seen);
     }
 
     /** Approach 2: in-order list plus two pointers. The in-order list is sorted, so the classic two-pointer sweep applies. O(n) time, O(n) space. */
     static boolean inorderTwoPointers(TreeNode root, int k) {
-        List<Integer> sorted = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>();                // in-order keys, ascending
         collectInorder(root, sorted);
-        int lo = 0, hi = sorted.size() - 1;
-        while (lo < hi) {
-            long sum = (long) sorted.get(lo) + sorted.get(hi);
-            if (sum == k) return true;
-            if (sum < k) lo++; else hi--;
+        int lo = 0, hi = sorted.size() - 1;                      // smallest and largest unused keys
+        while (lo < hi) {                                        // two different keys remain
+            long sum = (long) sorted.get(lo) + sorted.get(hi);   // long so a large pair cannot overflow
+            if (sum == k) return true;                           // found a pair
+            if (sum < k) lo++; else hi--;   // too small: raise the low end; too big: lower the high end
         }
         return false;
     }
 
     static void collectInorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        collectInorder(node.left, out);
+        if (node == null) return;          // missing child: nothing to add
+        collectInorder(node.left, out);    // smaller keys first
         out.add(node.val);
-        collectInorder(node.right, out);
+        collectInorder(node.right, out);   // then larger keys
     }
 
     /** Approach 3: optimal. Two lazy BST iterators (ascending and descending) play the two pointers without building the list. O(n) time, O(h) space. */
     static boolean bstIterators(TreeNode root, int k) {
-        if (root == null) return false;
-        BSTIterator asc = new BSTIterator(root, false);
-        BSTIterator desc = new BSTIterator(root, true);
+        if (root == null) return false;                   // no keys, no pair
+        BSTIterator asc = new BSTIterator(root, false);   // yields keys smallest first (the lo pointer)
+        BSTIterator desc = new BSTIterator(root, true);   // yields keys largest first (the hi pointer)
         int lo = asc.next(), hi = desc.next();
-        while (lo < hi) {                                        // distinct keys: lo < hi means two different nodes
-            long sum = (long) lo + hi;
-            if (sum == k) return true;
+        while (lo < hi) {                                 // distinct keys: lo < hi means two different nodes
+            long sum = (long) lo + hi;                    // long so a large pair cannot overflow
+            if (sum == k) return true;                    // found a pair
+            // move the pointer that brings sum closer to k
             if (sum < k) lo = asc.next(); else hi = desc.next();
         }
         return false;
@@ -57,24 +59,24 @@ public class P2774_TwoSumInBSTCheckIfThereExistsAPairWithSu {
 
     /** In-order iterator over a BST using a stack of at most h nodes; reverse = true walks from the largest key down. */
     static class BSTIterator {
-        private final Deque<TreeNode> stack = new ArrayDeque<>();
-        private final boolean reverse;
+        private final Deque<TreeNode> stack = new ArrayDeque<>();   // nodes waiting for their turn
+        private final boolean reverse;                     // true: descending order
 
         BSTIterator(TreeNode root, boolean reverse) {
             this.reverse = reverse;
-            pushAll(root);
+            pushAll(root);                                 // the first key to return sits on top
         }
 
         int next() {
-            TreeNode node = stack.pop();
-            pushAll(reverse ? node.left : node.right);
+            TreeNode node = stack.pop();                   // top of the stack is the next key in order
+            pushAll(reverse ? node.left : node.right);     // line up the keys that come right after it
             return node.val;
         }
 
         private void pushAll(TreeNode node) {
-            while (node != null) {
+            while (node != null) {                         // go down one spine of the tree
                 stack.push(node);
-                node = reverse ? node.right : node.left;
+                node = reverse ? node.right : node.left;   // left spine ascending, right spine descending
             }
         }
     }

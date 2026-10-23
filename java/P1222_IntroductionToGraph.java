@@ -5,8 +5,8 @@ public class P1222_IntroductionToGraph {
 
     /** Degree of every vertex of an undirected graph: edge {u, v} adds one to u and one to v. O(V + E). */
     static int[] degrees(int n, int[][] edges) {
-        int[] deg = new int[n];
-        for (int[] e : edges) {
+        int[] deg = new int[n];   // deg[v] = number of edges touching v
+        for (int[] e : edges) {   // each undirected edge adds 1 to both ends
             deg[e[0]]++;
             deg[e[1]]++;
         }
@@ -15,54 +15,55 @@ public class P1222_IntroductionToGraph {
 
     /** In-degree and out-degree of every vertex of a directed graph: edge {u, v} leaves u and enters v. O(V + E). */
     static int[][] inOutDegrees(int n, int[][] edges) {
-        int[] in = new int[n], out = new int[n];
+        int[] in = new int[n], out = new int[n];   // edges arriving at / leaving each vertex
         for (int[] e : edges) {
-            out[e[0]]++;
-            in[e[1]]++;
+            out[e[0]]++;                           // the edge leaves e[0]
+            in[e[1]]++;                            // and arrives at e[1]
         }
         return new int[][]{in, out};
     }
 
     /** True when the edge list contains u -> v, or for an undirected graph either orientation. O(E). */
     static boolean hasEdge(int[][] edges, int u, int v, boolean directed) {
-        for (int[] e : edges) {
-            if (e[0] == u && e[1] == v) return true;
-            if (!directed && e[0] == v && e[1] == u) return true;
+        for (int[] e : edges) {                                     // look through the whole edge list
+            if (e[0] == u && e[1] == v) return true;                // stored exactly as u -> v
+            if (!directed && e[0] == v && e[1] == u) return true;   // undirected: v - u is the same edge
         }
-        return false;
+        return false;                                               // no edge joins u and v
     }
 
     /** A path: consecutive vertices are joined by an edge and no vertex appears twice. */
     static boolean isPath(int n, int[][] edges, int[] seq, boolean directed) {
-        if (seq.length == 0) return false;
-        boolean[] used = new boolean[n];
-        for (int i = 0; i < seq.length; i++) {
-            if (used[seq[i]]) return false;                       // a path never revisits a vertex
+        if (seq.length == 0) return false;       // a path needs at least one vertex
+        boolean[] used = new boolean[n];         // vertices already on the path
+        for (int i = 0; i < seq.length; i++) {   // check every vertex of the sequence in order
+            if (used[seq[i]]) return false;      // a path never revisits a vertex
             used[seq[i]] = true;
+            // each step must follow a real edge
             if (i > 0 && !hasEdge(edges, seq[i - 1], seq[i], directed)) return false;
         }
-        return true;
+        return true;                             // distinct vertices, each joined to the next
     }
 
     /** A cycle: a path whose last vertex has an edge back to the first. Undirected cycles need at least 3 vertices. */
     static boolean isCycle(int n, int[][] edges, int[] seq, boolean directed) {
         int k = seq.length;
-        if (k < (directed ? 1 : 3)) return false;                 // undirected u-v-u would reuse one edge
-        if (!isPath(n, edges, seq, directed)) return false;
-        return hasEdge(edges, seq[k - 1], seq[0], directed);      // the closing edge
+        if (k < (directed ? 1 : 3)) return false;              // undirected u-v-u would reuse one edge
+        if (!isPath(n, edges, seq, directed)) return false;    // vertices must be distinct and linked
+        return hasEdge(edges, seq[k - 1], seq[0], directed);   // the closing edge
     }
 
     /** Total weight along seq for weighted edges {u, v, w}. Uses the cheapest edge between each pair; -1 if a pair is not adjacent. */
     static long pathWeight(int[][] wEdges, int[] seq, boolean directed) {
-        long total = 0;
-        for (int i = 1; i < seq.length; i++) {
-            long best = Long.MAX_VALUE;
-            for (int[] e : wEdges) {
+        long total = 0;                              // sum of the chosen edge weights
+        for (int i = 1; i < seq.length; i++) {       // one step per consecutive pair
+            long best = Long.MAX_VALUE;              // lightest edge for this step so far
+            for (int[] e : wEdges) {                 // check every edge for this step
                 boolean forward = e[0] == seq[i - 1] && e[1] == seq[i];
                 boolean backward = !directed && e[0] == seq[i] && e[1] == seq[i - 1];
-                if (forward || backward) best = Math.min(best, e[2]);
+                if (forward || backward) best = Math.min(best, e[2]);   // parallel edges: keep the cheapest
             }
-            if (best == Long.MAX_VALUE) return -1;                // consecutive vertices are not adjacent
+            if (best == Long.MAX_VALUE) return -1;   // consecutive vertices are not adjacent
             total += best;
         }
         return total;
@@ -70,33 +71,33 @@ public class P1222_IntroductionToGraph {
 
     /** Most edges a simple graph on n vertices can have: n(n-1) ordered pairs, halved when direction does not matter. */
     static long maxEdges(int n, boolean directed) {
-        long pairs = (long) n * (n - 1);                          // long: n = 10^5 already overflows int
-        return directed ? pairs : pairs / 2;
+        long pairs = (long) n * (n - 1);       // long: n = 10^5 already overflows int
+        return directed ? pairs : pairs / 2;   // undirected: u-v and v-u are one edge
     }
 
     /** Connected: every vertex can be reached from vertex 0. Spread a "reached" flag across edges until nothing changes. O(V * E). */
     static boolean isConnected(int n, int[][] edges) {
-        if (n == 0) return true;
-        boolean[] reached = new boolean[n];
-        reached[0] = true;
-        boolean changed = true;
-        while (changed) {
+        if (n == 0) return true;                          // an empty graph counts as connected
+        boolean[] reached = new boolean[n];               // vertices known to connect to vertex 0
+        reached[0] = true;                                // spread outward from vertex 0
+        boolean changed = true;                           // did the last sweep reach anything new?
+        while (changed) {                                 // repeat sweeps until nothing new is reached
             changed = false;
-            for (int[] e : edges) {
-                if (reached[e[0]] != reached[e[1]]) {             // one end reached, the other not yet
+            for (int[] e : edges) {                       // sweep every edge
+                if (reached[e[0]] != reached[e[1]]) {     // one end reached, the other not yet
                     reached[e[0]] = true;
                     reached[e[1]] = true;
                     changed = true;
                 }
             }
         }
-        for (boolean r : reached) if (!r) return false;
-        return true;
+        for (boolean r : reached) if (!r) return false;   // some vertex was never reached
+        return true;                                      // every vertex reached from 0
     }
 
     /** A tree is a connected graph with no cycle; equivalently, connected with exactly n - 1 edges. */
     static boolean isTree(int n, int[][] edges) {
-        return n >= 1 && edges.length == n - 1 && isConnected(n, edges);
+        return n >= 1 && edges.length == n - 1 && isConnected(n, edges);   // connected and only n - 1 edges
     }
 
     // ---------------------------------------------------------------- tests

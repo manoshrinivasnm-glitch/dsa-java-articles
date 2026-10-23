@@ -13,54 +13,54 @@ public class P2775_InorderSuccessorPredecessorInBST {
 
     /** Approach 1: brute force. The in-order sequence is sorted, so collect it and scan for the neighbours of key. O(n) time, O(n) space. */
     static int[] bruteForce(TreeNode root, int key) {
-        List<Integer> sorted = new ArrayList<>();
+        List<Integer> sorted = new ArrayList<>();    // all keys in increasing order
         collectInorder(root, sorted);
-        int pred = NONE, succ = NONE;
-        for (int v : sorted) {
-            if (v < key) pred = v;                       // keeps overwriting: the last one below key wins
-            else if (v > key) { succ = v; break; }       // the first one above key is the answer
+        int pred = NONE, succ = NONE;                // stay -1 if no such key exists
+        for (int v : sorted) {                       // scan the keys from smallest to largest
+            if (v < key) pred = v;                   // keeps overwriting: the last one below key wins
+            else if (v > key) { succ = v; break; }   // the first one above key is the answer
         }
         return new int[]{pred, succ};
     }
 
     static void collectInorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        collectInorder(node.left, out);
+        if (node == null) return;          // missing child: nothing to add
+        collectInorder(node.left, out);    // smaller keys first
         out.add(node.val);
-        collectInorder(node.right, out);
+        collectInorder(node.right, out);   // then larger keys
     }
 
     /** Approach 2: optimal. Use the BST order to walk one root-to-leaf path for each answer. O(h) time, O(1) space. */
     static int[] optimal(TreeNode root, int key) {
-        return new int[]{predecessor(root, key), successor(root, key)};
+        return new int[]{predecessor(root, key), successor(root, key)};   // two independent O(h) walks
     }
 
     static int successor(TreeNode root, int key) {
-        int succ = NONE;
+        int succ = NONE;           // smallest key above key seen so far
         TreeNode cur = root;
-        while (cur != null) {
-            if (cur.val > key) {
-                succ = cur.val;          // a candidate; anything smaller that still beats key is on the left
+        while (cur != null) {      // one walk from the root down to a leaf
+            if (cur.val > key) {   // cur is above key, so it could be the successor
+                succ = cur.val;    // a candidate; anything smaller that still beats key is on the left
                 cur = cur.left;
             } else {
-                cur = cur.right;         // cur and its whole left subtree are <= key
+                cur = cur.right;   // cur and its whole left subtree are <= key
             }
         }
-        return succ;
+        return succ;               // last candidate kept is the closest one
     }
 
     static int predecessor(TreeNode root, int key) {
-        int pred = NONE;
+        int pred = NONE;           // largest key below key seen so far
         TreeNode cur = root;
-        while (cur != null) {
-            if (cur.val < key) {
-                pred = cur.val;          // a candidate; anything larger that is still below key is on the right
+        while (cur != null) {      // one walk from the root down to a leaf
+            if (cur.val < key) {   // cur is below key, so it could be the predecessor
+                pred = cur.val;    // a candidate; anything larger that is still below key is on the right
                 cur = cur.right;
             } else {
-                cur = cur.left;          // cur and its whole right subtree are >= key
+                cur = cur.left;    // cur and its whole right subtree are >= key
             }
         }
-        return pred;
+        return pred;               // last candidate kept is the closest one
     }
 
     // ---------------------------------------------------------------- helpers

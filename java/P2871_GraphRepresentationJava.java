@@ -5,11 +5,11 @@ public class P2871_GraphRepresentationJava {
 
     /** The everyday form: ArrayList<ArrayList<Integer>>, one inner list per vertex 0..n-1. */
     static ArrayList<ArrayList<Integer>> listOfLists(int n, int[][] edges, boolean directed) {
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();    // adj.get(u) = neighbours of u
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());   // every inner list must exist before use
         for (int[] e : edges) {
-            adj.get(e[0]).add(e[1]);
-            if (!directed) adj.get(e[1]).add(e[0]);
+            adj.get(e[0]).add(e[1]);                              // u -> v
+            if (!directed) adj.get(e[1]).add(e[0]);               // undirected: also v -> u
         }
         return adj;
     }
@@ -17,49 +17,49 @@ public class P2871_GraphRepresentationJava {
     /** An array of lists. new ArrayList<Integer>[n] does not compile, so create a raw array and suppress the unchecked warning. */
     @SuppressWarnings("unchecked")
     static List<Integer>[] arrayOfLists(int n, int[][] edges, boolean directed) {
-        List<Integer>[] adj = new List[n];
-        for (int i = 0; i < n; i++) adj[i] = new ArrayList<>();
+        List<Integer>[] adj = new List[n];        // raw array: Java cannot create a generic array directly
+        for (int i = 0; i < n; i++) adj[i] = new ArrayList<>();   // a separate new list for every vertex
         for (int[] e : edges) {
-            adj[e[0]].add(e[1]);
-            if (!directed) adj[e[1]].add(e[0]);
+            adj[e[0]].add(e[1]);                  // u -> v
+            if (!directed) adj[e[1]].add(e[0]);   // undirected: also v -> u
         }
         return adj;
     }
 
     /** Compact int[][]: count degrees, allocate exact-size rows, then fill. No boxing, but the graph is fixed once built. */
     static int[][] compact(int n, int[][] edges, boolean directed) {
-        int[] deg = new int[n];
+        int[] deg = new int[n];               // pass 1: how many neighbours each vertex has
         for (int[] e : edges) {
             deg[e[0]]++;
             if (!directed) deg[e[1]]++;
         }
-        int[][] adj = new int[n][];
+        int[][] adj = new int[n][];           // jagged array: each row sized exactly to its degree
         for (int i = 0; i < n; i++) adj[i] = new int[deg[i]];
-        int[] fill = new int[n];                                  // next free slot in each row
-        for (int[] e : edges) {
-            adj[e[0]][fill[e[0]]++] = e[1];
-            if (!directed) adj[e[1]][fill[e[1]]++] = e[0];
+        int[] fill = new int[n];              // next free slot in each row
+        for (int[] e : edges) {               // pass 2: write each neighbour into its slot
+            adj[e[0]][fill[e[0]]++] = e[1];   // put v in u's row, then advance u's slot
+            if (!directed) adj[e[1]][fill[e[1]]++] = e[0];   // undirected: u also goes in v's row
         }
         return adj;
     }
 
     /** HashMap of lists: for labels that are not 0..n-1, such as large ids. Only vertices that touch an edge appear. */
     static Map<Integer, List<Integer>> mapOfLists(int[][] edges, boolean directed) {
-        Map<Integer, List<Integer>> adj = new HashMap<>();
+        Map<Integer, List<Integer>> adj = new HashMap<>();   // vertex label -> its neighbours
         for (int[] e : edges) {
-            adj.computeIfAbsent(e[0], k -> new ArrayList<>()).add(e[1]);
+            adj.computeIfAbsent(e[0], k -> new ArrayList<>()).add(e[1]);   // create u's list if needed
             List<Integer> back = adj.computeIfAbsent(e[1], k -> new ArrayList<>());   // keeps sinks as keys too
-            if (!directed) back.add(e[0]);
+            if (!directed) back.add(e[0]);                   // undirected: also v -> u
         }
         return adj;
     }
 
     /** boolean[][] matrix: O(1) edge test, O(n^2) memory. */
     static boolean[][] matrix(int n, int[][] edges, boolean directed) {
-        boolean[][] mat = new boolean[n][n];
+        boolean[][] mat = new boolean[n][n];         // mat[u][v] is true when the edge u -> v exists
         for (int[] e : edges) {
             mat[e[0]][e[1]] = true;
-            if (!directed) mat[e[1]][e[0]] = true;
+            if (!directed) mat[e[1]][e[0]] = true;   // undirected: keep the matrix symmetric
         }
         return mat;
     }
@@ -68,28 +68,28 @@ public class P2871_GraphRepresentationJava {
     record Edge(int to, int weight) {}
 
     static List<List<Edge>> weighted(int n, int[][] wEdges, boolean directed) {
-        List<List<Edge>> adj = new ArrayList<>();
-        for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+        List<List<Edge>> adj = new ArrayList<>();                 // each entry: neighbour plus edge weight
+        for (int i = 0; i < n; i++) adj.add(new ArrayList<>());   // one empty list per vertex
         for (int[] e : wEdges) {
-            adj.get(e[0]).add(new Edge(e[1], e[2]));
-            if (!directed) adj.get(e[1]).add(new Edge(e[0], e[2]));
+            adj.get(e[0]).add(new Edge(e[1], e[2]));              // u -> v with weight w
+            if (!directed) adj.get(e[1]).add(new Edge(e[0], e[2]));   // undirected: v -> u, same weight
         }
         return adj;
     }
 
     /** Remove one undirected edge. remove(Integer.valueOf(v)) removes the value v; remove(v) would remove index v. */
     static void removeEdge(List<? extends List<Integer>> adj, int u, int v) {
-        adj.get(u).remove(Integer.valueOf(v));
-        adj.get(v).remove(Integer.valueOf(u));
+        adj.get(u).remove(Integer.valueOf(v));   // remove the value v, not the element at index v
+        adj.get(v).remove(Integer.valueOf(u));   // undirected: drop the other copy too
     }
 
     /** WRONG on purpose: Arrays.fill stores the SAME list object in every slot, so all vertices share one neighbour list. */
     @SuppressWarnings("unchecked")
     static List<Integer>[] sharedListBug(int n, int[][] edges) {
         List<Integer>[] adj = new List[n];
-        Arrays.fill(adj, new ArrayList<Integer>());
+        Arrays.fill(adj, new ArrayList<Integer>());   // BUG: every slot points at the SAME list
         for (int[] e : edges) {
-            adj[e[0]].add(e[1]);
+            adj[e[0]].add(e[1]);                      // so this adds to every vertex at once
             adj[e[1]].add(e[0]);
         }
         return adj;

@@ -11,47 +11,50 @@ public class P100_CheckIfATreeIsABSTOrNot {
 
     /** Approach 1: brute force. At every node compare with the largest key on the left and the smallest key on the right. O(n^2) time worst case, O(h) space. */
     static boolean bruteForce(TreeNode root) {
-        if (root == null) return true;
-        if (root.left != null && maxOf(root.left) >= root.val) return false;
-        if (root.right != null && minOf(root.right) <= root.val) return false;
-        return bruteForce(root.left) && bruteForce(root.right);
+        if (root == null) return true;                                          // empty subtree is a BST
+        if (root.left != null && maxOf(root.left) >= root.val) return false;    // a left key is too big
+        if (root.right != null && minOf(root.right) <= root.val) return false;  // a right key is too small
+        return bruteForce(root.left) && bruteForce(root.right);                 // repeat the test below
     }
 
     static int maxOf(TreeNode node) {
-        if (node == null) return Integer.MIN_VALUE;
+        if (node == null) return Integer.MIN_VALUE;      // empty subtree never wins a max
+        // largest key anywhere in this subtree
         return Math.max(node.val, Math.max(maxOf(node.left), maxOf(node.right)));
     }
 
     static int minOf(TreeNode node) {
-        if (node == null) return Integer.MAX_VALUE;
+        if (node == null) return Integer.MAX_VALUE;      // empty subtree never wins a min
+        // smallest key anywhere in this subtree
         return Math.min(node.val, Math.min(minOf(node.left), minOf(node.right)));
     }
 
     /** Approach 2: better. The in-order sequence of a BST is strictly increasing, so collect it and scan once. O(n) time, O(n) space. */
     static boolean better(TreeNode root) {
-        List<Integer> inorder = new ArrayList<>();
+        List<Integer> inorder = new ArrayList<>();       // keys in left-node-right order
         collectInorder(root, inorder);
-        for (int i = 1; i < inorder.size(); i++) {
-            if (inorder.get(i - 1) >= inorder.get(i)) return false;   // equal keys are not allowed either
+        for (int i = 1; i < inorder.size(); i++) {       // compare each key with the one before it
+            if (inorder.get(i - 1) >= inorder.get(i)) return false;   // not strictly increasing
         }
-        return true;
+        return true;                                     // sorted with no ties: a valid BST
     }
 
     static void collectInorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        collectInorder(node.left, out);
+        if (node == null) return;                        // missing child: nothing to add
+        collectInorder(node.left, out);                  // everything smaller comes first
         out.add(node.val);
-        collectInorder(node.right, out);
+        collectInorder(node.right, out);                 // then everything larger
     }
 
     /** Approach 3: optimal. Pass down the open interval (low, high) that every key of the subtree must lie in. O(n) time, O(h) space. */
     static boolean optimal(TreeNode root) {
-        return inRange(root, Long.MIN_VALUE, Long.MAX_VALUE);   // long bounds: keys may be Integer.MIN_VALUE / MAX_VALUE
+        return inRange(root, Long.MIN_VALUE, Long.MAX_VALUE);   // no limits yet; long so int extremes fit
     }
 
     static boolean inRange(TreeNode node, long low, long high) {
-        if (node == null) return true;
-        if (node.val <= low || node.val >= high) return false;
+        if (node == null) return true;                           // empty subtree breaks no rule
+        if (node.val <= low || node.val >= high) return false;   // key outside what its ancestors allow
+        // left keys must stay below this key, right keys above it
         return inRange(node.left, low, node.val) && inRange(node.right, node.val, high);
     }
 
