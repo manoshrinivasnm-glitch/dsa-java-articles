@@ -5,65 +5,65 @@ public class P810_PartitionArrayForMaximumSum {
 
     /** Approach 1: choose the length of the first piece, recurse on the rest. O(k^n) time, O(n) stack. */
     static int recursive(int[] arr, int k) {
-        return solve(0, arr, k);
+        return solve(0, arr, k);                                // best sum for the whole array
     }
 
     static int solve(int i, int[] arr, int k) {
-        if (i == arr.length) return 0;
-        int maxVal = 0, best = 0;
-        for (int len = 1; len <= k && i + len <= arr.length; len++) {
+        if (i == arr.length) return 0;                          // nothing left: adds 0
+        int maxVal = 0, best = 0;                               // max of the first piece, best total so far
+        for (int len = 1; len <= k && i + len <= arr.length; len++) {   // first piece = arr[i .. i + len - 1]
             maxVal = Math.max(maxVal, arr[i + len - 1]);        // running maximum of arr[i .. i + len - 1]
-            best = Math.max(best, maxVal * len + solve(i + len, arr, k));
+            best = Math.max(best, maxVal * len + solve(i + len, arr, k));   // piece sum + best for the rest
         }
         return best;
     }
 
     /** Approach 2: cache the answer for every suffix start i. O(n * k) time, O(n) space. */
     static int memoization(int[] arr, int k) {
-        int[] dp = new int[arr.length];
-        Arrays.fill(dp, -1);
-        return memo(0, arr, k, dp);
+        int[] dp = new int[arr.length];                         // dp[i] = best sum for the suffix arr[i..]
+        Arrays.fill(dp, -1);                                    // -1 marks a suffix not solved yet
+        return memo(0, arr, k, dp);                             // best sum for the whole array
     }
 
     static int memo(int i, int[] arr, int k, int[] dp) {
-        if (i == arr.length) return 0;
-        if (dp[i] != -1) return dp[i];
+        if (i == arr.length) return 0;                          // nothing left: adds 0
+        if (dp[i] != -1) return dp[i];                          // already solved: reuse it
         int maxVal = 0, best = 0;
-        for (int len = 1; len <= k && i + len <= arr.length; len++) {
-            maxVal = Math.max(maxVal, arr[i + len - 1]);
-            best = Math.max(best, maxVal * len + memo(i + len, arr, k, dp));
+        for (int len = 1; len <= k && i + len <= arr.length; len++) {   // first piece = arr[i .. i + len - 1]
+            maxVal = Math.max(maxVal, arr[i + len - 1]);        // running maximum of the piece
+            best = Math.max(best, maxVal * len + memo(i + len, arr, k, dp));   // piece sum + best for the rest
         }
-        return dp[i] = best;
+        return dp[i] = best;                                    // store the answer before returning it
     }
 
     /** Approach 3: fill dp[i] from the right end. O(n * k) time, O(n) space. */
     static int tabulation(int[] arr, int k) {
         int n = arr.length;
         int[] dp = new int[n + 1];                              // dp[n] = 0
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {                      // suffixes from shortest to longest
             int maxVal = 0, best = 0;
-            for (int len = 1; len <= k && i + len <= n; len++) {
-                maxVal = Math.max(maxVal, arr[i + len - 1]);
-                best = Math.max(best, maxVal * len + dp[i + len]);
+            for (int len = 1; len <= k && i + len <= n; len++) {   // first piece = arr[i .. i + len - 1]
+                maxVal = Math.max(maxVal, arr[i + len - 1]);    // running maximum of the piece
+                best = Math.max(best, maxVal * len + dp[i + len]);   // dp[i + len] is already filled
             }
-            dp[i] = best;
+            dp[i] = best;                                       // best sum for the suffix arr[i..]
         }
-        return dp[0];
+        return dp[0];                                           // the whole array
     }
 
     /** Approach 4: dp[i] only reads dp[i + 1 .. i + k], so a ring of k + 1 cells is enough. O(n * k) time, O(k) space. */
     static int spaceOptimized(int[] arr, int k) {
         int n = arr.length;
         int[] dp = new int[k + 1];                              // dp[i % (k + 1)] holds f(i); f(n) starts as 0
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {                      // same order as the table version
             int maxVal = 0, best = 0;
-            for (int len = 1; len <= k && i + len <= n; len++) {
-                maxVal = Math.max(maxVal, arr[i + len - 1]);
-                best = Math.max(best, maxVal * len + dp[(i + len) % (k + 1)]);
+            for (int len = 1; len <= k && i + len <= n; len++) {   // first piece = arr[i .. i + len - 1]
+                maxVal = Math.max(maxVal, arr[i + len - 1]);    // running maximum of the piece
+                best = Math.max(best, maxVal * len + dp[(i + len) % (k + 1)]);   // f(i + len) sits at its ring slot
             }
             dp[i % (k + 1)] = best;                             // overwrites f(i + k + 1), which is no longer needed
         }
-        return dp[0];
+        return dp[0];                                           // f(0) is stored at slot 0 % (k + 1) = 0
     }
 
     // ---------------------------------------------------------------- tests

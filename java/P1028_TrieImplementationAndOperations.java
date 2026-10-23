@@ -6,29 +6,29 @@ public class P1028_TrieImplementationAndOperations {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface WordStore {
-        void insert(String word);
-        boolean search(String word);
-        boolean startsWith(String prefix);
+        void insert(String word);                          // store a word
+        boolean search(String word);                       // true if this exact word was inserted
+        boolean startsWith(String prefix);                 // true if some inserted word begins with prefix
     }
 
     /** Approach 1: keep the words in a list and scan all of them on every query. O(1) insert, O(n * L) per query. */
     static class ListStore implements WordStore {
-        private final List<String> words = new ArrayList<>();
+        private final List<String> words = new ArrayList<>();   // every inserted word, in insertion order
 
         public void insert(String word) {
-            words.add(word);
+            words.add(word);                               // O(1): just remember it
         }
 
         public boolean search(String word) {
-            for (String w : words) {
-                if (w.equals(word)) return true;
+            for (String w : words) {                       // compare against every stored word
+                if (w.equals(word)) return true;           // exact match found
             }
             return false;
         }
 
         public boolean startsWith(String prefix) {
             for (String w : words) {
-                if (w.startsWith(prefix)) return true;
+                if (w.startsWith(prefix)) return true;     // any word with this prefix is enough
             }
             return false;
         }
@@ -36,22 +36,22 @@ public class P1028_TrieImplementationAndOperations {
 
     /** Approach 2: one hash set of whole words and one of every prefix of every word. O(L^2) insert, O(L) per query. */
     static class PrefixSetStore implements WordStore {
-        private final Set<String> words = new HashSet<>();
-        private final Set<String> prefixes = new HashSet<>();
+        private final Set<String> words = new HashSet<>();   // whole words, for search
+        private final Set<String> prefixes = new HashSet<>();   // every prefix of every word, for startsWith
 
         public void insert(String word) {
-            words.add(word);
-            for (int len = 1; len <= word.length(); len++) {
+            words.add(word);                               // the whole word answers search
+            for (int len = 1; len <= word.length(); len++) {   // record each prefix length 1 .. L
                 prefixes.add(word.substring(0, len));      // each prefix is a fresh copy of len characters
             }
         }
 
         public boolean search(String word) {
-            return words.contains(word);
+            return words.contains(word);                   // one hash lookup on the whole word
         }
 
         public boolean startsWith(String prefix) {
-            return prefixes.contains(prefix);
+            return prefixes.contains(prefix);              // one hash lookup on the prefix
         }
     }
 
@@ -62,16 +62,16 @@ public class P1028_TrieImplementationAndOperations {
             boolean isEnd;                                 // some inserted word ends exactly here
         }
 
-        private final Node root = new Node();
+        private final Node root = new Node();              // empty root: stands for the empty prefix
 
         public void insert(String word) {
             Node cur = root;
-            for (int i = 0; i < word.length(); i++) {
-                int c = word.charAt(i) - 'a';
+            for (int i = 0; i < word.length(); i++) {      // one level down per letter
+                int c = word.charAt(i) - 'a';              // letter -> child index 0..25
                 if (cur.child[c] == null) cur.child[c] = new Node();   // create the edge only when it is missing
-                cur = cur.child[c];
+                cur = cur.child[c];                        // step down to that letter's node
             }
-            cur.isEnd = true;
+            cur.isEnd = true;                              // mark the last node as the end of a word
         }
 
         public boolean search(String word) {
@@ -87,10 +87,10 @@ public class P1028_TrieImplementationAndOperations {
         private Node walk(String s) {
             Node cur = root;
             for (int i = 0; i < s.length(); i++) {
-                cur = cur.child[s.charAt(i) - 'a'];
-                if (cur == null) return null;
+                cur = cur.child[s.charAt(i) - 'a'];        // follow the edge for this letter
+                if (cur == null) return null;              // missing edge: s is not in the trie
             }
-            return cur;
+            return cur;                                    // the node where s ends
         }
     }
 

@@ -6,12 +6,12 @@ public class P633_LongestBitonicSubsequence {
     /** Approach 1: check every subsequence. O(2^n * n) time, O(1) space. */
     static int bruteForce(int[] nums) {
         int n = nums.length, best = 0;
-        for (int mask = 1; mask < (1 << n); mask++) {
-            int len = 0, prev = 0;
-            boolean falling = false, ok = true;
+        for (int mask = 1; mask < (1 << n); mask++) {               // each mask is one non-empty subsequence
+            int len = 0, prev = 0;                                  // picked length so far, last picked value
+            boolean falling = false, ok = true;                     // falling: past the peak; ok: still bitonic
             for (int i = 0; i < n && ok; i++) {
-                if ((mask & (1 << i)) == 0) continue;
-                if (len > 0) {
+                if ((mask & (1 << i)) == 0) continue;               // index i is not in this subsequence
+                if (len > 0) {                                      // compare with the previous picked value
                     if (nums[i] == prev) ok = false;                // equal neighbours are never allowed
                     else if (nums[i] < prev) falling = true;        // we are past the peak
                     else if (falling) ok = false;                   // a rise after the peak
@@ -19,7 +19,7 @@ public class P633_LongestBitonicSubsequence {
                 prev = nums[i];
                 len++;
             }
-            if (ok) best = Math.max(best, len);
+            if (ok) best = Math.max(best, len);                     // a valid bitonic pick: keep the longest
         }
         return best;
     }
@@ -27,16 +27,19 @@ public class P633_LongestBitonicSubsequence {
     /** Approach 2: LIS ending at i from the left plus LIS ending at i from the right. O(n^2) time, O(n) space. */
     static int better(int[] nums) {
         int n = nums.length, best = 0;
+        // inc[i] / dec[i]: longest rise into i / fall out of i
         int[] inc = new int[n], dec = new int[n];
-        for (int i = 0; i < n; i++) {
-            inc[i] = 1;
+        for (int i = 0; i < n; i++) {                       // left to right: fill inc[]
+            inc[i] = 1;                                     // nums[i] alone is a run of 1
             for (int j = 0; j < i; j++) {
+                // append nums[i] to a smaller value's run
                 if (nums[j] < nums[i]) inc[i] = Math.max(inc[i], inc[j] + 1);
             }
         }
-        for (int i = n - 1; i >= 0; i--) {
-            dec[i] = 1;
+        for (int i = n - 1; i >= 0; i--) {                  // right to left: fill dec[]
+            dec[i] = 1;                                     // nums[i] alone is a run of 1
             for (int j = n - 1; j > i; j--) {
+                // nums[i] can sit before a smaller value on its right
                 if (nums[j] < nums[i]) dec[i] = Math.max(dec[i], dec[j] + 1);
             }
         }
@@ -47,7 +50,9 @@ public class P633_LongestBitonicSubsequence {
     /** Approach 3: the same two arrays, each built in O(n log n) with binary search. O(n log n) time, O(n) space. */
     static int optimal(int[] nums) {
         int n = nums.length, best = 0;
+        // a falling run from i is a rising run read from the right
         int[] inc = lisEndingAt(nums, false), dec = lisEndingAt(nums, true);
+        // join the two runs at peak i, nums[i] counted once
         for (int i = 0; i < n; i++) best = Math.max(best, inc[i] + dec[i] - 1);
         return best;
     }
@@ -56,15 +61,15 @@ public class P633_LongestBitonicSubsequence {
     static int[] lisEndingAt(int[] nums, boolean fromRight) {
         int n = nums.length, size = 0;
         int[] tails = new int[n], len = new int[n];             // tails[k] = smallest tail of a run of length k + 1
-        for (int step = 0; step < n; step++) {
-            int i = fromRight ? n - 1 - step : step;
+        for (int step = 0; step < n; step++) {                  // walk the indices in scan order
+            int i = fromRight ? n - 1 - step : step;            // the real index for this step
             int lo = 0, hi = size;                              // find the first tail >= nums[i]
             while (lo < hi) {
                 int mid = (lo + hi) >>> 1;
-                if (tails[mid] < nums[i]) lo = mid + 1; else hi = mid;
+                if (tails[mid] < nums[i]) lo = mid + 1; else hi = mid;   // binary search: tails is sorted
             }
-            tails[lo] = nums[i];
-            if (lo == size) size++;
+            tails[lo] = nums[i];                                // now the smallest tail for length lo + 1
+            if (lo == size) size++;                             // nums[i] extended the longest run seen so far
             len[i] = lo + 1;                                    // lo tails are smaller than nums[i]
         }
         return len;

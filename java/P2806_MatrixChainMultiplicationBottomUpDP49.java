@@ -6,76 +6,80 @@ public class P2806_MatrixChainMultiplicationBottomUpDP49 {
     /** Reference: the top-down memoized recursion that the tables below replace. O(n^3) time, O(n^2) space. */
     static long memoization(int[] arr) {
         int n = arr.length;
-        long[][] dp = new long[n][n];
-        for (long[] row : dp) Arrays.fill(row, -1);
-        return memo(1, n - 1, arr, dp);
+        long[][] dp = new long[n][n];                           // dp[i][j] = min cost for A_i .. A_j
+        for (long[] row : dp) Arrays.fill(row, -1);             // -1 marks a sub-chain not solved yet
+        return memo(1, n - 1, arr, dp);                         // the whole chain A_1 .. A_n-1
     }
 
     static long memo(int i, int j, int[] arr, long[][] dp) {
-        if (i == j) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (i == j) return 0;                                   // a single matrix costs nothing
+        if (dp[i][j] != -1) return dp[i][j];                    // already solved: reuse it
         long best = Long.MAX_VALUE;
-        for (int k = i; k < j; k++) {
+        for (int k = i; k < j; k++) {                           // k = where the last multiply splits the chain
+            // both halves, plus multiplying their results (arr[i-1] x arr[k] by arr[k] x arr[j])
             best = Math.min(best, memo(i, k, arr, dp) + memo(k + 1, j, arr, dp) + (long) arr[i - 1] * arr[k] * arr[j]);
         }
-        return dp[i][j] = best;
+        return dp[i][j] = best;                                 // store the answer before returning it
     }
 
     /** Approach 1: rows bottom to top, columns left to right. O(n^3) time, O(n^2) space. */
     static long tabulation(int[] arr) {
         int n = arr.length;
         long[][] dp = new long[n][n];                           // base case dp[i][i] = 0 is the default
-        for (int i = n - 1; i >= 1; i--) {
-            for (int j = i + 1; j < n; j++) {
-                dp[i][j] = Long.MAX_VALUE;
+        for (int i = n - 1; i >= 1; i--) {                      // i goes down, so rows below i are ready
+            for (int j = i + 1; j < n; j++) {                   // j goes up, so shorter chains in row i are ready
+                dp[i][j] = Long.MAX_VALUE;                      // start at "infinity" and improve
                 for (int k = i; k < j; k++) {                   // dp[i][k] is left in row i, dp[k + 1][j] is below
+                    // both halves, plus multiplying their results
                     dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + (long) arr[i - 1] * arr[k] * arr[j]);
                 }
             }
         }
-        return dp[1][n - 1];
+        return dp[1][n - 1];                                    // the whole chain A_1 .. A_n-1
     }
 
     /** Approach 2: the same table filled diagonal by diagonal, by chain length. O(n^3) time, O(n^2) space. */
     static long tabulationByLength(int[] arr) {
         int n = arr.length;
-        long[][] dp = new long[n][n];
+        long[][] dp = new long[n][n];                           // dp[i][j] = min cost for A_i .. A_j
         for (int len = 2; len < n; len++) {                     // number of matrices in the sub-chain
-            for (int i = 1; i + len - 1 < n; i++) {
-                int j = i + len - 1;
-                dp[i][j] = Long.MAX_VALUE;
-                for (int k = i; k < j; k++) {
+            for (int i = 1; i + len - 1 < n; i++) {             // every start i whose chain still fits
+                int j = i + len - 1;                            // last matrix of this sub-chain
+                dp[i][j] = Long.MAX_VALUE;                      // start at "infinity" and improve
+                for (int k = i; k < j; k++) {                   // shorter chains on both sides are done
+                    // both halves, plus multiplying their results
                     dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j] + (long) arr[i - 1] * arr[k] * arr[j]);
                 }
             }
         }
-        return dp[1][n - 1];
+        return dp[1][n - 1];                                    // the whole chain A_1 .. A_n-1
     }
 
     /** Approach 3: also remember the best split and rebuild the bracketing, matrices named A, B, C, ... */
     static String parenthesization(int[] arr) {
         int n = arr.length;
-        long[][] dp = new long[n][n];
-        int[][] split = new int[n][n];
-        for (int i = n - 1; i >= 1; i--) {
+        long[][] dp = new long[n][n];                           // dp[i][j] = min cost for A_i .. A_j
+        int[][] split = new int[n][n];                          // split[i][j] = the k that achieved dp[i][j]
+        for (int i = n - 1; i >= 1; i--) {                      // same fill order as Approach 1
             for (int j = i + 1; j < n; j++) {
                 dp[i][j] = Long.MAX_VALUE;
                 for (int k = i; k < j; k++) {
+                    // both halves, plus joining their results
                     long cost = dp[i][k] + dp[k + 1][j] + (long) arr[i - 1] * arr[k] * arr[j];
-                    if (cost < dp[i][j]) { dp[i][j] = cost; split[i][j] = k; }
+                    if (cost < dp[i][j]) { dp[i][j] = cost; split[i][j] = k; }   // cheaper: remember cost and k
                 }
             }
         }
         StringBuilder sb = new StringBuilder();
-        build(1, n - 1, split, sb);
+        build(1, n - 1, split, sb);                             // rebuild the bracketing of the whole chain
         return sb.toString();
     }
 
     static void build(int i, int j, int[][] split, StringBuilder sb) {
-        if (i == j) { sb.append((char) ('A' + i - 1)); return; }
-        sb.append('(');
-        build(i, split[i][j], split, sb);
-        build(split[i][j] + 1, j, split, sb);
+        if (i == j) { sb.append((char) ('A' + i - 1)); return; }   // one matrix: print its letter (1 -> A)
+        sb.append('(');                                         // wrap this sub-chain in brackets
+        build(i, split[i][j], split, sb);                       // left part: A_i .. A_k
+        build(split[i][j] + 1, j, split, sb);                   // right part: A_k+1 .. A_j
         sb.append(')');
     }
 

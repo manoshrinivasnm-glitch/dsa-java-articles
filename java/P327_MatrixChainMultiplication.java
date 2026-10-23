@@ -5,15 +5,16 @@ public class P327_MatrixChainMultiplication {
 
     /** Approach 1: try every last split of every sub-chain. Exponential time, O(n) stack. */
     static long recursive(int[] arr) {
-        return solve(1, arr.length - 1, arr);
+        return solve(1, arr.length - 1, arr);                   // matrices are numbered 1 .. n-1
     }
 
     static long solve(int i, int j, int[] arr) {
         if (i == j) return 0;                                   // a single matrix costs nothing
-        long best = Long.MAX_VALUE;
+        long best = Long.MAX_VALUE;                             // cheapest cost for A_i .. A_j
         for (int k = i; k < j; k++) {                           // (A_i .. A_k) times (A_k+1 .. A_j)
+            // both halves, plus multiplying their results (arr[i-1] x arr[k] by arr[k] x arr[j])
             long cost = solve(i, k, arr) + solve(k + 1, j, arr) + (long) arr[i - 1] * arr[k] * arr[j];
-            best = Math.min(best, cost);
+            best = Math.min(best, cost);                        // keep the cheapest split
         }
         return best;
     }
@@ -21,36 +22,38 @@ public class P327_MatrixChainMultiplication {
     /** Approach 2: cache each (i, j) sub-chain. O(n^3) time, O(n^2) space. */
     static long memoization(int[] arr) {
         int n = arr.length;
-        long[][] dp = new long[n][n];
-        for (long[] row : dp) Arrays.fill(row, -1);
-        return memo(1, n - 1, arr, dp);
+        long[][] dp = new long[n][n];                           // dp[i][j] = min cost for A_i .. A_j
+        for (long[] row : dp) Arrays.fill(row, -1);             // -1 marks a sub-chain not solved yet
+        return memo(1, n - 1, arr, dp);                         // solve the whole chain A_1 .. A_n-1
     }
 
     static long memo(int i, int j, int[] arr, long[][] dp) {
-        if (i == j) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (i == j) return 0;                                   // a single matrix costs nothing
+        if (dp[i][j] != -1) return dp[i][j];                    // already solved: reuse it
         long best = Long.MAX_VALUE;
-        for (int k = i; k < j; k++) {
+        for (int k = i; k < j; k++) {                           // k = where the last multiply splits the chain
+            // both halves, plus multiplying their results
             long cost = memo(i, k, arr, dp) + memo(k + 1, j, arr, dp) + (long) arr[i - 1] * arr[k] * arr[j];
             best = Math.min(best, cost);
         }
-        return dp[i][j] = best;
+        return dp[i][j] = best;                                 // store the answer before returning it
     }
 
     /** Approach 3: fill the table so every shorter sub-chain is ready first. O(n^3) time, O(n^2) space. */
     static long tabulation(int[] arr) {
         int n = arr.length;
         long[][] dp = new long[n][n];                           // dp[i][i] = 0 already
-        for (int i = n - 1; i >= 1; i--) {
-            for (int j = i + 1; j < n; j++) {
+        for (int i = n - 1; i >= 1; i--) {                      // i goes down, so rows below i are ready
+            for (int j = i + 1; j < n; j++) {                   // j goes up, so shorter chains in row i are ready
                 long best = Long.MAX_VALUE;
-                for (int k = i; k < j; k++) {
+                for (int k = i; k < j; k++) {                   // try every split point
+                    // both halves, plus multiplying their results
                     best = Math.min(best, dp[i][k] + dp[k + 1][j] + (long) arr[i - 1] * arr[k] * arr[j]);
                 }
-                dp[i][j] = best;
+                dp[i][j] = best;                                // cheapest cost for A_i .. A_j
             }
         }
-        return dp[1][n - 1];
+        return dp[1][n - 1];                                    // the whole chain A_1 .. A_n-1
     }
 
     // ---------------------------------------------------------------- tests

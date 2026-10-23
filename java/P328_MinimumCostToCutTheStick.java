@@ -6,24 +6,24 @@ public class P328_MinimumCostToCutTheStick {
     /** Sorted cut positions with the two stick ends added: c[0] = 0, c[last] = n. */
     static int[] withEnds(int n, int[] cuts) {
         int m = cuts.length;
-        int[] c = new int[m + 2];
-        for (int i = 0; i < m; i++) c[i + 1] = cuts[i];
+        int[] c = new int[m + 2];                               // room for the two stick ends
+        for (int i = 0; i < m; i++) c[i + 1] = cuts[i];         // cut positions go in the middle
         c[m + 1] = n;                                           // c[0] = 0 already
-        Arrays.sort(c, 1, m + 1);
+        Arrays.sort(c, 1, m + 1);                               // sort only the cuts, the ends stay put
         return c;
     }
 
     /** Approach 1: try every cut as the first one on each piece. Exponential time, O(m) stack. */
     static int recursive(int n, int[] cuts) {
-        int[] c = withEnds(n, cuts);
-        return solve(0, c.length - 1, c);
+        int[] c = withEnds(n, cuts);                            // c[i] .. c[j] is always a piece we may still cut
+        return solve(0, c.length - 1, c);                       // the whole stick: from c[0] = 0 to c[last] = n
     }
 
     static int solve(int i, int j, int[] c) {
         if (j - i < 2) return 0;                                // no cut strictly between c[i] and c[j]
-        int best = Integer.MAX_VALUE;
+        int best = Integer.MAX_VALUE;                           // min total cost of the cuts inside c[i] .. c[j]
         for (int k = i + 1; k < j; k++) {                       // cut at c[k] first, then solve both halves
-            best = Math.min(best, solve(i, k, c) + solve(k, j, c));
+            best = Math.min(best, solve(i, k, c) + solve(k, j, c));   // the two halves are independent pieces
         }
         return best + c[j] - c[i];                              // the first cut pays for the whole piece
     }
@@ -31,17 +31,18 @@ public class P328_MinimumCostToCutTheStick {
     /** Approach 2: cache each (i, j) piece. O(m^3) time, O(m^2) space. */
     static int memoization(int n, int[] cuts) {
         int[] c = withEnds(n, cuts);
-        int[][] dp = new int[c.length][c.length];
-        for (int[] row : dp) Arrays.fill(row, -1);
-        return memo(0, c.length - 1, c, dp);
+        int[][] dp = new int[c.length][c.length];               // dp[i][j] = min cost for the piece c[i] .. c[j]
+        for (int[] row : dp) Arrays.fill(row, -1);              // -1 marks a piece not solved yet
+        return memo(0, c.length - 1, c, dp);                    // the whole stick
     }
 
     static int memo(int i, int j, int[] c, int[][] dp) {
-        if (j - i < 2) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (j - i < 2) return 0;                                // no cut strictly between c[i] and c[j]
+        if (dp[i][j] != -1) return dp[i][j];                    // already solved: reuse it
         int best = Integer.MAX_VALUE;
+        // try each inner cut first; the two halves are independent
         for (int k = i + 1; k < j; k++) best = Math.min(best, memo(i, k, c, dp) + memo(k, j, c, dp));
-        return dp[i][j] = best + c[j] - c[i];
+        return dp[i][j] = best + c[j] - c[i];                   // first cut pays the whole piece; store it
     }
 
     /** Approach 3: bottom-up over pieces, shorter index ranges first. O(m^3) time, O(m^2) space. */
@@ -49,14 +50,15 @@ public class P328_MinimumCostToCutTheStick {
         int[] c = withEnds(n, cuts);
         int m = c.length;
         int[][] dp = new int[m][m];                             // dp[i][i + 1] = 0: nothing to cut
-        for (int i = m - 3; i >= 0; i--) {
-            for (int j = i + 2; j < m; j++) {
+        for (int i = m - 3; i >= 0; i--) {                      // i goes down, so pieces starting later are ready
+            for (int j = i + 2; j < m; j++) {                   // j - i >= 2, so at least one cut lies inside
                 int best = Integer.MAX_VALUE;
+                // try each inner cut first; both halves are shorter, so already filled
                 for (int k = i + 1; k < j; k++) best = Math.min(best, dp[i][k] + dp[k][j]);
-                dp[i][j] = best + c[j] - c[i];
+                dp[i][j] = best + c[j] - c[i];                  // the first cut pays the full piece length
             }
         }
-        return dp[0][m - 1];
+        return dp[0][m - 1];                                    // the whole stick
     }
 
     // ---------------------------------------------------------------- tests

@@ -9,15 +9,15 @@ public class P2390_BitPreRequisitesForTRIEProblems {
     /** All 32 bits of an int, most significant first. A binary trie stores exactly this string, one bit per level. */
     static String toBinary32(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 31; i >= 0; i--) {
-            sb.append((n >> i) & 1);
+        for (int i = 31; i >= 0; i--) {                    // from the most significant bit down to bit 0
+            sb.append((n >> i) & 1);                       // bit i of n, as 0 or 1
         }
         return sb.toString();
     }
 
     /** How many bit positions are needed for every value in [0, maxValue]; that is the depth of the trie. */
     static int bitsNeeded(int maxValue) {
-        return Math.max(1, 32 - Integer.numberOfLeadingZeros(maxValue));
+        return Math.max(1, 32 - Integer.numberOfLeadingZeros(maxValue));   // position of the top 1-bit + 1 (min 1)
     }
 
     // ------------------------------------------------------------ one bit at a time
@@ -41,9 +41,9 @@ public class P2390_BitPreRequisitesForTRIEProblems {
 
     /** Builds a number from bits given most significant first, the way a trie walk assembles an answer. */
     static int fromBits(int[] bitsHighToLow) {
-        int value = 0;
-        for (int b : bitsHighToLow) {
-            value = (value << 1) | b;
+        int value = 0;                                     // nothing read yet
+        for (int b : bitsHighToLow) {                      // bits arrive most significant first
+            value = (value << 1) | b;                      // shift old bits up one place, b fills the lowest
         }
         return value;
     }
@@ -52,53 +52,53 @@ public class P2390_BitPreRequisitesForTRIEProblems {
 
     /** Bit i of a ^ b is 1 exactly when a and b differ at bit i. */
     static int xorBitByBit(int a, int b) {
-        int result = 0;
-        for (int i = 31; i >= 0; i--) {
-            if (getBit(a, i) != getBit(b, i)) result = setBit(result, i);
+        int result = 0;                                    // starts with every bit 0
+        for (int i = 31; i >= 0; i--) {                    // look at each bit position
+            if (getBit(a, i) != getBit(b, i)) result = setBit(result, i);   // the bits differ: the XOR has a 1 here
         }
         return result;
     }
 
     /** The partner bit that makes bit i of the XOR equal to 1 is the opposite of x's bit. */
     static int wantedBit(int x, int i) {
-        return 1 - getBit(x, i);
+        return 1 - getBit(x, i);                           // flip x's bit: 0 -> 1, 1 -> 0
     }
 
     // ------------------------------------------------------------ the highest bit wins
 
     /** Compares two non-negative ints by their first differing bit from the top. Agrees with Integer.compare. */
     static int compareByBits(int a, int b) {
-        for (int i = 30; i >= 0; i--) {
-            int x = getBit(a, i), y = getBit(b, i);
+        for (int i = 30; i >= 0; i--) {                    // bit 31 is the sign bit, 0 for non-negative ints
+            int x = getBit(a, i), y = getBit(b, i);        // the two bits at position i
             if (x != y) return x - y;                      // 2^i outweighs all lower bits together (2^i - 1)
         }
-        return 0;
+        return 0;                                          // every bit equal: a == b
     }
 
     // ------------------------------------------------------------ the binary trie
 
     /** Each node has a child for bit 0 and a child for bit 1. */
     static class BitNode {
-        final BitNode[] child = new BitNode[2];
+        final BitNode[] child = new BitNode[2];            // child[0] for bit 0, child[1] for bit 1
     }
 
     /** Stores x as the path of its bits from bit 30 down to bit 0 (inputs are non-negative). */
     static void insert(BitNode root, int x) {
         BitNode cur = root;
-        for (int i = 30; i >= 0; i--) {
-            int bit = getBit(x, i);
-            if (cur.child[bit] == null) cur.child[bit] = new BitNode();
+        for (int i = 30; i >= 0; i--) {                    // one level per bit, highest bit first
+            int bit = getBit(x, i);                        // which branch this number takes
+            if (cur.child[bit] == null) cur.child[bit] = new BitNode();   // create the branch only if missing
             cur = cur.child[bit];
         }
     }
 
     /** Greedy walk: take the opposite bit whenever that branch exists. Returns the largest x ^ y over stored y. */
     static int maxXor(BitNode root, int x) {
-        BitNode cur = root;
-        int result = 0;
-        for (int i = 30; i >= 0; i--) {
-            int want = wantedBit(x, i);
-            if (cur.child[want] != null) {
+        BitNode cur = root;                                // walk from the root, one bit per level
+        int result = 0;                                    // the XOR built so far, bit by bit
+        for (int i = 30; i >= 0; i--) {                    // highest bit first: it outweighs all lower ones
+            int want = wantedBit(x, i);                    // the partner bit that makes this XOR bit 1
+            if (cur.child[want] != null) {                 // some stored number has that bit
                 result = setBit(result, i);                // this bit of the XOR can be 1
                 cur = cur.child[want];
             } else {

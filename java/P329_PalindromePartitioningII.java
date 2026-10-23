@@ -4,7 +4,7 @@ import java.util.*;
 public class P329_PalindromePartitioningII {
 
     static boolean isPalindrome(String s, int i, int j) {
-        while (i < j) if (s.charAt(i++) != s.charAt(j--)) return false;
+        while (i < j) if (s.charAt(i++) != s.charAt(j--)) return false;   // compare inward from both ends
         return true;
     }
 
@@ -15,58 +15,59 @@ public class P329_PalindromePartitioningII {
 
     static int solve(int i, String s) {
         if (i == s.length()) return 0;                          // nothing left: zero pieces
-        int best = Integer.MAX_VALUE;
-        for (int j = i; j < s.length(); j++) {
-            if (isPalindrome(s, i, j)) best = Math.min(best, 1 + solve(j + 1, s));
+        int best = Integer.MAX_VALUE;                           // fewest palindromic pieces for s[i..]
+        for (int j = i; j < s.length(); j++) {                  // s[i..j] is a candidate first piece
+            if (isPalindrome(s, i, j)) best = Math.min(best, 1 + solve(j + 1, s));   // palindrome: 1 piece + rest
         }
         return best;
     }
 
     /** Approach 2: cache the answer for every suffix start i. O(n^3) time, O(n) space. */
     static int memoization(String s) {
-        int[] dp = new int[s.length()];
-        Arrays.fill(dp, -1);
-        return memo(0, s, dp) - 1;
+        int[] dp = new int[s.length()];                         // dp[i] = fewest pieces for the suffix s[i..]
+        Arrays.fill(dp, -1);                                    // -1 marks a suffix not solved yet
+        return memo(0, s, dp) - 1;                              // k pieces need k - 1 cuts
     }
 
     static int memo(int i, String s, int[] dp) {
-        if (i == s.length()) return 0;
-        if (dp[i] != -1) return dp[i];
+        if (i == s.length()) return 0;                          // nothing left: zero pieces
+        if (dp[i] != -1) return dp[i];                          // already solved: reuse it
         int best = Integer.MAX_VALUE;
-        for (int j = i; j < s.length(); j++) {
-            if (isPalindrome(s, i, j)) best = Math.min(best, 1 + memo(j + 1, s, dp));
+        for (int j = i; j < s.length(); j++) {                  // s[i..j] is a candidate first piece
+            if (isPalindrome(s, i, j)) best = Math.min(best, 1 + memo(j + 1, s, dp));   // palindrome: 1 + the rest
         }
-        return dp[i] = best;
+        return dp[i] = best;                                    // store the answer before returning it
     }
 
     /** Approach 3: fill dp[i] from the right end. O(n^3) time, O(n) space. */
     static int tabulation(String s) {
         int n = s.length();
         int[] dp = new int[n + 1];                              // dp[n] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            dp[i] = Integer.MAX_VALUE;
+        for (int i = n - 1; i >= 0; i--) {                      // suffixes from shortest to longest
+            dp[i] = Integer.MAX_VALUE;                          // dp[i] = fewest pieces for s[i..]
             for (int j = i; j < n; j++) {
-                if (isPalindrome(s, i, j)) dp[i] = Math.min(dp[i], 1 + dp[j + 1]);
+                if (isPalindrome(s, i, j)) dp[i] = Math.min(dp[i], 1 + dp[j + 1]);   // 1 piece + best of s[j+1..]
             }
         }
-        return dp[0] - 1;
+        return dp[0] - 1;                                       // k pieces need k - 1 cuts
     }
 
     /** Approach 4: build the palindrome table in the same loop, so each check is O(1). O(n^2) time and space. */
     static int optimal(String s) {
         int n = s.length();
-        boolean[][] pal = new boolean[n][n];
+        boolean[][] pal = new boolean[n][n];                    // pal[i][j] = s[i..j] is a palindrome
         int[] dp = new int[n + 1];                              // dp[n] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            dp[i] = Integer.MAX_VALUE;
+        for (int i = n - 1; i >= 0; i--) {                      // i goes down, so dp[j + 1] and row i + 1 are ready
+            dp[i] = Integer.MAX_VALUE;                          // dp[i] = fewest pieces for s[i..]
             for (int j = i; j < n; j++) {
+                // ends match and the inside (if any) is a palindrome
                 if (s.charAt(i) == s.charAt(j) && (j - i < 2 || pal[i + 1][j - 1])) {
                     pal[i][j] = true;                           // row i + 1 was filled one iteration earlier
-                    dp[i] = Math.min(dp[i], 1 + dp[j + 1]);
+                    dp[i] = Math.min(dp[i], 1 + dp[j + 1]);     // one piece plus the best for s[j+1..]
                 }
             }
         }
-        return dp[0] - 1;
+        return dp[0] - 1;                                       // k pieces need k - 1 cuts
     }
 
     // ---------------------------------------------------------------- tests
