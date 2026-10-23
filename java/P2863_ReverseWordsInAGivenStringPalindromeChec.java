@@ -11,38 +11,38 @@ public class P2863_ReverseWordsInAGivenStringPalindromeChec {
 
     /** Approach 1: split on runs of spaces, reverse the list, join with single spaces. O(n) time, O(n) space. */
     static String reverseWordsBruteForce(String s) {
-        String[] parts = s.trim().split("\\s+");
-        List<String> words = new ArrayList<>(Arrays.asList(parts));
-        Collections.reverse(words);
-        return String.join(" ", words);
+        String[] parts = s.trim().split("\\s+");         // trim the ends, then split on any run of spaces
+        List<String> words = new ArrayList<>(Arrays.asList(parts));   // mutable copy so it can be reversed
+        Collections.reverse(words);                      // last word first
+        return String.join(" ", words);                  // single spaces between words
     }
 
     /** Approach 2: one char array: squeeze the spaces, reverse everything, then reverse each word back. O(n) time, O(1) extra space beyond the array. */
     static String reverseWordsOptimal(String s) {
-        char[] a = s.toCharArray();
+        char[] a = s.toCharArray();                      // work in place on a char array
         int n = a.length;
-        int w = 0;                                          // write index: a[0..w) is the squeezed sentence
-        int i = 0;
-        while (i < n) {
-            while (i < n && a[i] == ' ') i++;               // skip a run of spaces
-            if (i == n) break;
-            if (w > 0) a[w++] = ' ';                        // one separator before every word except the first
+        int w = 0;                                       // write index: a[0..w) is the squeezed sentence
+        int i = 0;                                       // read index
+        while (i < n) {                                  // squeeze: copy words left, one space between them
+            while (i < n && a[i] == ' ') i++;            // skip a run of spaces
+            if (i == n) break;                           // only trailing spaces were left
+            if (w > 0) a[w++] = ' ';                     // one separator before every word except the first
             while (i < n && a[i] != ' ') a[w++] = a[i++];   // copy the word
         }
-        reverse(a, 0, w - 1);                               // whole sentence reversed: the words are backwards too
-        int start = 0;
-        for (int k = 0; k <= w; k++) {
-            if (k == w || a[k] == ' ') {                    // a[start..k) is one reversed word
-                reverse(a, start, k - 1);
-                start = k + 1;
+        reverse(a, 0, w - 1);                            // whole sentence reversed: the words are backwards too
+        int start = 0;                                   // start of the current word
+        for (int k = 0; k <= w; k++) {                   // k == w acts as a final separator
+            if (k == w || a[k] == ' ') {                 // a[start..k) is one reversed word
+                reverse(a, start, k - 1);                // flip the word back to reading order
+                start = k + 1;                           // the next word starts after the space
             }
         }
-        return new String(a, 0, w);
+        return new String(a, 0, w);                      // only the first w chars are the answer
     }
 
     static void reverse(char[] a, int lo, int hi) {
-        while (lo < hi) {
-            char t = a[lo]; a[lo] = a[hi]; a[hi] = t;
+        while (lo < hi) {                                // until the two pointers meet
+            char t = a[lo]; a[lo] = a[hi]; a[hi] = t;    // swap the two ends
             lo++; hi--;
         }
     }
@@ -51,26 +51,27 @@ public class P2863_ReverseWordsInAGivenStringPalindromeChec {
 
     /** Approach 3: build the cleaned string (letters and digits, lower-cased) and compare it with its reverse. O(n) time, O(n) space. */
     static boolean isPalindromeBruteForce(String s) {
-        StringBuilder clean = new StringBuilder();
-        for (char c : s.toCharArray()) {
+        StringBuilder clean = new StringBuilder();       // the string without spaces and punctuation
+        for (char c : s.toCharArray()) {                 // keep letters and digits only, lower-cased
             if (Character.isLetterOrDigit(c)) clean.append(Character.toLowerCase(c));
         }
         String forward = clean.toString();
-        String backward = clean.reverse().toString();
-        return forward.equals(backward);
+        String backward = clean.reverse().toString();    // reverse() mutates clean: forward was saved first
+        return forward.equals(backward);                 // a palindrome reads the same both ways
     }
 
     /** Approach 4: two pointers that skip everything that is not a letter or digit. O(n) time, O(1) space. */
     static boolean isPalindromeOptimal(String s) {
-        int lo = 0, hi = s.length() - 1;
-        while (lo < hi) {
-            while (lo < hi && !Character.isLetterOrDigit(s.charAt(lo))) lo++;
-            while (lo < hi && !Character.isLetterOrDigit(s.charAt(hi))) hi--;
+        int lo = 0, hi = s.length() - 1;                 // pointers at both ends
+        while (lo < hi) {                                // until they meet
+            while (lo < hi && !Character.isLetterOrDigit(s.charAt(lo))) lo++;   // skip junk on the left
+            while (lo < hi && !Character.isLetterOrDigit(s.charAt(hi))) hi--;   // skip junk on the right
+            // the two ends differ (ignoring case): not a palindrome
             if (Character.toLowerCase(s.charAt(lo)) != Character.toLowerCase(s.charAt(hi))) return false;
-            lo++;
+            lo++;                                        // both match: move inwards
             hi--;
         }
-        return true;
+        return true;                                     // every pair matched
     }
 
     // ---------------------------------------------------------------- tests

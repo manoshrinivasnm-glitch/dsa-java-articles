@@ -5,27 +5,28 @@ public class P68_SearchIn2DMatrixII {
 
     /** Approach 1: look at every cell. O(n * m) time, O(1) space. */
     static boolean bruteForce(int[][] matrix, int target) {
-        for (int[] row : matrix) {
-            for (int x : row) if (x == target) return true;
+        for (int[] row : matrix) {                       // check every row ...
+            for (int x : row) if (x == target) return true;   // ... and every cell in it
         }
         return false;
     }
 
     /** Plain binary search for target inside one sorted row. O(log m). */
     static boolean inRow(int[] row, int target) {
-        int lo = 0, hi = row.length - 1;
+        int lo = 0, hi = row.length - 1;                 // search the whole row
         while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (row[mid] == target) return true;
-            if (row[mid] < target) lo = mid + 1; else hi = mid - 1;
+            int mid = lo + (hi - lo) / 2;                // middle index
+            if (row[mid] == target) return true;         // found it
+            if (row[mid] < target) lo = mid + 1; else hi = mid - 1;   // target is right of mid, else left of it
         }
         return false;
     }
 
     /** Approach 2: binary search every row whose first and last element bracket target. O(n log m) time, O(1) space. */
     static boolean better(int[][] matrix, int target) {
-        for (int[] row : matrix) {
-            if (row.length == 0) continue;
+        for (int[] row : matrix) {                       // target may sit in several rows' ranges
+            if (row.length == 0) continue;               // an empty row holds nothing
+            // in this row's range: binary search it
             if (row[0] <= target && target <= row[row.length - 1] && inRow(row, target)) return true;
         }
         return false;
@@ -34,14 +35,14 @@ public class P68_SearchIn2DMatrixII {
     /** Approach 3: start at the top-right corner; every step throws away a whole row or a whole column. O(n + m) time, O(1) space. */
     static boolean optimal(int[][] matrix, int target) {
         int n = matrix.length;
-        if (n == 0 || matrix[0].length == 0) return false;
+        if (n == 0 || matrix[0].length == 0) return false;   // empty matrix: nothing to find
         int m = matrix[0].length;
-        int r = 0, c = m - 1;
-        while (r < n && c >= 0) {
-            int value = matrix[r][c];
-            if (value == target) return true;
-            if (value > target) c--;                 // everything below in this column is even larger
-            else r++;                                // everything to the left in this row is even smaller
+        int r = 0, c = m - 1;                            // start at the top-right corner
+        while (r < n && c >= 0) {                        // stop when we leave the bottom or the left edge
+            int value = matrix[r][c];                    // largest in its row, smallest in its column
+            if (value == target) return true;            // found it
+            if (value > target) c--;                     // too big: the rest of column c is larger, drop it
+            else r++;                                    // too small: the rest of row r is smaller, drop it
         }
         return false;
     }

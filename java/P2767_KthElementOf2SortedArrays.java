@@ -6,23 +6,24 @@ public class P2767_KthElementOf2SortedArrays {
     /** Approach 1: merge into one sorted array and read position k-1. O(n + m) time, O(n + m) space. */
     static int bruteForce(int[] a, int[] b, int k) {
         int n = a.length, m = b.length;
-        int[] merged = new int[n + m];
-        int i = 0, j = 0, p = 0;
-        while (i < n && j < m) merged[p++] = a[i] <= b[j] ? a[i++] : b[j++];
-        while (i < n) merged[p++] = a[i++];
-        while (j < m) merged[p++] = b[j++];
-        return merged[k - 1];
+        int[] merged = new int[n + m];                   // both arrays merged in sorted order
+        int i = 0, j = 0, p = 0;                         // i walks a, j walks b, p writes merged
+        while (i < n && j < m) merged[p++] = a[i] <= b[j] ? a[i++] : b[j++];   // take the smaller front element
+        while (i < n) merged[p++] = a[i++];              // copy what is left of a
+        while (j < m) merged[p++] = b[j++];              // copy what is left of b
+        return merged[k - 1];                            // k-th smallest sits at index k-1
     }
 
     /** Approach 2: walk the merge without storing it and stop after k elements. O(k) time, O(1) space. */
     static int better(int[] a, int[] b, int k) {
         int n = a.length, m = b.length;
-        int i = 0, j = 0, taken = 0;
-        while (true) {
+        int i = 0, j = 0, taken = 0;                     // i walks a, j walks b, taken counts merged order
+        while (true) {                                   // replay the merge until k elements are taken
             int next;
+            // take the smaller front element (a if b is used up)
             if (j >= m || (i < n && a[i] <= b[j])) next = a[i++]; else next = b[j++];
             taken++;
-            if (taken == k) return next;
+            if (taken == k) return next;                 // the k-th element taken is the answer
         }
     }
 
@@ -34,14 +35,15 @@ public class P2767_KthElementOf2SortedArrays {
         while (lo <= hi) {
             int i = lo + (hi - lo) / 2;                      // i from a and j = k-i from b form the k smallest
             int j = k - i;
-            int l1 = i == 0 ? Integer.MIN_VALUE : a[i - 1];
-            int l2 = j == 0 ? Integer.MIN_VALUE : b[j - 1];
-            int r1 = i == n ? Integer.MAX_VALUE : a[i];
-            int r2 = j == m ? Integer.MAX_VALUE : b[j];
-            if (l1 <= r2 && l2 <= r1) return Math.max(l1, l2);
+            int l1 = i == 0 ? Integer.MIN_VALUE : a[i - 1];   // largest of a on the left (none if i == 0)
+            int l2 = j == 0 ? Integer.MIN_VALUE : b[j - 1];   // largest of b on the left (none if j == 0)
+            int r1 = i == n ? Integer.MAX_VALUE : a[i];   // smallest of a on the right (none if i == n)
+            int r2 = j == m ? Integer.MAX_VALUE : b[j];   // smallest of b on the right (none if j == m)
+            if (l1 <= r2 && l2 <= r1) return Math.max(l1, l2);   // valid cut: k-th is the largest left value
             if (l1 > r2) hi = i - 1;                         // too many from a: move the cut left
             else lo = i + 1;                                 // too few from a: move the cut right
         }
+        // unreachable for sorted input and valid k
         throw new IllegalArgumentException("inputs are not sorted or k is out of range");
     }
 

@@ -5,36 +5,36 @@ public class P2809_CheckIfTwoStringsAreAnagramOfEachOther {
 
     /** Approach 1: sort both strings and compare. O(n log n) time, O(n) space for the char arrays. */
     static boolean bruteForce(String s, String t) {
-        if (s.length() != t.length()) return false;
-        char[] a = s.toCharArray(), b = t.toCharArray();
+        if (s.length() != t.length()) return false;      // different lengths can never match
+        char[] a = s.toCharArray(), b = t.toCharArray();   // copies we are free to sort
         Arrays.sort(a);
         Arrays.sort(b);
-        return Arrays.equals(a, b);
+        return Arrays.equals(a, b);                      // anagrams sort to the same sequence
     }
 
     /** Approach 2: count the characters of s in a map, then consume them with t. Works for any alphabet. O(n) time, O(k) space. */
     static boolean better(String s, String t) {
-        if (s.length() != t.length()) return false;
-        Map<Character, Integer> count = new HashMap<>();
-        for (char c : s.toCharArray()) count.merge(c, 1, Integer::sum);
-        for (char c : t.toCharArray()) {
-            Integer left = count.get(c);
-            if (left == null) return false;                    // t has a character s does not have (any more)
-            if (left == 1) count.remove(c); else count.put(c, left - 1);
+        if (s.length() != t.length()) return false;      // different lengths can never match
+        Map<Character, Integer> count = new HashMap<>();   // char -> copies of it not yet matched
+        for (char c : s.toCharArray()) count.merge(c, 1, Integer::sum);   // count every character of s
+        for (char c : t.toCharArray()) {                 // each char of t uses up one copy
+            Integer left = count.get(c);                 // copies of c still available
+            if (left == null) return false;              // t has a character s does not have (any more)
+            if (left == 1) count.remove(c); else count.put(c, left - 1);   // use one copy; drop the key at 0
         }
-        return count.isEmpty();
+        return count.isEmpty();                          // every copy was matched exactly once
     }
 
     /** Approach 3: one frequency array for lowercase letters: +1 for s, -1 for t, all entries must end at 0. O(n) time, O(1) space. */
     static boolean optimal(String s, String t) {
-        if (s.length() != t.length()) return false;
-        int[] freq = new int[26];
+        if (s.length() != t.length()) return false;      // different lengths can never match
+        int[] freq = new int[26];                        // balance per letter 'a'..'z'
         for (int i = 0; i < s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
-            freq[t.charAt(i) - 'a']--;
+            freq[s.charAt(i) - 'a']++;                   // s adds one
+            freq[t.charAt(i) - 'a']--;                   // t takes one away
         }
-        for (int f : freq) if (f != 0) return false;
-        return true;
+        for (int f : freq) if (f != 0) return false;     // a non-zero balance: counts differ
+        return true;                                     // every letter balanced
     }
 
     // ---------------------------------------------------------------- tests

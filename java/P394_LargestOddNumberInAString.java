@@ -5,13 +5,13 @@ public class P394_LargestOddNumberInAString {
 
     /** Approach 1: enumerate every substring and keep the numerically largest odd one. O(n^3) time, O(n) space. */
     static String bruteForce(String num) {
-        String best = "";
+        String best = "";                                // largest odd substring found so far
         int n = num.length();
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                if ((num.charAt(j) - '0') % 2 == 1) {              // num[i..j] ends in an odd digit, so it is odd
+        for (int i = 0; i < n; i++) {                    // every start position ...
+            for (int j = i; j < n; j++) {                // ... and every end position
+                if ((num.charAt(j) - '0') % 2 == 1) {    // num[i..j] ends in an odd digit, so it is odd
                     String cand = num.substring(i, j + 1);
-                    if (best.isEmpty() || isGreater(cand, best)) best = cand;
+                    if (best.isEmpty() || isGreater(cand, best)) best = cand;   // numerically larger: keep it
                 }
             }
         }
@@ -20,23 +20,24 @@ public class P394_LargestOddNumberInAString {
 
     /** Numeric comparison of two digit strings without parsing them (they may not fit in a long). */
     static boolean isGreater(String a, String b) {
-        String x = stripLeadingZeros(a), y = stripLeadingZeros(b);
-        if (x.length() != y.length()) return x.length() > y.length();
-        return x.compareTo(y) > 0;
+        String x = stripLeadingZeros(a), y = stripLeadingZeros(b);   // leading zeros do not change the value
+        if (x.length() != y.length()) return x.length() > y.length();   // more digits means a bigger number
+        return x.compareTo(y) > 0;                       // same length: dictionary order is numeric order
     }
 
     static String stripLeadingZeros(String s) {
         int k = 0;
-        while (k < s.length() - 1 && s.charAt(k) == '0') k++;
+        while (k < s.length() - 1 && s.charAt(k) == '0') k++;   // skip zeros, keep at least one digit
         return s.substring(k);
     }
 
     /** Approach 2: the answer is the prefix that ends at the rightmost odd digit. O(n) time, O(1) extra space. */
     static String optimal(String num) {
-        for (int i = num.length() - 1; i >= 0; i--) {
+        for (int i = num.length() - 1; i >= 0; i--) {    // scan from the right
+            // the first odd digit from the right ends the longest odd prefix
             if ((num.charAt(i) - '0') % 2 == 1) return num.substring(0, i + 1);
         }
-        return "";
+        return "";                                       // no odd digit: no odd number exists
     }
 
     // ---------------------------------------------------------------- tests

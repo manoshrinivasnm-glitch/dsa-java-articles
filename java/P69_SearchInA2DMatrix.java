@@ -5,43 +5,44 @@ public class P69_SearchInA2DMatrix {
 
     /** Approach 1: look at every cell. O(n * m) time, O(1) space. */
     static boolean bruteForce(int[][] matrix, int target) {
-        for (int[] row : matrix) {
-            for (int x : row) if (x == target) return true;
+        for (int[] row : matrix) {                       // check every row ...
+            for (int x : row) if (x == target) return true;   // ... and every cell in it
         }
         return false;
     }
 
     /** Plain binary search for target inside one sorted row. O(log m). */
     static boolean inRow(int[] row, int target) {
-        int lo = 0, hi = row.length - 1;
+        int lo = 0, hi = row.length - 1;                 // search the whole row
         while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (row[mid] == target) return true;
-            if (row[mid] < target) lo = mid + 1; else hi = mid - 1;
+            int mid = lo + (hi - lo) / 2;                // middle index
+            if (row[mid] == target) return true;         // found it
+            if (row[mid] < target) lo = mid + 1; else hi = mid - 1;   // target is right of mid, else left of it
         }
         return false;
     }
 
     /** Approach 2: find the single row whose first and last element bracket target, then binary search inside it. O(n + log m) time, O(1) space. */
     static boolean better(int[][] matrix, int target) {
-        for (int[] row : matrix) {
-            if (row.length == 0) continue;
+        for (int[] row : matrix) {                       // look for the one row that could hold target
+            if (row.length == 0) continue;               // an empty row holds nothing
+            // target lies in this row's range: it can only be here
             if (row[0] <= target && target <= row[row.length - 1]) return inRow(row, target);
         }
-        return false;
+        return false;                                    // no row's range covers target
     }
 
     /** Approach 3: treat the matrix as one sorted array of n * m cells and binary search on the flat index. O(log(n * m)) time, O(1) space. */
     static boolean optimal(int[][] matrix, int target) {
         int n = matrix.length;
-        if (n == 0 || matrix[0].length == 0) return false;
+        if (n == 0 || matrix[0].length == 0) return false;   // empty matrix: nothing to find
         int m = matrix[0].length;
-        int lo = 0, hi = n * m - 1;
+        int lo = 0, hi = n * m - 1;                      // flat indices 0 .. n*m - 1 in row-major order
         while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
+            int mid = lo + (hi - lo) / 2;                // middle flat index
             int value = matrix[mid / m][mid % m];        // flat index -> (row, column)
-            if (value == target) return true;
-            if (value < target) lo = mid + 1; else hi = mid - 1;
+            if (value == target) return true;            // found it
+            if (value < target) lo = mid + 1; else hi = mid - 1;   // target is right of mid, else left of it
         }
         return false;
     }

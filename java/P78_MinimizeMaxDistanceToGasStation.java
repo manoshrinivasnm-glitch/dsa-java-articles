@@ -6,19 +6,21 @@ public class P78_MinimizeMaxDistanceToGasStation {
     /** Approach 1: k times, drop one station into the gap whose current sections are the longest. O(k * n) time, O(n) space. */
     static double bruteForce(int[] stations, int k) {
         int n = stations.length;
-        if (n < 2) return 0;
+        if (n < 2) return 0;                             // fewer than two stations: no gap to shrink
         int[] placed = new int[n - 1];                   // new stations already dropped into gap i
-        for (int t = 0; t < k; t++) {
-            int best = 0;
+        for (int t = 0; t < k; t++) {                    // place the k new stations one at a time
+            int best = 0;                                // gap whose sections are currently longest
             double bestLen = -1;
-            for (int i = 0; i < n - 1; i++) {
+            for (int i = 0; i < n - 1; i++) {            // scan every gap
+                // section length if gap i is split evenly
                 double len = (double) (stations[i + 1] - stations[i]) / (placed[i] + 1);
-                if (len > bestLen) { bestLen = len; best = i; }
+                if (len > bestLen) { bestLen = len; best = i; }   // remember the gap with the longest section
             }
-            placed[best]++;
+            placed[best]++;                              // the new station goes into that gap
         }
-        double ans = 0;
+        double ans = 0;                                  // answer = longest section after all placements
         for (int i = 0; i < n - 1; i++) {
+            // section length in gap i after all placements
             ans = Math.max(ans, (double) (stations[i + 1] - stations[i]) / (placed[i] + 1));
         }
         return ans;
@@ -28,40 +30,43 @@ public class P78_MinimizeMaxDistanceToGasStation {
     static double better(int[] stations, int k) {
         int n = stations.length;
         if (n < 2) return 0;
-        int[] placed = new int[n - 1];
+        int[] placed = new int[n - 1];                   // new stations already dropped into gap i
         PriorityQueue<double[]> heap = new PriorityQueue<>((a, b) -> Double.compare(b[0], a[0]));   // {sectionLength, gapIndex}
+        // every gap starts as one whole section
         for (int i = 0; i < n - 1; i++) heap.offer(new double[]{stations[i + 1] - stations[i], i});
         for (int t = 0; t < k; t++) {
-            int gap = (int) heap.poll()[1];
-            placed[gap]++;
+            int gap = (int) heap.poll()[1];              // gap with the longest section right now
+            placed[gap]++;                               // put one more station into it
+            // push the gap back with its shorter section length
             heap.offer(new double[]{(double) (stations[gap + 1] - stations[gap]) / (placed[gap] + 1), gap});
         }
-        return heap.peek()[0];
+        return heap.peek()[0];                           // the longest section left is the answer
     }
 
     /** Can every section be made at most d long using at most k new stations? O(n). */
     static boolean feasible(int[] stations, int k, double d) {
-        long needed = 0;
-        for (int i = 0; i < stations.length - 1; i++) {
+        long needed = 0;                                 // new stations used so far
+        for (int i = 0; i < stations.length - 1; i++) {   // look at each gap between neighbours
             int gap = stations[i + 1] - stations[i];
             long inside = (long) Math.ceil(gap / d) - 1;   // ceil(gap / d) sections need one fewer new stations
-            if (inside > k - needed) return false;
-            needed += inside;
+            if (inside > k - needed) return false;       // more than the stations left: d is too small
+            needed += inside;                            // spend them on this gap
         }
-        return true;
+        return true;                                     // every gap fits within d using at most k
     }
 
     /** Approach 3: binary search on the answer d in [0, largest gap]; feasibility is monotone in d. O(n log(maxGap / eps)) time, O(1) space. */
     static double optimal(int[] stations, int k) {
         int n = stations.length;
-        if (n < 2) return 0;
-        double lo = 0, hi = 0;
+        if (n < 2) return 0;                             // fewer than two stations: no gap to shrink
+        double lo = 0, hi = 0;                           // answer lies in [0, largest gap]
+        // hi starts at the largest existing gap
         for (int i = 0; i < n - 1; i++) hi = Math.max(hi, stations[i + 1] - stations[i]);
         for (int iter = 0; iter < 100; iter++) {         // 100 halvings shrink any gap far below 1e-6
-            double mid = (lo + hi) / 2;
-            if (feasible(stations, k, mid)) hi = mid; else lo = mid;
+            double mid = (lo + hi) / 2;                  // candidate maximum distance
+            if (feasible(stations, k, mid)) hi = mid; else lo = mid;   // feasible: try smaller, else go larger
         }
-        return hi;
+        return hi;                                       // smallest feasible distance found
     }
 
     // ---------------------------------------------------------------- tests

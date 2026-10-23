@@ -5,34 +5,34 @@ public class P805_PaintersPartition {
 
     /** Painters needed when nobody may paint more than maxLength units, handing out boards greedily from the left. O(n). */
     static int paintersNeeded(int[] boards, long maxLength) {
-        int painters = 1;
-        long load = 0;
-        for (int b : boards) {
-            if (load + b > maxLength) { painters++; load = 0; }
-            load += b;
+        int painters = 1;                                // the first painter starts on board 0
+        long load = 0;                                   // length given to the current painter so far
+        for (int b : boards) {                           // hand out boards left to right
+            if (load + b > maxLength) { painters++; load = 0; }   // too much: a new painter takes board b
+            load += b;                                   // b goes to the current painter
         }
         return painters;
     }
 
     /** Approach 1: try every time limit from the longest board up to the total length. O(n * (sum - max)) time, O(1) space. */
     static long bruteForce(int[] boards, int k) {
-        long max = 0, sum = 0;
-        for (int b : boards) { max = Math.max(max, b); sum += b; }
-        for (long limit = max; limit <= sum; limit++) {
-            if (paintersNeeded(boards, limit) <= k) return limit;
+        long max = 0, sum = 0;                           // the answer lies between max and sum
+        for (int b : boards) { max = Math.max(max, b); sum += b; }   // longest board and total length
+        for (long limit = max; limit <= sum; limit++) {   // try each time limit from smallest upwards
+            if (paintersNeeded(boards, limit) <= k) return limit;   // first limit that k painters can meet
         }
-        return sum;
+        return sum;                                      // one painter can always paint everything
     }
 
     /** Approach 2: binary search on the time limit in [max, sum]; paintersNeeded only falls as the limit grows. O(n log(sum)) time, O(1) space. */
     static long optimal(int[] boards, int k) {
-        long max = 0, sum = 0;
-        for (int b : boards) { max = Math.max(max, b); sum += b; }
-        long lo = max, hi = sum, ans = sum;
+        long max = 0, sum = 0;                           // the answer lies between max and sum
+        for (int b : boards) { max = Math.max(max, b); sum += b; }   // longest board and total length
+        long lo = max, hi = sum, ans = sum;              // search the time limit in [max, sum]
         while (lo <= hi) {
-            long mid = lo + (hi - lo) / 2;
-            if (paintersNeeded(boards, mid) <= k) { ans = mid; hi = mid - 1; }
-            else lo = mid + 1;
+            long mid = lo + (hi - lo) / 2;               // candidate time limit
+            if (paintersNeeded(boards, mid) <= k) { ans = mid; hi = mid - 1; }   // fits: try less time
+            else lo = mid + 1;                           // needs too many painters: allow more time
         }
         return ans;
     }

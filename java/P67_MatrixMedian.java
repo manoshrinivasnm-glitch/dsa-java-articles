@@ -6,41 +6,42 @@ public class P67_MatrixMedian {
     /** Approach 1: copy every value into one array, sort it, read the middle. O(n*m log(n*m)) time, O(n*m) space. */
     static int bruteForce(int[][] mat) {
         int n = mat.length, m = mat[0].length;
-        int[] all = new int[n * m];
+        int[] all = new int[n * m];                      // every value of the matrix in one array
         int k = 0;
-        for (int[] row : mat) for (int x : row) all[k++] = x;
-        Arrays.sort(all);
-        return all[(n * m) / 2];
+        for (int[] row : mat) for (int x : row) all[k++] = x;   // flatten row by row
+        Arrays.sort(all);                                // sort all values
+        return all[(n * m) / 2];                         // the middle of an odd-length list is the median
     }
 
     /** How many values are <= x, scanning every cell. O(n * m). */
     static int countLinear(int[][] mat, int x) {
         int count = 0;
-        for (int[] row : mat) for (int v : row) if (v <= x) count++;
+        for (int[] row : mat) for (int v : row) if (v <= x) count++;   // count every cell that is <= x
         return count;
     }
 
     /** Approach 2: binary search on the value. The median is the smallest x with more than half the cells <= x; counting scans the whole matrix. O(n*m log(range)) time, O(1) space. */
     static int better(int[][] mat) {
         int n = mat.length, m = mat[0].length;
-        int lo = Integer.MAX_VALUE, hi = Integer.MIN_VALUE;
+        int lo = Integer.MAX_VALUE, hi = Integer.MIN_VALUE;   // will hold the smallest and largest values
+        // rows are sorted: row[0] is the row min, row[m - 1] the max
         for (int[] row : mat) { lo = Math.min(lo, row[0]); hi = Math.max(hi, row[m - 1]); }
-        int half = (n * m) / 2;
-        while (lo <= hi) {
+        int half = (n * m) / 2;                          // number of cells before the median position
+        while (lo <= hi) {                               // binary search on the value, not on an index
             int mid = (int) Math.floorDiv((long) lo + hi, 2);   // long: lo + hi overflows int when the range is wide
             if (countLinear(mat, mid) <= half) lo = mid + 1;    // too few values <= mid: the median is larger
             else hi = mid - 1;                                  // mid already covers the middle position
         }
-        return lo;
+        return lo;                                       // smallest value with more than half the cells <= it
     }
 
     /** Number of values <= x in one sorted row: the index of the first value greater than x (upper bound). O(log m). */
     static int upperBound(int[] row, int x) {
-        int lo = 0, hi = row.length - 1, ans = row.length;
+        int lo = 0, hi = row.length - 1, ans = row.length;   // ans stays row.length when every value is <= x
         while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (row[mid] > x) { ans = mid; hi = mid - 1; }
-            else lo = mid + 1;
+            int mid = lo + (hi - lo) / 2;                // middle index
+            if (row[mid] > x) { ans = mid; hi = mid - 1; }   // bigger than x: a candidate, look further left
+            else lo = mid + 1;                           // still <= x: the first bigger value is to the right
         }
         return ans;
     }
@@ -48,17 +49,18 @@ public class P67_MatrixMedian {
     /** Approach 3: the same binary search on the value, but each row is counted with an upper bound. O(n log m log(range)) time, O(1) space. */
     static int optimal(int[][] mat) {
         int n = mat.length, m = mat[0].length;
-        int lo = Integer.MAX_VALUE, hi = Integer.MIN_VALUE;
+        int lo = Integer.MAX_VALUE, hi = Integer.MIN_VALUE;   // will hold the smallest and largest values
+        // rows are sorted: row[0] is the row min, row[m - 1] the max
         for (int[] row : mat) { lo = Math.min(lo, row[0]); hi = Math.max(hi, row[m - 1]); }
-        int half = (n * m) / 2;
-        while (lo <= hi) {
-            int mid = (int) Math.floorDiv((long) lo + hi, 2);
-            int count = 0;
-            for (int[] row : mat) count += upperBound(row, mid);
-            if (count <= half) lo = mid + 1;
-            else hi = mid - 1;
+        int half = (n * m) / 2;                          // number of cells before the median position
+        while (lo <= hi) {                               // binary search on the value, not on an index
+            int mid = (int) Math.floorDiv((long) lo + hi, 2);   // long: lo + hi can overflow int
+            int count = 0;                               // values <= mid across the whole matrix
+            for (int[] row : mat) count += upperBound(row, mid);   // each row's share comes from an upper bound
+            if (count <= half) lo = mid + 1;             // too few values <= mid: the median is larger
+            else hi = mid - 1;                           // mid already covers the middle position
         }
-        return lo;
+        return lo;                                       // smallest value with more than half the cells <= it
     }
 
     // ---------------------------------------------------------------- tests
