@@ -5,37 +5,37 @@ public class P818_PermutationSequence {
 
     /** Approach 1: generate all n! permutations, sort them, pick index k - 1. O(n! * n log(n!)) time, O(n! * n) space. */
     static String bruteForce(int n, int k) {
-        char[] digits = firstPermutation(n);
-        List<String> all = new ArrayList<>();
-        permute(digits, 0, all);
+        char[] digits = firstPermutation(n);            // the digits 1..n as characters
+        List<String> all = new ArrayList<>();           // every permutation, as strings
+        permute(digits, 0, all);                        // fill the list starting at position 0
         Collections.sort(all);                          // swapping does not generate them in order
-        return all.get(k - 1);
+        return all.get(k - 1);                          // k is 1-based
     }
 
     static void permute(char[] digits, int index, List<String> all) {
-        if (index == digits.length) {
-            all.add(new String(digits));
+        if (index == digits.length) {                   // every position is fixed: one full permutation
+            all.add(new String(digits));                // save a copy of it
             return;
         }
-        for (int i = index; i < digits.length; i++) {
+        for (int i = index; i < digits.length; i++) {   // try each remaining digit at this position
             swap(digits, index, i);                     // choose digits[i] for this position
-            permute(digits, index + 1, all);
+            permute(digits, index + 1, all);            // fill the remaining positions
             swap(digits, index, i);                     // undo the choice before trying the next one
         }
     }
 
     /** Approach 2: start from 12...n and apply next permutation k - 1 times. O(k * n) time, O(n) space. */
     static String better(int n, int k) {
-        char[] digits = firstPermutation(n);
-        for (int step = 1; step < k; step++) nextPermutation(digits);
+        char[] digits = firstPermutation(n);            // the smallest permutation, rank 1
+        for (int step = 1; step < k; step++) nextPermutation(digits);   // each step moves to the next rank
         return new String(digits);
     }
 
     static void nextPermutation(char[] a) {
         int i = a.length - 2;
         while (i >= 0 && a[i] >= a[i + 1]) i--;         // rightmost position that can still grow
-        if (i >= 0) {
-            int j = a.length - 1;
+        if (i >= 0) {                                   // found one: swap it with a larger digit
+            int j = a.length - 1;                       // search from the right end
             while (a[j] <= a[i]) j--;                   // smallest digit to its right that is larger
             swap(a, i, j);
         }
@@ -44,18 +44,18 @@ public class P818_PermutationSequence {
 
     /** Approach 3: factorial number system; each block of (n-1)! permutations shares a first digit. O(n^2) time, O(n) space. */
     static String optimal(int n, int k) {
-        List<Integer> remaining = new ArrayList<>();
-        int blockSize = 1;
-        for (int i = 1; i <= n; i++) {
+        List<Integer> remaining = new ArrayList<>();    // digits not used yet, in increasing order
+        int blockSize = 1;                              // will hold (n - 1)!, the size of one block
+        for (int i = 1; i <= n; i++) {                  // fill the list and compute the factorial together
             remaining.add(i);
             if (i < n) blockSize *= i;                  // ends as (n - 1)!
         }
         k--;                                            // 0-based rank is easier to divide
-        StringBuilder sb = new StringBuilder();
-        while (true) {
+        StringBuilder sb = new StringBuilder();         // the answer, built one digit at a time
+        while (true) {                                  // choose one digit per round
             int index = k / blockSize;                  // how many whole blocks to skip
-            sb.append(remaining.remove(index));
-            if (remaining.isEmpty()) break;
+            sb.append(remaining.remove(index));         // take that digit; later digits shift left
+            if (remaining.isEmpty()) break;             // every digit placed
             k %= blockSize;                             // rank inside the chosen block
             blockSize /= remaining.size();              // (m - 1)! for the m digits that are left
         }

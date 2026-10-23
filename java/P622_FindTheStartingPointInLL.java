@@ -4,36 +4,36 @@ import java.util.*;
 public class P622_FindTheStartingPointInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                      // the value stored in this node
+        ListNode next;                                // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
     }
 
     /** Approach 1: the first node seen twice while walking is where the loop starts. O(n) time, O(n) space. */
     static ListNode hashing(ListNode head) {
-        Set<ListNode> visited = new HashSet<>();
-        for (ListNode cur = head; cur != null; cur = cur.next) {
-            if (!visited.add(cur)) return cur;          // the walk re-enters the loop exactly at its start
+        Set<ListNode> visited = new HashSet<>();      // every node met so far
+        for (ListNode cur = head; cur != null; cur = cur.next) {   // follow next pointers from the head
+            if (!visited.add(cur)) return cur;        // the walk re-enters the loop exactly at its start
         }
-        return null;
+        return null;                                  // reached null, so there is no loop
     }
 
     /** Approach 2: Floyd's cycle detection, then walk from head and from the meeting point together. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {                         // inside the loop; now locate its entrance
-                ListNode entry = head;
-                while (entry != slow) {                 // head and meeting point are equally far from the start
-                    entry = entry.next;
+        ListNode slow = head, fast = head;            // both runners start at the head
+        while (fast != null && fast.next != null) {   // the hare has not run off the end yet
+            slow = slow.next;                         // one step per round
+            fast = fast.next.next;                    // two steps per round
+            if (slow == fast) {                       // inside the loop; now locate its entrance
+                ListNode entry = head;                // one pointer restarts from the head
+                while (entry != slow) {               // head and meeting point are equally far from the start
+                    entry = entry.next;               // both move one step at a time
                     slow = slow.next;
                 }
-                return entry;
+                return entry;                         // they meet exactly at the loop's first node
             }
         }
-        return null;                                    // fast reached the end: no loop
+        return null;                                  // fast reached the end: no loop
     }
 
     // ---------------------------------------------------------------- helpers

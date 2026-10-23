@@ -4,58 +4,59 @@ import java.util.*;
 public class P621_FindTheIntersectionPointOfYLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                      // the value stored in this node
+        ListNode next;                                // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
     }
 
     /** Approach 1: for every node of A, scan all of B looking for the same object. O(m * n) time, O(1) space. */
     static ListNode bruteForce(ListNode headA, ListNode headB) {
-        for (ListNode a = headA; a != null; a = a.next) {
-            for (ListNode b = headB; b != null; b = b.next) {
-                if (a == b) return a;                   // same object, not merely the same value
+        for (ListNode a = headA; a != null; a = a.next) {   // try every node of A as the meeting point
+            for (ListNode b = headB; b != null; b = b.next) {   // and compare it with every node of B
+                if (a == b) return a;                 // same object, not merely the same value
             }
         }
-        return null;
+        return null;                                  // no node is shared
     }
 
     /** Approach 2: store every node of A in a hash set, then walk B. O(m + n) time, O(m) space. */
     static ListNode hashing(ListNode headA, ListNode headB) {
-        Set<ListNode> nodesOfA = new HashSet<>();      // ListNode has no equals(), so the set compares identity
-        for (ListNode a = headA; a != null; a = a.next) nodesOfA.add(a);
+        Set<ListNode> nodesOfA = new HashSet<>();     // ListNode has no equals(), so the set compares identity
+        for (ListNode a = headA; a != null; a = a.next) nodesOfA.add(a);   // remember every node of A
+        // the first node of B that A also has is the meeting point
         for (ListNode b = headB; b != null; b = b.next) {
             if (nodesOfA.contains(b)) return b;
         }
-        return null;
+        return null;                                  // the lists never meet
     }
 
     /** Approach 3: skip the length difference in the longer list, then walk both in lock-step. O(m + n) time, O(1) space. */
     static ListNode lengthDifference(ListNode headA, ListNode headB) {
-        int lenA = length(headA), lenB = length(headB);
-        ListNode a = headA, b = headB;
-        while (lenA > lenB) { a = a.next; lenA--; }     // at most one of these two loops runs
-        while (lenB > lenA) { b = b.next; lenB--; }
-        while (a != b) {                                // equal distance to the end from here on
+        int lenA = length(headA), lenB = length(headB);   // how many nodes each list has
+        ListNode a = headA, b = headB;                // one pointer per list
+        while (lenA > lenB) { a = a.next; lenA--; }   // A is longer: skip its extra nodes
+        while (lenB > lenA) { b = b.next; lenB--; }   // B is longer: skip its extra nodes
+        while (a != b) {                              // equal distance to the end from here on
             a = a.next;
             b = b.next;
         }
-        return a;                                       // the shared node, or null if both ran off the end
+        return a;                                     // the shared node, or null if both ran off the end
     }
 
     static int length(ListNode head) {
-        int len = 0;
-        for (ListNode cur = head; cur != null; cur = cur.next) len++;
+        int len = 0;                                  // number of nodes seen so far
+        for (ListNode cur = head; cur != null; cur = cur.next) len++;   // count every node
         return len;
     }
 
     /** Approach 4: two pointers that restart on the other list's head. O(m + n) time, O(1) space. */
     static ListNode optimal(ListNode headA, ListNode headB) {
-        ListNode a = headA, b = headB;
-        while (a != b) {
-            a = (a == null) ? headB : a.next;           // after m + n steps both have walked the same distance
-            b = (b == null) ? headA : b.next;
+        ListNode a = headA, b = headB;                // one pointer per list
+        while (a != b) {                              // until they meet, or both are null
+            a = (a == null) ? headB : a.next;         // after m + n steps both have walked the same distance
+            b = (b == null) ? headA : b.next;         // same trick for b: switch to A when B runs out
         }
-        return a;
+        return a;                                     // the shared node, or null if both ran off the end
     }
 
     // ---------------------------------------------------------------- helpers

@@ -4,16 +4,17 @@ import java.util.*;
 public class P618_CheckIfLLIsPalindromeOrNot {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                        // the value stored in this node
+        ListNode next;                                  // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
     }
 
     /** Approach 1: push every value on a stack, then compare the list with the stack's reverse order. O(n) time, O(n) space. */
     static boolean bruteForce(ListNode head) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stack = new ArrayDeque<>();      // will hold every value, last one on top
+        // push every value in list order
         for (ListNode cur = head; cur != null; cur = cur.next) stack.push(cur.val);
-        for (ListNode cur = head; cur != null; cur = cur.next) {
+        for (ListNode cur = head; cur != null; cur = cur.next) {   // walk the list from the front again
             if (cur.val != stack.pop()) return false;   // pop() yields the values from the back
         }
         return true;
@@ -21,16 +22,18 @@ public class P618_CheckIfLLIsPalindromeOrNot {
 
     /** Approach 2: find the middle, reverse the second half, compare, then restore. O(n) time, O(1) space. */
     static boolean optimal(ListNode head) {
+        // zero or one node always reads the same both ways
         if (head == null || head.next == null) return true;
-        ListNode slow = head, fast = head;
-        while (fast.next != null && fast.next.next != null) {
+        ListNode slow = head, fast = head;              // both runners start at the head
+        while (fast.next != null && fast.next.next != null) {   // fast can still take two steps
             slow = slow.next;                           // slow stops at the last node of the first half
-            fast = fast.next.next;
+            fast = fast.next.next;                      // two steps per round
         }
-        ListNode secondHalf = reverse(slow.next);
-        boolean isPalindrome = true;
+        ListNode secondHalf = reverse(slow.next);       // second half, now read from the back
+        boolean isPalindrome = true;                    // assume yes until a mismatch shows up
+        // compare first half and reversed second half pairwise
         for (ListNode p = head, q = secondHalf; q != null; p = p.next, q = q.next) {
-            if (p.val != q.val) {
+            if (p.val != q.val) {                       // mismatch: not a palindrome
                 isPalindrome = false;
                 break;
             }
@@ -40,14 +43,14 @@ public class P618_CheckIfLLIsPalindromeOrNot {
     }
 
     static ListNode reverse(ListNode head) {
-        ListNode prev = null, cur = head;
-        while (cur != null) {
-            ListNode nxt = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = nxt;
+        ListNode prev = null, cur = head;               // prev heads the part already reversed
+        while (cur != null) {                           // walk the list once
+            ListNode nxt = cur.next;                    // save the rest before breaking the link
+            cur.next = prev;                            // point this node backwards
+            prev = cur;                                 // the reversed part now starts here
+            cur = nxt;                                  // move on to the rest
         }
-        return prev;
+        return prev;                                    // prev is the old tail, now the new head
     }
 
     // ---------------------------------------------------------------- helpers

@@ -5,71 +5,72 @@ import java.util.function.*;
 public class P2407_ReorderList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Repeatedly detach the current tail and splice it right after the current node. O(n^2) time, O(1) space. */
     static void bruteForce(ListNode head) {
-        ListNode cur = head;
+        ListNode cur = head;                             // the front node that receives a tail after it
+        // at least two nodes still follow cur, so a move is needed
         while (cur != null && cur.next != null && cur.next.next != null) {
-            ListNode prev = cur;                     // walk to the node before the tail
-            while (prev.next.next != null) prev = prev.next;
-            ListNode tail = prev.next;
-            prev.next = null;                        // detach the tail
-            tail.next = cur.next;                    // and splice it in right after cur
-            cur.next = tail;
-            cur = tail.next;                         // continue from the next untouched front node
+            ListNode prev = cur;                         // walk to the node before the tail
+            while (prev.next.next != null) prev = prev.next;   // stop on the second-to-last node
+            ListNode tail = prev.next;                   // the node to move forward
+            prev.next = null;                            // detach the tail
+            tail.next = cur.next;                        // and splice it in right after cur
+            cur.next = tail;                             // cur -> tail -> old cur.next
+            cur = tail.next;                             // continue from the next untouched front node
         }
     }
 
     /** Approach 2: better. Store node references in an array and relink with two indices moving inward. O(n) time, O(n) space. */
     static void better(ListNode head) {
-        if (head == null) return;
-        List<ListNode> nodes = new ArrayList<>();
-        for (ListNode t = head; t != null; t = t.next) nodes.add(t);
-        int i = 0, j = nodes.size() - 1;
-        while (i < j) {
-            nodes.get(i).next = nodes.get(j);        // front -> back
+        if (head == null) return;                        // empty list: nothing to reorder
+        List<ListNode> nodes = new ArrayList<>();        // every node, so both ends can be reached by index
+        for (ListNode t = head; t != null; t = t.next) nodes.add(t);   // one pass records each node
+        int i = 0, j = nodes.size() - 1;                 // i walks in from the front, j from the back
+        while (i < j) {                                  // link pairs until the two indices meet
+            nodes.get(i).next = nodes.get(j);            // front -> back
             i++;
-            if (i == j) break;
-            nodes.get(j).next = nodes.get(i);        // back -> next front
+            if (i == j) break;                           // odd count: i and j met in the middle
+            nodes.get(j).next = nodes.get(i);            // back -> next front
             j--;
         }
-        nodes.get(i).next = null;                    // the node where i and j meet is the new tail
+        nodes.get(i).next = null;                        // the node where i and j meet is the new tail
     }
 
     /** Approach 3: optimal. Find the middle, reverse the second half, then weave the two halves together. O(n) time, O(1) space. */
     static void optimal(ListNode head) {
-        if (head == null || head.next == null) return;
-        ListNode slow = head, fast = head;           // slow ends on the last node of the first half
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        if (head == null || head.next == null) return;   // zero or one node is already in order
+        ListNode slow = head, fast = head;               // slow ends on the last node of the first half
+        while (fast.next != null && fast.next.next != null) {   // stop at the end of the first half
+            slow = slow.next;                            // one step per round
+            fast = fast.next.next;                       // two steps per round
         }
-        ListNode second = reverse(slow.next);        // second half, back to front
-        slow.next = null;                            // cut the first half off
-        ListNode first = head;
-        while (second != null) {                     // second half is never longer than the first
-            ListNode n1 = first.next, n2 = second.next;
-            first.next = second;
-            second.next = n1;
-            first = n1;
-            second = n2;
+        ListNode second = reverse(slow.next);            // second half, back to front
+        slow.next = null;                                // cut the first half off
+        ListNode first = head;                           // walks the first half
+        while (second != null) {                         // second half is never longer than the first
+            ListNode n1 = first.next, n2 = second.next;   // remember both successors before relinking
+            first.next = second;                         // first -> second
+            second.next = n1;                            // second -> the old next of first
+            first = n1;                                  // advance in the first half
+            second = n2;                                 // advance in the reversed second half
         }
     }
 
     static ListNode reverse(ListNode head) {
-        ListNode prev = null;
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
+        ListNode prev = null;                            // head of the part already reversed
+        while (head != null) {                           // walk the list once
+            ListNode next = head.next;                   // save the rest before breaking the link
+            head.next = prev;                            // point this node backwards
+            prev = head;                                 // the reversed part now starts here
+            head = next;                                 // move on to the rest
         }
-        return prev;
+        return prev;                                     // prev is the old tail, now the new head
     }
 
     // ---------------------------------------------------------------- helpers

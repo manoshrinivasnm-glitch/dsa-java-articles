@@ -4,29 +4,29 @@ import java.util.*;
 public class P620_DetectALoopInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                      // the value stored in this node
+        ListNode next;                                // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
     }
 
     /** Approach 1: remember every visited node in a hash set; a repeat means a loop. O(n) time, O(n) space. */
     static boolean hashing(ListNode head) {
-        Set<ListNode> visited = new HashSet<>();
-        for (ListNode cur = head; cur != null; cur = cur.next) {
-            if (!visited.add(cur)) return true;         // add() is false when this node object was seen before
+        Set<ListNode> visited = new HashSet<>();      // every node met so far
+        for (ListNode cur = head; cur != null; cur = cur.next) {   // follow next pointers from the head
+            if (!visited.add(cur)) return true;       // add() is false when this node object was seen before
         }
-        return false;                                   // reached null, so the list ends
+        return false;                                 // reached null, so the list ends
     }
 
     /** Approach 2: Floyd's tortoise and hare. O(n) time, O(1) space. */
     static boolean optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;                           // 1 step
-            fast = fast.next.next;                      // 2 steps
-            if (slow == fast) return true;              // the hare caught the tortoise inside the loop
+        ListNode slow = head, fast = head;            // both runners start at the head
+        while (fast != null && fast.next != null) {   // the hare has not run off the end yet
+            slow = slow.next;                         // 1 step
+            fast = fast.next.next;                    // 2 steps
+            if (slow == fast) return true;            // the hare caught the tortoise inside the loop
         }
-        return false;                                   // the hare found the end of the list
+        return false;                                 // the hare found the end of the list
     }
 
     // ---------------------------------------------------------------- helpers

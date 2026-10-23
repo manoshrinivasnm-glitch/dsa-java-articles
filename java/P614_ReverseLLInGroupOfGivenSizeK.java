@@ -4,21 +4,22 @@ import java.util.*;
 public class P614_ReverseLLInGroupOfGivenSizeK {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                    // the value stored in this node
+        ListNode next;                              // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
     }
 
     /** Approach 1: copy the values out, reverse each full block of the copy, write the values back. O(n) time, O(n) space. */
     static ListNode bruteForce(ListNode head, int k) {
-        List<Integer> vals = new ArrayList<>();
+        List<Integer> vals = new ArrayList<>();     // copy of every value, in list order
+        // one pass collects the values
         for (ListNode cur = head; cur != null; cur = cur.next) vals.add(cur.val);
-        for (int start = 0; start + k <= vals.size(); start += k) {
+        for (int start = 0; start + k <= vals.size(); start += k) {   // each full block of k values
             Collections.reverse(vals.subList(start, start + k));   // the partial last block is skipped
         }
-        ListNode cur = head;
+        ListNode cur = head;                        // write the values back in their new order
         for (int v : vals) {
-            cur.val = v;
+            cur.val = v;                            // the node keeps its place, only its value changes
             cur = cur.next;
         }
         return head;
@@ -26,49 +27,50 @@ public class P614_ReverseLLInGroupOfGivenSizeK {
 
     /** Approach 2: reverse the first k nodes so that they point at the already-solved rest. O(n) time, O(n / k) stack. */
     static ListNode recursive(ListNode head, int k) {
-        ListNode cur = head;
+        ListNode cur = head;                        // probe k nodes ahead to see if a full group exists
         for (int i = 0; i < k; i++) {
-            if (cur == null) return head;               // fewer than k nodes left: leave them alone
+            if (cur == null) return head;           // fewer than k nodes left: leave them alone
             cur = cur.next;
         }
-        ListNode prev = recursive(cur, k);              // cur is the first node of the next group
-        ListNode node = head;
-        while (node != cur) {                           // reverse this group; its old head ends up pointing at prev
-            ListNode nxt = node.next;
-            node.next = prev;
-            prev = node;
-            node = nxt;
+        ListNode prev = recursive(cur, k);          // solve the rest first; cur starts the next group
+        ListNode node = head;                       // walks this group from its old head
+        while (node != cur) {                       // reverse this group; its old head links to prev
+            ListNode nxt = node.next;               // save the rest before breaking the link
+            node.next = prev;                       // point this node backwards
+            prev = node;                            // the reversed part now starts here
+            node = nxt;                             // move on in the group
         }
-        return prev;                                    // the old k-th node is the new head of this group
+        return prev;                                // the old k-th node is the new head of this group
     }
 
     /** Approach 3: iterative in-place reversal with a dummy node. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head, int k) {
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode(0);           // dummy before the head: first group is not special
         dummy.next = head;
-        ListNode groupPrev = dummy;                     // last node of the part that is already done
+        ListNode groupPrev = dummy;                 // last node of the part that is already done
         while (true) {
-            ListNode kth = kthNode(groupPrev, k);       // last node of the current group
-            if (kth == null) break;                     // fewer than k nodes remain
-            ListNode groupNext = kth.next;
+            ListNode kth = kthNode(groupPrev, k);   // last node of the current group
+            if (kth == null) break;                 // fewer than k nodes remain
+            ListNode groupNext = kth.next;          // first node after this group
+            // start prev at groupNext, so the reversed tail links onward
             ListNode prev = groupNext, cur = groupPrev.next;
-            while (cur != groupNext) {                  // reversed group's tail will point at groupNext
-                ListNode nxt = cur.next;
-                cur.next = prev;
-                prev = cur;
-                cur = nxt;
+            while (cur != groupNext) {              // reversed group's tail will point at groupNext
+                ListNode nxt = cur.next;            // save the rest before breaking the link
+                cur.next = prev;                    // point this node backwards
+                prev = cur;                         // the reversed part now starts here
+                cur = nxt;                          // move on in the group
             }
-            ListNode oldFirst = groupPrev.next;         // now the last node of the reversed group
-            groupPrev.next = kth;
-            groupPrev = oldFirst;
+            ListNode oldFirst = groupPrev.next;     // now the last node of the reversed group
+            groupPrev.next = kth;                   // the done part now links to the new group head
+            groupPrev = oldFirst;                   // the next group follows the old first node
         }
-        return dummy.next;
+        return dummy.next;                          // real head is right after the dummy
     }
 
     /** Returns the node k steps after start, or null if the list ends first. */
     static ListNode kthNode(ListNode start, int k) {
-        while (start != null && k > 0) {
-            start = start.next;
+        while (start != null && k > 0) {            // stop after k steps or at the end of the list
+            start = start.next;                     // one step forward
             k--;
         }
         return start;

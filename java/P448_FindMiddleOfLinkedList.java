@@ -4,29 +4,29 @@ import java.util.*;
 public class P448_FindMiddleOfLinkedList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                      // the value stored in this node
+        ListNode next;                                // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force, two passes. Count the nodes, then walk len / 2 steps from the head. O(n) time, O(1) space. */
     static ListNode bruteForce(ListNode head) {
-        int len = 0;
-        for (ListNode t = head; t != null; t = t.next) len++;
-        ListNode mid = head;
+        int len = 0;                                  // number of nodes in the list
+        for (ListNode t = head; t != null; t = t.next) len++;   // pass 1: count every node
+        ListNode mid = head;                          // pass 2 starts again from the head
         for (int i = 0; i < len / 2; i++) mid = mid.next;   // index len / 2 is the (second) middle
         return mid;
     }
 
     /** Approach 2: optimal, tortoise and hare. slow moves one step, fast moves two; when fast runs out, slow is at the middle. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        ListNode slow = head, fast = head;
+        ListNode slow = head, fast = head;            // both runners start at the head
         while (fast != null && fast.next != null) {   // fast can still take two steps
-            slow = slow.next;
-            fast = fast.next.next;
+            slow = slow.next;                         // tortoise: one step per round
+            fast = fast.next.next;                    // hare: two steps per round
         }
-        return slow;
+        return slow;                                  // hare reached the end, so slow is at index n / 2
     }
 
     // ---------------------------------------------------------------- helpers

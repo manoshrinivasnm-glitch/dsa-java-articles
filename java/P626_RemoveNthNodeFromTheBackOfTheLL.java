@@ -4,8 +4,8 @@ import java.util.*;
 public class P626_RemoveNthNodeFromTheBackOfTheLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                    // the value stored in this node
+        ListNode next;                              // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
@@ -13,42 +13,43 @@ public class P626_RemoveNthNodeFromTheBackOfTheLL {
     /** Approach 1: brute force, two passes. Count the nodes, walk to the node before index len - n and unlink. O(len) time, O(1) space. */
     static ListNode bruteForce(ListNode head, int n) {
         int len = 0;
-        for (ListNode t = head; t != null; t = t.next) len++;
-        if (n <= 0 || n > len) return head;          // out of range: leave the list alone
-        if (n == len) return head.next;              // the target is the head itself
+        for (ListNode t = head; t != null; t = t.next) len++;   // pass 1: count the nodes
+        if (n <= 0 || n > len) return head;         // out of range: leave the list alone
+        if (n == len) return head.next;             // the target is the head itself
         ListNode prev = head;
         for (int i = 0; i < len - n - 1; i++) prev = prev.next;   // prev is now just before the target
-        prev.next = prev.next.next;
+        prev.next = prev.next.next;                 // bypass the target to unlink it
         return head;
     }
 
     /** Approach 2: better, one pass with an array of node references. Index len - n - 1 is the predecessor. O(len) time, O(len) space. */
     static ListNode better(ListNode head, int n) {
-        List<ListNode> nodes = new ArrayList<>();
-        for (ListNode t = head; t != null; t = t.next) nodes.add(t);
+        List<ListNode> nodes = new ArrayList<>();   // every node, so any index can be reached directly
+        for (ListNode t = head; t != null; t = t.next) nodes.add(t);   // one pass records each node
         int len = nodes.size();
-        if (n <= 0 || n > len) return head;
-        int target = len - n;                        // 0-based index of the node to delete
-        if (target == 0) return head.next;
-        nodes.get(target - 1).next = nodes.get(target).next;
+        if (n <= 0 || n > len) return head;         // out of range: leave the list alone
+        int target = len - n;                       // 0-based index of the node to delete
+        if (target == 0) return head.next;          // deleting the head: the second node is the new head
+        nodes.get(target - 1).next = nodes.get(target).next;   // predecessor skips over the target
         return head;
     }
 
     /** Approach 3: optimal, one pass with two pointers n apart, both starting at a dummy node before the head. O(len) time, O(1) space. */
     static ListNode optimal(ListNode head, int n) {
-        if (n <= 0) return head;
+        if (n <= 0) return head;                    // nothing to remove
+        // dummy before the head, so removing the head needs no special case
         ListNode dummy = new ListNode(0, head);
-        ListNode fast = dummy, slow = dummy;
-        for (int i = 0; i < n; i++) {
+        ListNode fast = dummy, slow = dummy;        // both pointers start at the dummy
+        for (int i = 0; i < n; i++) {               // give fast a head start of n nodes
             fast = fast.next;
-            if (fast == null) return head;           // n is larger than the length
+            if (fast == null) return head;          // n is larger than the length
         }
-        while (fast.next != null) {                  // stop when fast stands on the last node
+        while (fast.next != null) {                 // move together until fast stands on the last node
             fast = fast.next;
             slow = slow.next;
         }
-        slow.next = slow.next.next;                  // slow is just before the target
-        return dummy.next;                           // the head may have been the target
+        slow.next = slow.next.next;                 // slow is just before the target
+        return dummy.next;                          // the head may have been the target
     }
 
     // ---------------------------------------------------------------- helpers

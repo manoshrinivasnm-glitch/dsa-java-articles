@@ -4,53 +4,54 @@ import java.util.*;
 public class P613_MergeTwoSortedLists {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                  // the value stored in this node
+        ListNode next;                            // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Copy every value into a list, sort it and build a fresh linked list. O((m+n) log(m+n)) time, O(m+n) space. */
     static ListNode bruteForce(ListNode a, ListNode b) {
-        List<Integer> vals = new ArrayList<>();
-        for (ListNode t = a; t != null; t = t.next) vals.add(t.val);
-        for (ListNode t = b; t != null; t = t.next) vals.add(t.val);
-        Collections.sort(vals);
-        ListNode dummy = new ListNode(0), tail = dummy;
-        for (int v : vals) {
+        List<Integer> vals = new ArrayList<>();   // every value from both lists
+        for (ListNode t = a; t != null; t = t.next) vals.add(t.val);   // copy the values of list a
+        for (ListNode t = b; t != null; t = t.next) vals.add(t.val);   // copy the values of list b
+        Collections.sort(vals);                   // sorting puts them in merged order
+        ListNode dummy = new ListNode(0), tail = dummy;   // dummy anchors the new list, tail is its last node
+        for (int v : vals) {                      // build one fresh node per sorted value
             tail.next = new ListNode(v);
             tail = tail.next;
         }
-        return dummy.next;
+        return dummy.next;                        // skip the dummy
     }
 
     /** Approach 2: recursion. The smaller head comes first, and its next is the merge of everything that is left. O(m+n) time, O(m+n) stack space. */
     static ListNode recursive(ListNode a, ListNode b) {
-        if (a == null) return b;
-        if (b == null) return a;
-        if (a.val <= b.val) {
-            a.next = recursive(a.next, b);
+        if (a == null) return b;                  // a is used up: the rest of b is already sorted
+        if (b == null) return a;                  // b is used up: the rest of a is already sorted
+        if (a.val <= b.val) {                     // a's head is the smaller, so it goes first
+            a.next = recursive(a.next, b);        // a's next is the merge of everything that is left
             return a;
         }
-        b.next = recursive(a, b.next);
+        b.next = recursive(a, b.next);            // otherwise b's head goes first
         return b;
     }
 
     /** Approach 3: optimal, iterative splice behind a dummy node. Relinks the existing nodes. O(m+n) time, O(1) extra space. */
     static ListNode optimal(ListNode a, ListNode b) {
+        // dummy sits before the answer; tail is the last node placed
         ListNode dummy = new ListNode(0), tail = dummy;
-        while (a != null && b != null) {
-            if (a.val <= b.val) {                    // <= keeps equal values from a first (stable)
+        while (a != null && b != null) {          // both lists still have nodes to compare
+            if (a.val <= b.val) {                 // <= keeps equal values from a first (stable)
                 tail.next = a;
                 a = a.next;
             } else {
                 tail.next = b;
                 b = b.next;
             }
-            tail = tail.next;
+            tail = tail.next;                     // the merged list grew by one node
         }
-        tail.next = (a != null) ? a : b;             // one list is used up: attach the other as it is
-        return dummy.next;
+        tail.next = (a != null) ? a : b;          // one list is used up: attach the other as it is
+        return dummy.next;                        // the real head is right after the dummy
     }
 
     // ---------------------------------------------------------------- helpers

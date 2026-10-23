@@ -4,29 +4,29 @@ import java.util.*;
 public class P258_DeleteNodeInALinkedListO1 {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                             // the value stored in this node
+        ListNode next;                       // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Shift every later value one position to the left, then drop the last node. O(k) time for k nodes after it, O(1) space. */
     static void bruteForce(ListNode node) {
-        ListNode cur = node;
-        while (cur.next.next != null) {              // stop on the second-to-last node
-            cur.val = cur.next.val;
-            cur = cur.next;
+        ListNode cur = node;                 // walks forward from the node to delete
+        while (cur.next.next != null) {      // stop on the second-to-last node
+            cur.val = cur.next.val;          // pull the next value one position left
+            cur = cur.next;                  // then repeat from the next node
         }
-        cur.val = cur.next.val;                      // final shift
-        cur.next = null;                             // the old tail is now a duplicate: drop it
+        cur.val = cur.next.val;              // final shift
+        cur.next = null;                     // the old tail is now a duplicate: drop it
     }
 
     /** Approach 2: optimal. Copy the next node's value into this node, then bypass the next node. O(1) time, O(1) space. */
     static void optimal(ListNode node) {
-        ListNode victim = node.next;
-        node.val = victim.val;                       // this node takes over the next node's value
-        node.next = victim.next;                     // and the next node disappears from the chain
-        victim.next = null;                          // optional: detach the removed node completely
+        ListNode victim = node.next;         // the next node, whose value we keep and whose node we remove
+        node.val = victim.val;               // this node takes over the next node's value
+        node.next = victim.next;             // and the next node disappears from the chain
+        victim.next = null;                  // optional: detach the removed node completely
     }
 
     // ---------------------------------------------------------------- helpers
