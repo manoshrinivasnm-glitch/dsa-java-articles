@@ -5,74 +5,74 @@ public class P2823_MSTUsingKruskalsAlgo {
 
     /** Returns a copy of the edge list sorted by weight (the input is left untouched). */
     static int[][] sortedByWeight(int[][] edges) {
-        int[][] sorted = edges.clone();
-        Arrays.sort(sorted, (a, b) -> Integer.compare(a[2], b[2]));
+        int[][] sorted = edges.clone();                        // shallow copy, so the caller's order is kept
+        Arrays.sort(sorted, (a, b) -> Integer.compare(a[2], b[2]));   // cheapest edge first
         return sorted;
     }
 
     /** Approach 1: Kruskal with a DFS cycle check: an edge is taken only if its ends are not yet connected in the forest. O(E log E + E * V) time, O(V + E) space. */
     static int bruteForce(int V, int[][] edges) {
-        List<List<Integer>> forest = new ArrayList<>();
+        List<List<Integer>> forest = new ArrayList<>();        // adjacency list of the edges taken so far
         for (int i = 0; i < V; i++) forest.add(new ArrayList<>());
-        int total = 0, used = 0;
-        for (int[] e : sortedByWeight(edges)) {
+        int total = 0, used = 0;                               // MST weight and number of edges taken
+        for (int[] e : sortedByWeight(edges)) {                // greedily consider the cheapest edge first
             if (connected(forest, e[0], e[1], V)) continue;    // adding e would close a cycle
-            forest.get(e[0]).add(e[1]);
+            forest.get(e[0]).add(e[1]);                        // take e: link its ends in the forest
             forest.get(e[1]).add(e[0]);
             total += e[2];
             used++;
         }
-        return used == V - 1 ? total : -1;
+        return used == V - 1 ? total : -1;                     // fewer edges: the graph is disconnected
     }
 
     static boolean connected(List<List<Integer>> forest, int s, int t, int V) {
-        boolean[] seen = new boolean[V];
-        Deque<Integer> stack = new ArrayDeque<>();
+        boolean[] seen = new boolean[V];                       // vertices already reached from s
+        Deque<Integer> stack = new ArrayDeque<>();             // iterative DFS from s
         stack.push(s);
         seen[s] = true;
         while (!stack.isEmpty()) {
             int u = stack.pop();
-            if (u == t) return true;
+            if (u == t) return true;                           // t is reachable from s
             for (int v : forest.get(u)) {
-                if (!seen[v]) {
+                if (!seen[v]) {                                // push each unseen vertex once
                     seen[v] = true;
                     stack.push(v);
                 }
             }
         }
-        return false;
+        return false;                                          // s and t are in different trees
     }
 
     /** Approach 2: Kruskal with component labels; a merge relabels one whole component. O(E log E + V^2) time, O(V) extra space. */
     static int better(int V, int[][] edges) {
         int[] label = new int[V];                              // label[x]: id of the component containing x
-        for (int i = 0; i < V; i++) label[i] = i;
-        int total = 0, used = 0;
-        for (int[] e : sortedByWeight(edges)) {
-            int a = label[e[0]], b = label[e[1]];
+        for (int i = 0; i < V; i++) label[i] = i;              // every vertex starts in its own component
+        int total = 0, used = 0;                               // MST weight and number of edges taken
+        for (int[] e : sortedByWeight(edges)) {                // cheapest edge first
+            int a = label[e[0]], b = label[e[1]];              // components of the two ends
             if (a == b) continue;                              // same component already
-            for (int i = 0; i < V; i++) if (label[i] == b) label[i] = a;
+            for (int i = 0; i < V; i++) if (label[i] == b) label[i] = a;   // relabel b's component as a
             total += e[2];
             used++;
         }
-        return used == V - 1 ? total : -1;
+        return used == V - 1 ? total : -1;                     // fewer edges: the graph is disconnected
     }
 
     /** Disjoint Set Union with union by size and path halving: near-constant time per operation. */
     static final class DisjointSet {
-        final int[] parent, size;
+        final int[] parent, size;                              // parent links; size counts each root's set
 
         DisjointSet(int n) {
             parent = new int[n];
             size = new int[n];
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {                      // every element starts as its own root
                 parent[i] = i;
                 size[i] = 1;
             }
         }
 
         int find(int x) {
-            while (parent[x] != x) {
+            while (parent[x] != x) {                           // climb to the root
                 parent[x] = parent[parent[x]];                 // path halving: skip a level on the way up
                 x = parent[x];
             }
@@ -80,31 +80,31 @@ public class P2823_MSTUsingKruskalsAlgo {
         }
 
         boolean union(int a, int b) {
-            int ra = find(a), rb = find(b);
+            int ra = find(a), rb = find(b);                    // roots of the two sets
             if (ra == rb) return false;                        // already in the same set
-            if (size[ra] < size[rb]) {
+            if (size[ra] < size[rb]) {                         // make ra the larger set
                 int t = ra;
                 ra = rb;
                 rb = t;
             }
             parent[rb] = ra;                                   // hang the smaller tree under the larger
-            size[ra] += size[rb];
-            return true;
+            size[ra] += size[rb];                              // ra now counts rb's elements too
+            return true;                                       // a real merge happened
         }
     }
 
     /** Approach 3: Kruskal with a Disjoint Set Union. O(E log E) time for the sort plus O(E * alpha(V)) for the unions, O(V + E) space. */
     static int optimal(int V, int[][] edges) {
-        DisjointSet ds = new DisjointSet(V);
-        int total = 0, used = 0;
-        for (int[] e : sortedByWeight(edges)) {
+        DisjointSet ds = new DisjointSet(V);                   // one set per vertex to start
+        int total = 0, used = 0;                               // MST weight and number of edges taken
+        for (int[] e : sortedByWeight(edges)) {                // cheapest edge first
             if (used == V - 1) break;                          // tree complete, the rest cannot be used
-            if (ds.union(e[0], e[1])) {
+            if (ds.union(e[0], e[1])) {                        // ends in different trees: edge joins the MST
                 total += e[2];
                 used++;
             }
         }
-        return used == V - 1 ? total : -1;
+        return used == V - 1 ? total : -1;                     // fewer edges: the graph is disconnected
     }
 
     // ---------------------------------------------------------------- tests

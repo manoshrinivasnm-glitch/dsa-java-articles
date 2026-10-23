@@ -5,38 +5,38 @@ public class P2815_DetectACycleInADirectedGraphUsingBFS {
 
     /** Approach 1: BFS from every vertex s and check whether some edge leads back into s. O(V * (V + E)) time, O(V) space. */
     static boolean bruteForce(int V, List<List<Integer>> adj) {
-        for (int s = 0; s < V; s++) {
-            boolean[] seen = new boolean[V];
+        for (int s = 0; s < V; s++) {                     // try every vertex as the start of a cycle
+            boolean[] seen = new boolean[V];              // fresh visited set for each BFS
             Deque<Integer> queue = new ArrayDeque<>();
-            seen[s] = true;
+            seen[s] = true;                               // BFS outward from s
             queue.add(s);
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {                    // visit everything reachable from s
                 int x = queue.poll();
                 for (int y : adj.get(x)) {
                     if (y == s) return true;              // walked from s back to s
-                    if (!seen[y]) {
+                    if (!seen[y]) {                       // first time we reach y: mark it and queue it
                         seen[y] = true;
                         queue.add(y);
                     }
                 }
             }
         }
-        return false;
+        return false;                                     // no vertex can get back to itself
     }
 
     /** Approach 2: Kahn's algorithm. Repeatedly remove vertices of in-degree 0; leftovers mean a cycle. O(V + E) time, O(V) space. */
     static boolean optimal(int V, List<List<Integer>> adj) {
-        int[] indegree = new int[V];
-        for (int u = 0; u < V; u++) {
+        int[] indegree = new int[V];                      // indegree[v] = edges still pointing into v
+        for (int u = 0; u < V; u++) {                     // count every edge u -> v
             for (int v : adj.get(u)) indegree[v]++;
         }
-        Deque<Integer> queue = new ArrayDeque<>();
+        Deque<Integer> queue = new ArrayDeque<>();        // vertices with no incoming edge left
         for (int u = 0; u < V; u++) {
-            if (indegree[u] == 0) queue.add(u);
+            if (indegree[u] == 0) queue.add(u);           // sources can be removed right away
         }
-        int removed = 0;
+        int removed = 0;                                  // how many vertices we have peeled off
         while (!queue.isEmpty()) {
-            int u = queue.poll();
+            int u = queue.poll();                         // remove u together with its outgoing edges
             removed++;
             for (int v : adj.get(u)) {
                 if (--indegree[v] == 0) queue.add(v);     // v has no remaining prerequisites

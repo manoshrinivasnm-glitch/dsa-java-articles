@@ -8,8 +8,9 @@ public class P2829_FloydWarshallAlgorithm {
     /** Copies the input, turning -1 (no edge) into INF and forcing d[i][i] = 0. */
     static int[][] toDist(int[][] matrix) {
         int n = matrix.length;
-        int[][] d = new int[n][n];
+        int[][] d = new int[n][n];                             // d[i][j] = best known distance i -> j
         for (int i = 0; i < n; i++) {
+            // no edge becomes INF; every vertex is 0 from itself
             for (int j = 0; j < n; j++) d[i][j] = i == j ? 0 : (matrix[i][j] == -1 ? INF : matrix[i][j]);
         }
         return d;
@@ -18,7 +19,7 @@ public class P2829_FloydWarshallAlgorithm {
     /** Turns INF back into -1, the output convention. */
     static int[][] toAnswer(int[][] d) {
         for (int[] row : d) {
-            for (int j = 0; j < row.length; j++) if (row[j] == INF) row[j] = -1;
+            for (int j = 0; j < row.length; j++) if (row[j] == INF) row[j] = -1;   // no path: report -1
         }
         return d;
     }
@@ -26,11 +27,12 @@ public class P2829_FloydWarshallAlgorithm {
     /** One min-plus product: out[i][j] = min over k of a[i][k] + b[k][j]. O(n^3). */
     static int[][] minPlus(int[][] a, int[][] b) {
         int n = a.length;
-        int[][] out = new int[n][n];
+        int[][] out = new int[n][n];                           // out[i][j] = best a-path then b-path, i to j
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int best = INF;
-                for (int k = 0; k < n; k++) {
+                int best = INF;                                // cheapest i -> j through some middle vertex
+                for (int k = 0; k < n; k++) {                  // try every middle vertex k
+                    // skip INF so the sum cannot overflow
                     if (a[i][k] != INF && b[k][j] != INF) best = Math.min(best, a[i][k] + b[k][j]);
                 }
                 out[i][j] = best;
@@ -41,7 +43,7 @@ public class P2829_FloydWarshallAlgorithm {
 
     /** Approach 1: extend shortest paths by one edge at a time until they may use n - 1 edges. O(n^4) time, O(n^2) space. */
     static int[][] bruteForce(int[][] matrix) {
-        int[][] w = toDist(matrix);
+        int[][] w = toDist(matrix);                            // w = single-edge distances
         int[][] d = w;                                         // d = best paths with at most 1 edge
         for (int m = 2; m <= w.length - 1; m++) d = minPlus(d, w);   // now at most m edges
         return toAnswer(d);
@@ -50,18 +52,19 @@ public class P2829_FloydWarshallAlgorithm {
     /** Approach 2: repeated squaring; each product doubles the number of edges a path may use. O(n^3 log n) time, O(n^2) space. */
     static int[][] better(int[][] matrix) {
         int[][] d = toDist(matrix);
-        for (int len = 1; len < d.length - 1; len *= 2) d = minPlus(d, d);
+        for (int len = 1; len < d.length - 1; len *= 2) d = minPlus(d, d);   // allowed path length doubles
         return toAnswer(d);
     }
 
     /** Approach 3: Floyd-Warshall. After round k, d[i][j] is the shortest path whose intermediate vertices are all in 0..k. O(n^3) time, O(n^2) space. */
     static int[][] floydWarshall(int[][] matrix) {
-        int[][] d = toDist(matrix);
+        int[][] d = toDist(matrix);                            // d[i][j] = best known distance i -> j
         int n = d.length;
-        for (int k = 0; k < n; k++) {
+        for (int k = 0; k < n; k++) {                          // now allow k as an intermediate vertex
             for (int i = 0; i < n; i++) {
                 if (d[i][k] == INF) continue;                  // i cannot reach k, so k cannot help i
                 for (int j = 0; j < n; j++) {
+                    // going through k is shorter than the best so far
                     if (d[k][j] != INF && d[i][k] + d[k][j] < d[i][j]) d[i][j] = d[i][k] + d[k][j];
                 }
             }
@@ -71,20 +74,21 @@ public class P2829_FloydWarshallAlgorithm {
 
     /** Negative-cycle check for directed edges {u, v, w} with possibly negative w: run Floyd-Warshall and look for d[i][i] < 0. O(n^3) time. */
     static boolean hasNegativeCycle(int n, int[][] edges) {
-        long[][] d = new long[n][n];
-        for (long[] row : d) Arrays.fill(row, Long.MAX_VALUE);
-        for (int i = 0; i < n; i++) d[i][i] = 0;
-        for (int[] e : edges) d[e[0]][e[1]] = Math.min(d[e[0]][e[1]], e[2]);
-        for (int k = 0; k < n; k++) {
+        long[][] d = new long[n][n];                           // long, so negative sums cannot overflow
+        for (long[] row : d) Arrays.fill(row, Long.MAX_VALUE);   // no path yet
+        for (int i = 0; i < n; i++) d[i][i] = 0;               // every vertex is 0 from itself
+        for (int[] e : edges) d[e[0]][e[1]] = Math.min(d[e[0]][e[1]], e[2]);   // cheapest of parallel edges
+        for (int k = 0; k < n; k++) {                          // the same Floyd-Warshall rounds
             for (int i = 0; i < n; i++) {
-                if (d[i][k] == Long.MAX_VALUE) continue;
+                if (d[i][k] == Long.MAX_VALUE) continue;       // i cannot reach k
                 for (int j = 0; j < n; j++) {
+                    // relax i -> j through k, skipping unreachable k -> j
                     if (d[k][j] != Long.MAX_VALUE) d[i][j] = Math.min(d[i][j], d[i][k] + d[k][j]);
                 }
             }
         }
         for (int i = 0; i < n; i++) if (d[i][i] < 0) return true;   // a walk from i back to i with negative cost
-        return false;
+        return false;                                          // no vertex lies on a negative cycle
     }
 
     // ---------------------------------------------------------------- tests

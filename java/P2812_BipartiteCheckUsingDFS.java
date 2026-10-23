@@ -5,69 +5,70 @@ public class P2812_BipartiteCheckUsingDFS {
 
     /** Approach 1: backtracking. Give vertices 0, 1, 2, ... a side in turn and undo on conflict. O(2^V * V) worst case, O(V) space. */
     static boolean bruteForce(int[][] graph) {
-        int[] color = new int[graph.length];
+        int[] color = new int[graph.length];              // color[u] = side 0 or 1, -1 while unassigned
         Arrays.fill(color, -1);
-        return assign(graph, 0, color);
+        return assign(graph, 0, color);                   // place the vertices in index order, from 0
     }
 
     static boolean assign(int[][] graph, int u, int[] color) {
         if (u == graph.length) return true;               // every vertex placed without a clash
-        for (int side = 0; side < 2; side++) {
+        for (int side = 0; side < 2; side++) {            // try both sides for u
             boolean clash = false;
+            // a neighbour already on this side forbids it
             for (int v : graph[u]) if (color[v] == side) { clash = true; break; }
-            if (clash) continue;
-            color[u] = side;
-            if (assign(graph, u + 1, color)) return true;
+            if (clash) continue;                          // u cannot go on this side
+            color[u] = side;                              // tentatively put u on this side
+            if (assign(graph, u + 1, color)) return true;   // the rest fitted too: done
             color[u] = -1;                                // undo and try the other side
         }
-        return false;
+        return false;                                     // neither side works: backtrack
     }
 
     /** Approach 2: recursive DFS 2-colouring; each child gets the opposite colour of its parent. O(V + E) time, O(V) space. */
     static boolean optimal(int[][] graph) {
-        int[] color = new int[graph.length];
+        int[] color = new int[graph.length];              // color[u] = side 0 or 1, -1 while uncoloured
         Arrays.fill(color, -1);
-        for (int s = 0; s < graph.length; s++) {
-            if (color[s] == -1 && !dfs(graph, s, 0, color)) return false;
+        for (int s = 0; s < graph.length; s++) {          // colour every component in turn
+            if (color[s] == -1 && !dfs(graph, s, 0, color)) return false;   // this component has a clash
         }
-        return true;
+        return true;                                      // every component 2-coloured cleanly
     }
 
     static boolean dfs(int[][] graph, int u, int c, int[] color) {
-        color[u] = c;
+        color[u] = c;                                     // put u on side c
         for (int v : graph[u]) {
-            if (color[v] == -1) {
-                if (!dfs(graph, v, 1 - c, color)) return false;
-            } else if (color[v] == c) {
+            if (color[v] == -1) {                         // uncoloured neighbour: give it the other side
+                if (!dfs(graph, v, 1 - c, color)) return false;   // pass a clash found deeper up
+            } else if (color[v] == c) {                   // neighbour already has u's colour
                 return false;                             // both ends of edge u-v on the same side
             }
         }
-        return true;
+        return true;                                      // no clash below u
     }
 
     /** Approach 3: the same DFS colouring with an explicit stack, safe for very deep graphs. O(V + E) time, O(V) space. */
     static boolean optimalIterative(int[][] graph) {
         int V = graph.length;
-        int[] color = new int[V];
+        int[] color = new int[V];                         // color[u] = side 0 or 1, -1 while uncoloured
         Arrays.fill(color, -1);
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (int s = 0; s < V; s++) {
-            if (color[s] != -1) continue;
-            color[s] = 0;
+        Deque<Integer> stack = new ArrayDeque<>();        // vertices coloured but not yet expanded
+        for (int s = 0; s < V; s++) {                     // colour every component in turn
+            if (color[s] != -1) continue;                 // already coloured in an earlier component
+            color[s] = 0;                                 // a new component: start s on side 0
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.pop();
+                int u = stack.pop();                      // expand a coloured vertex
                 for (int v : graph[u]) {
-                    if (color[v] == -1) {
+                    if (color[v] == -1) {                 // first time we see v
                         color[v] = 1 - color[u];          // colour on push, so no vertex is pushed twice
                         stack.push(v);
-                    } else if (color[v] == color[u]) {
-                        return false;
+                    } else if (color[v] == color[u]) {    // neighbour has the same colour as u
+                        return false;                     // so the graph is not bipartite
                     }
                 }
             }
         }
-        return true;
+        return true;                                      // every component 2-coloured cleanly
     }
 
     // ---------------------------------------------------------------- tests

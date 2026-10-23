@@ -5,51 +5,54 @@ public class P315_0And1Knapsack {
 
     /** Approach 1: plain recursion. solve(i, cap) = best value using items 0..i with capacity cap. O(2^n) time, O(n) stack. */
     static int recursion(int W, int[] wt, int[] val) {
-        return solve(wt.length - 1, W, wt, val);
+        return solve(wt.length - 1, W, wt, val);               // last item first, full capacity
     }
 
     static int solve(int i, int cap, int[] wt, int[] val) {
         if (i < 0) return 0;                                   // no items left
-        int skip = solve(i - 1, cap, wt, val);
+        int skip = solve(i - 1, cap, wt, val);                 // leave item i out
+        // take item i only if it fits; MIN_VALUE marks "impossible"
         int take = wt[i] <= cap ? val[i] + solve(i - 1, cap - wt[i], wt, val) : Integer.MIN_VALUE;
-        return Math.max(skip, take);
+        return Math.max(skip, take);                           // better of the two choices
     }
 
     /** Approach 2: memoization. Only n * (W + 1) distinct states exist; cache each one. O(n * W) time, O(n * W) space plus O(n) stack. */
     static int memoization(int W, int[] wt, int[] val) {
         int n = wt.length;
-        int[][] memo = new int[n][W + 1];
-        for (int[] row : memo) Arrays.fill(row, -1);
-        return solveMemo(n - 1, W, wt, val, memo);
+        int[][] memo = new int[n][W + 1];                      // memo[i][cap] = solveMemo(i, cap)
+        for (int[] row : memo) Arrays.fill(row, -1);           // -1: not computed yet
+        return solveMemo(n - 1, W, wt, val, memo);             // same top-level call as the recursion
     }
 
     static int solveMemo(int i, int cap, int[] wt, int[] val, int[][] memo) {
-        if (i < 0) return 0;
-        if (memo[i][cap] != -1) return memo[i][cap];
-        int skip = solveMemo(i - 1, cap, wt, val, memo);
+        if (i < 0) return 0;                                   // no items left
+        if (memo[i][cap] != -1) return memo[i][cap];           // already solved: reuse it
+        int skip = solveMemo(i - 1, cap, wt, val, memo);       // leave item i out
+        // take item i only if it fits
         int take = wt[i] <= cap ? val[i] + solveMemo(i - 1, cap - wt[i], wt, val, memo) : Integer.MIN_VALUE;
-        return memo[i][cap] = Math.max(skip, take);
+        return memo[i][cap] = Math.max(skip, take);            // store the answer before returning it
     }
 
     /** Approach 3: tabulation. dp[i][c] = best value using the first i items with capacity c. O(n * W) time and space. */
     static int tabulation(int W, int[] wt, int[] val) {
         int n = wt.length;
         int[][] dp = new int[n + 1][W + 1];                    // row 0: no items, value 0
-        for (int i = 1; i <= n; i++) {
-            for (int c = 0; c <= W; c++) {
+        for (int i = 1; i <= n; i++) {                         // add items one at a time
+            for (int c = 0; c <= W; c++) {                     // every capacity from 0 to W
                 dp[i][c] = dp[i - 1][c];                       // skip item i - 1
+                // take item i - 1 if it fits, on top of the best for the remaining capacity
                 if (wt[i - 1] <= c) dp[i][c] = Math.max(dp[i][c], val[i - 1] + dp[i - 1][c - wt[i - 1]]);
             }
         }
-        return dp[n][W];
+        return dp[n][W];                                       // all n items, full capacity
     }
 
     /** Approach 4: one array, capacity scanned from high to low so every read still sees the previous row. O(n * W) time, O(W) space. */
     static int spaceOptimised(int W, int[] wt, int[] val) {
-        int[] dp = new int[W + 1];
-        for (int i = 0; i < wt.length; i++) {
+        int[] dp = new int[W + 1];                             // dp[c] = best value with capacity c so far
+        for (int i = 0; i < wt.length; i++) {                  // consider each item once
             for (int c = W; c >= wt[i]; c--) {                 // right to left: dp[c - wt[i]] is still the old value
-                dp[c] = Math.max(dp[c], val[i] + dp[c - wt[i]]);
+                dp[c] = Math.max(dp[c], val[i] + dp[c - wt[i]]);   // skip item i, or take it
             }
         }
         return dp[W];

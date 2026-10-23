@@ -5,64 +5,65 @@ public class P2397_DecodeWays {
 
     /** True when s[i] s[i + 1] is a valid two-digit code, i.e. 10..26 (the caller has already checked s[i] != '0'). */
     static boolean twoDigitCode(String s, int i) {
+        // a second digit exists and the pair is at most 26
         return i + 1 < s.length() && (s.charAt(i) - '0') * 10 + (s.charAt(i + 1) - '0') <= 26;
     }
 
     /** Approach 1: recursion. ways(i) = ways(i + 1) for a one-digit code, plus ways(i + 2) for a two-digit code. O(2^n) time, O(n) stack. */
     static int recursion(String s) {
-        return solve(0, s);
+        return solve(0, s);                                    // count decodings of the whole string
     }
 
     static int solve(int i, String s) {
         if (i == s.length()) return 1;                         // consumed everything: one complete decoding
         if (s.charAt(i) == '0') return 0;                      // no code starts with 0
-        int ways = solve(i + 1, s);
-        if (twoDigitCode(s, i)) ways += solve(i + 2, s);
+        int ways = solve(i + 1, s);                            // s[i] alone is a letter: decode the rest
+        if (twoDigitCode(s, i)) ways += solve(i + 2, s);       // or s[i..i+1] together as one letter
         return ways;
     }
 
     /** Approach 2: memoization. Only n + 1 distinct suffixes exist. O(n) time, O(n) space plus O(n) stack. */
     static int memoization(String s) {
-        int[] memo = new int[s.length() + 1];
-        Arrays.fill(memo, -1);
+        int[] memo = new int[s.length() + 1];                  // memo[i] = ways to decode s[i..]
+        Arrays.fill(memo, -1);                                 // -1: not computed yet
         return solveMemo(0, s, memo);
     }
 
     static int solveMemo(int i, String s, int[] memo) {
-        if (i == s.length()) return 1;
-        if (s.charAt(i) == '0') return 0;
-        if (memo[i] != -1) return memo[i];
-        int ways = solveMemo(i + 1, s, memo);
-        if (twoDigitCode(s, i)) ways += solveMemo(i + 2, s, memo);
-        return memo[i] = ways;
+        if (i == s.length()) return 1;                         // consumed everything: one complete decoding
+        if (s.charAt(i) == '0') return 0;                      // no code starts with 0
+        if (memo[i] != -1) return memo[i];                     // already solved: reuse it
+        int ways = solveMemo(i + 1, s, memo);                  // one-digit code, then the rest
+        if (twoDigitCode(s, i)) ways += solveMemo(i + 2, s, memo);   // plus a two-digit code, if valid
+        return memo[i] = ways;                                 // store the answer before returning it
     }
 
     /** Approach 3: tabulation from the right. dp[i] = number of ways to decode s[i..]. O(n) time, O(n) space. */
     static int tabulation(String s) {
         int n = s.length();
-        int[] dp = new int[n + 1];
+        int[] dp = new int[n + 1];                             // dp[i] = ways to decode s[i..]
         dp[n] = 1;                                             // the empty suffix has exactly one decoding
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {                     // fill from the right end
             if (s.charAt(i) == '0') continue;                  // dp[i] stays 0
-            dp[i] = dp[i + 1];
-            if (twoDigitCode(s, i)) dp[i] += dp[i + 2];
+            dp[i] = dp[i + 1];                                 // one-digit code s[i]
+            if (twoDigitCode(s, i)) dp[i] += dp[i + 2];        // plus a two-digit code s[i..i+1]
         }
-        return dp[0];
+        return dp[0];                                          // ways for the whole string
     }
 
     /** Approach 4: dp[i] only needs dp[i + 1] and dp[i + 2], so keep two variables. O(n) time, O(1) space. */
     static int spaceOptimised(String s) {
         int next1 = 1, next2 = 0;                              // next1 = dp[i + 1], next2 = dp[i + 2]
-        for (int i = s.length() - 1; i >= 0; i--) {
-            int cur = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {            // walk from the right, as in the table
+            int cur = 0;                                       // dp[i]; stays 0 if s[i] is '0'
             if (s.charAt(i) != '0') {
-                cur = next1;
-                if (twoDigitCode(s, i)) cur += next2;
+                cur = next1;                                   // one-digit code s[i]
+                if (twoDigitCode(s, i)) cur += next2;          // plus a two-digit code s[i..i+1]
             }
-            next2 = next1;
+            next2 = next1;                                     // slide the window one step left
             next1 = cur;
         }
-        return next1;
+        return next1;                                          // dp[0]: ways for the whole string
     }
 
     // ---------------------------------------------------------------- tests

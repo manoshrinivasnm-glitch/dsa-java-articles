@@ -6,73 +6,73 @@ public class P495_GraphValidTree {
     /** Approach 1: a tree is connected and every edge is a bridge. Test connectivity, then remove each edge in turn. O(E * (n + E)) time, O(n + E) space. */
     static boolean bruteForce(int n, int[][] edges) {
         if (countReachable(n, edges, -1, 0) != n) return false;   // must be connected
-        for (int skip = 0; skip < edges.length; skip++) {
+        for (int skip = 0; skip < edges.length; skip++) {   // remove each edge in turn
             int u = edges[skip][0], v = edges[skip][1];
             if (u == v) return false;                     // a self-loop is a cycle
             if (reachableWithout(n, edges, skip, u, v)) return false;   // another route: the edge sits on a cycle
         }
-        return true;
+        return true;                                      // connected, and no edge lies on a cycle
     }
 
     /** Number of vertices reachable from start when edge number skip is ignored. */
     static int countReachable(int n, int[][] edges, int skip, int start) {
-        boolean[] seen = bfs(n, edges, skip, start);
+        boolean[] seen = bfs(n, edges, skip, start);      // BFS that ignores edge number skip
         int count = 0;
-        for (boolean b : seen) if (b) count++;
+        for (boolean b : seen) if (b) count++;            // count the reached vertices
         return count;
     }
 
     static boolean reachableWithout(int n, int[][] edges, int skip, int from, int to) {
-        return bfs(n, edges, skip, from)[to];
+        return bfs(n, edges, skip, from)[to];             // can from still reach to without edge skip?
     }
 
     static boolean[] bfs(int n, int[][] edges, int skip, int start) {
-        List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> adj = new ArrayList<>();      // adjacency list rebuilt without edge skip
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int i = 0; i < edges.length; i++) {
-            if (i == skip) continue;
-            adj.get(edges[i][0]).add(edges[i][1]);
+            if (i == skip) continue;                      // leave the removed edge out
+            adj.get(edges[i][0]).add(edges[i][1]);        // undirected: store both directions
             adj.get(edges[i][1]).add(edges[i][0]);
         }
-        boolean[] seen = new boolean[n];
+        boolean[] seen = new boolean[n];                  // vertices reached from start
         Deque<Integer> queue = new ArrayDeque<>();
         seen[start] = true;
         queue.add(start);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                        // standard BFS from start
             int x = queue.poll();
             for (int y : adj.get(x)) {
-                if (!seen[y]) {
+                if (!seen[y]) {                           // queue each vertex the first time we see it
                     seen[y] = true;
                     queue.add(y);
                 }
             }
         }
-        return seen;
+        return seen;                                      // seen[v] = v is reachable from start
     }
 
     /** Approach 2: exactly n - 1 edges plus connectivity, checked with one BFS. O(n + E) time, O(n + E) space. */
     static boolean optimalBfs(int n, int[][] edges) {
         if (edges.length != n - 1) return false;          // a tree on n vertices has exactly n - 1 edges
-        return countReachable(n, edges, -1, 0) == n;
+        return countReachable(n, edges, -1, 0) == n;      // and all n vertices are reachable from 0
     }
 
     /** Approach 3: union-find. Exactly n - 1 edges, and no edge may join two vertices already connected. O(n + E * α(n)) time, O(n) space. */
     static boolean optimalUnionFind(int n, int[][] edges) {
-        if (edges.length != n - 1) return false;
-        int[] parent = new int[n], size = new int[n];
-        for (int i = 0; i < n; i++) { parent[i] = i; size[i] = 1; }
-        for (int[] e : edges) {
-            int a = find(parent, e[0]), b = find(parent, e[1]);
+        if (edges.length != n - 1) return false;          // any other edge count cannot be a tree
+        int[] parent = new int[n], size = new int[n];     // union-find forest: parent links and set sizes
+        for (int i = 0; i < n; i++) { parent[i] = i; size[i] = 1; }   // every vertex starts as its own set
+        for (int[] e : edges) {                           // merge the two ends of every edge
+            int a = find(parent, e[0]), b = find(parent, e[1]);   // roots of the sets holding u and v
             if (a == b) return false;                     // u and v already connected: this edge closes a cycle
-            if (size[a] < size[b]) { int t = a; a = b; b = t; }
+            if (size[a] < size[b]) { int t = a; a = b; b = t; }   // make a the larger set
             parent[b] = a;                                // union by size
-            size[a] += size[b];
+            size[a] += size[b];                           // a now holds b's vertices too
         }
         return true;                                      // n - 1 merges leave exactly one set
     }
 
     static int find(int[] parent, int x) {
-        while (parent[x] != x) {
+        while (parent[x] != x) {                          // climb until we reach the root
             parent[x] = parent[parent[x]];                // path halving
             x = parent[x];
         }

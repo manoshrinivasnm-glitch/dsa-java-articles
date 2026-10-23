@@ -5,75 +5,76 @@ public class P2818_DetectACycleInUndirectedGraphUsingBFS {
 
     /** Approach 1: an edge u-v is on a cycle iff v is still reachable from u without it. O(E * (V + E)) time, O(V) space. */
     static boolean bruteForce(int V, List<List<Integer>> adj) {
-        for (int u = 0; u < V; u++) {
+        for (int u = 0; u < V; u++) {                    // try every vertex as one end of an edge
             for (int v : adj.get(u)) {
+                // u < v tests each undirected edge only once
                 if (u < v && reachableWithout(V, adj, u, v)) return true;
             }
         }
-        return false;
+        return false;                                    // no edge lies on a cycle
     }
 
     /** BFS from u to v that is not allowed to walk along the edge u-v itself. */
     static boolean reachableWithout(int V, List<List<Integer>> adj, int u, int v) {
-        boolean[] seen = new boolean[V];
+        boolean[] seen = new boolean[V];                 // vertices already reached in this search
         Deque<Integer> queue = new ArrayDeque<>();
-        seen[u] = true;
+        seen[u] = true;                                  // start the BFS at u
         queue.add(u);
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                       // explore everything reachable from u
             int x = queue.poll();
             for (int y : adj.get(x)) {
                 if ((x == u && y == v) || (x == v && y == u)) continue;   // the removed edge
-                if (y == v) return true;
-                if (!seen[y]) {
+                if (y == v) return true;                 // another route to v exists, so u-v closes a cycle
+                if (!seen[y]) {                          // first time we reach y: mark it and queue it
                     seen[y] = true;
                     queue.add(y);
                 }
             }
         }
-        return false;
+        return false;                                    // v is cut off without the edge: u-v is on no cycle
     }
 
     /** Approach 2: BFS remembering each vertex's parent; a visited neighbour that is not the parent closes a cycle. O(V + E) time, O(V) space. */
     static boolean optimal(int V, List<List<Integer>> adj) {
-        boolean[] visited = new boolean[V];
-        int[] parent = new int[V];
-        for (int start = 0; start < V; start++) {
-            if (visited[start]) continue;                 // new component
+        boolean[] visited = new boolean[V];              // vertices already reached by some BFS
+        int[] parent = new int[V];                       // parent[y] = the vertex that discovered y
+        for (int start = 0; start < V; start++) {        // run one BFS per connected component
+            if (visited[start]) continue;                // already explored as part of an earlier component
             visited[start] = true;
-            parent[start] = -1;
+            parent[start] = -1;                          // the root of this BFS has no parent
             Deque<Integer> queue = new ArrayDeque<>();
             queue.add(start);
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {                   // visit the component level by level
                 int x = queue.poll();
                 for (int y : adj.get(x)) {
-                    if (!visited[y]) {
+                    if (!visited[y]) {                   // first discovery: x becomes y's parent
                         visited[y] = true;
                         parent[y] = x;
                         queue.add(y);
-                    } else if (y != parent[x]) {
-                        return true;                      // reached y a second way
+                    } else if (y != parent[x]) {         // seen before, and not via the edge we came in on
+                        return true;                     // reached y a second way: a cycle
                     }
                 }
             }
         }
-        return false;
+        return false;                                    // every component is a tree
     }
 
     /** Approach 3: BFS each component and count it; a tree on k vertices has exactly k - 1 edges. O(V + E) time, O(V) space. */
     static boolean edgeCount(int V, List<List<Integer>> adj) {
-        boolean[] visited = new boolean[V];
-        for (int start = 0; start < V; start++) {
-            if (visited[start]) continue;
-            long vertices = 0, degreeSum = 0;
+        boolean[] visited = new boolean[V];              // vertices already counted in some component
+        for (int start = 0; start < V; start++) {        // one BFS per connected component
+            if (visited[start]) continue;                // already counted in an earlier component
+            long vertices = 0, degreeSum = 0;            // size and total degree of this component
             visited[start] = true;
             Deque<Integer> queue = new ArrayDeque<>();
             queue.add(start);
             while (!queue.isEmpty()) {
                 int x = queue.poll();
-                vertices++;
-                degreeSum += adj.get(x).size();
+                vertices++;                              // count each vertex once as it leaves the queue
+                degreeSum += adj.get(x).size();          // every edge adds 1 to the degree of both its ends
                 for (int y : adj.get(x)) {
-                    if (!visited[y]) {
+                    if (!visited[y]) {                   // queue each neighbour the first time we see it
                         visited[y] = true;
                         queue.add(y);
                     }
@@ -81,7 +82,7 @@ public class P2818_DetectACycleInUndirectedGraphUsingBFS {
             }
             if (degreeSum / 2 > vertices - 1) return true; // every edge is counted from both ends
         }
-        return false;
+        return false;                                    // every component had exactly k - 1 edges
     }
 
     // ---------------------------------------------------------------- tests

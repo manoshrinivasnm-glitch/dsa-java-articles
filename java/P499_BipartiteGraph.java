@@ -6,41 +6,42 @@ public class P499_BipartiteGraph {
     /** Approach 1: try all 2^V ways to split the vertices into two sides. O(2^V * (V + E)) time, O(1) extra space. Only for tiny V. */
     static boolean bruteForce(int[][] graph) {
         int V = graph.length;
-        for (long mask = 0; mask < (1L << V); mask++) {  // bit u of mask = side of vertex u
-            boolean ok = true;
+        for (long mask = 0; mask < (1L << V); mask++) {   // bit u of mask = the side of vertex u
+            boolean ok = true;                            // does this split keep every edge across the sides?
             for (int u = 0; u < V && ok; u++) {
                 for (int v : graph[u]) {
+                    // both ends on the same side: split fails
                     if (((mask >> u) & 1) == ((mask >> v) & 1)) { ok = false; break; }
                 }
             }
-            if (ok) return true;
+            if (ok) return true;                          // found a valid split
         }
-        return false;
+        return false;                                     // no split works
     }
 
     /** Approach 2: BFS 2-colouring. Colour a start vertex 0, its neighbours 1, theirs 0, and look for a clash. O(V + E) time, O(V) space. */
     static boolean optimal(int[][] graph) {
         int V = graph.length;
-        int[] color = new int[V];
+        int[] color = new int[V];                         // color[u] = side 0 or 1 of vertex u
         Arrays.fill(color, -1);                           // -1 = not coloured yet
         Deque<Integer> queue = new ArrayDeque<>();
         for (int s = 0; s < V; s++) {
             if (color[s] != -1) continue;                 // already handled as part of an earlier component
-            color[s] = 0;
+            color[s] = 0;                                 // a new component: put s on side 0
             queue.add(s);
-            while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {                    // colour the component level by level
                 int u = queue.poll();
                 for (int v : graph[u]) {
-                    if (color[v] == -1) {
+                    if (color[v] == -1) {                 // first time we see v
                         color[v] = 1 - color[u];          // forced: the opposite side of u
                         queue.add(v);
-                    } else if (color[v] == color[u]) {
+                    } else if (color[v] == color[u]) {    // both ends of the edge have the same colour
                         return false;                     // an edge inside one side
                     }
                 }
             }
         }
-        return true;
+        return true;                                      // no clash in any component
     }
 
     // ---------------------------------------------------------------- tests

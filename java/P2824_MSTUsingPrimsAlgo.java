@@ -5,54 +5,55 @@ public class P2824_MSTUsingPrimsAlgo {
 
     /** Adjacency list of {neighbour, weight}; each undirected edge is stored in both directions. */
     static List<List<int[]>> buildAdj(int V, int[][] edges) {
-        List<List<int[]>> adj = new ArrayList<>();
+        List<List<int[]>> adj = new ArrayList<>();             // adj.get(u) = list of {neighbour, weight}
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
         for (int[] e : edges) {
-            adj.get(e[0]).add(new int[]{e[1], e[2]});
-            adj.get(e[1]).add(new int[]{e[0], e[2]});
+            adj.get(e[0]).add(new int[]{e[1], e[2]});          // u -> v with weight w
+            adj.get(e[1]).add(new int[]{e[0], e[2]});          // and v -> u: the graph is undirected
         }
         return adj;
     }
 
     /** Approach 1: try every subset of V - 1 edges; keep the cheapest one that has no cycle (hence is a spanning tree). O(2^E * E * V) time, O(V) space. */
     static int bruteForce(int V, int[][] edges) {
-        int E = edges.length, best = Integer.MAX_VALUE;
-        for (int mask = 0; mask < (1 << E); mask++) {
-            if (Integer.bitCount(mask) != V - 1) continue;
+        int E = edges.length, best = Integer.MAX_VALUE;        // best = cheapest spanning tree so far
+        for (int mask = 0; mask < (1 << E); mask++) {          // every subset of edges as a bitmask
+            if (Integer.bitCount(mask) != V - 1) continue;     // a spanning tree has exactly V - 1 edges
             int[] comp = new int[V];                           // comp[x]: label of the piece containing x
-            for (int i = 0; i < V; i++) comp[i] = i;
-            int weight = 0, merges = 0;
+            for (int i = 0; i < V; i++) comp[i] = i;           // every vertex starts as its own piece
+            int weight = 0, merges = 0;                        // weight and merge count of this subset
             for (int i = 0; i < E; i++) {
-                if ((mask >> i & 1) == 0) continue;
-                int a = comp[edges[i][0]], b = comp[edges[i][1]];
+                if ((mask >> i & 1) == 0) continue;            // edge i is not in this subset
+                int a = comp[edges[i][0]], b = comp[edges[i][1]];   // pieces holding the two ends
                 if (a == b) break;                             // this subset contains a cycle
-                for (int x = 0; x < V; x++) if (comp[x] == b) comp[x] = a;
+                for (int x = 0; x < V; x++) if (comp[x] == b) comp[x] = a;   // merge piece b into piece a
                 weight += edges[i][2];
                 merges++;
             }
             if (merges == V - 1) best = Math.min(best, weight);    // V - 1 edges and no cycle: a spanning tree
         }
-        return best == Integer.MAX_VALUE ? -1 : best;
+        return best == Integer.MAX_VALUE ? -1 : best;          // -1: the graph is disconnected
     }
 
     /** Approach 2: Prim with a key array and a linear scan for the cheapest vertex to attach. O(V^2 + E) time, O(V + E) space. */
     static int better(int V, int[][] edges) {
         List<List<int[]>> adj = buildAdj(V, edges);
         int[] key = new int[V];                                // key[v]: cheapest known edge joining v to the tree
-        Arrays.fill(key, Integer.MAX_VALUE);
-        boolean[] inTree = new boolean[V];
-        key[0] = 0;
-        int total = 0;
-        for (int iter = 0; iter < V; iter++) {
-            int u = -1;
+        Arrays.fill(key, Integer.MAX_VALUE);                   // nothing attached yet
+        boolean[] inTree = new boolean[V];                     // vertices already in the tree
+        key[0] = 0;                                            // start the tree at vertex 0
+        int total = 0;                                         // weight of the tree so far
+        for (int iter = 0; iter < V; iter++) {                 // each round attaches one vertex
+            int u = -1;                                        // the cheapest vertex to attach next
             for (int v = 0; v < V; v++) {
+                // outside the tree, reachable, and cheapest so far
                 if (!inTree[v] && key[v] != Integer.MAX_VALUE && (u == -1 || key[v] < key[u])) u = v;
             }
             if (u == -1) return -1;                            // some vertex can never be attached
-            inTree[u] = true;
-            total += key[u];
-            for (int[] e : adj.get(u)) {
-                if (!inTree[e[0]] && e[1] < key[e[0]]) key[e[0]] = e[1];
+            inTree[u] = true;                                  // attach u through its cheapest edge
+            total += key[u];                                   // and pay for that edge
+            for (int[] e : adj.get(u)) {                       // u may offer cheaper links to its neighbours
+                if (!inTree[e[0]] && e[1] < key[e[0]]) key[e[0]] = e[1];   // a cheaper way to join e[0]
             }
         }
         return total;
@@ -61,39 +62,39 @@ public class P2824_MSTUsingPrimsAlgo {
     /** Approach 3: Prim with a min-heap of {edgeWeight, vertex}; stale entries are skipped when popped. O(E log E) time, O(V + E) space. */
     static int optimal(int V, int[][] edges) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        boolean[] inTree = new boolean[V];
+        boolean[] inTree = new boolean[V];                     // vertices already in the tree
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));   // {edgeWeight, vertex}
-        pq.add(new int[]{0, 0});
-        int total = 0, added = 0;
-        while (!pq.isEmpty()) {
+        pq.add(new int[]{0, 0});                               // start at vertex 0 with no edge cost
+        int total = 0, added = 0;                              // tree weight and number of vertices added
+        while (!pq.isEmpty()) {                                // pop the cheapest edge leaving the tree
             int[] top = pq.poll();
             int w = top[0], u = top[1];
             if (inTree[u]) continue;                           // u already joined through a cheaper edge
-            inTree[u] = true;
+            inTree[u] = true;                                  // u joins the tree through an edge of weight w
             total += w;
             added++;
             for (int[] e : adj.get(u)) {
-                if (!inTree[e[0]]) pq.add(new int[]{e[1], e[0]});
+                if (!inTree[e[0]]) pq.add(new int[]{e[1], e[0]});   // offer every edge to an outside vertex
             }
         }
-        return added == V ? total : -1;
+        return added == V ? total : -1;                        // fewer than V added: graph is disconnected
     }
 
     /** Approach 3, returning the tree itself: heap entries also carry the parent, giving edges {parent, child, weight}. */
     static List<int[]> optimalEdges(int V, int[][] edges) {
         List<List<int[]>> adj = buildAdj(V, edges);
-        boolean[] inTree = new boolean[V];
+        boolean[] inTree = new boolean[V];                     // vertices already in the tree
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));   // {edgeWeight, vertex, parent}
-        pq.add(new int[]{0, 0, -1});
-        List<int[]> tree = new ArrayList<>();
+        pq.add(new int[]{0, 0, -1});                           // the root 0 has no parent
+        List<int[]> tree = new ArrayList<>();                  // chosen edges {parent, child, weight}
         while (!pq.isEmpty()) {
             int[] top = pq.poll();
             int u = top[1];
-            if (inTree[u]) continue;
+            if (inTree[u]) continue;                           // u already joined through a cheaper edge
             inTree[u] = true;
-            if (top[2] != -1) tree.add(new int[]{top[2], u, top[0]});
+            if (top[2] != -1) tree.add(new int[]{top[2], u, top[0]});   // record the edge that brought u in
             for (int[] e : adj.get(u)) {
-                if (!inTree[e[0]]) pq.add(new int[]{e[1], e[0], u});
+                if (!inTree[e[0]]) pq.add(new int[]{e[1], e[0], u});   // u becomes the candidate parent
             }
         }
         return tree;

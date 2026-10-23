@@ -7,16 +7,17 @@ public class P518_BellmanFordAlgorithm {
 
     /** Approach 1: textbook Bellman-Ford. V - 1 rounds that relax every edge, then one extra round to detect a negative cycle. O(V * E) time, O(V) space. */
     static int[] bellmanFord(int V, int[][] edges, int src) {
-        int[] dist = new int[V];
-        Arrays.fill(dist, INF);
-        dist[src] = 0;
-        for (int round = 1; round <= V - 1; round++) {
-            for (int[] e : edges) {
+        int[] dist = new int[V];                               // dist[v] = shortest distance found so far
+        Arrays.fill(dist, INF);                                // nothing reached yet
+        dist[src] = 0;                                         // the source costs nothing
+        for (int round = 1; round <= V - 1; round++) {         // a shortest path uses at most V - 1 edges
+            for (int[] e : edges) {                            // relax every edge once per round
                 int u = e[0], v = e[1], w = e[2];
+                // u is reached and the edge u -> v gives a shorter route
                 if (dist[u] != INF && dist[u] + w < dist[v]) dist[v] = dist[u] + w;
             }
         }
-        for (int[] e : edges) {
+        for (int[] e : edges) {                                // extra round: any gain means a negative cycle
             if (dist[e[0]] != INF && dist[e[0]] + e[2] < dist[e[1]]) return new int[]{-1};   // still improvable: negative cycle
         }
         return dist;
@@ -24,14 +25,14 @@ public class P518_BellmanFordAlgorithm {
 
     /** Approach 2: same rounds, but stop as soon as a round changes nothing. O(V * E) worst case, often far fewer rounds. O(V) space. */
     static int[] earlyExit(int V, int[][] edges, int src) {
-        int[] dist = new int[V];
-        Arrays.fill(dist, INF);
-        dist[src] = 0;
-        for (int round = 1; round <= V; round++) {
-            boolean changed = false;
+        int[] dist = new int[V];                               // dist[v] = shortest distance found so far
+        Arrays.fill(dist, INF);                                // nothing reached yet
+        dist[src] = 0;                                         // the source costs nothing
+        for (int round = 1; round <= V; round++) {             // round V only detects a negative cycle
+            boolean changed = false;                           // did this round improve any distance?
             for (int[] e : edges) {
                 int u = e[0], v = e[1], w = e[2];
-                if (dist[u] != INF && dist[u] + w < dist[v]) {
+                if (dist[u] != INF && dist[u] + w < dist[v]) {   // reached u, and u -> v gives a shorter route
                     dist[v] = dist[u] + w;
                     changed = true;
                 }
@@ -44,26 +45,26 @@ public class P518_BellmanFordAlgorithm {
 
     /** Approach 3: queue-based Bellman-Ford (SPFA). Only vertices whose distance just dropped are re-examined. O(V * E) worst case, O(V + E) space. */
     static int[] spfa(int V, int[][] edges, int src) {
-        List<List<int[]>> adj = new ArrayList<>();
+        List<List<int[]>> adj = new ArrayList<>();             // adj.get(u) = list of {v, weight}
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
-        for (int[] e : edges) adj.get(e[0]).add(new int[]{e[1], e[2]});
+        for (int[] e : edges) adj.get(e[0]).add(new int[]{e[1], e[2]});   // directed edges only
         int[] dist = new int[V], len = new int[V];             // len[v]: number of edges on the walk that gave dist[v]
         Arrays.fill(dist, INF);
         dist[src] = 0;
-        boolean[] inQueue = new boolean[V];
-        Deque<Integer> queue = new ArrayDeque<>();
+        boolean[] inQueue = new boolean[V];                    // avoid queueing the same vertex twice
+        Deque<Integer> queue = new ArrayDeque<>();             // vertices whose distance just dropped
         queue.add(src);
         inQueue[src] = true;
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {                             // re-examine edges out of improved vertices
             int u = queue.poll();
-            inQueue[u] = false;
+            inQueue[u] = false;                                // u may be queued again later
             for (int[] e : adj.get(u)) {
                 int v = e[0];
-                if (dist[u] + e[1] < dist[v]) {
+                if (dist[u] + e[1] < dist[v]) {                // a shorter route to v through u
                     dist[v] = dist[u] + e[1];
-                    len[v] = len[u] + 1;
+                    len[v] = len[u] + 1;                       // one more edge than the walk to u
                     if (len[v] >= V) return new int[]{-1};     // a shortest simple path has at most V - 1 edges
-                    if (!inQueue[v]) {
+                    if (!inQueue[v]) {                         // v must re-relax its own edges
                         queue.add(v);
                         inQueue[v] = true;
                     }

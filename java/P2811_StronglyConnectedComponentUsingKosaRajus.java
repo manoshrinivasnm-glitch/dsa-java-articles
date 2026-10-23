@@ -5,16 +5,16 @@ public class P2811_StronglyConnectedComponentUsingKosaRajus {
 
     /** Adjacency list for a directed graph: edge {u, v} means u -> v. */
     static List<List<Integer>> buildAdj(int V, int[][] edges) {
-        List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> adj = new ArrayList<>();           // adj.get(u) = targets of the edges out of u
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
-        for (int[] e : edges) adj.get(e[0]).add(e[1]);
+        for (int[] e : edges) adj.get(e[0]).add(e[1]);         // one directed edge u -> v
         return adj;
     }
 
     /** Sorts each component, then orders components by their smallest vertex, so answers can be compared directly. */
     static List<List<Integer>> normalise(List<List<Integer>> comps) {
-        for (List<Integer> c : comps) Collections.sort(c);
-        comps.sort((a, b) -> Integer.compare(a.get(0), b.get(0)));
+        for (List<Integer> c : comps) Collections.sort(c);     // sort inside each component
+        comps.sort((a, b) -> Integer.compare(a.get(0), b.get(0)));   // order components by smallest vertex
         return comps;
     }
 
@@ -22,27 +22,27 @@ public class P2811_StronglyConnectedComponentUsingKosaRajus {
     static List<List<Integer>> bruteForce(int V, int[][] edges) {
         List<List<Integer>> adj = buildAdj(V, edges);
         boolean[][] reach = new boolean[V][V];                 // reach[s][v]: there is a path s -> v
-        for (int s = 0; s < V; s++) {
+        for (int s = 0; s < V; s++) {                          // one DFS from every start vertex
             Deque<Integer> stack = new ArrayDeque<>();
             stack.push(s);
-            reach[s][s] = true;
+            reach[s][s] = true;                                // every vertex reaches itself
             while (!stack.isEmpty()) {
                 int u = stack.pop();
                 for (int v : adj.get(u)) {
-                    if (!reach[s][v]) {
+                    if (!reach[s][v]) {                        // first time s reaches v
                         reach[s][v] = true;
                         stack.push(v);
                     }
                 }
             }
         }
-        boolean[] assigned = new boolean[V];
+        boolean[] assigned = new boolean[V];                   // vertices already placed in a component
         List<List<Integer>> comps = new ArrayList<>();
-        for (int u = 0; u < V; u++) {
-            if (assigned[u]) continue;
+        for (int u = 0; u < V; u++) {                          // u leads a new SCC unless already assigned
+            if (assigned[u]) continue;                         // already in an earlier SCC
             List<Integer> comp = new ArrayList<>();
-            for (int v = u; v < V; v++) {
-                if (!assigned[v] && reach[u][v] && reach[v][u]) {
+            for (int v = u; v < V; v++) {                      // earlier vertices are all assigned already
+                if (!assigned[v] && reach[u][v] && reach[v][u]) {   // u and v reach each other: same SCC
                     assigned[v] = true;
                     comp.add(v);
                 }
@@ -55,19 +55,19 @@ public class P2811_StronglyConnectedComponentUsingKosaRajus {
     /** Approach 2: Kosaraju. DFS for finish order, reverse every edge, then DFS the reversed graph in decreasing finish time. O(V + E) time and space. */
     static List<List<Integer>> kosaraju(int V, int[][] edges) {
         List<List<Integer>> adj = buildAdj(V, edges);
-        boolean[] visited = new boolean[V];
+        boolean[] visited = new boolean[V];                    // vertices reached by pass 1
         Deque<Integer> finished = new ArrayDeque<>();          // top of the stack = vertex that finished last
-        for (int u = 0; u < V; u++) {
+        for (int u = 0; u < V; u++) {                          // pass 1: finish order over the whole graph
             if (!visited[u]) dfsOrder(u, adj, visited, finished);
         }
-        List<List<Integer>> rev = new ArrayList<>();
+        List<List<Integer>> rev = new ArrayList<>();           // the transposed graph
         for (int i = 0; i < V; i++) rev.add(new ArrayList<>());
         for (int[] e : edges) rev.get(e[1]).add(e[0]);         // transpose: u -> v becomes v -> u
-        Arrays.fill(visited, false);
+        Arrays.fill(visited, false);                           // reuse visited for pass 2
         List<List<Integer>> comps = new ArrayList<>();
-        while (!finished.isEmpty()) {
+        while (!finished.isEmpty()) {                          // pass 2: vertices in decreasing finish time
             int u = finished.pop();
-            if (visited[u]) continue;
+            if (visited[u]) continue;                          // already inside an earlier SCC
             List<Integer> comp = new ArrayList<>();
             dfsCollect(u, rev, visited, comp);                 // everything reached here is exactly u's SCC
             comps.add(comp);
@@ -78,15 +78,15 @@ public class P2811_StronglyConnectedComponentUsingKosaRajus {
     static void dfsOrder(int u, List<List<Integer>> adj, boolean[] visited, Deque<Integer> finished) {
         visited[u] = true;
         for (int v : adj.get(u)) {
-            if (!visited[v]) dfsOrder(v, adj, visited, finished);
+            if (!visited[v]) dfsOrder(v, adj, visited, finished);   // finish all descendants first
         }
         finished.push(u);                                      // pushed only after all its descendants are done
     }
 
     static void dfsCollect(int u, List<List<Integer>> rev, boolean[] visited, List<Integer> comp) {
         visited[u] = true;
-        comp.add(u);
-        for (int v : rev.get(u)) {
+        comp.add(u);                                           // u belongs to this SCC
+        for (int v : rev.get(u)) {                             // walk reversed edges only
             if (!visited[v]) dfsCollect(v, rev, visited, comp);
         }
     }
@@ -94,45 +94,45 @@ public class P2811_StronglyConnectedComponentUsingKosaRajus {
     /** Approach 3: Kosaraju with explicit stacks, safe for paths of 10^5 vertices. O(V + E) time and space. */
     static List<List<Integer>> kosarajuIterative(int V, int[][] edges) {
         List<List<Integer>> adj = buildAdj(V, edges);
-        boolean[] visited = new boolean[V];
+        boolean[] visited = new boolean[V];                    // vertices reached by pass 1
         int[] order = new int[V];                              // vertices in increasing finish time
         int[] next = new int[V];                               // next[u]: index of the next neighbour of u to try
-        int finishedCount = 0;
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (int s = 0; s < V; s++) {
+        int finishedCount = 0;                                 // how many vertices have finished so far
+        Deque<Integer> stack = new ArrayDeque<>();             // the current DFS path, deepest vertex on top
+        for (int s = 0; s < V; s++) {                          // pass 1: iterative DFS from every new vertex
             if (visited[s]) continue;
             visited[s] = true;
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.peek();
-                if (next[u] < adj.get(u).size()) {
-                    int v = adj.get(u).get(next[u]++);
-                    if (!visited[v]) {
+                int u = stack.peek();                          // work on the deepest vertex
+                if (next[u] < adj.get(u).size()) {             // u still has an untried edge
+                    int v = adj.get(u).get(next[u]++);         // follow it
+                    if (!visited[v]) {                         // unvisited: go deeper into v
                         visited[v] = true;
                         stack.push(v);
                     }
-                } else {
+                } else {                                       // all edges tried: u is finished
                     stack.pop();
                     order[finishedCount++] = u;                // u finishes after all its descendants
                 }
             }
         }
-        List<List<Integer>> rev = new ArrayList<>();
+        List<List<Integer>> rev = new ArrayList<>();           // the transposed graph
         for (int i = 0; i < V; i++) rev.add(new ArrayList<>());
-        for (int[] e : edges) rev.get(e[1]).add(e[0]);
-        Arrays.fill(visited, false);
+        for (int[] e : edges) rev.get(e[1]).add(e[0]);         // transpose: u -> v becomes v -> u
+        Arrays.fill(visited, false);                           // reuse visited for pass 2
         List<List<Integer>> comps = new ArrayList<>();
-        for (int i = V - 1; i >= 0; i--) {
+        for (int i = V - 1; i >= 0; i--) {                     // pass 2: vertices in decreasing finish time
             int s = order[i];
-            if (visited[s]) continue;
-            List<Integer> comp = new ArrayList<>();
+            if (visited[s]) continue;                          // already inside an earlier SCC
+            List<Integer> comp = new ArrayList<>();            // vertices of the SCC that s belongs to
             visited[s] = true;
             stack.push(s);
-            while (!stack.isEmpty()) {
+            while (!stack.isEmpty()) {                         // gather all s reaches in the reversed graph
                 int u = stack.pop();
                 comp.add(u);
                 for (int v : rev.get(u)) {
-                    if (!visited[v]) {
+                    if (!visited[v]) {                         // push each unvisited vertex once
                         visited[v] = true;
                         stack.push(v);
                     }
