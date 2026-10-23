@@ -5,24 +5,24 @@ public class P42_MaximumConsecutiveOnes {
 
     /** Approach 1: from every index, walk right while the value is 1. O(n^2) time in the worst case, O(1) space. */
     static int bruteForce(int[] nums) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
+        int n = nums.length, best = 0;               // best = longest run of 1s found so far
+        for (int i = 0; i < n; i++) {                // try each index as the start of a run
             int j = i;
-            while (j < n && nums[j] == 1) j++;
-            best = Math.max(best, j - i);
+            while (j < n && nums[j] == 1) j++;       // extend while the 1s continue
+            best = Math.max(best, j - i);            // j - i ones start at index i
         }
         return best;
     }
 
     /** Approach 2: one pass with a running counter that resets on every 0. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
-        int best = 0, run = 0;
+        int best = 0, run = 0;                       // run = length of the current streak of 1s
         for (int x : nums) {
             if (x == 1) {
-                run++;
-                if (run > best) best = run;
+                run++;                               // the streak grows
+                if (run > best) best = run;          // record a new longest streak
             } else {
-                run = 0;
+                run = 0;                             // a 0 breaks the streak
             }
         }
         return best;
@@ -30,10 +30,10 @@ public class P42_MaximumConsecutiveOnes {
 
     /** Approach 3: the same sweep phrased as "distance from the last zero". O(n) time, O(1) space. */
     static int optimalLastZero(int[] nums) {
-        int best = 0, lastZero = -1;
+        int best = 0, lastZero = -1;                 // -1 acts as a zero just before the array
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) lastZero = i;
-            else best = Math.max(best, i - lastZero);
+            if (nums[i] == 0) lastZero = i;          // a run of 1s can only start after this
+            else best = Math.max(best, i - lastZero);   // the 1s after the last zero end at i
         }
         return best;
     }

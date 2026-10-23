@@ -5,41 +5,41 @@ public class P41_LinearSearch {
 
     /** Approach 1: scan left to right and stop at the first match. O(n) time, O(1) space. */
     static int iterative(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) return i;
+        for (int i = 0; i < nums.length; i++) {      // check each index from the left
+            if (nums[i] == target) return i;         // first match: stop here
         }
-        return -1;
+        return -1;                                   // scanned everything, no match
     }
 
     /** Approach 2: the same scan written recursively, one element per call. O(n) time, O(n) stack space. */
     static int recursive(int[] nums, int target) {
-        return recursive(nums, target, 0);
+        return recursive(nums, target, 0);           // start the scan at index 0
     }
 
     static int recursive(int[] nums, int target, int i) {
         if (i == nums.length) return -1;             // ran off the end: not found
-        if (nums[i] == target) return i;
-        return recursive(nums, target, i + 1);
+        if (nums[i] == target) return i;             // found at this index
+        return recursive(nums, target, i + 1);       // otherwise search the rest
     }
 
     /** Approach 3: sentinel search; park target in the last slot so the loop needs no bounds check, then restore. O(n) time, O(1) space. */
     static int sentinel(int[] nums, int target) {
         int n = nums.length;
-        if (n == 0) return -1;
-        int last = nums[n - 1];
+        if (n == 0) return -1;                       // empty array: nothing to find
+        int last = nums[n - 1];                      // remember the real last value
         nums[n - 1] = target;                        // the scan is now guaranteed to stop
         int i = 0;
-        while (nums[i] != target) i++;
+        while (nums[i] != target) i++;               // no bounds check: the sentinel stops the loop
         nums[n - 1] = last;                          // undo the temporary write
         if (i < n - 1 || last == target) return i;   // a real match, either before the sentinel or at it
-        return -1;
+        return -1;                                   // only the sentinel matched
     }
 
     /** Variant: every index at which target occurs, in increasing order. O(n) time, O(k) space for k matches. */
     static List<Integer> allOccurrences(int[] nums, int target) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();    // matching indices, in increasing order
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) result.add(i);
+            if (nums[i] == target) result.add(i);    // record every match and keep scanning
         }
         return result;
     }

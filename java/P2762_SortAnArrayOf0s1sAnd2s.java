@@ -5,36 +5,36 @@ public class P2762_SortAnArrayOf0s1sAnd2s {
 
     /** Approach 1: use a general-purpose sort. O(n log n) time, O(log n) stack for the sort. */
     static void bruteForce(int[] nums) {
-        Arrays.sort(nums);
+        Arrays.sort(nums);                           // general sort; ignores that only 0, 1, 2 occur
     }
 
     /** Approach 2: count the 0s, 1s and 2s, then overwrite the array. Two passes, O(n) time, O(1) space. */
     static void better(int[] nums) {
-        int c0 = 0, c1 = 0, c2 = 0;
-        for (int x : nums) {
+        int c0 = 0, c1 = 0, c2 = 0;                  // how many 0s, 1s and 2s
+        for (int x : nums) {                         // pass 1: count each value
             if (x == 0) c0++;
             else if (x == 1) c1++;
             else c2++;
         }
-        int i = 0;
-        while (c0-- > 0) nums[i++] = 0;
-        while (c1-- > 0) nums[i++] = 1;
-        while (c2-- > 0) nums[i++] = 2;
+        int i = 0;                                   // pass 2: rewrite the array in order
+        while (c0-- > 0) nums[i++] = 0;              // all the 0s first
+        while (c1-- > 0) nums[i++] = 1;              // then the 1s
+        while (c2-- > 0) nums[i++] = 2;              // then the 2s
     }
 
     /** Approach 3: Dutch National Flag, one pass with three pointers. O(n) time, O(1) space. */
     static void optimal(int[] nums) {
-        int low = 0, mid = 0, high = nums.length - 1;
-        while (mid <= high) {
-            if (nums[mid] == 0) {
+        int low = 0, mid = 0, high = nums.length - 1;   // [0, low) 0s, [low, mid) 1s, (high, end] 2s
+        while (mid <= high) {                        // nums[mid..high] is still unclassified
+            if (nums[mid] == 0) {                    // a 0: swap it to the end of the 0s zone
                 int t = nums[low]; nums[low] = nums[mid]; nums[mid] = t;
-                low++;
+                low++;                               // the 0s zone grows by one
+                mid++;                               // the value swapped in is a 1, already checked
+            } else if (nums[mid] == 1) {             // a 1 is already in place
                 mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
-            } else {
+            } else {                                 // a 2: swap it to the front of the 2s zone
                 int t = nums[mid]; nums[mid] = nums[high]; nums[high] = t;
-                high--;
+                high--;                              // mid stays: the value swapped in is unchecked
             }
         }
     }

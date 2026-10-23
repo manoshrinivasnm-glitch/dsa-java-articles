@@ -5,12 +5,12 @@ public class P564_LongestSubarrayWithSumK {
 
     /** Approach 1: check every (start, end) pair and re-add its elements from scratch. O(n^3) time, O(1) space. */
     static int bruteForce(int[] nums, long k) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+        int n = nums.length, best = 0;               // best = longest length with sum k so far
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            for (int j = i; j < n; j++) {            // j = end of the subarray
                 long sum = 0;
-                for (int t = i; t <= j; t++) sum += nums[t];
-                if (sum == k) best = Math.max(best, j - i + 1);
+                for (int t = i; t <= j; t++) sum += nums[t];   // re-add nums[i..j] from scratch
+                if (sum == k) best = Math.max(best, j - i + 1);   // nums[i..j] sums to k
             }
         }
         return best;
@@ -18,12 +18,12 @@ public class P564_LongestSubarrayWithSumK {
 
     /** Approach 2: fix the start, grow the end while keeping a running sum. O(n^2) time, O(1) space. */
     static int better(int[] nums, long k) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
-            for (int j = i; j < n; j++) {
+        int n = nums.length, best = 0;               // best = longest length with sum k so far
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            long sum = 0;                            // sum of nums[i..j]
+            for (int j = i; j < n; j++) {            // j = end, moving right
                 sum += nums[j];
-                if (sum == k) best = Math.max(best, j - i + 1);
+                if (sum == k) best = Math.max(best, j - i + 1);   // nums[i..j] sums to k
             }
         }
         return best;
@@ -33,13 +33,13 @@ public class P564_LongestSubarrayWithSumK {
     static int optimal(int[] nums, long k) {
         Map<Long, Integer> firstIndex = new HashMap<>();   // prefix sum -> earliest index where it occurs
         firstIndex.put(0L, -1);                            // the empty prefix, so subarrays starting at 0 are found
-        long prefix = 0;
+        long prefix = 0;                                   // sum of nums[0..i]
         int best = 0;
         for (int i = 0; i < nums.length; i++) {
             prefix += nums[i];
-            Integer j = firstIndex.get(prefix - k);
-            if (j != null) best = Math.max(best, i - j);
-            firstIndex.putIfAbsent(prefix, i);
+            Integer j = firstIndex.get(prefix - k);        // earliest j with prefix[j] = prefix - k
+            if (j != null) best = Math.max(best, i - j);   // then nums[j+1..i] sums to k
+            firstIndex.putIfAbsent(prefix, i);             // keep the earliest index: longest window
         }
         return best;
     }

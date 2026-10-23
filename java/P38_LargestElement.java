@@ -8,16 +8,16 @@ public class P38_LargestElement {
     static int bruteForce(int[] nums) {
         if (nums.length == 0) throw new IllegalArgumentException("empty array has no largest element");
         int[] copy = nums.clone();                   // never sort the caller's array just to read one value
-        Arrays.sort(copy);
-        return copy[copy.length - 1];
+        Arrays.sort(copy);                           // ascending order puts the maximum last
+        return copy[copy.length - 1];                // the last element of the sorted copy
     }
 
     /** Approach 2: one linear pass remembering the best value so far. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
         if (nums.length == 0) throw new IllegalArgumentException("empty array has no largest element");
         int max = nums[0];                           // start from a real element, not from 0
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > max) max = nums[i];
+        for (int i = 1; i < nums.length; i++) {      // compare every other element with the best so far
+            if (nums[i] > max) max = nums[i];        // bigger value found: it becomes the new maximum
         }
         return max;
     }
@@ -25,7 +25,7 @@ public class P38_LargestElement {
     /** Approach 3: the same scan written as a stream reduction. O(n) time, O(1) space. */
     static int optimalStream(int[] nums) {
         if (nums.length == 0) throw new IllegalArgumentException("empty array has no largest element");
-        return IntStream.of(nums).max().getAsInt();
+        return IntStream.of(nums).max().getAsInt();  // one scan; non-empty, so a maximum always exists
     }
 
     // ---------------------------------------------------------------- tests

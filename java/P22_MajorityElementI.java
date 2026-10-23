@@ -6,42 +6,42 @@ public class P22_MajorityElementI {
     /** Approach 1: count every element with a nested loop. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums) {
         int n = nums.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                // test each element as the answer
             int count = 0;
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < n; j++) {            // count how often nums[i] appears
                 if (nums[j] == nums[i]) count++;
             }
-            if (count > n / 2) return nums[i];
+            if (count > n / 2) return nums[i];       // more than half: the majority
         }
-        return -1;
+        return -1;                                   // no element passes n/2
     }
 
     /** Approach 2: frequency map; stop as soon as one count passes n/2. O(n) time, O(n) space. */
     static int better(int[] nums) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();   // value -> count so far
         for (int x : nums) {
-            int c = freq.merge(x, 1, Integer::sum);
-            if (c > nums.length / 2) return x;
+            int c = freq.merge(x, 1, Integer::sum);  // x's count including this occurrence
+            if (c > nums.length / 2) return x;       // past half: no other value can win
         }
-        return -1;
+        return -1;                                   // no value passes n/2
     }
 
     /** Approach 3: Boyer-Moore voting to find the only possible candidate, then one pass to confirm it. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
-        int candidate = 0, votes = 0;
+        int candidate = 0, votes = 0;                // current leader and its net votes
         for (int x : nums) {
-            if (votes == 0) {
+            if (votes == 0) {                        // no leader left: x takes over
                 candidate = x;
                 votes = 1;
             } else if (x == candidate) {
-                votes++;
+                votes++;                             // a supporter of the leader
             } else {
-                votes--;
+                votes--;                             // a different value cancels one vote
             }
         }
-        int count = 0;
+        int count = 0;                               // pass 2: confirm the candidate
         for (int x : nums) if (x == candidate) count++;
-        return count > nums.length / 2 ? candidate : -1;
+        return count > nums.length / 2 ? candidate : -1;   // voting always leaves someone; check them
     }
 
     // ---------------------------------------------------------------- tests

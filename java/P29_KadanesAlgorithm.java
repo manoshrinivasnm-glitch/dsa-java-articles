@@ -6,12 +6,12 @@ public class P29_KadanesAlgorithm {
     /** Approach 1: for every (start, end) pair, add up its elements from scratch. O(n^3) time, O(1) space. */
     static long bruteForce(int[] nums) {
         int n = nums.length;
-        long best = Long.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+        long best = Long.MIN_VALUE;                  // below any real sum, so all-negative input works
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            for (int j = i; j < n; j++) {            // j = end of the subarray
                 long sum = 0;
-                for (int k = i; k <= j; k++) sum += nums[k];
-                best = Math.max(best, sum);
+                for (int k = i; k <= j; k++) sum += nums[k];   // re-add nums[i..j] from scratch
+                best = Math.max(best, sum);          // keep the largest sum seen
             }
         }
         return best;
@@ -20,11 +20,11 @@ public class P29_KadanesAlgorithm {
     /** Approach 2: fix the start and keep a running sum while the end moves right. O(n^2) time, O(1) space. */
     static long better(int[] nums) {
         int n = nums.length;
-        long best = Long.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
-            for (int j = i; j < n; j++) {
-                sum += nums[j];
+        long best = Long.MIN_VALUE;                  // below any real sum, so all-negative input works
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            long sum = 0;                            // sum of nums[i..j]
+            for (int j = i; j < n; j++) {            // j = end, moving right
+                sum += nums[j];                      // extend by one element, no re-adding
                 best = Math.max(best, sum);
             }
         }
@@ -33,21 +33,21 @@ public class P29_KadanesAlgorithm {
 
     /** Approach 3: Kadane. Carry a running sum, and drop it the moment it turns negative. O(n) time, O(1) space. */
     static long optimal(int[] nums) {
-        long best = Long.MIN_VALUE, current = 0;
+        long best = Long.MIN_VALUE, current = 0;     // current = sum of the run ending here
         for (int x : nums) {
-            current += x;
-            best = Math.max(best, current);
-            if (current < 0) current = 0;
+            current += x;                            // extend the run with x
+            best = Math.max(best, current);          // record before any reset, so negatives count
+            if (current < 0) current = 0;            // a negative run only hurts what follows: drop it
         }
         return best;
     }
 
     /** Approach 3 (variant): the same algorithm written as the DP recurrence endingHere = max(x, endingHere + x). */
     static long optimalRecurrence(int[] nums) {
-        long best = nums[0], endingHere = nums[0];
+        long best = nums[0], endingHere = nums[0];   // best subarray ending at index 0 is nums[0]
         for (int i = 1; i < nums.length; i++) {
-            endingHere = Math.max(nums[i], endingHere + nums[i]);
-            best = Math.max(best, endingHere);
+            endingHere = Math.max(nums[i], endingHere + nums[i]);   // start fresh at i, or extend the run
+            best = Math.max(best, endingHere);       // best over every end position
         }
         return best;
     }

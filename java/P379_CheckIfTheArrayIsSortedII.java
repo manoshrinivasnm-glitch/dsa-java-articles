@@ -5,8 +5,8 @@ public class P379_CheckIfTheArrayIsSortedII {
 
     /** Warm-up: is the array sorted in non-decreasing order? O(n) time, O(1) space. */
     static boolean isSorted(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < nums[i - 1]) return false;
+        for (int i = 1; i < nums.length; i++) {      // compare each element with the one before it
+            if (nums[i] < nums[i - 1]) return false; // a descent: not sorted
         }
         return true;
     }
@@ -14,15 +14,16 @@ public class P379_CheckIfTheArrayIsSortedII {
     /** Approach 1: try every rotation amount and test whether that rotation is sorted. O(n^2) time, O(1) space. */
     static boolean bruteForce(int[] nums) {
         int n = nums.length;
-        if (n == 0) return true;
-        for (int shift = 0; shift < n; shift++) {
+        if (n == 0) return true;                     // an empty array counts as sorted
+        for (int shift = 0; shift < n; shift++) {    // try the rotation that starts at index shift
             boolean ok = true;
-            for (int i = 1; i < n && ok; i++) {
+            for (int i = 1; i < n && ok; i++) {      // walk that rotation in order; % n wraps around
+                // this rotation has a descent
                 if (nums[(shift + i) % n] < nums[(shift + i - 1) % n]) ok = false;
             }
-            if (ok) return true;
+            if (ok) return true;                     // found a sorted rotation
         }
-        return false;
+        return false;                                // no rotation is sorted
     }
 
     /** Approach 2: find the single descent, then verify the wrap-around edge. O(n) time, O(1) space. */
@@ -30,7 +31,7 @@ public class P379_CheckIfTheArrayIsSortedII {
         int n = nums.length;
         int drop = -1;                               // index i with nums[i] < nums[i - 1]
         for (int i = 1; i < n; i++) {
-            if (nums[i] < nums[i - 1]) {
+            if (nums[i] < nums[i - 1]) {             // a descent between i - 1 and i
                 if (drop != -1) return false;        // a second descent cannot come from one rotation
                 drop = i;
             }
@@ -41,11 +42,11 @@ public class P379_CheckIfTheArrayIsSortedII {
 
     /** Approach 3: count the descents of the circular sequence; a rotated sorted array has at most one. O(n) time, O(1) space. */
     static boolean optimal(int[] nums) {
-        int n = nums.length, drops = 0;
-        for (int i = 0; i < n; i++) {
+        int n = nums.length, drops = 0;              // drops counts descents around the circle
+        for (int i = 0; i < n; i++) {                // i = n - 1 also checks the wrap edge back to 0
             if (nums[i] > nums[(i + 1) % n]) drops++;
         }
-        return drops <= 1;
+        return drops <= 1;                           // a rotated sorted array has at most one descent
     }
 
     // ---------------------------------------------------------------- tests

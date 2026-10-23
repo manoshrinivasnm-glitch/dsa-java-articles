@@ -6,38 +6,38 @@ public class P39_LeftRotateArrayByKPlaces {
     /** Approach 1: rotate left by one, k times. O(n * k) time, O(1) extra space. */
     static void bruteForce(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0) return;
+        if (n == 0) return;                          // empty array: nothing to rotate
         k %= n;                                      // rotating by n is the identity
-        for (int t = 0; t < k; t++) {
-            int first = nums[0];
-            for (int i = 1; i < n; i++) nums[i - 1] = nums[i];
-            nums[n - 1] = first;
+        for (int t = 0; t < k; t++) {                // k single-step rotations
+            int first = nums[0];                     // the element that wraps around this step
+            for (int i = 1; i < n; i++) nums[i - 1] = nums[i];   // shift the rest one slot left
+            nums[n - 1] = first;                     // it lands at the end
         }
     }
 
     /** Approach 2: stash the first k elements, shift the rest left by k, append the stash. O(n) time, O(k) extra space. */
     static void better(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0) return;
-        k %= n;
-        int[] temp = new int[k];
+        if (n == 0) return;                          // empty array: nothing to rotate
+        k %= n;                                      // rotating by n is the identity
+        int[] temp = new int[k];                     // the first k elements, which wrap to the end
         for (int i = 0; i < k; i++) temp[i] = nums[i];
-        for (int i = k; i < n; i++) nums[i - k] = nums[i];
-        for (int i = 0; i < k; i++) nums[n - k + i] = temp[i];
+        for (int i = k; i < n; i++) nums[i - k] = nums[i];   // shift the other n - k elements left by k
+        for (int i = 0; i < k; i++) nums[n - k + i] = temp[i];   // the stash fills the last k slots
     }
 
     /** Approach 3: reverse the first k, reverse the remaining n - k, then reverse the whole array. O(n) time, O(1) extra space. */
     static void optimal(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0) return;
-        k %= n;
-        reverse(nums, 0, k - 1);
-        reverse(nums, k, n - 1);
-        reverse(nums, 0, n - 1);
+        if (n == 0) return;                          // empty array: nothing to rotate
+        k %= n;                                      // rotating by n is the identity
+        reverse(nums, 0, k - 1);                     // reverse the part that moves to the end
+        reverse(nums, k, n - 1);                     // reverse the part that moves to the front
+        reverse(nums, 0, n - 1);                     // reverse all: the parts swap places, each back in order
     }
 
     static void reverse(int[] a, int lo, int hi) {
-        while (lo < hi) {
+        while (lo < hi) {                            // swap the ends, moving inward until they meet
             int t = a[lo];
             a[lo] = a[hi];
             a[hi] = t;

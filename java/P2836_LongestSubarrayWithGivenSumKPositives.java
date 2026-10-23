@@ -5,12 +5,12 @@ public class P2836_LongestSubarrayWithGivenSumKPositives {
 
     /** Approach 1: fix the start, extend the end while accumulating the sum. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums, long k) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
-            for (int j = i; j < n; j++) {
+        int n = nums.length, best = 0;               // best = longest length with sum k so far
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            long sum = 0;                            // sum of nums[i..j]
+            for (int j = i; j < n; j++) {            // j = end, moving right
                 sum += nums[j];
-                if (sum == k) best = Math.max(best, j - i + 1);
+                if (sum == k) best = Math.max(best, j - i + 1);   // nums[i..j] sums to k
             }
         }
         return best;
@@ -20,28 +20,28 @@ public class P2836_LongestSubarrayWithGivenSumKPositives {
     static int better(int[] nums, long k) {
         Map<Long, Integer> firstIndex = new HashMap<>();   // prefix sum -> earliest index where it occurs
         firstIndex.put(0L, -1);                            // the empty prefix, so subarrays starting at 0 are found
-        long prefix = 0;
+        long prefix = 0;                                   // sum of nums[0..i]
         int best = 0;
         for (int i = 0; i < nums.length; i++) {
             prefix += nums[i];
-            Integer j = firstIndex.get(prefix - k);
-            if (j != null) best = Math.max(best, i - j);
-            firstIndex.putIfAbsent(prefix, i);
+            Integer j = firstIndex.get(prefix - k);        // earliest j with prefix[j] = prefix - k
+            if (j != null) best = Math.max(best, i - j);   // then nums[j+1..i] sums to k
+            firstIndex.putIfAbsent(prefix, i);             // keep the earliest index: longest window
         }
         return best;
     }
 
     /** Approach 3: sliding window; valid because non-negative values make the window sum monotone. O(n) time, O(1) space. */
     static int optimal(int[] nums, long k) {
-        int n = nums.length, left = 0, best = 0;
-        long sum = 0;
-        for (int right = 0; right < n; right++) {
+        int n = nums.length, left = 0, best = 0;     // the window is nums[left..right]
+        long sum = 0;                                // sum of the current window
+        for (int right = 0; right < n; right++) {    // grow the window to the right
             sum += nums[right];
-            while (sum > k && left <= right) {
+            while (sum > k && left <= right) {       // too big: shrink from the left
                 sum -= nums[left];
                 left++;
             }
-            if (sum == k) best = Math.max(best, right - left + 1);
+            if (sum == k) best = Math.max(best, right - left + 1);   // window sums to k
         }
         return best;
     }

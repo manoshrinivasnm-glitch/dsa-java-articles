@@ -9,58 +9,58 @@ public class P2761_PrintSubarrayWithMaximumSubarraySum {
     /** Approach 1: every (start, end) pair, summed from scratch. O(n^3) time, O(1) extra space. */
     static int[] bruteForce(int[] nums) {
         int n = nums.length;
-        long best = Long.MIN_VALUE;
-        int bestStart = 0, bestEnd = -1;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
+        long best = Long.MIN_VALUE;                  // largest sum found so far
+        int bestStart = 0, bestEnd = -1;             // its range; empty input copies nothing
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            for (int j = i; j < n; j++) {            // j = end of the subarray
                 long sum = 0;
-                for (int k = i; k <= j; k++) sum += nums[k];
-                if (sum > best) {
+                for (int k = i; k <= j; k++) sum += nums[k];   // re-add nums[i..j] from scratch
+                if (sum > best) {                    // strictly greater keeps the earliest, shortest tie
                     best = sum;
                     bestStart = i;
                     bestEnd = j;
                 }
             }
         }
-        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);
+        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);   // the winning subarray
     }
 
     /** Approach 2: fix the start and keep a running sum. O(n^2) time, O(1) extra space. */
     static int[] better(int[] nums) {
         int n = nums.length;
-        long best = Long.MIN_VALUE;
-        int bestStart = 0, bestEnd = -1;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
-            for (int j = i; j < n; j++) {
-                sum += nums[j];
-                if (sum > best) {
+        long best = Long.MIN_VALUE;                  // largest sum found so far
+        int bestStart = 0, bestEnd = -1;             // its range; empty input copies nothing
+        for (int i = 0; i < n; i++) {                // i = start of the subarray
+            long sum = 0;                            // sum of nums[i..j]
+            for (int j = i; j < n; j++) {            // j = end, moving right
+                sum += nums[j];                      // extend by one element, no re-adding
+                if (sum > best) {                    // strictly greater keeps the earliest, shortest tie
                     best = sum;
                     bestStart = i;
                     bestEnd = j;
                 }
             }
         }
-        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);
+        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);   // the winning subarray
     }
 
     /** Approach 3: Kadane with bookkeeping. Remember where the current run began; record it when a new best appears. O(n) time, O(1) extra space. */
     static int[] optimal(int[] nums) {
-        long best = Long.MIN_VALUE, current = 0;
-        int start = 0, bestStart = 0, bestEnd = -1;
+        long best = Long.MIN_VALUE, current = 0;     // current = sum of the run ending at i
+        int start = 0, bestStart = 0, bestEnd = -1;  // start = where the current run began
         for (int i = 0; i < nums.length; i++) {
-            current += nums[i];
-            if (current > best) {
+            current += nums[i];                      // extend the run with nums[i]
+            if (current > best) {                    // new best: remember this run's range
                 best = current;
                 bestStart = start;
                 bestEnd = i;
             }
-            if (current < 0) {
+            if (current < 0) {                       // a negative run only hurts: restart after i
                 current = 0;
                 start = i + 1;
             }
         }
-        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);
+        return Arrays.copyOfRange(nums, bestStart, bestEnd + 1);   // the winning subarray
     }
 
     // ---------------------------------------------------------------- tests

@@ -6,27 +6,27 @@ public class P46_MoveZerosToEnd {
     /** Approach 1: copy the non-zeros to a list, write them back, then fill the tail with zeros. O(n) time, O(n) extra space. */
     static void bruteForce(int[] nums) {
         int n = nums.length;
-        List<Integer> nonZero = new ArrayList<>();
+        List<Integer> nonZero = new ArrayList<>();   // the non-zeros in their original order
         for (int x : nums) if (x != 0) nonZero.add(x);
-        int i = 0;
-        for (int x : nonZero) nums[i++] = x;
-        while (i < n) nums[i++] = 0;
+        int i = 0;                                   // next slot to write
+        for (int x : nonZero) nums[i++] = x;         // non-zeros go to the front
+        while (i < n) nums[i++] = 0;                 // every remaining slot is a zero
     }
 
     /** Approach 2: two pointers; j sits on the leftmost zero, i finds the next non-zero and swaps it in. O(n) time, O(1) extra space. */
     static void optimal(int[] nums) {
         int n = nums.length;
         int j = -1;                                  // index of the leftmost zero, -1 while none is found
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                // find the first zero
             if (nums[i] == 0) { j = i; break; }
         }
         if (j == -1) return;                         // no zero anywhere: nothing to move
-        for (int i = j + 1; i < n; i++) {
-            if (nums[i] != 0) {
+        for (int i = j + 1; i < n; i++) {            // scan everything after it
+            if (nums[i] != 0) {                      // non-zero: swap it into the leftmost zero
                 int t = nums[i];                     // every slot between j and i is a zero
                 nums[i] = nums[j];
                 nums[j] = t;
-                j++;
+                j++;                                 // the next slot is now the leftmost zero
             }
         }
     }
@@ -37,7 +37,7 @@ public class P46_MoveZerosToEnd {
         for (int x : nums) {
             if (x != 0) nums[w++] = x;               // w <= current index, so nothing unread is overwritten
         }
-        while (w < nums.length) nums[w++] = 0;
+        while (w < nums.length) nums[w++] = 0;       // zero-fill the tail
     }
 
     // ---------------------------------------------------------------- tests

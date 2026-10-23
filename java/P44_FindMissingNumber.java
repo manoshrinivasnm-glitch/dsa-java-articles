@@ -6,12 +6,12 @@ public class P44_FindMissingNumber {
     /** Approach 1: for every candidate 0..n, linearly search the array for it. O(n^2) time, O(1) space. */
     static int bruteForce(int[] nums) {
         int n = nums.length;
-        for (int candidate = 0; candidate <= n; candidate++) {
+        for (int candidate = 0; candidate <= n; candidate++) {   // try every value that could be missing
             boolean present = false;
-            for (int x : nums) {
+            for (int x : nums) {                     // linear search for candidate
                 if (x == candidate) { present = true; break; }
             }
-            if (!present) return candidate;
+            if (!present) return candidate;          // not in the array: this is the answer
         }
         return -1;                                   // unreachable for valid input
     }
@@ -19,10 +19,10 @@ public class P44_FindMissingNumber {
     /** Approach 2: mark every value seen in a boolean array, then report the first unmarked index. O(n) time, O(n) space. */
     static int better(int[] nums) {
         int n = nums.length;
-        boolean[] seen = new boolean[n + 1];
+        boolean[] seen = new boolean[n + 1];         // seen[v] becomes true once v appears
         for (int x : nums) seen[x] = true;
         for (int v = 0; v <= n; v++) {
-            if (!seen[v]) return v;
+            if (!seen[v]) return v;                  // the one value never marked
         }
         return -1;                                   // unreachable for valid input
     }
@@ -30,25 +30,25 @@ public class P44_FindMissingNumber {
     /** Approach 3: the sum 0 + 1 + ... + n minus the sum of the array. O(n) time, O(1) space; long keeps the sums exact. */
     static int optimalSum(int[] nums) {
         int n = nums.length;
-        long expected = (long) n * (n + 1) / 2;
+        long expected = (long) n * (n + 1) / 2;      // 0 + 1 + ... + n by formula
         long actual = 0;
-        for (int x : nums) actual += x;
-        return (int) (expected - actual);
+        for (int x : nums) actual += x;              // sum of the values actually present
+        return (int) (expected - actual);            // the shortfall is the missing value
     }
 
     /** Approach 4: XOR every index 0..n with every value; equal pairs cancel and only the missing value survives. O(n) time, O(1) space. */
     static int optimalXor(int[] nums) {
         int xor = 0;
-        for (int i = 0; i < nums.length; i++) xor ^= i ^ nums[i];
+        for (int i = 0; i < nums.length; i++) xor ^= i ^ nums[i];   // fold in index i and value nums[i]
         return xor ^ nums.length;                    // the index n has no array slot, fold it in separately
     }
 
     /** A2Z wording: nums has N - 1 distinct values from 1..N; return the missing one. Same XOR trick, shifted by one. */
     static int missingFromOneToN(int[] nums, int N) {
         int xor = 0;
-        for (int v = 1; v <= N; v++) xor ^= v;
-        for (int x : nums) xor ^= x;
-        return xor;
+        for (int v = 1; v <= N; v++) xor ^= v;       // XOR of every value 1..N
+        for (int x : nums) xor ^= x;                 // each present value cancels its twin
+        return xor;                                  // only the missing value is left
     }
 
     // ---------------------------------------------------------------- tests

@@ -6,44 +6,45 @@ public class P37_TwoSum {
     /** Approach 1: try every pair. O(n^2) time, O(1) space. */
     static int[] bruteForce(int[] nums, int target) {
         int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if ((long) nums[i] + nums[j] == target) return new int[]{i, j};
+        for (int i = 0; i < n; i++) {            // first index of the pair
+            for (int j = i + 1; j < n; j++) {    // second index, always after i
+                if ((long) nums[i] + nums[j] == target) return new int[]{i, j};   // long: no int overflow
             }
         }
-        return new int[]{-1, -1};
+        return new int[]{-1, -1};                // no pair adds up to target
     }
 
     /** Approach 2: sort (keeping original indices) and walk two pointers inward. O(n log n) time, O(n) space. */
     static int[] better(int[] nums, int target) {
         int n = nums.length;
         int[][] a = new int[n][2];               // {value, originalIndex}
-        for (int i = 0; i < n; i++) a[i] = new int[]{nums[i], i};
-        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));
-        int lo = 0, hi = n - 1;
+        for (int i = 0; i < n; i++) a[i] = new int[]{nums[i], i};   // remember where each value came from
+        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));   // sort by value only
+        int lo = 0, hi = n - 1;                  // smallest and largest remaining values
         while (lo < hi) {
-            long sum = (long) a[lo][0] + a[hi][0];
-            if (sum == target) {
+            long sum = (long) a[lo][0] + a[hi][0];   // long: no int overflow
+            if (sum == target) {                 // found: report the original indices
+                // smaller original index first
                 int i = Math.min(a[lo][1], a[hi][1]), j = Math.max(a[lo][1], a[hi][1]);
                 return new int[]{i, j};
             }
-            if (sum < target) lo++; else hi--;
+            if (sum < target) lo++; else hi--;   // too small -> raise lo, too big -> lower hi
         }
-        return new int[]{-1, -1};
+        return new int[]{-1, -1};                // pointers met: no pair
     }
 
     /** Approach 3: one pass with a HashMap from value to index. O(n) time, O(n) space. */
     static int[] optimal(int[] nums, int target) {
-        Map<Integer, Integer> seen = new HashMap<>();
+        Map<Integer, Integer> seen = new HashMap<>();      // value -> its index, for elements before j
         for (int j = 0; j < nums.length; j++) {
             long need = (long) target - nums[j];           // long: target - nums[j] can overflow int
-            if (need >= Integer.MIN_VALUE && need <= Integer.MAX_VALUE) {
-                Integer i = seen.get((int) need);
-                if (i != null) return new int[]{i, j};
+            if (need >= Integer.MIN_VALUE && need <= Integer.MAX_VALUE) {   // an int partner can exist
+                Integer i = seen.get((int) need);          // has the partner appeared earlier?
+                if (i != null) return new int[]{i, j};     // yes: i < j by construction
             }
-            seen.put(nums[j], j);
+            seen.put(nums[j], j);                          // after the lookup: j never pairs with itself
         }
-        return new int[]{-1, -1};
+        return new int[]{-1, -1};                          // no pair adds up to target
     }
 
     // ---------------------------------------------------------------- tests

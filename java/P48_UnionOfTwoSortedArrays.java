@@ -5,12 +5,12 @@ public class P48_UnionOfTwoSortedArrays {
 
     /** Approach 1: pour both arrays into a sorted set, which de-duplicates and orders for free. O((n + m) log(n + m)) time, O(n + m) space. */
     static int[] bruteForce(int[] a, int[] b) {
-        TreeSet<Integer> set = new TreeSet<>();
+        TreeSet<Integer> set = new TreeSet<>();      // drops duplicates and keeps values sorted
         for (int x : a) set.add(x);
         for (int x : b) set.add(x);
-        int[] result = new int[set.size()];
+        int[] result = new int[set.size()];          // one slot per distinct value
         int i = 0;
-        for (int x : set) result[i++] = x;
+        for (int x : set) result[i++] = x;           // ascending order, straight from the set
         return result;
     }
 
@@ -18,22 +18,22 @@ public class P48_UnionOfTwoSortedArrays {
     static int[] optimal(int[] a, int[] b) {
         int n = a.length, m = b.length;
         int[] buf = new int[n + m];                  // upper bound: no value shared, no duplicates
-        int i = 0, j = 0, k = 0;
-        while (i < n && j < m) {
-            int x;
+        int i = 0, j = 0, k = 0;                     // i walks a, j walks b, k = values written
+        while (i < n && j < m) {                     // both arrays still have values
+            int x;                                   // the smaller of the two front values
             if (a[i] <= b[j]) x = a[i++];            // ties take a's copy; b's copy is skipped on the next round
             else x = b[j++];
-            if (k == 0 || buf[k - 1] != x) buf[k++] = x;
+            if (k == 0 || buf[k - 1] != x) buf[k++] = x;   // write x only if it is new
         }
-        while (i < n) {
-            if (k == 0 || buf[k - 1] != a[i]) buf[k++] = a[i];
+        while (i < n) {                              // b is used up: copy the rest of a
+            if (k == 0 || buf[k - 1] != a[i]) buf[k++] = a[i];   // still skipping duplicates
             i++;
         }
-        while (j < m) {
-            if (k == 0 || buf[k - 1] != b[j]) buf[k++] = b[j];
+        while (j < m) {                              // a is used up: copy the rest of b
+            if (k == 0 || buf[k - 1] != b[j]) buf[k++] = b[j];   // still skipping duplicates
             j++;
         }
-        return Arrays.copyOf(buf, k);
+        return Arrays.copyOf(buf, k);                // trim to the k values written
     }
 
     // ---------------------------------------------------------------- tests

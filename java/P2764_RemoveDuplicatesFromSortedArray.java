@@ -5,25 +5,25 @@ public class P2764_RemoveDuplicatesFromSortedArray {
 
     /** Approach 1: collect the distinct values in a sorted set, then copy them back to the front. O(n log n) time, O(n) space. */
     static int bruteForce(int[] nums) {
-        TreeSet<Integer> set = new TreeSet<>();
-        for (int x : nums) set.add(x);
-        int k = 0;
+        TreeSet<Integer> set = new TreeSet<>();      // holds each value once, in sorted order
+        for (int x : nums) set.add(x);               // duplicates are dropped automatically
+        int k = 0;                                   // next free slot at the front
         for (int x : set) nums[k++] = x;             // TreeSet iterates in ascending order
-        return k;
+        return k;                                    // k = number of distinct values
     }
 
     /** Approach 2: two pointers; i is the end of the unique prefix, j scans for the next new value. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
         int n = nums.length;
-        if (n == 0) return 0;
+        if (n == 0) return 0;                        // empty array: nothing to keep
         int i = 0;                                   // nums[0..i] holds the distinct values found so far
-        for (int j = 1; j < n; j++) {
-            if (nums[j] != nums[i]) {
+        for (int j = 1; j < n; j++) {                // j scans every later element
+            if (nums[j] != nums[i]) {                // a new value (sorted, so duplicates are adjacent)
                 i++;
-                nums[i] = nums[j];
+                nums[i] = nums[j];                   // append it to the distinct prefix
             }
         }
-        return i + 1;
+        return i + 1;                                // length of the distinct prefix
     }
 
     // ---------------------------------------------------------------- tests

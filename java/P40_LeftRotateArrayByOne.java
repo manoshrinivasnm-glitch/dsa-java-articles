@@ -6,29 +6,29 @@ public class P40_LeftRotateArrayByOne {
     /** Approach 1: build the rotated array in a fresh array, then copy it back. O(n) time, O(n) extra space. */
     static void bruteForce(int[] nums) {
         int n = nums.length;
-        if (n == 0) return;
-        int[] rotated = new int[n];
-        for (int i = 1; i < n; i++) rotated[i - 1] = nums[i];
-        rotated[n - 1] = nums[0];
-        for (int i = 0; i < n; i++) nums[i] = rotated[i];
+        if (n == 0) return;                          // empty array: nothing to rotate
+        int[] rotated = new int[n];                  // the result is built here first
+        for (int i = 1; i < n; i++) rotated[i - 1] = nums[i];   // each later element moves one slot left
+        rotated[n - 1] = nums[0];                    // the first element wraps to the end
+        for (int i = 0; i < n; i++) nums[i] = rotated[i];   // copy back so the caller's array changes
     }
 
     /** Approach 2: remember the first element, shift the rest left by one, put it at the end. O(n) time, O(1) extra space. */
     static void optimal(int[] nums) {
         int n = nums.length;
-        if (n == 0) return;
-        int first = nums[0];
+        if (n == 0) return;                          // empty array: nothing to rotate
+        int first = nums[0];                         // save it before the shift overwrites it
         for (int i = 1; i < n; i++) nums[i - 1] = nums[i];   // left to right, so nothing is overwritten before it is read
-        nums[n - 1] = first;
+        nums[n - 1] = first;                         // the saved first element goes last
     }
 
     /** Approach 3: the same shift with System.arraycopy, which copies overlapping ranges correctly. O(n) time, O(1) extra space. */
     static void optimalArraycopy(int[] nums) {
         int n = nums.length;
-        if (n == 0) return;
-        int first = nums[0];
-        System.arraycopy(nums, 1, nums, 0, n - 1);
-        nums[n - 1] = first;
+        if (n == 0) return;                          // empty array: nothing to rotate
+        int first = nums[0];                         // save it before the copy overwrites it
+        System.arraycopy(nums, 1, nums, 0, n - 1);   // shift nums[1..n-1] one slot left
+        nums[n - 1] = first;                         // the saved first element goes last
     }
 
     // ---------------------------------------------------------------- tests
