@@ -5,22 +5,24 @@ public class P76_KthElementOf2SortedArrays {
 
     /** Approach 1: merge both arrays into a new array and index it. O(m + n) time, O(m + n) space. */
     static int bruteForce(int[] a, int[] b, int k) {
-        int[] merged = new int[a.length + b.length];
-        int i = 0, j = 0, t = 0;
+        int[] merged = new int[a.length + b.length];        // room for every element of both arrays
+        int i = 0, j = 0, t = 0;                            // read heads of a and b, write head of merged
+        // both have elements left: copy the smaller one
         while (i < a.length && j < b.length) merged[t++] = a[i] <= b[j] ? a[i++] : b[j++];
-        while (i < a.length) merged[t++] = a[i++];
-        while (j < b.length) merged[t++] = b[j++];
-        return merged[k - 1];
+        while (i < a.length) merged[t++] = a[i++];          // leftovers of a
+        while (j < b.length) merged[t++] = b[j++];          // leftovers of b
+        return merged[k - 1];                               // k is 1-based
     }
 
     /** Approach 2: run the same merge but only count, stopping at the k-th element. O(k) time, O(1) space. */
     static int better(int[] a, int[] b, int k) {
-        int i = 0, j = 0;
-        for (int count = 1; ; count++) {
+        int i = 0, j = 0;                                   // next unread position in a and in b
+        for (int count = 1; ; count++) {                    // count = rank of the element taken this round
             int next;
+            // take from a when b is used up or a's head is smaller
             if (j == b.length || (i < a.length && a[i] <= b[j])) next = a[i++];
-            else next = b[j++];
-            if (count == k) return next;
+            else next = b[j++];                             // otherwise take from b
+            if (count == k) return next;                    // the k-th element taken is the answer
         }
     }
 
@@ -30,16 +32,17 @@ public class P76_KthElementOf2SortedArrays {
         int m = a.length, n = b.length;
         int lo = Math.max(0, k - n), hi = Math.min(k, m);   // cutA = how many elements we take from a
         while (lo <= hi) {
-            int cutA = (lo + hi) >>> 1, cutB = k - cutA;
-            int leftA = cutA == 0 ? Integer.MIN_VALUE : a[cutA - 1];
-            int leftB = cutB == 0 ? Integer.MIN_VALUE : b[cutB - 1];
-            int rightA = cutA == m ? Integer.MAX_VALUE : a[cutA];
-            int rightB = cutB == n ? Integer.MAX_VALUE : b[cutB];
+            int cutA = (lo + hi) >>> 1, cutB = k - cutA;    // try a split; b supplies the rest of the k
+            int leftA = cutA == 0 ? Integer.MIN_VALUE : a[cutA - 1];   // largest taken from a, or -inf
+            int leftB = cutB == 0 ? Integer.MIN_VALUE : b[cutB - 1];   // largest taken from b, or -inf
+            int rightA = cutA == m ? Integer.MAX_VALUE : a[cutA];      // smallest left in a, or +inf
+            int rightB = cutB == n ? Integer.MAX_VALUE : b[cutB];      // smallest left in b, or +inf
+            // valid split: every taken value <= every remaining one, so the k-th is the larger taken max
             if (leftA <= rightB && leftB <= rightA) return Math.max(leftA, leftB);
             if (leftA > rightB) hi = cutA - 1;              // took too many from a
             else lo = cutA + 1;                             // took too few from a
         }
-        throw new IllegalArgumentException("k out of range");
+        throw new IllegalArgumentException("k out of range");   // only reached when k is outside [1, m + n]
     }
 
     // ---------------------------------------------------------------- tests

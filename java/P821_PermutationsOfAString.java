@@ -6,6 +6,7 @@ public class P821_PermutationsOfAString {
     /** Approach 1: place any unused character at each position; a set drops repeats when characters repeat. O(n! * n) time. */
     static List<String> bruteForce(String s) {
         Set<String> found = new LinkedHashSet<>();           // keeps generation order, drops duplicate arrangements
+        // start with an empty prefix and nothing used
         build(s.toCharArray(), new boolean[s.length()], new StringBuilder(), found);
         return new ArrayList<>(found);
     }
@@ -15,11 +16,11 @@ public class P821_PermutationsOfAString {
             found.add(cur.toString());
             return;
         }
-        for (int i = 0; i < chars.length; i++) {
-            if (used[i]) continue;
-            used[i] = true;
+        for (int i = 0; i < chars.length; i++) {             // try every character for the next position
+            if (used[i]) continue;                           // already placed earlier in this prefix
+            used[i] = true;                                  // claim chars[i] for this position
             cur.append(chars[i]);
-            build(chars, used, cur, found);
+            build(chars, used, cur, found);                  // fill the remaining positions
             cur.deleteCharAt(cur.length() - 1);              // undo: free the slot and the character
             used[i] = false;
         }
@@ -28,7 +29,7 @@ public class P821_PermutationsOfAString {
     /** Approach 2: swap each candidate into position `index`, recurse, swap back; skip a value already tried at this position. */
     static List<String> better(String s) {
         List<String> out = new ArrayList<>();
-        permuteBySwapping(s.toCharArray(), 0, out);
+        permuteBySwapping(s.toCharArray(), 0, out);          // fix positions left to right, starting at 0
         return out;
     }
 
@@ -38,10 +39,10 @@ public class P821_PermutationsOfAString {
             return;
         }
         Set<Character> tried = new HashSet<>();              // values already placed at position `index`
-        for (int i = index; i < a.length; i++) {
+        for (int i = index; i < a.length; i++) {             // any a[i] with i >= index may go at index
             if (!tried.add(a[i])) continue;                  // same value here would repeat a whole subtree
-            swap(a, index, i);
-            permuteBySwapping(a, index + 1, out);
+            swap(a, index, i);                               // bring candidate a[i] into position index
+            permuteBySwapping(a, index + 1, out);            // permute everything to the right of it
             swap(a, index, i);                               // restore so the next candidate sees the same suffix
         }
     }
@@ -58,18 +59,18 @@ public class P821_PermutationsOfAString {
         Arrays.sort(a);                                      // the smallest arrangement comes first
         List<String> out = new ArrayList<>();
         do {
-            out.add(new String(a));
-        } while (nextPermutation(a));
+            out.add(new String(a));                          // record the current arrangement
+        } while (nextPermutation(a));                        // step to the next one until none is left
         return out;
     }
 
     private static boolean nextPermutation(char[] a) {
-        int i = a.length - 2;
+        int i = a.length - 2;                                // pivot search starts at the second-to-last slot
         while (i >= 0 && a[i] >= a[i + 1]) i--;              // a[i+1..] is the longest non-increasing suffix
         if (i < 0) return false;                             // whole array non-increasing: this was the last one
-        int j = a.length - 1;
+        int j = a.length - 1;                                // search the suffix from the right
         while (a[j] <= a[i]) j--;                            // rightmost character strictly bigger than a[i]
-        swap(a, i, j);
+        swap(a, i, j);                                       // raise a[i] by the smallest possible amount
         for (int lo = i + 1, hi = a.length - 1; lo < hi; lo++, hi--) swap(a, lo, hi);   // make the suffix ascending
         return true;
     }

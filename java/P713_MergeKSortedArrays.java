@@ -4,8 +4,8 @@ import java.util.*;
 public class P713_MergeKSortedArrays {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the end
 
         ListNode(int val) {
             this.val = val;
@@ -14,54 +14,57 @@ public class P713_MergeKSortedArrays {
 
     /** Approach 1: copy everything into one array and sort it. O(N log N) time, O(N) space (N = total elements). */
     static int[] bruteForce(int[][] arrays) {
-        int total = 0;
+        int total = 0;                                   // size of the merged result
         for (int[] a : arrays) total += a.length;
         int[] out = new int[total];
-        int t = 0;
-        for (int[] a : arrays) {
+        int t = 0;                                       // next free slot in out
+        for (int[] a : arrays) {                         // copy every array, one after another
             for (int v : a) out[t++] = v;
         }
-        Arrays.sort(out);
+        Arrays.sort(out);                                // one sort puts everything in order
         return out;
     }
 
     /** Standard two-way merge of sorted arrays. O(len(a) + len(b)). */
     static int[] mergeTwo(int[] a, int[] b) {
-        int[] out = new int[a.length + b.length];
-        int i = 0, j = 0, t = 0;
+        int[] out = new int[a.length + b.length];        // room for both inputs
+        int i = 0, j = 0, t = 0;                         // read heads of a and b, write head of out
+        // both have elements left: take the smaller head
         while (i < a.length && j < b.length) out[t++] = a[i] <= b[j] ? a[i++] : b[j++];
-        while (i < a.length) out[t++] = a[i++];
-        while (j < b.length) out[t++] = b[j++];
+        while (i < a.length) out[t++] = a[i++];          // leftovers of a
+        while (j < b.length) out[t++] = b[j++];          // leftovers of b
         return out;
     }
 
     /** Approach 2: divide and conquer, merging halves pairwise like merge sort. O(N log k) time, O(N) extra space. */
     static int[] better(int[][] arrays) {
-        if (arrays.length == 0) return new int[0];
-        return mergeRange(arrays, 0, arrays.length - 1);
+        if (arrays.length == 0) return new int[0];       // no arrays: empty result
+        return mergeRange(arrays, 0, arrays.length - 1);   // merge the whole range of arrays
     }
 
     static int[] mergeRange(int[][] arrays, int lo, int hi) {
-        if (lo == hi) return arrays[lo].clone();
-        int mid = (lo + hi) >>> 1;
+        if (lo == hi) return arrays[lo].clone();         // one array: already sorted, return a copy
+        int mid = (lo + hi) >>> 1;                       // split the arrays into two halves
+        // merge each half recursively, then merge the two results
         return mergeTwo(mergeRange(arrays, lo, mid), mergeRange(arrays, mid + 1, hi));
     }
 
     /** Approach 3: min-heap holding the current front of every array. O(N log k) time, O(k) extra space. */
     static int[] optimal(int[][] arrays) {
-        int total = 0;
+        int total = 0;                                   // total elements, to size the output
         // heap entries are {value, arrayIndex, elementIndex}
         PriorityQueue<int[]> pq = new PriorityQueue<>((x, y) -> Integer.compare(x[0], y[0]));
-        for (int r = 0; r < arrays.length; r++) {
+        for (int r = 0; r < arrays.length; r++) {        // seed the heap with every array's first element
             total += arrays[r].length;
-            if (arrays[r].length > 0) pq.offer(new int[]{arrays[r][0], r, 0});
+            if (arrays[r].length > 0) pq.offer(new int[]{arrays[r][0], r, 0});   // skip empty arrays
         }
         int[] out = new int[total];
-        int t = 0;
-        while (!pq.isEmpty()) {
-            int[] top = pq.poll();
-            out[t++] = top[0];
-            int r = top[1], next = top[2] + 1;
+        int t = 0;                                       // next free slot in out
+        while (!pq.isEmpty()) {                          // each round takes the smallest remaining front
+            int[] top = pq.poll();                       // smallest front value among all arrays
+            out[t++] = top[0];                           // it goes next in the output
+            int r = top[1], next = top[2] + 1;           // where it came from, and the index after it
+            // that array has more: push its next element
             if (next < arrays[r].length) pq.offer(new int[]{arrays[r][next], r, next});
         }
         return out;
@@ -69,18 +72,19 @@ public class P713_MergeKSortedArrays {
 
     /** Blind 75 variant (LeetCode 23): merge k sorted linked lists with a min-heap of nodes. O(N log k) time, O(k) space. */
     static ListNode mergeKLists(ListNode[] lists) {
+        // min-heap of list heads, smallest value first
         PriorityQueue<ListNode> pq = new PriorityQueue<>((x, y) -> Integer.compare(x.val, y.val));
-        for (ListNode head : lists) {
-            if (head != null) pq.offer(head);
+        for (ListNode head : lists) {                    // start with the head of every list
+            if (head != null) pq.offer(head);            // skip empty lists
         }
-        ListNode dummy = new ListNode(0), tail = dummy;
-        while (!pq.isEmpty()) {
-            ListNode node = pq.poll();
-            tail.next = node;
+        ListNode dummy = new ListNode(0), tail = dummy;  // dummy sits before the result; tail is its last node
+        while (!pq.isEmpty()) {                          // repeatedly take the smallest head
+            ListNode node = pq.poll();                   // smallest node among all heads
+            tail.next = node;                            // append it to the result
             tail = node;
-            if (node.next != null) pq.offer(node.next);
+            if (node.next != null) pq.offer(node.next);  // its successor becomes that list's new head
         }
-        return dummy.next;
+        return dummy.next;                               // the real head, after the dummy
     }
 
     // ---------------------------------------------------------------- tests

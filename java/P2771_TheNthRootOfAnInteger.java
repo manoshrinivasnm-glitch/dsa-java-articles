@@ -5,44 +5,44 @@ public class P2771_TheNthRootOfAnInteger {
 
     /** Compares x^n with m without overflow: -1 if x^n < m, 0 if x^n == m, 1 if x^n > m. */
     static int comparePower(long x, int n, long m) {
-        long result = 1;
-        for (int i = 0; i < n; i++) {
+        long result = 1;                              // running product x^i
+        for (int i = 0; i < n; i++) {                 // multiply in x, n times
             result *= x;
             if (result > m) return 1;                 // stop early: one more multiplication could overflow
         }
-        return result == m ? 0 : -1;
+        return result == m ? 0 : -1;                  // exact match, or still below m
     }
 
     /** Approach 1: try x = 1, 2, 3, ... until x^n reaches or passes m. O(n * m^(1/n)) time, O(1) space. */
     static int bruteForce(int n, int m) {
-        for (long x = 1; ; x++) {
-            int c = comparePower(x, n, m);
-            if (c == 0) return (int) x;
+        for (long x = 1; ; x++) {                     // no upper bound needed: the loop always returns
+            int c = comparePower(x, n, m);            // how x^n compares with m
+            if (c == 0) return (int) x;               // found the exact root
             if (c > 0) return -1;                     // x^n jumped past m, so no integer root exists
         }
     }
 
     /** Approach 2: binary search x in [1, m]; x^n is increasing in x. O(n log m) time, O(1) space. */
     static int optimal(int n, int m) {
-        long lo = 1, hi = m;
+        long lo = 1, hi = m;                          // the root, if any, lies in [1, m]
         while (lo <= hi) {
-            long mid = lo + (hi - lo) / 2;
+            long mid = lo + (hi - lo) / 2;            // middle without overflow
             int c = comparePower(mid, n, m);
-            if (c == 0) return (int) mid;
-            if (c < 0) lo = mid + 1; else hi = mid - 1;
+            if (c == 0) return (int) mid;             // mid^n == m: mid is the root
+            if (c < 0) lo = mid + 1; else hi = mid - 1;   // too small: go right; too big: go left
         }
-        return -1;
+        return -1;                                    // no integer root exists
     }
 
     /** Variant: the real n-th root of m, by bisection on doubles. 100 halvings, each costing O(n). */
     static double realRoot(int n, int m) {
         double lo = 0, hi = Math.max(1.0, m);         // the root of m >= 0 lies in [0, max(1, m)]
-        for (int iter = 0; iter < 100; iter++) {
-            double mid = (lo + hi) / 2, p = 1;
-            for (int i = 0; i < n; i++) p *= mid;
-            if (p < m) lo = mid; else hi = mid;
+        for (int iter = 0; iter < 100; iter++) {      // each step halves the interval
+            double mid = (lo + hi) / 2, p = 1;        // test the midpoint
+            for (int i = 0; i < n; i++) p *= mid;     // p = mid^n
+            if (p < m) lo = mid; else hi = mid;       // keep the half that still contains the root
         }
-        return hi;
+        return hi;                                    // interval is now far below double precision
     }
 
     // ---------------------------------------------------------------- tests

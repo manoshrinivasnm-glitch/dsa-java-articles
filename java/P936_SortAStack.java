@@ -6,38 +6,38 @@ public class P936_SortAStack {
 
     /** Approach 1: pour the stack into a list, sort it, push it back smallest first. O(n log n) time, O(n) extra space. */
     static void bruteForce(Deque<Integer> st) {
-        List<Integer> items = new ArrayList<>();
-        while (!st.isEmpty()) items.add(st.pop());
-        Collections.sort(items);
+        List<Integer> items = new ArrayList<>();           // holds every element while we sort
+        while (!st.isEmpty()) items.add(st.pop());         // empty the stack into the list
+        Collections.sort(items);                           // ascending order
         for (int v : items) st.push(v);                    // smallest pushed first ends at the bottom
     }
 
     /** Approach 2: recursion. Remove the top, sort the rest, insert the top back in order. O(n^2) time, O(n) call stack. */
     static void sortRecursive(Deque<Integer> st) {
-        if (st.isEmpty()) return;
-        int top = st.pop();
+        if (st.isEmpty()) return;                          // base case: an empty stack is already sorted
+        int top = st.pop();                                // set the top aside
         sortRecursive(st);                                 // the remaining stack is now sorted
-        insertSorted(st, top);
+        insertSorted(st, top);                             // put it back in its sorted place
     }
 
     /** Inserts x into a stack that is sorted with its largest element on top, keeping it sorted. */
     static void insertSorted(Deque<Integer> st, int x) {
-        if (st.isEmpty() || st.peek() <= x) {
-            st.push(x);
+        if (st.isEmpty() || st.peek() <= x) {              // empty, or x >= the top: x goes here
+            st.push(x);                                    // x becomes the new top
             return;
         }
         int bigger = st.pop();                             // x belongs below this element
-        insertSorted(st, x);
-        st.push(bigger);
+        insertSorted(st, x);                               // place x deeper
+        st.push(bigger);                                   // the larger element returns above x
     }
 
     /** Approach 3: iterative, with one temporary stack kept smallest-on-top. O(n^2) time, O(n) extra space. */
     static void sortWithTempStack(Deque<Integer> st) {
         Deque<Integer> tmp = new ArrayDeque<>();           // invariant: sorted, smallest element on top
         while (!st.isEmpty()) {
-            int x = st.pop();
-            while (!tmp.isEmpty() && tmp.peek() < x) st.push(tmp.pop());  // park smaller ones back on st
-            tmp.push(x);
+            int x = st.pop();                              // next element to place into tmp
+            while (!tmp.isEmpty() && tmp.peek() < x) st.push(tmp.pop());   // park smaller ones back on st
+            tmp.push(x);                                   // x now sits above everything >= x
         }
         while (!tmp.isEmpty()) st.push(tmp.pop());         // smallest goes in first, so largest ends on top
     }

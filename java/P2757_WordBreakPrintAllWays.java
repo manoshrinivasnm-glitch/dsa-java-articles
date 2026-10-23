@@ -6,77 +6,83 @@ public class P2757_WordBreakPrintAllWays {
     /** Approach 1: try every dictionary word as the next piece and recurse; record a sentence when s is used up. Exponential. */
     static List<String> bruteForce(String s, List<String> wordDict) {
         List<String> out = new ArrayList<>();
-        backtrack(s, 0, wordDict, new ArrayList<>(), out);
+        backtrack(s, 0, wordDict, new ArrayList<>(), out);   // start at index 0 with no words chosen
         return out;
     }
 
     private static void backtrack(String s, int start, List<String> dict, List<String> words, List<String> out) {
         if (start == s.length()) {                           // the chosen words cover s exactly
-            out.add(String.join(" ", words));
+            out.add(String.join(" ", words));                // one complete sentence found
             return;
         }
-        for (String w : dict) {
-            if (w.isEmpty() || !s.startsWith(w, start)) continue;
-            words.add(w);
-            backtrack(s, start + w.length(), dict, words, out);
+        for (String w : dict) {                              // try every word as the next piece
+            if (w.isEmpty() || !s.startsWith(w, start)) continue;   // skip words that do not match s at start
+            words.add(w);                                    // choose w
+            backtrack(s, start + w.length(), dict, words, out);   // continue right after w
             words.remove(words.size() - 1);                  // undo the choice before trying the next word
         }
     }
 
     /** Approach 2: memoise the list of sentences for each suffix start (top-down DP), so each suffix is solved once. */
     static List<String> better(String s, List<String> wordDict) {
+        // set for O(1) lookups, memo keyed by start
         return sentencesFrom(s, 0, new HashSet<>(wordDict), new HashMap<>());
     }
 
     private static List<String> sentencesFrom(String s, int start, Set<String> dict, Map<Integer, List<String>> memo) {
         if (start == s.length()) return List.of("");         // exactly one way to split nothing: use no words
-        List<String> cached = memo.get(start);
-        if (cached != null) return cached;
+        List<String> cached = memo.get(start);               // each suffix is solved only once
+        if (cached != null) return cached;                   // already solved this suffix
         List<String> result = new ArrayList<>();
-        for (int end = start + 1; end <= s.length(); end++) {
+        for (int end = start + 1; end <= s.length(); end++) {   // every possible first word s[start, end)
             String word = s.substring(start, end);
-            if (!dict.contains(word)) continue;
-            for (String rest : sentencesFrom(s, end, dict, memo)) {
+            if (!dict.contains(word)) continue;              // not a dictionary word
+            for (String rest : sentencesFrom(s, end, dict, memo)) {   // every sentence for the rest of s
+                // prepend the word, no space before an empty tail
                 result.add(rest.isEmpty() ? word : word + " " + rest);
             }
         }
-        memo.put(start, result);
+        memo.put(start, result);                             // remember the answer for this suffix
         return result;
     }
 
     /** Approach 3: Word Break DP marks which suffixes can be split; backtracking enters only those, so no branch is wasted. */
     static List<String> optimal(String s, List<String> wordDict) {
         Set<String> dict = new HashSet<>(wordDict);
-        int maxLen = 0;
+        int maxLen = 0;                                      // longest word: no piece can be longer
         for (String w : dict) maxLen = Math.max(maxLen, w.length());
         int n = s.length();
         boolean[] canBreak = new boolean[n + 1];             // canBreak[i]: the suffix s[i, n) splits into words
-        canBreak[n] = true;
-        for (int i = n - 1; i >= 0; i--) {
+        canBreak[n] = true;                                  // the empty suffix needs no words
+        for (int i = n - 1; i >= 0; i--) {                   // fill from the right: each answer uses later ones
+            // try first words of at most maxLen chars
             for (int end = i + 1; end <= n && end - i <= maxLen; end++) {
+                // word here and the rest also splits
                 if (canBreak[end] && dict.contains(s.substring(i, end))) {
-                    canBreak[i] = true;
+                    canBreak[i] = true;                      // so this suffix splits too
                     break;
                 }
             }
         }
         List<String> out = new ArrayList<>();
+        // skip the search entirely when s cannot be split
         if (canBreak[0]) collect(s, 0, dict, maxLen, canBreak, new StringBuilder(), out);
         return out;
     }
 
     private static void collect(String s, int start, Set<String> dict, int maxLen, boolean[] canBreak,
                                 StringBuilder sentence, List<String> out) {
-        if (start == s.length()) {
+        if (start == s.length()) {                           // all of s is split: save the sentence
             out.add(sentence.toString());
             return;
         }
-        int before = sentence.length();
+        int before = sentence.length();                      // length to roll back to after each word
+        // only words of feasible length
         for (int end = start + 1; end <= s.length() && end - start <= maxLen; end++) {
             if (!canBreak[end] || !dict.contains(s.substring(start, end))) continue;   // dead suffix or not a word
-            if (start > 0) sentence.append(' ');
-            sentence.append(s, start, end);
-            collect(s, end, dict, maxLen, canBreak, sentence, out);
+            if (start > 0) sentence.append(' ');             // separate from the previous word
+            sentence.append(s, start, end);                  // append the word s[start, end)
+            collect(s, end, dict, maxLen, canBreak, sentence, out);   // the rest is known to be splittable
             sentence.setLength(before);                      // undo: drop the word and its space
         }
     }

@@ -5,57 +5,58 @@ public class P2769_SearchElementInASortedAndRotatedArrayFin {
 
     /** Approach 1: linear scan. O(n) time, O(1) space. */
     static int bruteForce(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) return i;
+        for (int i = 0; i < nums.length; i++) {            // check every index in turn
+            if (nums[i] == target) return i;               // first (and only) match
         }
-        return -1;
+        return -1;                                         // target is not in the array
     }
 
     /** Index of the minimum element (the pivot, also the number of rotations). O(log n) time. */
     static int findPivot(int[] nums) {
-        int lo = 0, hi = nums.length - 1;
-        while (lo < hi) {
+        int lo = 0, hi = nums.length - 1;                  // the minimum lies in [lo, hi]
+        while (lo < hi) {                                  // stop when one candidate is left
             int mid = lo + (hi - lo) / 2;
             if (nums[mid] > nums[hi]) lo = mid + 1;        // the drop is somewhere right of mid
             else hi = mid;                                 // mid..hi is sorted: minimum is at mid or left of it
         }
-        return lo;
+        return lo;                                         // lo == hi: index of the smallest value
     }
 
     /** Plain binary search for target inside the sorted range nums[lo..hi]. */
     static int binarySearch(int[] nums, int lo, int hi, int target) {
-        while (lo <= hi) {
+        while (lo <= hi) {                                 // search while the range is non-empty
             int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return mid;
-            if (nums[mid] < target) lo = mid + 1; else hi = mid - 1;
+            if (nums[mid] == target) return mid;           // found target
+            if (nums[mid] < target) lo = mid + 1; else hi = mid - 1;   // too small: go right; too big: go left
         }
-        return -1;
+        return -1;                                         // target is not in this range
     }
 
     /** Approach 2: find the pivot, then binary search the one sorted part that can hold target. O(log n) time, O(1) space. */
     static int better(int[] nums, int target) {
         int n = nums.length;
-        if (n == 0) return -1;
-        int p = findPivot(nums);
+        if (n == 0) return -1;                             // empty array: nothing to find
+        int p = findPivot(nums);                           // index of the minimum; both sides are sorted
+        // target fits the right sorted part [p, n-1]
         if (target >= nums[p] && target <= nums[n - 1]) return binarySearch(nums, p, n - 1, target);
-        return binarySearch(nums, 0, p - 1, target);
+        return binarySearch(nums, 0, p - 1, target);       // otherwise it can only be in the left part
     }
 
     /** Approach 3: one binary search; one half around mid is always sorted, so test target against it. O(log n) time, O(1) space. */
     static int optimal(int[] nums, int target) {
-        int lo = 0, hi = nums.length - 1;
+        int lo = 0, hi = nums.length - 1;                  // target, if present, lies in [lo, hi]
         while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (nums[mid] == target) return mid;
+            int mid = lo + (hi - lo) / 2;                  // middle without overflow
+            if (nums[mid] == target) return mid;           // found target
             if (nums[lo] <= nums[mid]) {                   // left half lo..mid is sorted
-                if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;
-                else lo = mid + 1;
+                if (nums[lo] <= target && target < nums[mid]) hi = mid - 1;   // target in sorted left half
+                else lo = mid + 1;                         // otherwise it is in the right half
             } else {                                       // right half mid..hi is sorted
-                if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;
-                else hi = mid - 1;
+                if (nums[mid] < target && target <= nums[hi]) lo = mid + 1;   // target in sorted right half
+                else hi = mid - 1;                         // otherwise it is in the left half
             }
         }
-        return -1;
+        return -1;                                         // range emptied: target is absent
     }
 
     // ---------------------------------------------------------------- tests

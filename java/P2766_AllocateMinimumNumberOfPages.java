@@ -5,47 +5,47 @@ public class P2766_AllocateMinimumNumberOfPages {
 
     /** Greedy: how many students are needed if nobody may read more than maxPages. Assumes maxPages >= every book. */
     static int studentsNeeded(int[] pages, long maxPages) {
-        int students = 1;
-        long current = 0;
-        for (int p : pages) {
+        int students = 1;                                  // the first student starts reading
+        long current = 0;                                  // pages given to the current student so far
+        for (int p : pages) {                              // hand out the books in order
             if (current + p > maxPages) {                  // this book does not fit: start the next student
                 students++;
-                current = p;
+                current = p;                               // the new student starts with this book
             } else {
-                current += p;
+                current += p;                              // it fits: same student keeps reading
             }
         }
-        return students;
+        return students;                                   // students used under this limit
     }
 
     /** Approach 1: try every limit from max(pages) upward; the first one that works is the answer. O(n * (sum - max)) time, O(1) space. */
     static long bruteForce(int[] pages, int m) {
         if (m > pages.length) return -1;                   // someone would get no book
-        long lo = 0, hi = 0;
+        long lo = 0, hi = 0;                               // bounds for the limit: largest book and total pages
         for (int p : pages) {
-            lo = Math.max(lo, p);
-            hi += p;
+            lo = Math.max(lo, p);                          // no limit can be below the largest book
+            hi += p;                                       // one student reading all books always works
         }
-        for (long limit = lo; limit <= hi; limit++) {
-            if (studentsNeeded(pages, limit) <= m) return limit;
+        for (long limit = lo; limit <= hi; limit++) {      // test each limit from smallest upward
+            if (studentsNeeded(pages, limit) <= m) return limit;   // first limit that needs at most m students
         }
-        return -1;
+        return -1;                                         // not reached when m <= number of books
     }
 
     /** Approach 2: binary search the smallest feasible limit in [max, sum]. O(n log(sum)) time, O(1) space. */
     static long optimal(int[] pages, int m) {
-        if (m > pages.length) return -1;
-        long lo = 0, hi = 0;
+        if (m > pages.length) return -1;                    // someone would get no book
+        long lo = 0, hi = 0;                                // the answer lies in [largest book, total pages]
         for (int p : pages) {
-            lo = Math.max(lo, p);
-            hi += p;
+            lo = Math.max(lo, p);                           // every book must fit in one share
+            hi += p;                                        // one student could read everything
         }
-        while (lo < hi) {
-            long mid = lo + (hi - lo) / 2;
+        while (lo < hi) {                                   // shrink until lo is the smallest feasible limit
+            long mid = lo + (hi - lo) / 2;                  // candidate limit
             if (studentsNeeded(pages, mid) <= m) hi = mid;  // feasible: the answer is mid or smaller
             else lo = mid + 1;                              // infeasible: the answer is bigger than mid
         }
-        return lo;
+        return lo;                                          // lo == hi: the minimum possible largest share
     }
 
     // ---------------------------------------------------------------- tests

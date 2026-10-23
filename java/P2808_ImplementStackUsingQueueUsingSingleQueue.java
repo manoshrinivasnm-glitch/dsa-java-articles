@@ -4,21 +4,21 @@ import java.util.*;
 public class P2808_ImplementStackUsingQueueUsingSingleQueue {
 
     interface IntStack {
-        void push(int x);
-        int pop();
-        int top();
-        boolean isEmpty();
-        int size();
+        void push(int x);                                  // add x on top
+        int pop();                                         // remove and return the top
+        int top();                                         // read the top without removing it
+        boolean isEmpty();                                 // true when the stack holds nothing
+        int size();                                        // number of elements stored
     }
 
     /** Approach 1: two queues, costly push. push O(n), pop and top O(1), space O(n). */
     static class TwoQueues implements IntStack {
-        private Queue<Integer> main = new ArrayDeque<>();
-        private Queue<Integer> helper = new ArrayDeque<>();
+        private Queue<Integer> main = new ArrayDeque<>();  // front of main is always the stack top
+        private Queue<Integer> helper = new ArrayDeque<>();   // empty between pushes; used to rebuild main
 
         public void push(int x) {
             helper.offer(x);                               // the newest element enters an empty queue first
-            while (!main.isEmpty()) helper.offer(main.remove());
+            while (!main.isEmpty()) helper.offer(main.remove());   // older elements line up behind the newest
             Queue<Integer> t = main;                       // swap roles: helper now holds stack order
             main = helper;
             helper = t;
@@ -29,7 +29,7 @@ public class P2808_ImplementStackUsingQueueUsingSingleQueue {
         }
 
         public int top() {
-            return main.element();
+            return main.element();                         // front of main is the top
         }
 
         public boolean isEmpty() {
@@ -43,7 +43,7 @@ public class P2808_ImplementStackUsingQueueUsingSingleQueue {
 
     /** Approach 2: one queue, costly pop. push O(1), pop and top O(n), space O(n). */
     static class OneQueueCostlyPop implements IntStack {
-        private final Queue<Integer> q = new ArrayDeque<>();
+        private final Queue<Integer> q = new ArrayDeque<>();   // newest at the back, oldest at the front
 
         public void push(int x) {
             q.offer(x);                                    // the newest element sits at the back
@@ -51,13 +51,13 @@ public class P2808_ImplementStackUsingQueueUsingSingleQueue {
 
         public int pop() {
             if (q.isEmpty()) throw new NoSuchElementException("stack is empty");
-            int n = q.size();
+            int n = q.size();                              // elements currently stored
             for (int i = 0; i < n - 1; i++) q.offer(q.remove());  // cycle the older n - 1 behind the newest
             return q.remove();                             // the newest is now at the front
         }
 
         public int top() {
-            int x = pop();
+            int x = pop();                                 // take the newest out
             q.offer(x);                                    // back at the back: original order restored
             return x;
         }
@@ -73,11 +73,11 @@ public class P2808_ImplementStackUsingQueueUsingSingleQueue {
 
     /** Approach 3: one queue, costly push. push O(n), pop and top O(1), space O(n). */
     static class OneQueueCostlyPush implements IntStack {
-        private final Queue<Integer> q = new ArrayDeque<>();
+        private final Queue<Integer> q = new ArrayDeque<>();   // front is the top: newest first, oldest last
 
         public void push(int x) {
-            q.offer(x);
-            int n = q.size();
+            q.offer(x);                                    // x joins at the back
+            int n = q.size();                              // includes x
             for (int i = 0; i < n - 1; i++) q.offer(q.remove());  // cycle older elements behind x
         }
 
@@ -86,7 +86,7 @@ public class P2808_ImplementStackUsingQueueUsingSingleQueue {
         }
 
         public int top() {
-            return q.element();
+            return q.element();                            // the newest element sits at the front
         }
 
         public boolean isEmpty() {
