@@ -5,17 +5,17 @@ public class P2834_AssignCookies {
 
     /** Approach 1: least greedy child first, linear scan for the smallest unused cookie that fits. O(n log n + n*m) time, O(n + m) space. */
     static int bruteForce(int[] greed, int[] cookies) {
-        int[] g = greed.clone();
-        Arrays.sort(g);
-        boolean[] used = new boolean[cookies.length];
-        int content = 0;
+        int[] g = greed.clone();     // sorted copy of the greed factors
+        Arrays.sort(g);              // serve the least greedy child first
+        boolean[] used = new boolean[cookies.length];   // used[j] = cookie j already handed out
+        int content = 0;             // children satisfied so far
         for (int need : g) {
-            int pick = -1;
+            int pick = -1;           // smallest unused cookie that is big enough, -1 if none
             for (int j = 0; j < cookies.length; j++) {
                 if (!used[j] && cookies[j] >= need && (pick == -1 || cookies[j] < cookies[pick])) pick = j;
             }
-            if (pick == -1) break;            // nothing fits this child, so nothing fits a greedier one
-            used[pick] = true;
+            if (pick == -1) break;   // nothing fits this child, so nothing fits a greedier one
+            used[pick] = true;       // give that cookie away
             content++;
         }
         return content;
@@ -23,15 +23,15 @@ public class P2834_AssignCookies {
 
     /** Approach 2: sort both arrays and sweep them with two pointers. O(n log n + m log m) time, O(n + m) space for the copies. */
     static int optimal(int[] greed, int[] cookies) {
-        int[] g = greed.clone(), s = cookies.clone();
+        int[] g = greed.clone(), s = cookies.clone();     // sorted copies; inputs stay untouched
         Arrays.sort(g);
         Arrays.sort(s);
-        int child = 0, cookie = 0;
-        while (child < g.length && cookie < s.length) {
-            if (s[cookie] >= g[child]) child++;   // smallest remaining cookie satisfies the least greedy waiting child
-            cookie++;                             // the cookie is either given away or too small for everyone left
+        int child = 0, cookie = 0;                        // next child to satisfy, next cookie to try
+        while (child < g.length && cookie < s.length) {   // stop when children or cookies run out
+            if (s[cookie] >= g[child]) child++;           // smallest cookie left fits the least greedy child
+            cookie++;                                     // cookie given away, or too small for everyone left
         }
-        return child;
+        return child;                                     // every child we moved past was satisfied
     }
 
     // ---------------------------------------------------------------- tests

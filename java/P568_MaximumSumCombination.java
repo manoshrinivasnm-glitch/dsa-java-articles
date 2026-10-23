@@ -5,27 +5,27 @@ public class P568_MaximumSumCombination {
 
     /** Approach 1: build all n*m sums, sort, take the k largest. O(nm log(nm)) time, O(nm) space. */
     static long[] bruteForce(int[] a, int[] b, int k) {
-        long[] all = new long[a.length * b.length];
+        long[] all = new long[a.length * b.length];      // one slot for every (a[i], b[j]) pair
         int idx = 0;
         for (int x : a) {
-            for (int y : b) all[idx++] = (long) x + y;
+            for (int y : b) all[idx++] = (long) x + y;   // long so the sum cannot overflow
         }
-        Arrays.sort(all);
+        Arrays.sort(all);                                // ascending, so the largest sums sit at the end
         long[] res = new long[k];
-        for (int t = 0; t < k; t++) res[t] = all[all.length - 1 - t];
+        for (int t = 0; t < k; t++) res[t] = all[all.length - 1 - t];   // read the top k from the back
         return res;
     }
 
     /** Approach 2: stream all sums through a size-k min-heap. O(nm log k) time, O(k) space. */
     static long[] better(int[] a, int[] b, int k) {
-        PriorityQueue<Long> pq = new PriorityQueue<>();          // the k largest sums seen so far
+        PriorityQueue<Long> pq = new PriorityQueue<>();   // the k largest sums seen so far
         for (int x : a) {
-            for (int y : b) {
+            for (int y : b) {                             // try every pair once
                 long s = (long) x + y;
-                if (pq.size() < k) {
+                if (pq.size() < k) {                      // heap not full yet: keep every sum
                     pq.add(s);
-                } else if (s > pq.peek()) {
-                    pq.poll();
+                } else if (s > pq.peek()) {               // beats the smallest of the current top k
+                    pq.poll();                            // evict it to make room
                     pq.add(s);
                 }
             }
@@ -38,18 +38,20 @@ public class P568_MaximumSumCombination {
     /** Approach 3: sort both, then expand the best pair's neighbours with a max-heap. O(n log n + m log m + k log k) time. */
     static long[] optimal(int[] a, int[] b, int k) {
         int n = a.length, m = b.length;
-        int[] x = a.clone(), y = b.clone();
+        int[] x = a.clone(), y = b.clone();   // sorted copies; the inputs stay untouched
         Arrays.sort(x);
         Arrays.sort(y);
-        PriorityQueue<long[]> pq = new PriorityQueue<>((p, q) -> Long.compare(q[0], p[0]));   // {sum, i, j}, largest first
-        Set<Long> seen = new HashSet<>();                       // pair (i, j) encoded as i * m + j
-        pq.add(new long[]{(long) x[n - 1] + y[m - 1], n - 1, m - 1});
+        // max-heap of {sum, i, j}: largest sum first
+        PriorityQueue<long[]> pq = new PriorityQueue<>((p, q) -> Long.compare(q[0], p[0]));
+        Set<Long> seen = new HashSet<>();     // pair (i, j) encoded as i * m + j
+        pq.add(new long[]{(long) x[n - 1] + y[m - 1], n - 1, m - 1});   // the two maxima give the largest sum
         seen.add((long) (n - 1) * m + (m - 1));
         long[] res = new long[k];
-        for (int t = 0; t < k; t++) {
+        for (int t = 0; t < k; t++) {         // each round pops the next largest sum
             long[] top = pq.poll();
             res[t] = top[0];
             int i = (int) top[1], j = (int) top[2];
+            // the next candidates are the two neighbours with one index stepped down; skip pairs already queued
             if (i > 0 && seen.add((long) (i - 1) * m + j)) pq.add(new long[]{(long) x[i - 1] + y[j], i - 1, j});
             if (j > 0 && seen.add((long) i * m + (j - 1))) pq.add(new long[]{(long) x[i] + y[j - 1], i, j - 1});
         }

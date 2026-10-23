@@ -5,52 +5,57 @@ public class P1008_TaskScheduler {
 
     /** Approach 1: simulate slot by slot, scanning all 26 letters each slot. O(answer * 26) time, O(1) space. */
     static int bruteForce(char[] tasks, int n) {
-        int[] count = new int[26];
+        int[] count = new int[26];               // how many copies of each letter are still to run
         for (char t : tasks) count[t - 'A']++;
         int[] nextFree = new int[26];            // earliest slot in which each letter may run again
-        int remaining = tasks.length, time = 0;
-        while (remaining > 0) {
-            int pick = -1;
+        int remaining = tasks.length, time = 0;  // tasks not yet run, and the current slot
+        while (remaining > 0) {                  // fill one slot per iteration until every task has run
+            int pick = -1;                       // letter chosen for this slot, -1 = none available
             for (int c = 0; c < 26; c++) {
+                // among letters that are off cooldown, prefer the one with the most copies left
                 if (count[c] > 0 && nextFree[c] <= time && (pick == -1 || count[c] > count[pick])) pick = c;
             }
             if (pick != -1) {                    // otherwise this slot is idle
                 count[pick]--;
-                nextFree[pick] = time + n + 1;
+                nextFree[pick] = time + n + 1;   // same letter must wait n slots before running again
                 remaining--;
             }
-            time++;
+            time++;                              // move on to the next slot (idle or not)
         }
-        return time;
+        return time;                             // slots used = total time
     }
 
     /** Approach 2: max-heap of runnable counts plus a FIFO queue of cooling tasks. O(T log 26) time, O(26) space. */
     static int better(char[] tasks, int n) {
-        int[] count = new int[26];
+        int[] count = new int[26];                   // frequency of each letter
         for (char t : tasks) count[t - 'A']++;
-        PriorityQueue<Integer> ready = new PriorityQueue<>(Collections.reverseOrder());   // remaining counts
+        // max-heap of remaining counts for tasks that may run right now (letters do not matter, only counts)
+        PriorityQueue<Integer> ready = new PriorityQueue<>(Collections.reverseOrder());
         for (int c : count) if (c > 0) ready.add(c);
         Deque<int[]> cooling = new ArrayDeque<>();   // {remainingCount, slotWhenReadyAgain}, ordered by slot
-        int time = 0;
-        while (!ready.isEmpty() || !cooling.isEmpty()) {
+        int time = 0;                                // the current slot
+        while (!ready.isEmpty() || !cooling.isEmpty()) {   // until no task is waiting or cooling
             if (ready.isEmpty()) time = Math.max(time, cooling.peekFirst()[1]);   // skip the idle stretch
+            // tasks whose cooldown has ended become runnable again
             while (!cooling.isEmpty() && cooling.peekFirst()[1] <= time) ready.add(cooling.pollFirst()[0]);
-            int left = ready.poll() - 1;
-            if (left > 0) cooling.addLast(new int[]{left, time + n + 1});
+            int left = ready.poll() - 1;             // run the task with the most copies left
+            if (left > 0) cooling.addLast(new int[]{left, time + n + 1});   // it may run again after n slots
             time++;
         }
-        return time;
+        return time;                                 // slot count once everything has run
     }
 
     /** Approach 3: count frames built around the most frequent task. O(T) time, O(1) space. */
     static int optimal(char[] tasks, int n) {
-        if (tasks.length == 0) return 0;
-        int[] count = new int[26];
+        if (tasks.length == 0) return 0;         // nothing to schedule
+        int[] count = new int[26];               // frequency of each letter
         for (char t : tasks) count[t - 'A']++;
-        int maxFreq = 0;
+        int maxFreq = 0;                         // copies of the most frequent letter
         for (int c : count) maxFreq = Math.max(maxFreq, c);
         int maxCount = 0;                        // how many letters reach maxFreq
         for (int c : count) if (c == maxFreq) maxCount++;
+        // maxFreq - 1 full frames of n + 1 slots, plus a last row of the top letters;
+        // if other tasks overflow the gaps there is no idle time, so the answer is just the task count
         return Math.max(tasks.length, (maxFreq - 1) * (n + 1) + maxCount);
     }
 

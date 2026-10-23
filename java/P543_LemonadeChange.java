@@ -5,42 +5,43 @@ public class P543_LemonadeChange {
 
     /** Approach 1: try every legal way of giving change for each 20 (recursive search). O(2^k) time for k twenties, O(n) stack. */
     static boolean bruteForce(int[] bills) {
-        return canServe(bills, 0, 0, 0);
+        return canServe(bills, 0, 0, 0);   // start at the first customer with an empty till
     }
 
     static boolean canServe(int[] bills, int i, int fives, int tens) {
-        if (i == bills.length) return true;
-        if (bills[i] == 5) return canServe(bills, i + 1, fives + 1, tens);
+        if (i == bills.length) return true;   // every customer got correct change
+        if (bills[i] == 5) return canServe(bills, i + 1, fives + 1, tens);     // a 5 needs no change
+        // a 10 needs one 5 back
         if (bills[i] == 10) return fives > 0 && canServe(bills, i + 1, fives - 1, tens + 1);
         // a 20 needs 15 back: either 10 + 5 or 5 + 5 + 5
         boolean ok = false;
-        if (tens > 0 && fives > 0) ok = canServe(bills, i + 1, fives - 1, tens - 1);
-        if (!ok && fives >= 3) ok = canServe(bills, i + 1, fives - 3, tens);
+        if (tens > 0 && fives > 0) ok = canServe(bills, i + 1, fives - 1, tens - 1);   // try 10 + 5
+        if (!ok && fives >= 3) ok = canServe(bills, i + 1, fives - 3, tens);   // otherwise try 5 + 5 + 5
         return ok;
     }
 
     /** Approach 2: greedy counting; for a 20 always hand back 10 + 5 when possible. O(n) time, O(1) space. */
     static boolean optimal(int[] bills) {
-        int fives = 0, tens = 0;
+        int fives = 0, tens = 0;               // bills in the till (20s are never given back, so not tracked)
         for (int bill : bills) {
-            if (bill == 5) {
+            if (bill == 5) {                   // exact payment: just keep it
                 fives++;
-            } else if (bill == 10) {
-                if (fives == 0) return false;
+            } else if (bill == 10) {           // owe 5 back
+                if (fives == 0) return false;   // no 5 to give: stuck
                 fives--;
                 tens++;
-            } else {                        // bill == 20
-                if (tens > 0 && fives > 0) {
+            } else {                           // bill == 20
+                if (tens > 0 && fives > 0) {   // prefer 10 + 5: keeps 5s, which are more useful
                     tens--;
                     fives--;
-                } else if (fives >= 3) {
+                } else if (fives >= 3) {       // otherwise pay 15 as three 5s
                     fives -= 3;
-                } else {
+                } else {                       // cannot make 15 in change
                     return false;
                 }
             }
         }
-        return true;
+        return true;                           // served everyone
     }
 
     // ---------------------------------------------------------------- tests

@@ -5,104 +5,115 @@ public class P565_DesignTwitter {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface Twitter {
-        void postTweet(int userId, int tweetId);
-        List<Integer> getNewsFeed(int userId);
-        void follow(int followerId, int followeeId);
-        void unfollow(int followerId, int followeeId);
+        void postTweet(int userId, int tweetId);         // userId publishes a new tweet
+        List<Integer> getNewsFeed(int userId);           // 10 newest tweets by userId or anyone they follow
+        void follow(int followerId, int followeeId);     // followerId starts seeing followeeId's tweets
+        void unfollow(int followerId, int followeeId);   // ... and stops seeing them
     }
 
-    static final int FEED_SIZE = 10;
+    static final int FEED_SIZE = 10;   // a feed holds at most this many tweets
 
     /** Approach 1: one global log of every tweet; the feed scans it from newest to oldest. Feed O(T) time. */
     static class GlobalLogTwitter implements Twitter {
-        private final List<int[]> log = new ArrayList<>();                      // {userId, tweetId}, oldest first
-        private final Map<Integer, Set<Integer>> following = new HashMap<>();
+        private final List<int[]> log = new ArrayList<>();   // {userId, tweetId}, oldest first
+        private final Map<Integer, Set<Integer>> following = new HashMap<>();   // user -> users they follow
 
         public void postTweet(int userId, int tweetId) {
-            log.add(new int[]{userId, tweetId});
+            log.add(new int[]{userId, tweetId});   // appending keeps the log in time order
         }
 
         public List<Integer> getNewsFeed(int userId) {
             Set<Integer> followees = following.getOrDefault(userId, Set.of());
             List<Integer> feed = new ArrayList<>();
+            // walk the whole log from newest to oldest until the feed is full
             for (int i = log.size() - 1; i >= 0 && feed.size() < FEED_SIZE; i--) {
                 int[] t = log.get(i);
-                if (t[0] == userId || followees.contains(t[0])) feed.add(t[1]);
+                if (t[0] == userId || followees.contains(t[0])) feed.add(t[1]);   // own tweet or a followee's
             }
             return feed;
         }
 
         public void follow(int followerId, int followeeId) {
+            // ignore self-follows: a user's own tweets are always in their feed anyway
             if (followerId != followeeId) following.computeIfAbsent(followerId, k -> new HashSet<>()).add(followeeId);
         }
 
         public void unfollow(int followerId, int followeeId) {
             Set<Integer> s = following.get(followerId);
-            if (s != null) s.remove(followeeId);
+            if (s != null) s.remove(followeeId);   // no-op if they were not following
         }
     }
 
     /** Approach 2: per-user tweet lists; gather the last 10 of each source, sort by time, keep 10. Feed O(F log F) time. */
     static class SortFeedTwitter implements Twitter {
-        private int clock = 0;
-        private final Map<Integer, List<int[]>> tweets = new HashMap<>();      // userId -> {time, tweetId}, oldest first
-        private final Map<Integer, Set<Integer>> following = new HashMap<>();
+        private int clock = 0;   // global timestamp, one tick per tweet
+        // userId -> that user's tweets as {time, tweetId}, oldest first
+        private final Map<Integer, List<int[]>> tweets = new HashMap<>();
+        private final Map<Integer, Set<Integer>> following = new HashMap<>();   // user -> users they follow
 
         public void postTweet(int userId, int tweetId) {
+            // stamp the tweet with the next time so feeds can be ordered across users
             tweets.computeIfAbsent(userId, k -> new ArrayList<>()).add(new int[]{clock++, tweetId});
         }
 
         public List<Integer> getNewsFeed(int userId) {
+            // users whose tweets belong in this feed: everyone followed, plus the user
             Set<Integer> sources = new HashSet<>(following.getOrDefault(userId, Set.of()));
             sources.add(userId);
             List<int[]> candidates = new ArrayList<>();
             for (int u : sources) {
                 List<int[]> list = tweets.getOrDefault(u, List.of());
+                // only each user's last FEED_SIZE tweets can possibly make the feed
                 for (int i = Math.max(0, list.size() - FEED_SIZE); i < list.size(); i++) candidates.add(list.get(i));
             }
-            candidates.sort((a, b) -> Integer.compare(b[0], a[0]));            // newest first
+            candidates.sort((a, b) -> Integer.compare(b[0], a[0]));   // newest first
             List<Integer> feed = new ArrayList<>();
+            // keep the FEED_SIZE newest candidates
             for (int i = 0; i < candidates.size() && i < FEED_SIZE; i++) feed.add(candidates.get(i)[1]);
             return feed;
         }
 
         public void follow(int followerId, int followeeId) {
+            // ignore self-follows: a user's own tweets are always in their feed anyway
             if (followerId != followeeId) following.computeIfAbsent(followerId, k -> new HashSet<>()).add(followeeId);
         }
 
         public void unfollow(int followerId, int followeeId) {
             Set<Integer> s = following.get(followerId);
-            if (s != null) s.remove(followeeId);
+            if (s != null) s.remove(followeeId);   // no-op if they were not following
         }
     }
 
     /** Approach 3: per-user tweet lists merged lazily with a max-heap (k-way merge). Feed O(F + 10 log F) time. */
     static class HeapMergeTwitter implements Twitter {
-        private int clock = 0;
-        private final Map<Integer, List<int[]>> tweets = new HashMap<>();      // userId -> {time, tweetId}, oldest first
-        private final Map<Integer, Set<Integer>> following = new HashMap<>();
+        private int clock = 0;   // global timestamp, one tick per tweet
+        // userId -> that user's tweets as {time, tweetId}, oldest first
+        private final Map<Integer, List<int[]>> tweets = new HashMap<>();
+        private final Map<Integer, Set<Integer>> following = new HashMap<>();   // user -> users they follow
 
         public void postTweet(int userId, int tweetId) {
+            // stamp the tweet with the next time so feeds can be ordered across users
             tweets.computeIfAbsent(userId, k -> new ArrayList<>()).add(new int[]{clock++, tweetId});
         }
 
         public List<Integer> getNewsFeed(int userId) {
+            // users whose tweets belong in this feed: everyone followed, plus the user
             Set<Integer> sources = new HashSet<>(following.getOrDefault(userId, Set.of()));
             sources.add(userId);
             // heap entry {time, tweetId, userId, indexInThatUsersList}; newest tweet on top
             PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(b[0], a[0]));
-            for (int u : sources) {
+            for (int u : sources) {                              // seed with each user's newest tweet
                 List<int[]> list = tweets.get(u);
-                if (list == null || list.isEmpty()) continue;
+                if (list == null || list.isEmpty()) continue;    // this user never tweeted
                 int last = list.size() - 1;
                 pq.add(new int[]{list.get(last)[0], list.get(last)[1], u, last});
             }
             List<Integer> feed = new ArrayList<>();
-            while (!pq.isEmpty() && feed.size() < FEED_SIZE) {
-                int[] top = pq.poll();
+            while (!pq.isEmpty() && feed.size() < FEED_SIZE) {   // k-way merge, stop once the feed is full
+                int[] top = pq.poll();                           // newest tweet not yet in the feed
                 feed.add(top[1]);
-                int prev = top[3] - 1;                                         // next older tweet of the same user
-                if (prev >= 0) {
+                int prev = top[3] - 1;                           // next older tweet of the same user
+                if (prev >= 0) {                                 // push it so that user stays in the merge
                     int[] older = tweets.get(top[2]).get(prev);
                     pq.add(new int[]{older[0], older[1], top[2], prev});
                 }
@@ -111,12 +122,13 @@ public class P565_DesignTwitter {
         }
 
         public void follow(int followerId, int followeeId) {
+            // ignore self-follows: a user's own tweets are always in their feed anyway
             if (followerId != followeeId) following.computeIfAbsent(followerId, k -> new HashSet<>()).add(followeeId);
         }
 
         public void unfollow(int followerId, int followeeId) {
             Set<Integer> s = following.get(followerId);
-            if (s != null) s.remove(followeeId);
+            if (s != null) s.remove(followeeId);   // no-op if they were not following
         }
     }
 

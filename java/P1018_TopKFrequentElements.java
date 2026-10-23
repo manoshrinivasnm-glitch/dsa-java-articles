@@ -5,41 +5,45 @@ public class P1018_TopKFrequentElements {
 
     /** Approach 1: count, sort all distinct values by count, take the first k. O(n + d log d) time, O(d) space. */
     static int[] bruteForce(int[] nums, int k) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();                   // value -> how many times it appears
         for (int x : nums) freq.merge(x, 1, Integer::sum);
+        // one entry per distinct value
         List<Map.Entry<Integer, Integer>> entries = new ArrayList<>(freq.entrySet());
         entries.sort((p, q) -> Integer.compare(q.getValue(), p.getValue()));   // most frequent first
         int[] res = new int[k];
-        for (int i = 0; i < k; i++) res[i] = entries.get(i).getKey();
+        for (int i = 0; i < k; i++) res[i] = entries.get(i).getKey();   // the first k entries are the answer
         return res;
     }
 
     /** Approach 2: count, then keep the k most frequent in a size-k min-heap. O(n + d log k) time, O(d) space. */
     static int[] better(int[] nums, int k) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();   // value -> how many times it appears
         for (int x : nums) freq.merge(x, 1, Integer::sum);
-        PriorityQueue<Integer> pq = new PriorityQueue<>((p, q) -> Integer.compare(freq.get(p), freq.get(q)));   // least frequent on top
-        for (int x : freq.keySet()) {
+        // min-heap by frequency: the least frequent kept value is on top
+        PriorityQueue<Integer> pq = new PriorityQueue<>((p, q) -> Integer.compare(freq.get(p), freq.get(q)));
+        for (int x : freq.keySet()) {                   // offer every distinct value
             pq.add(x);
-            if (pq.size() > k) pq.poll();                      // evict the weakest candidate
+            if (pq.size() > k) pq.poll();               // evict the weakest candidate
         }
         int[] res = new int[k];
+        // heap pops least frequent first, so fill from the back
         for (int i = k - 1; i >= 0; i--) res[i] = pq.poll();
         return res;
     }
 
     /** Approach 3: count, then bucket values by their count (counts are at most n). O(n) time, O(n) space. */
     static int[] optimal(int[] nums, int k) {
-        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> freq = new HashMap<>();         // value -> how many times it appears
         for (int x : nums) freq.merge(x, 1, Integer::sum);
-        List<List<Integer>> buckets = new ArrayList<>();       // buckets.get(f) = values seen exactly f times
+        List<List<Integer>> buckets = new ArrayList<>();      // buckets.get(f) = values seen exactly f times
+        // a frequency is at most nums.length
         for (int f = 0; f <= nums.length; f++) buckets.add(new ArrayList<>());
         for (Map.Entry<Integer, Integer> e : freq.entrySet()) buckets.get(e.getValue()).add(e.getKey());
         int[] res = new int[k];
-        int idx = 0;
-        for (int f = nums.length; f >= 1 && idx < k; f--) {
+        int idx = 0;                                          // how many answers collected so far
+        for (int f = nums.length; f >= 1 && idx < k; f--) {   // walk buckets from highest frequency down
             for (int x : buckets.get(f)) {
-                if (idx == k) break;
+                if (idx == k) break;                          // already have k values
                 res[idx++] = x;
             }
         }

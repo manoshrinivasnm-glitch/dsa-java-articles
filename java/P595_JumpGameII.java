@@ -8,16 +8,16 @@ public class P595_JumpGameII {
     /** Approach 1: recursion, try every jump from every index and keep the fewest. Exponential time, O(n) stack. */
     static int bruteForce(int[] nums) {
         int best = minJumpsFrom(nums, 0);
-        return best == INF ? -1 : best;
+        return best == INF ? -1 : best;   // INF means the end cannot be reached
     }
 
     static int minJumpsFrom(int[] nums, int i) {
-        if (i >= nums.length - 1) return 0;
-        int best = INF;
-        int far = Math.min(nums.length - 1, i + nums[i]);
-        for (int j = i + 1; j <= far; j++) {
+        if (i >= nums.length - 1) return 0;                   // already at (or past) the last index
+        int best = INF;                                       // fewest jumps found from i so far
+        int far = Math.min(nums.length - 1, i + nums[i]);     // farthest index one jump from i
+        for (int j = i + 1; j <= far; j++) {                  // try every landing spot
             int sub = minJumpsFrom(nums, j);
-            if (sub != INF) best = Math.min(best, sub + 1);
+            if (sub != INF) best = Math.min(best, sub + 1);   // one jump to j, then the best from j
         }
         return best;
     }
@@ -25,26 +25,27 @@ public class P595_JumpGameII {
     /** Approach 2: DP from the right; dp[i] = fewest jumps from i to the last index. O(n^2) time, O(n) space. */
     static int better(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n];
-        dp[n - 1] = 0;
-        for (int i = n - 2; i >= 0; i--) {
-            dp[i] = INF;
-            int far = Math.min(n - 1, i + nums[i]);
+        int[] dp = new int[n];                        // dp[i] = fewest jumps from i to the last index
+        dp[n - 1] = 0;                                // already at the end
+        for (int i = n - 2; i >= 0; i--) {            // fill from right to left
+            dp[i] = INF;                              // unreachable until a landing spot proves otherwise
+            int far = Math.min(n - 1, i + nums[i]);   // farthest index one jump from i
             for (int j = i + 1; j <= far; j++) {
-                if (dp[j] != INF) dp[i] = Math.min(dp[i], dp[j] + 1);
+                if (dp[j] != INF) dp[i] = Math.min(dp[i], dp[j] + 1);   // jump to j, then follow its best
             }
         }
-        return dp[0] == INF ? -1 : dp[0];
+        return dp[0] == INF ? -1 : dp[0];             // -1 if the end is unreachable
     }
 
     /** Approach 3: greedy BFS by levels; [l, r] holds the indices reachable with exactly `jumps` jumps. O(n) time, O(1) space. */
     static int optimal(int[] nums) {
+        // [l, r] = indices reachable with exactly `jumps` jumps
         int n = nums.length, jumps = 0, l = 0, r = 0;
-        while (r < n - 1) {
-            int farthest = r;
+        while (r < n - 1) {                 // the current level does not include the last index yet
+            int farthest = r;               // farthest index one more jump can reach
             for (int i = l; i <= r; i++) farthest = Math.max(farthest, i + nums[i]);
-            if (farthest == r) return -1;           // this level cannot push past r: stuck
-            l = r + 1;
+            if (farthest == r) return -1;   // this level cannot push past r: stuck
+            l = r + 1;                      // the next level starts right after this one
             r = farthest;
             jumps++;
         }

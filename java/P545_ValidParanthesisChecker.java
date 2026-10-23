@@ -5,49 +5,50 @@ public class P545_ValidParanthesisChecker {
 
     /** Approach 1: try all three meanings of every '*'. O(3^k * n) time for k stars, O(n) stack. */
     static boolean bruteForce(String s) {
-        return tryAll(s, 0, 0);
+        return tryAll(s, 0, 0);   // start at index 0 with no '(' waiting to be closed
     }
 
     static boolean tryAll(String s, int i, int open) {
-        if (open < 0) return false;                     // a ')' arrived with nothing to close
-        if (i == s.length()) return open == 0;
+        if (open < 0) return false;              // a ')' arrived with nothing to close
+        if (i == s.length()) return open == 0;   // end of string: valid only if every '(' was closed
         char c = s.charAt(i);
         if (c == '(') return tryAll(s, i + 1, open + 1);
         if (c == ')') return tryAll(s, i + 1, open - 1);
-        return tryAll(s, i + 1, open + 1)               // '*' as '('
-                || tryAll(s, i + 1, open - 1)           // '*' as ')'
-                || tryAll(s, i + 1, open);              // '*' as empty
+        return tryAll(s, i + 1, open + 1)        // '*' as '('
+                || tryAll(s, i + 1, open - 1)    // '*' as ')'
+                || tryAll(s, i + 1, open);       // '*' as empty
     }
 
     /** Approach 2: the same recursion memoised on (index, open count). O(n^2) time, O(n^2) space. */
     static boolean better(String s) {
         int n = s.length();
-        Boolean[][] memo = new Boolean[n + 1][n + 1];
+        Boolean[][] memo = new Boolean[n + 1][n + 1];   // memo[i][open]: null = not solved yet
         return solve(s, 0, 0, memo);
     }
 
     static boolean solve(String s, int i, int open, Boolean[][] memo) {
-        if (open < 0) return false;
-        if (i == s.length()) return open == 0;
-        if (memo[i][open] != null) return memo[i][open];
+        if (open < 0) return false;              // a ')' arrived with nothing to close
+        if (i == s.length()) return open == 0;   // end of string: valid only if every '(' was closed
+        if (memo[i][open] != null) return memo[i][open];   // this state was already answered
         char c = s.charAt(i);
         boolean ans;
         if (c == '(') ans = solve(s, i + 1, open + 1, memo);
         else if (c == ')') ans = solve(s, i + 1, open - 1, memo);
+        // '*': try it as '(', as ')' and as empty
         else ans = solve(s, i + 1, open + 1, memo) || solve(s, i + 1, open - 1, memo) || solve(s, i + 1, open, memo);
-        memo[i][open] = ans;
+        memo[i][open] = ans;                     // remember before returning
         return ans;
     }
 
     /** Approach 3: greedy, track the range [lo, hi] of possible open counts. O(n) time, O(1) space. */
     static boolean optimal(String s) {
-        int lo = 0, hi = 0;
+        int lo = 0, hi = 0;             // fewest and most unclosed '(' possible so far
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c == '(') {
+            if (c == '(') {             // a definite opener raises both bounds
                 lo++;
                 hi++;
-            } else if (c == ')') {
+            } else if (c == ')') {      // a definite closer lowers both bounds
                 lo--;
                 hi--;
             } else {                    // '*': one fewer if it closes, one more if it opens
@@ -57,7 +58,7 @@ public class P545_ValidParanthesisChecker {
             if (hi < 0) return false;   // too many ')' even if every '*' opened
             if (lo < 0) lo = 0;         // a negative count is not a real state; drop it
         }
-        return lo == 0;
+        return lo == 0;                 // some choice of '*' closes every '('
     }
 
     // ---------------------------------------------------------------- tests

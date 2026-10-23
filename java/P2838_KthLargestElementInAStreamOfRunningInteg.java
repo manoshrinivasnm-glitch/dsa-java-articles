@@ -5,69 +5,72 @@ public class P2838_KthLargestElementInAStreamOfRunningInteg {
 
     /** Common contract so every implementation can be driven by the same test script. */
     interface KthStream {
-        int add(int val);
+        int add(int val);   // insert val, then return the k-th largest so far (-1 if fewer than k)
     }
 
     /** Approach 1: keep every value; copy and sort on each add. O(n log n) per add, O(n) space. */
     static class SortEveryTime implements KthStream {
         private final int k;
-        private final List<Integer> all = new ArrayList<>();
+        private final List<Integer> all = new ArrayList<>();   // every number seen so far
 
         SortEveryTime(int k, int[] nums) {
             this.k = k;
-            for (int x : nums) all.add(x);
+            for (int x : nums) all.add(x);   // start with the initial numbers
         }
 
         public int add(int val) {
             all.add(val);
-            if (all.size() < k) return -1;
-            int[] a = new int[all.size()];
+            if (all.size() < k) return -1;   // fewer than k numbers: no k-th largest yet
+            int[] a = new int[all.size()];   // copy everything and sort it from scratch
             for (int i = 0; i < a.length; i++) a[i] = all.get(i);
             Arrays.sort(a);
-            return a[a.length - k];
+            return a[a.length - k];          // k-th from the end of the ascending order
         }
     }
 
     /** Approach 2: keep only the k largest in an ascending list, inserting by binary search. O(k) per add, O(k) space. */
     static class SortedTopK implements KthStream {
         private final int k;
-        private final List<Integer> top = new ArrayList<>();      // ascending; top.get(0) is the k-th largest once full
+        // ascending; top.get(0) is the k-th largest once full
+        private final List<Integer> top = new ArrayList<>();
 
         SortedTopK(int k, int[] nums) {
             this.k = k;
-            for (int x : nums) add(x);
+            for (int x : nums) add(x);   // feed the initial numbers through add()
         }
 
         public int add(int val) {
-            int lo = 0, hi = top.size();                          // find the first index whose value is > val
+            int lo = 0, hi = top.size();         // find the first index whose value is > val
             while (lo < hi) {
                 int mid = (lo + hi) >>> 1;
+                // mid not bigger -> look right; else mid may be the answer -> look left
                 if (top.get(mid) <= val) lo = mid + 1; else hi = mid;
             }
-            top.add(lo, val);
-            if (top.size() > k) top.remove(0);                    // drop the smallest: it can never be k-th largest again
-            return top.size() < k ? -1 : top.get(0);
+            top.add(lo, val);                    // insert at that index so the list stays sorted
+            if (top.size() > k) top.remove(0);   // drop the smallest: it can never be k-th largest again
+            return top.size() < k ? -1 : top.get(0);   // smallest of the k largest is the answer
         }
     }
 
     /** Approach 3: min-heap holding the k largest values; its root is the answer. O(log k) per add, O(k) space. */
     static class MinHeapK implements KthStream {
         private final int k;
+        // the k largest so far, smallest on top
         private final PriorityQueue<Integer> heap = new PriorityQueue<>();
 
         MinHeapK(int k, int[] nums) {
             this.k = k;
-            for (int x : nums) add(x);
+            for (int x : nums) add(x);   // feed the initial numbers through add()
         }
 
         public int add(int val) {
-            if (heap.size() < k) {
+            if (heap.size() < k) {                       // still filling: every value is among the k largest
                 heap.add(val);
-            } else if (val > heap.peek()) {                       // val beats the current k-th largest
-                heap.poll();
+            } else if (val > heap.peek()) {              // val beats the current k-th largest
+                heap.poll();                             // evict the old k-th largest to make room
                 heap.add(val);
             }
-            return heap.size() < k ? -1 : heap.peek();
+            return heap.size() < k ? -1 : heap.peek();   // heap top is the k-th largest once k are held
         }
     }
 

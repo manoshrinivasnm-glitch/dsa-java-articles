@@ -5,26 +5,26 @@ public class P542_JumpGameI {
 
     /** Approach 1: recursively try every jump length from every index. Exponential time, O(n) stack. */
     static boolean bruteForce(int[] nums) {
-        return canReach(nums, 0);
+        return canReach(nums, 0);   // try every jump sequence from index 0
     }
 
     static boolean canReach(int[] nums, int i) {
-        if (i >= nums.length - 1) return true;
-        for (int step = 1; step <= nums[i]; step++) {
-            if (canReach(nums, i + step)) return true;
+        if (i >= nums.length - 1) return true;           // reached (or passed) the last index
+        for (int step = 1; step <= nums[i]; step++) {    // every jump length allowed from i
+            if (canReach(nums, i + step)) return true;   // one successful path is enough
         }
-        return false;
+        return false;                                    // no jump from i leads to the end
     }
 
     /** Approach 2: DP from the right; good[i] is true when index i can reach the last index. O(n^2) time, O(n) space. */
     static boolean better(int[] nums) {
         int n = nums.length;
-        boolean[] good = new boolean[n];
-        good[n - 1] = true;
-        for (int i = n - 2; i >= 0; i--) {
-            int far = Math.min(n - 1, i + nums[i]);
+        boolean[] good = new boolean[n];              // good[i] = the end is reachable from index i
+        good[n - 1] = true;                           // the last index trivially reaches itself
+        for (int i = n - 2; i >= 0; i--) {            // fill from right to left
+            int far = Math.min(n - 1, i + nums[i]);   // farthest index one jump from i
             for (int j = i + 1; j <= far; j++) {
-                if (good[j]) {
+                if (good[j]) {                        // can land on a good index: i is good too
                     good[i] = true;
                     break;
                 }
@@ -35,11 +35,11 @@ public class P542_JumpGameI {
 
     /** Approach 3: greedy, keep the farthest index reachable so far. O(n) time, O(1) space. */
     static boolean optimal(int[] nums) {
-        int maxReach = 0;
+        int maxReach = 0;                                 // farthest index reachable so far
         for (int i = 0; i < nums.length; i++) {
-            if (i > maxReach) return false;              // index i is unreachable, so is everything after it
-            maxReach = Math.max(maxReach, i + nums[i]);
-            if (maxReach >= nums.length - 1) return true;
+            if (i > maxReach) return false;               // index i is unreachable, so is everything after it
+            maxReach = Math.max(maxReach, i + nums[i]);   // a jump from i may extend the reach
+            if (maxReach >= nums.length - 1) return true;   // the last index is already in reach
         }
         return true;
     }

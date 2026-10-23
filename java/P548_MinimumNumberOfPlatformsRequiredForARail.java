@@ -5,11 +5,12 @@ public class P548_MinimumNumberOfPlatformsRequiredForARail {
 
     /** Approach 1: at every arrival moment, count the trains standing in the station. O(n^2) time, O(1) space. */
     static int bruteForce(int[] arr, int[] dep) {
-        int n = arr.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            int present = 0;
+        int n = arr.length, best = 0;   // best = most trains present at once
+        for (int i = 0; i < n; i++) {   // the peak always happens at some arrival time
+            int present = 0;            // trains in the station when train i arrives
             for (int j = 0; j < n; j++) {
-                if (arr[j] <= arr[i] && arr[i] <= dep[j]) present++;   // train j is in the station at time arr[i]
+                // train j is in the station at time arr[i]
+                if (arr[j] <= arr[i] && arr[i] <= dep[j]) present++;
             }
             best = Math.max(best, present);
         }
@@ -18,16 +19,17 @@ public class P548_MinimumNumberOfPlatformsRequiredForARail {
 
     /** Approach 2: sort arrivals and departures separately and sweep the events in time order. O(n log n) time, O(n) space. */
     static int optimal(int[] arr, int[] dep) {
-        int[] a = arr.clone(), d = dep.clone();
+        int[] a = arr.clone(), d = dep.clone();      // arrivals and departures, sorted separately
         Arrays.sort(a);
         Arrays.sort(d);
-        int n = a.length, i = 0, j = 0, onPlatform = 0, best = 0;
-        while (i < n) {
-            if (a[i] <= d[j]) {          // next event is an arrival; on a tie it goes first (both trains need a platform)
+        int n = a.length, i = 0, j = 0, onPlatform = 0, best = 0;   // i, j = next arrival, next departure
+        while (i < n) {                              // once every train has arrived the count can only fall
+            // next event is an arrival; on a tie it goes first (both trains need a platform)
+            if (a[i] <= d[j]) {
                 onPlatform++;
                 i++;
-                best = Math.max(best, onPlatform);
-            } else {                     // next event is a departure, which frees a platform
+                best = Math.max(best, onPlatform);   // a new peak of trains in the station
+            } else {                                 // next event is a departure, which frees a platform
                 onPlatform--;
                 j++;
             }

@@ -5,17 +5,19 @@ public class P549_NMeetingsInOneRoom {
 
     /** Approach 1: try every subset of meetings and keep the largest clash-free one. O(2^n * n log n) time, O(n) space. */
     static int bruteForce(int[] start, int[] end) {
-        int n = start.length, best = 0;
-        for (int mask = 0; mask < (1 << n); mask++) {
-            List<Integer> chosen = new ArrayList<>();
+        int n = start.length, best = 0;                 // best = largest clash-free set found so far
+        for (int mask = 0; mask < (1 << n); mask++) {   // every subset of meetings, one bit per meeting
+            List<Integer> chosen = new ArrayList<>();   // meetings whose bit is set in mask
             for (int i = 0; i < n; i++) if ((mask & (1 << i)) != 0) chosen.add(i);
-            if (chosen.size() <= best) continue;          // cannot improve the answer
+            if (chosen.size() <= best) continue;        // cannot improve the answer
+            // by start time, so clashes are neighbours
             chosen.sort((a, b) -> Integer.compare(start[a], start[b]));
             boolean ok = true;
             for (int k = 1; k < chosen.size() && ok; k++) {
-                if (start[chosen.get(k)] <= end[chosen.get(k - 1)]) ok = false;   // clash with the previous meeting
+                // clash with the previous meeting
+                if (start[chosen.get(k)] <= end[chosen.get(k - 1)]) ok = false;
             }
-            if (ok) best = chosen.size();
+            if (ok) best = chosen.size();               // a bigger valid schedule
         }
         return best;
     }
@@ -23,16 +25,16 @@ public class P549_NMeetingsInOneRoom {
     /** Approach 2: sort by end time and take every meeting that starts after the last chosen one ends. O(n log n) time, O(n) space. */
     static List<Integer> optimal(int[] start, int[] end) {
         int n = start.length;
-        Integer[] order = new Integer[n];
+        Integer[] order = new Integer[n];   // meeting indices, to be sorted by end time
         for (int i = 0; i < n; i++) order[i] = i;
         // earliest finish first; on equal end times the lower meeting number goes first
         Arrays.sort(order, (a, b) -> end[a] != end[b] ? Integer.compare(end[a], end[b]) : Integer.compare(a, b));
         List<Integer> picked = new ArrayList<>();
-        long lastEnd = Long.MIN_VALUE;
+        long lastEnd = Long.MIN_VALUE;      // end time of the last meeting we kept (none yet)
         for (int i : order) {
-            if (start[i] > lastEnd) {
-                picked.add(i + 1);                       // meetings are numbered from 1
-                lastEnd = end[i];
+            if (start[i] > lastEnd) {       // starts after the room frees up: keep it
+                picked.add(i + 1);          // meetings are numbered from 1
+                lastEnd = end[i];           // the room is busy until this meeting ends
             }
         }
         return picked;

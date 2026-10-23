@@ -6,22 +6,22 @@ public class P489_FractionalKnapsack {
     /** Approach 1: greedy, finding the best remaining value/weight ratio with a linear scan every round. O(n^2) time, O(n) space. */
     static double greedyScan(int[] val, int[] wt, int capacity) {
         int n = val.length;
-        boolean[] taken = new boolean[n];
-        double total = 0;
-        int left = capacity;
-        while (left > 0) {
-            int best = -1;
+        boolean[] taken = new boolean[n];   // taken[i] = item i is already (partly) in the bag
+        double total = 0;                   // value packed so far
+        int left = capacity;                // weight the bag can still hold
+        while (left > 0) {                  // keep packing while there is room
+            int best = -1;                  // untaken item with the highest value per unit weight
             for (int i = 0; i < n; i++) {
                 if (taken[i]) continue;
                 // val[i]/wt[i] > val[best]/wt[best], cross-multiplied in long to avoid division
                 if (best == -1 || (long) val[i] * wt[best] > (long) val[best] * wt[i]) best = i;
             }
-            if (best == -1) break;                  // every item is already in the bag
+            if (best == -1) break;          // every item is already in the bag
             taken[best] = true;
-            if (wt[best] <= left) {
+            if (wt[best] <= left) {         // whole item fits: take all of it
                 total += val[best];
                 left -= wt[best];
-            } else {
+            } else {                        // only part fits: take the fraction that fills the bag
                 total += (double) val[best] * left / wt[best];
                 left = 0;
             }
@@ -32,18 +32,18 @@ public class P489_FractionalKnapsack {
     /** Approach 2: sort items once by value per unit weight, then fill the bag in that order. O(n log n) time, O(n) space. */
     static double optimal(int[] val, int[] wt, int capacity) {
         int n = val.length;
-        Integer[] order = new Integer[n];
+        Integer[] order = new Integer[n];   // item indices, to be sorted by value per weight
         for (int i = 0; i < n; i++) order[i] = i;
         // descending by val/wt; comparing val[a]*wt[b] with val[b]*wt[a] keeps the order exact
         Arrays.sort(order, (a, b) -> Long.compare((long) val[b] * wt[a], (long) val[a] * wt[b]));
-        double total = 0;
-        int left = capacity;
-        for (int i : order) {
-            if (left == 0) break;
-            if (wt[i] <= left) {
+        double total = 0;                   // value packed so far
+        int left = capacity;                // weight the bag can still hold
+        for (int i : order) {               // best value-per-weight items first
+            if (left == 0) break;           // bag is full
+            if (wt[i] <= left) {            // whole item fits: take all of it
                 total += val[i];
                 left -= wt[i];
-            } else {
+            } else {                        // only part fits: take the fraction that fills the bag
                 total += (double) val[i] * left / wt[i];
                 left = 0;
             }
