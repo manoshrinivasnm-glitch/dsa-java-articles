@@ -7,47 +7,48 @@ public class P523_MinimumMultiplicationsToReachEnd {
 
     /** Approach 1: Dijkstra on the 100000 residues, every multiplication is an edge of weight 1. O(MOD * m * log(MOD * m)) time. */
     static int dijkstra(int[] arr, int start, int end) {
-        int[] dist = new int[MOD];
+        int[] dist = new int[MOD];                       // dist[x] = fewest steps known to reach value x
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[start] = 0;
+        dist[start] = 0;                                 // the start value needs 0 steps
+        // min-heap: the value with the fewest steps comes out first
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
         pq.offer(new int[]{0, start});                   // {steps, value}
         while (!pq.isEmpty()) {
-            int[] cur = pq.poll();
+            int[] cur = pq.poll();                       // value with the fewest steps so far
             int steps = cur[0], value = cur[1];
             if (value == end) return steps;              // first time end leaves the heap, its distance is final
             if (steps > dist[value]) continue;           // stale entry
-            for (int m : arr) {
+            for (int m : arr) {                          // each multiplier is one possible step
                 int next = (int) ((long) value * m % MOD);   // long: value * m can reach about 10^10
-                if (steps + 1 < dist[next]) {
+                if (steps + 1 < dist[next]) {            // found a shorter way to next
                     dist[next] = steps + 1;
-                    pq.offer(new int[]{steps + 1, next});
+                    pq.offer(new int[]{steps + 1, next});   // queue next with its new step count
                 }
             }
         }
-        return -1;
+        return -1;                                       // end can never be produced
     }
 
     /** Approach 2: plain BFS, because unit weights make a FIFO queue already ordered by steps. O(MOD * m) time, O(MOD) space. */
     static int bfs(int[] arr, int start, int end) {
-        if (start == end) return 0;
-        int[] dist = new int[MOD];
+        if (start == end) return 0;                      // already there: no steps needed
+        int[] dist = new int[MOD];                       // dist[x] = steps to reach value x
         Arrays.fill(dist, -1);                           // -1 = not reached yet
-        dist[start] = 0;
-        Deque<Integer> queue = new ArrayDeque<>();
+        dist[start] = 0;                                 // the start value needs 0 steps
+        Deque<Integer> queue = new ArrayDeque<>();       // values whose neighbours are still to explore
         queue.offer(start);
         while (!queue.isEmpty()) {
-            int value = queue.poll();
-            for (int m : arr) {
-                int next = (int) ((long) value * m % MOD);
-                if (dist[next] == -1) {
-                    dist[next] = dist[value] + 1;
+            int value = queue.poll();                    // values come out in order of steps
+            for (int m : arr) {                          // each multiplier is one possible step
+                int next = (int) ((long) value * m % MOD);   // value after one more step
+                if (dist[next] == -1) {                  // first visit to next
+                    dist[next] = dist[value] + 1;        // one step more than value
                     if (next == end) return dist[next];  // the first discovery is the shortest
-                    queue.offer(next);
+                    queue.offer(next);                   // explore from next later
                 }
             }
         }
-        return -1;
+        return -1;                                       // end can never be produced
     }
 
     // ---------------------------------------------------------------- tests

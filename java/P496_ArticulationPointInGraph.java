@@ -4,10 +4,10 @@ import java.util.*;
 public class P496_ArticulationPointInGraph {
 
     static List<List<Integer>> buildGraph(int n, int[][] edges) {
-        List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> adj = new ArrayList<>();             // adj.get(u) = neighbours of u
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int[] e : edges) {
-            adj.get(e[0]).add(e[1]);
+            adj.get(e[0]).add(e[1]);                             // undirected: store both directions
             adj.get(e[1]).add(e[0]);
         }
         return adj;
@@ -16,29 +16,29 @@ public class P496_ArticulationPointInGraph {
     /** Approach 1: remove each vertex in turn and recount components. O(V * (V + E)) time, O(V + E) space. */
     static List<Integer> bruteForce(int n, int[][] edges) {
         List<List<Integer>> adj = buildGraph(n, edges);
-        int original = countComponents(n, adj, -1);
-        List<Integer> points = new ArrayList<>();
-        for (int x = 0; x < n; x++) {
-            if (countComponents(n, adj, x) > original) points.add(x);
+        int original = countComponents(n, adj, -1);              // components of the untouched graph
+        List<Integer> points = new ArrayList<>();                // vertices whose removal splits the graph
+        for (int x = 0; x < n; x++) {                            // try removing each vertex in turn
+            if (countComponents(n, adj, x) > original) points.add(x);   // removing x adds components
         }
-        if (points.isEmpty()) points.add(-1);
+        if (points.isEmpty()) points.add(-1);                    // the judge expects [-1] when there are none
         return points;
     }
 
     static int countComponents(int n, List<List<Integer>> adj, int removed) {
-        boolean[] seen = new boolean[n];
+        boolean[] seen = new boolean[n];                         // vertices already visited (or removed)
         if (removed >= 0) seen[removed] = true;                  // pretend the vertex is gone
-        Deque<Integer> stack = new ArrayDeque<>();
-        int count = 0;
-        for (int s = 0; s < n; s++) {
-            if (seen[s]) continue;
-            count++;
+        Deque<Integer> stack = new ArrayDeque<>();               // DFS stack for the current component
+        int count = 0;                                           // components found so far
+        for (int s = 0; s < n; s++) {                            // start a DFS from every unvisited vertex
+            if (seen[s]) continue;                               // visited, or the removed vertex
+            count++;                                             // s starts a new component
             seen[s] = true;
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.pop();
-                for (int v : adj.get(u)) {
-                    if (!seen[v]) {
+                int u = stack.pop();                             // next vertex in this component
+                for (int v : adj.get(u)) {                       // spread to every neighbour
+                    if (!seen[v]) {                              // first visit to v
                         seen[v] = true;
                         stack.push(v);
                     }
@@ -50,32 +50,33 @@ public class P496_ArticulationPointInGraph {
 
     /** Approach 2: Tarjan's DFS with discovery time and low-link. O(V + E) time, O(V + E) space. */
     static List<Integer> tarjan(int n, int[][] edges) {
-        List<List<Integer>> adj = buildGraph(n, edges);
+        List<List<Integer>> adj = buildGraph(n, edges);          // adj.get(u) = neighbours of u
+        // tin = discovery time, low = lowest tin the subtree can reach, timer[0] = the clock
         int[] tin = new int[n], low = new int[n], timer = new int[1];
-        boolean[] visited = new boolean[n], isCut = new boolean[n];
+        boolean[] visited = new boolean[n], isCut = new boolean[n];   // isCut[x] = x is an articulation point
         for (int s = 0; s < n; s++) {
             if (!visited[s]) dfs(s, -1, adj, visited, tin, low, timer, isCut);   // every component
         }
         List<Integer> points = new ArrayList<>();
-        for (int x = 0; x < n; x++) {
+        for (int x = 0; x < n; x++) {                            // collect the cut vertices in increasing order
             if (isCut[x]) points.add(x);                         // a vertex can qualify via several children
         }
-        if (points.isEmpty()) points.add(-1);
+        if (points.isEmpty()) points.add(-1);                    // the judge expects [-1] when there are none
         return points;
     }
 
     static void dfs(int u, int parent, List<List<Integer>> adj, boolean[] visited,
                     int[] tin, int[] low, int[] timer, boolean[] isCut) {
-        visited[u] = true;
-        tin[u] = low[u] = timer[0]++;
-        int children = 0;
-        for (int v : adj.get(u)) {
-            if (v == parent) continue;
-            if (!visited[v]) {
+        visited[u] = true;                                       // u is now discovered
+        tin[u] = low[u] = timer[0]++;                            // stamp u's discovery time; low starts there
+        int children = 0;                                        // DFS children of u (used for the root)
+        for (int v : adj.get(u)) {                               // look at every neighbour of u
+            if (v == parent) continue;                           // skip the tree edge back to the parent
+            if (!visited[v]) {                                   // tree edge: explore v's subtree first
                 dfs(v, u, adj, visited, tin, low, timer, isCut);
-                low[u] = Math.min(low[u], low[v]);
+                low[u] = Math.min(low[u], low[v]);               // whatever v's subtree reaches, u reaches too
                 if (low[v] >= tin[u] && parent != -1) isCut[u] = true;   // v's subtree cannot climb above u
-                children++;
+                children++;                                      // one more DFS child
             } else {
                 low[u] = Math.min(low[u], tin[v]);               // tin, not low: see the article
             }

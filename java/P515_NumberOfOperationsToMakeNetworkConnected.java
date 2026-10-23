@@ -6,41 +6,41 @@ public class P515_NumberOfOperationsToMakeNetworkConnected {
     /** Approach 1: count connected components with an iterative DFS. O(n + m) time, O(n + m) space. */
     static int dfsComponents(int n, int[][] connections) {
         if (connections.length < n - 1) return -1;          // fewer than n - 1 cables can never connect n machines
-        List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> adj = new ArrayList<>();           // adj.get(u) = computers wired to u
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int[] c : connections) {
-            adj.get(c[0]).add(c[1]);
+            adj.get(c[0]).add(c[1]);                           // cables work both ways
             adj.get(c[1]).add(c[0]);
         }
-        boolean[] visited = new boolean[n];
-        Deque<Integer> stack = new ArrayDeque<>();
-        int components = 0;
-        for (int s = 0; s < n; s++) {
-            if (visited[s]) continue;
-            components++;
+        boolean[] visited = new boolean[n];                    // computers already assigned to a component
+        Deque<Integer> stack = new ArrayDeque<>();             // DFS stack for the current component
+        int components = 0;                                    // number of separate groups found
+        for (int s = 0; s < n; s++) {                          // start a DFS from every unvisited computer
+            if (visited[s]) continue;                          // already part of a counted group
+            components++;                                      // s starts a new group
             visited[s] = true;
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.pop();
-                for (int v : adj.get(u)) {
-                    if (!visited[v]) {
+                int u = stack.pop();                           // next computer in this group
+                for (int v : adj.get(u)) {                     // spread to every wired neighbour
+                    if (!visited[v]) {                         // first time we reach v
                         visited[v] = true;
                         stack.push(v);
                     }
                 }
             }
         }
-        return components - 1;
+        return components - 1;                                 // k groups need k - 1 moved cables to link up
     }
 
     /** Disjoint Set Union with union by size and path compression. */
     static final class DisjointSet {
-        final int[] parent, size;
+        final int[] parent, size;                              // parent links; size[r] = size of root r's set
 
         DisjointSet(int n) {
             parent = new int[n];
             size = new int[n];
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {                      // every element starts as its own set
                 parent[i] = i;
                 size[i] = 1;
             }
@@ -48,33 +48,33 @@ public class P515_NumberOfOperationsToMakeNetworkConnected {
 
         int find(int x) {
             if (parent[x] != x) parent[x] = find(parent[x]);   // path compression
-            return parent[x];
+            return parent[x];                                  // parent[x] is now the root itself
         }
 
         boolean union(int a, int b) {
-            int ra = find(a), rb = find(b);
-            if (ra == rb) return false;                         // already in the same set
-            if (size[ra] < size[rb]) {
+            int ra = find(a), rb = find(b);                    // roots of the two sets
+            if (ra == rb) return false;                        // already in the same set
+            if (size[ra] < size[rb]) {                         // keep ra as the root of the larger set
                 int t = ra;
                 ra = rb;
                 rb = t;
             }
-            parent[rb] = ra;                                    // hang the smaller tree under the larger
-            size[ra] += size[rb];
-            return true;
+            parent[rb] = ra;                                   // hang the smaller tree under the larger
+            size[ra] += size[rb];                              // ra's set absorbs rb's elements
+            return true;                                       // two different sets were merged
         }
     }
 
     /** Approach 2: Disjoint Set; count components and redundant cables in one pass. O(m * alpha(n)) time, O(n) space. */
     static int disjointSet(int n, int[][] connections) {
-        DisjointSet ds = new DisjointSet(n);
-        int components = n, extra = 0;
+        DisjointSet ds = new DisjointSet(n);                   // one set per group of linked computers
+        int components = n, extra = 0;                         // every computer starts alone; spare cables = 0
         for (int[] c : connections) {
             if (ds.union(c[0], c[1])) components--;            // cable joined two groups
             else extra++;                                      // cable inside one group: free to move
         }
-        int needed = components - 1;
-        return extra >= needed ? needed : -1;
+        int needed = components - 1;                           // cables needed to link all groups
+        return extra >= needed ? needed : -1;                  // enough spare cables to move?
     }
 
     // ---------------------------------------------------------------- tests

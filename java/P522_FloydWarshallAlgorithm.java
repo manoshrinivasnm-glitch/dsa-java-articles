@@ -8,22 +8,23 @@ public class P522_FloydWarshallAlgorithm {
     /** Approach 1: run Bellman-Ford from every source on the adjacency matrix. O(V^4) time on a matrix, O(V^2) space. */
     static void bruteForce(int[][] matrix) {
         int n = matrix.length;
-        int[][] result = new int[n][];
-        for (int src = 0; src < n; src++) {
-            int[] dist = new int[n];
+        int[][] result = new int[n][];                   // result[src] = distances from src to every node
+        for (int src = 0; src < n; src++) {              // one Bellman-Ford run per source
+            int[] dist = new int[n];                     // dist[v] = shortest known distance src -> v
             Arrays.fill(dist, INF);
-            dist[src] = 0;
-            for (int round = 1; round < n; round++) {
-                for (int u = 0; u < n; u++) {
-                    if (dist[u] == INF) continue;
+            dist[src] = 0;                               // src is at distance 0
+            for (int round = 1; round < n; round++) {    // n - 1 rounds settle every shortest path
+                for (int u = 0; u < n; u++) {            // try every edge u -> v of the matrix
+                    if (dist[u] == INF) continue;        // u not reached yet, nothing to relax
                     for (int v = 0; v < n; v++) {
+                        // an edge exists and going through u is shorter
                         if (matrix[u][v] != -1 && dist[u] + matrix[u][v] < dist[v]) dist[v] = dist[u] + matrix[u][v];
                     }
                 }
             }
             result[src] = dist;                          // keep the input intact until every source is done
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                    // write the answers back, INF -> -1
             for (int j = 0; j < n; j++) matrix[i][j] = result[i][j] == INF ? -1 : result[i][j];
         }
     }
@@ -31,41 +32,44 @@ public class P522_FloydWarshallAlgorithm {
     /** Approach 2: Floyd-Warshall, allow intermediate vertices 0, 1, ..., via one at a time. O(V^3) time, O(1) extra space. */
     static void floydWarshall(int[][] matrix) {
         int n = matrix.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                    // turn "no edge" into a huge distance
             for (int j = 0; j < n; j++) if (matrix[i][j] == -1) matrix[i][j] = INF;
         }
-        for (int via = 0; via < n; via++) {
-            for (int i = 0; i < n; i++) {
+        for (int via = 0; via < n; via++) {              // now also allow paths through vertex via
+            for (int i = 0; i < n; i++) {                // for every pair (i, j) ...
                 if (matrix[i][via] == INF) continue;     // i cannot reach via, nothing to improve
                 for (int j = 0; j < n; j++) {
+                    // ... is i -> via -> j shorter than the best so far?
                     if (matrix[via][j] != INF && matrix[i][via] + matrix[via][j] < matrix[i][j]) {
-                        matrix[i][j] = matrix[i][via] + matrix[via][j];
+                        matrix[i][j] = matrix[i][via] + matrix[via][j];   // route i -> j through via
                     }
                 }
             }
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                    // restore -1 for pairs that stay unreachable
             for (int j = 0; j < n; j++) if (matrix[i][j] == INF) matrix[i][j] = -1;
         }
     }
 
     /** Extension: with negative weights allowed, a negative cycle exists exactly when some dist[i][i] ends below 0. */
     static boolean hasNegativeCycle(int n, int[][] edges) {
-        int[][] dist = new int[n][n];
+        int[][] dist = new int[n][n];                    // dist[i][j] = shortest known distance i -> j
         for (int[] row : dist) Arrays.fill(row, INF);
-        for (int i = 0; i < n; i++) dist[i][i] = 0;
+        for (int i = 0; i < n; i++) dist[i][i] = 0;      // every vertex reaches itself for free
+        // keep the cheapest of any parallel edges
         for (int[] e : edges) dist[e[0]][e[1]] = Math.min(dist[e[0]][e[1]], e[2]);
-        for (int via = 0; via < n; via++) {
+        for (int via = 0; via < n; via++) {              // allow vertex via as an intermediate stop
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
+                    // both halves exist and the detour via is shorter
                     if (dist[i][via] != INF && dist[via][j] != INF && dist[i][via] + dist[via][j] < dist[i][j]) {
-                        dist[i][j] = dist[i][via] + dist[via][j];
+                        dist[i][j] = dist[i][via] + dist[via][j];   // route i -> j through via
                     }
                 }
             }
         }
-        for (int i = 0; i < n; i++) if (dist[i][i] < 0) return true;
-        return false;
+        for (int i = 0; i < n; i++) if (dist[i][i] < 0) return true;   // i gets back to itself below 0
+        return false;                                    // every dist[i][i] stayed 0: no negative cycle
     }
 
     // ---------------------------------------------------------------- tests

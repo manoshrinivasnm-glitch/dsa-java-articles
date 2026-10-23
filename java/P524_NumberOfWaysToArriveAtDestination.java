@@ -7,68 +7,70 @@ public class P524_NumberOfWaysToArriveAtDestination {
 
     /** Approach 1: enumerate every simple path from 0 to n - 1, keeping the best time and how often it occurs. Exponential time. */
     static int bruteForce(int n, int[][] roads) {
-        List<List<int[]>> adj = buildGraph(n, roads);
+        List<List<int[]>> adj = buildGraph(n, roads);    // adj.get(u) lists {v, time} for each road
         long[] best = {Long.MAX_VALUE, 0};               // {shortest time so far, routes with that time}
-        boolean[] onPath = new boolean[n];
-        onPath[0] = true;
-        explore(adj, 0, n - 1, 0, onPath, best);
-        return (int) (best[1] % MOD);
+        boolean[] onPath = new boolean[n];               // nodes on the current path, never revisited
+        onPath[0] = true;                                // every path starts at node 0
+        explore(adj, 0, n - 1, 0, onPath, best);         // try every simple path to n - 1
+        return (int) (best[1] % MOD);                    // number of fastest routes, mod 1e9+7
     }
 
     static void explore(List<List<int[]>> adj, int u, int target, long time, boolean[] onPath, long[] best) {
         if (time > best[0]) return;                      // already slower than a known route
-        if (u == target) {
-            if (time < best[0]) {
+        if (u == target) {                               // reached the destination
+            if (time < best[0]) {                        // strictly faster: a new best time
                 best[0] = time;
-                best[1] = 1;
+                best[1] = 1;                             // this route is the only one so far
             } else {
-                best[1]++;
+                best[1]++;                               // ties the best time: one more route
             }
             return;
         }
-        for (int[] e : adj.get(u)) {
+        for (int[] e : adj.get(u)) {                     // try every road out of u
             int v = e[0];
             if (onPath[v]) continue;                     // positive times: a shortest route never repeats a node
-            onPath[v] = true;
-            explore(adj, v, target, time + e[1], onPath, best);
-            onPath[v] = false;
+            onPath[v] = true;                            // put v on the path
+            explore(adj, v, target, time + e[1], onPath, best);   // walk the road and keep exploring
+            onPath[v] = false;                           // backtrack: free v for other paths
         }
     }
 
     /** Approach 2: Dijkstra for distances, then count paths on the shortest-path DAG in order of distance. O(E log E) time. */
     static int twoPass(int n, int[][] roads) {
-        List<List<int[]>> adj = buildGraph(n, roads);
-        long[] dist = shortestTimes(adj, 0);
-        Integer[] order = new Integer[n];
+        List<List<int[]>> adj = buildGraph(n, roads);    // adj.get(u) lists {v, time} for each road
+        long[] dist = shortestTimes(adj, 0);             // dist[v] = shortest time from 0 to v
+        Integer[] order = new Integer[n];                // node ids, to be visited by distance
         for (int i = 0; i < n; i++) order[i] = i;
-        Arrays.sort(order, (a, b) -> Long.compare(dist[a], dist[b]));
-        long[] ways = new long[n];
-        ways[0] = 1;
-        for (int u : order) {                            // every predecessor of u is strictly closer, so it came earlier
-            if (dist[u] == Long.MAX_VALUE) break;
+        Arrays.sort(order, (a, b) -> Long.compare(dist[a], dist[b]));   // nearest node first
+        long[] ways = new long[n];                       // ways[v] = number of shortest routes 0 -> v
+        ways[0] = 1;                                     // one way to stand at the start
+        for (int u : order) {                            // u's predecessors are closer, so already counted
+            if (dist[u] == Long.MAX_VALUE) break;        // the rest cannot be reached
             for (int[] e : adj.get(u)) {
                 int v = e[0];
+                // u -> v lies on a shortest route: extend u's routes
                 if (dist[u] + e[1] == dist[v]) ways[v] = (ways[v] + ways[u]) % MOD;
             }
         }
-        return (int) ways[n - 1];
+        return (int) ways[n - 1];                        // shortest routes to the destination
     }
 
     static long[] shortestTimes(List<List<int[]>> adj, int src) {
-        long[] dist = new long[adj.size()];
+        long[] dist = new long[adj.size()];              // dist[v] = shortest known time to v
         Arrays.fill(dist, Long.MAX_VALUE);
-        dist[src] = 0;
+        dist[src] = 0;                                   // the source costs nothing
+        // min-heap of {time, node}, closest first
         PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
         pq.offer(new long[]{0, src});
         while (!pq.isEmpty()) {
-            long[] cur = pq.poll();
+            long[] cur = pq.poll();                      // earliest pending arrival
             long d = cur[0];
             int u = (int) cur[1];
-            if (d > dist[u]) continue;
-            for (int[] e : adj.get(u)) {
-                if (d + e[1] < dist[e[0]]) {
+            if (d > dist[u]) continue;                   // stale entry, u already settled
+            for (int[] e : adj.get(u)) {                 // try every road out of u
+                if (d + e[1] < dist[e[0]]) {             // found a faster way to e[0]
                     dist[e[0]] = d + e[1];
-                    pq.offer(new long[]{dist[e[0]], e[0]});
+                    pq.offer(new long[]{dist[e[0]], e[0]});   // queue it with the new time
                 }
             }
         }
@@ -77,32 +79,33 @@ public class P524_NumberOfWaysToArriveAtDestination {
 
     /** Approach 3: one Dijkstra that carries a ways[] array next to dist[]. O(E log E) time, O(n + E) space. */
     static int optimal(int n, int[][] roads) {
-        List<List<int[]>> adj = buildGraph(n, roads);
-        long[] dist = new long[n];
-        long[] ways = new long[n];
+        List<List<int[]>> adj = buildGraph(n, roads);    // adj.get(u) lists {v, time} for each road
+        long[] dist = new long[n];                       // dist[v] = shortest known time to v
+        long[] ways = new long[n];                       // ways[v] = number of routes achieving dist[v]
         Arrays.fill(dist, Long.MAX_VALUE);
-        dist[0] = 0;
-        ways[0] = 1;
+        dist[0] = 0;                                     // the start costs nothing
+        ways[0] = 1;                                     // one way to stand at the start
+        // min-heap: closest node comes out first
         PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
         pq.offer(new long[]{0, 0});                      // {time, node}
         while (!pq.isEmpty()) {
-            long[] cur = pq.poll();
+            long[] cur = pq.poll();                      // earliest pending arrival
             long d = cur[0];
             int u = (int) cur[1];
             if (d > dist[u]) continue;                   // stale entry
             for (int[] e : adj.get(u)) {
                 int v = e[0];
-                long nd = d + e[1];
+                long nd = d + e[1];                      // time to v through u
                 if (nd < dist[v]) {                      // strictly faster: earlier routes to v are not shortest
                     dist[v] = nd;
-                    ways[v] = ways[u];
-                    pq.offer(new long[]{nd, v});
+                    ways[v] = ways[u];                   // v's shortest routes are exactly u's routes
+                    pq.offer(new long[]{nd, v});         // queue v with its new time
                 } else if (nd == dist[v]) {              // equally fast: every shortest route to u extends to v
-                    ways[v] = (ways[v] + ways[u]) % MOD;
+                    ways[v] = (ways[v] + ways[u]) % MOD;   // add u's routes to v's count
                 }
             }
         }
-        return (int) ways[n - 1];
+        return (int) ways[n - 1];                        // shortest routes to the destination
     }
 
     static List<List<int[]>> buildGraph(int n, int[][] roads) {

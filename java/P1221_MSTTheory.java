@@ -5,25 +5,25 @@ public class P1221_MSTTheory {
 
     /** A set of edges (bit i of mask = edge i) is a spanning tree when it has n - 1 edges and connects all n vertices. */
     static boolean isSpanningTree(int n, int[][] edges, int mask) {
-        if (Integer.bitCount(mask) != n - 1) return false;
-        List<List<Integer>> adj = new ArrayList<>();
+        if (Integer.bitCount(mask) != n - 1) return false;   // a spanning tree has exactly n - 1 edges
+        List<List<Integer>> adj = new ArrayList<>();     // graph made of the chosen edges only
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
-        for (int i = 0; i < edges.length; i++) {
-            if ((mask >> i & 1) == 0) continue;
-            adj.get(edges[i][0]).add(edges[i][1]);
+        for (int i = 0; i < edges.length; i++) {         // add every edge whose bit is set
+            if ((mask >> i & 1) == 0) continue;          // edge i is not chosen
+            adj.get(edges[i][0]).add(edges[i][1]);       // undirected: store both directions
             adj.get(edges[i][1]).add(edges[i][0]);
         }
-        boolean[] seen = new boolean[n];
-        Deque<Integer> stack = new ArrayDeque<>();
+        boolean[] seen = new boolean[n];                 // vertices reached from vertex 0
+        Deque<Integer> stack = new ArrayDeque<>();       // DFS stack of vertices to expand
         stack.push(0);
         seen[0] = true;
-        int reached = 1;
+        int reached = 1;                                 // vertices reached so far (0 included)
         while (!stack.isEmpty()) {
-            int u = stack.pop();
+            int u = stack.pop();                         // expand the next vertex
             for (int v : adj.get(u)) {
-                if (!seen[v]) {
+                if (!seen[v]) {                          // first time we reach v
                     seen[v] = true;
-                    reached++;
+                    reached++;                           // count it and expand it later
                     stack.push(v);
                 }
             }
@@ -32,33 +32,37 @@ public class P1221_MSTTheory {
     }
 
     static int weight(int[][] edges, int mask) {
-        int total = 0;
+        int total = 0;                                   // sum of the chosen edges' weights
+        // add edge i's weight if its bit is set
         for (int i = 0; i < edges.length; i++) if ((mask >> i & 1) == 1) total += edges[i][2];
         return total;
     }
 
     /** How many spanning trees exist (try every subset of edges). O(2^E * (V + E)). */
     static int countSpanningTrees(int n, int[][] edges) {
-        int count = 0;
+        int count = 0;                                   // number of subsets that are spanning trees
+        // test every subset of edges
         for (int mask = 0; mask < (1 << edges.length); mask++) if (isSpanningTree(n, edges, mask)) count++;
         return count;
     }
 
     /** Brute-force MST: the lightest spanning subset (first one found on ties), or -1 if the graph is disconnected. */
     static int bruteForceMst(int n, int[][] edges) {
-        int best = -1;
-        for (int mask = 0; mask < (1 << edges.length); mask++) {
+        int best = -1;                                   // lightest spanning tree found so far (-1 = none)
+        for (int mask = 0; mask < (1 << edges.length); mask++) {   // try every subset of edges
+            // a spanning tree that is lighter than the best so far
             if (isSpanningTree(n, edges, mask) && (best == -1 || weight(edges, mask) < weight(edges, best))) best = mask;
         }
-        return best;
+        return best;                                     // -1 when the graph is disconnected
     }
 
     /** How many different spanning trees reach the minimum weight. */
     static int countMinimumSpanningTrees(int n, int[][] edges) {
-        int best = bruteForceMst(n, edges);
-        if (best == -1) return 0;
-        int count = 0;
-        for (int mask = 0; mask < (1 << edges.length); mask++) {
+        int best = bruteForceMst(n, edges);              // mask of one minimum spanning tree
+        if (best == -1) return 0;                        // disconnected: no spanning tree at all
+        int count = 0;                                   // spanning trees that tie the minimum weight
+        for (int mask = 0; mask < (1 << edges.length); mask++) {   // try every subset of edges
+            // a spanning tree with the minimum weight
             if (isSpanningTree(n, edges, mask) && weight(edges, mask) == weight(edges, best)) count++;
         }
         return count;
@@ -66,18 +70,18 @@ public class P1221_MSTTheory {
 
     /** Cut property: index of the lightest edge with exactly one endpoint inside the set S. */
     static int lightestCrossingEdge(int[][] edges, boolean[] inS) {
-        int best = -1;
-        for (int i = 0; i < edges.length; i++) {
-            boolean crosses = inS[edges[i][0]] != inS[edges[i][1]];
-            if (crosses && (best == -1 || edges[i][2] < edges[best][2])) best = i;
+        int best = -1;                                   // lightest crossing edge so far (-1 = none)
+        for (int i = 0; i < edges.length; i++) {         // look at every edge
+            boolean crosses = inS[edges[i][0]] != inS[edges[i][1]];   // exactly one end inside S
+            if (crosses && (best == -1 || edges[i][2] < edges[best][2])) best = i;   // lighter crossing edge
         }
         return best;
     }
 
     /** Cycle property: index of the heaviest edge among the given edge indices (which form a cycle). */
     static int heaviestOnCycle(int[][] edges, int[] cycle) {
-        int best = cycle[0];
-        for (int i : cycle) if (edges[i][2] > edges[best][2]) best = i;
+        int best = cycle[0];                             // heaviest cycle edge so far
+        for (int i : cycle) if (edges[i][2] > edges[best][2]) best = i;   // keep the heavier edge
         return best;
     }
 

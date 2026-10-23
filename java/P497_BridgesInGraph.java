@@ -5,37 +5,37 @@ public class P497_BridgesInGraph {
 
     /** Approach 1: delete each edge in turn and test whether its endpoints are still connected. O(E * (V + E)) time, O(V + E) space. */
     static List<List<Integer>> bruteForce(int n, int[][] connections) {
-        List<List<Integer>> bridges = new ArrayList<>();
-        for (int skip = 0; skip < connections.length; skip++) {
-            List<List<Integer>> adj = new ArrayList<>();
+        List<List<Integer>> bridges = new ArrayList<>();         // edges found to be bridges
+        for (int skip = 0; skip < connections.length; skip++) {   // try removing each edge in turn
+            List<List<Integer>> adj = new ArrayList<>();         // rebuild the graph from scratch
             for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
             for (int e = 0; e < connections.length; e++) {
                 if (e == skip) continue;                         // graph without edge 'skip'
-                adj.get(connections[e][0]).add(connections[e][1]);
+                adj.get(connections[e][0]).add(connections[e][1]);   // undirected: store both directions
                 adj.get(connections[e][1]).add(connections[e][0]);
             }
-            int u = connections[skip][0], v = connections[skip][1];
-            if (!reachable(adj, u, v)) bridges.add(List.of(u, v));
+            int u = connections[skip][0], v = connections[skip][1];   // endpoints of the removed edge
+            if (!reachable(adj, u, v)) bridges.add(List.of(u, v));   // u can no longer reach v: it was a bridge
         }
         return bridges;
     }
 
     static boolean reachable(List<List<Integer>> adj, int src, int dst) {
-        boolean[] seen = new boolean[adj.size()];
-        Deque<Integer> stack = new ArrayDeque<>();
+        boolean[] seen = new boolean[adj.size()];                // vertices already visited
+        Deque<Integer> stack = new ArrayDeque<>();               // DFS stack of vertices to expand
         seen[src] = true;
         stack.push(src);
         while (!stack.isEmpty()) {
-            int x = stack.pop();
-            if (x == dst) return true;
-            for (int y : adj.get(x)) {
-                if (!seen[y]) {
+            int x = stack.pop();                                 // next vertex to expand
+            if (x == dst) return true;                           // found a path src -> dst
+            for (int y : adj.get(x)) {                           // walk every neighbour of x
+                if (!seen[y]) {                                  // first visit to y
                     seen[y] = true;
                     stack.push(y);
                 }
             }
         }
-        return false;
+        return false;                                            // dst cannot be reached from src
     }
 
     /** Approach 2: Tarjan's bridge-finding DFS with discovery time and low-link. O(V + E) time, O(V + E) space. */
@@ -43,11 +43,12 @@ public class P497_BridgesInGraph {
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int[] e : connections) {
-            adj.get(e[0]).add(e[1]);
+            adj.get(e[0]).add(e[1]);                             // undirected: store both directions
             adj.get(e[1]).add(e[0]);
         }
+        // tin = discovery time, low = lowest tin the subtree can reach, timer[0] = the clock
         int[] tin = new int[n], low = new int[n], timer = new int[1];
-        boolean[] visited = new boolean[n];
+        boolean[] visited = new boolean[n];                      // vertices already discovered
         List<List<Integer>> bridges = new ArrayList<>();
         for (int s = 0; s < n; s++) {
             if (!visited[s]) dfs(s, -1, adj, visited, tin, low, timer, bridges);   // every component
@@ -57,13 +58,13 @@ public class P497_BridgesInGraph {
 
     static void dfs(int u, int parent, List<List<Integer>> adj, boolean[] visited,
                     int[] tin, int[] low, int[] timer, List<List<Integer>> bridges) {
-        visited[u] = true;
-        tin[u] = low[u] = timer[0]++;
-        for (int v : adj.get(u)) {
+        visited[u] = true;                                       // u is now discovered
+        tin[u] = low[u] = timer[0]++;                            // stamp u's discovery time; low starts there
+        for (int v : adj.get(u)) {                               // look at every neighbour of u
             if (v == parent) continue;                           // do not walk back along the tree edge
-            if (!visited[v]) {
+            if (!visited[v]) {                                   // tree edge: explore v's subtree first
                 dfs(v, u, adj, visited, tin, low, timer, bridges);
-                low[u] = Math.min(low[u], low[v]);
+                low[u] = Math.min(low[u], low[v]);               // whatever v's subtree reaches, u reaches too
                 if (low[v] > tin[u]) bridges.add(List.of(u, v)); // v's subtree cannot reach u or above
             } else {
                 low[u] = Math.min(low[u], tin[v]);               // back edge to an ancestor

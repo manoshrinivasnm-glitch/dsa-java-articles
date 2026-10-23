@@ -5,59 +5,60 @@ public class P519_CheapestFlightWithinKStops {
 
     /** Approach 1: DFS over every route that uses at most k + 1 flights. Exponential time, O(n + E) space. */
     static int bruteForce(int n, int[][] flights, int src, int dst, int k) {
-        List<List<int[]>> adj = buildGraph(n, flights);
-        long best = cheapestFrom(adj, src, dst, k + 1);
-        return best == Long.MAX_VALUE ? -1 : (int) best;
+        List<List<int[]>> adj = buildGraph(n, flights);   // flights out of each city as {to, price}
+        long best = cheapestFrom(adj, src, dst, k + 1);   // k stops = at most k + 1 flights
+        return best == Long.MAX_VALUE ? -1 : (int) best;   // MAX_VALUE means no route fits the limit
     }
 
     static long cheapestFrom(List<List<int[]>> adj, int node, int dst, int flightsLeft) {
         if (node == dst) return 0;                       // prices are positive, so going on never helps
-        if (flightsLeft == 0) return Long.MAX_VALUE;
-        long best = Long.MAX_VALUE;
-        for (int[] e : adj.get(node)) {
-            long rest = cheapestFrom(adj, e[0], dst, flightsLeft - 1);
-            if (rest != Long.MAX_VALUE) best = Math.min(best, e[1] + rest);
+        if (flightsLeft == 0) return Long.MAX_VALUE;     // no flights left and dst not reached
+        long best = Long.MAX_VALUE;                      // cheapest cost from node to dst found so far
+        for (int[] e : adj.get(node)) {                  // try every flight leaving this city
+            long rest = cheapestFrom(adj, e[0], dst, flightsLeft - 1);   // cheapest finish after this flight
+            if (rest != Long.MAX_VALUE) best = Math.min(best, e[1] + rest);   // ignore dead ends
         }
         return best;
     }
 
     /** Approach 2: BFS whose levels are the number of stops; relax when the price improves. Roughly O(k * E) time, O(n + E) space. */
     static int bfsByStops(int n, int[][] flights, int src, int dst, int k) {
-        List<List<int[]>> adj = buildGraph(n, flights);
-        int[] dist = new int[n];
+        List<List<int[]>> adj = buildGraph(n, flights);   // flights out of each city as {to, price}
+        int[] dist = new int[n];                         // dist[v] = cheapest price found so far to reach v
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
-        Deque<int[]> queue = new ArrayDeque<>();
+        dist[src] = 0;                                   // the start city costs nothing
+        Deque<int[]> queue = new ArrayDeque<>();         // each BFS level uses one more flight
         queue.offer(new int[]{0, src, 0});               // {stops, node, cost}
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
             int stops = cur[0], node = cur[1], cost = cur[2];
             if (stops > k) continue;                     // one more flight would exceed k stops
-            for (int[] e : adj.get(node)) {
+            for (int[] e : adj.get(node)) {              // try every flight out of this city
                 int next = e[0], price = e[1];
-                if (cost + price < dist[next]) {
-                    dist[next] = cost + price;
-                    queue.offer(new int[]{stops + 1, next, cost + price});
+                if (cost + price < dist[next]) {         // only continue when this route is cheaper
+                    dist[next] = cost + price;           // remember the cheaper price
+                    queue.offer(new int[]{stops + 1, next, cost + price});   // fly on, one more flight used
                 }
             }
         }
-        return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];
+        return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];   // -1 if dst was never reached
     }
 
     /** Approach 3: Bellman-Ford limited to k + 1 rounds, each round reading only the previous round. O(k * E) time, O(n) space. */
     static int bellmanFordKRounds(int n, int[][] flights, int src, int dst, int k) {
-        int[] dist = new int[n];
+        int[] dist = new int[n];                         // dist[v] = cheapest price to v so far
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
+        dist[src] = 0;                                   // the start city costs nothing
         for (int round = 0; round <= k; round++) {       // after round r, dist uses at most r + 1 flights
-            int[] next = dist.clone();
-            for (int[] f : flights) {
+            int[] next = dist.clone();                   // copy, so a round only extends last round's routes
+            for (int[] f : flights) {                    // try to extend every route by one flight
                 int u = f[0], v = f[1], price = f[2];
+                // relax u -> v using only prices from the previous round
                 if (dist[u] != Integer.MAX_VALUE && dist[u] + price < next[v]) next[v] = dist[u] + price;
             }
-            dist = next;
+            dist = next;                                 // commit this round's prices
         }
-        return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];
+        return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];   // -1 when dst needs more than k stops
     }
 
     static List<List<int[]>> buildGraph(int n, int[][] flights) {

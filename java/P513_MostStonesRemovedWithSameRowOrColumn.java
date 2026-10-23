@@ -5,36 +5,37 @@ public class P513_MostStonesRemovedWithSameRowOrColumn {
 
     /** Approach 1: DFS over the stone graph (edge = shared row or column). O(n^2) time, O(n) space. */
     static int dfsStones(int[][] stones) {
-        int n = stones.length, components = 0;
-        boolean[] visited = new boolean[n];
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (int s = 0; s < n; s++) {
-            if (visited[s]) continue;
-            components++;
+        int n = stones.length, components = 0;           // groups of linked stones found so far
+        boolean[] visited = new boolean[n];              // stones already placed in a group
+        Deque<Integer> stack = new ArrayDeque<>();       // DFS stack for the current group
+        for (int s = 0; s < n; s++) {                    // start a DFS from every unvisited stone
+            if (visited[s]) continue;                    // already part of a counted group
+            components++;                                // s starts a new group
             visited[s] = true;
             stack.push(s);
             while (!stack.isEmpty()) {
-                int u = stack.pop();
-                for (int v = 0; v < n; v++) {
+                int u = stack.pop();                     // next stone in this group
+                for (int v = 0; v < n; v++) {            // look for stones linked to u
+                    // same row or same column as u
                     boolean linked = stones[u][0] == stones[v][0] || stones[u][1] == stones[v][1];
-                    if (!visited[v] && linked) {
+                    if (!visited[v] && linked) {         // unvisited and linked: same group
                         visited[v] = true;
                         stack.push(v);
                     }
                 }
             }
         }
-        return n - components;                       // each component keeps exactly one stone
+        return n - components;                           // each component keeps exactly one stone
     }
 
     /** Disjoint Set Union with union by size and path compression. */
     static final class DisjointSet {
-        final int[] parent, size;
+        final int[] parent, size;                              // parent links; size[r] = size of root r's set
 
         DisjointSet(int n) {
             parent = new int[n];
             size = new int[n];
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {                      // every element starts as its own set
                 parent[i] = i;
                 size[i] = 1;
             }
@@ -42,43 +43,43 @@ public class P513_MostStonesRemovedWithSameRowOrColumn {
 
         int find(int x) {
             if (parent[x] != x) parent[x] = find(parent[x]);   // path compression
-            return parent[x];
+            return parent[x];                                  // parent[x] is now the root itself
         }
 
         boolean union(int a, int b) {
-            int ra = find(a), rb = find(b);
-            if (ra == rb) return false;                         // already in the same set
-            if (size[ra] < size[rb]) {
+            int ra = find(a), rb = find(b);                    // roots of the two sets
+            if (ra == rb) return false;                        // already in the same set
+            if (size[ra] < size[rb]) {                         // keep ra as the root of the larger set
                 int t = ra;
                 ra = rb;
                 rb = t;
             }
-            parent[rb] = ra;                                    // hang the smaller tree under the larger
-            size[ra] += size[rb];
-            return true;
+            parent[rb] = ra;                                   // hang the smaller tree under the larger
+            size[ra] += size[rb];                              // ra's set absorbs rb's elements
+            return true;                                       // two different sets were merged
         }
     }
 
     /** Approach 2: Disjoint Set over row nodes and column nodes; each stone unions its row with its column. O(n * alpha) time, O(R + C) space. */
     static int disjointSet(int[][] stones) {
-        int maxRow = 0, maxCol = 0;
+        int maxRow = 0, maxCol = 0;                              // largest row and column index used
         for (int[] s : stones) {
             maxRow = Math.max(maxRow, s[0]);
             maxCol = Math.max(maxCol, s[1]);
         }
         DisjointSet ds = new DisjointSet(maxRow + maxCol + 2);   // rows 0..maxRow, then columns
-        Set<Integer> usedNodes = new HashSet<>();
-        for (int[] s : stones) {
-            int rowNode = s[0], colNode = maxRow + 1 + s[1];
+        Set<Integer> usedNodes = new HashSet<>();                // row/column nodes that hold a stone
+        for (int[] s : stones) {                                 // each stone links its row with its column
+            int rowNode = s[0], colNode = maxRow + 1 + s[1];     // columns are shifted past the rows
             ds.union(rowNode, colNode);
             usedNodes.add(rowNode);
-            usedNodes.add(colNode);
+            usedNodes.add(colNode);                              // remember both nodes as used
         }
-        int components = 0;
-        for (int node : usedNodes) {
-            if (ds.find(node) == node) components++;
+        int components = 0;                                      // groups of linked stones
+        for (int node : usedNodes) {                             // count the roots among used nodes
+            if (ds.find(node) == node) components++;             // node is a root: one more group
         }
-        return stones.length - components;
+        return stones.length - components;                       // all but one stone per group can go
     }
 
     // ---------------------------------------------------------------- tests

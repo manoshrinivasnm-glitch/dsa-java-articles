@@ -7,29 +7,31 @@ public class P2825_PrimsAlgorithm {
 
     /** Approach 1: array-based Prim, scan for the cheapest outside vertex each step. O(V^2) time, O(V^2) space for the matrix. */
     static int primArray(int n, int[][] edges, List<int[]> mstEdges) {
-        int[][] w = new int[n][n];
+        int[][] w = new int[n][n];                       // w[u][v] = weight of edge u - v, INF if none
         for (int[] row : w) Arrays.fill(row, INF);
         for (int[] e : edges) {                          // keep the cheapest of parallel edges
             w[e[0]][e[1]] = Math.min(w[e[0]][e[1]], e[2]);
             w[e[1]][e[0]] = Math.min(w[e[1]][e[0]], e[2]);
         }
         int[] key = new int[n], parent = new int[n];     // key[v] = cheapest edge from the tree to v
-        boolean[] inTree = new boolean[n];
+        boolean[] inTree = new boolean[n];               // vertices already in the MST
         Arrays.fill(key, INF);
         Arrays.fill(parent, -1);
-        key[0] = 0;
-        int total = 0;
-        for (int step = 0; step < n; step++) {
+        key[0] = 0;                                      // start the tree from vertex 0
+        int total = 0;                                   // weight of the edges taken so far
+        for (int step = 0; step < n; step++) {           // each step adds one vertex to the tree
             int u = -1;
+            // pick the outside vertex with the cheapest link to the tree
             for (int v = 0; v < n; v++) if (!inTree[v] && (u == -1 || key[v] < key[u])) u = v;
             if (key[u] == INF) return -1;                // nothing outside the tree is reachable
-            inTree[u] = true;
-            total += key[u];
+            inTree[u] = true;                            // u joins the tree
+            total += key[u];                             // pay for the edge that brought u in
+            // record the edge (the start vertex has none)
             if (parent[u] != -1) mstEdges.add(new int[]{parent[u], u, key[u]});
-            for (int v = 0; v < n; v++) {
-                if (!inTree[v] && w[u][v] < key[v]) {
-                    key[v] = w[u][v];
-                    parent[v] = u;
+            for (int v = 0; v < n; v++) {                // u's edges may give cheaper links to others
+                if (!inTree[v] && w[u][v] < key[v]) {    // v is outside and u -> v is cheaper
+                    key[v] = w[u][v];                    // remember the cheaper link
+                    parent[v] = u;                       // ... and that it comes from u
                 }
             }
         }
@@ -38,29 +40,31 @@ public class P2825_PrimsAlgorithm {
 
     /** Approach 2: lazy Prim with a min-heap of {weight, node, parent}. O(E log E) time, O(V + E) space. */
     static int primHeap(int n, int[][] edges, List<int[]> mstEdges) {
-        List<List<int[]>> adj = new ArrayList<>();
+        List<List<int[]>> adj = new ArrayList<>();       // adj.get(u) lists {v, w} for each edge at u
         for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
         for (int[] e : edges) {
-            adj.get(e[0]).add(new int[]{e[1], e[2]});
+            adj.get(e[0]).add(new int[]{e[1], e[2]});    // undirected: store both directions
             adj.get(e[1]).add(new int[]{e[0], e[2]});
         }
-        boolean[] inTree = new boolean[n];
+        boolean[] inTree = new boolean[n];               // vertices already in the MST
+        // min-heap of {weight, node, parent}, lightest first
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
         pq.offer(new int[]{0, 0, -1});                   // start anywhere: vertex 0 with no parent
-        int total = 0, added = 0;
+        int total = 0, added = 0;                        // MST weight and vertices added so far
         while (!pq.isEmpty()) {
-            int[] cur = pq.poll();
+            int[] cur = pq.poll();                       // lightest edge leaving the tree (maybe stale)
             int wt = cur[0], u = cur[1], parent = cur[2];
             if (inTree[u]) continue;                     // a cheaper edge already pulled u in
             inTree[u] = true;
-            total += wt;
-            added++;
+            total += wt;                                 // take that edge into the MST
+            added++;                                     // one more vertex in the tree
+            // record the edge (the start vertex has none)
             if (parent != -1) mstEdges.add(new int[]{parent, u, wt});
-            for (int[] e : adj.get(u)) {
+            for (int[] e : adj.get(u)) {                 // offer every edge from u to the outside
                 if (!inTree[e[0]]) pq.offer(new int[]{e[1], e[0], u});
             }
         }
-        return added == n ? total : -1;
+        return added == n ? total : -1;                  // fewer than n vertices: graph is disconnected
     }
 
     // ---------------------------------------------------------------- tests
