@@ -11,13 +11,13 @@ public class P2788_PostorderTraversalOfBinaryTreeUsing2Stac {
 
     /** Approach 1: recursion, the reference answer. O(n) time, O(h) call stack. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        postorder(root, out);
+        List<Integer> out = new ArrayList<>();  // values in postorder
+        postorder(root, out);                   // the helper appends every node
         return out;
     }
 
     private static void postorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                 // empty subtree: nothing to visit
         postorder(node.left, out);                // Left
         postorder(node.right, out);               // Right
         out.add(node.val);                        // Root
@@ -25,12 +25,13 @@ public class P2788_PostorderTraversalOfBinaryTreeUsing2Stac {
 
     /** Approach 2: two stacks. Stack 1 generates Root-Right-Left, stack 2 reverses it into Left-Right-Root. O(n) time, O(n) space. */
     static List<Integer> twoStacks(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
+        List<Integer> out = new ArrayList<>();                // values in postorder
+        if (root == null) return out;                         // empty tree: nothing to visit
+        // s1: nodes still to expand; s2: every node, collected in reverse postorder
         Deque<TreeNode> s1 = new ArrayDeque<>(), s2 = new ArrayDeque<>();
-        s1.push(root);
+        s1.push(root);                                        // start at the root
         while (!s1.isEmpty()) {
-            TreeNode node = s1.pop();
+            TreeNode node = s1.pop();                         // the next node to expand
             s2.push(node);                                    // s2 receives Root, Right, Left (bottom to top)
             if (node.left != null) s1.push(node.left);        // left pushed first ...
             if (node.right != null) s1.push(node.right);      // ... so right is popped first
@@ -41,15 +42,15 @@ public class P2788_PostorderTraversalOfBinaryTreeUsing2Stac {
 
     /** Approach 3: one stack, with the second stack replaced by prepending to the output list. O(n) time, O(h) stack besides the output. */
     static List<Integer> oneStackPrepend(TreeNode root) {
-        LinkedList<Integer> out = new LinkedList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        stack.push(root);
+        LinkedList<Integer> out = new LinkedList<>();         // values in postorder, built from the back
+        if (root == null) return out;                         // empty tree: nothing to visit
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes waiting to be visited, next one on top
+        stack.push(root);                                     // start at the root
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();                      // next node in Root-Right-Left order
             out.addFirst(node.val);                           // prepending reverses the order as it is built
-            if (node.left != null) stack.push(node.left);
-            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);     // left pushed first ...
+            if (node.right != null) stack.push(node.right);   // ... so right is popped first
         }
         return out;
     }

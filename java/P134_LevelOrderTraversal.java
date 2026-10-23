@@ -11,61 +11,62 @@ public class P134_LevelOrderTraversal {
 
     /** Approach 1: brute force. For every depth d, walk the whole tree and keep the nodes at depth d. O(n * h) time, O(h) call stack. */
     static List<List<Integer>> bruteForce(TreeNode root) {
-        List<List<Integer>> levels = new ArrayList<>();
-        int h = height(root);
-        for (int d = 0; d < h; d++) {
-            List<Integer> level = new ArrayList<>();
-            collect(root, d, level);
+        List<List<Integer>> levels = new ArrayList<>();  // levels.get(d) holds the values at depth d
+        int h = height(root);                            // number of levels to fill
+        for (int d = 0; d < h; d++) {                    // one full tree walk per depth
+            List<Integer> level = new ArrayList<>();     // values at depth d, left to right
+            collect(root, d, level);                     // gathers every node at depth d
             levels.add(level);
         }
         return levels;
     }
 
     private static void collect(TreeNode node, int d, List<Integer> level) {
-        if (node == null) return;
+        if (node == null) return;                 // empty subtree: nothing to collect
         if (d == 0) {                             // this node is exactly at the wanted depth
             level.add(node.val);
-            return;
+            return;                               // no need to look deeper
         }
         collect(node.left, d - 1, level);         // left first keeps the level in left-to-right order
         collect(node.right, d - 1, level);
     }
 
     private static int height(TreeNode node) {
+        // number of levels: 0 for an empty tree
         return node == null ? 0 : 1 + Math.max(height(node.left), height(node.right));
     }
 
     /** Approach 2: one DFS that carries the depth and appends each node to the list of its depth. O(n) time, O(h) call stack. */
     static List<List<Integer>> dfsWithDepth(TreeNode root) {
-        List<List<Integer>> levels = new ArrayList<>();
-        dfs(root, 0, levels);
+        List<List<Integer>> levels = new ArrayList<>();  // levels.get(d) holds the values at depth d
+        dfs(root, 0, levels);                            // start at the root, depth 0
         return levels;
     }
 
     private static void dfs(TreeNode node, int depth, List<List<Integer>> levels) {
-        if (node == null) return;
+        if (node == null) return;                                     // empty subtree: nothing to add
         if (depth == levels.size()) levels.add(new ArrayList<>());    // first node ever seen at this depth
-        levels.get(depth).add(node.val);
+        levels.get(depth).add(node.val);                              // add the node to the list of its depth
         dfs(node.left, depth + 1, levels);                            // left before right keeps each level ordered
         dfs(node.right, depth + 1, levels);
     }
 
     /** Approach 3: optimal BFS with a queue; the queue size at the start of a round is the size of the level. O(n) time, O(w) space. */
     static List<List<Integer>> bfs(TreeNode root) {
-        List<List<Integer>> levels = new ArrayList<>();
-        if (root == null) return levels;
-        Queue<TreeNode> queue = new ArrayDeque<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();                  // exactly the nodes of the current level
-            List<Integer> level = new ArrayList<>(size);
-            for (int i = 0; i < size; i++) {
+        List<List<Integer>> levels = new ArrayList<>();             // levels.get(d) holds the values at depth d
+        if (root == null) return levels;                            // empty tree: no levels
+        Queue<TreeNode> queue = new ArrayDeque<>();                 // nodes waiting to be visited, in level order
+        queue.offer(root);                                          // level 0 is just the root
+        while (!queue.isEmpty()) {                                  // each round handles one whole level
+            int size = queue.size();                                // exactly the nodes of the current level
+            List<Integer> level = new ArrayList<>(size);            // values of this level, left to right
+            for (int i = 0; i < size; i++) {                        // take exactly this level's nodes
                 TreeNode node = queue.poll();
-                level.add(node.val);
+                level.add(node.val);                                // record it in this level
                 if (node.left != null) queue.offer(node.left);      // children join the back of the queue,
                 if (node.right != null) queue.offer(node.right);    // behind the rest of this level
             }
-            levels.add(level);
+            levels.add(level);                                      // this level is complete
         }
         return levels;
     }

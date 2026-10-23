@@ -10,17 +10,17 @@ public class P2786_IterativeInorderTraversalOfBinaryTree {
     }
 
     /** A stack entry for the flag-based traversal: ready == true means "the left subtree is done, emit this node". */
-    record Entry(TreeNode node, boolean ready) {}
+    record Entry(TreeNode node, boolean ready) {}  // ready: left subtree done, emit the node when it pops
 
     /** Approach 1: recursion, the reference answer the iterative versions must reproduce. O(n) time, O(h) call stack. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        inorder(root, out);
+        List<Integer> out = new ArrayList<>();  // values in inorder
+        inorder(root, out);                     // the helper appends every node
         return out;
     }
 
     private static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
+        if (node == null) return;                 // empty subtree: nothing to visit
         inorder(node.left, out);                  // Left
         out.add(node.val);                        // Root
         inorder(node.right, out);                 // Right
@@ -28,17 +28,17 @@ public class P2786_IterativeInorderTraversalOfBinaryTree {
 
     /** Approach 2: the classic iterative version; stack the left spine, pop, visit, move right. O(n) time, O(h) space. */
     static List<Integer> iterative(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            if (cur != null) {
-                stack.push(cur);                  // postpone cur until its left subtree is finished
+        List<Integer> out = new ArrayList<>();       // values in inorder
+        Deque<TreeNode> stack = new ArrayDeque<>();  // nodes waiting for their left subtree to finish
+        TreeNode cur = root;                         // the node the walk is standing on
+        while (cur != null || !stack.isEmpty()) {    // until there is nothing left to walk or pop
+            if (cur != null) {                       // still walking down a left spine
+                stack.push(cur);                     // postpone cur until its left subtree is finished
                 cur = cur.left;
             } else {
-                cur = stack.pop();                // left subtree of this node is finished
-                out.add(cur.val);
-                cur = cur.right;                  // continue with the right subtree
+                cur = stack.pop();                   // left subtree of this node is finished
+                out.add(cur.val);                    // Root comes after its left subtree
+                cur = cur.right;                     // continue with the right subtree
             }
         }
         return out;
@@ -46,20 +46,20 @@ public class P2786_IterativeInorderTraversalOfBinaryTree {
 
     /** Approach 3: simulate the recursion with flagged entries; expand a node into Right, itself (ready), Left. O(n) time, O(h) space. */
     static List<Integer> iterativeWithFlags(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<Entry> stack = new ArrayDeque<>();
-        stack.push(new Entry(root, false));
+        List<Integer> out = new ArrayList<>();    // values in inorder
+        if (root == null) return out;             // empty tree: nothing to visit
+        Deque<Entry> stack = new ArrayDeque<>();  // pending work, next entry on top
+        stack.push(new Entry(root, false));       // the root, not yet expanded
         while (!stack.isEmpty()) {
-            Entry e = stack.pop();
+            Entry e = stack.pop();                // the next piece of work
             TreeNode node = e.node();
-            if (e.ready()) {
+            if (e.ready()) {                      // a ready entry: time to emit the node
                 out.add(node.val);                // everything to its left has already been emitted
                 continue;
             }
             // push in reverse of the wanted order, so they pop as Left, Node, Right
             if (node.right != null) stack.push(new Entry(node.right, false));
-            stack.push(new Entry(node, true));
+            stack.push(new Entry(node, true));    // the node itself, ready once Left is done
             if (node.left != null) stack.push(new Entry(node.left, false));
         }
         return out;

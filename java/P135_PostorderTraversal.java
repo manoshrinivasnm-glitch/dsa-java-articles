@@ -11,8 +11,8 @@ public class P135_PostorderTraversal {
 
     /** Approach 1: recursion, the definition written as code. O(n) time, O(h) call stack. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        postorder(root, out);
+        List<Integer> out = new ArrayList<>();  // values in postorder
+        postorder(root, out);                   // the helper appends every node
         return out;
     }
 
@@ -25,12 +25,12 @@ public class P135_PostorderTraversal {
 
     /** Approach 2: produce Root-Right-Left with a preorder-style stack, then reverse it. O(n) time, O(h) stack besides the output. */
     static List<Integer> reversedPreorder(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        stack.push(root);
+        List<Integer> out = new ArrayList<>();                // first Root-Right-Left, reversed at the end
+        if (root == null) return out;                         // empty tree: nothing to visit
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes waiting to be visited, next one on top
+        stack.push(root);                                     // start at the root
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
+            TreeNode node = stack.pop();                      // next node in Root-Right-Left order
             out.add(node.val);                                // builds Root, Right, Left
             if (node.left != null) stack.push(node.left);     // left pushed first so right is popped first
             if (node.right != null) stack.push(node.right);
@@ -41,20 +41,22 @@ public class P135_PostorderTraversal {
 
     /** Approach 3: one stack and a lastVisited pointer; a node is emitted only when its right subtree is finished. O(n) time, O(h) space. */
     static List<Integer> oneStack(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        List<Integer> out = new ArrayList<>();                // values in postorder
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes still waiting to be emitted
+        // cur: the next subtree to walk; lastVisited: the node emitted most recently
         TreeNode cur = root, lastVisited = null;
-        while (cur != null || !stack.isEmpty()) {
+        while (cur != null || !stack.isEmpty()) {             // until there is nothing left to walk or pop
             while (cur != null) {                             // go as far left as possible
                 stack.push(cur);
                 cur = cur.left;
             }
             TreeNode top = stack.peek();                      // its left subtree is finished
+            // top.right == lastVisited means we just came back from the right subtree
             if (top.right != null && top.right != lastVisited) {
                 cur = top.right;                              // right subtree not done yet: go there first
             } else {
                 out.add(top.val);                             // both subtrees done: emit and retire it
-                lastVisited = stack.pop();
+                lastVisited = stack.pop();                    // so its parent sees the right side is done
             }
         }
         return out;

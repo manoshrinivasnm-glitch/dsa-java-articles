@@ -11,8 +11,8 @@ public class P137_PreorderTraversal {
 
     /** Approach 1: recursion, the definition written as code. O(n) time, O(h) call stack. */
     static List<Integer> recursive(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        preorder(root, out);
+        List<Integer> out = new ArrayList<>();  // values in preorder
+        preorder(root, out);                    // the helper appends every node
         return out;
     }
 
@@ -25,13 +25,13 @@ public class P137_PreorderTraversal {
 
     /** Approach 2: iterative with an explicit stack; push right before left so left is popped first. O(n) time, O(h) space. */
     static List<Integer> iterative(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        if (root == null) return out;
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        stack.push(root);
+        List<Integer> out = new ArrayList<>();                // values in preorder
+        if (root == null) return out;                         // empty tree: nothing to visit
+        Deque<TreeNode> stack = new ArrayDeque<>();           // nodes waiting to be visited, next one on top
+        stack.push(root);                                     // start at the root
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            out.add(node.val);
+            TreeNode node = stack.pop();                      // the next node in preorder
+            out.add(node.val);                                // visit it right away (Root)
             if (node.right != null) stack.push(node.right);   // pushed first, popped last
             if (node.left != null) stack.push(node.left);     // pushed last, popped next
         }
@@ -40,22 +40,23 @@ public class P137_PreorderTraversal {
 
     /** Approach 3: Morris traversal; temporary threads replace the stack. O(n) time, O(1) extra space, tree restored. */
     static List<Integer> morris(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
-        TreeNode cur = root;
-        while (cur != null) {
+        List<Integer> out = new ArrayList<>();                // values in preorder
+        TreeNode cur = root;                                  // the node the walk is standing on
+        while (cur != null) {                                 // until the walk falls off the tree
             if (cur.left == null) {
                 out.add(cur.val);                             // no left subtree: visit and go right
                 cur = cur.right;
             } else {
                 TreeNode pred = cur.left;                     // rightmost node of the left subtree
+                // go to that rightmost node, stopping early at a thread back to cur
                 while (pred.right != null && pred.right != cur) pred = pred.right;
                 if (pred.right == null) {                     // first arrival: visit, leave a thread back, go left
-                    out.add(cur.val);
-                    pred.right = cur;
-                    cur = cur.left;
+                    out.add(cur.val);                         // Root before its left subtree: preorder
+                    pred.right = cur;                         // the thread: how the walk gets back to cur
+                    cur = cur.left;                           // now walk the left subtree
                 } else {                                      // second arrival: left subtree done, remove the thread
-                    pred.right = null;
-                    cur = cur.right;
+                    pred.right = null;                        // undo the thread, restoring the tree
+                    cur = cur.right;                          // continue with the right subtree
                 }
             }
         }

@@ -5,9 +5,9 @@ public class P2864_BinaryTreeRepresentationInJava {
 
     /** One node of a binary tree: a value plus references to the left and right child (null when absent). */
     static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+        int val;                                  // the value stored here
+        TreeNode left;                            // root of the left subtree, or null
+        TreeNode right;                           // root of the right subtree, or null
 
         TreeNode(int val) {
             this.val = val;                       // left and right start as null: a new node is a leaf
@@ -22,83 +22,85 @@ public class P2864_BinaryTreeRepresentationInJava {
 
     /** Build the tree 1 -> (2 -> (null, 5), 3) one link at a time. */
     static TreeNode buildByHand() {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
+        TreeNode root = new TreeNode(1);          // the root
+        root.left = new TreeNode(2);              // 2 becomes the left child of 1
+        root.right = new TreeNode(3);             // 3 becomes the right child of 1
         root.left.right = new TreeNode(5);        // 2 has no left child, so its left stays null
         return root;
     }
 
     /** The same tree as one nested expression, using the three-argument constructor. */
     static TreeNode buildNested() {
-        return new TreeNode(1,
-                new TreeNode(2, null, new TreeNode(5)),
-                new TreeNode(3));
+        return new TreeNode(1,                           // root 1
+                new TreeNode(2, null, new TreeNode(5)),  // left child 2, which has only a right child 5
+                new TreeNode(3));                        // right child 3, a leaf
     }
 
     /** Build from LeetCode-style level order: values level by level, null for a missing child, no entries below a null. O(n). */
     static TreeNode fromLevelOrder(Integer... vals) {
-        if (vals.length == 0 || vals[0] == null) return null;
-        TreeNode root = new TreeNode(vals[0]);
+        if (vals.length == 0 || vals[0] == null) return null;  // empty input or a null root: empty tree
+        TreeNode root = new TreeNode(vals[0]);            // the first value is always the root
         Queue<TreeNode> parents = new ArrayDeque<>();     // nodes still waiting for their children
         parents.offer(root);
-        int i = 1;
-        while (i < vals.length && !parents.isEmpty()) {
-            TreeNode parent = parents.poll();
-            if (vals[i] != null) {
+        int i = 1;                                        // index of the next value to hand out
+        while (i < vals.length && !parents.isEmpty()) {   // until the values or the waiting parents run out
+            TreeNode parent = parents.poll();             // the next parent, in level order
+            if (vals[i] != null) {                        // its left slot holds a real node
                 parent.left = new TreeNode(vals[i]);
-                parents.offer(parent.left);
+                parents.offer(parent.left);               // the new child will need children of its own
             }
-            i++;
-            if (i < vals.length && vals[i] != null) {
+            i++;                                          // move past the left slot, used or null
+            if (i < vals.length && vals[i] != null) {     // its right slot exists and holds a real node
                 parent.right = new TreeNode(vals[i]);
                 parents.offer(parent.right);
             }
-            i++;
+            i++;                                          // move past the right slot
         }
         return root;
     }
 
     /** The inverse: write the tree in the same level-order format, trimming trailing nulls. O(n). */
     static List<Integer> toLevelOrder(TreeNode root) {
-        List<Integer> out = new ArrayList<>();
+        List<Integer> out = new ArrayList<>();               // values in level order, null for gaps
         Queue<TreeNode> queue = new LinkedList<>();          // LinkedList, because ArrayDeque rejects null
-        queue.add(root);
+        queue.add(root);                                     // start at the root
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             if (node == null) {
                 out.add(null);                               // a missing child is written, its children are not
                 continue;
             }
-            out.add(node.val);
-            queue.add(node.left);
+            out.add(node.val);                               // a real node: write its value
+            queue.add(node.left);                            // queue both child slots, even null ones
             queue.add(node.right);
         }
+        // drop the nulls at the end; they carry no information
         while (!out.isEmpty() && out.get(out.size() - 1) == null) out.remove(out.size() - 1);
         return out;
     }
 
     /** Index arithmetic of the array (heap) layout: the node at index i has its children at 2i+1 and 2i+2. */
-    static int leftIndex(int i) { return 2 * i + 1; }
-    static int rightIndex(int i) { return 2 * i + 2; }
-    static int parentIndex(int i) { return (i - 1) / 2; }
+    static int leftIndex(int i) { return 2 * i + 1; }      // left child sits at 2i + 1
+    static int rightIndex(int i) { return 2 * i + 2; }     // right child sits at 2i + 2
+    static int parentIndex(int i) { return (i - 1) / 2; }  // parent of i, by integer division
 
     /** Build from the array layout, where every position exists even under a missing node. O(length of array). */
     static TreeNode fromArray(Integer[] arr) {
-        return fromArray(arr, 0);
+        return fromArray(arr, 0);  // the root lives at index 0
     }
 
     private static TreeNode fromArray(Integer[] arr, int i) {
-        if (i >= arr.length || arr[i] == null) return null;
-        TreeNode node = new TreeNode(arr[i]);
-        node.left = fromArray(arr, leftIndex(i));
-        node.right = fromArray(arr, rightIndex(i));
+        if (i >= arr.length || arr[i] == null) return null;  // past the end or an empty slot: no node
+        TreeNode node = new TreeNode(arr[i]);                // the value at index i
+        node.left = fromArray(arr, leftIndex(i));            // left child is at 2i + 1
+        node.right = fromArray(arr, rightIndex(i));          // right child is at 2i + 2
         return node;
     }
 
     /** Two trees are the same when both are empty, or both roots match and so do both pairs of subtrees. O(n). */
     static boolean sameTree(TreeNode a, TreeNode b) {
-        if (a == null || b == null) return a == b;
+        if (a == null || b == null) return a == b;  // if either is empty, both must be
+        // same root value, and both pairs of subtrees match
         return a.val == b.val && sameTree(a.left, b.left) && sameTree(a.right, b.right);
     }
 

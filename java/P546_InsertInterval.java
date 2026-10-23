@@ -6,13 +6,13 @@ public class P546_InsertInterval {
     /** Approach 1: append the new interval and run a general sort-and-merge. O(n log n) time, O(n) space. */
     static int[][] bruteForce(int[][] intervals, int[] newInterval) {
         int n = intervals.length;
-        int[][] all = new int[n + 1][];
-        for (int i = 0; i < n; i++) all[i] = intervals[i].clone();
+        int[][] all = new int[n + 1][];                           // the old intervals plus the new one
+        for (int i = 0; i < n; i++) all[i] = intervals[i].clone();  // copies, so merging never edits the input
         all[n] = newInterval.clone();
-        Arrays.sort(all, (x, y) -> Integer.compare(x[0], y[0]));
-        List<int[]> res = new ArrayList<>();
+        Arrays.sort(all, (x, y) -> Integer.compare(x[0], y[0]));  // order by start so overlaps sit next to each other
+        List<int[]> res = new ArrayList<>();                      // merged blocks, still sorted by start
         for (int[] cur : all) {
-            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {
+            if (res.isEmpty() || cur[0] > res.get(res.size() - 1)[1]) {  // starts after the last block ends?
                 res.add(cur);                                     // gap: start a new block
             } else {
                 int[] last = res.get(res.size() - 1);
@@ -24,19 +24,19 @@ public class P546_InsertInterval {
 
     /** Approach 2: one pass in three phases: copy what ends before it, absorb what overlaps it, copy the rest. O(n) time, O(n) space for the output. */
     static int[][] optimal(int[][] intervals, int[] newInterval) {
-        List<int[]> res = new ArrayList<>();
+        List<int[]> res = new ArrayList<>();                      // the answer, built left to right
         int n = intervals.length, i = 0;
-        int start = newInterval[0], end = newInterval[1];
+        int start = newInterval[0], end = newInterval[1];         // the new interval, widened as it absorbs others
         while (i < n && intervals[i][1] < start) {                // entirely to the left: no contact
             res.add(intervals[i].clone());
             i++;
         }
         while (i < n && intervals[i][0] <= end) {                 // overlaps or touches the growing new interval
-            start = Math.min(start, intervals[i][0]);
+            start = Math.min(start, intervals[i][0]);             // absorb: widen to cover both
             end = Math.max(end, intervals[i][1]);
             i++;
         }
-        res.add(new int[]{start, end});
+        res.add(new int[]{start, end});                           // the merged new interval goes in its place
         while (i < n) {                                           // entirely to the right
             res.add(intervals[i].clone());
             i++;

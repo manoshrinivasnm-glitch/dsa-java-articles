@@ -6,16 +6,18 @@ public class P544_Candy {
     /** Approach 1: start everyone at 1 and keep repairing violated rules until a full sweep changes nothing. O(n^2) time, O(n) space. */
     static int bruteForce(int[] ratings) {
         int n = ratings.length;
-        int[] candies = new int[n];
-        Arrays.fill(candies, 1);
-        boolean changed = true;
-        while (changed) {
+        int[] candies = new int[n];        // candies[i]: what child i holds right now
+        Arrays.fill(candies, 1);           // every child gets at least one
+        boolean changed = true;            // did the last sweep have to fix anything?
+        while (changed) {                  // repeat until a full sweep changes nothing
             changed = false;
             for (int i = 0; i < n; i++) {
+                // rated above the left neighbour but not holding more: give one more than it
                 if (i > 0 && ratings[i] > ratings[i - 1] && candies[i] <= candies[i - 1]) {
                     candies[i] = candies[i - 1] + 1;
                     changed = true;
                 }
+                // same check against the right neighbour
                 if (i < n - 1 && ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1]) {
                     candies[i] = candies[i + 1] + 1;
                     changed = true;
@@ -23,31 +25,31 @@ public class P544_Candy {
             }
         }
         int total = 0;
-        for (int c : candies) total += c;
+        for (int c : candies) total += c;  // add up every child's candies
         return total;
     }
 
     /** Approach 2: a left-to-right pass for the left rule, a right-to-left pass for the right rule, take the max. O(n) time, O(n) space. */
     static int better(int[] ratings) {
         int n = ratings.length;
-        int[] left = new int[n], right = new int[n];
-        Arrays.fill(left, 1);
+        int[] left = new int[n], right = new int[n];  // candies needed by the left rule alone / the right rule alone
+        Arrays.fill(left, 1);                         // everyone starts with one candy
         Arrays.fill(right, 1);
-        for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1]) left[i] = left[i - 1] + 1;
+        for (int i = 1; i < n; i++) {                 // left to right: look at the left neighbour
+            if (ratings[i] > ratings[i - 1]) left[i] = left[i - 1] + 1;  // one more than the left neighbour
         }
-        for (int i = n - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1]) right[i] = right[i + 1] + 1;
+        for (int i = n - 2; i >= 0; i--) {            // right to left: look at the right neighbour
+            if (ratings[i] > ratings[i + 1]) right[i] = right[i + 1] + 1;  // one more than the right neighbour
         }
         int total = 0;
-        for (int i = 0; i < n; i++) total += Math.max(left[i], right[i]);
+        for (int i = 0; i < n; i++) total += Math.max(left[i], right[i]);  // the max satisfies both rules
         return total;
     }
 
     /** Approach 3: walk the ratings as up-slopes and down-slopes, counting candies on the fly. O(n) time, O(1) space. */
     static int optimal(int[] ratings) {
         int n = ratings.length;
-        if (n == 0) return 0;
+        if (n == 0) return 0;                                  // no children, no candy
         int total = 1, i = 1;                                  // child 0 gets 1 candy for now
         while (i < n) {
             if (ratings[i] == ratings[i - 1]) {                // flat step: no rule applies, restart at 1
@@ -55,13 +57,13 @@ public class P544_Candy {
                 i++;
                 continue;
             }
-            int peak = 1;
+            int peak = 1;                                      // candies at the top of the current up-slope
             while (i < n && ratings[i] > ratings[i - 1]) {     // climbing: 2, 3, 4, ...
                 peak++;
                 total += peak;
                 i++;
             }
-            int down = 1;
+            int down = 1;                                      // candy for the next child going down
             while (i < n && ratings[i] < ratings[i - 1]) {     // descending: count 1, 2, 3, ... from the bottom
                 total += down;
                 i++;

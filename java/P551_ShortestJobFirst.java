@@ -6,33 +6,33 @@ public class P551_ShortestJobFirst {
     /** Approach 1: simulate the scheduler, scanning for the shortest unfinished job each time. O(n^2) time, O(n) space. */
     static long bruteForce(int[] bt) {
         int n = bt.length;
-        if (n == 0) return 0;
-        boolean[] done = new boolean[n];
-        long clock = 0, totalWait = 0;
-        for (int step = 0; step < n; step++) {
-            int pick = -1;
+        if (n == 0) return 0;                   // no processes: average is 0
+        boolean[] done = new boolean[n];        // done[i]: process i has already run
+        long clock = 0, totalWait = 0;          // clock: when the CPU next frees up
+        for (int step = 0; step < n; step++) {  // each step runs one more process
+            int pick = -1;                      // index of the shortest unfinished job
             for (int i = 0; i < n; i++) {
-                if (!done[i] && (pick == -1 || bt[i] < bt[pick])) pick = i;
+                if (!done[i] && (pick == -1 || bt[i] < bt[pick])) pick = i;  // shorter unfinished job found
             }
-            totalWait += clock;                  // job 'pick' has waited from time 0 until now
-            clock += bt[pick];
+            totalWait += clock;                 // job 'pick' has waited from time 0 until now
+            clock += bt[pick];                  // it runs to completion
             done[pick] = true;
         }
-        return totalWait / n;
+        return totalWait / n;                   // integer division floors the average
     }
 
     /** Approach 2: sort the burst times once, then accumulate waiting times with a running clock. O(n log n) time, O(n) space for the copy. */
     static long optimal(int[] bt) {
         int n = bt.length;
-        if (n == 0) return 0;
-        int[] sorted = bt.clone();
-        Arrays.sort(sorted);
-        long clock = 0, totalWait = 0;
-        for (int b : sorted) {
-            totalWait += clock;
-            clock += b;
+        if (n == 0) return 0;           // no processes: average is 0
+        int[] sorted = bt.clone();      // sort a copy so the input stays untouched
+        Arrays.sort(sorted);            // shortest burst runs first
+        long clock = 0, totalWait = 0;  // clock: when the CPU next frees up
+        for (int b : sorted) {          // run jobs in order of burst time
+            totalWait += clock;         // this job waited from time 0 until now
+            clock += b;                 // then holds the CPU for its burst
         }
-        return totalWait / n;
+        return totalWait / n;           // integer division floors the average
     }
 
     // ---------------------------------------------------------------- tests

@@ -11,79 +11,82 @@ public class P136_PrePostInorderInOneTraversal {
 
     /** A stack frame for the iterative walk: the node and how many times we have arrived at it so far. */
     static class Frame {
-        TreeNode node;
+        TreeNode node;                            // the tree node this frame stands for
         int state = 1;                            // 1 = pre, 2 = in, 3 = post
         Frame(TreeNode node) { this.node = node; }
     }
 
     /** Approach 1: three independent recursive traversals, one per order. O(3n) time, O(h) call stack. */
     static List<List<Integer>> threeTraversals(TreeNode root) {
+        // one list per traversal order
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
-        preorder(root, pre);
-        inorder(root, in);
-        postorder(root, post);
-        return List.of(pre, in, post);
+        preorder(root, pre);            // Root, Left, Right
+        inorder(root, in);              // Left, Root, Right
+        postorder(root, post);          // Left, Right, Root
+        return List.of(pre, in, post);  // [preorder, inorder, postorder]
     }
 
     private static void preorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        out.add(node.val);
-        preorder(node.left, out);
-        preorder(node.right, out);
+        if (node == null) return;   // empty subtree: nothing to record
+        out.add(node.val);          // Root first
+        preorder(node.left, out);   // then Left
+        preorder(node.right, out);  // then Right
     }
 
     private static void inorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        inorder(node.left, out);
-        out.add(node.val);
-        inorder(node.right, out);
+        if (node == null) return;  // empty subtree: nothing to record
+        inorder(node.left, out);   // Left first
+        out.add(node.val);         // then Root
+        inorder(node.right, out);  // then Right
     }
 
     private static void postorder(TreeNode node, List<Integer> out) {
-        if (node == null) return;
-        postorder(node.left, out);
-        postorder(node.right, out);
-        out.add(node.val);
+        if (node == null) return;    // empty subtree: nothing to record
+        postorder(node.left, out);   // Left first
+        postorder(node.right, out);  // then Right
+        out.add(node.val);           // Root last
     }
 
     /** Approach 2: one recursive walk that records the node at each of its three visits. O(n) time, O(h) call stack. */
     static List<List<Integer>> oneRecursion(TreeNode root) {
+        // one list per traversal order
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
-        walk(root, pre, in, post);
-        return List.of(pre, in, post);
+        walk(root, pre, in, post);      // a single walk fills all three
+        return List.of(pre, in, post);  // [preorder, inorder, postorder]
     }
 
     private static void walk(TreeNode node, List<Integer> pre, List<Integer> in, List<Integer> post) {
-        if (node == null) return;
+        if (node == null) return;                 // empty subtree: nothing to record
         pre.add(node.val);                        // 1st visit: arriving from the parent
-        walk(node.left, pre, in, post);
+        walk(node.left, pre, in, post);           // the whole left subtree
         in.add(node.val);                         // 2nd visit: back from the left subtree
-        walk(node.right, pre, in, post);
+        walk(node.right, pre, in, post);          // the whole right subtree
         post.add(node.val);                       // 3rd visit: back from the right subtree
     }
 
     /** Approach 3: one explicit stack of (node, state) frames; the state says which visit comes next. O(n) time, O(h) space. */
     static List<List<Integer>> oneStack(TreeNode root) {
+        // one list per traversal order
         List<Integer> pre = new ArrayList<>(), in = new ArrayList<>(), post = new ArrayList<>();
-        if (root == null) return List.of(pre, in, post);
-        Deque<Frame> stack = new ArrayDeque<>();
-        stack.push(new Frame(root));
+        if (root == null) return List.of(pre, in, post);  // empty tree: three empty lists
+        Deque<Frame> stack = new ArrayDeque<>();  // frames for the nodes on the current path
+        stack.push(new Frame(root));              // the root starts at its first visit
         while (!stack.isEmpty()) {
-            Frame top = stack.peek();
+            Frame top = stack.peek();             // the deepest frame, left on the stack for now
             if (top.state == 1) {                 // first visit: preorder, then descend left
                 pre.add(top.node.val);
-                top.state = 2;
+                top.state = 2;                    // its next visit will be the inorder one
                 if (top.node.left != null) stack.push(new Frame(top.node.left));
             } else if (top.state == 2) {          // second visit: inorder, then descend right
                 in.add(top.node.val);
-                top.state = 3;
+                top.state = 3;                    // its next visit will be the postorder one
                 if (top.node.right != null) stack.push(new Frame(top.node.right));
             } else {                              // third visit: postorder, the node is finished
                 post.add(top.node.val);
-                stack.pop();
+                stack.pop();                      // all three visits done: drop the frame
             }
         }
-        return List.of(pre, in, post);
+        return List.of(pre, in, post);            // [preorder, inorder, postorder]
     }
 
     // ---------------------------------------------------------------- tests

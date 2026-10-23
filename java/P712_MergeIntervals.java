@@ -5,38 +5,38 @@ public class P712_MergeIntervals {
 
     /** Approach 1: no sorting; repeatedly find any overlapping pair and fuse it until none is left. O(n^3) time, O(n) space. */
     static int[][] bruteForce(int[][] intervals) {
-        List<int[]> list = new ArrayList<>();
+        List<int[]> list = new ArrayList<>();                     // working copies we can fuse in place
         for (int[] iv : intervals) list.add(iv.clone());
-        boolean merged = true;
-        while (merged) {
+        boolean merged = true;                                    // did the last scan fuse anything?
+        while (merged) {                                          // keep scanning until no pair overlaps
             merged = false;
-            search:
-            for (int i = 0; i < list.size(); i++) {
+            search:                                               // label so one fusion can restart the whole scan
+            for (int i = 0; i < list.size(); i++) {               // try every pair (i, j)
                 for (int j = i + 1; j < list.size(); j++) {
                     int[] a = list.get(i), b = list.get(j);
                     if (a[0] <= b[1] && b[0] <= a[1]) {           // closed intervals share at least one point
-                        a[0] = Math.min(a[0], b[0]);
+                        a[0] = Math.min(a[0], b[0]);              // stretch a to cover b
                         a[1] = Math.max(a[1], b[1]);
-                        list.remove(j);
+                        list.remove(j);                           // b is now part of a
                         merged = true;
-                        break search;
+                        break search;                             // the list changed: rescan from the start
                     }
                 }
             }
         }
-        list.sort((x, y) -> Integer.compare(x[0], y[0]));
+        list.sort((x, y) -> Integer.compare(x[0], y[0]));         // report blocks in order of start
         return list.toArray(new int[0][]);
     }
 
     /** Approach 2: sort by start, then one pass that stretches the last block or opens a new one. O(n log n) time, O(n) space. */
     static int[][] optimal(int[][] intervals) {
         int[][] a = new int[intervals.length][];
-        for (int i = 0; i < a.length; i++) a[i] = intervals[i].clone();
-        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));
-        List<int[]> res = new ArrayList<>();
+        for (int i = 0; i < a.length; i++) a[i] = intervals[i].clone();  // copies, so the input is never modified
+        Arrays.sort(a, (x, y) -> Integer.compare(x[0], y[0]));    // sorted by start, overlaps sit side by side
+        List<int[]> res = new ArrayList<>();                      // merged blocks so far; the last one may still grow
         for (int[] cur : a) {
-            int[] last = res.isEmpty() ? null : res.get(res.size() - 1);
-            if (last == null || cur[0] > last[1]) {
+            int[] last = res.isEmpty() ? null : res.get(res.size() - 1);  // the block cur might extend
+            if (last == null || cur[0] > last[1]) {               // no block yet, or a gap before cur
                 res.add(cur);                                     // gap: start a new block
             } else {
                 last[1] = Math.max(last[1], cur[1]);              // overlap: stretch the current block
@@ -48,7 +48,7 @@ public class P712_MergeIntervals {
     /** Approach 3: sort starts and ends separately; a block closes wherever the next start lies beyond the current end. O(n log n) time, O(n) space. */
     static int[][] optimalSeparateSort(int[][] intervals) {
         int n = intervals.length;
-        int[] starts = new int[n], ends = new int[n];
+        int[] starts = new int[n], ends = new int[n];             // all starts and all ends, each sorted on its own
         for (int i = 0; i < n; i++) {
             starts[i] = intervals[i][0];
             ends[i] = intervals[i][1];
@@ -59,8 +59,8 @@ public class P712_MergeIntervals {
         int blockStart = 0;                                       // index in starts of the current block's first interval
         for (int i = 0; i < n; i++) {
             if (i == n - 1 || starts[i + 1] > ends[i]) {          // the first i+1 intervals all end before the next starts
-                res.add(new int[]{starts[blockStart], ends[i]});
-                blockStart = i + 1;
+                res.add(new int[]{starts[blockStart], ends[i]});  // close the block from its first start to this end
+                blockStart = i + 1;                               // the next interval opens a new block
             }
         }
         return res.toArray(new int[0][]);
