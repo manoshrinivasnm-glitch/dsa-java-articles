@@ -11,35 +11,35 @@ public class P416_Pattern3 {
     /** Approach 1: the inner loop counter j is exactly the value to print. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(j);
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // row i counts 1..i
+                if (j > 1) sb.append(' ');  // a space between numbers, none before the first
+                sb.append(j);               // the counter itself is the value to print
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
 
     /** Approach 2: row i is row i-1 followed by " i", so extend one buffer and copy it out each time. O(n^2) time. */
     static String growingRow(int n) {
-        StringBuilder out = new StringBuilder();
-        StringBuilder row = new StringBuilder();
+        StringBuilder out = new StringBuilder();  // the whole pattern
+        StringBuilder row = new StringBuilder();  // the current row: 1 2 ... i
         for (int i = 1; i <= n; i++) {
-            if (i > 1) row.append(' ');
-            row.append(i);
-            out.append(row).append('\n');
+            if (i > 1) row.append(' ');           // a space before every number but the first
+            row.append(i);                        // extend the row with the next number
+            out.append(row).append('\n');         // copy the finished row into the output
         }
         return out.toString();
     }
 
     /** Approach 3: build each row from an IntStream of 1..i and join the rows. O(n^2) time. */
     static String streams(int n) {
-        return IntStream.rangeClosed(1, n)
-                .mapToObj(i -> IntStream.rangeClosed(1, i)
-                        .mapToObj(j -> Integer.toString(j))
-                        .collect(Collectors.joining(" ")) + "\n")
-                .collect(Collectors.joining());
+        return IntStream.rangeClosed(1, n)                         // row numbers 1..n
+                .mapToObj(i -> IntStream.rangeClosed(1, i)         // row i is built from the numbers 1..i
+                        .mapToObj(j -> Integer.toString(j))        // each number as text
+                        .collect(Collectors.joining(" ")) + "\n")  // joined by spaces, then a newline
+                .collect(Collectors.joining());                    // glue the rows into one String
     }
 
     // ---------------------------------------------------------------- tests

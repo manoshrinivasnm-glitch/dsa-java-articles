@@ -8,11 +8,11 @@ public class P1205_Hard {
     /** Pattern 12: number crown. Row i is 1..i, then 2(n - i) spaces, then i..1. */
     static String numberCrown(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) sb.append(j);
-            sb.append(" ".repeat(2 * (n - i)));
-            for (int j = i; j >= 1; j--) sb.append(j);
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {                  // one row per i
+            for (int j = 1; j <= i; j++) sb.append(j);  // left wing: 1..i
+            sb.append(" ".repeat(2 * (n - i)));         // middle gap, 2 narrower each row
+            for (int j = i; j >= 1; j--) sb.append(j);  // right wing: i..1
+            sb.append('\n');                            // end the row
         }
         return sb.toString();
     }
@@ -20,13 +20,13 @@ public class P1205_Hard {
     /** Pattern 13: one counter keeps running across rows: 1 / 2 3 / 4 5 6 ... */
     static String increasingNumberTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        int next = 1;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(next++);
+        int next = 1;                       // keeps counting across rows; never reset
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // i numbers in row i
+                if (j > 1) sb.append(' ');  // a space between numbers, none before the first
+                sb.append(next++);          // print the counter, then advance it
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
@@ -34,9 +34,9 @@ public class P1205_Hard {
     /** Pattern 14: letters instead of numbers; (char) ('A' + k) is the k-th letter. Row i shows A up to letter i. */
     static String increasingLetterTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j < i; j++) sb.append((char) ('A' + j));
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {  // one row per i
+            for (int j = 0; j < i; j++) sb.append((char) ('A' + j));   // A, B, ... up to the i-th letter
+            sb.append('\n');            // end the row
         }
         return sb.toString();
     }
@@ -44,9 +44,9 @@ public class P1205_Hard {
     /** Pattern 15: the same triangle upside down. Row i shows A up to letter n - i + 1. */
     static String reverseLetterTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j < n - i + 1; j++) sb.append((char) ('A' + j));
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {  // one row per i
+            for (int j = 0; j < n - i + 1; j++) sb.append((char) ('A' + j));   // A up to letter n - i + 1
+            sb.append('\n');            // end the row
         }
         return sb.toString();
     }
@@ -54,10 +54,10 @@ public class P1205_Hard {
     /** Pattern 16: alpha ramp. Row i repeats the i-th letter i times. */
     static String alphaRamp(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            char letter = (char) ('A' + i - 1);
-            for (int j = 1; j <= i; j++) sb.append(letter);
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {                       // one row per i
+            char letter = (char) ('A' + i - 1);              // row i uses the i-th letter
+            for (int j = 1; j <= i; j++) sb.append(letter);  // repeated i times
+            sb.append('\n');                                 // end the row
         }
         return sb.toString();
     }
@@ -65,13 +65,13 @@ public class P1205_Hard {
     /** Pattern 17: alpha hill. Row i is centred: n - i spaces, then A up to letter i and back down to A. */
     static String alphaHill(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            sb.append(" ".repeat(n - i));
-            for (int j = 0; j < 2 * i - 1; j++) {
-                int k = j < i ? j : 2 * i - 2 - j;
-                sb.append((char) ('A' + k));
+        for (int i = 1; i <= n; i++) {              // one row per i
+            sb.append(" ".repeat(n - i));           // n - i spaces centre the row
+            for (int j = 0; j < 2 * i - 1; j++) {   // 2i - 1 letters in row i
+                int k = j < i ? j : 2 * i - 2 - j;  // count up to i - 1, then back down
+                sb.append((char) ('A' + k));        // the letter k places after A
             }
-            sb.append('\n');
+            sb.append('\n');                        // end the row
         }
         return sb.toString();
     }
@@ -79,9 +79,9 @@ public class P1205_Hard {
     /** Pattern 18: alpha triangle. Row i shows the last i letters of A..letter n, in alphabetical order. */
     static String alphaTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = n - i; j < n; j++) sb.append((char) ('A' + j));
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {  // one row per i
+            for (int j = n - i; j < n; j++) sb.append((char) ('A' + j));   // the last i letters, in order
+            sb.append('\n');            // end the row
         }
         return sb.toString();
     }
@@ -89,11 +89,13 @@ public class P1205_Hard {
     /** Pattern 19: symmetric void. Top half: n - i + 1 stars, 2(i - 1) spaces, n - i + 1 stars; the bottom mirrors it. */
     static String symmetricVoid(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            int stars = n - i + 1;
+        for (int i = 1; i <= n; i++) {  // top half: the gap widens
+            int stars = n - i + 1;      // stars on each side, one fewer each row
+            // left stars, a gap of 2(i - 1), right stars
             sb.append("*".repeat(stars)).append(" ".repeat(2 * (i - 1))).append("*".repeat(stars)).append('\n');
         }
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {  // bottom half mirrors it: stars grow, gap shrinks
+            // i stars, a gap of 2(n - i), i stars
             sb.append("*".repeat(i)).append(" ".repeat(2 * (n - i))).append("*".repeat(i)).append('\n');
         }
         return sb.toString();
@@ -102,8 +104,9 @@ public class P1205_Hard {
     /** Pattern 20: symmetric butterfly. Row i (rising to n, then falling) has i stars, 2(n - i) spaces, i stars. */
     static String butterfly(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int row = 1; row <= 2 * n - 1; row++) {
-            int i = row <= n ? row : 2 * n - row;
+        for (int row = 1; row <= 2 * n - 1; row++) {  // 2n - 1 rows in all
+            int i = row <= n ? row : 2 * n - row;     // i rises 1..n and then falls back to 1
+            // i stars, a gap of 2(n - i), i stars
             sb.append("*".repeat(i)).append(" ".repeat(2 * (n - i))).append("*".repeat(i)).append('\n');
         }
         return sb.toString();
@@ -112,13 +115,14 @@ public class P1205_Hard {
     /** Pattern 21: hollow rectangle. Border rows are full; inner rows have a star at each end only. */
     static String hollowRectangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            if (i == 1 || i == n) {
-                sb.append("*".repeat(n));
+        for (int i = 1; i <= n; i++) {     // one row per i
+            if (i == 1 || i == n) {        // first or last row: a border
+                sb.append("*".repeat(n));  // a full row of stars
             } else {
+                // inner row: a star at each end, spaces between
                 sb.append('*').append(" ".repeat(n - 2)).append('*');
             }
-            sb.append('\n');
+            sb.append('\n');               // end the row
         }
         return sb.toString();
     }
@@ -126,14 +130,15 @@ public class P1205_Hard {
     /** Pattern 22: concentric squares. In a (2n - 1) grid, cell (r, c) holds n minus its distance to the nearest edge. */
     static String concentricSquares(int n) {
         StringBuilder sb = new StringBuilder();
-        int size = 2 * n - 1;
-        for (int r = 0; r < size; r++) {
-            for (int c = 0; c < size; c++) {
+        int size = 2 * n - 1;                 // the grid is 2n - 1 wide and tall
+        for (int r = 0; r < size; r++) {      // each row r
+            for (int c = 0; c < size; c++) {  // each column c
+                // how far (r, c) is from the nearest of the four edges
                 int edge = Math.min(Math.min(r, c), Math.min(size - 1 - r, size - 1 - c));
-                if (c > 0) sb.append(' ');
-                sb.append(n - edge);
+                if (c > 0) sb.append(' ');    // a space between entries, none before the first
+                sb.append(n - edge);          // the outer ring shows n, the centre shows 1
             }
-            sb.append('\n');
+            sb.append('\n');                  // end the row
         }
         return sb.toString();
     }

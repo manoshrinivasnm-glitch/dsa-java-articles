@@ -6,66 +6,68 @@ public class P1211_CppBasics {
 
     /** int arithmetic silently wraps around: MAX_VALUE + 1 becomes MIN_VALUE. */
     static int addInt(int a, int b) {
-        return a + b;
+        return a + b;  // past MAX_VALUE this wraps around instead of failing
     }
 
     /** Widen one operand to long before adding and the true sum survives. */
     static long addLong(int a, int b) {
-        return (long) a + b;
+        return (long) a + b;  // cast first, so the addition itself happens in long
     }
 
     /** Integer division truncates toward zero, and % takes the sign of the dividend (the left operand). */
     static int[] divMod(int a, int b) {
-        return new int[]{a / b, a % b};
+        return new int[]{a / b, a % b};  // quotient truncates toward zero; remainder takes a's sign
     }
 
     /** Floor division always rounds down, and floorMod is never negative for a positive divisor. */
     static int[] floorDivMod(int a, int b) {
+        // quotient rounds down; remainder is never negative for b > 0
         return new int[]{Math.floorDiv(a, b), Math.floorMod(a, b)};
     }
 
     /** (a + b) / 2 would be an int result; one double operand forces real division. */
     static double average(int a, int b) {
-        return (a + b) / 2.0;
+        return (a + b) / 2.0;  // the 2.0 makes it real division, keeping the .5
     }
 
     /** Casting a double to int drops the fraction; Math.round goes to the nearest whole number. */
     static long[] truncateAndRound(double x) {
-        return new long[]{(int) x, Math.round(x)};
+        return new long[]{(int) x, Math.round(x)};  // (int) chops the fraction; round goes to the nearest
     }
 
     /** Characters are small integers: 'a' + 1 is 'b' once cast back to char. */
     static char shiftLowercase(char c, int k) {
-        return (char) ('a' + (c - 'a' + k) % 26);
+        return (char) ('a' + (c - 'a' + k) % 26);  // offset from 'a', shift, wrap past 'z', back to a letter
     }
 
     /** '7' - '0' is 7; the raw code of '7' is 55, so never use the char itself as a number. */
     static int digitValue(char c) {
-        return c - '0';
+        return c - '0';  // subtract the code of '0' to get the digit's value
     }
 
     /** 13! does not fit in an int, so this version returns a wrapped, wrong value from 13 onwards. */
     static int factorialInt(int n) {
-        int f = 1;
-        for (int i = 2; i <= n; i++) f *= i;
+        int f = 1;                            // running product; 0! and 1! stay 1
+        for (int i = 2; i <= n; i++) f *= i;  // multiply in 2..n; silently overflows from 13 on
         return f;
     }
 
     /** The same loop in long is exact up to 20!. */
     static long factorialLong(int n) {
-        long f = 1;
+        long f = 1;  // long has room for the exact product up to 20!
         for (int i = 2; i <= n; i++) f *= i;
         return f;
     }
 
     /** Doubles are binary fractions; compare with a tolerance, never with ==. */
     static boolean nearlyEqual(double a, double b) {
-        return Math.abs(a - b) < 1e-9;
+        return Math.abs(a - b) < 1e-9;  // close enough counts as equal; == trips on rounding error
     }
 
     /** Boxed Integers from -128 to 127 are cached, so == happens to work there and fails elsewhere; use equals. */
     static boolean[] boxedComparison(int v) {
-        Integer a = v, b = v;
+        Integer a = v, b = v;  // two boxes holding the same int value
+        // == compares the boxes (same only inside the cache); equals compares values
         return new boolean[]{a == b, a.equals(b)};
     }
 

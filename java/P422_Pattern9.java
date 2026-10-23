@@ -11,25 +11,27 @@ public class P422_Pattern9 {
     /** Approach 1: two blocks of nested loops, the widening upper half then the narrowing lower half. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {                    // upper half: row i has 2i+1 stars
-            for (int j = 0; j < n - 1 - i; j++) sb.append(' ');
-            for (int j = 0; j < 2 * i + 1; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 0; i < n; i++) {                            // upper half: row i has 2i+1 stars
+            for (int j = 0; j < n - 1 - i; j++) sb.append(' ');  // n - 1 - i spaces centre the row
+            for (int j = 0; j < 2 * i + 1; j++) sb.append('*');  // 2i + 1 stars
+            sb.append('\n');                                     // end the row
         }
-        for (int i = 0; i < n; i++) {                    // lower half: row i has 2(n-i)-1 stars
-            for (int j = 0; j < i; j++) sb.append(' ');
-            for (int j = 0; j < 2 * (n - i) - 1; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 0; i < n; i++) {                            // lower half: row i has 2(n-i)-1 stars
+            for (int j = 0; j < i; j++) sb.append(' ');          // i spaces: each row starts one further in
+            for (int j = 0; j < 2 * (n - i) - 1; j++) sb.append('*');   // 2(n - i) - 1 stars
+            sb.append('\n');                                     // end the row
         }
         return sb.toString();
     }
 
     /** Approach 2: build the upper half once, then emit it forwards and backwards. O(n^2) time. */
     static String mirror(int n) {
-        List<String> upper = new ArrayList<>();
+        List<String> upper = new ArrayList<>();                 // rows of the upper half, top first
+        // row i: n - 1 - i spaces, then 2i + 1 stars
         for (int i = 0; i < n; i++) upper.add(" ".repeat(n - 1 - i) + "*".repeat(2 * i + 1));
         StringBuilder out = new StringBuilder();
-        for (String row : upper) out.append(row).append('\n');
+        for (String row : upper) out.append(row).append('\n');  // upper half, top to bottom
+        // the same rows bottom to top: the lower half
         for (int i = n - 1; i >= 0; i--) out.append(upper.get(i)).append('\n');
         return out.toString();
     }
@@ -37,8 +39,9 @@ public class P422_Pattern9 {
     /** Approach 3: one loop over all 2n rows; fold the row index so k rises 0..n-1 and then falls n-1..0. O(n^2) time. */
     static String foldedIndex(int n) {
         StringBuilder out = new StringBuilder();
-        for (int r = 0; r < 2 * n; r++) {
-            int k = r < n ? r : 2 * n - 1 - r;           // distance from the nearer tip
+        for (int r = 0; r < 2 * n; r++) {       // all 2n rows
+            int k = r < n ? r : 2 * n - 1 - r;  // distance from the nearer tip
+            // n - 1 - k spaces, then 2k + 1 stars, then a newline
             out.append(" ".repeat(n - 1 - k)).append("*".repeat(2 * k + 1)).append('\n');
         }
         return out.toString();

@@ -10,12 +10,12 @@ public class P401_Pattern1 {
     /** Approach 1: outer loop over rows, inner loop over columns, one cell per inner step. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (j > 0) sb.append(' ');
+        for (int i = 0; i < n; i++) {       // one row per i
+            for (int j = 0; j < n; j++) {   // n stars in every row
+                if (j > 0) sb.append(' ');  // a space between stars, none before the first
                 sb.append('*');
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
@@ -23,19 +23,19 @@ public class P401_Pattern1 {
     /** Approach 2: one loop over the n*n cells, recovering the column from the flat index. O(n^2) time. */
     static String singleLoop(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int k = 0; k < n * n; k++) {
-            int j = k % n;                       // column of cell k (the row would be k / n)
-            if (j > 0) sb.append(' ');
+        for (int k = 0; k < n * n; k++) {     // visit all n*n cells in reading order
+            int j = k % n;                    // column of cell k (the row would be k / n)
+            if (j > 0) sb.append(' ');        // a space between stars, none before the first
             sb.append('*');
-            if (j == n - 1) sb.append('\n');     // last column: close the row
+            if (j == n - 1) sb.append('\n');  // last column: close the row
         }
         return sb.toString();
     }
 
     /** Approach 3: build one row with join, then repeat that row n times. O(n^2) time. */
     static String repeatRow(int n) {
-        String row = String.join(" ", Collections.nCopies(n, "*"));
-        return (row + "\n").repeat(n);
+        String row = String.join(" ", Collections.nCopies(n, "*"));   // n stars joined by single spaces
+        return (row + "\n").repeat(n);  // that row n times, each ending in a newline
     }
 
     // ---------------------------------------------------------------- tests

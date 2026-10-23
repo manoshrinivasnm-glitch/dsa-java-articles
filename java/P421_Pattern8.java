@@ -10,10 +10,11 @@ public class P421_Pattern8 {
     /** Approach 1: i leading spaces, then 2(n-i)-1 stars, one character per inner-loop step. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < i; j++) sb.append(' ');
+        for (int i = 0; i < n; i++) {                    // one row per i
+            for (int j = 0; j < i; j++) sb.append(' ');  // i leading spaces: each row starts one further in
+            // 2(n - i) - 1 stars: widths 2n-1 down to 1
             for (int j = 0; j < 2 * (n - i) - 1; j++) sb.append('*');
-            sb.append('\n');
+            sb.append('\n');                             // end the row
         }
         return sb.toString();
     }
@@ -21,7 +22,8 @@ public class P421_Pattern8 {
     /** Approach 2: String.repeat per row, spaces then stars. O(n^2) time. */
     static String repeat(int n) {
         StringBuilder out = new StringBuilder();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {  // one row per i
+            // i spaces, then 2(n - i) - 1 stars, then a newline
             out.append(" ".repeat(i)).append("*".repeat(2 * (n - i) - 1)).append('\n');
         }
         return out.toString();
@@ -29,9 +31,11 @@ public class P421_Pattern8 {
 
     /** Approach 3: build the rows of the upright pyramid (Pattern 7) and emit them bottom-up. O(n^2) time. */
     static String reversedPyramid(int n) {
-        List<String> rows = new ArrayList<>();
+        List<String> rows = new ArrayList<>();  // rows of the upright pyramid, top first
+        // row i of Pattern 7: n - 1 - i spaces, then 2i + 1 stars
         for (int i = 0; i < n; i++) rows.add(" ".repeat(n - 1 - i) + "*".repeat(2 * i + 1));
         StringBuilder out = new StringBuilder();
+        // emit them bottom-up, so the widest row comes first
         for (int i = n - 1; i >= 0; i--) out.append(rows.get(i)).append('\n');
         return out.toString();
     }

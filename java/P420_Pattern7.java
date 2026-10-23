@@ -8,10 +8,10 @@ public class P420_Pattern7 {
     /** Approach 1: two inner loops per row, one for the leading spaces and one for the stars. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - 1 - i; j++) sb.append(' ');
-            for (int j = 0; j < 2 * i + 1; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 0; i < n; i++) {                            // one row per i
+            for (int j = 0; j < n - 1 - i; j++) sb.append(' ');  // n - 1 - i leading spaces centre the row
+            for (int j = 0; j < 2 * i + 1; j++) sb.append('*');  // 2i + 1 stars: widths 1, 3, 5, ...
+            sb.append('\n');                                     // end the row
         }
         return sb.toString();
     }
@@ -19,12 +19,13 @@ public class P420_Pattern7 {
     /** Approach 2: treat the row as cells 0..n-1+i and print a star exactly when the cell is within i of the centre. O(n^2) time. */
     static String centerDistance(int n) {
         StringBuilder sb = new StringBuilder();
-        int mid = n - 1;                                 // column of the top star
-        for (int i = 0; i < n; i++) {
-            for (int c = 0; c <= mid + i; c++) {
+        int mid = n - 1;                          // column of the top star
+        for (int i = 0; i < n; i++) {             // one row per i
+            for (int c = 0; c <= mid + i; c++) {  // cells up to the row's last star; no trailing spaces
+                // a star within distance i of the centre, else a space
                 sb.append(Math.abs(c - mid) <= i ? '*' : ' ');
             }
-            sb.append('\n');
+            sb.append('\n');                      // end the row
         }
         return sb.toString();
     }
@@ -32,7 +33,8 @@ public class P420_Pattern7 {
     /** Approach 3: String.repeat makes the row description literal, spaces then stars. O(n^2) time. */
     static String repeat(int n) {
         StringBuilder out = new StringBuilder();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {  // one row per i
+            // n - 1 - i spaces, then 2i + 1 stars, then a newline
             out.append(" ".repeat(n - 1 - i)).append("*".repeat(2 * i + 1)).append('\n');
         }
         return out.toString();

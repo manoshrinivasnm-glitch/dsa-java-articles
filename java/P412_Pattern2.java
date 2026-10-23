@@ -11,33 +11,34 @@ public class P412_Pattern2 {
     /** Approach 1: row i prints i stars; the inner loop bound depends on the outer index. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // row i has i stars
+                if (j > 1) sb.append(' ');  // a space between stars, none before the first
                 sb.append('*');
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
 
     /** Approach 2: each row is the previous row plus one more star, so grow one buffer and copy it out. O(n^2) time. */
     static String growingRow(int n) {
-        StringBuilder out = new StringBuilder();
-        StringBuilder row = new StringBuilder();
+        StringBuilder out = new StringBuilder();  // the whole pattern
+        StringBuilder row = new StringBuilder();  // the current row, one star longer each pass
         for (int i = 1; i <= n; i++) {
-            if (i > 1) row.append(' ');
-            row.append('*');
-            out.append(row).append('\n');
+            if (i > 1) row.append(' ');           // a space before every star but the first
+            row.append('*');                      // row now holds i stars
+            out.append(row).append('\n');         // copy the finished row into the output
         }
         return out.toString();
     }
 
     /** Approach 3: describe each row declaratively and join them with a stream. O(n^2) time. */
     static String streams(int n) {
-        return IntStream.rangeClosed(1, n)
+        return IntStream.rangeClosed(1, n)       // row numbers 1..n
+                // row i: i stars joined by spaces, then a newline
                 .mapToObj(i -> String.join(" ", Collections.nCopies(i, "*")) + "\n")
-                .collect(Collectors.joining());
+                .collect(Collectors.joining());  // glue the rows into one String
     }
 
     // ---------------------------------------------------------------- tests

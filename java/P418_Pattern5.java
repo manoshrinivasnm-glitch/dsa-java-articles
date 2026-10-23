@@ -10,12 +10,12 @@ public class P418_Pattern5 {
     /** Approach 1: the inner bound shrinks with the row index, row i has n - i stars. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - i; j++) {
-                if (j > 0) sb.append(' ');
+        for (int i = 0; i < n; i++) {          // one row per i
+            for (int j = 0; j < n - i; j++) {  // row i has n - i stars, one fewer each row
+                if (j > 0) sb.append(' ');     // a space between stars, none before the first
                 sb.append('*');
             }
-            sb.append('\n');
+            sb.append('\n');                   // end the row
         }
         return sb.toString();
     }
@@ -23,21 +23,23 @@ public class P418_Pattern5 {
     /** Approach 2: start from the full row and chop off " *" (two characters) after emitting each row. O(n^2) time. */
     static String shrinkingRow(int n) {
         StringBuilder out = new StringBuilder();
+        // start from the widest row: n stars
         StringBuilder row = new StringBuilder(String.join(" ", Collections.nCopies(n, "*")));
-        for (int i = 0; i < n; i++) {
-            out.append(row).append('\n');
-            row.setLength(Math.max(0, row.length() - 2));
+        for (int i = 0; i < n; i++) {                      // one row per pass
+            out.append(row).append('\n');                  // emit the current row
+            row.setLength(Math.max(0, row.length() - 2));  // drop the last ' *': one star fewer next row
         }
         return out.toString();
     }
 
     /** Approach 3: this is Pattern 2 upside down, so build the growing rows and emit them in reverse. O(n^2) time. */
     static String reversedTriangle(int n) {
-        List<String> rows = new ArrayList<>();
+        List<String> rows = new ArrayList<>();                 // the growing rows of Pattern 2
+        // row i of Pattern 2: i stars joined by spaces
         for (int i = 1; i <= n; i++) rows.add(String.join(" ", Collections.nCopies(i, "*")));
-        Collections.reverse(rows);
+        Collections.reverse(rows);                             // now the longest row comes first
         StringBuilder out = new StringBuilder();
-        for (String row : rows) out.append(row).append('\n');
+        for (String row : rows) out.append(row).append('\n');  // emit each row on its own line
         return out.toString();
     }
 

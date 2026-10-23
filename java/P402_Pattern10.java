@@ -10,13 +10,13 @@ public class P402_Pattern10 {
     /** Approach 1: one loop climbs to n stars, a second loop descends from n-1 back to 1. O(n^2) time. */
     static String twoLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j < i; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {                   // rising half: 1, 2, ..., n stars
+            for (int j = 0; j < i; j++) sb.append('*');  // i stars in this row
+            sb.append('\n');                             // end the row
         }
-        for (int i = n - 1; i >= 1; i--) {
-            for (int j = 0; j < i; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = n - 1; i >= 1; i--) {               // falling half: n - 1 stars down to 1
+            for (int j = 0; j < i; j++) sb.append('*');  // i stars in this row
+            sb.append('\n');                             // end the row
         }
         return sb.toString();
     }
@@ -24,20 +24,20 @@ public class P402_Pattern10 {
     /** Approach 2: one loop over the 2n-1 rows; the star count is i while climbing and 2n-i while descending. O(n^2) time. */
     static String foldedIndex(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= 2 * n - 1; i++) {
-            int stars = i <= n ? i : 2 * n - i;
-            for (int j = 0; j < stars; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 1; i <= 2 * n - 1; i++) {               // all 2n - 1 rows
+            int stars = i <= n ? i : 2 * n - i;              // rises to n at row n, then falls back
+            for (int j = 0; j < stars; j++) sb.append('*');  // that many stars
+            sb.append('\n');                                 // end the row
         }
         return sb.toString();
     }
 
     /** Approach 3: the same fold written as Math.min(i, 2n - i) inside a stream pipeline. O(n^2) time. */
     static String streams(int n) {
-        return IntStream.rangeClosed(1, 2 * n - 1)
-                .map(i -> Math.min(i, 2 * n - i))
-                .mapToObj(stars -> "*".repeat(stars) + "\n")
-                .collect(Collectors.joining());
+        return IntStream.rangeClosed(1, 2 * n - 1)            // row numbers 1..2n-1
+                .map(i -> Math.min(i, 2 * n - i))             // star count: the smaller of i and 2n - i
+                .mapToObj(stars -> "*".repeat(stars) + "\n")  // one row of that many stars
+                .collect(Collectors.joining());               // glue the rows into one String
     }
 
     // ---------------------------------------------------------------- tests

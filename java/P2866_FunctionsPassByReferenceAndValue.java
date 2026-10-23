@@ -11,89 +11,89 @@ public class P2866_FunctionsPassByReferenceAndValue {
 
     /** The parameter is a copy of the caller's int; changing it changes nothing outside. */
     static void tryToChangeInt(int x) {
-        x = 100;
+        x = 100;  // changes only the local copy; the caller's int is untouched
     }
 
     /** The clean way to "change" a primitive: return the new value and let the caller store it. */
     static int increment(int x) {
-        return x + 1;
+        return x + 1;  // the caller stores the result itself
     }
 
     /** The reference is copied, but it points at the caller's array, so element writes are visible. */
     static void setFirst(int[] arr, int value) {
-        if (arr.length > 0) arr[0] = value;
+        if (arr.length > 0) arr[0] = value;  // writes into the caller's own array
     }
 
     /** Reassigning the parameter only rebinds the local copy of the reference; the caller keeps the old array. */
     static void tryToReplaceArray(int[] arr) {
-        arr = new int[]{42, 42, 42};
+        arr = new int[]{42, 42, 42};  // rebinds only the local copy of the reference
     }
 
     /** Swapping two ints through parameters cannot work in Java: only the copies are swapped. */
     static void trySwap(int a, int b) {
-        int t = a;
+        int t = a;  // only the local copies get swapped
         a = b;
         b = t;
     }
 
     /** Swapping inside an array works because caller and callee share the same array object. */
     static void swapInArray(int[] a, int i, int j) {
-        int t = a[i];
+        int t = a[i];  // both sides share this array, so the swap sticks
         a[i] = a[j];
         a[j] = t;
     }
 
     /** StringBuilder is mutable, so appending through the copied reference changes the caller's object. */
     static void appendWorld(StringBuilder sb) {
-        sb.append(" world");
+        sb.append(" world");  // changes the one object the caller also holds
     }
 
     /** String is immutable: + creates a new String and only the local parameter points at it. */
     static void tryToChangeString(String s) {
-        s = s + " world";
+        s = s + " world";  // builds a new String; only the local s points at it
     }
 
     /** Mutating a field through the reference is visible to the caller. */
     static void bump(Counter c) {
-        c.count++;
+        c.count++;  // changes the caller's object through the shared reference
     }
 
     /** Pointing the parameter at a new object is not visible to the caller. */
     static void tryToReplaceCounter(Counter c) {
-        c = new Counter();
-        c.count = 999;
+        c = new Counter();  // c now points at a new object, not the caller's
+        c.count = 999;      // changes only that new object
     }
 
     /** Returning more than one value: wrap them in an array (or a small record or class). */
     static int[] minMax(int[] a) {
-        int min = a[0], max = a[0];
+        int min = a[0], max = a[0];  // start both from the first element
         for (int x : a) {
-            if (x < min) min = x;
-            if (x > max) max = x;
+            if (x < min) min = x;    // a new smallest
+            if (x > max) max = x;    // a new largest
         }
-        return new int[]{min, max};
+        return new int[]{min, max};  // two answers packed into one array
     }
 
     /** Overloading: same name, different parameter lists; the compiler picks by argument types. */
     static int area(int side) {
-        return side * side;
+        return side * side;  // chosen for a call like area(5)
     }
 
     static int area(int width, int height) {
-        return width * height;
+        return width * height;  // chosen for a call like area(3, 4)
     }
 
     /** Varargs: any number of ints arrive as an int[] inside the method. */
     static long sumAll(int... nums) {
         long sum = 0;
-        for (int x : nums) sum += x;
+        for (int x : nums) sum += x;  // nums is a plain int[] inside the method
         return sum;
     }
 
     /** Recursion: a function calling itself on a smaller input, with a base case that stops it. */
     static int digitSum(int n) {
-        if (n < 10) return n;
-        return n % 10 + digitSum(n / 10);
+        if (n < 10) return n;              // base case: a single digit is its own sum
+        return n % 10 + digitSum(n / 10);  // last digit plus the digit sum of the rest
     }
 
     // ---------------------------------------------------------------- tests

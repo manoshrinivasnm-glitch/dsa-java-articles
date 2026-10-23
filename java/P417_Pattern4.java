@@ -11,12 +11,12 @@ public class P417_Pattern4 {
     /** Approach 1: the inner loop only counts; the value printed is the outer index i. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(i);
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // i entries in row i
+                if (j > 1) sb.append(' ');  // a space between entries, none before the first
+                sb.append(i);               // every entry is the row number i
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
@@ -24,8 +24,9 @@ public class P417_Pattern4 {
     /** Approach 2: a row is one token repeated i times, so build it with nCopies and join. O(n^2) time. */
     static String repeatToken(int n) {
         StringBuilder out = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            String token = Integer.toString(i);
+        for (int i = 1; i <= n; i++) {           // one row per i
+            String token = Integer.toString(i);  // the row number as text
+            // i copies of it joined by spaces, then a newline
             out.append(String.join(" ", Collections.nCopies(i, token))).append('\n');
         }
         return out.toString();
@@ -33,9 +34,10 @@ public class P417_Pattern4 {
 
     /** Approach 3: the same idea written as a stream pipeline over the row numbers. O(n^2) time. */
     static String streams(int n) {
-        return IntStream.rangeClosed(1, n)
+        return IntStream.rangeClosed(1, n)       // row numbers 1..n
+                // row i: i copies of the number i joined by spaces, then a newline
                 .mapToObj(i -> String.join(" ", Collections.nCopies(i, Integer.toString(i))) + "\n")
-                .collect(Collectors.joining());
+                .collect(Collectors.joining());  // glue the rows into one String
     }
 
     // ---------------------------------------------------------------- tests

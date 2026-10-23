@@ -6,16 +6,17 @@ public class P429_SwitchCase {
 
     /** Classic switch: stacked case labels share one body, and return (or break) stops the fall-through. */
     static int daysInMonth(int month, int year) {
+        // every 4th year, but centuries only every 400th
         boolean leap = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         switch (month) {
-            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:   // the 31-day months share one body
                 return 31;
-            case 4: case 6: case 9: case 11:
+            case 4: case 6: case 9: case 11:  // the 30-day months
                 return 30;
             case 2:
-                return leap ? 29 : 28;
+                return leap ? 29 : 28;        // February depends on the year
             default:
-                return -1;
+                return -1;                    // not a real month
         }
     }
 
@@ -23,27 +24,27 @@ public class P429_SwitchCase {
     static String unlockedLevels(int level) {
         StringBuilder sb = new StringBuilder();
         switch (level) {
-            case 3: sb.append("hard ");
-            case 2: sb.append("medium ");
+            case 3: sb.append("hard ");    // no break: falls through and adds medium and easy too
+            case 2: sb.append("medium ");  // falls through into easy
             case 1: sb.append("easy");
-                break;
-            default: sb.append("none");
+                break;                     // stop here so the default text is not added
+            default: sb.append("none");    // any other level unlocks nothing
         }
         return sb.toString();
     }
 
     /** Arrow form: no fall-through, several labels per case, and the whole switch is an expression. */
     static String dayType(String day) {
-        return switch (day) {
-            case "SAT", "SUN" -> "weekend";
+        return switch (day) {                // the switch is an expression; its value is returned
+            case "SAT", "SUN" -> "weekend";  // several labels can share one arm
             case "MON", "TUE", "WED", "THU", "FRI" -> "weekday";
-            default -> "unknown";
+            default -> "unknown";            // any other string
         };
     }
 
     /** Switch expression on a char; every arm produces exactly one value. */
     static int romanValue(char c) {
-        return switch (c) {
+        return switch (c) {  // each arm produces one int; no break needed
             case 'I' -> 1;
             case 'V' -> 5;
             case 'X' -> 10;
@@ -51,7 +52,7 @@ public class P429_SwitchCase {
             case 'C' -> 100;
             case 'D' -> 500;
             case 'M' -> 1000;
-            default -> 0;
+            default -> 0;    // not a Roman numeral letter
         };
     }
 
@@ -61,22 +62,23 @@ public class P429_SwitchCase {
             case '+' -> a + b;
             case '-' -> a - b;
             case '*' -> a * b;
-            case '/' -> {
-                if (b == 0) yield 0;
-                yield a / b;
+            case '/' -> {                    // a block arm for more than one statement
+                if (b == 0) yield 0;         // guard against division by zero
+                yield a / b;                 // yield hands the arm's value back to the switch
             }
-            case '%' -> b == 0 ? 0 : a % b;
+            case '%' -> b == 0 ? 0 : a % b;  // a zero divisor gives 0 here too
+            // an arm may throw instead of producing a value
             default -> throw new IllegalArgumentException("unknown operator " + op);
         };
     }
 
     /** Java 21 pattern matching: switch on the runtime type, with a guard and an explicit null case. */
     static String describe(Object o) {
-        return switch (o) {
-            case null -> "null";
-            case Integer i when i < 0 -> "negative int " + i;
-            case Integer i -> "int " + i;
-            case String s -> "string of length " + s.length();
+        return switch (o) {                                     // arm chosen by the runtime type
+            case null -> "null";                                // without this arm a null would throw
+            case Integer i when i < 0 -> "negative int " + i;   // guarded arm, tried before the plain one
+            case Integer i -> "int " + i;                       // every other Integer
+            case String s -> "string of length " + s.length();  // s is already typed as a String here
             default -> "something else";
         };
     }

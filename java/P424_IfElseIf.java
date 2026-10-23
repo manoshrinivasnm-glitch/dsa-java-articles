@@ -5,65 +5,67 @@ public class P424_IfElseIf {
 
     /** A chain of else-if branches: the first true condition wins and everything below it is skipped. */
     static String grade(int marks) {
-        if (marks >= 90) return "A";
-        else if (marks >= 80) return "B";
+        if (marks >= 90) return "A";       // the first true test wins; the rest are skipped
+        else if (marks >= 80) return "B";  // reached only when marks < 90
         else if (marks >= 70) return "C";
         else if (marks >= 60) return "D";
-        else return "F";
+        else return "F";                   // nothing matched: below 60
     }
 
     /** Nested rules: a year is leap if divisible by 4, except centuries, except every 400th year. */
     static boolean isLeapYear(int year) {
-        if (year % 4 != 0) {
+        if (year % 4 != 0) {           // not divisible by 4: never leap
             return false;
-        } else if (year % 100 != 0) {
+        } else if (year % 100 != 0) {  // divisible by 4 but not a century: leap
             return true;
         } else {
-            return year % 400 == 0;
+            return year % 400 == 0;    // a century is leap only if divisible by 400
         }
     }
 
     /** Order matters: test the most specific condition (divisible by both) first. */
     static String fizzBuzz(int n) {
-        if (n % 15 == 0) return "FizzBuzz";
+        if (n % 15 == 0) return "FizzBuzz";  // divisible by both 3 and 5, so it must come first
         if (n % 3 == 0) return "Fizz";
         if (n % 5 == 0) return "Buzz";
-        return String.valueOf(n);
+        return String.valueOf(n);            // no rule applies: the number itself
     }
 
     /** Largest of three with independent if statements and a running best. */
     static int maxOfThree(int a, int b, int c) {
-        int best = a;
-        if (b > best) best = b;
+        int best = a;            // assume a is the largest
+        if (b > best) best = b;  // replace best whenever a bigger value turns up
         if (c > best) best = c;
         return best;
     }
 
     /** Largest of three with an else-if chain; exactly one branch runs. */
     static int maxOfThreeChain(int a, int b, int c) {
-        if (a >= b && a >= c) return a;
-        else if (b >= c) return b;
+        if (a >= b && a >= c) return a;  // a is at least as big as both others
+        else if (b >= c) return b;       // a lost, so the answer is b or c
         else return c;
     }
 
     /** The same decision as a nested ternary expression; fine for two levels, unreadable beyond that. */
     static String sign(int x) {
+        // outer test catches positives; inner one splits negative from zero
         return x > 0 ? "positive" : (x < 0 ? "negative" : "zero");
     }
 
     /** Short-circuit evaluation: a[i] is only read once both index checks have passed. */
     static boolean isPositiveAt(int[] a, int i) {
+        // && stops at the first false, so a[i] is never read out of range
         return i >= 0 && i < a.length && a[i] > 0;
     }
 
     /** Compound conditions with || and &&, plus a nested if for the exception inside a branch. */
     static String ticketPrice(int age, boolean student) {
-        if (age < 5 || age >= 65) {
+        if (age < 5 || age >= 65) {         // either end of the age range rides free
             return "free";
-        } else if (age < 18) {
+        } else if (age < 18) {              // age is 5..64 here, so this means 5..17
             return "child";
         } else {
-            if (student) return "student";
+            if (student) return "student";  // nested check that only adults reach
             return "adult";
         }
     }

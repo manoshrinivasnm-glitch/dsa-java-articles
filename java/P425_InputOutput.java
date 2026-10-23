@@ -6,27 +6,28 @@ public class P425_InputOutput {
 
     /** Read every whitespace-separated integer in the input and add them up. */
     static long sumOfTokens(String input) {
-        Scanner sc = new Scanner(input);
-        long sum = 0;
-        while (sc.hasNextInt()) sum += sc.nextInt();
+        Scanner sc = new Scanner(input);              // reads tokens from the text; System.in works the same
+        long sum = 0;                                 // long: many ints can overflow an int total
+        while (sc.hasNextInt()) sum += sc.nextInt();  // keep reading until no integer is left
         return sum;
     }
 
     /** Classic judge format: the first token is n, then n integers follow (line breaks do not matter). */
     static int[] readArray(String input) {
         Scanner sc = new Scanner(input);
-        int n = sc.nextInt();
+        int n = sc.nextInt();                             // first token says how many numbers follow
         int[] a = new int[n];
-        for (int i = 0; i < n; i++) a[i] = sc.nextInt();
+        for (int i = 0; i < n; i++) a[i] = sc.nextInt();  // read n values; line breaks are just whitespace
         return a;
     }
 
     /** The same job without Scanner: split one line on runs of whitespace and parse each piece. */
     static int[] readArraySplit(String line) {
-        String t = line.trim();
-        if (t.isEmpty()) return new int[0];
-        String[] parts = t.split("\\s+");
+        String t = line.trim();              // drop outer spaces so split yields no empty first piece
+        if (t.isEmpty()) return new int[0];  // blank line -> no numbers
+        String[] parts = t.split("\\s+");    // split on every run of spaces or tabs
         int[] a = new int[parts.length];
+        // turn each piece of text into an int
         for (int i = 0; i < parts.length; i++) a[i] = Integer.parseInt(parts[i]);
         return a;
     }
@@ -34,21 +35,21 @@ public class P425_InputOutput {
     /** Mixing nextInt and nextLine: the line break left behind by nextInt must be consumed first. */
     static String readAgeThenName(String input) {
         Scanner sc = new Scanner(input);
-        int age = sc.nextInt();
-        sc.nextLine();                          // discard the rest of the first line
-        String name = sc.nextLine();            // the whole second line, spaces included
+        int age = sc.nextInt();       // reads the number but leaves its line break behind
+        sc.nextLine();                // discard the rest of the first line
+        String name = sc.nextLine();  // the whole second line, spaces included
         return name + " is " + age;
     }
 
     /** Several test cases in one input: t, then for each case n followed by n numbers. One answer per case. */
     static long[] sumPerTestCase(String input) {
         Scanner sc = new Scanner(input);
-        int t = sc.nextInt();
-        long[] answers = new long[t];
-        for (int tc = 0; tc < t; tc++) {
-            int n = sc.nextInt();
-            long sum = 0;
-            for (int i = 0; i < n; i++) sum += sc.nextInt();
+        int t = sc.nextInt();                                 // number of test cases
+        long[] answers = new long[t];                         // one answer per test case
+        for (int tc = 0; tc < t; tc++) {                      // handle each test case in turn
+            int n = sc.nextInt();                             // how many numbers this case has
+            long sum = 0;                                     // restart the total for every case
+            for (int i = 0; i < n; i++) sum += sc.nextInt();  // read this case's numbers
             answers[tc] = sum;
         }
         return answers;
@@ -56,16 +57,17 @@ public class P425_InputOutput {
 
     /** Collect output in a StringBuilder and print it once; this is how to print 10^5 numbers quickly. */
     static String joinWithSpaces(int[] a) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();  // build the whole output in memory first
         for (int i = 0; i < a.length; i++) {
-            if (i > 0) sb.append(' ');
+            if (i > 0) sb.append(' ');           // space before all but the first value
             sb.append(a[i]);
         }
-        return sb.toString();
+        return sb.toString();                    // one string, printed with a single call
     }
 
     /** Fixed-width columns and fixed decimals with String.format (Locale.US keeps the decimal point a '.'). */
     static String formatRow(String name, int qty, double price) {
+        // name left-aligned in 6 chars, qty right-aligned in 4, price in 8 with 2 decimals
         return String.format(Locale.US, "%-6s|%4d|%8.2f", name, qty, price);
     }
 

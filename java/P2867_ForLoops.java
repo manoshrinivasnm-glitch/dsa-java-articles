@@ -6,43 +6,43 @@ public class P2867_ForLoops {
 
     /** The counting loop: initialise once, test before every pass, update after every pass. */
     static long sumTo(int n) {
-        long sum = 0;
-        for (int i = 1; i <= n; i++) sum += i;
+        long sum = 0;                           // long: the total outgrows int for large n
+        for (int i = 1; i <= n; i++) sum += i;  // start at 1, run while i <= n, step by 1
         return sum;
     }
 
     /** Count down with a decrementing step and build the output in a StringBuilder. */
     static String countdown(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = n; i >= 1; i--) {
+        for (int i = n; i >= 1; i--) {  // count down from n to 1
             sb.append(i);
-            if (i > 1) sb.append(' ');
+            if (i > 1) sb.append(' ');  // a space after every number except the last
         }
         return sb.toString();
     }
 
     /** Enhanced for: visit each value when the index itself is not needed. */
     static int maxElement(int[] a) {
-        int best = Integer.MIN_VALUE;
-        for (int x : a) if (x > best) best = x;
+        int best = Integer.MIN_VALUE;            // below every real value, so the first element replaces it
+        for (int x : a) if (x > best) best = x;  // keep the largest value seen so far
         return best;
     }
 
     /** Two loop variables moving toward each other, declared and updated together in the header. */
     static boolean isPalindrome(int[] a) {
-        for (int i = 0, j = a.length - 1; i < j; i++, j--) {
-            if (a[i] != a[j]) return false;
+        for (int i = 0, j = a.length - 1; i < j; i++, j--) {  // i moves right, j moves left, until they meet
+            if (a[i] != a[j]) return false;                   // a mismatched pair: not a palindrome
         }
-        return true;
+        return true;                                          // every pair matched
     }
 
     /** break: stop at the first match instead of scanning the rest. */
     static int firstNegativeIndex(int[] a) {
-        int found = -1;
+        int found = -1;      // -1 means no negative was found
         for (int i = 0; i < a.length; i++) {
-            if (a[i] < 0) {
+            if (a[i] < 0) {  // the first negative: remember where it is
                 found = i;
-                break;
+                break;       // stop scanning; the rest cannot change the answer
             }
         }
         return found;
@@ -52,8 +52,8 @@ public class P2867_ForLoops {
     static long sumOfOdds(int[] a) {
         long sum = 0;
         for (int x : a) {
-            if (x % 2 == 0) continue;
-            sum += x;
+            if (x % 2 == 0) continue;  // even value: skip straight to the next one
+            sum += x;                  // only odd values get here
         }
         return sum;
     }
@@ -61,9 +61,9 @@ public class P2867_ForLoops {
     /** Nested loops over pairs i < j; the inner loop starts at i + 1 so each pair is seen exactly once. */
     static int countPairsWithSum(int[] a, int target) {
         int count = 0;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[i] + a[j] == target) count++;
+        for (int i = 0; i < a.length; i++) {          // first element of the pair
+            for (int j = i + 1; j < a.length; j++) {  // j starts after i, so each pair is counted once
+                if (a[i] + a[j] == target) count++;   // this pair adds up to target
             }
         }
         return count;
@@ -71,13 +71,13 @@ public class P2867_ForLoops {
 
     /** Labeled break leaves both loops at once; a plain break would only leave the inner one. */
     static int[] findInGrid(int[][] grid, int target) {
-        int[] pos = {-1, -1};
-        outer:
+        int[] pos = {-1, -1};                // stays {-1, -1} if target is absent
+        outer:                               // names the outer loop so break can target it
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[r].length; c++) {
-                if (grid[r][c] == target) {
+                if (grid[r][c] == target) {  // found: record its row and column
                     pos = new int[]{r, c};
-                    break outer;
+                    break outer;             // leave both loops at once
                 }
             }
         }
@@ -87,12 +87,12 @@ public class P2867_ForLoops {
     /** Multiplication table as text: the outer loop picks the row, the inner loop fills it. */
     static String multiplicationTable(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(i * j);
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= n; j++) {  // one entry per column j
+                if (j > 1) sb.append(' ');  // a space between entries, none before the first
+                sb.append(i * j);           // the entry is row * column
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }

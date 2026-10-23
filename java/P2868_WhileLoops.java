@@ -6,30 +6,30 @@ public class P2868_WhileLoops {
 
     /** Peel off the last digit each pass; the loop ends when nothing is left. */
     static long reverseNumber(long n) {
-        long rev = 0;
-        while (n != 0) {
-            rev = rev * 10 + n % 10;
-            n /= 10;
+        long rev = 0;                 // the reversed number built so far
+        while (n != 0) {              // until every digit has been used
+            rev = rev * 10 + n % 10;  // shift rev one place left and append n's last digit
+            n /= 10;                  // drop the last digit of n
         }
         return rev;
     }
 
     /** do-while runs the body at least once, which is exactly what 0 (one digit) needs. */
     static int countDigits(int n) {
-        long m = Math.abs((long) n);
+        long m = Math.abs((long) n);  // long, so abs(Integer.MIN_VALUE) cannot overflow
         int count = 0;
-        do {
+        do {                          // the body runs at least once, so 0 counts as one digit
             count++;
-            m /= 10;
-        } while (m > 0);
+            m /= 10;                  // drop one digit
+        } while (m > 0);              // stop when no digits remain
         return count;
     }
 
     /** Euclid's algorithm: replace (a, b) by (b, a mod b) until b is 0. */
     static int gcd(int a, int b) {
-        while (b != 0) {
-            int t = a % b;
-            a = b;
+        while (b != 0) {    // once b is 0, a holds the gcd
+            int t = a % b;  // remainder of a / b
+            a = b;          // (a, b) -> (b, a mod b)
             b = t;
         }
         return a;
@@ -37,11 +37,11 @@ public class P2868_WhileLoops {
 
     /** Repeated halving gives the bits from least to most significant, so each new bit goes in front. */
     static String toBinary(int n) {
-        if (n == 0) return "0";
+        if (n == 0) return "0";   // the loop below would produce nothing for 0
         StringBuilder sb = new StringBuilder();
-        while (n > 0) {
-            sb.insert(0, n % 2);
-            n /= 2;
+        while (n > 0) {           // until every bit has been read
+            sb.insert(0, n % 2);  // the new (higher) bit goes in front of those found so far
+            n /= 2;               // move on to the next bit
         }
         return sb.toString();
     }
@@ -49,8 +49,8 @@ public class P2868_WhileLoops {
     /** Nobody knows how many steps this takes in advance; a while loop is the only natural fit. */
     static int collatzSteps(long n) {
         int steps = 0;
-        while (n != 1) {
-            n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
+        while (n != 1) {                           // stop once the sequence reaches 1
+            n = (n % 2 == 0) ? n / 2 : 3 * n + 1;  // halve if even, otherwise 3n + 1
             steps++;
         }
         return steps;
@@ -59,29 +59,29 @@ public class P2868_WhileLoops {
     /** Largest r with r * r <= n; the product is computed in long so it cannot overflow near 2^31. */
     static int floorSqrt(int n) {
         int r = 0;
-        while ((long) (r + 1) * (r + 1) <= n) r++;
+        while ((long) (r + 1) * (r + 1) <= n) r++;  // grow r while (r+1)^2 still fits; long avoids overflow
         return r;
     }
 
     /** while (true) with the exit in the middle, for loops whose stop test sits after some work. */
     static int firstPowerOfTwoAbove(int n) {
-        int p = 1;
-        while (true) {
-            if (p > n) return p;
+        int p = 1;                // powers of two: 1, 2, 4, ...
+        while (true) {            // no test in the header; the exit is inside
+            if (p > n) return p;  // the exit sits in the middle of the body
             p *= 2;
         }
     }
 
     /** Two indices advancing at different speeds: take the smaller head until one list runs out. */
     static int[] mergeSorted(int[] a, int[] b) {
-        int[] out = new int[a.length + b.length];
-        int i = 0, j = 0, k = 0;
-        while (i < a.length && j < b.length) {
-            if (a[i] <= b[j]) out[k++] = a[i++];
+        int[] out = new int[a.length + b.length];  // room for every element of both arrays
+        int i = 0, j = 0, k = 0;                   // i reads a, j reads b, k writes out
+        while (i < a.length && j < b.length) {     // while both arrays still have elements
+            if (a[i] <= b[j]) out[k++] = a[i++];   // take the smaller head; ties take from a first
             else out[k++] = b[j++];
         }
-        while (i < a.length) out[k++] = a[i++];
-        while (j < b.length) out[k++] = b[j++];
+        while (i < a.length) out[k++] = a[i++];    // copy whatever is left of a
+        while (j < b.length) out[k++] = b[j++];    // or of b (at most one of these two loops runs)
         return out;
     }
 

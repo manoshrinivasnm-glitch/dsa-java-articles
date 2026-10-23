@@ -9,13 +9,13 @@ public class P403_Pattern11 {
     /** Approach 1: keep a running bit, reset it at the start of each row and flip it after every print. O(n^2) time. */
     static String toggle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            int bit = (i % 2 == 0) ? 1 : 0;              // even rows start with 1, odd rows with 0
-            for (int j = 0; j <= i; j++) {
+        for (int i = 0; i < n; i++) {        // one row per i
+            int bit = (i % 2 == 0) ? 1 : 0;  // even rows start with 1, odd rows with 0
+            for (int j = 0; j <= i; j++) {   // row i has i + 1 digits
                 sb.append(bit);
-                bit = 1 - bit;                           // flip for the next column
+                bit = 1 - bit;               // flip for the next column
             }
-            sb.append('\n');
+            sb.append('\n');                 // end the row
         }
         return sb.toString();
     }
@@ -23,21 +23,22 @@ public class P403_Pattern11 {
     /** Approach 2: the digit at (i, j) is 1 exactly when i + j is even, so compute it straight from the indices. O(n^2) time. */
     static String parityFormula(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                sb.append((i + j) % 2 == 0 ? '1' : '0');
+        for (int i = 0; i < n; i++) {                     // one row per i
+            for (int j = 0; j <= i; j++) {                // row i has i + 1 digits
+                sb.append((i + j) % 2 == 0 ? '1' : '0');  // 1 when i + j is even, otherwise 0
             }
-            sb.append('\n');
+            sb.append('\n');                              // end the row
         }
         return sb.toString();
     }
 
     /** Approach 3: every row is a suffix of the last row ("10101" for n = 5), so build the last row once and slice it. O(n^2) time. */
     static String suffixes(int n) {
-        StringBuilder last = new StringBuilder();
-        for (int k = 0; k < n; k++) last.append((n - 1 - k) % 2 == 0 ? '1' : '0');   // ends with 1, alternates leftwards
+        StringBuilder last = new StringBuilder();  // the last row, built once
+        // ends with 1, alternates leftwards
+        for (int k = 0; k < n; k++) last.append((n - 1 - k) % 2 == 0 ? '1' : '0');
         StringBuilder out = new StringBuilder();
-        for (int i = 0; i < n; i++) out.append(last, n - 1 - i, n).append('\n');     // the last i+1 characters
+        for (int i = 0; i < n; i++) out.append(last, n - 1 - i, n).append('\n');   // the last i+1 characters
         return out.toString();
     }
 

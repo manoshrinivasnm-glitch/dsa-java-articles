@@ -6,10 +6,10 @@ public class P1219_TheoryWithExamples {
 
     /** O(n): scan until the target appears; the number of comparisons is n when it is absent. */
     static long linearSearchSteps(int[] a, int target) {
-        long steps = 0;
-        for (int i = 0; i < a.length; i++) {
-            steps++;
-            if (a[i] == target) break;
+        long steps = 0;                       // counts the comparisons made
+        for (int i = 0; i < a.length; i++) {  // walk the array from the left
+            steps++;                          // one comparison per element visited
+            if (a[i] == target) break;        // found: stop early (best case is 1 step)
         }
         return steps;
     }
@@ -17,13 +17,13 @@ public class P1219_TheoryWithExamples {
     /** O(log n): every probe halves the range, so at most floor(log2 n) + 1 probes happen. */
     static long binarySearchSteps(int[] sorted, int target) {
         long steps = 0;
-        int lo = 0, hi = sorted.length - 1;
-        while (lo <= hi) {
-            steps++;
-            int mid = lo + (hi - lo) / 2;
-            if (sorted[mid] == target) break;
-            if (sorted[mid] < target) lo = mid + 1;
-            else hi = mid - 1;
+        int lo = 0, hi = sorted.length - 1;          // the target can only be in sorted[lo..hi]
+        while (lo <= hi) {                           // while that range is not empty
+            steps++;                                 // one probe per halving
+            int mid = lo + (hi - lo) / 2;            // middle index, written so it cannot overflow
+            if (sorted[mid] == target) break;        // found the target
+            if (sorted[mid] < target) lo = mid + 1;  // target is right of mid: drop the left half
+            else hi = mid - 1;                       // otherwise drop the right half
         }
         return steps;
     }
@@ -31,8 +31,8 @@ public class P1219_TheoryWithExamples {
     /** O(n^2): the inner loop runs n-1, n-2, ..., 0 times, which sums to n(n-1)/2. */
     static long pairLoopSteps(int n) {
         long steps = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) steps++;
+        for (int i = 0; i < n; i++) {                 // i takes every value 0..n-1
+            for (int j = i + 1; j < n; j++) steps++;  // j only takes values after i: n-1-i steps
         }
         return steps;
     }
@@ -42,7 +42,7 @@ public class P1219_TheoryWithExamples {
         long steps = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) steps++;
+                for (int k = 0; k < n; k++) steps++;  // runs n times for each (i, j), n^3 in total
             }
         }
         return steps;
@@ -51,8 +51,8 @@ public class P1219_TheoryWithExamples {
     /** O(log n): halving until 1 takes floor(log2 n) steps. */
     static long halvingSteps(long n) {
         long steps = 0;
-        while (n > 1) {
-            n /= 2;
+        while (n > 1) {  // stop when one is left
+            n /= 2;      // halving happens about log2 n times
             steps++;
         }
         return steps;
@@ -60,25 +60,25 @@ public class P1219_TheoryWithExamples {
 
     /** O(n log n): T(n) = T(n/2) + T(n - n/2) + n, the work of merge sort; for powers of two it is exactly n log2 n. */
     static long mergeSortSteps(int n) {
-        if (n <= 1) return 0;
-        int half = n / 2;
-        return mergeSortSteps(half) + mergeSortSteps(n - half) + n;
+        if (n <= 1) return 0;  // base case: 0 or 1 element needs no merging
+        int half = n / 2;      // split into two halves
+        return mergeSortSteps(half) + mergeSortSteps(n - half) + n;   // both halves, plus n steps to merge
     }
 
     /** O(2^n): include-or-exclude recursion visits one leaf per subset. */
     static long subsetLeaves(int n) {
-        if (n == 0) return 1;
-        return subsetLeaves(n - 1) + subsetLeaves(n - 1);
+        if (n == 0) return 1;                              // base case: one leaf, one finished subset
+        return subsetLeaves(n - 1) + subsetLeaves(n - 1);  // skip element n, or take it: two branches
     }
 
     /** Rule of thumb: about 10^8 simple operations per second. Given n, which complexity still fits? */
     static String feasibleComplexity(long n) {
-        if (n <= 20) return "O(2^n)";
-        if (n <= 500) return "O(n^3)";
-        if (n <= 10_000) return "O(n^2)";
-        if (n <= 1_000_000) return "O(n log n)";
-        if (n <= 100_000_000L) return "O(n)";
-        return "O(log n) or O(1)";
+        if (n <= 20) return "O(2^n)";             // 2^20 is about 10^6
+        if (n <= 500) return "O(n^3)";            // 500^3 is about 10^8
+        if (n <= 10_000) return "O(n^2)";         // 10^4 squared is 10^8
+        if (n <= 1_000_000) return "O(n log n)";  // 10^6 * 20 is about 2 * 10^7
+        if (n <= 100_000_000L) return "O(n)";     // about 10^8 single steps
+        return "O(log n) or O(1)";                // beyond 10^8, only sublinear work fits
     }
 
     // ---------------------------------------------------------------- tests

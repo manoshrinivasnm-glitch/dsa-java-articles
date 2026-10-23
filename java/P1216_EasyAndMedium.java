@@ -6,10 +6,10 @@ public class P1216_EasyAndMedium {
 
     /** Pattern 1: an n x n block of stars. Both loops run n times. */
     static String square(int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) sb.append('*');
-            sb.append('\n');
+        StringBuilder sb = new StringBuilder();           // collects the whole pattern
+        for (int i = 1; i <= n; i++) {                    // one row per i
+            for (int j = 1; j <= n; j++) sb.append('*');  // n stars in every row
+            sb.append('\n');                              // end the row
         }
         return sb.toString();
     }
@@ -17,9 +17,9 @@ public class P1216_EasyAndMedium {
     /** Pattern 2: right-angled triangle, row i has i stars. */
     static String rightTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {                    // one row per i
+            for (int j = 1; j <= i; j++) sb.append('*');  // i stars in row i
+            sb.append('\n');                              // end the row
         }
         return sb.toString();
     }
@@ -27,12 +27,12 @@ public class P1216_EasyAndMedium {
     /** Pattern 3: row i lists 1 2 ... i. */
     static String numberTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // row i holds the numbers 1..i
+                if (j > 1) sb.append(' ');  // a space between numbers, none before the first
                 sb.append(j);
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
@@ -40,12 +40,12 @@ public class P1216_EasyAndMedium {
     /** Pattern 4: row i repeats the number i exactly i times. */
     static String repeatedNumberTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(i);
+        for (int i = 1; i <= n; i++) {      // one row per i
+            for (int j = 1; j <= i; j++) {  // i entries in row i
+                if (j > 1) sb.append(' ');  // a space between numbers, none before the first
+                sb.append(i);               // every entry is the row number
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }
@@ -53,9 +53,9 @@ public class P1216_EasyAndMedium {
     /** Pattern 5: inverted triangle, row i has n - i + 1 stars. */
     static String invertedTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n - i + 1; j++) sb.append('*');
-            sb.append('\n');
+        for (int i = 1; i <= n; i++) {                            // one row per i
+            for (int j = 1; j <= n - i + 1; j++) sb.append('*');  // n stars in row 1, one fewer each row
+            sb.append('\n');                                      // end the row
         }
         return sb.toString();
     }
@@ -63,12 +63,12 @@ public class P1216_EasyAndMedium {
     /** Pattern 6: inverted number triangle, row i lists 1 ... n - i + 1. */
     static String invertedNumberTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n - i + 1; j++) {
-                if (j > 1) sb.append(' ');
+        for (int i = 1; i <= n; i++) {              // one row per i
+            for (int j = 1; j <= n - i + 1; j++) {  // row i counts 1..n-i+1, one shorter each row
+                if (j > 1) sb.append(' ');          // a space between numbers, none before the first
                 sb.append(j);
             }
-            sb.append('\n');
+            sb.append('\n');                        // end the row
         }
         return sb.toString();
     }
@@ -76,7 +76,8 @@ public class P1216_EasyAndMedium {
     /** Pattern 7: centred pyramid, row i has n - i leading spaces and 2i - 1 stars. */
     static String pyramid(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {  // one row per i
+            // n - i spaces to centre the row, then 2i - 1 stars
             sb.append(" ".repeat(n - i)).append("*".repeat(2 * i - 1)).append('\n');
         }
         return sb.toString();
@@ -85,7 +86,8 @@ public class P1216_EasyAndMedium {
     /** Pattern 8: inverted pyramid, row i has i - 1 leading spaces and 2(n - i) + 1 stars. */
     static String invertedPyramid(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {  // one row per i
+            // i - 1 spaces of indent, then 2(n - i) + 1 stars
             sb.append(" ".repeat(i - 1)).append("*".repeat(2 * (n - i) + 1)).append('\n');
         }
         return sb.toString();
@@ -93,15 +95,15 @@ public class P1216_EasyAndMedium {
 
     /** Pattern 9: diamond = pyramid stacked on inverted pyramid, 2n rows in total. */
     static String diamond(int n) {
-        return pyramid(n) + invertedPyramid(n);
+        return pyramid(n) + invertedPyramid(n);  // rows 1..n widen, rows n+1..2n narrow again
     }
 
     /** Pattern 10: half diamond, star counts go 1, 2, ..., n, n - 1, ..., 1 over 2n - 1 rows. */
     static String halfDiamond(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= 2 * n - 1; i++) {
-            int stars = i <= n ? i : 2 * n - i;
-            sb.append("*".repeat(stars)).append('\n');
+        for (int i = 1; i <= 2 * n - 1; i++) {          // 2n - 1 rows in all
+            int stars = i <= n ? i : 2 * n - i;         // climb to n stars at row n, then come back down
+            sb.append("*".repeat(stars)).append('\n');  // one row of that many stars
         }
         return sb.toString();
     }
@@ -109,14 +111,14 @@ public class P1216_EasyAndMedium {
     /** Pattern 11: binary triangle, row i starts with 1 when i is odd and 0 when even, then alternates. */
     static String binaryTriangle(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            int bit = i % 2;
-            for (int j = 1; j <= i; j++) {
-                if (j > 1) sb.append(' ');
+        for (int i = 1; i <= n; i++) {      // one row per i
+            int bit = i % 2;                // odd rows start with 1, even rows with 0
+            for (int j = 1; j <= i; j++) {  // i entries in row i
+                if (j > 1) sb.append(' ');  // a space between entries, none before the first
                 sb.append(bit);
-                bit = 1 - bit;
+                bit = 1 - bit;              // flip 0 <-> 1 for the next entry
             }
-            sb.append('\n');
+            sb.append('\n');                // end the row
         }
         return sb.toString();
     }

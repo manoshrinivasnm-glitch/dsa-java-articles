@@ -11,37 +11,38 @@ public class P419_Pattern6 {
     /** Approach 1: row i counts from 1 up to n - i; the inner counter is the value printed. O(n^2) time. */
     static String nestedLoops(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j <= n - i; j++) {
-                if (j > 1) sb.append(' ');
-                sb.append(j);
+        for (int i = 0; i < n; i++) {           // one row per i
+            for (int j = 1; j <= n - i; j++) {  // row i counts 1..n-i, one shorter each row
+                if (j > 1) sb.append(' ');      // a space between numbers, none before the first
+                sb.append(j);                   // the counter itself is the value to print
             }
-            sb.append('\n');
+            sb.append('\n');                    // end the row
         }
         return sb.toString();
     }
 
     /** Approach 2: build the rows of the upright pyramid ("1", "1 2", ...) and emit them longest first. O(n^2) time. */
     static String reversedRows(int n) {
-        List<String> rows = new ArrayList<>();
-        StringBuilder row = new StringBuilder();
+        List<String> rows = new ArrayList<>();    // rows of the upright pyramid, shortest first
+        StringBuilder row = new StringBuilder();  // the current row: 1 2 ... i
         for (int i = 1; i <= n; i++) {
-            if (i > 1) row.append(' ');
-            row.append(i);
-            rows.add(row.toString());
+            if (i > 1) row.append(' ');           // a space before every number but the first
+            row.append(i);                        // extend the row with the next number
+            rows.add(row.toString());             // save a snapshot of this row
         }
         StringBuilder out = new StringBuilder();
+        // emit the saved rows from longest to shortest
         for (int i = rows.size() - 1; i >= 0; i--) out.append(rows.get(i)).append('\n');
         return out.toString();
     }
 
     /** Approach 3: a stream over the row lengths n, n-1, ..., 1, each mapped to "1 2 ... len". O(n^2) time. */
     static String streams(int n) {
-        return IntStream.iterate(n, len -> len >= 1, len -> len - 1)
-                .mapToObj(len -> IntStream.rangeClosed(1, len)
-                        .mapToObj(j -> Integer.toString(j))
-                        .collect(Collectors.joining(" ")) + "\n")
-                .collect(Collectors.joining());
+        return IntStream.iterate(n, len -> len >= 1, len -> len - 1)   // row lengths n, n-1, ..., 1
+                .mapToObj(len -> IntStream.rangeClosed(1, len)     // the row of length len is 1..len
+                        .mapToObj(j -> Integer.toString(j))        // each number as text
+                        .collect(Collectors.joining(" ")) + "\n")  // joined by spaces, then a newline
+                .collect(Collectors.joining());                    // glue the rows into one String
     }
 
     // ---------------------------------------------------------------- tests
