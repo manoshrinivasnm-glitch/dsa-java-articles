@@ -7,7 +7,7 @@ public class P878_PowerSet {
     static List<String> bitmask(String s) {
         int n = s.length();
         List<String> result = new ArrayList<>();
-        for (int mask = 0; mask < (1 << n); mask++) {
+        for (int mask = 0; mask < (1 << n); mask++) {                 // each mask picks one subsequence
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < n; i++) {
                 if ((mask & (1 << i)) != 0) sb.append(s.charAt(i));   // bit i set: take s[i]
@@ -20,17 +20,17 @@ public class P878_PowerSet {
     /** Approach 2: take / not-take recursion over the index. O(2^n * n) time, O(n) stack. */
     static List<String> recursive(String s) {
         List<String> result = new ArrayList<>();
-        generate(s, 0, new StringBuilder(), result);
+        generate(s, 0, new StringBuilder(), result);  // decide from index 0 with an empty prefix
         return result;
     }
 
     static void generate(String s, int index, StringBuilder current, List<String> result) {
         if (index == s.length()) {                            // base case: a decision was made for every character
-            result.add(current.toString());
+            result.add(current.toString());                   // current is one finished subsequence
             return;
         }
         current.append(s.charAt(index));                      // choice 1: take s[index]
-        generate(s, index + 1, current, result);
+        generate(s, index + 1, current, result);              // every subsequence that keeps s[index]
         current.deleteCharAt(current.length() - 1);           // undo, so the next branch starts from the same prefix
         generate(s, index + 1, current, result);              // choice 2: leave s[index] out
     }
@@ -39,8 +39,9 @@ public class P878_PowerSet {
     static List<String> cascading(String s) {
         List<String> result = new ArrayList<>();
         result.add("");                                       // the power set of the empty prefix
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {                // fold s[i] into the power set so far
             int size = result.size();                         // extend only the subsequences that existed before this character
+            // a copy of each old one, with s[i] appended
             for (int j = 0; j < size; j++) result.add(result.get(j) + s.charAt(i));
         }
         return result;
@@ -48,9 +49,9 @@ public class P878_PowerSet {
 
     /** The GFG variant of the problem: non-empty subsequences in lexicographic order. */
     static List<String> sortedNonEmpty(String s) {
-        List<String> all = recursive(s);
+        List<String> all = recursive(s);                      // all 2^n subsequences, empty one included
         all.remove("");                                       // exactly one empty subsequence exists
-        Collections.sort(all);
+        Collections.sort(all);                                // lexicographic order
         return all;
     }
 

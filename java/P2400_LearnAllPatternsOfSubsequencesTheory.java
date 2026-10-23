@@ -6,7 +6,7 @@ public class P2400_LearnAllPatternsOfSubsequencesTheory {
     /** Pattern 1: print all subsequences. One decision per index: take it or leave it. O(2^n * n) time, O(n) stack. */
     static List<List<Integer>> allSubsequences(int[] a) {
         List<List<Integer>> result = new ArrayList<>();
-        collectAll(a, 0, new ArrayList<>(), result);
+        collectAll(a, 0, new ArrayList<>(), result);  // start at index 0 with nothing taken
         return result;
     }
 
@@ -16,7 +16,7 @@ public class P2400_LearnAllPatternsOfSubsequencesTheory {
             return;
         }
         current.add(a[index]);                                     // take a[index]
-        collectAll(a, index + 1, current, result);
+        collectAll(a, index + 1, current, result);                 // decide the rest with a[index] taken
         current.remove(current.size() - 1);                        // undo, so the other branch sees the same prefix
         collectAll(a, index + 1, current, result);                 // not take
     }
@@ -24,71 +24,71 @@ public class P2400_LearnAllPatternsOfSubsequencesTheory {
     /** Pattern 2: print all subsequences whose sum is k. Carry the running sum down and test it at the leaf. */
     static List<List<Integer>> subsequencesWithSum(int[] a, int k) {
         List<List<Integer>> result = new ArrayList<>();
-        collectWithSum(a, 0, 0, k, new ArrayList<>(), result);
+        collectWithSum(a, 0, 0, k, new ArrayList<>(), result);  // index 0, sum 0, nothing taken
         return result;
     }
 
     static void collectWithSum(int[] a, int index, long sum, int k, List<Integer> current, List<List<Integer>> result) {
-        if (index == a.length) {
+        if (index == a.length) {                                  // base case: every index decided
             if (sum == k) result.add(new ArrayList<>(current));   // only leaves with the right sum are answers
             return;
         }
-        current.add(a[index]);
+        current.add(a[index]);                                    // take a[index]; the sum grows by it
         collectWithSum(a, index + 1, sum + a[index], k, current, result);
-        current.remove(current.size() - 1);
-        collectWithSum(a, index + 1, sum, k, current, result);
+        current.remove(current.size() - 1);                       // undo the take
+        collectWithSum(a, index + 1, sum, k, current, result);    // not take: the sum stays the same
     }
 
     /** Pattern 3: print any one subsequence with sum k. Return a boolean so the search stops at the first hit. */
     static Optional<List<Integer>> anyOneWithSum(int[] a, int k) {
         List<Integer> current = new ArrayList<>();
-        if (findOne(a, 0, 0, k, current)) return Optional.of(current);
+        if (findOne(a, 0, 0, k, current)) return Optional.of(current);  // on success current holds the answer
         return Optional.empty();
     }
 
     static boolean findOne(int[] a, int index, long sum, int k, List<Integer> current) {
         if (index == a.length) return sum == k;                   // base case: report whether this leaf is an answer
-        current.add(a[index]);
+        current.add(a[index]);                                    // try taking a[index]
         if (findOne(a, index + 1, sum + a[index], k, current)) return true;   // found on the take branch: keep current as it is
-        current.remove(current.size() - 1);
+        current.remove(current.size() - 1);                       // take failed: undo it
         return findOne(a, index + 1, sum, k, current);            // otherwise the answer, if any, is on the not-take branch
     }
 
     /** Pattern 4: count the subsequences with sum k. Leaves return 1 or 0 and every frame adds its two branches. */
     static int countWithSum(int[] a, int k) {
-        return count(a, 0, 0, k);
+        return count(a, 0, 0, k);  // start at index 0 with sum 0
     }
 
     static int count(int[] a, int index, long sum, int k) {
-        if (index == a.length) return sum == k ? 1 : 0;
-        int take = count(a, index + 1, sum + a[index], k);
-        int notTake = count(a, index + 1, sum, k);
-        return take + notTake;
+        if (index == a.length) return sum == k ? 1 : 0;     // base case: this leaf counts once or not at all
+        int take = count(a, index + 1, sum + a[index], k);  // answers that take a[index]
+        int notTake = count(a, index + 1, sum, k);          // answers that skip it
+        return take + notTake;                              // the two groups never overlap
     }
 
     /** Pattern 5: the pick-next-index loop. Each frame chooses which element comes next; every node of the tree is an answer. Same 2^n subsequences, different order. */
     static List<List<Integer>> allSubsequencesPickLoop(int[] a) {
         List<List<Integer>> result = new ArrayList<>();
-        pickLoop(a, 0, new ArrayList<>(), result);
+        pickLoop(a, 0, new ArrayList<>(), result);  // any element may come first
         return result;
     }
 
     static void pickLoop(int[] a, int start, List<Integer> current, List<List<Integer>> result) {
         result.add(new ArrayList<>(current));                      // record on entry, not only at a leaf
-        for (int i = start; i < a.length; i++) {
+        for (int i = start; i < a.length; i++) {                   // try each remaining element as the next one
             current.add(a[i]);                                     // a[i] is the next element of the subsequence
             pickLoop(a, i + 1, current, result);                   // later elements must come from after i
-            current.remove(current.size() - 1);
+            current.remove(current.size() - 1);                    // undo before trying the next i
         }
     }
 
     /** Baseline without recursion: bit i of a counter says whether a[i] is taken. Used to cross-check the recursive patterns. */
     static List<List<Integer>> allSubsequencesBitmask(int[] a) {
         List<List<Integer>> result = new ArrayList<>();
-        for (int mask = 0; mask < (1 << a.length); mask++) {
+        for (int mask = 0; mask < (1 << a.length); mask++) {        // each mask is one subsequence
             List<Integer> subsequence = new ArrayList<>();
             for (int i = 0; i < a.length; i++) {
-                if ((mask & (1 << i)) != 0) subsequence.add(a[i]);
+                if ((mask & (1 << i)) != 0) subsequence.add(a[i]);  // bit i set: take a[i]
             }
             result.add(subsequence);
         }

@@ -5,77 +5,78 @@ public class P868_SubsetsII {
 
     /** Approach 1: generate all 2^n subsets of the sorted array and let a set drop the duplicates. O(2^n * n) time. */
     static List<List<Integer>> bruteForce(int[] nums) {
-        int[] a = nums.clone();
+        int[] a = nums.clone();                                // sort a copy so equal subsets look equal
         Arrays.sort(a);
-        Set<List<Integer>> seen = new LinkedHashSet<>();
+        Set<List<Integer>> seen = new LinkedHashSet<>();       // drops duplicates, keeps first-seen order
         int n = a.length;
-        for (int mask = 0; mask < (1 << n); mask++) {
+        for (int mask = 0; mask < (1 << n); mask++) {          // each mask is one subset
             List<Integer> subset = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                if ((mask & (1 << i)) != 0) subset.add(a[i]);
+                if ((mask & (1 << i)) != 0) subset.add(a[i]);  // bit i set: take a[i]
             }
-            seen.add(subset);
+            seen.add(subset);                                  // ignored if already present
         }
         return new ArrayList<>(seen);
     }
 
     /** Approach 2: sorted loop recursion; every node of the tree is a subset, and equal values are skipped at the same level. */
     static List<List<Integer>> optimal(int[] nums) {
-        int[] a = nums.clone();
+        int[] a = nums.clone();                 // sort a copy so equal values sit together
         Arrays.sort(a);
         List<List<Integer>> out = new ArrayList<>();
-        loopRec(a, 0, new ArrayList<>(), out);
+        loopRec(a, 0, new ArrayList<>(), out);  // start from the empty subset
         return out;
     }
 
     static void loopRec(int[] a, int start, List<Integer> cur, List<List<Integer>> out) {
         out.add(new ArrayList<>(cur));                     // the current prefix of choices is itself a subset
-        for (int j = start; j < a.length; j++) {
+        for (int j = start; j < a.length; j++) {           // choose the next element from start on
             if (j > start && a[j] == a[j - 1]) continue;   // this value was already extended at this level
             cur.add(a[j]);
-            loopRec(a, j + 1, cur, out);
-            cur.remove(cur.size() - 1);
+            loopRec(a, j + 1, cur, out);                   // later elements must come after j
+            cur.remove(cur.size() - 1);                    // undo before trying the next j
         }
     }
 
     /** Approach 3: pick / not-pick where "not pick" jumps past every remaining copy of the current value. */
     static List<List<Integer>> pickNotPickSkip(int[] nums) {
-        int[] a = nums.clone();
+        int[] a = nums.clone();                 // sort a copy so copies of a value are adjacent
         Arrays.sort(a);
         List<List<Integer>> out = new ArrayList<>();
-        skipRec(a, 0, new ArrayList<>(), out);
+        skipRec(a, 0, new ArrayList<>(), out);  // start at index 0 with an empty subset
         return out;
     }
 
     static void skipRec(int[] a, int i, List<Integer> cur, List<List<Integer>> out) {
-        if (i == a.length) {
+        if (i == a.length) {                               // base case: every index decided
             out.add(new ArrayList<>(cur));
             return;
         }
         cur.add(a[i]);                                     // pick a[i]
-        skipRec(a, i + 1, cur, out);
-        cur.remove(cur.size() - 1);
+        skipRec(a, i + 1, cur, out);                       // a later copy of a[i] may still be picked
+        cur.remove(cur.size() - 1);                        // undo the pick
         int next = i + 1;                                  // not pick: skip every later element equal to a[i]
         while (next < a.length && a[next] == a[i]) next++;
-        skipRec(a, next, cur, out);
+        skipRec(a, next, cur, out);                        // go on from the next different value
     }
 
     /** Approach 4: iterative doubling; when a[i] repeats a[i - 1], only the subsets created in the previous round are extended. */
     static List<List<Integer>> iterative(int[] nums) {
-        int[] a = nums.clone();
+        int[] a = nums.clone();                            // sort a copy so equal values sit together
         Arrays.sort(a);
         List<List<Integer>> out = new ArrayList<>();
-        out.add(new ArrayList<>());
+        out.add(new ArrayList<>());                        // start with the empty subset
         int prevStart = 0;                                 // index of the first subset added in the previous round
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {               // extend the subsets with a[i]
+            // a repeated value extends only last round's subsets; a new value extends all
             int from = (i > 0 && a[i] == a[i - 1]) ? prevStart : 0;
-            int size = out.size();
+            int size = out.size();                         // subsets that exist before a[i]
             for (int j = from; j < size; j++) {
-                List<Integer> extended = new ArrayList<>(out.get(j));
+                List<Integer> extended = new ArrayList<>(out.get(j));   // copy of subset j, plus a[i]
                 extended.add(a[i]);
                 out.add(extended);
             }
-            prevStart = size;
+            prevStart = size;                              // this round's subsets start at index size
         }
         return out;
     }

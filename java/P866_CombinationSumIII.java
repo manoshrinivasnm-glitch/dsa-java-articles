@@ -6,17 +6,17 @@ public class P866_CombinationSumIII {
     /** Approach 1: every subset of 1..9 is a 9-bit mask; keep the ones with k bits whose digits sum to n. 512 masks. */
     static List<List<Integer>> bruteForce(int k, int n) {
         List<List<Integer>> out = new ArrayList<>();
-        for (int mask = 0; mask < (1 << 9); mask++) {
-            if (Integer.bitCount(mask) != k) continue;
+        for (int mask = 0; mask < (1 << 9); mask++) {   // bit d - 1 set means digit d is used
+            if (Integer.bitCount(mask) != k) continue;  // need exactly k digits
             int sum = 0;
             List<Integer> combo = new ArrayList<>();
-            for (int d = 1; d <= 9; d++) {
-                if ((mask & (1 << (d - 1))) != 0) {
+            for (int d = 1; d <= 9; d++) {              // collect the digits this mask uses
+                if ((mask & (1 << (d - 1))) != 0) {     // digit d is in this set
                     sum += d;
                     combo.add(d);
                 }
             }
-            if (sum == n) out.add(combo);
+            if (sum == n) out.add(combo);               // keep it if the digits add up to n
         }
         return out;
     }
@@ -24,40 +24,40 @@ public class P866_CombinationSumIII {
     /** Approach 2: pick / not-pick over the digits 1..9, carrying how many digits and how much sum are still needed. */
     static List<List<Integer>> pickNotPick(int k, int n) {
         List<List<Integer>> out = new ArrayList<>();
-        pickRec(1, k, n, new ArrayList<>(), out);
+        pickRec(1, k, n, new ArrayList<>(), out);  // the first digit to decide is 1
         return out;
     }
 
     static void pickRec(int d, int k, int n, List<Integer> cur, List<List<Integer>> out) {
-        if (k == 0) {
-            if (n == 0) out.add(new ArrayList<>(cur));
+        if (k == 0) {                                      // base case: k digits chosen
+            if (n == 0) out.add(new ArrayList<>(cur));     // valid only if they sum to n exactly
             return;
         }
         if (d > 9 || n <= 0) return;                       // digits ran out, or the remaining sum cannot be reached
         cur.add(d);                                        // pick d
-        pickRec(d + 1, k - 1, n - d, cur, out);
-        cur.remove(cur.size() - 1);
+        pickRec(d + 1, k - 1, n - d, cur, out);            // one digit fewer, n - d still needed
+        cur.remove(cur.size() - 1);                        // undo the pick
         pickRec(d + 1, k, n, cur, out);                    // skip d
     }
 
     /** Approach 3: loop recursion that prunes on both the remaining sum and the number of digits left. */
     static List<List<Integer>> optimal(int k, int n) {
         List<List<Integer>> out = new ArrayList<>();
-        loopRec(1, k, n, new ArrayList<>(), out);
+        loopRec(1, k, n, new ArrayList<>(), out);  // digits 1..9 are all available
         return out;
     }
 
     static void loopRec(int start, int k, int n, List<Integer> cur, List<List<Integer>> out) {
-        if (k == 0) {
-            if (n == 0) out.add(new ArrayList<>(cur));
+        if (k == 0) {                                      // base case: k digits chosen
+            if (n == 0) out.add(new ArrayList<>(cur));     // valid only if they sum to n exactly
             return;
         }
-        for (int d = start; d <= 9; d++) {
+        for (int d = start; d <= 9; d++) {                 // the next digit, larger than any in cur
             if (d > n) break;                              // d, and every larger digit, overshoots the sum
             if (10 - d < k) break;                         // fewer than k digits remain in d..9
             cur.add(d);
-            loopRec(d + 1, k - 1, n - d, cur, out);
-            cur.remove(cur.size() - 1);
+            loopRec(d + 1, k - 1, n - d, cur, out);        // later digits must be larger, so none repeats
+            cur.remove(cur.size() - 1);                    // undo before trying the next d
         }
     }
 

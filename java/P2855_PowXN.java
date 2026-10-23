@@ -6,39 +6,39 @@ public class P2855_PowXN {
     /** Approach 1: multiply x by itself |n| times. O(|n|) time, O(1) space; only usable for small |n|. */
     static double bruteForce(double x, int n) {
         long times = Math.abs((long) n);             // cast first: Math.abs(Integer.MIN_VALUE) is still negative
-        double result = 1.0;
-        for (long i = 0; i < times; i++) result *= x;
-        return n < 0 ? 1.0 / result : result;
+        double result = 1.0;                         // product of the x's so far
+        for (long i = 0; i < times; i++) result *= x;   // multiply in one x per unit of |n|
+        return n < 0 ? 1.0 / result : result;        // a negative power is the reciprocal
     }
 
     /** Approach 2: recursive fast exponentiation. x^n = (x^(n/2))^2, times one extra x when n is odd. O(log n) time, O(log n) stack. */
     static double optimalRecursive(double x, int n) {
         long e = n;                                   // widen before negating: -Integer.MIN_VALUE does not fit in an int
-        if (e < 0) {
+        if (e < 0) {                                  // x^-e = (1/x)^e: make the power positive
             x = 1.0 / x;
             e = -e;
         }
-        return power(x, e);
+        return power(x, e);                           // e is now >= 0
     }
 
     static double power(double x, long e) {
         if (e == 0) return 1.0;                       // base case: anything to the power 0 is 1
         double half = power(x, e / 2);                // one subproblem of half the size
-        return e % 2 == 0 ? half * half : half * half * x;
+        return e % 2 == 0 ? half * half : half * half * x;   // square the half; odd e needs one more x
     }
 
     /** Approach 3: iterative binary exponentiation; walk the bits of the exponent from least significant upward. O(log n) time, O(1) space. */
     static double optimalIterative(double x, int n) {
-        long e = n;
-        if (e < 0) {
+        long e = n;                                   // widen so negating MIN_VALUE is safe
+        if (e < 0) {                                  // x^-e = (1/x)^e: make the power positive
             x = 1.0 / x;
             e = -e;
         }
         double result = 1.0, base = x;                // after k rounds, base = x^(2^k)
-        while (e > 0) {
+        while (e > 0) {                               // one round per bit of e
             if ((e & 1) == 1) result *= base;         // this bit is set: x^(2^k) belongs in the product
-            base *= base;
-            e >>= 1;
+            base *= base;                             // x^(2^k) -> x^(2^(k+1)) for the next bit
+            e >>= 1;                                  // drop the bit just handled
         }
         return result;
     }

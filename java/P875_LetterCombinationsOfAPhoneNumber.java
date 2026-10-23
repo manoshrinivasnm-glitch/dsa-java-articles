@@ -9,15 +9,15 @@ public class P875_LetterCombinationsOfAPhoneNumber {
     /** Approach 1: iterative cascade; extend every partial string by each letter of the next digit. O(4^n * n) time. */
     static List<String> iterative(String digits) {
         List<String> out = new ArrayList<>();
-        if (digits.isEmpty()) return out;
+        if (digits.isEmpty()) return out;                   // no digits: no combinations at all
         out.add("");                                        // one empty prefix to start from
-        for (char ch : digits.toCharArray()) {
-            String letters = KEYS[ch - '0'];
-            List<String> next = new ArrayList<>(out.size() * letters.length());
-            for (String prefix : out) {
+        for (char ch : digits.toCharArray()) {              // extend by one digit at a time
+            String letters = KEYS[ch - '0'];                // letters on this digit's key
+            List<String> next = new ArrayList<>(out.size() * letters.length());   // prefixes one letter longer
+            for (String prefix : out) {                     // every old prefix with every letter
                 for (char letter : letters.toCharArray()) next.add(prefix + letter);
             }
-            out = next;
+            out = next;                                     // they become the prefixes for the next digit
         }
         return out;
     }
@@ -25,20 +25,20 @@ public class P875_LetterCombinationsOfAPhoneNumber {
     /** Approach 2: backtracking with one shared StringBuilder; level i chooses the letter for digit i. O(4^n * n) time, O(n) depth. */
     static List<String> optimal(String digits) {
         List<String> out = new ArrayList<>();
-        if (digits.isEmpty()) return out;
-        backtrack(digits, 0, new StringBuilder(), out);
+        if (digits.isEmpty()) return out;                // no digits: no combinations at all
+        backtrack(digits, 0, new StringBuilder(), out);  // choose a letter for digit 0 first
         return out;
     }
 
     static void backtrack(String digits, int i, StringBuilder cur, List<String> out) {
-        if (i == digits.length()) {
+        if (i == digits.length()) {                         // base case: every digit has its letter
             out.add(cur.toString());
             return;
         }
-        String letters = KEYS[digits.charAt(i) - '0'];
-        for (int j = 0; j < letters.length(); j++) {
+        String letters = KEYS[digits.charAt(i) - '0'];      // the choices for digit i
+        for (int j = 0; j < letters.length(); j++) {        // try each letter at position i
             cur.append(letters.charAt(j));
-            backtrack(digits, i + 1, cur, out);
+            backtrack(digits, i + 1, cur, out);             // fill the remaining positions
             cur.deleteCharAt(cur.length() - 1);             // undo before trying the next letter
         }
     }
@@ -46,17 +46,17 @@ public class P875_LetterCombinationsOfAPhoneNumber {
     /** Approach 3: number the combinations 0..total-1 and decode each like a mixed-radix odometer. O(4^n * n) time, O(n) extra. */
     static List<String> mixedRadix(String digits) {
         List<String> out = new ArrayList<>();
-        if (digits.isEmpty()) return out;
+        if (digits.isEmpty()) return out;                   // no digits: no combinations at all
         int n = digits.length();
-        int total = 1;
+        int total = 1;                                      // number of combinations: product of key sizes
         for (int i = 0; i < n; i++) total *= KEYS[digits.charAt(i) - '0'].length();
-        char[] buf = new char[n];
-        for (int t = 0; t < total; t++) {
-            int rest = t;
+        char[] buf = new char[n];                           // the combination being decoded
+        for (int t = 0; t < total; t++) {                   // decode combination number t
+            int rest = t;                                   // the part of t not yet decoded
             for (int i = n - 1; i >= 0; i--) {              // the last digit is the least significant position
                 String letters = KEYS[digits.charAt(i) - '0'];
-                buf[i] = letters.charAt(rest % letters.length());
-                rest /= letters.length();
+                buf[i] = letters.charAt(rest % letters.length());   // this position's letter
+                rest /= letters.length();                   // move on to the next position
             }
             out.add(new String(buf));
         }

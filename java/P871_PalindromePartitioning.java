@@ -6,55 +6,56 @@ public class P871_PalindromePartitioning {
     /** Approach 1: try every end for the next piece; check each candidate piece with a fresh two-pointer scan. O(2^n * n) time. */
     static List<List<String>> bruteForce(String s) {
         List<List<String>> out = new ArrayList<>();
-        cutRec(s, 0, new ArrayList<>(), out);
+        cutRec(s, 0, new ArrayList<>(), out);  // cut from index 0 with no pieces yet
         return out;
     }
 
     static void cutRec(String s, int start, List<String> cur, List<List<String>> out) {
         if (start == s.length()) {                       // every character has been placed in some palindrome
-            out.add(new ArrayList<>(cur));
+            out.add(new ArrayList<>(cur));               // copy: cur keeps changing
             return;
         }
-        for (int end = start; end < s.length(); end++) {
-            if (isPalindrome(s, start, end)) {
+        for (int end = start; end < s.length(); end++) {   // try s[start..end] as the next piece
+            if (isPalindrome(s, start, end)) {           // only palindromic pieces are allowed
                 cur.add(s.substring(start, end + 1));
-                cutRec(s, end + 1, cur, out);
-                cur.remove(cur.size() - 1);
+                cutRec(s, end + 1, cur, out);            // partition what is left after it
+                cur.remove(cur.size() - 1);              // undo before trying a longer piece
             }
         }
     }
 
     static boolean isPalindrome(String s, int lo, int hi) {
-        while (lo < hi) {
-            if (s.charAt(lo++) != s.charAt(hi--)) return false;
+        while (lo < hi) {                                        // walk both ends toward the middle
+            if (s.charAt(lo++) != s.charAt(hi--)) return false;  // mismatch: not a palindrome
         }
-        return true;
+        return true;                                             // every pair matched
     }
 
     /** Approach 2: precompute pal[i][j] with interval DP in O(n^2), then the same backtracking with O(1) checks. */
     static List<List<String>> optimal(String s) {
         int n = s.length();
-        boolean[][] pal = new boolean[n][n];
-        for (int i = n - 1; i >= 0; i--) {
+        boolean[][] pal = new boolean[n][n];          // pal[i][j]: is s[i..j] a palindrome?
+        for (int i = n - 1; i >= 0; i--) {            // i from the right, so row i + 1 is ready
             for (int j = i; j < n; j++) {
+                // ends match, and the inside is empty, one char, or a palindrome
                 pal[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 2 || pal[i + 1][j - 1]);
             }
         }
         List<List<String>> out = new ArrayList<>();
-        cutRecDp(s, 0, pal, new ArrayList<>(), out);
+        cutRecDp(s, 0, pal, new ArrayList<>(), out);  // same backtracking, with O(1) checks
         return out;
     }
 
     static void cutRecDp(String s, int start, boolean[][] pal, List<String> cur, List<List<String>> out) {
-        if (start == s.length()) {
-            out.add(new ArrayList<>(cur));
+        if (start == s.length()) {                        // base case: every character is in some piece
+            out.add(new ArrayList<>(cur));                // copy: cur keeps changing
             return;
         }
-        for (int end = start; end < s.length(); end++) {
-            if (pal[start][end]) {
+        for (int end = start; end < s.length(); end++) {  // try s[start..end] as the next piece
+            if (pal[start][end]) {                        // O(1) lookup instead of a scan
                 cur.add(s.substring(start, end + 1));
-                cutRecDp(s, end + 1, pal, cur, out);
-                cur.remove(cur.size() - 1);
+                cutRecDp(s, end + 1, pal, cur, out);      // partition what is left after it
+                cur.remove(cur.size() - 1);               // undo before trying a longer piece
             }
         }
     }

@@ -12,7 +12,7 @@ public class P901_ReverseAStack {
 
     /** Approach 2: three pours through two helper stacks, using stack operations only. O(n) time, O(n) extra space. */
     static void reverseWithTwoStacks(Deque<Integer> stack) {
-        Deque<Integer> first = new ArrayDeque<>();
+        Deque<Integer> first = new ArrayDeque<>();           // two helper stacks for the pours
         Deque<Integer> second = new ArrayDeque<>();
         while (!stack.isEmpty()) first.push(stack.pop());    // first holds the reversed order
         while (!first.isEmpty()) second.push(first.pop());   // second holds the original order again
@@ -22,7 +22,7 @@ public class P901_ReverseAStack {
     /** Approach 3: recursion only. Pop the top, reverse the rest, then push the popped value underneath everything. O(n^2) time, O(n) stack. */
     static void reverseRecursive(Deque<Integer> stack) {
         if (stack.isEmpty()) return;                         // base case: the empty stack is its own reverse
-        int top = stack.pop();
+        int top = stack.pop();                               // hold the top in this frame
         reverseRecursive(stack);                             // the other n - 1 elements, reversed
         insertAtBottom(stack, top);                          // the old top becomes the new bottom
     }
@@ -34,7 +34,7 @@ public class P901_ReverseAStack {
             return;
         }
         int top = stack.pop();                               // lift the elements above the bottom, one frame each
-        insertAtBottom(stack, v);
+        insertAtBottom(stack, v);                            // v goes under the rest
         stack.push(top);                                     // and put them back in the same order
     }
 

@@ -7,28 +7,28 @@ public class P867_SubsetsI {
     static List<Integer> bruteForce(int[] nums) {
         int n = nums.length;
         List<Integer> sums = new ArrayList<>();
-        for (int mask = 0; mask < (1 << n); mask++) {
+        for (int mask = 0; mask < (1 << n); mask++) {        // each mask is one subset
             int sum = 0;
             for (int i = 0; i < n; i++) {
-                if ((mask & (1 << i)) != 0) sum += nums[i];
+                if ((mask & (1 << i)) != 0) sum += nums[i];  // bit i set: nums[i] is in it
             }
             sums.add(sum);
         }
-        Collections.sort(sums);
+        Collections.sort(sums);                              // the answer must be non-decreasing
         return sums;
     }
 
     /** Approach 2: pick / not-pick recursion that carries the running sum, so each leaf costs O(1). O(2^n) time, O(n) depth. */
     static List<Integer> optimal(int[] nums) {
         List<Integer> sums = new ArrayList<>();
-        sumRec(nums, 0, 0, sums);
-        Collections.sort(sums);
+        sumRec(nums, 0, 0, sums);  // start at index 0 with sum 0
+        Collections.sort(sums);    // leaves arrive in pick-first order, not sorted
         return sums;
     }
 
     static void sumRec(int[] nums, int i, int sum, List<Integer> sums) {
-        if (i == nums.length) {
-            sums.add(sum);
+        if (i == nums.length) {                     // base case: one subset fully decided
+            sums.add(sum);                          // record its sum
             return;
         }
         sumRec(nums, i + 1, sum + nums[i], sums);   // pick nums[i]
@@ -39,30 +39,30 @@ public class P867_SubsetsI {
     static List<Integer> iterative(int[] nums) {
         List<Integer> sums = new ArrayList<>();
         sums.add(0);                                 // the empty subset
-        for (int x : nums) {
-            int size = sums.size();
-            for (int j = 0; j < size; j++) sums.add(sums.get(j) + x);
+        for (int x : nums) {                         // add x to every subset found so far
+            int size = sums.size();                  // only the sums that existed before x
+            for (int j = 0; j < size; j++) sums.add(sums.get(j) + x);   // each old sum, now with x
         }
-        Collections.sort(sums);
+        Collections.sort(sums);                      // the answer must be non-decreasing
         return sums;
     }
 
     /** Bonus: the same pick / not-pick recursion collecting the subsets themselves instead of their sums. O(2^n * n). */
     static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> out = new ArrayList<>();
-        subsetRec(nums, 0, new ArrayList<>(), out);
+        subsetRec(nums, 0, new ArrayList<>(), out);  // start at index 0 with an empty subset
         return out;
     }
 
     static void subsetRec(int[] nums, int i, List<Integer> cur, List<List<Integer>> out) {
-        if (i == nums.length) {
-            out.add(new ArrayList<>(cur));
+        if (i == nums.length) {                       // base case: one subset fully decided
+            out.add(new ArrayList<>(cur));            // copy: cur keeps changing
             return;
         }
         cur.add(nums[i]);                             // pick nums[i]
-        subsetRec(nums, i + 1, cur, out);
+        subsetRec(nums, i + 1, cur, out);             // subsets that contain nums[i]
         cur.remove(cur.size() - 1);                   // undo, then leave nums[i] out
-        subsetRec(nums, i + 1, cur, out);
+        subsetRec(nums, i + 1, cur, out);             // subsets without nums[i]
     }
 
     // ---------------------------------------------------------------- tests

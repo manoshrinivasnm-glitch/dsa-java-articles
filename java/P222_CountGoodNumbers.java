@@ -7,12 +7,13 @@ public class P222_CountGoodNumbers {
 
     /** Approach 1: enumerate every digit string of length n and test each one. O(10^n * n) time; only to confirm the formula for tiny n. */
     static long bruteForce(long n) {
+        // 10^n strings: only tiny n is feasible
         if (n > 7) throw new IllegalArgumentException("brute force is only for n <= 7");
         int len = (int) n;
         long total = 1;
         for (int i = 0; i < len; i++) total *= 10;    // 10^len strings
-        long count = 0;
-        for (long v = 0; v < total; v++) {
+        long count = 0;                               // good strings found so far
+        for (long v = 0; v < total; v++) {            // each string, read as a number padded with zeros
             if (isGood(v, len)) count++;
         }
         return count % MOD;
@@ -21,22 +22,22 @@ public class P222_CountGoodNumbers {
     /** v written with exactly len digits (leading zeros allowed): even index -> even digit, odd index -> 2, 3, 5 or 7. */
     static boolean isGood(long v, int len) {
         for (int index = len - 1; index >= 0; index--) {   // the last digit of v sits at the last index
-            int d = (int) (v % 10);
-            v /= 10;
-            if (index % 2 == 0) {
+            int d = (int) (v % 10);                        // the digit at this index
+            v /= 10;                                       // drop it to expose the digit on its left
+            if (index % 2 == 0) {                          // even index: needs an even digit
                 if (d % 2 != 0) return false;
-            } else if (d != 2 && d != 3 && d != 5 && d != 7) {
+            } else if (d != 2 && d != 3 && d != 5 && d != 7) {   // odd index: needs a prime digit
                 return false;
             }
         }
-        return true;
+        return true;                                       // every position obeyed its rule
     }
 
     /** Approach 2: multiply the number of choices position by position. O(n) time, O(1) space; fine for n up to about 10^7. */
     static long better(long n) {
-        long result = 1;
-        for (long index = 0; index < n; index++) {
-            result = result * (index % 2 == 0 ? 5 : 4) % MOD;
+        long result = 1;                                       // ways to fill the positions so far
+        for (long index = 0; index < n; index++) {             // each position multiplies the count
+            result = result * (index % 2 == 0 ? 5 : 4) % MOD;  // 5 even digits or 4 prime digits
         }
         return result;
     }
@@ -45,23 +46,23 @@ public class P222_CountGoodNumbers {
     static long optimal(long n) {
         long evenIndices = (n + 1) / 2;               // indices 0, 2, 4, ...: 5 even digits each
         long oddIndices = n / 2;                      // indices 1, 3, 5, ...: 4 prime digits each
-        return modPow(5, evenIndices) * modPow(4, oddIndices) % MOD;
+        return modPow(5, evenIndices) * modPow(4, oddIndices) % MOD;   // independent choices multiply
     }
 
     /** base^exp mod MOD. Halve the exponent, square the result, multiply by base once more if exp is odd. */
     static long modPow(long base, long exp) {
         if (exp == 0) return 1;                        // base case: anything to the power 0 is 1
-        long half = modPow(base, exp / 2);
-        long result = half * half % MOD;
-        if (exp % 2 == 1) result = result * base % MOD;
+        long half = modPow(base, exp / 2);             // base^(exp/2), computed only once
+        long result = half * half % MOD;               // squaring gives base^(2 * (exp/2))
+        if (exp % 2 == 1) result = result * base % MOD;   // odd exp: one more factor of base
         return result;
     }
 
     /** Variant: pair each even index with the odd index after it (5 * 4 = 20 choices per pair), one more factor 5 if n is odd. */
     static long optimalPaired(long n) {
-        long pairs = n / 2;
-        long result = modPow(20, pairs);
-        if (n % 2 == 1) result = result * 5 % MOD;
+        long pairs = n / 2;                         // (even, odd) index pairs
+        long result = modPow(20, pairs);            // 5 * 4 = 20 choices per pair
+        if (n % 2 == 1) result = result * 5 % MOD;  // odd n: a last even index on its own
         return result;
     }
 

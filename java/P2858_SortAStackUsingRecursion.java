@@ -5,8 +5,8 @@ public class P2858_SortAStackUsingRecursion {
 
     /** Approach 1: pour the stack into a list, sort, push back. O(n log n) time, O(n) extra space; ignores the stack-operations-only rule. */
     static void sortViaList(Deque<Integer> stack) {
-        List<Integer> items = new ArrayList<>();
-        while (!stack.isEmpty()) items.add(stack.pop());
+        List<Integer> items = new ArrayList<>();           // the stack's elements, in a sortable list
+        while (!stack.isEmpty()) items.add(stack.pop());   // empty the stack into the list
         Collections.sort(items);                           // ascending
         for (int v : items) stack.push(v);                 // smallest pushed first, so the largest ends on top
     }
@@ -14,10 +14,10 @@ public class P2858_SortAStackUsingRecursion {
     /** Approach 2: iterative insertion sort with one helper stack. O(n^2) time, O(n) extra space. */
     static void sortWithHelperStack(Deque<Integer> stack) {
         Deque<Integer> helper = new ArrayDeque<>();        // invariant: sorted, smallest on top
-        while (!stack.isEmpty()) {
-            int v = stack.pop();
+        while (!stack.isEmpty()) {                         // place each input value into helper
+            int v = stack.pop();                           // the value to place next
             while (!helper.isEmpty() && helper.peek() < v) stack.push(helper.pop());   // smaller ones wait on the input
-            helper.push(v);
+            helper.push(v);                                // everything below v is now >= v
         }
         while (!helper.isEmpty()) stack.push(helper.pop()); // pour back: smallest first, largest on top
     }
@@ -25,9 +25,9 @@ public class P2858_SortAStackUsingRecursion {
     /** Approach 3: recursion only. Hold the top in the current frame, sort the rest, then insert the held value at its place. O(n^2) time, O(n) stack. */
     static void sortRecursive(Deque<Integer> stack) {
         if (stack.isEmpty()) return;                       // base case: nothing to sort
-        int top = stack.pop();
+        int top = stack.pop();                             // hold the top in this frame
         sortRecursive(stack);                              // the remaining n - 1 elements, sorted
-        insertSorted(stack, top);
+        insertSorted(stack, top);                          // put the held value back in its place
     }
 
     /** stack is sorted with its largest on top; insert v so that it stays sorted. */

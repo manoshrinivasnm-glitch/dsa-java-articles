@@ -8,9 +8,10 @@ public class P493_GenerateBinaryStringsWithoutConsecutive1 {
         List<String> result = new ArrayList<>();
         for (int mask = 0; mask < (1 << n); mask++) {       // counting upward is lexicographic order for fixed-width strings
             StringBuilder sb = new StringBuilder();
+            // mask as n binary digits, high bit first
             for (int bit = n - 1; bit >= 0; bit--) sb.append((mask >> bit) & 1);
             String s = sb.toString();
-            if (!s.contains("11")) result.add(s);
+            if (!s.contains("11")) result.add(s);           // keep it only if no two 1s touch
         }
         return result;
     }
@@ -18,20 +19,20 @@ public class P493_GenerateBinaryStringsWithoutConsecutive1 {
     /** Approach 2: build position by position; after a 1 the only legal next character is 0. O(F(n+2) * n) time, O(n) stack. */
     static List<String> optimal(int n) {
         List<String> result = new ArrayList<>();
-        build(new char[n], 0, false, result);
+        build(new char[n], 0, false, result);  // fill from position 0; nothing precedes it
         return result;
     }
 
     static void build(char[] current, int pos, boolean lastWasOne, List<String> result) {
         if (pos == current.length) {                         // base case: every position is filled
-            result.add(new String(current));
+            result.add(new String(current));                 // record the finished string
             return;
         }
         current[pos] = '0';                                  // choice 1: a 0 is always legal, and sorts first
-        build(current, pos + 1, false, result);
+        build(current, pos + 1, false, result);              // fill the rest after this 0
         if (!lastWasOne) {                                   // choice 2: a 1, only when the previous character was not 1
             current[pos] = '1';
-            build(current, pos + 1, true, result);
+            build(current, pos + 1, true, result);           // fill the rest after this 1
         }
     }
 
@@ -39,13 +40,13 @@ public class P493_GenerateBinaryStringsWithoutConsecutive1 {
     static long countOnly(int n) {
         if (n == 0) return 1;                                // the empty string
         long endsWith0 = 1, endsWith1 = 1;                   // the strings "0" and "1"
-        for (int len = 2; len <= n; len++) {
+        for (int len = 2; len <= n; len++) {                 // grow the strings one character at a time
             long nextEndsWith0 = endsWith0 + endsWith1;      // a 0 may follow anything
             long nextEndsWith1 = endsWith0;                  // a 1 may only follow a 0
-            endsWith0 = nextEndsWith0;
+            endsWith0 = nextEndsWith0;                       // the counts now describe length len
             endsWith1 = nextEndsWith1;
         }
-        return endsWith0 + endsWith1;
+        return endsWith0 + endsWith1;                        // every valid string ends in 0 or 1
     }
 
     // ---------------------------------------------------------------- tests

@@ -10,76 +10,76 @@ public class P2862_RecursiveImplementationOfAtoi {
 
     /** Baseline: the iterative parser. O(n) time, O(1) space. */
     static int iterative(String s) {
-        int n = s.length(), i = 0;
+        int n = s.length(), i = 0;                                    // i is the next character to read
         while (i < n && s.charAt(i) == ' ') i++;                      // 1. skip leading spaces
-        int sign = 1;
+        int sign = 1;                                                 // +1 unless a '-' is found
         if (i < n && (s.charAt(i) == '+' || s.charAt(i) == '-')) {    // 2. one optional sign
             if (s.charAt(i) == '-') sign = -1;
-            i++;
+            i++;                                                      // step past the sign
         }
-        long value = 0;
+        long value = 0;                                               // digits read so far, held in a long
         while (i < n && isDigit(s.charAt(i))) {                        // 3. digits, until the first non-digit
-            value = value * 10 + (s.charAt(i) - '0');
+            value = value * 10 + (s.charAt(i) - '0');                 // append this digit
             if (sign * value > Integer.MAX_VALUE) return Integer.MAX_VALUE;   // 4. clamp as soon as the int range is left
-            if (sign * value < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+            if (sign * value < Integer.MIN_VALUE) return Integer.MIN_VALUE;   // same clamp below the int range
             i++;
         }
-        return (int) (sign * value);
+        return (int) (sign * value);                                  // in range, so the cast is safe
     }
 
     /** Approach 1: recursion with an accumulator. Each call consumes one digit and passes the running value forward. O(n) time, O(n) stack. */
     static int recursiveAccumulate(String s) {
-        int i = skipSpaces(s, 0);
+        int i = skipSpaces(s, 0);                                            // first non-space index
         int sign = 1;
-        if (i < s.length() && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+        if (i < s.length() && (s.charAt(i) == '+' || s.charAt(i) == '-')) {  // one optional sign
             if (s.charAt(i) == '-') sign = -1;
-            i++;
+            i++;                                                             // step past the sign
         }
-        return parseDigits(s, i, sign, 0);
+        return parseDigits(s, i, sign, 0);                                   // parse the digits, starting at 0
     }
 
     /** Index of the first non-space character at or after i. */
     static int skipSpaces(String s, int i) {
-        if (i < s.length() && s.charAt(i) == ' ') return skipSpaces(s, i + 1);
-        return i;
+        if (i < s.length() && s.charAt(i) == ' ') return skipSpaces(s, i + 1);  // a space: skip it
+        return i;                                                               // base case: no more spaces
     }
 
     /** acc is the value of the digits before index i. Consume s[i] if it is a digit, otherwise the number is complete. */
     static int parseDigits(String s, int i, int sign, long acc) {
         if (i == s.length() || !isDigit(s.charAt(i))) return (int) (sign * acc);   // base case: the digit run has ended
-        long next = acc * 10 + (s.charAt(i) - '0');
+        long next = acc * 10 + (s.charAt(i) - '0');                                // value including this digit
         if (sign * next > Integer.MAX_VALUE) return Integer.MAX_VALUE;              // clamp now, before acc could ever overflow a long
         if (sign * next < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        return parseDigits(s, i + 1, sign, next);
+        return parseDigits(s, i + 1, sign, next);                                  // on to the next digit
     }
 
     /** Approach 2: recursion that returns a value. The number in s[start, end) is ten times the number in s[start, end - 1) plus the last digit. O(n) time, O(n) stack. */
     static int recursiveReturn(String s) {
-        int i = skipSpaces(s, 0);
+        int i = skipSpaces(s, 0);                                            // first non-space index
         int sign = 1;
-        if (i < s.length() && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+        if (i < s.length() && (s.charAt(i) == '+' || s.charAt(i) == '-')) {  // one optional sign
             if (s.charAt(i) == '-') sign = -1;
-            i++;
+            i++;                                                             // step past the sign
         }
-        int end = endOfDigits(s, i);
-        long signed = sign * valueOf(s, i, end);
-        if (signed > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        int end = endOfDigits(s, i);                                         // the digits are s[i, end)
+        long signed = sign * valueOf(s, i, end);                             // capped magnitude, with its sign
+        if (signed > Integer.MAX_VALUE) return Integer.MAX_VALUE;            // clamp to the int range
         if (signed < Integer.MIN_VALUE) return Integer.MIN_VALUE;
         return (int) signed;
     }
 
     /** Index just past the run of digits that starts at i. */
     static int endOfDigits(String s, int i) {
-        if (i < s.length() && isDigit(s.charAt(i))) return endOfDigits(s, i + 1);
-        return i;
+        if (i < s.length() && isDigit(s.charAt(i))) return endOfDigits(s, i + 1);  // a digit: the run goes on
+        return i;                                                                  // base case: no more digits
     }
 
     /** Value of the digits in s[start, end), capped at 10^10 so the long can never overflow; the cap is already far outside the int range. */
     static long valueOf(String s, int start, int end) {
         if (end == start) return 0;                                   // base case: no digits means zero
         long prefix = valueOf(s, start, end - 1);                     // everything except the last digit
-        long value = prefix * 10 + (s.charAt(end - 1) - '0');
-        return Math.min(value, 10_000_000_000L);
+        long value = prefix * 10 + (s.charAt(end - 1) - '0');         // append the last digit
+        return Math.min(value, 10_000_000_000L);                      // cap so long inputs cannot overflow
     }
 
     // ---------------------------------------------------------------- tests

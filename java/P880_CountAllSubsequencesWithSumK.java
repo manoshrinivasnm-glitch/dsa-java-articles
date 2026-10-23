@@ -6,43 +6,44 @@ public class P880_CountAllSubsequencesWithSumK {
     /** Approach 1: enumerate every subsequence as a bitmask and add it up. O(2^n * n) time, O(1) extra space. */
     static long bruteForce(int[] nums, int k) {
         int n = nums.length;
-        long count = 0;
-        for (int mask = 0; mask < (1 << n); mask++) {
+        long count = 0;                                      // subsequences that sum to k
+        for (int mask = 0; mask < (1 << n); mask++) {        // each mask is one subsequence
             long sum = 0;
             for (int i = 0; i < n; i++) {
-                if ((mask & (1 << i)) != 0) sum += nums[i];
+                if ((mask & (1 << i)) != 0) sum += nums[i];  // bit i set: nums[i] is in it
             }
-            if (sum == k) count++;
+            if (sum == k) count++;                           // this subsequence hits k
         }
         return count;
     }
 
     /** Approach 2: pick / not-pick recursion that returns a count. O(2^n) time, O(n) recursion depth. */
     static long optimal(int[] nums, int k) {
-        return countRec(nums, 0, k);
+        return countRec(nums, 0, k);  // all of nums, full target k
     }
 
     /** Number of subsequences of nums[i..n-1] whose sum is exactly target. */
     static long countRec(int[] nums, int i, long target) {
-        if (i == nums.length) return target == 0 ? 1 : 0;
-        long pick = countRec(nums, i + 1, target - nums[i]);
-        long notPick = countRec(nums, i + 1, target);
-        return pick + notPick;
+        if (i == nums.length) return target == 0 ? 1 : 0;     // base case: 1 if the target is used up
+        long pick = countRec(nums, i + 1, target - nums[i]);  // use nums[i]: less target remains
+        long notPick = countRec(nums, i + 1, target);         // skip nums[i]: same target
+        return pick + notPick;                                // the two groups never overlap
     }
 
     /** Approach 3: the same recursion memoised on (index, remaining target). O(n * S) time and space, S = distinct targets seen. */
     static long memoized(int[] nums, int k) {
-        List<Map<Long, Long>> memo = new ArrayList<>();
-        for (int i = 0; i <= nums.length; i++) memo.add(new HashMap<>());
+        List<Map<Long, Long>> memo = new ArrayList<>();                    // memo[i]: remaining target -> count
+        for (int i = 0; i <= nums.length; i++) memo.add(new HashMap<>());  // one map per index
         return countMemo(nums, 0, k, memo);
     }
 
     static long countMemo(int[] nums, int i, long target, List<Map<Long, Long>> memo) {
-        if (i == nums.length) return target == 0 ? 1 : 0;
-        Long cached = memo.get(i).get(target);
-        if (cached != null) return cached;
+        if (i == nums.length) return target == 0 ? 1 : 0;  // base case: same as countRec
+        Long cached = memo.get(i).get(target);             // solved this (i, target) before?
+        if (cached != null) return cached;                 // yes: reuse it
+        // pick nums[i] plus skip nums[i], as in countRec
         long result = countMemo(nums, i + 1, target - nums[i], memo) + countMemo(nums, i + 1, target, memo);
-        memo.get(i).put(target, result);
+        memo.get(i).put(target, result);                   // remember it for next time
         return result;
     }
 

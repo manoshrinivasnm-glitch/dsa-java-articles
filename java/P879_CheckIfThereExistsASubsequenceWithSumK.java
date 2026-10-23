@@ -6,41 +6,42 @@ public class P879_CheckIfThereExistsASubsequenceWithSumK {
     /** Approach 1: enumerate every subsequence as a bitmask and compare its sum with k. O(2^n * n) time, O(1) extra space. */
     static boolean bruteForce(int[] nums, int k) {
         int n = nums.length;
-        for (int mask = 0; mask < (1 << n); mask++) {
+        for (int mask = 0; mask < (1 << n); mask++) {        // each mask is one subsequence
             long sum = 0;
             for (int i = 0; i < n; i++) {
-                if ((mask & (1 << i)) != 0) sum += nums[i];
+                if ((mask & (1 << i)) != 0) sum += nums[i];  // bit i set: nums[i] is in it
             }
-            if (sum == k) return true;
+            if (sum == k) return true;                       // found one: stop searching
         }
-        return false;
+        return false;                                        // no subsequence hits k
     }
 
     /** Approach 2: pick / not-pick recursion that stops as soon as one branch succeeds. O(2^n) worst case, O(n) depth. */
     static boolean optimal(int[] nums, int k) {
-        return existsRec(nums, 0, k);
+        return existsRec(nums, 0, k);  // all of nums, full target k
     }
 
     /** True if some subsequence of nums[i..n-1] sums to target. */
     static boolean existsRec(int[] nums, int i, long target) {
-        if (i == nums.length) return target == 0;
+        if (i == nums.length) return target == 0;   // base case: true only if the target is used up
         if (existsRec(nums, i + 1, target - nums[i])) return true;   // pick nums[i]; if that works we are done
         return existsRec(nums, i + 1, target);                        // otherwise try leaving nums[i] out
     }
 
     /** Approach 3: memoise (index, remaining target) so every repeated state is solved once. O(n * S) time and space. */
     static boolean memoized(int[] nums, int k) {
-        List<Map<Long, Boolean>> memo = new ArrayList<>();
-        for (int i = 0; i <= nums.length; i++) memo.add(new HashMap<>());
+        List<Map<Long, Boolean>> memo = new ArrayList<>();   // memo[i]: remaining target -> answer
+        for (int i = 0; i <= nums.length; i++) memo.add(new HashMap<>());  // one map per index
         return existsMemo(nums, 0, k, memo);
     }
 
     static boolean existsMemo(int[] nums, int i, long target, List<Map<Long, Boolean>> memo) {
-        if (i == nums.length) return target == 0;
-        Boolean cached = memo.get(i).get(target);
-        if (cached != null) return cached;
+        if (i == nums.length) return target == 0;  // base case: same as existsRec
+        Boolean cached = memo.get(i).get(target);  // solved this (i, target) before?
+        if (cached != null) return cached;         // yes: reuse it
+        // pick nums[i], or else skip it (the second call runs only if the first fails)
         boolean result = existsMemo(nums, i + 1, target - nums[i], memo) || existsMemo(nums, i + 1, target, memo);
-        memo.get(i).put(target, result);
+        memo.get(i).put(target, result);           // remember it for next time
         return result;
     }
 
