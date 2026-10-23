@@ -5,13 +5,14 @@ public class P303_BestTimeToBuyAndSellStockIII {
 
     /** Approach 1: recursion on (day, may I buy?, transactions left). O(2^n) time, O(n) stack. */
     static int recursive(int[] prices) {
-        return solve(0, 1, 2, prices);
+        return solve(0, 1, 2, prices);  // day 0, free to buy, 2 transactions left
     }
 
     /** Best profit from day i onward with cap transactions still allowed; a transaction is used up when we sell. */
     static int solve(int i, int canBuy, int cap, int[] prices) {
+        // no days or no transactions left: nothing more to earn
         if (i == prices.length || cap == 0) return 0;
-        if (canBuy == 1) {
+        if (canBuy == 1) {                                                   // no share held: we may buy
             return Math.max(-prices[i] + solve(i + 1, 0, cap, prices),       // buy today
                             solve(i + 1, 1, cap, prices));                   // skip
         }
@@ -21,18 +22,19 @@ public class P303_BestTimeToBuyAndSellStockIII {
 
     /** Approach 2: memoization over n * 2 * 3 states. O(n) time, O(n) space plus O(n) stack. */
     static int memoization(int[] prices) {
-        int[][][] dp = new int[prices.length][2][3];
-        for (int[][] a : dp) for (int[] b : a) Arrays.fill(b, -1);
-        return memo(0, 1, 2, prices, dp);
+        int[][][] dp = new int[prices.length][2][3];  // dp[i][canBuy][cap] caches solve(i, canBuy, cap)
+        for (int[][] a : dp) for (int[] b : a) Arrays.fill(b, -1);  // -1 marks a state not solved yet
+        return memo(0, 1, 2, prices, dp);             // day 0, free to buy, 2 transactions left
     }
 
     static int memo(int i, int canBuy, int cap, int[] prices, int[][][] dp) {
-        if (i == prices.length || cap == 0) return 0;
-        if (dp[i][canBuy][cap] != -1) return dp[i][canBuy][cap];
+        if (i == prices.length || cap == 0) return 0;             // no days or no transactions left
+        if (dp[i][canBuy][cap] != -1) return dp[i][canBuy][cap];  // already solved: reuse the stored answer
         int best;
-        if (canBuy == 1) {
+        if (canBuy == 1) {                                        // free to buy: buy today or skip
             best = Math.max(-prices[i] + memo(i + 1, 0, cap, prices, dp), memo(i + 1, 1, cap, prices, dp));
         } else {
+            // holding: sell (uses up one transaction) or keep holding
             best = Math.max(prices[i] + memo(i + 1, 1, cap - 1, prices, dp), memo(i + 1, 0, cap, prices, dp));
         }
         return dp[i][canBuy][cap] = best;
@@ -42,26 +44,31 @@ public class P303_BestTimeToBuyAndSellStockIII {
     static int tabulation(int[] prices) {
         int n = prices.length;
         int[][][] dp = new int[n + 1][2][3];                // dp[n][*][*] = 0 and dp[*][*][0] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            for (int cap = 1; cap <= 2; cap++) {
+        for (int i = n - 1; i >= 0; i--) {                  // walk the days from last to first
+            for (int cap = 1; cap <= 2; cap++) {            // cap 0 stays 0: no transactions left
+                // free to buy: buy today or skip
                 dp[i][1][cap] = Math.max(-prices[i] + dp[i + 1][0][cap], dp[i + 1][1][cap]);
+                // holding: sell (uses up one transaction) or keep holding
                 dp[i][0][cap] = Math.max(prices[i] + dp[i + 1][1][cap - 1], dp[i + 1][0][cap]);
             }
         }
-        return dp[0][1][2];
+        return dp[0][1][2];                                 // day 0, free to buy, 2 transactions left
     }
 
     /** Approach 4: day i only reads day i + 1, so keep two 2 x 3 tables. O(n) time, O(1) space. */
     static int spaceOptimized(int[] prices) {
+        // ahead = day i + 1, cur = day i, both [canBuy][cap]
         int[][] ahead = new int[2][3], cur = new int[2][3];
-        for (int i = prices.length - 1; i >= 0; i--) {
-            for (int cap = 1; cap <= 2; cap++) {
+        for (int i = prices.length - 1; i >= 0; i--) {  // walk the days from last to first
+            for (int cap = 1; cap <= 2; cap++) {        // cap 0 stays 0: no transactions left
+                // free to buy: buy today or skip
                 cur[1][cap] = Math.max(-prices[i] + ahead[0][cap], ahead[1][cap]);
+                // holding: sell (uses up one transaction) or keep holding
                 cur[0][cap] = Math.max(prices[i] + ahead[1][cap - 1], ahead[0][cap]);
             }
-            int[][] t = ahead; ahead = cur; cur = t;
+            int[][] t = ahead; ahead = cur; cur = t;    // today becomes "ahead" for the day before
         }
-        return ahead[1][2];
+        return ahead[1][2];                             // day 0, free to buy, 2 transactions left
     }
 
     /** Approach 5: forward state machine with four running values. O(n) time, O(1) space. */
@@ -69,10 +76,10 @@ public class P303_BestTimeToBuyAndSellStockIII {
         int buy1 = Integer.MIN_VALUE, sell1 = 0;            // best balance after the first buy / first sell
         int buy2 = Integer.MIN_VALUE, sell2 = 0;            // best balance after the second buy / second sell
         for (int p : prices) {
-            buy1 = Math.max(buy1, -p);
-            sell1 = Math.max(sell1, buy1 + p);
-            buy2 = Math.max(buy2, sell1 - p);
-            sell2 = Math.max(sell2, buy2 + p);
+            buy1 = Math.max(buy1, -p);                      // first buy: pay the cheapest price so far
+            sell1 = Math.max(sell1, buy1 + p);              // first sell: best one-transaction profit
+            buy2 = Math.max(buy2, sell1 - p);               // second buy: pay out of the first profit
+            sell2 = Math.max(sell2, buy2 + p);              // second sell: best total of two transactions
         }
         return sell2;
     }

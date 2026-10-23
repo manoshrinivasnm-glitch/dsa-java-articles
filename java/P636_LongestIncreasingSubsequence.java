@@ -5,14 +5,14 @@ public class P636_LongestIncreasingSubsequence {
 
     /** Approach 1: recursion on (index, index of the last element taken). O(2^n) time, O(n) stack. */
     static int recursive(int[] a) {
-        return solve(0, -1, a);
+        return solve(0, -1, a);  // start at index 0 with nothing taken
     }
 
     /** Longest increasing subsequence of a[i..] whose elements all exceed a[prev] (prev = -1: nothing taken yet). */
     static int solve(int i, int prev, int[] a) {
-        if (i == a.length) return 0;
+        if (i == a.length) return 0;                                    // no elements left
         int best = solve(i + 1, prev, a);                               // skip a[i]
-        if (prev == -1 || a[i] > a[prev]) {
+        if (prev == -1 || a[i] > a[prev]) {                             // a[i] can follow the last taken
             best = Math.max(best, 1 + solve(i + 1, i, a));              // take a[i]
         }
         return best;
@@ -21,74 +21,77 @@ public class P636_LongestIncreasingSubsequence {
     /** Approach 2: memoization; prev is stored shifted by one so that -1 fits in column 0. O(n^2) time, O(n^2) space. */
     static int memoization(int[] a) {
         int n = a.length;
-        int[][] dp = new int[n][n + 1];
-        for (int[] row : dp) Arrays.fill(row, -1);
-        return memo(0, -1, a, dp);
+        int[][] dp = new int[n][n + 1];             // dp[i][prev + 1] caches solve(i, prev)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a state not solved yet
+        return memo(0, -1, a, dp);                  // start at index 0 with nothing taken
     }
 
     static int memo(int i, int prev, int[] a, int[][] dp) {
-        if (i == a.length) return 0;
-        if (dp[i][prev + 1] != -1) return dp[i][prev + 1];
-        int best = memo(i + 1, prev, a, dp);
+        if (i == a.length) return 0;                        // no elements left
+        if (dp[i][prev + 1] != -1) return dp[i][prev + 1];  // already solved: reuse the stored answer
+        int best = memo(i + 1, prev, a, dp);                // skip a[i]
+        // take a[i] when it is larger than the last element taken
         if (prev == -1 || a[i] > a[prev]) best = Math.max(best, 1 + memo(i + 1, i, a, dp));
-        return dp[i][prev + 1] = best;
+        return dp[i][prev + 1] = best;                      // store the answer before returning it
     }
 
     /** Approach 3: tabulation, i from n - 1 down, prev from i - 1 down to -1. O(n^2) time, O(n^2) space. */
     static int tabulation(int[] a) {
         int n = a.length;
         int[][] dp = new int[n + 1][n + 1];                             // dp[n][*] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            for (int prev = i - 1; prev >= -1; prev--) {
-                int best = dp[i + 1][prev + 1];
+        for (int i = n - 1; i >= 0; i--) {                              // fill from the last index back
+            for (int prev = i - 1; prev >= -1; prev--) {                // every earlier prev, -1 = none taken
+                int best = dp[i + 1][prev + 1];                         // skip a[i]
+                // take a[i] when it is larger than a[prev]
                 if (prev == -1 || a[i] > a[prev]) best = Math.max(best, 1 + dp[i + 1][i + 1]);
-                dp[i][prev + 1] = best;
+                dp[i][prev + 1] = best;                                 // column shifted so prev = -1 fits
             }
         }
-        return dp[0][0];
+        return dp[0][0];                                                // start at 0 with nothing taken
     }
 
     /** Approach 4: row i only reads row i + 1, so keep two rows. O(n^2) time, O(n) space. */
     static int spaceOptimized(int[] a) {
         int n = a.length;
-        int[] next = new int[n + 1], cur = new int[n + 1];
-        for (int i = n - 1; i >= 0; i--) {
-            for (int prev = i - 1; prev >= -1; prev--) {
-                int best = next[prev + 1];
+        int[] next = new int[n + 1], cur = new int[n + 1];  // next = row i + 1, cur = row i
+        for (int i = n - 1; i >= 0; i--) {                  // fill from the last index back
+            for (int prev = i - 1; prev >= -1; prev--) {    // every earlier prev, -1 = none taken
+                int best = next[prev + 1];                  // skip a[i]
+                // take a[i] when it is larger than a[prev]
                 if (prev == -1 || a[i] > a[prev]) best = Math.max(best, 1 + next[i + 1]);
-                cur[prev + 1] = best;
+                cur[prev + 1] = best;                       // column shifted so prev = -1 fits
             }
-            int[] t = next; next = cur; cur = t;
+            int[] t = next; next = cur; cur = t;            // the row just built becomes "next"
         }
-        return next[0];
+        return next[0];                                     // start at 0 with nothing taken
     }
 
     /** Approach 5: dp[i] = length of the longest increasing subsequence that ends at index i. O(n^2) time, O(n) space. */
     static int endingAt(int[] a) {
-        int n = a.length, best = 0;
-        int[] dp = new int[n];
+        int n = a.length, best = 0;                                     // best = LIS ending anywhere
+        int[] dp = new int[n];                                          // dp[i] = LIS length ending at i
         for (int i = 0; i < n; i++) {
             dp[i] = 1;                                                  // a[i] alone
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++) {                               // every earlier j could precede a[i]
                 if (a[j] < a[i]) dp[i] = Math.max(dp[i], dp[j] + 1);    // extend a subsequence ending at j
             }
-            best = Math.max(best, dp[i]);
+            best = Math.max(best, dp[i]);                               // the LIS can end at any index
         }
         return best;
     }
 
     /** Approach 6: tails[k] = smallest possible last value of an increasing subsequence of length k + 1. O(n log n) time, O(n) space. */
     static int binarySearch(int[] a) {
-        int[] tails = new int[a.length];
-        int len = 0;
+        int[] tails = new int[a.length];                                // tails[k]: smallest tail, length k+1
+        int len = 0;                                                    // LIS length so far
         for (int x : a) {
             int lo = 0, hi = len;                                       // first k with tails[k] >= x
-            while (lo < hi) {
-                int mid = (lo + hi) >>> 1;
-                if (tails[mid] < x) lo = mid + 1; else hi = mid;
+            while (lo < hi) {                                           // binary search for that first k
+                int mid = (lo + hi) >>> 1;                              // middle index without overflow
+                if (tails[mid] < x) lo = mid + 1; else hi = mid;        // too small: search right, else left
             }
-            tails[lo] = x;
-            if (lo == len) len++;
+            tails[lo] = x;                                              // x is the new tail for length lo+1
+            if (lo == len) len++;                                       // x extended the longest run
         }
         return len;
     }

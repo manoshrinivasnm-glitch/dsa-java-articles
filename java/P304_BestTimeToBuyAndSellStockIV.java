@@ -5,12 +5,12 @@ public class P304_BestTimeToBuyAndSellStockIV {
 
     /** Approach 1: recursion on (day, operation number). Even t = next move is a buy, odd t = a sell. O(2^n) time, O(n) stack. */
     static int recursive(int k, int[] prices) {
-        return solve(0, 0, k, prices);
+        return solve(0, 0, k, prices);  // day 0, operation 0 (a buy comes first)
     }
 
     static int solve(int i, int t, int k, int[] prices) {
-        if (i == prices.length || t == 2 * k) return 0;
-        if (t % 2 == 0) {
+        if (i == prices.length || t == 2 * k) return 0;                      // no days left or all k done
+        if (t % 2 == 0) {                                                    // even t: the next move is a buy
             return Math.max(-prices[i] + solve(i + 1, t + 1, k, prices),     // buy today
                             solve(i + 1, t, k, prices));                     // skip
         }
@@ -20,15 +20,16 @@ public class P304_BestTimeToBuyAndSellStockIV {
 
     /** Approach 2: memoization over n * 2k states. O(n * k) time, O(n * k) space plus O(n) stack. */
     static int memoization(int k, int[] prices) {
-        int[][] dp = new int[prices.length][2 * k];
-        for (int[] row : dp) Arrays.fill(row, -1);
-        return memo(0, 0, k, prices, dp);
+        int[][] dp = new int[prices.length][2 * k];  // dp[i][t] caches solve(i, t)
+        for (int[] row : dp) Arrays.fill(row, -1);   // -1 marks a state not solved yet
+        return memo(0, 0, k, prices, dp);            // day 0, operation 0 (a buy comes first)
     }
 
     static int memo(int i, int t, int k, int[] prices, int[][] dp) {
-        if (i == prices.length || t == 2 * k) return 0;
-        if (dp[i][t] != -1) return dp[i][t];
+        if (i == prices.length || t == 2 * k) return 0;     // no days left or all k transactions done
+        if (dp[i][t] != -1) return dp[i][t];                // already solved: reuse the stored answer
         int sign = (t % 2 == 0) ? -1 : 1;                   // buying pays the price, selling receives it
+        // act today (moving on to operation t + 1) or wait a day
         int best = Math.max(sign * prices[i] + memo(i + 1, t + 1, k, prices, dp), memo(i + 1, t, k, prices, dp));
         return dp[i][t] = best;
     }
@@ -37,26 +38,27 @@ public class P304_BestTimeToBuyAndSellStockIV {
     static int tabulation(int k, int[] prices) {
         int n = prices.length;
         int[][] dp = new int[n + 1][2 * k + 1];             // dp[n][*] = 0 and dp[*][2k] = 0
-        for (int i = n - 1; i >= 0; i--) {
-            for (int t = 2 * k - 1; t >= 0; t--) {
-                int sign = (t % 2 == 0) ? -1 : 1;
+        for (int i = n - 1; i >= 0; i--) {                  // walk the days from last to first
+            for (int t = 2 * k - 1; t >= 0; t--) {          // every operation number still to do
+                int sign = (t % 2 == 0) ? -1 : 1;           // even t buys (pays), odd t sells (receives)
+                // act today (moving on to operation t + 1) or wait a day
                 dp[i][t] = Math.max(sign * prices[i] + dp[i + 1][t + 1], dp[i + 1][t]);
             }
         }
-        return dp[0][0];
+        return dp[0][0];                                    // day 0, operation 0
     }
 
     /** Approach 4: day i only reads day i + 1, so keep two rows of length 2k + 1. O(n * k) time, O(k) space. */
     static int spaceOptimized(int k, int[] prices) {
-        int[] ahead = new int[2 * k + 1], cur = new int[2 * k + 1];
-        for (int i = prices.length - 1; i >= 0; i--) {
-            for (int t = 2 * k - 1; t >= 0; t--) {
-                int sign = (t % 2 == 0) ? -1 : 1;
-                cur[t] = Math.max(sign * prices[i] + ahead[t + 1], ahead[t]);
+        int[] ahead = new int[2 * k + 1], cur = new int[2 * k + 1];  // ahead = day i + 1, cur = day i
+        for (int i = prices.length - 1; i >= 0; i--) {  // walk the days from last to first
+            for (int t = 2 * k - 1; t >= 0; t--) {      // every operation number still to do
+                int sign = (t % 2 == 0) ? -1 : 1;       // even t buys (pays), odd t sells (receives)
+                cur[t] = Math.max(sign * prices[i] + ahead[t + 1], ahead[t]);  // act today or wait a day
             }
-            int[] tmp = ahead; ahead = cur; cur = tmp;
+            int[] tmp = ahead; ahead = cur; cur = tmp;  // today becomes "ahead" for the day before
         }
-        return ahead[0];
+        return ahead[0];                                // day 0, operation 0
     }
 
     // ---------------------------------------------------------------- tests

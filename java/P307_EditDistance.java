@@ -5,7 +5,7 @@ public class P307_EditDistance {
 
     /** Approach 1: recursion on prefix lengths. O(3^(n+m)) time, O(n + m) stack. */
     static int recursive(String s1, String s2) {
-        return solve(s1.length(), s2.length(), s1, s2);
+        return solve(s1.length(), s2.length(), s1, s2);  // start from the two full strings
     }
 
     /** Fewest operations that turn s1[0..i) into s2[0..j). */
@@ -16,57 +16,64 @@ public class P307_EditDistance {
         int insert = solve(i, j - 1, s1, s2);                    // append s2[j - 1]; s2 shrinks
         int delete = solve(i - 1, j, s1, s2);                    // remove s1[i - 1]; s1 shrinks
         int replace = solve(i - 1, j - 1, s1, s2);               // overwrite s1[i - 1] with s2[j - 1]; both shrink
+        // one operation plus the cheapest way to finish
         return 1 + Math.min(insert, Math.min(delete, replace));
     }
 
     /** Approach 2: memoization on (i, j). O(n * m) time, O(n * m) space plus the stack. */
     static int memoization(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        int[][] dp = new int[n + 1][m + 1];
-        for (int[] row : dp) Arrays.fill(row, -1);
+        int[][] dp = new int[n + 1][m + 1];         // dp[i][j] caches solve(i, j)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a state not solved yet
         return memo(n, m, s1, s2, dp);
     }
 
     static int memo(int i, int j, String s1, String s2, int[][] dp) {
-        if (i == 0) return j;
-        if (j == 0) return i;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (i == 0) return j;                          // insert the j remaining characters of s2
+        if (j == 0) return i;                          // delete the i remaining characters of s1
+        if (dp[i][j] != -1) return dp[i][j];           // already solved: reuse the stored answer
+        // last characters agree: no operation needed
         if (s1.charAt(i - 1) == s2.charAt(j - 1)) return dp[i][j] = memo(i - 1, j - 1, s1, s2, dp);
-        int insert = memo(i, j - 1, s1, s2, dp);
-        int delete = memo(i - 1, j, s1, s2, dp);
-        int replace = memo(i - 1, j - 1, s1, s2, dp);
+        int insert = memo(i, j - 1, s1, s2, dp);       // insert s2[j - 1]
+        int delete = memo(i - 1, j, s1, s2, dp);       // delete s1[i - 1]
+        int replace = memo(i - 1, j - 1, s1, s2, dp);  // replace s1[i - 1] with s2[j - 1]
+        // pay one operation for the cheapest choice
         return dp[i][j] = 1 + Math.min(insert, Math.min(delete, replace));
     }
 
     /** Approach 3: tabulation with row 0 = 0..m and column 0 = 0..n. O(n * m) time and space. */
     static int tabulation(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        int[][] dp = new int[n + 1][m + 1];
-        for (int i = 0; i <= n; i++) dp[i][0] = i;
-        for (int j = 0; j <= m; j++) dp[0][j] = j;
-        for (int i = 1; i <= n; i++) {
+        int[][] dp = new int[n + 1][m + 1];         // dp[i][j] = edit distance of s1[0..i) and s2[0..j)
+        for (int i = 0; i <= n; i++) dp[i][0] = i;  // s2 empty: delete all i characters
+        for (int j = 0; j <= m; j++) dp[0][j] = j;  // s1 empty: insert all j characters
+        for (int i = 1; i <= n; i++) {              // fill row by row from the smallest prefixes
             for (int j = 1; j <= m; j++) {
+                // last characters agree: no operation needed
                 if (s1.charAt(i - 1) == s2.charAt(j - 1)) dp[i][j] = dp[i - 1][j - 1];
+                // one operation: insert (left), delete (up) or replace (diagonal)
                 else dp[i][j] = 1 + Math.min(dp[i][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j - 1]));
             }
         }
-        return dp[n][m];
+        return dp[n][m];                            // edit distance of the two full strings
     }
 
     /** Approach 4: two rows; each new row starts with its own base case cur[0] = i. O(n * m) time, O(m) space. */
     static int spaceOptimized(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        int[] prev = new int[m + 1], cur = new int[m + 1];
-        for (int j = 0; j <= m; j++) prev[j] = j;
+        int[] prev = new int[m + 1], cur = new int[m + 1];  // prev = row i - 1, cur = row i being filled
+        for (int j = 0; j <= m; j++) prev[j] = j;           // row 0: insert the first j characters of s2
         for (int i = 1; i <= n; i++) {
-            cur[0] = i;
+            cur[0] = i;                                     // s2 empty: delete all i characters of s1
             for (int j = 1; j <= m; j++) {
+                // last characters agree: free
                 if (s1.charAt(i - 1) == s2.charAt(j - 1)) cur[j] = prev[j - 1];
+                // one operation: insert (left), delete (up) or replace (diagonal)
                 else cur[j] = 1 + Math.min(cur[j - 1], Math.min(prev[j], prev[j - 1]));
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;        // the row just built becomes "previous"
         }
-        return prev[m];
+        return prev[m];                                     // after the last swap prev holds row n
     }
 
     // ---------------------------------------------------------------- tests

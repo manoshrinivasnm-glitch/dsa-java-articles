@@ -5,21 +5,21 @@ public class P2851_LongestIncreasingSubsequenceDP43 {
 
     /** Approach 1: baseline DP, dp[i] = LIS ending at index i. O(n^2) time, O(n) space. */
     static int quadraticDp(int[] a) {
-        int n = a.length, best = 0;
-        int[] dp = new int[n];
+        int n = a.length, best = 0;        // best = LIS ending anywhere
+        int[] dp = new int[n];             // dp[i] = LIS length ending exactly at i
         for (int i = 0; i < n; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (a[j] < a[i]) dp[i] = Math.max(dp[i], dp[j] + 1);
+            dp[i] = 1;                     // a[i] alone
+            for (int j = 0; j < i; j++) {  // try every earlier element as the one before a[i]
+                if (a[j] < a[i]) dp[i] = Math.max(dp[i], dp[j] + 1);  // extend the run ending at j
             }
-            best = Math.max(best, dp[i]);
+            best = Math.max(best, dp[i]);  // the LIS can end at any index
         }
         return best;
     }
 
     /** Approach 2: one tails array, replacement position found by a linear scan. O(n * L) time, O(L) space. */
     static int linearTails(int[] a) {
-        List<Integer> tails = new ArrayList<>();
+        List<Integer> tails = new ArrayList<>();                          // smallest tail for each length
         for (int x : a) {
             int k = 0;
             while (k < tails.size() && tails.get(k) < x) k++;             // first tail >= x
@@ -31,43 +31,43 @@ public class P2851_LongestIncreasingSubsequenceDP43 {
 
     /** Approach 3: the same tails array, position found by a hand-written lower bound. O(n log n) time, O(n) space. */
     static int binarySearchTails(int[] a) {
-        int[] tails = new int[a.length];
-        int len = 0;
+        int[] tails = new int[a.length];                                  // smallest tail for each length
+        int len = 0;                                                      // LIS length so far
         for (int x : a) {
             int lo = 0, hi = len;                                         // search tails[0..len-1]
             while (lo < hi) {
-                int mid = (lo + hi) >>> 1;
-                if (tails[mid] < x) lo = mid + 1; else hi = mid;
+                int mid = (lo + hi) >>> 1;                                // middle index without overflow
+                if (tails[mid] < x) lo = mid + 1; else hi = mid;          // tail < x: go right, else go left
             }
             tails[lo] = x;                                                // lo == len means append
-            if (lo == len) len++;
+            if (lo == len) len++;                                         // x extended the longest run
         }
         return len;
     }
 
     /** Approach 4: the tails as a TreeSet; ceiling(x) is the tail that x replaces. O(n log n) time, O(n) space. */
     static int treeSetTails(int[] a) {
-        TreeSet<Integer> tails = new TreeSet<>();
+        TreeSet<Integer> tails = new TreeSet<>();                         // sorted tails, one per length
         for (int x : a) {
             Integer ceil = tails.ceiling(x);                              // smallest tail >= x
-            if (ceil != null) tails.remove(ceil);
-            tails.add(x);
+            if (ceil != null) tails.remove(ceil);                         // x replaces that tail
+            tails.add(x);                                                 // x becomes a tail
         }
-        return tails.size();
+        return tails.size();                                              // one tail per length = LIS length
     }
 
     /** Variant: longest non-decreasing subsequence; equal values may follow each other, so search for the first tail > x. O(n log n). */
     static int longestNonDecreasing(int[] a) {
-        int[] tails = new int[a.length];
-        int len = 0;
+        int[] tails = new int[a.length];                                   // smallest tail for each length
+        int len = 0;                                                       // longest length so far
         for (int x : a) {
-            int lo = 0, hi = len;
+            int lo = 0, hi = len;                                          // first k with tails[k] > x
             while (lo < hi) {
-                int mid = (lo + hi) >>> 1;
+                int mid = (lo + hi) >>> 1;                                 // middle index without overflow
                 if (tails[mid] <= x) lo = mid + 1; else hi = mid;          // upper bound instead of lower bound
             }
-            tails[lo] = x;
-            if (lo == len) len++;
+            tails[lo] = x;                                                 // new tail for length lo + 1
+            if (lo == len) len++;                                          // x extended the longest run
         }
         return len;
     }

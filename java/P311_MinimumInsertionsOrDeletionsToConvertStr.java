@@ -5,7 +5,7 @@ public class P311_MinimumInsertionsOrDeletionsToConvertStr {
 
     /** Approach 1: recursion on prefix lengths. O(2^(n+m)) time, O(n + m) stack. */
     static int recursive(String a, String b) {
-        return solve(a.length(), b.length(), a, b);
+        return solve(a.length(), b.length(), a, b);  // start from the two full strings
     }
 
     /** Fewest operations that turn the prefix a[0..i) into the prefix b[0..j). */
@@ -20,63 +20,69 @@ public class P311_MinimumInsertionsOrDeletionsToConvertStr {
     /** Approach 2: memoization on (i, j). O(n * m) time, O(n * m) space plus the stack. */
     static int memoization(String a, String b) {
         int n = a.length(), m = b.length();
-        int[][] dp = new int[n + 1][m + 1];
-        for (int[] row : dp) Arrays.fill(row, -1);
+        int[][] dp = new int[n + 1][m + 1];         // dp[i][j] caches solve(i, j)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a state not solved yet
         return memo(n, m, a, b, dp);
     }
 
     static int memo(int i, int j, String a, String b, int[][] dp) {
-        if (i == 0) return j;
-        if (j == 0) return i;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (i == 0) return j;                 // insert all of b[0..j)
+        if (j == 0) return i;                 // delete all of a[0..i)
+        if (dp[i][j] != -1) return dp[i][j];  // already solved: reuse the stored answer
+        // matching last characters cost nothing
         if (a.charAt(i - 1) == b.charAt(j - 1)) return dp[i][j] = memo(i - 1, j - 1, a, b, dp);
+        // otherwise delete a[i - 1] or insert b[j - 1] and keep the cheaper
         return dp[i][j] = 1 + Math.min(memo(i - 1, j, a, b, dp), memo(i, j - 1, a, b, dp));
     }
 
     /** Approach 3: tabulation with the empty-prefix row and column filled in first. O(n * m) time and space. */
     static int tabulation(String a, String b) {
         int n = a.length(), m = b.length();
-        int[][] dp = new int[n + 1][m + 1];
-        for (int i = 0; i <= n; i++) dp[i][0] = i;
-        for (int j = 0; j <= m; j++) dp[0][j] = j;
-        for (int i = 1; i <= n; i++) {
+        int[][] dp = new int[n + 1][m + 1];         // dp[i][j] = fewest operations for a[0..i) -> b[0..j)
+        for (int i = 0; i <= n; i++) dp[i][0] = i;  // b empty: delete all i characters
+        for (int j = 0; j <= m; j++) dp[0][j] = j;  // a empty: insert all j characters
+        for (int i = 1; i <= n; i++) {              // fill row by row from the smallest prefixes
             for (int j = 1; j <= m; j++) {
+                // matching last characters cost nothing
                 if (a.charAt(i - 1) == b.charAt(j - 1)) dp[i][j] = dp[i - 1][j - 1];
+                // delete a[i - 1] (up) or insert b[j - 1] (left)
                 else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1]);
             }
         }
-        return dp[n][m];
+        return dp[n][m];                            // answer for the two full strings
     }
 
     /** Approach 4: two rows; column 0 of each new row is its own base case. O(n * m) time, O(m) space. */
     static int spaceOptimized(String a, String b) {
         int n = a.length(), m = b.length();
-        int[] prev = new int[m + 1], cur = new int[m + 1];
-        for (int j = 0; j <= m; j++) prev[j] = j;
+        int[] prev = new int[m + 1], cur = new int[m + 1];  // prev = row i - 1, cur = row i being filled
+        for (int j = 0; j <= m; j++) prev[j] = j;           // row 0: insert the first j characters of b
         for (int i = 1; i <= n; i++) {
-            cur[0] = i;
+            cur[0] = i;                                     // b empty: delete all i characters of a
             for (int j = 1; j <= m; j++) {
+                // matching last characters cost nothing
                 if (a.charAt(i - 1) == b.charAt(j - 1)) cur[j] = prev[j - 1];
-                else cur[j] = 1 + Math.min(prev[j], cur[j - 1]);
+                else cur[j] = 1 + Math.min(prev[j], cur[j - 1]);  // delete (up) or insert (left)
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;        // the row just built becomes "previous"
         }
-        return prev[m];
+        return prev[m];                                     // after the last swap prev holds row n
     }
 
     /** Approach 5: keep a longest common subsequence, delete the rest of a, insert the rest of b. O(n * m) time, O(m) space. */
     static int viaLcs(String a, String b) {
         int n = a.length(), m = b.length();
-        int[] prev = new int[m + 1], cur = new int[m + 1];
+        int[] prev = new int[m + 1], cur = new int[m + 1];    // two LCS rows: prev = row i - 1, cur = row i
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
+                // same last char: diagonal + 1
                 if (a.charAt(i - 1) == b.charAt(j - 1)) cur[j] = 1 + prev[j - 1];
-                else cur[j] = Math.max(prev[j], cur[j - 1]);
+                else cur[j] = Math.max(prev[j], cur[j - 1]);  // else best of up and left
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;          // the row just built becomes "previous"
         }
-        int lcs = prev[m];
-        return (n - lcs) + (m - lcs);                            // deletions + insertions
+        int lcs = prev[m];                                    // characters both strings keep
+        return (n - lcs) + (m - lcs);                         // deletions + insertions
     }
 
     // ---------------------------------------------------------------- tests

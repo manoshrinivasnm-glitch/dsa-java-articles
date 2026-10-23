@@ -5,12 +5,12 @@ public class P305_BestTimeToBuyAndSellStockWithTransaction {
 
     /** Approach 1: recursion on (day, may I buy?); the fee is paid when selling. O(2^n) time, O(n) stack. */
     static int recursive(int[] prices, int fee) {
-        return solve(0, 1, prices, fee);
+        return solve(0, 1, prices, fee);  // day 0, free to buy
     }
 
     static int solve(int i, int canBuy, int[] prices, int fee) {
-        if (i == prices.length) return 0;
-        if (canBuy == 1) {
+        if (i == prices.length) return 0;                                   // no days left: no more profit
+        if (canBuy == 1) {                                                  // no share held: we may buy
             return Math.max(-prices[i] + solve(i + 1, 0, prices, fee),      // buy today
                             solve(i + 1, 1, prices, fee));                  // skip
         }
@@ -20,16 +20,18 @@ public class P305_BestTimeToBuyAndSellStockWithTransaction {
 
     /** Approach 2: memoization over the 2n states. O(n) time, O(n) space plus O(n) stack. */
     static int memoization(int[] prices, int fee) {
-        int[][] dp = new int[prices.length][2];
-        for (int[] row : dp) Arrays.fill(row, -1);
-        return memo(0, 1, prices, fee, dp);
+        int[][] dp = new int[prices.length][2];     // dp[i][canBuy] caches solve(i, canBuy)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a state not solved yet
+        return memo(0, 1, prices, fee, dp);         // day 0, free to buy
     }
 
     static int memo(int i, int canBuy, int[] prices, int fee, int[][] dp) {
-        if (i == prices.length) return 0;
-        if (dp[i][canBuy] != -1) return dp[i][canBuy];
+        if (i == prices.length) return 0;               // no days left: no more profit
+        if (dp[i][canBuy] != -1) return dp[i][canBuy];  // already solved: reuse the stored answer
         int best;
+        // free to buy: buy today or skip
         if (canBuy == 1) best = Math.max(-prices[i] + memo(i + 1, 0, prices, fee, dp), memo(i + 1, 1, prices, fee, dp));
+        // holding: sell and pay the fee, or keep holding
         else best = Math.max(prices[i] - fee + memo(i + 1, 1, prices, fee, dp), memo(i + 1, 0, prices, fee, dp));
         return dp[i][canBuy] = best;
     }
@@ -38,23 +40,26 @@ public class P305_BestTimeToBuyAndSellStockWithTransaction {
     static int tabulation(int[] prices, int fee) {
         int n = prices.length;
         int[][] dp = new int[n + 1][2];                     // dp[n][*] = 0
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {                  // walk the days from last to first
+            // free to buy: buy today or skip
             dp[i][1] = Math.max(-prices[i] + dp[i + 1][0], dp[i + 1][1]);
+            // holding: sell and pay the fee, or keep holding
             dp[i][0] = Math.max(prices[i] - fee + dp[i + 1][1], dp[i + 1][0]);
         }
-        return dp[0][1];
+        return dp[0][1];                                    // day 0, free to buy
     }
 
     /** Approach 4: day i only reads day i + 1, so keep two numbers. O(n) time, O(1) space. */
     static int spaceOptimized(int[] prices, int fee) {
-        int aheadBuy = 0, aheadHold = 0;                    // dp[i + 1][1], dp[i + 1][0]
-        for (int i = prices.length - 1; i >= 0; i--) {
-            int buy = Math.max(-prices[i] + aheadHold, aheadBuy);
+        int aheadBuy = 0, aheadHold = 0;                           // dp[i + 1][1], dp[i + 1][0]
+        for (int i = prices.length - 1; i >= 0; i--) {             // walk the days from last to first
+            int buy = Math.max(-prices[i] + aheadHold, aheadBuy);  // dp[i][1]: buy today or skip
+            // dp[i][0]: sell (minus the fee) or keep holding
             int hold = Math.max(prices[i] - fee + aheadBuy, aheadHold);
-            aheadBuy = buy;
+            aheadBuy = buy;                                        // today becomes "ahead" for the day before
             aheadHold = hold;
         }
-        return aheadBuy;
+        return aheadBuy;                                           // day 0, free to buy
     }
 
     // ---------------------------------------------------------------- tests

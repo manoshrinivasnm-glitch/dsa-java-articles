@@ -5,61 +5,62 @@ public class P313_ShortestCommonSupersequence {
 
     /** Approach 1: recursion that returns the supersequence of two prefixes. Exponential time, O(n + m) stack. */
     static String bruteForce(String s1, String s2) {
-        return build(s1.length(), s2.length(), s1, s2);
+        return build(s1.length(), s2.length(), s1, s2);  // start from the two full strings
     }
 
     /** A shortest common supersequence of s1[0..i) and s2[0..j). Ties go to "s2's last character goes last". */
     static String build(int i, int j, String s1, String s2) {
-        if (i == 0) return s2.substring(0, j);                   // nothing left of s1: the rest of s2 is needed as is
-        if (j == 0) return s1.substring(0, i);
+        if (i == 0) return s2.substring(0, j);           // nothing left of s1: the rest of s2 is needed as is
+        if (j == 0) return s1.substring(0, i);           // nothing left of s2: the rest of s1 is needed as is
         if (s1.charAt(i - 1) == s2.charAt(j - 1)) return build(i - 1, j - 1, s1, s2) + s1.charAt(i - 1);  // one copy serves both
         String up = build(i - 1, j, s1, s2) + s1.charAt(i - 1);  // s1's last character ends the answer
         String left = build(i, j - 1, s1, s2) + s2.charAt(j - 1);// s2's last character ends the answer
-        return up.length() < left.length() ? up : left;
+        return up.length() < left.length() ? up : left;  // keep the shorter; a tie goes to left
     }
 
     /** Approach 2: LCS table, then walk back from dp[n][m] writing every character once. O(n * m) time and space. */
     static String optimal(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        int[][] dp = new int[n + 1][m + 1];
-        for (int i = 1; i <= n; i++) {
+        int[][] dp = new int[n + 1][m + 1];              // dp[i][j] = LCS length of s1[0..i) and s2[0..j)
+        for (int i = 1; i <= n; i++) {                   // build the LCS table first
             for (int j = 1; j <= m; j++) {
+                // last characters match: extend the diagonal
                 if (s1.charAt(i - 1) == s2.charAt(j - 1)) dp[i][j] = 1 + dp[i - 1][j - 1];
-                else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);  // else best of up and left
             }
         }
-        StringBuilder sb = new StringBuilder();                  // built backwards, reversed at the end
-        int i = n, j = m;
-        while (i > 0 && j > 0) {
-            if (s1.charAt(i - 1) == s2.charAt(j - 1)) {          // an LCS character: write it once for both strings
+        StringBuilder sb = new StringBuilder();          // built backwards, reversed at the end
+        int i = n, j = m;                                // start at the bottom-right cell
+        while (i > 0 && j > 0) {                         // walk back until one string runs out
+            if (s1.charAt(i - 1) == s2.charAt(j - 1)) {  // an LCS character: write it once for both strings
                 sb.append(s1.charAt(i - 1));
                 i--;
                 j--;
-            } else if (dp[i - 1][j] > dp[i][j - 1]) {
-                sb.append(s1.charAt(i - 1));                     // s1's character is not shared: write it alone
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {    // follow the larger neighbour
+                sb.append(s1.charAt(i - 1));             // s1's character is not shared: write it alone
                 i--;
             } else {
-                sb.append(s2.charAt(j - 1));
+                sb.append(s2.charAt(j - 1));             // s2's character is not shared: write it alone
                 j--;
             }
         }
-        while (i > 0) sb.append(s1.charAt(--i));                 // whatever is left of either string
+        while (i > 0) sb.append(s1.charAt(--i));         // whatever is left of either string
         while (j > 0) sb.append(s2.charAt(--j));
-        return sb.reverse().toString();
+        return sb.reverse().toString();                  // undo the backwards build
     }
 
     /** Length only: n + m - LCS, with the two-row LCS. O(n * m) time, O(m) space. */
     static int shortestLength(String s1, String s2) {
         int n = s1.length(), m = s2.length();
-        int[] prev = new int[m + 1], cur = new int[m + 1];
+        int[] prev = new int[m + 1], cur = new int[m + 1];    // two LCS rows: prev = row i - 1, cur = row i
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                if (s1.charAt(i - 1) == s2.charAt(j - 1)) cur[j] = 1 + prev[j - 1];
-                else cur[j] = Math.max(prev[j], cur[j - 1]);
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) cur[j] = 1 + prev[j - 1];  // match: diagonal + 1
+                else cur[j] = Math.max(prev[j], cur[j - 1]);  // else best of up and left
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;          // the row just built becomes "previous"
         }
-        return n + m - prev[m];
+        return n + m - prev[m];                               // shared LCS characters are written only once
     }
 
     // ---------------------------------------------------------------- tests

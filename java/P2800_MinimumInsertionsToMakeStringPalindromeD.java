@@ -5,7 +5,7 @@ public class P2800_MinimumInsertionsToMakeStringPalindromeD {
 
     /** Approach 1: recursion on the range s[i..j]. O(2^n) time, O(n) stack. */
     static int recursive(String s) {
-        return solve(0, s.length() - 1, s);
+        return solve(0, s.length() - 1, s);  // answer for the whole string s[0..n-1]
     }
 
     /** Fewest insertions that turn s[i..j] (inclusive) into a palindrome. */
@@ -19,61 +19,66 @@ public class P2800_MinimumInsertionsToMakeStringPalindromeD {
     /** Approach 2: memoization on (i, j). O(n^2) time, O(n^2) space plus the stack. */
     static int memoization(String s) {
         int n = s.length();
-        int[][] dp = new int[n][n];
-        for (int[] row : dp) Arrays.fill(row, -1);
+        int[][] dp = new int[n][n];                 // dp[i][j] caches solve(i, j)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a range not solved yet
         return memo(0, n - 1, s, dp);
     }
 
     static int memo(int i, int j, String s, int[][] dp) {
-        if (i >= j) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
+        if (i >= j) return 0;                 // empty or one character: already a palindrome
+        if (dp[i][j] != -1) return dp[i][j];  // already solved: reuse the stored answer
+        // the ends already pair up: only the inside needs work
         if (s.charAt(i) == s.charAt(j)) return dp[i][j] = memo(i + 1, j - 1, s, dp);
+        // the ends differ: give one of them a partner (one insertion) and keep the cheaper side
         return dp[i][j] = 1 + Math.min(memo(i + 1, j, s, dp), memo(i, j - 1, s, dp));
     }
 
     /** Approach 3: tabulation, i from right to left, j from left to right. O(n^2) time and space. */
     static int tabulation(String s) {
         int n = s.length();
-        if (n == 0) return 0;
-        int[][] dp = new int[n][n];                              // dp[i][i] = 0 and i > j entries stay 0
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i + 1; j < n; j++) {
+        if (n == 0) return 0;                  // empty string: already a palindrome
+        int[][] dp = new int[n][n];            // dp[i][i] = 0 and i > j entries stay 0
+        for (int i = n - 1; i >= 0; i--) {     // bottom row first, so row i + 1 is ready
+            for (int j = i + 1; j < n; j++) {  // widen the range to the right
+                // the ends pair up: cost of the inside
                 if (s.charAt(i) == s.charAt(j)) dp[i][j] = dp[i + 1][j - 1];
+                // insert a partner for s[i] or for s[j]
                 else dp[i][j] = 1 + Math.min(dp[i + 1][j], dp[i][j - 1]);
             }
         }
-        return dp[0][n - 1];
+        return dp[0][n - 1];                   // the whole string s[0..n-1]
     }
 
     /** Approach 4: row i only reads row i + 1, so keep two rows. O(n^2) time, O(n) space. */
     static int spaceOptimized(String s) {
         int n = s.length();
         if (n == 0) return 0;
-        int[] next = new int[n], cur = new int[n];               // next = row i + 1, cur = row i
+        int[] next = new int[n], cur = new int[n];    // next = row i + 1, cur = row i
         for (int i = n - 1; i >= 0; i--) {
-            cur[i] = 0;
-            for (int j = i + 1; j < n; j++) {
+            cur[i] = 0;                               // s[i..i] is a single character: 0 insertions
+            for (int j = i + 1; j < n; j++) {         // widen the range to the right
                 if (s.charAt(i) == s.charAt(j)) cur[j] = j - 1 > i ? next[j - 1] : 0;  // j == i + 1: nothing inside
-                else cur[j] = 1 + Math.min(next[j], cur[j - 1]);
+                else cur[j] = 1 + Math.min(next[j], cur[j - 1]);  // insert a partner for s[i] or for s[j]
             }
-            int[] tmp = next; next = cur; cur = tmp;
+            int[] tmp = next; next = cur; cur = tmp;  // row i becomes "next" for row i - 1
         }
-        return next[n - 1];
+        return next[n - 1];                           // after the swap next holds row 0
     }
 
     /** Approach 5: keep the longest palindromic subsequence, insert a partner for everything else. O(n^2) time, O(n) space. */
     static int viaLps(String s) {
-        String r = new StringBuilder(s).reverse().toString();
+        String r = new StringBuilder(s).reverse().toString();  // r = s reversed
         int n = s.length();
-        int[] prev = new int[n + 1], cur = new int[n + 1];
+        int[] prev = new int[n + 1], cur = new int[n + 1];     // two LCS rows: prev = row i - 1, cur = row i
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
+                // same char in s and r: diagonal + 1
                 if (s.charAt(i - 1) == r.charAt(j - 1)) cur[j] = 1 + prev[j - 1];
-                else cur[j] = Math.max(prev[j], cur[j - 1]);
+                else cur[j] = Math.max(prev[j], cur[j - 1]);   // else best of up and left
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;           // the row just built becomes "previous"
         }
-        return n - prev[n];                                      // prev[n] = LCS(s, reverse(s)) = LPS(s)
+        return n - prev[n];                                    // prev[n] = LCS(s, reverse(s)) = LPS(s)
     }
 
     // ---------------------------------------------------------------- tests

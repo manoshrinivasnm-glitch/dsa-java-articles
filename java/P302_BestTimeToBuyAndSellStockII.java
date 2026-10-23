@@ -5,32 +5,34 @@ public class P302_BestTimeToBuyAndSellStockII {
 
     /** Approach 1: recursion on (day, may I buy?). O(2^n) time, O(n) stack. */
     static int recursive(int[] prices) {
-        return solve(0, 1, prices);
+        return solve(0, 1, prices);  // day 0, free to buy
     }
 
     /** Best profit from day i onward; canBuy = 1 means no share is held right now. */
     static int solve(int i, int canBuy, int[] prices) {
-        if (i == prices.length) return 0;
-        if (canBuy == 1) {
-            return Math.max(-prices[i] + solve(i + 1, 0, prices),     // buy today
-                            solve(i + 1, 1, prices));                 // skip
+        if (i == prices.length) return 0;                          // no days left: no more profit
+        if (canBuy == 1) {                                         // no share held: we may buy
+            return Math.max(-prices[i] + solve(i + 1, 0, prices),  // buy today
+                            solve(i + 1, 1, prices));              // skip
         }
-        return Math.max(prices[i] + solve(i + 1, 1, prices),          // sell today
-                        solve(i + 1, 0, prices));                     // keep holding
+        return Math.max(prices[i] + solve(i + 1, 1, prices),       // sell today
+                        solve(i + 1, 0, prices));                  // keep holding
     }
 
     /** Approach 2: memoization over the 2n states. O(n) time, O(n) space plus O(n) stack. */
     static int memoization(int[] prices) {
-        int[][] dp = new int[prices.length][2];
-        for (int[] row : dp) Arrays.fill(row, -1);
-        return memo(0, 1, prices, dp);
+        int[][] dp = new int[prices.length][2];     // dp[i][canBuy] caches solve(i, canBuy)
+        for (int[] row : dp) Arrays.fill(row, -1);  // -1 marks a state not solved yet
+        return memo(0, 1, prices, dp);              // day 0, free to buy
     }
 
     static int memo(int i, int canBuy, int[] prices, int[][] dp) {
-        if (i == prices.length) return 0;
-        if (dp[i][canBuy] != -1) return dp[i][canBuy];
+        if (i == prices.length) return 0;               // no days left: no more profit
+        if (dp[i][canBuy] != -1) return dp[i][canBuy];  // already solved: reuse the stored answer
         int best;
+        // free to buy: buy today or skip
         if (canBuy == 1) best = Math.max(-prices[i] + memo(i + 1, 0, prices, dp), memo(i + 1, 1, prices, dp));
+        // holding: sell today or keep holding
         else best = Math.max(prices[i] + memo(i + 1, 1, prices, dp), memo(i + 1, 0, prices, dp));
         return dp[i][canBuy] = best;
     }
@@ -38,30 +40,33 @@ public class P302_BestTimeToBuyAndSellStockII {
     /** Approach 3: tabulation from the last day backwards. O(n) time, O(n) space. */
     static int tabulation(int[] prices) {
         int n = prices.length;
-        int[][] dp = new int[n + 1][2];                     // dp[n][*] = 0: no days left
-        for (int i = n - 1; i >= 0; i--) {
+        int[][] dp = new int[n + 1][2];     // dp[n][*] = 0: no days left
+        for (int i = n - 1; i >= 0; i--) {  // walk the days from last to first
+            // free to buy: buy today or skip
             dp[i][1] = Math.max(-prices[i] + dp[i + 1][0], dp[i + 1][1]);
+            // holding: sell today or keep holding
             dp[i][0] = Math.max(prices[i] + dp[i + 1][1], dp[i + 1][0]);
         }
-        return dp[0][1];
+        return dp[0][1];                    // day 0, free to buy
     }
 
     /** Approach 4: day i only reads day i + 1, so keep two numbers. O(n) time, O(1) space. */
     static int spaceOptimized(int[] prices) {
-        int aheadBuy = 0, aheadHold = 0;                    // dp[i + 1][1], dp[i + 1][0]
-        for (int i = prices.length - 1; i >= 0; i--) {
-            int buy = Math.max(-prices[i] + aheadHold, aheadBuy);
-            int hold = Math.max(prices[i] + aheadBuy, aheadHold);
-            aheadBuy = buy;
+        int aheadBuy = 0, aheadHold = 0;                           // dp[i + 1][1], dp[i + 1][0]
+        for (int i = prices.length - 1; i >= 0; i--) {             // walk the days from last to first
+            int buy = Math.max(-prices[i] + aheadHold, aheadBuy);  // dp[i][1]: buy today or skip
+            int hold = Math.max(prices[i] + aheadBuy, aheadHold);  // dp[i][0]: sell today or keep holding
+            aheadBuy = buy;                                        // today becomes "ahead" for the day before
             aheadHold = hold;
         }
-        return aheadBuy;
+        return aheadBuy;                                           // day 0, free to buy
     }
 
     /** Approach 5: greedy, collect every upward step. O(n) time, O(1) space. */
     static int greedy(int[] prices) {
         int profit = 0;
-        for (int i = 1; i < prices.length; i++) {
+        for (int i = 1; i < prices.length; i++) {  // compare each day with the one before
+            // take every rise: buy yesterday, sell today
             if (prices[i] > prices[i - 1]) profit += prices[i] - prices[i - 1];
         }
         return profit;

@@ -5,17 +5,19 @@ public class P640_LongestStringChain {
 
     /** Approach 1: for every word, recursively try deleting each letter and follow every predecessor that exists. Exponential in the word length. */
     static int bruteForce(String[] words) {
-        Set<String> dict = new HashSet<>(Arrays.asList(words));
+        Set<String> dict = new HashSet<>(Arrays.asList(words));  // fast lookup of predecessor words
         int best = 0;
+        // the longest chain may end at any word
         for (String w : words) best = Math.max(best, chainEndingAt(w, dict));
         return best;
     }
 
     /** Longest chain that ends with w, without caching. */
     static int chainEndingAt(String w, Set<String> dict) {
-        int best = 1;
-        for (int i = 0; i < w.length(); i++) {
+        int best = 1;                                                  // w alone is a chain of length 1
+        for (int i = 0; i < w.length(); i++) {                         // try deleting each letter
             String shorter = w.substring(0, i) + w.substring(i + 1);   // delete letter i
+            // the shorter word exists: extend its chain by w
             if (dict.contains(shorter)) best = Math.max(best, 1 + chainEndingAt(shorter, dict));
         }
         return best;
@@ -24,24 +26,26 @@ public class P640_LongestStringChain {
     /** Approach 2: sort by length and run LIS where "a[j] < a[i]" becomes "words[j] is a predecessor of words[i]". O(n^2 * L) time, O(n) space. */
     static int lisStyle(String[] words) {
         String[] w = words.clone();
-        Arrays.sort(w, Comparator.comparingInt(String::length));
-        int n = w.length, best = 0;
+        Arrays.sort(w, Comparator.comparingInt(String::length));        // shorter words first
+        int n = w.length, best = 0;                                     // best = longest chain anywhere
         int[] dp = new int[n];                                          // dp[i] = longest chain ending at w[i]
-        for (int i = 0; i < n; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
+        for (int i = 0; i < n; i++) {                                   // every word as the chain end
+            dp[i] = 1;                                                  // w[i] alone
+            for (int j = 0; j < i; j++) {                               // every earlier word could precede
+                // w[j] is w[i] minus one letter: extend its chain
                 if (isPredecessor(w[j], w[i])) dp[i] = Math.max(dp[i], dp[j] + 1);
             }
-            best = Math.max(best, dp[i]);
+            best = Math.max(best, dp[i]);                               // the chain can end at any word
         }
         return best;
     }
 
     /** True if inserting exactly one letter into shorter gives longer. Two pointers, O(L). */
     static boolean isPredecessor(String shorter, String longer) {
-        if (longer.length() != shorter.length() + 1) return false;
+        if (longer.length() != shorter.length() + 1) return false;      // lengths must differ by exactly one
         int i = 0;                                                      // next letter of shorter to match
-        for (int j = 0; j < longer.length(); j++) {
+        for (int j = 0; j < longer.length(); j++) {                     // walk every letter of longer
+            // letters agree: advance in shorter; otherwise this letter of longer is the extra one
             if (i < shorter.length() && shorter.charAt(i) == longer.charAt(j)) i++;
         }
         return i == shorter.length();                                   // all of shorter matched; one letter of longer skipped
@@ -50,18 +54,18 @@ public class P640_LongestStringChain {
     /** Approach 3: sort by length, and for each word look up its L one-letter deletions in a map. O(n log n + n * L^2) time, O(n * L) space. */
     static int hashMapDp(String[] words) {
         String[] w = words.clone();
-        Arrays.sort(w, Comparator.comparingInt(String::length));
-        Map<String, Integer> longest = new HashMap<>();                 // word -> longest chain ending at it
-        int best = 0;
-        for (String word : w) {
-            int cur = 1;
-            for (int i = 0; i < word.length(); i++) {
-                String shorter = word.substring(0, i) + word.substring(i + 1);
-                Integer prev = longest.get(shorter);
-                if (prev != null) cur = Math.max(cur, prev + 1);
+        Arrays.sort(w, Comparator.comparingInt(String::length));  // shorter words first
+        Map<String, Integer> longest = new HashMap<>();           // word -> longest chain ending at it
+        int best = 0;                                             // longest chain anywhere
+        for (String word : w) {                                   // process words by length
+            int cur = 1;                                          // word alone is a chain of length 1
+            for (int i = 0; i < word.length(); i++) {             // try deleting each letter
+                String shorter = word.substring(0, i) + word.substring(i + 1);  // delete letter i
+                Integer prev = longest.get(shorter);              // null if it is not in the list
+                if (prev != null) cur = Math.max(cur, prev + 1);  // extend that chain by word
             }
-            longest.put(word, cur);
-            best = Math.max(best, cur);
+            longest.put(word, cur);                               // record the result for longer words
+            best = Math.max(best, cur);                           // the chain may end at any word
         }
         return best;
     }

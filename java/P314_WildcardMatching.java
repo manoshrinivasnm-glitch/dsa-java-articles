@@ -5,100 +5,111 @@ public class P314_WildcardMatching {
 
     /** Approach 1: recursion on prefix lengths. Exponential time, O(n + m) stack. */
     static boolean recursive(String s, String p) {
-        return solve(s.length(), p.length(), s, p);
+        return solve(s.length(), p.length(), s, p);  // start from the two full strings
     }
 
     /** Does the prefix s[0..i) match the pattern prefix p[0..j)? */
     static boolean solve(int i, int j, String s, String p) {
-        if (j == 0) return i == 0;                               // empty pattern matches only the empty string
-        if (i == 0) return allStars(p, j);                       // empty string: the pattern must be all '*'
-        char pc = p.charAt(j - 1);
+        if (j == 0) return i == 0;                    // empty pattern matches only the empty string
+        if (i == 0) return allStars(p, j);            // empty string: the pattern must be all '*'
+        char pc = p.charAt(j - 1);                    // the last pattern character
+        // '?' or the same letter: both last characters are used up
         if (pc == '?' || pc == s.charAt(i - 1)) return solve(i - 1, j - 1, s, p);
-        if (pc == '*') return solve(i, j - 1, s, p)              // the star matches nothing
-                           || solve(i - 1, j, s, p);             // the star swallows s[i - 1] and may continue
-        return false;                                            // two different letters
+        if (pc == '*') return solve(i, j - 1, s, p)   // the star matches nothing
+                           || solve(i - 1, j, s, p);  // the star swallows s[i - 1] and may continue
+        return false;                                 // two different letters
     }
 
     /** True when p[0..j) consists only of '*'. */
     static boolean allStars(String p, int j) {
-        for (int k = 0; k < j; k++) if (p.charAt(k) != '*') return false;
+        for (int k = 0; k < j; k++) if (p.charAt(k) != '*') return false;  // any non-star character fails
         return true;
     }
 
     /** Approach 2: memoization on (i, j); 0 = unknown, 1 = false, 2 = true. O(n * m) time and space. */
     static boolean memoization(String s, String p) {
-        int[][] dp = new int[s.length() + 1][p.length() + 1];
-        return memo(s.length(), p.length(), s, p, dp);
+        int[][] dp = new int[s.length() + 1][p.length() + 1];  // dp[i][j]: 0 = unknown, 1 = false, 2 = true
+        return memo(s.length(), p.length(), s, p, dp);         // start from the two full strings
     }
 
     static boolean memo(int i, int j, String s, String p, int[][] dp) {
-        if (j == 0) return i == 0;
-        if (i == 0) return allStars(p, j);
-        if (dp[i][j] != 0) return dp[i][j] == 2;
-        char pc = p.charAt(j - 1);
+        if (j == 0) return i == 0;                // empty pattern matches only the empty string
+        if (i == 0) return allStars(p, j);        // empty string: the pattern must be all '*'
+        if (dp[i][j] != 0) return dp[i][j] == 2;  // already solved: 2 means true
+        char pc = p.charAt(j - 1);                // the last pattern character
         boolean ok;
+        // '?' or the same letter: drop both last characters
         if (pc == '?' || pc == s.charAt(i - 1)) ok = memo(i - 1, j - 1, s, p, dp);
+        // star: match nothing, or swallow s[i - 1] and keep the star
         else if (pc == '*') ok = memo(i, j - 1, s, p, dp) || memo(i - 1, j, s, p, dp);
-        else ok = false;
-        dp[i][j] = ok ? 2 : 1;
+        else ok = false;                          // two different letters
+        dp[i][j] = ok ? 2 : 1;                    // store the result as 1 (false) or 2 (true)
         return ok;
     }
 
     /** Approach 3: tabulation. Row 0 is true while the pattern is a run of stars; column 0 is false below row 0. O(n * m) time and space. */
     static boolean tabulation(String s, String p) {
         int n = s.length(), m = p.length();
-        boolean[][] dp = new boolean[n + 1][m + 1];
-        dp[0][0] = true;
+        boolean[][] dp = new boolean[n + 1][m + 1];  // dp[i][j] = does s[0..i) match p[0..j)
+        dp[0][0] = true;                             // empty string matches the empty pattern
+        // row 0: true only while the pattern is all stars
         for (int j = 1; j <= m; j++) dp[0][j] = dp[0][j - 1] && p.charAt(j - 1) == '*';
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {               // fill row by row
             for (int j = 1; j <= m; j++) {
-                char pc = p.charAt(j - 1);
+                char pc = p.charAt(j - 1);           // the current pattern character
+                // '?' or the same letter: drop both last characters
                 if (pc == '?' || pc == s.charAt(i - 1)) dp[i][j] = dp[i - 1][j - 1];
+                // star: match nothing (left) or swallow s[i - 1] (up)
                 else if (pc == '*') dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
-                else dp[i][j] = false;
+                else dp[i][j] = false;               // two different letters
             }
         }
-        return dp[n][m];
+        return dp[n][m];                             // does all of s match all of p
     }
 
     /** Approach 4: two rows; cur[0] is false for every non-empty prefix of s. O(n * m) time, O(m) space. */
     static boolean spaceOptimized(String s, String p) {
         int n = s.length(), m = p.length();
+        // prev = row i - 1, cur = row i being filled
         boolean[] prev = new boolean[m + 1], cur = new boolean[m + 1];
-        prev[0] = true;
+        prev[0] = true;                                   // empty string matches the empty pattern
+        // row 0: true only while the pattern is all stars
         for (int j = 1; j <= m; j++) prev[j] = prev[j - 1] && p.charAt(j - 1) == '*';
         for (int i = 1; i <= n; i++) {
-            cur[0] = false;                                      // a non-empty string never matches an empty pattern
+            cur[0] = false;                               // a non-empty string never matches an empty pattern
             for (int j = 1; j <= m; j++) {
-                char pc = p.charAt(j - 1);
+                char pc = p.charAt(j - 1);                // the current pattern character
+                // '?' or the same letter: drop both last characters
                 if (pc == '?' || pc == s.charAt(i - 1)) cur[j] = prev[j - 1];
+                // star: match nothing or swallow s[i - 1]
                 else if (pc == '*') cur[j] = cur[j - 1] || prev[j];
-                else cur[j] = false;
+                else cur[j] = false;                      // two different letters
             }
-            boolean[] tmp = prev; prev = cur; cur = tmp;
+            boolean[] tmp = prev; prev = cur; cur = tmp;  // the row just built becomes "previous"
         }
-        return prev[m];
+        return prev[m];                                   // after the last swap prev holds row n
     }
 
     /** Approach 5: greedy two pointers that only ever backtrack to the most recent star. O(n * m) worst case, O(1) space. */
     static boolean greedy(String s, String p) {
-        int i = 0, j = 0, star = -1, mark = 0;                   // star = index of the last '*', mark = where it started in s
-        while (i < s.length()) {
+        int i = 0, j = 0, star = -1, mark = 0;  // star = index of the last '*', mark = where it started in s
+        while (i < s.length()) {                // consume all of s
+            // the characters match: advance both
             if (j < p.length() && (p.charAt(j) == '?' || p.charAt(j) == s.charAt(i))) {
                 i++;
                 j++;
             } else if (j < p.length() && p.charAt(j) == '*') {
-                star = j++;                                      // first let the star match nothing
+                star = j++;                     // first let the star match nothing
                 mark = i;
             } else if (star != -1) {
-                j = star + 1;                                    // stuck: let the last star swallow one more character
+                j = star + 1;                   // stuck: let the last star swallow one more character
                 i = ++mark;
             } else {
-                return false;
+                return false;                   // mismatch and no star to fall back on
             }
         }
         while (j < p.length() && p.charAt(j) == '*') j++;        // trailing stars can match the empty rest
-        return j == p.length();
+        return j == p.length();                 // matched only if the whole pattern was used
     }
 
     // ---------------------------------------------------------------- tests

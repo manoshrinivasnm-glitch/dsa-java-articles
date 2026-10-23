@@ -5,12 +5,13 @@ public class P309_LongestCommonSubstring {
 
     /** Approach 1: try every pair of start positions and extend while the characters agree. O(n * m * min(n, m)) time, O(1) space. */
     static int bruteForce(String s1, String s2) {
-        int n = s1.length(), m = s2.length(), best = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        int n = s1.length(), m = s2.length(), best = 0;  // best = longest block found so far
+        for (int i = 0; i < n; i++) {                    // every start position in s1
+            for (int j = 0; j < m; j++) {                // every start position in s2
                 int len = 0;
+                // extend the block while both strings still agree
                 while (i + len < n && j + len < m && s1.charAt(i + len) == s2.charAt(j + len)) len++;
-                best = Math.max(best, len);
+                best = Math.max(best, len);              // keep the longest block
             }
         }
         return best;
@@ -18,15 +19,15 @@ public class P309_LongestCommonSubstring {
 
     /** Approach 2: dp[i][j] = length of the common block ending exactly at s1[i - 1] and s2[j - 1]. O(n * m) time and space. */
     static int tabulation(String s1, String s2) {
-        int n = s1.length(), m = s2.length(), best = 0;
-        int[][] dp = new int[n + 1][m + 1];
+        int n = s1.length(), m = s2.length(), best = 0;      // best = longest block ending at any cell
+        int[][] dp = new int[n + 1][m + 1];                  // common block length ending at i - 1, j - 1
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-                    dp[i][j] = 1 + dp[i - 1][j - 1];             // extend the block that ended one step earlier
-                    best = Math.max(best, dp[i][j]);
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {  // same characters: the block can continue
+                    dp[i][j] = 1 + dp[i - 1][j - 1];         // extend the block that ended one step earlier
+                    best = Math.max(best, dp[i][j]);         // track the longest block seen so far
                 } else {
-                    dp[i][j] = 0;                                // a mismatch breaks every block ending here
+                    dp[i][j] = 0;                            // a mismatch breaks every block ending here
                 }
             }
         }
@@ -35,30 +36,32 @@ public class P309_LongestCommonSubstring {
 
     /** Approach 3: only the previous row is ever read, so keep two rows. O(n * m) time, O(m) space. */
     static int spaceOptimized(String s1, String s2) {
-        int n = s1.length(), m = s2.length(), best = 0;
-        int[] prev = new int[m + 1], cur = new int[m + 1];
+        int n = s1.length(), m = s2.length(), best = 0;      // best = longest block anywhere
+        int[] prev = new int[m + 1], cur = new int[m + 1];   // prev = row i - 1, cur = row i being filled
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-                    cur[j] = 1 + prev[j - 1];
-                    best = Math.max(best, cur[j]);
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {  // same characters: the block can continue
+                    cur[j] = 1 + prev[j - 1];                // grow the block from the row above
+                    best = Math.max(best, cur[j]);           // track the longest block seen so far
                 } else {
-                    cur[j] = 0;                                  // must be reset: the array holds an older row
+                    cur[j] = 0;                              // must be reset: the array holds an older row
                 }
             }
-            int[] tmp = prev; prev = cur; cur = tmp;
+            int[] tmp = prev; prev = cur; cur = tmp;         // the row just built becomes "previous"
         }
         return best;
     }
 
     /** Approach 4: walk each diagonal of the table with a single running counter. O(n * m) time, O(1) space. */
     static int diagonalScan(String s1, String s2) {
-        int n = s1.length(), m = s2.length(), best = 0;
-        for (int shift = -(n - 1); shift <= m - 1; shift++) {    // compare s1[i] with s2[i + shift]
-            int run = 0;
+        int n = s1.length(), m = s2.length(), best = 0;        // best = longest run on any diagonal
+        for (int shift = -(n - 1); shift <= m - 1; shift++) {  // compare s1[i] with s2[i + shift]
+            int run = 0;                                       // length of the current run on this diagonal
+            // walk this diagonal while it stays inside both strings
             for (int i = Math.max(0, -shift); i < n && i + shift < m; i++) {
+                // extend the run on a match, reset it on a mismatch
                 run = s1.charAt(i) == s2.charAt(i + shift) ? run + 1 : 0;
-                best = Math.max(best, run);
+                best = Math.max(best, run);                    // track the longest run seen so far
             }
         }
         return best;

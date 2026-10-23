@@ -5,9 +5,10 @@ public class P301_BestTimeToBuyAndSellStock {
 
     /** Approach 1: try every (buy day, sell day) pair. O(n^2) time, O(1) space. */
     static int bruteForce(int[] prices) {
-        int best = 0;
-        for (int buy = 0; buy < prices.length; buy++) {
-            for (int sell = buy + 1; sell < prices.length; sell++) {
+        int best = 0;                                    // best profit so far
+        for (int buy = 0; buy < prices.length; buy++) {  // every buy day
+            for (int sell = buy + 1; sell < prices.length; sell++) {  // every later sell day
+                // profit of buying and selling on this pair of days
                 best = Math.max(best, prices[sell] - prices[buy]);
             }
         }
@@ -17,21 +18,23 @@ public class P301_BestTimeToBuyAndSellStock {
     /** Approach 2: precompute the highest price from every day to the end. O(n) time, O(n) space. */
     static int better(int[] prices) {
         int n = prices.length;
-        if (n == 0) return 0;
-        int[] maxFrom = new int[n];                         // maxFrom[i] = max(prices[i..n-1])
-        maxFrom[n - 1] = prices[n - 1];
+        if (n == 0) return 0;            // no days: no profit
+        int[] maxFrom = new int[n];      // maxFrom[i] = max(prices[i..n-1])
+        maxFrom[n - 1] = prices[n - 1];  // the last day is its own maximum
+        // fill from the right: today versus the best price after it
         for (int i = n - 2; i >= 0; i--) maxFrom[i] = Math.max(prices[i], maxFrom[i + 1]);
         int best = 0;
+        // buy on day i, sell at the best price from day i on
         for (int i = 0; i < n; i++) best = Math.max(best, maxFrom[i] - prices[i]);
         return best;
     }
 
     /** Approach 3: one pass, remembering the cheapest price seen so far. O(n) time, O(1) space. */
     static int optimal(int[] prices) {
-        int minSoFar = Integer.MAX_VALUE, best = 0;
+        int minSoFar = Integer.MAX_VALUE, best = 0;   // cheapest price so far, best profit so far
         for (int price : prices) {
-            minSoFar = Math.min(minSoFar, price);           // cheapest buy on or before today
-            best = Math.max(best, price - minSoFar);        // sell today
+            minSoFar = Math.min(minSoFar, price);     // cheapest buy on or before today
+            best = Math.max(best, price - minSoFar);  // sell today
         }
         return best;
     }
