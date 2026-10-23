@@ -5,12 +5,12 @@ public class P324_TargetSum {
 
     /** Approach 1: recursion that tries both signs for every element. O(2^n) time, O(n) stack. */
     static int recursive(int[] nums, int target) {
-        return signs(0, 0, nums, target);
+        return signs(0, 0, nums, target);                            // start at index 0 with a running total of 0
     }
 
     /** Ways to sign nums[i..] so that the final total is target, given the running total cur of nums[0..i-1]. */
     static int signs(int i, int cur, int[] nums, int target) {
-        if (i == nums.length) return cur == target ? 1 : 0;
+        if (i == nums.length) return cur == target ? 1 : 0;         // all signs chosen: did we hit target?
         return signs(i + 1, cur + nums[i], nums, target)            // +nums[i]
              + signs(i + 1, cur - nums[i], nums, target);           // -nums[i]
     }
@@ -18,47 +18,47 @@ public class P324_TargetSum {
     /** Approach 2: memoization on (i, running total), shifted by total so indices are non-negative. O(n * total) time and space. */
     static int memoization(int[] nums, int target) {
         int total = 0;
-        for (int x : nums) total += x;
+        for (int x : nums) total += x;                               // largest possible |running total|
         int[][] dp = new int[nums.length][2 * total + 1];           // running total ranges over [-total, total]
-        for (int[] row : dp) Arrays.fill(row, -1);
+        for (int[] row : dp) Arrays.fill(row, -1);                   // counts are >= 0, so -1 = unknown
         return memo(0, 0, nums, target, total, dp);
     }
 
     static int memo(int i, int cur, int[] nums, int target, int total, int[][] dp) {
-        if (i == nums.length) return cur == target ? 1 : 0;
-        if (dp[i][cur + total] != -1) return dp[i][cur + total];
-        int ways = memo(i + 1, cur + nums[i], nums, target, total, dp)
-                 + memo(i + 1, cur - nums[i], nums, target, total, dp);
-        return dp[i][cur + total] = ways;
+        if (i == nums.length) return cur == target ? 1 : 0;         // all signs chosen: did we hit target?
+        if (dp[i][cur + total] != -1) return dp[i][cur + total];     // shifted: cur may be negative
+        int ways = memo(i + 1, cur + nums[i], nums, target, total, dp)   // +nums[i]
+                 + memo(i + 1, cur - nums[i], nums, target, total, dp);  // -nums[i]
+        return dp[i][cur + total] = ways;                            // store before returning
     }
 
     /** Approach 3: reduce to counting subsets with sum (total - |target|) / 2, then tabulate. O(n * total) time and space. */
     static int tabulation(int[] nums, int target) {
         int total = 0;
-        for (int x : nums) total += x;
+        for (int x : nums) total += x;                               // sum of every element
         int t = Math.abs(target);                                    // flipping every sign maps target to -target
-        if (t > total || (total - t) % 2 != 0) return 0;
+        if (t > total || (total - t) % 2 != 0) return 0;             // unreachable, or parity is wrong
         int neg = (total - t) / 2;                                   // the elements given a minus sign must sum to this
         int n = nums.length;
         int[][] dp = new int[n + 1][neg + 1];                        // dp[i][s]: subsets of the first i elements with sum s
-        dp[0][0] = 1;
-        for (int i = 1; i <= n; i++) {
-            for (int s = 0; s <= neg; s++) {
-                dp[i][s] = dp[i - 1][s] + (nums[i - 1] <= s ? dp[i - 1][s - nums[i - 1]] : 0);
+        dp[0][0] = 1;                                                // the empty prefix has one subset: {}
+        for (int i = 1; i <= n; i++) {                               // bring in element nums[i - 1]
+            for (int s = 0; s <= neg; s++) {                         // s starts at 0 so zeros are counted
+                dp[i][s] = dp[i - 1][s] + (nums[i - 1] <= s ? dp[i - 1][s - nums[i - 1]] : 0);   // skip + take
             }
         }
-        return dp[n][neg];
+        return dp[n][neg];                                           // ways to choose the minus-sign group
     }
 
     /** Approach 4: the same count with one array updated from right to left. O(n * total) time, O(total) space. */
     static int spaceOptimized(int[] nums, int target) {
         int total = 0;
-        for (int x : nums) total += x;
-        int t = Math.abs(target);
-        if (t > total || (total - t) % 2 != 0) return 0;
-        int neg = (total - t) / 2;
-        int[] ways = new int[neg + 1];
-        ways[0] = 1;
+        for (int x : nums) total += x;                               // sum of every element
+        int t = Math.abs(target);                                    // the sign of target does not matter
+        if (t > total || (total - t) % 2 != 0) return 0;             // unreachable, or parity is wrong
+        int neg = (total - t) / 2;                                   // sum the minus-sign elements must have
+        int[] ways = new int[neg + 1];                               // ways[s] = subsets so far with sum s
+        ways[0] = 1;                                                 // the empty subset
         for (int x : nums) {
             for (int s = neg; s >= x; s--) ways[s] += ways[s - x];   // right to left: each element used at most once
         }

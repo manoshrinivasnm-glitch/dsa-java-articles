@@ -6,28 +6,28 @@ public class P287_ClimbingStairs {
     /** Approach 1: recursion on the last move (a 1-step or a 2-step). O(2^n) time, O(n) stack. */
     static long recursive(int n) {
         if (n <= 1) return 1;                                   // step 0 or step 1: exactly one way
-        return recursive(n - 1) + recursive(n - 2);
+        return recursive(n - 1) + recursive(n - 2);             // last move was a 1-step or a 2-step
     }
 
     /** Approach 2: memoization, each ways(i) computed once. O(n) time, O(n) space for the table and the stack. */
     static long memoization(int n) {
-        long[] dp = new long[n + 1];
+        long[] dp = new long[n + 1];                            // dp[i] caches the ways to reach step i
         Arrays.fill(dp, -1);                                    // -1 = not computed yet
         return ways(n, dp);
     }
 
     static long ways(int i, long[] dp) {
-        if (i <= 1) return 1;
-        if (dp[i] != -1) return dp[i];
-        return dp[i] = ways(i - 1, dp) + ways(i - 2, dp);
+        if (i <= 1) return 1;                                   // step 0 or step 1: exactly one way
+        if (dp[i] != -1) return dp[i];                          // already solved: reuse it
+        return dp[i] = ways(i - 1, dp) + ways(i - 2, dp);       // solve once from the two lower steps, store it
     }
 
     /** Approach 3: tabulation from the bottom step upward. O(n) time, O(n) space. */
     static long tabulation(int n) {
-        long[] dp = new long[Math.max(n + 1, 2)];
+        long[] dp = new long[Math.max(n + 1, 2)];               // at least 2 cells so dp[1] exists when n = 0
         dp[0] = 1;                                              // standing on the ground: one way (do nothing)
         dp[1] = 1;                                              // a single 1-step
-        for (int i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];
+        for (int i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];   // arrive from one or two steps below
         return dp[n];
     }
 
@@ -35,11 +35,11 @@ public class P287_ClimbingStairs {
     static long spaceOptimized(int n) {
         long prev2 = 1, prev = 1;                               // ways(i - 2) and ways(i - 1), starting at i = 2
         for (int i = 2; i <= n; i++) {
-            long cur = prev + prev2;
-            prev2 = prev;
+            long cur = prev + prev2;                            // ways(i)
+            prev2 = prev;                                       // slide the window up one step
             prev = cur;
         }
-        return prev;
+        return prev;                                            // ways(n); also 1 when n is 0 or 1
     }
 
     // ---------------------------------------------------------------- tests

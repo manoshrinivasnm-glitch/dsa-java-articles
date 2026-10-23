@@ -11,101 +11,103 @@ public class P769_NinjaAndHisFriends {
 
     /** Approach 1: recursion on (row, col1, col2), trying all 9 pairs of moves. O(9^r) time, O(r) stack. */
     static int recursive(int[][] grid) {
-        return solve(0, 0, grid[0].length - 1, grid);
+        return solve(0, 0, grid[0].length - 1, grid);                // friends start at the two top corners
     }
 
     /** Best total from row i down to the last row when the friends stand at columns j1 and j2. */
     static int solve(int i, int j1, int j2, int[][] grid) {
         int c = grid[0].length;
         if (j1 < 0 || j1 >= c || j2 < 0 || j2 >= c) return NEG;    // walked off the grid
-        int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];
+        int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];   // a shared cell counts once
         if (i == grid.length - 1) return here;                       // last row: nothing below
-        int best = NEG;
-        for (int d1 = -1; d1 <= 1; d1++) {
-            for (int d2 = -1; d2 <= 1; d2++) {
+        int best = NEG;                                              // best total over the 9 move pairs
+        for (int d1 = -1; d1 <= 1; d1++) {                           // friend 1: down-left, down, down-right
+            for (int d2 = -1; d2 <= 1; d2++) {                       // friend 2 picks independently
                 best = Math.max(best, solve(i + 1, j1 + d1, j2 + d2, grid));
             }
         }
-        return here + best;
+        return here + best;                                          // this row plus the best of the rows below
     }
 
     /** Approach 2: memoization on the r * c * c states. O(9 * r * c^2) time, O(r * c^2) space plus the stack. */
     static int memoization(int[][] grid) {
         int r = grid.length, c = grid[0].length;
-        int[][][] dp = new int[r][c][c];
+        int[][][] dp = new int[r][c][c];                             // dp[i][j1][j2] = best total from row i down
         for (int[][] plane : dp) for (int[] row : plane) Arrays.fill(row, -1);   // totals are >= 0, so -1 = unknown
         return memo(0, 0, c - 1, grid, dp);
     }
 
     static int memo(int i, int j1, int j2, int[][] grid, int[][][] dp) {
         int c = grid[0].length;
-        if (j1 < 0 || j1 >= c || j2 < 0 || j2 >= c) return NEG;
-        if (dp[i][j1][j2] != -1) return dp[i][j1][j2];
-        int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];
-        if (i == grid.length - 1) return dp[i][j1][j2] = here;
+        if (j1 < 0 || j1 >= c || j2 < 0 || j2 >= c) return NEG;    // walked off the grid
+        if (dp[i][j1][j2] != -1) return dp[i][j1][j2];               // state solved before: reuse it
+        int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];   // a shared cell counts once
+        if (i == grid.length - 1) return dp[i][j1][j2] = here;       // last row: nothing below
         int best = NEG;
-        for (int d1 = -1; d1 <= 1; d1++) {
+        for (int d1 = -1; d1 <= 1; d1++) {                           // all 9 combinations of the two moves
             for (int d2 = -1; d2 <= 1; d2++) {
                 best = Math.max(best, memo(i + 1, j1 + d1, j2 + d2, grid, dp));
             }
         }
-        return dp[i][j1][j2] = here + best;
+        return dp[i][j1][j2] = here + best;                          // store before returning
     }
 
     /** Approach 3: tabulation from the last row up. O(9 * r * c^2) time, O(r * c^2) space. */
     static int tabulation(int[][] grid) {
         int r = grid.length, c = grid[0].length;
-        int[][][] dp = new int[r][c][c];
-        for (int j1 = 0; j1 < c; j1++) {
+        int[][][] dp = new int[r][c][c];                             // dp[i][j1][j2] = best total from row i down
+        for (int j1 = 0; j1 < c; j1++) {                             // base case: the last row, every column pair
             for (int j2 = 0; j2 < c; j2++) {
                 dp[r - 1][j1][j2] = (j1 == j2) ? grid[r - 1][j1] : grid[r - 1][j1] + grid[r - 1][j2];
             }
         }
-        for (int i = r - 2; i >= 0; i--) {
+        for (int i = r - 2; i >= 0; i--) {                           // climb upward; row i + 1 is complete
             for (int j1 = 0; j1 < c; j1++) {
                 for (int j2 = 0; j2 < c; j2++) {
-                    int best = NEG;
+                    int best = NEG;                                  // best continuation from row i + 1
                     for (int d1 = -1; d1 <= 1; d1++) {
                         for (int d2 = -1; d2 <= 1; d2++) {
-                            int n1 = j1 + d1, n2 = j2 + d2;
+                            int n1 = j1 + d1, n2 = j2 + d2;          // the two columns after this pair of moves
+                            // only moves that keep both friends on the grid count
                             if (n1 >= 0 && n1 < c && n2 >= 0 && n2 < c) best = Math.max(best, dp[i + 1][n1][n2]);
                         }
                     }
-                    int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];
+                    int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];   // a shared cell counts once
                     dp[i][j1][j2] = here + best;
                 }
             }
         }
-        return dp[0][0][c - 1];
+        return dp[0][0][c - 1];                                      // friends start at the two top corners
     }
 
     /** Approach 4: keep only the c x c layer of the row below. O(9 * r * c^2) time, O(c^2) space. */
     static int spaceOptimized(int[][] grid) {
         int r = grid.length, c = grid[0].length;
-        int[][] below = new int[c][c];
-        for (int j1 = 0; j1 < c; j1++) {
+        int[][] below = new int[c][c];                               // best totals for the row below
+        for (int j1 = 0; j1 < c; j1++) {                             // start with the last row
             for (int j2 = 0; j2 < c; j2++) {
                 below[j1][j2] = (j1 == j2) ? grid[r - 1][j1] : grid[r - 1][j1] + grid[r - 1][j2];
             }
         }
-        for (int i = r - 2; i >= 0; i--) {
-            int[][] cur = new int[c][c];
+        for (int i = r - 2; i >= 0; i--) {                           // climb upward one row at a time
+            int[][] cur = new int[c][c];                             // layer for row i, built from below only
             for (int j1 = 0; j1 < c; j1++) {
                 for (int j2 = 0; j2 < c; j2++) {
                     int best = NEG;
                     for (int d1 = -1; d1 <= 1; d1++) {
                         for (int d2 = -1; d2 <= 1; d2++) {
-                            int n1 = j1 + d1, n2 = j2 + d2;
+                            int n1 = j1 + d1, n2 = j2 + d2;          // the two columns after this pair of moves
+                            // only moves that keep both friends on the grid count
                             if (n1 >= 0 && n1 < c && n2 >= 0 && n2 < c) best = Math.max(best, below[n1][n2]);
                         }
                     }
-                    int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];
+                    int here = (j1 == j2) ? grid[i][j1] : grid[i][j1] + grid[i][j2];   // a shared cell counts once
                     cur[j1][j2] = here + best;
                 }
             }
-            below = cur;
+            below = cur;                                             // row i becomes the row below
         }
-        return below[0][c - 1];
+        return below[0][c - 1];                                      // friends start at the two top corners
     }
 
     // ---------------------------------------------------------------- tests

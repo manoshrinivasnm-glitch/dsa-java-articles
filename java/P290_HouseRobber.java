@@ -6,17 +6,17 @@ public class P290_HouseRobber {
     /** Approach 1: try every subset of houses and keep the best one with no two neighbours on the circle. O(2^n * n) time, O(1) space. */
     static long bruteForce(int[] nums) {
         int n = nums.length;
-        long best = 0;
-        for (int mask = 0; mask < (1 << n); mask++) {
-            boolean ok = true;
+        long best = 0;                                          // robbing nothing is always allowed
+        for (int mask = 0; mask < (1 << n); mask++) {           // bit i set = house i is robbed
+            boolean ok = true;                                  // no two robbed houses touch (so far)
             long sum = 0;
             for (int i = 0; i < n && ok; i++) {
-                if ((mask >> i & 1) == 0) continue;
+                if ((mask >> i & 1) == 0) continue;             // house i is not in this subset
                 int next = (i + 1) % n;                         // the neighbour on the circle (house 0 after house n-1)
-                if (next != i && (mask >> next & 1) == 1) ok = false;
+                if (next != i && (mask >> next & 1) == 1) ok = false;   // two neighbours robbed: illegal
                 sum += nums[i];
             }
-            if (ok) best = Math.max(best, sum);
+            if (ok) best = Math.max(best, sum);                 // keep the best legal subset
         }
         return best;
     }
@@ -24,42 +24,42 @@ public class P290_HouseRobber {
     /** Approach 2: split the circle into two lines and solve each with memoized pick / not-pick. O(n) time, O(n) space. */
     static long memoization(int[] nums) {
         int n = nums.length;
-        if (n == 0) return 0;
+        if (n == 0) return 0;                                   // no houses: nothing to rob
         if (n == 1) return nums[0];                             // a single house has no neighbour
-        long[] dpA = new long[n], dpB = new long[n];
-        Arrays.fill(dpA, -1);
+        long[] dpA = new long[n], dpB = new long[n];            // one memo table per line
+        Arrays.fill(dpA, -1);                                   // -1 = not computed yet
         Arrays.fill(dpB, -1);
         long skipLast = robRange(nums, 0, n - 2, dpA);          // houses 0 .. n-2
         long skipFirst = robRange(nums, 1, n - 1, dpB);         // houses 1 .. n-1
-        return Math.max(skipLast, skipFirst);
+        return Math.max(skipLast, skipFirst);                   // first and last can never both be robbed
     }
 
     /** Best sum from the line of houses lo..i (i is the last house still allowed). */
     static long robRange(int[] nums, int lo, int i, long[] dp) {
-        if (i < lo) return 0;
-        if (dp[i] != -1) return dp[i];
-        long pick = nums[i] + robRange(nums, lo, i - 2, dp);
-        long skip = robRange(nums, lo, i - 1, dp);
-        return dp[i] = Math.max(pick, skip);
+        if (i < lo) return 0;                                   // walked off the start of the line
+        if (dp[i] != -1) return dp[i];                          // solved before: reuse it
+        long pick = nums[i] + robRange(nums, lo, i - 2, dp);    // rob house i, so i - 1 is off limits
+        long skip = robRange(nums, lo, i - 1, dp);              // leave house i
+        return dp[i] = Math.max(pick, skip);                    // store the better choice
     }
 
     /** Approach 3: the same split, each line solved with two rolling variables. O(n) time, O(1) space. */
     static long optimal(int[] nums) {
         int n = nums.length;
-        if (n == 0) return 0;
-        if (n == 1) return nums[0];
-        return Math.max(robLine(nums, 0, n - 2), robLine(nums, 1, n - 1));
+        if (n == 0) return 0;                                   // no houses: nothing to rob
+        if (n == 1) return nums[0];                             // a single house has no neighbour
+        return Math.max(robLine(nums, 0, n - 2), robLine(nums, 1, n - 1));   // drop the last house or the first
     }
 
     /** Linear House Robber on nums[lo..hi]. */
     static long robLine(int[] nums, int lo, int hi) {
         long prev2 = 0, prev = 0;                               // best up to i - 2 and up to i - 1
         for (int i = lo; i <= hi; i++) {
-            long cur = Math.max(prev, prev2 + nums[i]);
-            prev2 = prev;
+            long cur = Math.max(prev, prev2 + nums[i]);         // skip house i, or rob it on top of i - 2
+            prev2 = prev;                                       // slide the two-cell window forward
             prev = cur;
         }
-        return prev;
+        return prev;                                            // best sum for the whole line
     }
 
     // ---------------------------------------------------------------- tests

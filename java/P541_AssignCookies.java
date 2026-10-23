@@ -5,18 +5,18 @@ public class P541_AssignCookies {
 
     /** Approach 1: exhaustive search over every assignment of cookies to children. Exponential time, O(n + m) space. */
     static int bruteForce(int[] greed, int[] cookies) {
-        return tryAll(0, greed, cookies, new boolean[cookies.length]);
+        return tryAll(0, greed, cookies, new boolean[cookies.length]);   // start at child 0, no cookie used
     }
 
     /** Most children among greed[i..] that can still be made content with the unused cookies. */
     static int tryAll(int i, int[] greed, int[] cookies, boolean[] used) {
-        if (i == greed.length) return 0;
+        if (i == greed.length) return 0;                               // every child considered
         int best = tryAll(i + 1, greed, cookies, used);              // child i gets nothing
         for (int j = 0; j < cookies.length; j++) {
             if (!used[j] && cookies[j] >= greed[i]) {                  // child i gets cookie j
-                used[j] = true;
-                best = Math.max(best, 1 + tryAll(i + 1, greed, cookies, used));
-                used[j] = false;
+                used[j] = true;                                        // claim the cookie
+                best = Math.max(best, 1 + tryAll(i + 1, greed, cookies, used));   // child i is content
+                used[j] = false;                                       // backtrack: free it for other choices
             }
         }
         return best;
@@ -25,14 +25,14 @@ public class P541_AssignCookies {
     /** Approach 2: least greedy child first, smallest sufficient cookie from a TreeMap multiset. O((n + m) log m) time. */
     static int better(int[] greed, int[] cookies) {
         TreeMap<Integer, Integer> left = new TreeMap<>();              // cookie size -> how many are unused
-        for (int c : cookies) left.merge(c, 1, Integer::sum);
-        int[] g = greed.clone();
-        Arrays.sort(g);
+        for (int c : cookies) left.merge(c, 1, Integer::sum);          // count each cookie size
+        int[] g = greed.clone();                                       // copy so the input stays unchanged
+        Arrays.sort(g);                                                // least greedy child first
         int content = 0;
         for (int need : g) {
             Integer size = left.ceilingKey(need);                      // smallest unused cookie with size >= need
             if (size == null) break;                                   // nothing fits; greedier children fare no better
-            if (left.merge(size, -1, Integer::sum) == 0) left.remove(size);
+            if (left.merge(size, -1, Integer::sum) == 0) left.remove(size);   // use one; drop the size at 0 left
             content++;
         }
         return content;
@@ -40,15 +40,15 @@ public class P541_AssignCookies {
 
     /** Approach 3: sort both arrays and sweep them with two pointers. O(n log n + m log m) time. */
     static int optimal(int[] greed, int[] cookies) {
-        int[] g = greed.clone(), s = cookies.clone();
-        Arrays.sort(g);
-        Arrays.sort(s);
-        int child = 0, cookie = 0;
-        while (child < g.length && cookie < s.length) {
+        int[] g = greed.clone(), s = cookies.clone();                  // copies so the inputs stay unchanged
+        Arrays.sort(g);                                                // children from least to most greedy
+        Arrays.sort(s);                                                // cookies from smallest to largest
+        int child = 0, cookie = 0;                                     // child also counts the content children
+        while (child < g.length && cookie < s.length) {                // stop when children or cookies run out
             if (s[cookie] >= g[child]) child++;                        // this cookie satisfies the least greedy child left
             cookie++;                                                  // used or too small for everyone left: discard it
         }
-        return child;
+        return child;                                                  // children satisfied
     }
 
     // ---------------------------------------------------------------- tests

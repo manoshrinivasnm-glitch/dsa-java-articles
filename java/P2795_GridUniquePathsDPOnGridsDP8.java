@@ -5,7 +5,7 @@ public class P2795_GridUniquePathsDPOnGridsDP8 {
 
     /** Approach 1: recursion from the target back to the start. O(2^(m+n)) time, O(m + n) stack. */
     static int recursive(int m, int n) {
-        return paths(m - 1, n - 1);
+        return paths(m - 1, n - 1);                             // count paths into the bottom-right cell
     }
 
     /** Number of paths from (0, 0) to (i, j). */
@@ -17,36 +17,36 @@ public class P2795_GridUniquePathsDPOnGridsDP8 {
 
     /** Approach 2: memoization on the m x n cells. O(m * n) time, O(m * n) space plus the stack. */
     static int memoization(int m, int n) {
-        int[][] dp = new int[m][n];
-        for (int[] row : dp) Arrays.fill(row, -1);
+        int[][] dp = new int[m][n];                             // dp[i][j] = paths from (0, 0) to (i, j)
+        for (int[] row : dp) Arrays.fill(row, -1);              // -1 = not computed yet
         return memo(m - 1, n - 1, dp);
     }
 
     static int memo(int i, int j, int[][] dp) {
-        if (i == 0 && j == 0) return 1;
-        if (i < 0 || j < 0) return 0;
-        if (dp[i][j] != -1) return dp[i][j];
-        return dp[i][j] = memo(i - 1, j, dp) + memo(i, j - 1, dp);
+        if (i == 0 && j == 0) return 1;                         // reached the start
+        if (i < 0 || j < 0) return 0;                           // walked off the grid
+        if (dp[i][j] != -1) return dp[i][j];                    // cell solved before: reuse it
+        return dp[i][j] = memo(i - 1, j, dp) + memo(i, j - 1, dp);   // from above + from the left, stored
     }
 
     /** Approach 3: tabulation row by row. O(m * n) time, O(m * n) space. */
     static int tabulation(int m, int n) {
-        int[][] dp = new int[m][n];
-        for (int i = 0; i < m; i++) {
+        int[][] dp = new int[m][n];                             // dp[i][j] = paths from (0, 0) to (i, j)
+        for (int i = 0; i < m; i++) {                           // row by row, so above and left are ready
             for (int j = 0; j < n; j++) {
-                if (i == 0 && j == 0) { dp[i][j] = 1; continue; }
-                int up = i > 0 ? dp[i - 1][j] : 0;
-                int left = j > 0 ? dp[i][j - 1] : 0;
+                if (i == 0 && j == 0) { dp[i][j] = 1; continue; }   // the start: one empty path
+                int up = i > 0 ? dp[i - 1][j] : 0;              // paths arriving from above (none on row 0)
+                int left = j > 0 ? dp[i][j - 1] : 0;            // paths arriving from the left (none on column 0)
                 dp[i][j] = up + left;
             }
         }
-        return dp[m - 1][n - 1];
+        return dp[m - 1][n - 1];                                // paths into the bottom-right cell
     }
 
     /** Approach 4: one row is enough; row[j] still holds the value from above when we update it. O(m * n) time, O(n) space. */
     static int spaceOptimized(int m, int n) {
-        int[] row = new int[n];
-        row[0] = 1;
+        int[] row = new int[n];                                 // paths into each cell of the current row
+        row[0] = 1;                                             // column 0 always has exactly one path
         for (int i = 0; i < m; i++) {
             for (int j = 1; j < n; j++) {
                 row[j] += row[j - 1];                           // from above (old row[j]) + from the left (new row[j - 1])
@@ -57,13 +57,13 @@ public class P2795_GridUniquePathsDPOnGridsDP8 {
 
     /** Approach 5: every path is m-1 downs and n-1 rights in some order, so the answer is C(m+n-2, min(m-1, n-1)). O(min(m, n)) time, O(1) space. */
     static int combinatorics(int m, int n) {
-        int total = m + n - 2;
-        int r = Math.min(m - 1, n - 1);
-        long result = 1;
+        int total = m + n - 2;                                  // moves in every path
+        int r = Math.min(m - 1, n - 1);                         // choose the smaller side: fewer loop steps
+        long result = 1;                                        // long so the product cannot overflow midway
         for (int i = 1; i <= r; i++) {
             result = result * (total - r + i) / i;              // result is now C(total - r + i, i): always an integer
         }
-        return (int) result;
+        return (int) result;                                    // the final count fits in an int
     }
 
     // ---------------------------------------------------------------- tests

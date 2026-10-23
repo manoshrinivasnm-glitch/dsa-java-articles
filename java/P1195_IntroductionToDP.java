@@ -8,45 +8,45 @@ public class P1195_IntroductionToDP {
 
     /** Plain recursion straight from the recurrence. O(2^n) time, O(n) stack. */
     static long plainRecursion(int n) {
-        calls++;
+        calls++;                                                // count the call so tests can show the blow-up
         if (n <= 1) return n;                                   // base cases: F(0) = 0, F(1) = 1
-        return plainRecursion(n - 1) + plainRecursion(n - 2);
+        return plainRecursion(n - 1) + plainRecursion(n - 2);   // both subproblems, recomputed every time
     }
 
     /** Memoization (top-down): the same recursion, but every F(i) is stored the first time it is computed. O(n) time, O(n) space. */
     static long memoization(int n) {
-        long[] dp = new long[n + 1];
+        long[] dp = new long[n + 1];                            // dp[i] caches F(i) once it is known
         Arrays.fill(dp, -1);                                    // -1 means "not computed yet"
         return memo(n, dp);
     }
 
     static long memo(int n, long[] dp) {
-        memoCalls++;
-        if (n <= 1) return n;
+        memoCalls++;                                            // count the call to compare with plain recursion
+        if (n <= 1) return n;                                   // base cases: F(0) = 0, F(1) = 1
         if (dp[n] != -1) return dp[n];                          // solved before: answer in O(1)
         return dp[n] = memo(n - 1, dp) + memo(n - 2, dp);      // solve once, store, return
     }
 
     /** Tabulation (bottom-up): fill dp[0..n] from the base cases upward. O(n) time, O(n) space, no recursion. */
     static long tabulation(int n) {
-        if (n <= 1) return n;
-        long[] dp = new long[n + 1];
-        dp[0] = 0;
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];
+        if (n <= 1) return n;                                   // tiny n: the answer is n itself
+        long[] dp = new long[n + 1];                            // dp[i] = F(i)
+        dp[0] = 0;                                              // base case F(0)
+        dp[1] = 1;                                              // base case F(1)
+        for (int i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];   // each cell from the two before it
         return dp[n];
     }
 
     /** Space optimization: dp[i] only reads dp[i - 1] and dp[i - 2], so keep just those two. O(n) time, O(1) space. */
     static long spaceOptimized(int n) {
-        if (n <= 1) return n;
+        if (n <= 1) return n;                                   // tiny n: the answer is n itself
         long prev2 = 0, prev = 1;                               // F(i - 2) and F(i - 1), starting at i = 2
         for (int i = 2; i <= n; i++) {
-            long cur = prev + prev2;
-            prev2 = prev;
+            long cur = prev + prev2;                            // F(i)
+            prev2 = prev;                                       // slide the window one step forward
             prev = cur;
         }
-        return prev;
+        return prev;                                            // after the loop prev holds F(n)
     }
 
     // ---------------------------------------------------------------- tests

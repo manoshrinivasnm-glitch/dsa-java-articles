@@ -7,54 +7,54 @@ public class P318_CountSubsetsWithSumK {
 
     /** Approach 1: pick / not-pick recursion over the first i elements. O(2^n) time, O(n) stack. */
     static int recursive(int[] arr, int k) {
-        return count(arr.length, k, arr);
+        return count(arr.length, k, arr);               // all n elements available, target k
     }
 
     /** Number of subsets of the first i elements (arr[0..i-1]) whose sum is exactly t. */
     static int count(int i, int t, int[] arr) {
         if (i == 0) return t == 0 ? 1 : 0;              // no elements left: only the empty subset, with sum 0
-        int notTake = count(i - 1, t, arr);
-        int take = arr[i - 1] <= t ? count(i - 1, t - arr[i - 1], arr) : 0;
-        return (notTake + take) % MOD;
+        int notTake = count(i - 1, t, arr);             // subsets that leave arr[i - 1] out
+        int take = arr[i - 1] <= t ? count(i - 1, t - arr[i - 1], arr) : 0;   // subsets that use it, if it fits
+        return (notTake + take) % MOD;                  // both kinds count; keep the total under MOD
     }
 
     /** Approach 2: memoization on (i, t). O(n * k) time, O(n * k) space plus the stack. */
     static int memoization(int[] arr, int k) {
-        int[][] dp = new int[arr.length + 1][k + 1];
+        int[][] dp = new int[arr.length + 1][k + 1];    // dp[i][t] = count for the first i elements, sum t
         for (int[] row : dp) Arrays.fill(row, -1);      // counts are >= 0, so -1 = unknown
         return memo(arr.length, k, arr, dp);
     }
 
     static int memo(int i, int t, int[] arr, int[][] dp) {
-        if (i == 0) return t == 0 ? 1 : 0;
-        if (dp[i][t] != -1) return dp[i][t];
-        int notTake = memo(i - 1, t, arr, dp);
-        int take = arr[i - 1] <= t ? memo(i - 1, t - arr[i - 1], arr, dp) : 0;
-        return dp[i][t] = (notTake + take) % MOD;
+        if (i == 0) return t == 0 ? 1 : 0;              // no elements left: only the empty subset, with sum 0
+        if (dp[i][t] != -1) return dp[i][t];            // state solved before: reuse it
+        int notTake = memo(i - 1, t, arr, dp);          // leave arr[i - 1] out
+        int take = arr[i - 1] <= t ? memo(i - 1, t - arr[i - 1], arr, dp) : 0;   // use it, if it fits
+        return dp[i][t] = (notTake + take) % MOD;       // store the combined count
     }
 
     /** Approach 3: tabulation, dp[i][t] = subsets of the first i elements with sum t. O(n * k) time and space. */
     static int tabulation(int[] arr, int k) {
         int n = arr.length;
-        int[][] dp = new int[n + 1][k + 1];
+        int[][] dp = new int[n + 1][k + 1];             // row 0 = no elements yet
         dp[0][0] = 1;                                   // the empty prefix has exactly one subset: {}
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {                  // bring in element arr[i - 1]
             for (int t = 0; t <= k; t++) {              // t starts at 0: zeros add subsets with sum 0
-                int notTake = dp[i - 1][t];
-                int take = arr[i - 1] <= t ? dp[i - 1][t - arr[i - 1]] : 0;
+                int notTake = dp[i - 1][t];             // subsets that leave arr[i - 1] out
+                int take = arr[i - 1] <= t ? dp[i - 1][t - arr[i - 1]] : 0;   // subsets that use it
                 dp[i][t] = (notTake + take) % MOD;
             }
         }
-        return dp[n][k];
+        return dp[n][k];                                // all elements, sum k
     }
 
     /** Approach 4: one array updated from right to left. O(n * k) time, O(k) space. */
     static int spaceOptimized(int[] arr, int k) {
-        int[] ways = new int[k + 1];
-        ways[0] = 1;
-        for (int x : arr) {
+        int[] ways = new int[k + 1];                    // ways[t] = subsets of the elements so far with sum t
+        ways[0] = 1;                                    // the empty subset
+        for (int x : arr) {                             // add one element at a time
             for (int t = k; t >= x; t--) {              // right to left: ways[t - x] still excludes x
-                ways[t] = (ways[t] + ways[t - x]) % MOD;
+                ways[t] = (ways[t] + ways[t - x]) % MOD;   // old subsets plus those that now add x
             }
         }
         return ways[k];

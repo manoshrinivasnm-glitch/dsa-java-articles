@@ -9,7 +9,7 @@ public class P298_MinimumFallingPathSum {
     static int recursive(int[][] matrix) {
         int n = matrix.length, m = matrix[0].length;
         int best = Integer.MAX_VALUE;
-        for (int j = 0; j < m; j++) best = Math.min(best, solve(n - 1, j, matrix));
+        for (int j = 0; j < m; j++) best = Math.min(best, solve(n - 1, j, matrix));   // try every end column
         return best;
     }
 
@@ -17,66 +17,66 @@ public class P298_MinimumFallingPathSum {
     static int solve(int i, int j, int[][] matrix) {
         if (j < 0 || j >= matrix[0].length) return INF;         // stepped off the side
         if (i == 0) return matrix[0][j];                        // a path may start at any cell of row 0
-        int up = solve(i - 1, j, matrix);
-        int upLeft = solve(i - 1, j - 1, matrix);
-        int upRight = solve(i - 1, j + 1, matrix);
-        return matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));
+        int up = solve(i - 1, j, matrix);                       // came straight down
+        int upLeft = solve(i - 1, j - 1, matrix);               // came down-right from the left column
+        int upRight = solve(i - 1, j + 1, matrix);              // came down-left from the right column
+        return matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));   // this cell plus the cheapest parent
     }
 
     /** Approach 2: memoization on the n x m cells. O(n * m) time, O(n * m) space plus the stack. */
     static int memoization(int[][] matrix) {
         int n = matrix.length, m = matrix[0].length;
-        int[][] dp = new int[n][m];
+        int[][] dp = new int[n][m];                             // dp[i][j] = cheapest path ending at (i, j)
         for (int[] row : dp) Arrays.fill(row, Integer.MAX_VALUE);   // MAX_VALUE = not computed (sums can be negative)
         int best = Integer.MAX_VALUE;
-        for (int j = 0; j < m; j++) best = Math.min(best, memo(n - 1, j, matrix, dp));
+        for (int j = 0; j < m; j++) best = Math.min(best, memo(n - 1, j, matrix, dp));   // try every end column
         return best;
     }
 
     static int memo(int i, int j, int[][] matrix, int[][] dp) {
-        if (j < 0 || j >= matrix[0].length) return INF;
-        if (i == 0) return matrix[0][j];
-        if (dp[i][j] != Integer.MAX_VALUE) return dp[i][j];
-        int up = memo(i - 1, j, matrix, dp);
+        if (j < 0 || j >= matrix[0].length) return INF;         // stepped off the side
+        if (i == 0) return matrix[0][j];                        // a path may start at any cell of row 0
+        if (dp[i][j] != Integer.MAX_VALUE) return dp[i][j];     // cell solved before: reuse it
+        int up = memo(i - 1, j, matrix, dp);                    // the three cells a path can come from
         int upLeft = memo(i - 1, j - 1, matrix, dp);
         int upRight = memo(i - 1, j + 1, matrix, dp);
-        return dp[i][j] = matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));
+        return dp[i][j] = matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));   // store and return
     }
 
     /** Approach 3: tabulation from row 0 downward. O(n * m) time, O(n * m) space. */
     static int tabulation(int[][] matrix) {
         int n = matrix.length, m = matrix[0].length;
-        int[][] dp = new int[n][m];
-        for (int j = 0; j < m; j++) dp[0][j] = matrix[0][j];
-        for (int i = 1; i < n; i++) {
+        int[][] dp = new int[n][m];                             // dp[i][j] = cheapest path ending at (i, j)
+        for (int j = 0; j < m; j++) dp[0][j] = matrix[0][j];    // row 0: a path is just its starting cell
+        for (int i = 1; i < n; i++) {                           // each row reads only the row above
             for (int j = 0; j < m; j++) {
-                int up = dp[i - 1][j];
-                int upLeft = j > 0 ? dp[i - 1][j - 1] : INF;
-                int upRight = j < m - 1 ? dp[i - 1][j + 1] : INF;
+                int up = dp[i - 1][j];                          // straight down
+                int upLeft = j > 0 ? dp[i - 1][j - 1] : INF;    // diagonal from the left, if that column exists
+                int upRight = j < m - 1 ? dp[i - 1][j + 1] : INF;   // diagonal from the right, if it exists
                 dp[i][j] = matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));
             }
         }
         int best = Integer.MAX_VALUE;
-        for (int j = 0; j < m; j++) best = Math.min(best, dp[n - 1][j]);
+        for (int j = 0; j < m; j++) best = Math.min(best, dp[n - 1][j]);   // best end anywhere in the last row
         return best;
     }
 
     /** Approach 4: row i reads only row i - 1, so keep two rows. O(n * m) time, O(m) space. */
     static int spaceOptimized(int[][] matrix) {
         int n = matrix.length, m = matrix[0].length;
-        int[] prev = matrix[0].clone();
+        int[] prev = matrix[0].clone();                         // dp row 0; clone so the input stays untouched
         for (int i = 1; i < n; i++) {
-            int[] cur = new int[m];
+            int[] cur = new int[m];                             // dp row i, built from prev only
             for (int j = 0; j < m; j++) {
-                int up = prev[j];
-                int upLeft = j > 0 ? prev[j - 1] : INF;
-                int upRight = j < m - 1 ? prev[j + 1] : INF;
+                int up = prev[j];                               // straight down
+                int upLeft = j > 0 ? prev[j - 1] : INF;         // diagonal from the left, if that column exists
+                int upRight = j < m - 1 ? prev[j + 1] : INF;    // diagonal from the right, if it exists
                 cur[j] = matrix[i][j] + Math.min(up, Math.min(upLeft, upRight));
             }
-            prev = cur;
+            prev = cur;                                         // this row becomes the row above
         }
         int best = Integer.MAX_VALUE;
-        for (int v : prev) best = Math.min(best, v);
+        for (int v : prev) best = Math.min(best, v);            // best end anywhere in the last row
         return best;
     }
 

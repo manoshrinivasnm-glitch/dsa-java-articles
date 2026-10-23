@@ -7,16 +7,16 @@ public class P292_NinjasTraining {
 
     /** Approach 1: recursion over (day, task done on the following day). O(2^n) time, O(n) stack. */
     static int recursive(int[][] points) {
-        return solve(points.length - 1, NONE, points);
+        return solve(points.length - 1, NONE, points);          // start at the last day with nothing forbidden
     }
 
     /** Best total for days 0..day, given that task `last` is forbidden on `day`. */
     static int solve(int day, int last, int[][] points) {
         if (day < 0) return 0;                                  // no days left
         int best = 0;
-        for (int task = 0; task < 3; task++) {
+        for (int task = 0; task < 3; task++) {                  // try each task for this day
             if (task == last) continue;                         // same task as the day after: not allowed
-            best = Math.max(best, points[day][task] + solve(day - 1, task, points));
+            best = Math.max(best, points[day][task] + solve(day - 1, task, points));   // ban task on day - 1
         }
         return best;
     }
@@ -24,55 +24,57 @@ public class P292_NinjasTraining {
     /** Approach 2: memoization on the n x 4 states. O(n * 4 * 3) time, O(n * 4) space plus the stack. */
     static int memoization(int[][] points) {
         int n = points.length;
-        int[][] dp = new int[n][4];
+        int[][] dp = new int[n][4];                             // dp[day][last]; column 3 = nothing forbidden
         for (int[] row : dp) Arrays.fill(row, -1);              // -1 = not computed (totals are >= 0)
         return memo(n - 1, NONE, points, dp);
     }
 
     static int memo(int day, int last, int[][] points, int[][] dp) {
-        if (day < 0) return 0;
-        if (dp[day][last] != -1) return dp[day][last];
+        if (day < 0) return 0;                                  // no days left
+        if (dp[day][last] != -1) return dp[day][last];          // state solved before: reuse it
         int best = 0;
         for (int task = 0; task < 3; task++) {
-            if (task == last) continue;
+            if (task == last) continue;                         // cannot repeat the next day's task
             best = Math.max(best, points[day][task] + memo(day - 1, task, points, dp));
         }
-        return dp[day][last] = best;
+        return dp[day][last] = best;                            // store before returning
     }
 
     /** Approach 3: tabulation, dp[day][last] filled from day 0 forward. O(n * 4 * 3) time, O(n * 4) space. */
     static int tabulation(int[][] points) {
         int n = points.length;
-        if (n == 0) return 0;
-        int[][] dp = new int[n][4];
+        if (n == 0) return 0;                                   // no days: no points
+        int[][] dp = new int[n][4];                             // best for days 0..day with `last` banned
         for (int last = 0; last < 4; last++) {                  // day 0: best single task other than `last`
             for (int task = 0; task < 3; task++) {
                 if (task != last) dp[0][last] = Math.max(dp[0][last], points[0][task]);
             }
         }
-        for (int day = 1; day < n; day++) {
-            for (int last = 0; last < 4; last++) {
+        for (int day = 1; day < n; day++) {                     // build each day from the day before
+            for (int last = 0; last < 4; last++) {              // every possible forbidden task (3 = none)
                 for (int task = 0; task < 3; task++) {
+                    // do `task` today, so `task` is the one banned on the previous day
                     if (task != last) dp[day][last] = Math.max(dp[day][last], points[day][task] + dp[day - 1][task]);
                 }
             }
         }
-        return dp[n - 1][NONE];
+        return dp[n - 1][NONE];                                 // last day, nothing forbidden
     }
 
     /** Approach 4: day `day` reads only day `day - 1`, so keep one row of 4 values. O(n * 4 * 3) time, O(1) space. */
     static int spaceOptimized(int[][] points) {
         int[] prev = new int[4];                                // prev[last] = best total for the days so far (0 before day 0)
         for (int[] today : points) {
-            int[] cur = new int[4];
+            int[] cur = new int[4];                             // today's row, built only from prev
             for (int last = 0; last < 4; last++) {
                 for (int task = 0; task < 3; task++) {
+                    // doing `task` today bans it on the previous day
                     if (task != last) cur[last] = Math.max(cur[last], today[task] + prev[task]);
                 }
             }
-            prev = cur;
+            prev = cur;                                         // today becomes "the day before"
         }
-        return prev[NONE];
+        return prev[NONE];                                      // all days done, nothing forbidden
     }
 
     // ---------------------------------------------------------------- tests

@@ -9,50 +9,50 @@ public class P320_PartitionASetIntoTwoSubsetsWithMinimumAb {
     /** Approach 1: recursion that tries every subset as group 1. O(2^n) time, O(n) stack. */
     static int recursive(int[] arr) {
         int total = 0;
-        for (int x : arr) total += x;
-        return solve(0, 0, arr, total);
+        for (int x : arr) total += x;                                  // sum of every element
+        return solve(0, 0, arr, total);                                // start at index 0 with group 1 empty
     }
 
     /** Smallest |total - 2 * finalSum| reachable when elements i.. are still undecided and group 1 holds s so far. */
     static int solve(int i, int s, int[] arr, int total) {
         if (i == arr.length) return Math.abs(total - 2 * s);         // group 2 holds total - s
-        int take = solve(i + 1, s + arr[i], arr, total);
-        int skip = solve(i + 1, s, arr, total);
-        return Math.min(take, skip);
+        int take = solve(i + 1, s + arr[i], arr, total);             // arr[i] joins group 1
+        int skip = solve(i + 1, s, arr, total);                      // arr[i] goes to group 2
+        return Math.min(take, skip);                                 // keep the smaller difference
     }
 
     /** Approach 2: memoization on (i, s). O(n * total) time, O(n * total) space plus the stack. */
     static int memoization(int[] arr) {
         int total = 0;
-        for (int x : arr) total += x;
-        int[][] dp = new int[arr.length][total + 1];
+        for (int x : arr) total += x;                                  // sum of every element
+        int[][] dp = new int[arr.length][total + 1];                   // best difference from state (i, s)
         for (int[] row : dp) Arrays.fill(row, -1);                     // differences are >= 0, so -1 = unknown
         return memo(0, 0, arr, total, dp);
     }
 
     static int memo(int i, int s, int[] arr, int total, int[][] dp) {
-        if (i == arr.length) return Math.abs(total - 2 * s);
-        if (dp[i][s] != -1) return dp[i][s];
-        int take = memo(i + 1, s + arr[i], arr, total, dp);
-        int skip = memo(i + 1, s, arr, total, dp);
-        return dp[i][s] = Math.min(take, skip);
+        if (i == arr.length) return Math.abs(total - 2 * s);         // all placed: group 2 holds total - s
+        if (dp[i][s] != -1) return dp[i][s];                           // state solved before: reuse it
+        int take = memo(i + 1, s + arr[i], arr, total, dp);          // arr[i] joins group 1
+        int skip = memo(i + 1, s, arr, total, dp);                   // arr[i] goes to group 2
+        return dp[i][s] = Math.min(take, skip);                        // store the smaller difference
     }
 
     /** Approach 3: subset-sum table for every target, then scan the last row. O(n * total) time and space. */
     static int tabulation(int[] arr) {
         int n = arr.length, total = 0;
-        for (int x : arr) total += x;
+        for (int x : arr) total += x;                                  // sum of every element
         boolean[][] dp = new boolean[n][total + 1];                    // dp[i][t]: some subset of arr[0..i] sums to t
-        for (int i = 0; i < n; i++) dp[i][0] = true;
+        for (int i = 0; i < n; i++) dp[i][0] = true;                   // sum 0: the empty subset
         dp[0][arr[0]] = true;                                          // arr[0] <= total always
         for (int i = 1; i < n; i++) {
             for (int t = 1; t <= total; t++) {
-                dp[i][t] = dp[i - 1][t] || (arr[i] <= t && dp[i - 1][t - arr[i]]);
+                dp[i][t] = dp[i - 1][t] || (arr[i] <= t && dp[i - 1][t - arr[i]]);   // skip or take arr[i]
             }
         }
         int best = Integer.MAX_VALUE;
         for (int s1 = 0; s1 <= total / 2; s1++) {                      // the smaller group is at most half
-            if (dp[n - 1][s1]) best = Math.min(best, total - 2 * s1);
+            if (dp[n - 1][s1]) best = Math.min(best, total - 2 * s1);  // s1 is reachable: try it
         }
         return best;
     }
@@ -60,13 +60,13 @@ public class P320_PartitionASetIntoTwoSubsetsWithMinimumAb {
     /** Approach 4: one reachable-sums array, updated right to left. O(n * total) time, O(total) space. */
     static int spaceOptimized(int[] arr) {
         int total = 0;
-        for (int x : arr) total += x;
+        for (int x : arr) total += x;                                  // sum of every element
         int half = total / 2;
         boolean[] reach = new boolean[half + 1];                       // only sums up to half can be the smaller group
-        reach[0] = true;
-        for (int x : arr) {
-            for (int t = half; t >= x; t--) {
-                if (reach[t - x]) reach[t] = true;
+        reach[0] = true;                                               // the empty subset sums to 0
+        for (int x : arr) {                                            // add one element at a time
+            for (int t = half; t >= x; t--) {                          // right to left so x is used at most once
+                if (reach[t - x]) reach[t] = true;                     // adding x to sum t - x gives t
             }
         }
         for (int s1 = half; s1 >= 0; s1--) {                           // the largest reachable s1 <= half wins

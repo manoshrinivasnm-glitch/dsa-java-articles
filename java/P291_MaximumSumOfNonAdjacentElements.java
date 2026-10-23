@@ -5,7 +5,7 @@ public class P291_MaximumSumOfNonAdjacentElements {
 
     /** Approach 1: pick / not-pick recursion from the last index. O(2^n) time, O(n) stack. */
     static long recursive(int[] nums) {
-        return solve(nums.length - 1, nums);
+        return solve(nums.length - 1, nums);                    // best sum over the whole array
     }
 
     /** Best sum using only nums[0..i]. */
@@ -13,46 +13,46 @@ public class P291_MaximumSumOfNonAdjacentElements {
         if (i < 0) return 0;                                    // no elements left
         long pick = nums[i] + solve(i - 2, nums);               // take nums[i], so nums[i - 1] is off limits
         long skip = solve(i - 1, nums);                         // leave nums[i]
-        return Math.max(pick, skip);
+        return Math.max(pick, skip);                            // keep the better choice
     }
 
     /** Approach 2: memoization. O(n) time, O(n) space for the table and the stack. */
     static long memoization(int[] nums) {
-        long[] dp = new long[nums.length];
+        long[] dp = new long[nums.length];                      // dp[i] = best sum using nums[0..i]
         Arrays.fill(dp, -1);                                    // -1 = not computed (real sums are >= 0)
         return memo(nums.length - 1, nums, dp);
     }
 
     static long memo(int i, int[] nums, long[] dp) {
-        if (i < 0) return 0;
-        if (dp[i] != -1) return dp[i];
-        long pick = nums[i] + memo(i - 2, nums, dp);
-        long skip = memo(i - 1, nums, dp);
-        return dp[i] = Math.max(pick, skip);
+        if (i < 0) return 0;                                    // no elements left
+        if (dp[i] != -1) return dp[i];                          // solved before: reuse it
+        long pick = nums[i] + memo(i - 2, nums, dp);            // take nums[i], jump past its neighbour
+        long skip = memo(i - 1, nums, dp);                      // leave nums[i]
+        return dp[i] = Math.max(pick, skip);                    // store the better choice
     }
 
     /** Approach 3: tabulation, dp[i] = best sum using nums[0..i]. O(n) time, O(n) space. */
     static long tabulation(int[] nums) {
         int n = nums.length;
-        if (n == 0) return 0;
-        long[] dp = new long[n];
+        if (n == 0) return 0;                                   // empty array: nothing to take
+        long[] dp = new long[n];                                // dp[i] = best sum using nums[0..i]
         for (int i = 0; i < n; i++) {
-            long pick = nums[i] + (i >= 2 ? dp[i - 2] : 0);
-            long skip = i >= 1 ? dp[i - 1] : 0;
+            long pick = nums[i] + (i >= 2 ? dp[i - 2] : 0);     // take nums[i]; before index 2 nothing else fits
+            long skip = i >= 1 ? dp[i - 1] : 0;                 // leave nums[i], keep the best up to i - 1
             dp[i] = Math.max(pick, skip);
         }
-        return dp[n - 1];
+        return dp[n - 1];                                       // best sum over the whole array
     }
 
     /** Approach 4: keep only dp[i - 1] and dp[i - 2]. O(n) time, O(1) space. */
     static long spaceOptimized(int[] nums) {
         long prev2 = 0, prev = 0;                               // dp[i - 2] and dp[i - 1]
         for (int x : nums) {
-            long cur = Math.max(x + prev2, prev);
-            prev2 = prev;
+            long cur = Math.max(x + prev2, prev);               // pick x (with dp[i - 2]) or skip it
+            prev2 = prev;                                       // slide the two-cell window forward
             prev = cur;
         }
-        return prev;
+        return prev;                                            // best sum so far = the answer (0 if empty)
     }
 
     // ---------------------------------------------------------------- tests

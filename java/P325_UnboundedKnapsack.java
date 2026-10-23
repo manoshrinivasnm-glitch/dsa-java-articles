@@ -5,53 +5,53 @@ public class P325_UnboundedKnapsack {
 
     /** Approach 1: recursion over (item index, remaining capacity); a taken item stays available. Exponential time. */
     static int recursive(int[] wt, int[] val, int cap) {
-        return solve(wt.length - 1, cap, wt, val);
+        return solve(wt.length - 1, cap, wt, val);                   // all items allowed, full capacity
     }
 
     /** Best value using items 0..i with capacity w left. */
     static int solve(int i, int w, int[] wt, int[] val) {
         if (i == 0) return (w / wt[0]) * val[0];                     // only item 0 left: take as many as fit
-        int notTake = solve(i - 1, w, wt, val);
+        int notTake = solve(i - 1, w, wt, val);                      // take no more of item i
         int take = wt[i] <= w ? val[i] + solve(i, w - wt[i], wt, val) : 0;   // stay on i: unlimited copies
-        return Math.max(notTake, take);
+        return Math.max(notTake, take);                              // keep the more valuable choice
     }
 
     /** Approach 2: memoization on (i, w). O(n * cap) time, O(n * cap) space plus the stack. */
     static int memoization(int[] wt, int[] val, int cap) {
-        int[][] dp = new int[wt.length][cap + 1];
+        int[][] dp = new int[wt.length][cap + 1];                        // dp[i][w] = best value from items 0..i
         for (int[] row : dp) Arrays.fill(row, -1);                       // values are >= 0, so -1 = unknown
         return memo(wt.length - 1, cap, wt, val, dp);
     }
 
     static int memo(int i, int w, int[] wt, int[] val, int[][] dp) {
-        if (i == 0) return (w / wt[0]) * val[0];
-        if (dp[i][w] != -1) return dp[i][w];
-        int notTake = memo(i - 1, w, wt, val, dp);
-        int take = wt[i] <= w ? val[i] + memo(i, w - wt[i], wt, val, dp) : 0;
-        return dp[i][w] = Math.max(notTake, take);
+        if (i == 0) return (w / wt[0]) * val[0];                     // only item 0 left: take as many as fit
+        if (dp[i][w] != -1) return dp[i][w];                         // state solved before: reuse it
+        int notTake = memo(i - 1, w, wt, val, dp);                   // take no more of item i
+        int take = wt[i] <= w ? val[i] + memo(i, w - wt[i], wt, val, dp) : 0;   // one more copy, stay on i
+        return dp[i][w] = Math.max(notTake, take);                   // store the better value
     }
 
     /** Approach 3: tabulation, dp[i][w] = best value from items 0..i with capacity w. O(n * cap) time and space. */
     static int tabulation(int[] wt, int[] val, int cap) {
         int n = wt.length;
-        int[][] dp = new int[n][cap + 1];
-        for (int w = 0; w <= cap; w++) dp[0][w] = (w / wt[0]) * val[0];
+        int[][] dp = new int[n][cap + 1];                            // dp[i][w] = best value from items 0..i
+        for (int w = 0; w <= cap; w++) dp[0][w] = (w / wt[0]) * val[0];   // row 0: as many copies of item 0 as fit
         for (int i = 1; i < n; i++) {
-            for (int w = 0; w <= cap; w++) {
-                int notTake = dp[i - 1][w];
+            for (int w = 0; w <= cap; w++) {                         // smaller capacities are filled first
+                int notTake = dp[i - 1][w];                          // best without item i
                 int take = wt[i] <= w ? val[i] + dp[i][w - wt[i]] : 0;     // same row: item i may be taken again
                 dp[i][w] = Math.max(notTake, take);
             }
         }
-        return dp[n - 1][cap];
+        return dp[n - 1][cap];                                       // all items, full capacity
     }
 
     /** Approach 4: one array, capacities left to right. O(n * cap) time, O(cap) space. */
     static int spaceOptimized(int[] wt, int[] val, int cap) {
         int[] best = new int[cap + 1];                                   // with no items, every capacity is worth 0
-        for (int i = 0; i < wt.length; i++) {
+        for (int i = 0; i < wt.length; i++) {                            // bring in one item type at a time
             for (int w = wt[i]; w <= cap; w++) {                         // left to right: best[w - wt[i]] may hold item i
-                best[w] = Math.max(best[w], val[i] + best[w - wt[i]]);
+                best[w] = Math.max(best[w], val[i] + best[w - wt[i]]);   // skip item i, or add one more copy
             }
         }
         return best[cap];
