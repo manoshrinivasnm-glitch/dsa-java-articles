@@ -9,9 +9,9 @@ public class P981_ZFunction {
     /** Z-array straight from the definition: extend a match from every position. O(n^2) time. */
     static int[] zBrute(String s) {
         int n = s.length();
-        int[] z = new int[n];
-        for (int i = 1; i < n; i++) {
-            while (i + z[i] < n && s.charAt(z[i]) == s.charAt(i + z[i])) z[i]++;
+        int[] z = new int[n];                            // z[0] stays 0 by convention
+        for (int i = 1; i < n; i++) {                    // compare s[i..] with the prefix from scratch
+            while (i + z[i] < n && s.charAt(z[i]) == s.charAt(i + z[i])) z[i]++;   // grow while chars agree
         }
         return z;
     }
@@ -19,12 +19,12 @@ public class P981_ZFunction {
     /** Z-array in O(n) by reusing the rightmost Z-box [l, r). */
     static int[] zOptimal(String s) {
         int n = s.length();
-        int[] z = new int[n];
+        int[] z = new int[n];                              // z[0] stays 0 by convention
         int l = 0, r = 0;                                  // s[l..r) equals s[0..r-l), with r as large as possible
         for (int i = 1; i < n; i++) {
             if (i < r) z[i] = Math.min(r - i, z[i - l]);   // copy the answer from inside the prefix
-            while (i + z[i] < n && s.charAt(z[i]) == s.charAt(i + z[i])) z[i]++;
-            if (i + z[i] > r) {
+            while (i + z[i] < n && s.charAt(z[i]) == s.charAt(i + z[i])) z[i]++;   // extend past what we knew
+            if (i + z[i] > r) {                            // reaches further right: the new Z-box
                 l = i;
                 r = i + z[i];
             }
@@ -34,22 +34,22 @@ public class P981_ZFunction {
 
     /** Pattern search, brute force: try every window. O(n * m) time. */
     static List<Integer> searchBrute(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();             // start indices of every match
         int n = text.length(), m = pattern.length();
-        if (m == 0) return res;
-        for (int i = 0; i + m <= n; i++) {
-            if (text.regionMatches(i, pattern, 0, m)) res.add(i);
+        if (m == 0) return res;                            // an empty pattern reports nothing
+        for (int i = 0; i + m <= n; i++) {                 // every window text[i..i+m) that fits
+            if (text.regionMatches(i, pattern, 0, m)) res.add(i);   // compare the window char by char
         }
         return res;
     }
 
     /** Pattern search with the Z-array of pattern + text. O(n + m) time and space. */
     static List<Integer> searchZ(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();             // start indices of every match
         int m = pattern.length();
-        if (m == 0 || m > text.length()) return res;
-        int[] z = zOptimal(pattern + text);
-        for (int i = m; i < z.length; i++) {
+        if (m == 0 || m > text.length()) return res;       // empty pattern, or no window fits
+        int[] z = zOptimal(pattern + text);                // z[i] = how much of the pattern starts at i
+        for (int i = m; i < z.length; i++) {               // positions inside the text part only
             if (z[i] >= m) res.add(i - m);                 // the next m characters equal the pattern
         }
         return res;

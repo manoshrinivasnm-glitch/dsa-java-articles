@@ -5,47 +5,48 @@ public class P297_GridUniquePaths {
 
     /** Approach 1: plain recursion on the last move. Exponential time, O(m + n) stack. */
     static int bruteForce(int m, int n) {
-        return countFrom(m - 1, n - 1);
+        return countFrom(m - 1, n - 1);              // paths into the bottom-right cell
     }
 
     static int countFrom(int r, int c) {
         if (r == 0 || c == 0) return 1;              // first row or first column: one straight path
-        return countFrom(r - 1, c) + countFrom(r, c - 1);
+        return countFrom(r - 1, c) + countFrom(r, c - 1);   // last move came from above or from the left
     }
 
     /** Approach 2: the same recursion, caching each cell's answer. O(m * n) time, O(m * n) space. */
     static int memoized(int m, int n) {
         int[][] memo = new int[m][n];                // 0 means "not computed yet"; real answers are >= 1
-        return countFromMemo(m - 1, n - 1, memo);
+        return countFromMemo(m - 1, n - 1, memo);    // paths into the bottom-right cell
     }
 
     static int countFromMemo(int r, int c, int[][] memo) {
-        if (r == 0 || c == 0) return 1;
-        if (memo[r][c] != 0) return memo[r][c];
+        if (r == 0 || c == 0) return 1;              // first row or first column: one straight path
+        if (memo[r][c] != 0) return memo[r][c];      // already solved: reuse it
+        // from above plus from the left, stored before returning
         return memo[r][c] = countFromMemo(r - 1, c, memo) + countFromMemo(r, c - 1, memo);
     }
 
     /** Approach 3: bottom-up table kept as a single row. O(m * n) time, O(n) space. */
     static int tabulation(int m, int n) {
-        int[] row = new int[n];
+        int[] row = new int[n];                      // row[c] = paths into cell (current row, c)
         Arrays.fill(row, 1);                         // first row: exactly one way to reach each cell
-        for (int r = 1; r < m; r++) {
-            for (int c = 1; c < n; c++) {
+        for (int r = 1; r < m; r++) {                // build each next row in place
+            for (int c = 1; c < n; c++) {            // column 0 stays 1: only one way down it
                 row[c] += row[c - 1];                // old row[c] = from above, row[c - 1] = from the left
             }
         }
-        return row[n - 1];
+        return row[n - 1];                           // the bottom-right cell
     }
 
     /** Approach 4: choose which of the m + n - 2 moves go down. O(min(m, n)) time, O(1) space. */
     static int optimal(int m, int n) {
         int total = m + n - 2;                       // every path has exactly this many moves
         int k = Math.min(m - 1, n - 1);              // pick positions for the rarer kind of move
-        long ways = 1;
+        long ways = 1;                               // long so the product cannot overflow mid-way
         for (int i = 1; i <= k; i++) {
             ways = ways * (total - k + i) / i;       // now ways == C(total - k + i, i), always an integer
         }
-        return (int) ways;
+        return (int) ways;                           // C(total, k) fits in an int for valid inputs
     }
 
     // ---------------------------------------------------------------- tests

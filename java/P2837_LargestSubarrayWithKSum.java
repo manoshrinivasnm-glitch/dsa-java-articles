@@ -5,12 +5,12 @@ public class P2837_LargestSubarrayWithKSum {
 
     /** Approach 1: try every subarray and add it up from scratch. O(n^3) time, O(1) space. */
     static int bruteForce(int[] nums, int k) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                long sum = 0;
-                for (int t = i; t <= j; t++) sum += nums[t];
-                if (sum == k) best = Math.max(best, j - i + 1);
+        int n = nums.length, best = 0;                   // best = longest length found so far
+        for (int i = 0; i < n; i++) {                    // i = first index of the subarray
+            for (int j = i; j < n; j++) {                // j = last index of the subarray
+                long sum = 0;                            // long: the sum of many ints can overflow
+                for (int t = i; t <= j; t++) sum += nums[t];   // re-add nums[i..j] from scratch
+                if (sum == k) best = Math.max(best, j - i + 1);   // sums to k: compare its length
             }
         }
         return best;
@@ -18,12 +18,12 @@ public class P2837_LargestSubarrayWithKSum {
 
     /** Approach 2: grow each start one element at a time, reusing the running sum. O(n^2) time, O(1) space. */
     static int better(int[] nums, int k) {
-        int n = nums.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = 0;
+        int n = nums.length, best = 0;                   // best = longest length found so far
+        for (int i = 0; i < n; i++) {                    // i = first index of the subarray
+            long sum = 0;                                // sum of nums[i..j], kept as j grows
             for (int j = i; j < n; j++) {
-                sum += nums[j];
-                if (sum == k) best = Math.max(best, j - i + 1);
+                sum += nums[j];                          // extend the subarray by one element
+                if (sum == k) best = Math.max(best, j - i + 1);   // sums to k: compare its length
             }
         }
         return best;
@@ -31,14 +31,14 @@ public class P2837_LargestSubarrayWithKSum {
 
     /** Approach 3: prefix sums with a map from each prefix value to its FIRST index. O(n) average time, O(n) space. */
     static int optimal(int[] nums, int k) {
-        Map<Long, Integer> first = new HashMap<>();
+        Map<Long, Integer> first = new HashMap<>();  // prefix sum -> first index where it appears
         first.put(0L, -1);                           // empty prefix, so a subarray may start at index 0
-        long prefix = 0;
+        long prefix = 0;                             // sum of nums[0..j]
         int best = 0;
-        for (int j = 0; j < nums.length; j++) {
+        for (int j = 0; j < nums.length; j++) {      // j = last index of the subarray
             prefix += nums[j];
             Integer i = first.get(prefix - k);       // sum(i+1..j) == k  <=>  prefix[i] == prefix[j] - k
-            if (i != null) best = Math.max(best, j - i);
+            if (i != null) best = Math.max(best, j - i);   // nums[i+1..j] sums to k, length j - i
             first.putIfAbsent(prefix, j);            // keep the earliest index: it gives the longest subarray
         }
         return best;

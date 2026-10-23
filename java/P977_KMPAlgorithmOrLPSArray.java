@@ -10,12 +10,13 @@ public class P977_KMPAlgorithmOrLPSArray {
     /** LPS straight from the definition: try every border length from longest down. O(n^3) worst case. */
     static int[] lpsBrute(String s) {
         int n = s.length();
-        int[] lps = new int[n];
-        for (int i = 0; i < n; i++) {
-            for (int len = i; len >= 1; len--) {           // proper: at most i for the prefix s[0..i] of length i + 1
-                if (s.regionMatches(0, s, i - len + 1, len)) {
+        int[] lps = new int[n];                            // lps[0] stays 0: one char has no proper border
+        for (int i = 0; i < n; i++) {                      // answer for each prefix s[0..i]
+            // longest first; proper means at most i for the prefix s[0..i] of length i + 1
+            for (int len = i; len >= 1; len--) {
+                if (s.regionMatches(0, s, i - len + 1, len)) {   // prefix of length len == suffix ending at i
                     lps[i] = len;
-                    break;
+                    break;                                 // first hit is the longest, since len counts down
                 }
             }
         }
@@ -25,11 +26,12 @@ public class P977_KMPAlgorithmOrLPSArray {
     /** LPS in O(n): extend the previous border, or fall back to the next shorter border. */
     static int[] lpsOptimal(String s) {
         int n = s.length();
-        int[] lps = new int[n];
+        int[] lps = new int[n];                            // lps[0] = 0 always
         int len = 0;                                       // length of the border of s[0..i-1]
         for (int i = 1; i < n; i++) {
+            // mismatch: fall back to the next shorter border of s[0..i-1] and try again
             while (len > 0 && s.charAt(i) != s.charAt(len)) len = lps[len - 1];
-            if (s.charAt(i) == s.charAt(len)) len++;
+            if (s.charAt(i) == s.charAt(len)) len++;       // s[i] extends the current border by one
             lps[i] = len;
         }
         return lps;
@@ -37,29 +39,29 @@ public class P977_KMPAlgorithmOrLPSArray {
 
     /** Pattern search, brute force: restart the comparison at every window. O(n * m) time. */
     static List<Integer> searchBrute(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();             // start indices of every match
         int n = text.length(), m = pattern.length();
-        if (m == 0) return res;
-        for (int i = 0; i + m <= n; i++) {
-            int k = 0;
-            while (k < m && text.charAt(i + k) == pattern.charAt(k)) k++;
-            if (k == m) res.add(i);
+        if (m == 0) return res;                            // an empty pattern reports nothing
+        for (int i = 0; i + m <= n; i++) {                 // every window text[i..i+m) that fits
+            int k = 0;                                     // characters matched so far in this window
+            while (k < m && text.charAt(i + k) == pattern.charAt(k)) k++;   // stop at the first mismatch
+            if (k == m) res.add(i);                        // the whole pattern matched here
         }
         return res;
     }
 
     /** Pattern search with KMP: the text pointer never moves back. O(n + m) time, O(m) space. */
     static List<Integer> searchKmp(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();             // start indices of every match
         int n = text.length(), m = pattern.length();
-        if (m == 0 || m > n) return res;
-        int[] lps = lpsOptimal(pattern);
+        if (m == 0 || m > n) return res;                   // empty pattern, or no window fits
+        int[] lps = lpsOptimal(pattern);                   // where to fall back to after a mismatch
         int j = 0;                                         // number of pattern characters matched so far
-        for (int i = 0; i < n; i++) {
-            while (j > 0 && text.charAt(i) != pattern.charAt(j)) j = lps[j - 1];
-            if (text.charAt(i) == pattern.charAt(j)) j++;
-            if (j == m) {
-                res.add(i - m + 1);
+        for (int i = 0; i < n; i++) {                      // i only moves forward through the text
+            while (j > 0 && text.charAt(i) != pattern.charAt(j)) j = lps[j - 1];   // mismatch: fall back
+            if (text.charAt(i) == pattern.charAt(j)) j++;  // text[i] extends the match
+            if (j == m) {                                  // a full match ends at i
+                res.add(i - m + 1);                        // so it starts m - 1 places earlier
                 j = lps[m - 1];                            // keep the border so overlapping matches are found
             }
         }

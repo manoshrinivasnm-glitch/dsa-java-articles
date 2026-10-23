@@ -5,9 +5,10 @@ public class P563_LongestConsecutiveSequenceInAnArray {
 
     /** Approach 1: from every value, walk upwards using linear searches. O(n^3) worst-case time, O(1) space. */
     static int bruteForce(int[] nums) {
-        int best = 0;
-        for (int x : nums) {
-            int cur = x, len = 1;
+        int best = 0;                                    // longest run found so far
+        for (int x : nums) {                             // try every value as the start of a run
+            int cur = x, len = 1;                        // the run x..cur has len values
+            // keep going while cur + 1 is somewhere in the array (MAX_VALUE has no next value)
             while (cur != Integer.MAX_VALUE && linearSearch(nums, cur + 1)) {
                 cur++;
                 len++;
@@ -18,20 +19,20 @@ public class P563_LongestConsecutiveSequenceInAnArray {
     }
 
     static boolean linearSearch(int[] nums, int target) {
-        for (int v : nums) if (v == target) return true;
+        for (int v : nums) if (v == target) return true;   // scan the whole array: O(n) per lookup
         return false;
     }
 
     /** Approach 2: sort a copy, then count runs of neighbours that differ by exactly 1. O(n log n) time, O(n) space. */
     static int better(int[] nums) {
-        if (nums.length == 0) return 0;
+        if (nums.length == 0) return 0;                  // no values, no run
         int[] a = nums.clone();                          // do not reorder the caller's array
-        Arrays.sort(a);
-        int best = 1, len = 1;
+        Arrays.sort(a);                                  // consecutive values become neighbours
+        int best = 1, len = 1;                           // len = length of the run ending at a[i - 1]
         for (int i = 1; i < a.length; i++) {
             if (a[i] == a[i - 1]) continue;              // duplicate: neither extends nor breaks the run
-            if (a[i] - a[i - 1] == 1) len++;
-            else len = 1;
+            if (a[i] - a[i - 1] == 1) len++;             // next value of the run
+            else len = 1;                                // a gap: a new run starts at a[i]
             best = Math.max(best, len);
         }
         return best;
@@ -39,13 +40,13 @@ public class P563_LongestConsecutiveSequenceInAnArray {
 
     /** Approach 3: hash set, and only count upwards from values that start a run. O(n) average time, O(n) space. */
     static int optimal(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();              // O(1) average lookups, duplicates removed
         for (int x : nums) set.add(x);
-        int best = 0;
+        int best = 0;                                    // longest run found so far
         for (int x : set) {                              // iterate the set, so duplicates are visited once
             if (x != Integer.MIN_VALUE && set.contains(x - 1)) continue;   // x - 1 exists: x is not a start
-            int cur = x, len = 1;
-            while (cur != Integer.MAX_VALUE && set.contains(cur + 1)) {
+            int cur = x, len = 1;                        // x starts a run; walk it upwards
+            while (cur != Integer.MAX_VALUE && set.contains(cur + 1)) {   // each value is walked once overall
                 cur++;
                 len++;
             }

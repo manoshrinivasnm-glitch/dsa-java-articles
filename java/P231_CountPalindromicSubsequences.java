@@ -12,14 +12,14 @@ public class P231_CountPalindromicSubsequences {
     static int bruteForce(String s) {
         int n = s.length();
         if (n > 20) throw new IllegalArgumentException("brute force is for tiny inputs only");
-        long count = 0;
-        for (int mask = 1; mask < (1 << n); mask++) {
-            StringBuilder sb = new StringBuilder();
+        long count = 0;                                  // palindromic subsequences found
+        for (int mask = 1; mask < (1 << n); mask++) {    // every non-empty set of positions
+            StringBuilder sb = new StringBuilder();      // the subsequence this mask picks
             for (int i = 0; i < n; i++) {
-                if ((mask >> i & 1) == 1) sb.append(s.charAt(i));
+                if ((mask >> i & 1) == 1) sb.append(s.charAt(i));   // keep s[i] when bit i is set
             }
             String t = sb.toString();
-            if (t.equals(sb.reverse().toString())) count++;
+            if (t.equals(sb.reverse().toString())) count++;   // reads the same backwards
         }
         return (int) (count % MOD);
     }
@@ -27,38 +27,41 @@ public class P231_CountPalindromicSubsequences {
     /** Approach 2: recursion on the interval [i, j] with memoization. O(n^2) time, O(n^2) space. */
     static int memoized(String s) {
         int n = s.length();
-        if (n == 0) return 0;
-        int[][] memo = new int[n][n];
-        for (int[] row : memo) Arrays.fill(row, -1);
-        return count(s, 0, n - 1, memo);
+        if (n == 0) return 0;                            // empty string has no subsequences
+        int[][] memo = new int[n][n];                    // memo[i][j] = answer for s[i..j]
+        for (int[] row : memo) Arrays.fill(row, -1);     // -1 = not computed yet
+        return count(s, 0, n - 1, memo);                 // answer for the whole string
     }
 
     static int count(String s, int i, int j, int[][] memo) {
-        if (i > j) return 0;
-        if (i == j) return 1;
-        if (memo[i][j] != -1) return memo[i][j];
-        long res;
-        if (s.charAt(i) == s.charAt(j)) {
+        if (i > j) return 0;                             // empty interval: nothing to count
+        if (i == j) return 1;                            // a single char is one palindrome
+        if (memo[i][j] != -1) return memo[i][j];         // solved before: reuse it
+        long res;                                        // long so the sum cannot overflow before % MOD
+        if (s.charAt(i) == s.charAt(j)) {                // equal ends can wrap every inner palindrome
+            // inner is counted twice: once as is, once wrapped as s[i] + inner + s[j]; +1 for s[i]s[j]
             res = (long) count(s, i + 1, j, memo) + count(s, i, j - 1, memo) + 1;
-        } else {
+        } else {                                         // different ends: inclusion-exclusion
+            // drop s[i] or drop s[j], minus the inner part s[i+1..j-1] that both of them counted
             res = (long) count(s, i + 1, j, memo) + count(s, i, j - 1, memo)
                     - count(s, i + 1, j - 1, memo) + MOD;   // + MOD keeps the value non-negative
         }
-        return memo[i][j] = (int) (res % MOD);
+        return memo[i][j] = (int) (res % MOD);           // store, then return
     }
 
     /** Approach 3: the same recurrence filled bottom-up, shorter intervals first. O(n^2) time and space. */
     static int tabulation(String s) {
         int n = s.length();
-        if (n == 0) return 0;
+        if (n == 0) return 0;                          // empty string has no subsequences
         int[][] dp = new int[n][n];                    // dp[i][j] = answer for s[i..j]
-        for (int i = n - 1; i >= 0; i--) {
-            dp[i][i] = 1;
-            for (int j = i + 1; j < n; j++) {
-                long inner = (i + 1 <= j - 1) ? dp[i + 1][j - 1] : 0;
+        for (int i = n - 1; i >= 0; i--) {             // i from the right, so row i + 1 is ready
+            dp[i][i] = 1;                              // a single char is one palindrome
+            for (int j = i + 1; j < n; j++) {          // j to the right, so dp[i][j - 1] is ready
+                long inner = (i + 1 <= j - 1) ? dp[i + 1][j - 1] : 0;   // s[i+1..j-1], or 0 if it is empty
                 long v;
+                // equal ends: the doubled inner count covers wrapping with s[i], s[j]; +1 for the pair alone
                 if (s.charAt(i) == s.charAt(j)) v = (long) dp[i + 1][j] + dp[i][j - 1] + 1;
-                else v = (long) dp[i + 1][j] + dp[i][j - 1] - inner + MOD;
+                else v = (long) dp[i + 1][j] + dp[i][j - 1] - inner + MOD;   // remove the double count
                 dp[i][j] = (int) (v % MOD);
             }
         }

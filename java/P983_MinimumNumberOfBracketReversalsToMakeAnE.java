@@ -9,51 +9,51 @@ public class P983_MinimumNumberOfBracketReversalsToMakeAnE {
     /** Approach 1: try every subset of positions to reverse. O(2^n * n) time, O(1) extra space. Tiny inputs only. */
     static int bruteForce(String s) {
         int n = s.length();
-        if (n % 2 == 1) return -1;
+        if (n % 2 == 1) return -1;                       // odd length can never balance
         if (n > 20) throw new IllegalArgumentException("brute force is for tiny inputs only");
-        int best = Integer.MAX_VALUE;
-        for (int mask = 0; mask < (1 << n); mask++) {
-            int flips = Integer.bitCount(mask);
-            if (flips >= best) continue;
-            int balance = 0;
+        int best = Integer.MAX_VALUE;                    // fewest reversals found so far
+        for (int mask = 0; mask < (1 << n); mask++) {    // bit i set = reverse position i
+            int flips = Integer.bitCount(mask);          // how many reversals this subset costs
+            if (flips >= best) continue;                 // cannot beat the best answer: skip it
+            int balance = 0;                             // open '{' minus close '}' so far
             boolean ok = true;
-            for (int i = 0; i < n && ok; i++) {
+            for (int i = 0; i < n && ok; i++) {          // replay the string with the chosen flips
                 char c = s.charAt(i);
-                if ((mask >> i & 1) == 1) c = (c == '{') ? '}' : '{';
+                if ((mask >> i & 1) == 1) c = (c == '{') ? '}' : '{';   // apply the reversal
                 balance += (c == '{') ? 1 : -1;
-                if (balance < 0) ok = false;
+                if (balance < 0) ok = false;             // a '}' with nothing to close: invalid
             }
-            if (ok && balance == 0) best = flips;
+            if (ok && balance == 0) best = flips;        // fully balanced: a new best
         }
         return best;
     }
 
     /** Approach 2: cancel matched pairs with a stack, then count what is left. O(n) time, O(n) space. */
     static int withStack(String s) {
-        if (s.length() % 2 == 1) return -1;
-        Deque<Character> st = new ArrayDeque<>();
+        if (s.length() % 2 == 1) return -1;      // odd length can never balance
+        Deque<Character> st = new ArrayDeque<>();   // brackets not matched yet
         for (char c : s.toCharArray()) {
             if (c == '}' && !st.isEmpty() && st.peek() == '{') st.pop();   // cancel a matched pair
-            else st.push(c);
+            else st.push(c);                     // keep it: no partner for it yet
         }
-        int open = 0, close = 0;                 // the leftover looks like }}}...{{{
-        for (char c : st) {
+        int open = 0, close = 0;                 // leftover: all unmatched '}' first, then all unmatched '{'
+        for (char c : st) {                      // count each kind of leftover bracket
             if (c == '{') open++;
             else close++;
         }
-        return (open + 1) / 2 + (close + 1) / 2;
+        return (open + 1) / 2 + (close + 1) / 2; // each same-kind pair takes 1 flip, a final '}{' takes 2
     }
 
     /** Approach 3: the same counting with two integers instead of a stack. O(n) time, O(1) space. */
     static int optimal(String s) {
-        if (s.length() % 2 == 1) return -1;
+        if (s.length() % 2 == 1) return -1;      // odd length can never balance
         int open = 0, close = 0;                 // unmatched '{' and unmatched '}' seen so far
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '{') open++;
+            if (s.charAt(i) == '{') open++;      // a new '{' waiting for its partner
             else if (open > 0) open--;           // this '}' closes an earlier '{'
             else close++;                        // nothing to close: an unmatched '}'
         }
-        return (open + 1) / 2 + (close + 1) / 2;
+        return (open + 1) / 2 + (close + 1) / 2; // ceil(close/2) + ceil(open/2) flips
     }
 
     // ---------------------------------------------------------------- tests

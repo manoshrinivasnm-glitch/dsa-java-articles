@@ -6,41 +6,43 @@ public class P978_LongestHappyPrefix {
     /** Approach 1: try every length from n - 1 down and compare directly. O(n^2) time, O(1) extra. */
     static String bruteForce(String s) {
         int n = s.length();
-        for (int len = n - 1; len >= 1; len--) {
+        for (int len = n - 1; len >= 1; len--) {         // proper lengths, longest first
+            // prefix of length len equals the suffix of length len: the first hit is the longest
             if (s.regionMatches(0, s, n - len, len)) return s.substring(0, len);
         }
-        return "";
+        return "";                                       // no non-empty prefix is also a suffix
     }
 
     /** Approach 2: compare prefix and suffix hashes in O(1), verify only on a hash match. O(n) expected. */
     static String better(String s) {
-        final long MOD = 1_000_000_007L, BASE = 131;
+        final long MOD = 1_000_000_007L, BASE = 131;     // prime modulus; base above every lowercase code
         int n = s.length();
         long[] h = new long[n + 1], pw = new long[n + 1];  // h[i] = hash of s[0..i), pw[i] = BASE^i
         pw[0] = 1;
-        for (int i = 0; i < n; i++) {
-            h[i + 1] = (h[i] * BASE + s.charAt(i)) % MOD;
+        for (int i = 0; i < n; i++) {                      // fill prefix hashes and powers together
+            h[i + 1] = (h[i] * BASE + s.charAt(i)) % MOD;  // extend the prefix hash by s[i]
             pw[i + 1] = pw[i] * BASE % MOD;
         }
-        for (int len = n - 1; len >= 1; len--) {
+        for (int len = n - 1; len >= 1; len--) {           // proper lengths, longest first
             long suffix = ((h[n] - h[n - len] * pw[len]) % MOD + MOD) % MOD;   // hash of s[n-len..n)
+            // equal hashes are only a hint, so confirm with a real comparison before answering
             if (h[len] == suffix && s.regionMatches(0, s, n - len, len)) return s.substring(0, len);
         }
-        return "";
+        return "";                                         // no non-empty prefix is also a suffix
     }
 
     /** Approach 3: the last entry of the KMP LPS array is exactly the answer's length. O(n) time, O(n) space. */
     static String optimal(String s) {
         int n = s.length();
-        if (n == 0) return "";
-        int[] lps = new int[n];
-        int len = 0;
+        if (n == 0) return "";                           // empty string: nothing to return
+        int[] lps = new int[n];                          // lps[i] = longest border of s[0..i]
+        int len = 0;                                     // border length of s[0..i-1]
         for (int i = 1; i < n; i++) {
-            while (len > 0 && s.charAt(i) != s.charAt(len)) len = lps[len - 1];
-            if (s.charAt(i) == s.charAt(len)) len++;
+            while (len > 0 && s.charAt(i) != s.charAt(len)) len = lps[len - 1];   // fall back on a mismatch
+            if (s.charAt(i) == s.charAt(len)) len++;     // s[i] extends the border
             lps[i] = len;
         }
-        return s.substring(0, lps[n - 1]);
+        return s.substring(0, lps[n - 1]);               // the border of the whole string is the answer
     }
 
     // ---------------------------------------------------------------- tests

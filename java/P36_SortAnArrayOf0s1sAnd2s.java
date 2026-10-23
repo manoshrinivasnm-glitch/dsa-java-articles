@@ -5,29 +5,29 @@ public class P36_SortAnArrayOf0s1sAnd2s {
 
     /** Approach 1: any comparison sort. O(n log n) time. */
     static void bruteForce(int[] nums) {
-        Arrays.sort(nums);
+        Arrays.sort(nums);                       // a general sort ignores that only 0, 1, 2 occur
     }
 
     /** Approach 2: count each value, then overwrite the array. Two passes, O(n) time, O(1) space. */
     static void better(int[] nums) {
-        int[] cnt = new int[3];
-        for (int v : nums) cnt[v]++;
-        int k = 0;
-        for (int v = 0; v < 3; v++) {
+        int[] cnt = new int[3];                  // cnt[v] = how many times v appears
+        for (int v : nums) cnt[v]++;             // pass 1: count
+        int k = 0;                               // next index to write
+        for (int v = 0; v < 3; v++) {            // pass 2: write all 0s, then 1s, then 2s
             for (int c = 0; c < cnt[v]; c++) nums[k++] = v;
         }
     }
 
     /** Approach 3: Dutch National Flag, one pass with three pointers. O(n) time, O(1) space. */
     static void optimal(int[] nums) {
-        int low = 0, mid = 0, high = nums.length - 1;
+        int low = 0, mid = 0, high = nums.length - 1;   // the whole array starts as unknown
         // [0, low) are 0s, [low, mid) are 1s, [mid, high] unknown, (high, n) are 2s
-        while (mid <= high) {
+        while (mid <= high) {                    // until the unknown part is empty
             if (nums[mid] == 0) {
-                swap(nums, low++, mid++);
+                swap(nums, low++, mid++);        // move the 0 to the end of the 0s; both regions grow
             } else if (nums[mid] == 1) {
-                mid++;
-            } else {
+                mid++;                           // a 1 is already in the right region
+            } else {                             // a 2: send it to the front of the 2s
                 swap(nums, mid, high--);       // do not advance mid: the swapped-in value is unexamined
             }
         }

@@ -5,35 +5,35 @@ public class P979_RabinKarpAlgorithm {
 
     /** Approach 1: compare the pattern against every window character by character. O(n * m) time, O(1) extra. */
     static List<Integer> bruteForce(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();           // start indices of every match
         int n = text.length(), m = pattern.length();
-        if (m == 0) return res;
-        for (int i = 0; i + m <= n; i++) {
-            int k = 0;
-            while (k < m && text.charAt(i + k) == pattern.charAt(k)) k++;
-            if (k == m) res.add(i);
+        if (m == 0) return res;                          // an empty pattern reports nothing
+        for (int i = 0; i + m <= n; i++) {               // every window text[i..i+m) that fits
+            int k = 0;                                   // characters matched so far in this window
+            while (k < m && text.charAt(i + k) == pattern.charAt(k)) k++;   // stop at the first mismatch
+            if (k == m) res.add(i);                      // the whole pattern matched here
         }
         return res;
     }
 
-    static final long MOD = 1_000_000_007L;
-    static final long BASE = 256;
+    static final long MOD = 1_000_000_007L;     // large prime: keeps hashes small and collisions rare
+    static final long BASE = 256;               // one digit per possible char value
 
     /** Approach 2: rolling hash of each window, full comparison only when hashes agree. O(n + m) expected. */
     static List<Integer> rabinKarp(String text, String pattern) {
-        List<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();           // start indices of every match
         int n = text.length(), m = pattern.length();
-        if (m == 0 || m > n) return res;
+        if (m == 0 || m > n) return res;                 // empty pattern, or no window fits
         long high = 1;                                   // BASE^(m-1): weight of the window's first char
-        for (int i = 1; i < m; i++) high = high * BASE % MOD;
+        for (int i = 1; i < m; i++) high = high * BASE % MOD;   // multiply BASE in m - 1 times
         long hp = 0, hw = 0;                             // hash of pattern, hash of current window
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++) {                    // hash the pattern and the first window together
             hp = (hp * BASE + pattern.charAt(i)) % MOD;
             hw = (hw * BASE + text.charAt(i)) % MOD;
         }
-        for (int i = 0; ; i++) {
+        for (int i = 0; ; i++) {                         // hw is now the hash of text[i..i+m)
             if (hw == hp && text.regionMatches(i, pattern, 0, m)) res.add(i);   // verify: hashes can collide
-            if (i + m == n) break;
+            if (i + m == n) break;                       // this was the last window
             hw = (hw - text.charAt(i) * high % MOD + MOD) % MOD;               // remove text[i]
             hw = (hw * BASE + text.charAt(i + m)) % MOD;                        // append text[i + m]
         }

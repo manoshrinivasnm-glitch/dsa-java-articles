@@ -5,34 +5,35 @@ public class P982_CountAndSay {
 
     /** Approach 1: recursion, building each term with String concatenation. Each append copies the whole string. */
     static String bruteForce(int n) {
-        if (n == 1) return "1";
-        String prev = bruteForce(n - 1);
+        if (n == 1) return "1";                          // base case: the first term
+        String prev = bruteForce(n - 1);                 // the term we have to describe
         String result = "";
-        int i = 0;
+        int i = 0;                                       // start of the current run of equal digits
         while (i < prev.length()) {
             int j = i;
-            while (j < prev.length() && prev.charAt(j) == prev.charAt(i)) j++;
+            while (j < prev.length() && prev.charAt(j) == prev.charAt(i)) j++;   // j stops just past the run
             result = result + (j - i) + prev.charAt(i);   // count of the run, then its digit
-            i = j;
+            i = j;                                       // the next run starts where this one ended
         }
         return result;
     }
 
     /** Approach 2: iterate n - 1 times, run-length encoding into a StringBuilder. O(total length) time. */
     static String optimal(int n) {
-        String cur = "1";
-        for (int step = 2; step <= n; step++) {
-            StringBuilder next = new StringBuilder();
-            int count = 1;
+        String cur = "1";                                  // term 1
+        for (int step = 2; step <= n; step++) {            // build terms 2, 3, ..., n in order
+            StringBuilder next = new StringBuilder();      // the description of cur
+            int count = 1;                                 // length of the run ending at i - 1
+            // i == length is a sentinel step that flushes the last run
             for (int i = 1; i <= cur.length(); i++) {
                 if (i < cur.length() && cur.charAt(i) == cur.charAt(i - 1)) {
                     count++;                               // the run continues
                 } else {
                     next.append(count).append(cur.charAt(i - 1));   // the run ended at i - 1
-                    count = 1;
+                    count = 1;                             // a new run starts at i
                 }
             }
-            cur = next.toString();
+            cur = next.toString();                         // move on to the next term
         }
         return cur;
     }
