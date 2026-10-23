@@ -7,50 +7,53 @@ public class P140_DivideTwoNumbersWithoutMultiplicationAnd {
 
     /** Attach the sign and clamp the magnitude into the int range. */
     static int toResult(long quotient, boolean negative) {
-        if (negative) quotient = -quotient;
-        if (quotient > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        if (quotient < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        return (int) quotient;
+        if (negative) quotient = -quotient;              // signs differed: the answer is negative
+        if (quotient > Integer.MAX_VALUE) return Integer.MAX_VALUE;   // only MIN_VALUE / -1 lands here
+        if (quotient < Integer.MIN_VALUE) return Integer.MIN_VALUE;   // defensive; |quotient| <= 2^31
+        return (int) quotient;                           // safely inside int range now
     }
 
     /** Approach 1: subtract the divisor until what is left is smaller than it. O(|quotient|) time. */
     static int bruteForce(int dividend, int divisor) {
+        // work on magnitudes in long, where |MIN_VALUE| = 2^31 fits
         long a = Math.abs((long) dividend), b = Math.abs((long) divisor);
-        long quotient = 0;
-        while (a >= b) {
+        long quotient = 0;                               // how many times b has been taken away
+        while (a >= b) {                                 // b still fits into what is left
             a -= b;
             quotient++;
         }
-        return toResult(quotient, (dividend < 0) != (divisor < 0));
+        return toResult(quotient, (dividend < 0) != (divisor < 0));   // negative when the signs differ
     }
 
     /** Approach 2: each round takes away the largest divisor * 2^k that still fits. O(log^2 n) time. */
     static int better(int dividend, int divisor) {
+        // work on magnitudes in long, where |MIN_VALUE| = 2^31 fits
         long a = Math.abs((long) dividend), b = Math.abs((long) divisor);
         long quotient = 0;
-        while (a >= b) {
-            long chunk = b, count = 1;
-            while (a >= (chunk << 1)) {
+        while (a >= b) {                                 // one round per chunk removed
+            long chunk = b, count = 1;                   // chunk = b * count, count a power of two
+            while (a >= (chunk << 1)) {                  // keep doubling while twice the chunk still fits
                 chunk <<= 1;
                 count <<= 1;
             }
-            a -= chunk;
-            quotient += count;
+            a -= chunk;                                  // remove the largest b * 2^k that fits
+            quotient += count;                           // that removed 2^k copies of b
         }
-        return toResult(quotient, (dividend < 0) != (divisor < 0));
+        return toResult(quotient, (dividend < 0) != (divisor < 0));   // attach the sign and clamp
     }
 
     /** Approach 3: decide quotient bits from 31 down to 0; bit i is 1 exactly when b * 2^i still fits in a. O(32) time. */
     static int optimal(int dividend, int divisor) {
+        // work on magnitudes in long, where |MIN_VALUE| = 2^31 fits
         long a = Math.abs((long) dividend), b = Math.abs((long) divisor);
-        long quotient = 0;
-        for (int i = 31; i >= 0; i--) {
+        long quotient = 0;                  // built one bit at a time
+        for (int i = 31; i >= 0; i--) {     // decide quotient bits from high to low
             if ((a >> i) >= b) {            // same as a >= b << i, without risking a huge shift
-                a -= b << i;
-                quotient |= 1L << i;
+                a -= b << i;                // remove b * 2^i from the remainder
+                quotient |= 1L << i;        // so bit i of the quotient is 1
             }
         }
-        return toResult(quotient, (dividend < 0) != (divisor < 0));
+        return toResult(quotient, (dividend < 0) != (divisor < 0));   // attach the sign and clamp
     }
 
     // ---------------------------------------------------------------- tests

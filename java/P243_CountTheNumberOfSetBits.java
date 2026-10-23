@@ -10,8 +10,8 @@ public class P243_CountTheNumberOfSetBits {
     /** Approach 1: look at the lowest bit, shift it out, repeat until nothing is left. O(number of bits) time. */
     static int bruteForce(int n) {
         int count = 0;
-        while (n != 0) {
-            count += n & 1;
+        while (n != 0) {                    // stop once no set bit is left
+            count += n & 1;                 // add the lowest bit (0 or 1)
             n >>>= 1;                       // unsigned shift so a negative n terminates after 32 rounds
         }
         return count;
@@ -20,8 +20,8 @@ public class P243_CountTheNumberOfSetBits {
     /** Approach 2: Brian Kernighan. n & (n - 1) removes the lowest set bit, so the loop runs once per set bit. */
     static int optimal(int n) {
         int count = 0;
-        while (n != 0) {
-            n &= n - 1;
+        while (n != 0) {                                 // one round per set bit, not per bit
+            n &= n - 1;                                  // remove the lowest set bit
             count++;
         }
         return count;
@@ -31,13 +31,14 @@ public class P243_CountTheNumberOfSetBits {
     static final int[] TABLE = buildTable();
 
     static int[] buildTable() {
-        int[] t = new int[256];
-        for (int b = 1; b < 256; b++) t[b] = t[b >> 1] + (b & 1);
+        int[] t = new int[256];                          // t[0] = 0 is the base case
+        for (int b = 1; b < 256; b++) t[b] = t[b >> 1] + (b & 1);   // bits of b >> 1, plus b's own last bit
         return t;
     }
 
     /** Approach 3: split the int into four bytes and add up four table lookups. O(1) time, 256 ints of space. */
     static int lookupTable(int n) {
+        // look up each of the four bytes, lowest to highest, and add the counts
         return TABLE[n & 0xFF] + TABLE[(n >>> 8) & 0xFF] + TABLE[(n >>> 16) & 0xFF] + TABLE[n >>> 24];
     }
 
@@ -45,30 +46,31 @@ public class P243_CountTheNumberOfSetBits {
 
     /** Approach 1: add up the per-number counts. O(n log n) time. */
     static long totalBruteForce(int n) {
-        long total = 0;
-        for (int i = 1; i <= n; i++) total += optimal(i);
+        long total = 0;                                  // long: the total can exceed int range
+        for (int i = 1; i <= n; i++) total += optimal(i);   // count each number separately
         return total;
     }
 
     /** Approach 2: bit i is 0 for 2^i numbers, then 1 for 2^i numbers, repeating; count the 1-runs inside 0..n. O(log n). */
     static long totalOptimal(int n) {
         long total = 0;
-        for (int i = 0; i < 31; i++) {
-            long half = 1L << i, period = half << 1;
+        for (int i = 0; i < 31; i++) {                     // count the ones in bit position i across 0..n
+            long half = 1L << i, period = half << 1;       // bit i: 2^i zeros, then 2^i ones
             long full = (n + 1L) / period * half;          // complete periods, each contributes 2^i ones
             long partial = (n + 1L) % period - half;        // the unfinished period: ones only after its zero-run
-            total += full + Math.max(0L, partial);
+            total += full + Math.max(0L, partial);         // partial < 0 means no ones reached yet
         }
         return total;
     }
 
     /** Approach 3: split at the highest power of two 2^x <= n and recurse on the remainder. O(log n) time. */
     static long totalRecursive(int n) {
-        if (n <= 0) return 0;
+        if (n <= 0) return 0;                               // base case: nothing to count
         int x = 0;
         while ((1L << (x + 1)) <= n) x++;                   // 2^x <= n < 2^(x+1)
         long belowTop = x == 0 ? 0 : (long) x * (1L << (x - 1)); // set bits among 0 .. 2^x - 1
         long topBits = n - (1L << x) + 1;                   // bit x is set in every number 2^x .. n
+        // the lower bits of 2^x .. n repeat the pattern of 0 .. n - 2^x
         return belowTop + topBits + totalRecursive(n - (1 << x));
     }
 

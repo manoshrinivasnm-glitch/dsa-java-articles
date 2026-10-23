@@ -6,9 +6,9 @@ public class P1005_SwapTwoNumbers {
 
     /** Approach 1: the plain way, a third variable holds one value while the other moves. O(1). */
     static int[] usingTemp(int a, int b) {
-        int temp = a;
-        a = b;
-        b = temp;
+        int temp = a;     // save a before it is overwritten
+        a = b;            // a gets b's value
+        b = temp;         // b gets the saved original a
         return new int[]{a, b};
     }
 
@@ -30,16 +30,16 @@ public class P1005_SwapTwoNumbers {
 
     /** XOR swap on two array slots; the i == j guard matters, see the unguarded version below. */
     static void swapInArray(int[] arr, int i, int j) {
-        if (i == j) return;
-        arr[i] ^= arr[j];
-        arr[j] ^= arr[i];
-        arr[i] ^= arr[j];
+        if (i == j) return;   // same slot: XOR would zero it, and nothing needs to move
+        arr[i] ^= arr[j];     // arr[i] holds x ^ y
+        arr[j] ^= arr[i];     // arr[j] = y ^ (x ^ y) = x
+        arr[i] ^= arr[j];     // arr[i] = (x ^ y) ^ x = y
     }
 
     /** The trap: when both references name the same slot, the first XOR zeroes it and the value is gone. */
     static void swapInArrayUnguarded(int[] arr, int i, int j) {
-        arr[i] ^= arr[j];
-        arr[j] ^= arr[i];
+        arr[i] ^= arr[j];     // if i == j this is x ^ x = 0: the value is lost
+        arr[j] ^= arr[i];     // 0 ^ 0 stays 0
         arr[i] ^= arr[j];
     }
 

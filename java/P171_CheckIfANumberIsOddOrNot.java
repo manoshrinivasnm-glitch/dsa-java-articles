@@ -5,32 +5,32 @@ public class P171_CheckIfANumberIsOddOrNot {
 
     /** Approach 1: remainder on division by 2. Compare with 0, not with 1, so negatives work. O(1). */
     static boolean usingModulo(int n) {
-        return n % 2 != 0;
+        return n % 2 != 0;                               // odd numbers leave 1 or -1, both nonzero
     }
 
     /** Approach 2: integer division drops the remainder; multiplying back recovers n only when it was even. O(1). */
     static boolean usingDivision(int n) {
-        return n / 2 * 2 != n;
+        return n / 2 * 2 != n;                           // the division drops a remainder only when n is odd
     }
 
     /** Approach 3: the lowest bit is the only odd power of two, so it alone decides parity. O(1). */
     static boolean usingBitwiseAnd(int n) {
-        return (n & 1) == 1;
+        return (n & 1) == 1;                             // bit 0 is 1 exactly for odd n, negatives included
     }
 
     /** The classic bug: -3 % 2 is -1 in Java, so this reports negative odd numbers as even. */
     static boolean naiveModuloEqualsOne(int n) {
-        return n % 2 == 1;
+        return n % 2 == 1;                               // wrong for negatives: -3 % 2 is -1, not 1
     }
 
     /** Generalisation: the low k bits are n mod 2^k, always in [0, 2^k), even for negative n. */
     static int lowBits(int n, int k) {
-        return n & ((1 << k) - 1);
+        return n & ((1 << k) - 1);                       // (1 << k) - 1 is k ones: keep only the low k bits
     }
 
     /** n is divisible by 2^k exactly when its low k bits are all zero. */
     static boolean isDivisibleByPowerOfTwo(int n, int k) {
-        return (n & ((1 << k) - 1)) == 0;
+        return (n & ((1 << k) - 1)) == 0;                // all low k bits are 0 -> multiple of 2^k
     }
 
     // ---------------------------------------------------------------- tests

@@ -8,20 +8,20 @@ public class P1155_IntroductionToBitsAndTricks {
 
     /** Decimal to binary by repeated division by 2; remainders come out least significant first. n must be >= 0. */
     static String toBinary(int n) {
-        if (n == 0) return "0";
+        if (n == 0) return "0";                          // the loop below would produce an empty string
         StringBuilder sb = new StringBuilder();
-        while (n > 0) {
-            sb.append(n % 2);
-            n /= 2;
+        while (n > 0) {                                  // peel off one bit per round
+            sb.append(n % 2);                            // remainder = the current lowest bit
+            n /= 2;                                      // drop that bit
         }
-        return sb.reverse().toString();
+        return sb.reverse().toString();                  // bits were collected lowest first, so flip them
     }
 
     /** Binary string to decimal: every digit doubles what we have so far and adds itself. */
     static int fromBinary(String s) {
         int value = 0;
-        for (int i = 0; i < s.length(); i++) {
-            value = value * 2 + (s.charAt(i) - '0');
+        for (int i = 0; i < s.length(); i++) {           // read digits from the most significant end
+            value = value * 2 + (s.charAt(i) - '0');     // shift what we have left one place, add the new bit
         }
         return value;
     }
@@ -29,8 +29,8 @@ public class P1155_IntroductionToBitsAndTricks {
     /** All 32 bits of an int, most significant first. This is how negatives are really stored (two's complement). */
     static String toBinary32(int n) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 31; i >= 0; i--) {
-            sb.append(((n >> i) & 1) == 1 ? '1' : '0');
+        for (int i = 31; i >= 0; i--) {                  // bit 31 (the sign bit) down to bit 0
+            sb.append(((n >> i) & 1) == 1 ? '1' : '0');  // move bit i to position 0 and read it
         }
         return sb.toString();
     }
@@ -39,73 +39,73 @@ public class P1155_IntroductionToBitsAndTricks {
 
     /** One's complement flips every bit. */
     static int onesComplement(int n) {
-        return ~n;
+        return ~n;                                       // every 0 becomes 1 and every 1 becomes 0
     }
 
     /** Two's complement is one's complement plus one; it is exactly how -n is stored, so this equals -n. */
     static int twosComplement(int n) {
-        return ~n + 1;
+        return ~n + 1;                                   // flip all bits, then add one: the same bits as -n
     }
 
     // ------------------------------------------------------------ shifts
 
     /** Left shift by k multiplies by 2^k, as long as nothing falls off the top. */
     static int multiplyByPowerOfTwo(int n, int k) {
-        return n << k;
+        return n << k;                                   // n * 2^k: each shift doubles the value
     }
 
     /** Arithmetic right shift divides by 2^k rounding toward negative infinity (unlike / which rounds toward zero). */
     static int divideByPowerOfTwo(int n, int k) {
-        return n >> k;
+        return n >> k;                                   // floor(n / 2^k); sign bit fills in from the left
     }
 
     // ------------------------------------------------------------ the tricks
 
     /** The lowest bit is the only odd power of two, so it alone decides parity. Works for negatives too. */
     static boolean isOdd(int n) {
-        return (n & 1) == 1;
+        return (n & 1) == 1;                             // bit 0 is 1 exactly for odd numbers
     }
 
     /** A power of two has exactly one set bit; n - 1 turns that bit off and everything below it on. */
     static boolean isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
+        return n > 0 && (n & (n - 1)) == 0;              // positive, and clearing its lowest set bit leaves 0
     }
 
     /** Bring bit i down to position 0 and read it. */
     static boolean isBitSet(int n, int i) {
-        return ((n >> i) & 1) == 1;
+        return ((n >> i) & 1) == 1;                      // shift bit i to position 0, then mask it out
     }
 
     /** OR with a mask that has only bit i on. */
     static int setBit(int n, int i) {
-        return n | (1 << i);
+        return n | (1 << i);                             // OR forces bit i to 1, leaves the rest alone
     }
 
     /** AND with a mask that has every bit on except bit i. */
     static int clearBit(int n, int i) {
-        return n & ~(1 << i);
+        return n & ~(1 << i);                            // AND with 0 at bit i forces it to 0, keeps the rest
     }
 
     /** XOR with a mask flips exactly the bits that are on in the mask. */
     static int toggleBit(int n, int i) {
-        return n ^ (1 << i);
+        return n ^ (1 << i);                             // XOR with 1 flips bit i; other bits stay
     }
 
     /** n - 1 flips the lowest set bit and all zeros below it, so AND-ing with n removes just that bit. */
     static int removeLowestSetBit(int n) {
-        return n & (n - 1);
+        return n & (n - 1);                              // n - 1 differs from n from the lowest set bit down
     }
 
     /** -n is ~n + 1, which agrees with n only at the lowest set bit, so the AND isolates it. */
     static int lowestSetBit(int n) {
-        return n & -n;
+        return n & -n;                                   // only the lowest set bit is 1 in both n and -n
     }
 
     /** Brian Kernighan: each round removes one set bit, so the loop runs once per set bit. */
     static int countSetBits(int n) {
         int count = 0;
-        while (n != 0) {
-            n &= n - 1;
+        while (n != 0) {                                 // stop once every set bit is gone
+            n &= n - 1;                                  // remove the lowest set bit
             count++;
         }
         return count;
@@ -113,17 +113,17 @@ public class P1155_IntroductionToBitsAndTricks {
 
     /** Swap without a temporary: after three XORs each variable holds the other's original value. */
     static int[] swapWithXor(int a, int b) {
-        a ^= b;
-        b ^= a;
-        a ^= b;
+        a ^= b;                                          // a now holds a ^ b
+        b ^= a;                                          // b = b ^ (a ^ b) = original a
+        a ^= b;                                          // a = (a ^ b) ^ original a = original b
         return new int[]{a, b};
     }
 
     /** x ^ x == 0 and x ^ 0 == x, so XOR-ing everything cancels pairs and leaves the element that appears an odd number of times. */
     static int oddOneOut(int[] a) {
-        int x = 0;
-        for (int v : a) x ^= v;
-        return x;
+        int x = 0;                                       // XOR of nothing is 0
+        for (int v : a) x ^= v;                          // equal pairs cancel to 0
+        return x;                                        // what is left is the unpaired value
     }
 
     // ---------------------------------------------------------------- tests

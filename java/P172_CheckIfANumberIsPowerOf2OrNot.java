@@ -5,35 +5,35 @@ public class P172_CheckIfANumberIsPowerOf2OrNot {
 
     /** Approach 1: keep halving while even; a power of two ends at exactly 1. O(log n) time. */
     static boolean bruteForce(int n) {
-        if (n <= 0) return false;
-        while (n % 2 == 0) n /= 2;
-        return n == 1;
+        if (n <= 0) return false;                        // 0 and negatives are never powers of two
+        while (n % 2 == 0) n /= 2;                       // strip every factor of 2
+        return n == 1;                                   // only a power of two reduces to exactly 1
     }
 
     /** Approach 2: a power of two has exactly one set bit; count them. O(number of set bits) time. */
     static boolean better(int n) {
-        if (n <= 0) return false;
-        int count = 0;
+        if (n <= 0) return false;                        // 0 and negatives are never powers of two
+        int count = 0;                                   // number of set bits
         while (n != 0) {
-            n &= n - 1;
+            n &= n - 1;                                  // remove the lowest set bit
             count++;
         }
-        return count == 1;
+        return count == 1;                               // a power of two has exactly one set bit
     }
 
     /** Approach 3: n - 1 flips the lowest set bit and everything below it, so n & (n - 1) is 0 only for one set bit. O(1). */
     static boolean optimal(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
+        return n > 0 && (n & (n - 1)) == 0;              // one set bit only: clearing it leaves 0
     }
 
     /** Approach 3, variant: n & -n isolates the lowest set bit; it equals n only when that is the sole bit. O(1). */
     static boolean optimalLowestBit(int n) {
-        return n > 0 && (n & -n) == n;
+        return n > 0 && (n & -n) == n;                   // the lowest set bit is the whole number
     }
 
     /** Approach 3, variant: 2^30 is the largest power of two in int range, and its divisors are exactly the powers of two. O(1). */
     static boolean optimalDivisor(int n) {
-        return n > 0 && (1 << 30) % n == 0;
+        return n > 0 && (1 << 30) % n == 0;              // only powers of two divide 2^30
     }
 
     // ---------------------------------------------------------------- tests

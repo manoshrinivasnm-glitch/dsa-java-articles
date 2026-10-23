@@ -14,23 +14,23 @@ public class P869_MColoringProblem {
 
     /** Approach 1: generate all m^v colourings and validate each one only when it is complete. */
     static boolean bruteForce(int v, int[][] edges, int m) {
-        boolean[][] adj = adjacency(v, edges);
-        return generate(0, v, m, new int[v], adj);
+        boolean[][] adj = adjacency(v, edges);           // adj[a][b] is true when a and b share an edge
+        return generate(0, v, m, new int[v], adj);       // color[i] will hold vertex i's colour, 1..m
     }
 
     private static boolean generate(int node, int v, int m, int[] color, boolean[][] adj) {
-        if (node == v) return valid(color, adj, v);
-        for (int c = 1; c <= m; c++) {
+        if (node == v) return valid(color, adj, v);      // full colouring built: only now test it
+        for (int c = 1; c <= m; c++) {                   // give this vertex every colour in turn
             color[node] = c;
-            if (generate(node + 1, v, m, color, adj)) return true;
+            if (generate(node + 1, v, m, color, adj)) return true;   // some completion is valid: done
         }
         return false;
     }
 
     private static boolean valid(int[] color, boolean[][] adj, int v) {
-        for (int a = 0; a < v; a++) {
+        for (int a = 0; a < v; a++) {                    // check every pair of vertices once
             for (int b = a + 1; b < v; b++) {
-                if (adj[a][b] && color[a] == color[b]) return false;
+                if (adj[a][b] && color[a] == color[b]) return false;   // an edge joins two equal colours
             }
         }
         return true;
@@ -38,61 +38,64 @@ public class P869_MColoringProblem {
 
     /** Approach 2: backtracking. Colour vertices in index order and try a colour only if no already-coloured neighbour has it. */
     static boolean better(int v, int[][] edges, int m) {
-        boolean[][] adj = adjacency(v, edges);
-        return backtrack(0, v, m, new int[v], adj);
+        boolean[][] adj = adjacency(v, edges);           // adj[a][b] is true when a and b share an edge
+        return backtrack(0, v, m, new int[v], adj);      // 0 in color[] means "not coloured yet"
     }
 
     private static boolean backtrack(int node, int v, int m, int[] color, boolean[][] adj) {
         if (node == v) return true;                      // every vertex coloured without conflict
-        for (int c = 1; c <= m; c++) {
-            if (isSafe(node, c, color, adj, v)) {
+        for (int c = 1; c <= m; c++) {                   // try each colour for this vertex
+            if (isSafe(node, c, color, adj, v)) {        // no neighbour already has colour c
                 color[node] = c;
-                if (backtrack(node + 1, v, m, color, adj)) return true;
+                if (backtrack(node + 1, v, m, color, adj)) return true;   // the rest could be coloured too
                 color[node] = 0;                         // undo
             }
         }
-        return false;
+        return false;                                    // no colour fits: the caller must try another
     }
 
     private static boolean isSafe(int node, int c, int[] color, boolean[][] adj, int v) {
         for (int other = 0; other < v; other++) {
-            if (adj[node][other] && color[other] == c) return false;
+            if (adj[node][other] && color[other] == c) return false;   // a neighbour already uses c
         }
         return true;
     }
 
     /** Approach 3: backtracking over adjacency lists, with the blocked colours of a vertex gathered once per call and symmetry breaking: a vertex never takes a colour larger than (highest colour used so far) + 1. */
     static boolean optimal(int v, int[][] edges, int m) {
-        if (v == 0) return true;
-        if (m <= 0) return false;
+        if (v == 0) return true;                         // no vertices: trivially coloured
+        if (m <= 0) return false;                        // at least one vertex but no colours
         if (m >= v) return true;                         // every vertex can simply get its own colour
+        // count neighbours first so each list is sized exactly
         int[] degree = new int[v];
         for (int[] e : edges) {
             degree[e[0]]++;
             degree[e[1]]++;
         }
-        int[][] adj = new int[v][];
+        int[][] adj = new int[v][];                      // adj[i] lists the neighbours of vertex i
         for (int i = 0; i < v; i++) adj[i] = new int[degree[i]];
-        int[] fill = new int[v];
-        for (int[] e : edges) {
+        int[] fill = new int[v];                         // next free slot in each adjacency list
+        for (int[] e : edges) {                          // store each undirected edge in both lists
             adj[e[0]][fill[e[0]]++] = e[1];
             adj[e[1]][fill[e[1]]++] = e[0];
         }
-        return colourFrom(0, v, m, new int[v], adj, 0);
+        return colourFrom(0, v, m, new int[v], adj, 0);  // no colour used yet, so maxUsed starts at 0
     }
 
     private static boolean colourFrom(int node, int v, int m, int[] color, int[][] adj, int maxUsed) {
-        if (node == v) return true;
-        boolean[] blocked = new boolean[m + 1];
+        if (node == v) return true;                      // every vertex coloured without conflict
+        boolean[] blocked = new boolean[m + 1];          // blocked[c]: some neighbour already has colour c
+        // mark the colours of already-coloured neighbours (0 means uncoloured)
         for (int nb : adj[node]) if (color[nb] != 0) blocked[color[nb]] = true;
         int limit = Math.min(m, maxUsed + 1);            // colours above maxUsed + 1 are interchangeable with maxUsed + 1
         for (int c = 1; c <= limit; c++) {
-            if (blocked[c]) continue;
+            if (blocked[c]) continue;                    // clashes with a neighbour
             color[node] = c;
+            // recurse; maxUsed grows only when c is a brand-new colour
             if (colourFrom(node + 1, v, m, color, adj, Math.max(maxUsed, c))) return true;
-            color[node] = 0;
+            color[node] = 0;                             // undo before trying the next colour
         }
-        return false;
+        return false;                                    // every allowed colour failed: backtrack
     }
 
     // ---------------------------------------------------------------- tests

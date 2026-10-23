@@ -8,18 +8,18 @@ public class P2410_SetUnsetTheRightmostUnsetBit {
     /** Number of binary digits in n (1 for n = 0). */
     static int bitLength(int n) {
         int len = 0;
-        do {
+        do {                                        // do-while so that 0 still counts as one digit
             len++;
-            n >>>= 1;
+            n >>>= 1;                               // drop one binary digit
         } while (n != 0);
         return len;
     }
 
     /** Approach 1: scan positions from 0 upward inside n's binary representation and turn on the first 0 found. O(log n). */
     static int setRightmostUnsetBruteForce(int n) {
-        int len = bitLength(n);
-        for (int i = 0; i < len; i++) {
-            if (((n >> i) & 1) == 0) return n | (1 << i);
+        int len = bitLength(n);                     // only look inside n's own digits
+        for (int i = 0; i < len; i++) {             // lowest position first
+            if (((n >> i) & 1) == 0) return n | (1 << i);   // first 0 found: turn it on
         }
         return n;                                   // every digit is already 1
     }
@@ -27,25 +27,25 @@ public class P2410_SetUnsetTheRightmostUnsetBit {
     /** Approach 2: n + 1 flips the trailing ones to zero and the first zero to one; OR with n restores the ones. O(1). */
     static int setRightmostUnsetOptimal(int n) {
         if (n != 0 && (n & (n + 1)) == 0) return n; // n is 2^k - 1, all ones, nothing to set
-        return n | (n + 1);
+        return n | (n + 1);                         // n + 1 has the lowest 0 of n set; OR keeps n's ones
     }
 
     /** Approach 1: scan positions from 0 upward and turn off the first 1 found. O(log n). */
     static int unsetRightmostSetBruteForce(int n) {
-        for (int i = 0; i < 31; i++) {
-            if (((n >> i) & 1) == 1) return n & ~(1 << i);
+        for (int i = 0; i < 31; i++) {              // lowest position first
+            if (((n >> i) & 1) == 1) return n & ~(1 << i);   // first 1 found: turn it off
         }
         return n;                                   // n == 0, nothing to clear
     }
 
     /** Approach 2: n - 1 flips the lowest one and the zeros below it; AND with n keeps everything above. O(1). */
     static int unsetRightmostSetOptimal(int n) {
-        return n & (n - 1);
+        return n & (n - 1);                         // n - 1 differs from n only from the lowest 1 down
     }
 
     /** Bonus: the lowest set bit on its own, since -n = ~n + 1 agrees with n exactly there. */
     static int isolateRightmostSet(int n) {
-        return n & -n;
+        return n & -n;                              // n and -n share only the lowest set bit
     }
 
     // ---------------------------------------------------------------- tests

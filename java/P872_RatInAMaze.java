@@ -5,24 +5,26 @@ public class P872_RatInAMaze {
 
     /** Approach 1: DFS with a separate visited matrix and one explicit branch per direction, tried in the order D, L, R, U. */
     static List<String> bruteForce(int[][] maze) {
-        List<String> paths = new ArrayList<>();
+        List<String> paths = new ArrayList<>();          // every complete path, as a string of moves
         int n = maze.length;
+        // blocked start or exit: no path can exist
         if (n == 0 || maze[0][0] == 0 || maze[n - 1][n - 1] == 0) return paths;
-        boolean[][] visited = new boolean[n][n];
-        explore(0, 0, maze, n, new StringBuilder(), visited, paths);
+        boolean[][] visited = new boolean[n][n];         // cells on the current path, so none is reused
+        explore(0, 0, maze, n, new StringBuilder(), visited, paths);   // start at the top-left cell
         return paths;
     }
 
     private static void explore(int r, int c, int[][] maze, int n, StringBuilder path, boolean[][] visited, List<String> paths) {
-        if (r == n - 1 && c == n - 1) {
+        if (r == n - 1 && c == n - 1) {                  // reached the exit: save the moves taken
             paths.add(path.toString());
             return;
         }
-        visited[r][c] = true;
+        visited[r][c] = true;                            // keep the path from coming back to this cell
+        // each branch: in bounds, not on the path, and open; tried in D, L, R, U order
         if (r + 1 < n && !visited[r + 1][c] && maze[r + 1][c] == 1) {          // Down
-            path.append('D');
+            path.append('D');                            // record the move
             explore(r + 1, c, maze, n, path, visited, paths);
-            path.deleteCharAt(path.length() - 1);
+            path.deleteCharAt(path.length() - 1);        // backtrack: forget the move
         }
         if (c - 1 >= 0 && !visited[r][c - 1] && maze[r][c - 1] == 1) {         // Left
             path.append('L');
@@ -39,7 +41,7 @@ public class P872_RatInAMaze {
             explore(r - 1, c, maze, n, path, visited, paths);
             path.deleteCharAt(path.length() - 1);
         }
-        visited[r][c] = false;
+        visited[r][c] = false;                           // backtrack: other paths may use this cell
     }
 
     static final int[] DR = {1, 0, 0, -1};               // D, L, R, U: already in lexicographic order
@@ -48,23 +50,24 @@ public class P872_RatInAMaze {
 
     /** Approach 2: direction arrays replace the four copies of the branch; the maze itself is marked (cell set to 0) while a cell is on the current path. */
     static List<String> optimal(int[][] maze) {
-        List<String> paths = new ArrayList<>();
+        List<String> paths = new ArrayList<>();          // every complete path, as a string of moves
         int n = maze.length;
+        // blocked start or exit: no path can exist
         if (n == 0 || maze[0][0] == 0 || maze[n - 1][n - 1] == 0) return paths;
         dfs(0, 0, maze, n, new char[n * n], 0, paths);  // a simple path visits at most n*n cells, so n*n - 1 moves
         return paths;
     }
 
     private static void dfs(int r, int c, int[][] maze, int n, char[] buf, int len, List<String> paths) {
-        if (r == n - 1 && c == n - 1) {
+        if (r == n - 1 && c == n - 1) {                  // reached the exit: save the first len moves
             paths.add(new String(buf, 0, len));
             return;
         }
         maze[r][c] = 0;                                  // block the cell while it is on the current path
-        for (int d = 0; d < 4; d++) {
+        for (int d = 0; d < 4; d++) {                    // D, L, R, U order keeps the output sorted
             int nr = r + DR[d], nc = c + DC[d];
-            if (nr >= 0 && nr < n && nc >= 0 && nc < n && maze[nr][nc] == 1) {
-                buf[len] = MOVE[d];
+            if (nr >= 0 && nr < n && nc >= 0 && nc < n && maze[nr][nc] == 1) {   // in bounds and open
+                buf[len] = MOVE[d];                      // overwrite slot len; no explicit undo needed
                 dfs(nr, nc, maze, n, buf, len + 1, paths);
             }
         }

@@ -5,13 +5,13 @@ public class P873_SudokuSolver {
 
     /** Approach 1: find the first empty cell, try the digits 1-9 and validate each by scanning its row, column and box. Returns false when the board cannot be completed. */
     static boolean bruteForce(char[][] board) {
-        for (int r = 0; r < 9; r++) {
+        for (int r = 0; r < 9; r++) {                    // scan in row-major order for the first empty cell
             for (int c = 0; c < 9; c++) {
-                if (board[r][c] != '.') continue;
-                for (char d = '1'; d <= '9'; d++) {
-                    if (canPlace(board, r, c, d)) {
+                if (board[r][c] != '.') continue;        // already filled: keep looking
+                for (char d = '1'; d <= '9'; d++) {      // try every digit in this empty cell
+                    if (canPlace(board, r, c, d)) {      // d is not yet in its row, column or box
                         board[r][c] = d;
-                        if (bruteForce(board)) return true;
+                        if (bruteForce(board)) return true;   // the rest of the board solved too
                         board[r][c] = '.';               // undo and try the next digit
                     }
                 }
@@ -23,10 +23,11 @@ public class P873_SudokuSolver {
 
     private static boolean canPlace(char[][] board, int r, int c, char d) {
         int br = r - r % 3, bc = c - c % 3;              // top-left corner of the 3x3 box
+        // i walks the 9 cells of the row, column and box at once
         for (int i = 0; i < 9; i++) {
-            if (board[r][i] == d) return false;
-            if (board[i][c] == d) return false;
-            if (board[br + i / 3][bc + i % 3] == d) return false;
+            if (board[r][i] == d) return false;          // d already in this row
+            if (board[i][c] == d) return false;          // d already in this column
+            if (board[br + i / 3][bc + i % 3] == d) return false;   // d already in this box
         }
         return true;
     }
@@ -37,48 +38,51 @@ public class P873_SudokuSolver {
 
     /** Approach 2: keep a digit bitmask per row, column and box so each placement test is O(1); cells are still filled in row-major order. */
     static boolean better(char[][] board) {
+        // bit d set = digit d already used there
         int[] rows = new int[9], cols = new int[9], boxes = new int[9];
+        // record every given digit in its row, column and box
         for (int r = 0; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
                 if (board[r][c] != '.') {
-                    int bit = 1 << (board[r][c] - '0');
+                    int bit = 1 << (board[r][c] - '0');  // digit d -> bit d
                     rows[r] |= bit;
                     cols[c] |= bit;
                     boxes[boxOf(r, c)] |= bit;
                 }
             }
         }
-        return fillInOrder(board, 0, rows, cols, boxes);
+        return fillInOrder(board, 0, rows, cols, boxes);   // start the search at cell 0
     }
 
     private static boolean fillInOrder(char[][] board, int pos, int[] rows, int[] cols, int[] boxes) {
-        while (pos < 81 && board[pos / 9][pos % 9] != '.') pos++;
-        if (pos == 81) return true;
-        int r = pos / 9, c = pos % 9, b = boxOf(r, c);
-        int used = rows[r] | cols[c] | boxes[b];
+        while (pos < 81 && board[pos / 9][pos % 9] != '.') pos++;   // skip to the next empty cell
+        if (pos == 81) return true;                      // no empty cell left: solved
+        int r = pos / 9, c = pos % 9, b = boxOf(r, c);   // cell index -> row, column, box
+        int used = rows[r] | cols[c] | boxes[b];         // digits this cell may not take
         for (int d = 1; d <= 9; d++) {
             int bit = 1 << d;
-            if ((used & bit) != 0) continue;
+            if ((used & bit) != 0) continue;             // d clashes with the row, column or box: O(1) test
             board[r][c] = (char) ('0' + d);
-            rows[r] |= bit; cols[c] |= bit; boxes[b] |= bit;
-            if (fillInOrder(board, pos + 1, rows, cols, boxes)) return true;
-            rows[r] ^= bit; cols[c] ^= bit; boxes[b] ^= bit;
+            rows[r] |= bit; cols[c] |= bit; boxes[b] |= bit;   // mark d as used in all three
+            if (fillInOrder(board, pos + 1, rows, cols, boxes)) return true;   // the rest solved too
+            rows[r] ^= bit; cols[c] ^= bit; boxes[b] ^= bit;   // undo: clear the bits again
             board[r][c] = '.';
         }
-        return false;
+        return false;                                    // no digit fits: backtrack
     }
 
     private static final int ALL = 0b1111111110;         // bits 1..9 set
 
     /** Approach 3: O(1) masks plus the most-constrained-cell heuristic: always branch on the empty cell with the fewest candidates. */
     static boolean optimal(char[][] board) {
+        // bit d set = digit d already used there
         int[] rows = new int[9], cols = new int[9], boxes = new int[9];
-        int empty = 0;
+        int empty = 0;                                   // number of cells still to fill
         for (int r = 0; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
                 if (board[r][c] == '.') {
                     empty++;
-                } else {
+                } else {                                 // a given digit: record it in row, column and box
                     int bit = 1 << (board[r][c] - '0');
                     rows[r] |= bit;
                     cols[c] |= bit;
@@ -90,14 +94,15 @@ public class P873_SudokuSolver {
     }
 
     private static boolean fillMostConstrained(char[][] board, int empty, int[] rows, int[] cols, int[] boxes) {
-        if (empty == 0) return true;
+        if (empty == 0) return true;                     // every cell filled: solved
+        // empty cell with the fewest candidates so far
         int bestR = -1, bestC = -1, bestCand = 0, bestCount = 10;
         for (int r = 0; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
                 if (board[r][c] != '.') continue;
-                int cand = ALL & ~(rows[r] | cols[c] | boxes[boxOf(r, c)]);
+                int cand = ALL & ~(rows[r] | cols[c] | boxes[boxOf(r, c)]);   // digits still legal here
                 int count = Integer.bitCount(cand);
-                if (count < bestCount) {
+                if (count < bestCount) {                 // more constrained than the best so far: remember it
                     bestCount = count;
                     bestCand = cand;
                     bestR = r;
@@ -107,16 +112,18 @@ public class P873_SudokuSolver {
         }
         if (bestCount == 0) return false;                // an empty cell has no legal digit: dead end
         int b = boxOf(bestR, bestC);
+        // try each candidate digit of that cell; cand &= cand - 1 drops the one just tried
         for (int cand = bestCand; cand != 0; cand &= cand - 1) {
             int bit = cand & -cand;                      // lowest remaining candidate
-            int d = Integer.numberOfTrailingZeros(bit);
+            int d = Integer.numberOfTrailingZeros(bit);  // bit position = the digit
             board[bestR][bestC] = (char) ('0' + d);
-            rows[bestR] |= bit; cols[bestC] |= bit; boxes[b] |= bit;
+            rows[bestR] |= bit; cols[bestC] |= bit; boxes[b] |= bit;   // mark d as used in all three
+            // recurse with one empty cell fewer; true means the whole board is solved
             if (fillMostConstrained(board, empty - 1, rows, cols, boxes)) return true;
-            rows[bestR] ^= bit; cols[bestC] ^= bit; boxes[b] ^= bit;
+            rows[bestR] ^= bit; cols[bestC] ^= bit; boxes[b] ^= bit;   // undo: clear the bits again
             board[bestR][bestC] = '.';
         }
-        return false;
+        return false;                                    // every candidate failed: backtrack
     }
 
     // ---------------------------------------------------------------- tests

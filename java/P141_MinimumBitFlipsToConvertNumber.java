@@ -6,29 +6,29 @@ public class P141_MinimumBitFlipsToConvertNumber {
     /** Approach 1: walk all 32 positions and count where the two bits disagree. O(32) time. */
     static int bruteForce(int start, int goal) {
         int flips = 0;
-        for (int i = 0; i < 32; i++) {
-            if (((start >> i) & 1) != ((goal >> i) & 1)) flips++;
+        for (int i = 0; i < 32; i++) {                   // every bit position of an int
+            if (((start >> i) & 1) != ((goal >> i) & 1)) flips++;   // bits differ: this one must flip
         }
         return flips;
     }
 
     /** Approach 2: XOR marks every differing position with a 1; count the ones by shifting them out. O(number of bits). */
     static int better(int start, int goal) {
-        int diff = start ^ goal;
+        int diff = start ^ goal;                         // 1 exactly where start and goal differ
         int flips = 0;
-        while (diff != 0) {
-            flips += diff & 1;
-            diff >>>= 1;
+        while (diff != 0) {                              // stop once no differing bit is left
+            flips += diff & 1;                           // count the lowest bit if it is a 1
+            diff >>>= 1;                                 // unsigned shift, so a negative diff still reaches 0
         }
         return flips;
     }
 
     /** Approach 3: XOR, then Brian Kernighan drops one set bit per round. O(number of flips) time. */
     static int optimal(int start, int goal) {
-        int diff = start ^ goal;
+        int diff = start ^ goal;                         // 1 exactly where start and goal differ
         int flips = 0;
-        while (diff != 0) {
-            diff &= diff - 1;
+        while (diff != 0) {                              // one round per differing bit
+            diff &= diff - 1;                            // remove the lowest set bit
             flips++;
         }
         return flips;
@@ -36,7 +36,7 @@ public class P141_MinimumBitFlipsToConvertNumber {
 
     /** Approach 3, one-liner: the library popcount compiles to a single CPU instruction on most machines. */
     static int optimalBuiltin(int start, int goal) {
-        return Integer.bitCount(start ^ goal);
+        return Integer.bitCount(start ^ goal);           // number of differing bits
     }
 
     // ---------------------------------------------------------------- tests

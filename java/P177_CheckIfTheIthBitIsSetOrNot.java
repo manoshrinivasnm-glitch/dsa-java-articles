@@ -6,31 +6,31 @@ public class P177_CheckIfTheIthBitIsSetOrNot {
     /** Approach 1: peel off binary digits by repeated division until digit i is at the front. O(i) time. */
     static boolean bruteForce(int n, int i) {
         long v = n & 0xFFFFFFFFL;              // unsigned view, so a negative n behaves like its 32-bit pattern
-        for (int k = 0; k < i; k++) v /= 2;
-        return v % 2 == 1;
+        for (int k = 0; k < i; k++) v /= 2;    // each halving drops the lowest binary digit
+        return v % 2 == 1;                     // the lowest digit is now bit i
     }
 
     /** Approach 2: build a mask with a single 1 at position i and AND it with n. O(1) time. */
     static boolean leftShiftMask(int n, int i) {
-        return (n & (1 << i)) != 0;
+        return (n & (1 << i)) != 0;                      // mask keeps only bit i; nonzero means it is set
     }
 
     /** Approach 3: bring bit i down to position 0 and look at the lowest bit. O(1) time. */
     static boolean rightShift(int n, int i) {
-        return ((n >> i) & 1) == 1;
+        return ((n >> i) & 1) == 1;                      // shift bit i to position 0, then read it
     }
 
     /** Companion operations built from the same mask. */
     static int setBit(int n, int i) {
-        return n | (1 << i);
+        return n | (1 << i);                             // OR forces bit i to 1
     }
 
     static int clearBit(int n, int i) {
-        return n & ~(1 << i);
+        return n & ~(1 << i);                            // AND with the inverted mask forces bit i to 0
     }
 
     static int toggleBit(int n, int i) {
-        return n ^ (1 << i);
+        return n ^ (1 << i);                             // XOR flips bit i only
     }
 
     // ---------------------------------------------------------------- tests
