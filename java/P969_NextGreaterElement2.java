@@ -6,14 +6,14 @@ public class P969_NextGreaterElement2 {
     /** Approach 1: for every index, walk forward around the circle at most n - 1 steps. O(n^2) time, O(1) extra space. */
     static int[] bruteForce(int[] nums) {
         int n = nums.length;
-        int[] res = new int[n];
+        int[] res = new int[n];                      // res[i] = next greater value, wrapping around
         for (int i = 0; i < n; i++) {
-            res[i] = -1;
-            for (int step = 1; step < n; step++) {
-                int j = (i + step) % n;
-                if (nums[j] > nums[i]) {
+            res[i] = -1;                             // assume none until one is found
+            for (int step = 1; step < n; step++) {   // visit the other n - 1 elements in circular order
+                int j = (i + step) % n;              // wrap past the end back to index 0
+                if (nums[j] > nums[i]) {             // the first strictly greater value is the answer
                     res[i] = nums[j];
-                    break;
+                    break;                           // stop at the nearest one
                 }
             }
         }
@@ -25,11 +25,12 @@ public class P969_NextGreaterElement2 {
         int n = nums.length;
         int[] res = new int[n];
         Deque<Integer> st = new ArrayDeque<>();      // values; deeper entries are strictly larger
-        for (int i = 2 * n - 1; i >= 0; i--) {
-            int cur = nums[i % n];
+        for (int i = 2 * n - 1; i >= 0; i--) {       // walk the doubled array from the right
+            int cur = nums[i % n];                   // virtual index i maps back to i % n
+            // drop values that cur hides from everything on its left
             while (!st.isEmpty() && st.peek() <= cur) st.pop();
             if (i < n) res[i] = st.isEmpty() ? -1 : st.peek();   // only the second (real) pass records answers
-            st.push(cur);
+            st.push(cur);                            // cur is now a candidate for elements on its left
         }
         return res;
     }

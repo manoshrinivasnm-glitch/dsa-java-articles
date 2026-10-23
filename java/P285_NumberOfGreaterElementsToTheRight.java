@@ -5,11 +5,11 @@ public class P285_NumberOfGreaterElementsToTheRight {
 
     /** Approach 1: answer every query by scanning the suffix after its index. O(n * q) time, O(1) extra space. */
     static int[] bruteForce(int[] arr, int[] queries) {
-        int[] res = new int[queries.length];
-        for (int k = 0; k < queries.length; k++) {
-            int idx = queries[k], count = 0;
-            for (int j = idx + 1; j < arr.length; j++) {
-                if (arr[j] > arr[idx]) count++;
+        int[] res = new int[queries.length];         // res[k] = answer for the k-th query
+        for (int k = 0; k < queries.length; k++) {   // answer each query independently
+            int idx = queries[k], count = 0;         // count = elements after idx that beat arr[idx]
+            for (int j = idx + 1; j < arr.length; j++) {   // scan the whole suffix after idx
+                if (arr[j] > arr[idx]) count++;      // strictly greater only
             }
             res[k] = count;
         }
@@ -19,23 +19,23 @@ public class P285_NumberOfGreaterElementsToTheRight {
     /** Approach 2: Fenwick tree over value ranks, filled right to left, then O(1) per query. O(n log n + q) time, O(n) space. */
     static int[] optimal(int[] arr, int[] queries) {
         int n = arr.length;
-        int[] vals = arr.clone();
+        int[] vals = arr.clone();                    // sorted copy, used to turn values into ranks
         Arrays.sort(vals);
         int m = 0;                                   // number of distinct values, kept in vals[0..m-1]
         for (int i = 0; i < n; i++) {
-            if (m == 0 || vals[i] != vals[m - 1]) vals[m++] = vals[i];
+            if (m == 0 || vals[i] != vals[m - 1]) vals[m++] = vals[i];   // keep each distinct value once
         }
         int[] tree = new int[m + 1];                 // 1-based Fenwick tree: how many seen elements have each rank
-        int[] greater = new int[n];
-        for (int i = n - 1; i >= 0; i--) {
-            int rank = Arrays.binarySearch(vals, 0, m, arr[i]) + 1;     // 1..m
+        int[] greater = new int[n];                  // greater[i] = how many later elements beat arr[i]
+        for (int i = n - 1; i >= 0; i--) {           // right to left: the tree holds only elements after i
+            int rank = Arrays.binarySearch(vals, 0, m, arr[i]) + 1;   // rank of arr[i], from 1 to m
             int notGreater = 0;                      // seen elements with rank <= rank
-            for (int r = rank; r > 0; r -= r & -r) notGreater += tree[r];
+            for (int r = rank; r > 0; r -= r & -r) notGreater += tree[r];   // prefix sum over ranks 1..rank
             greater[i] = (n - 1 - i) - notGreater;   // everything to the right minus the ones that are not greater
-            for (int r = rank; r <= m; r += r & -r) tree[r]++;
+            for (int r = rank; r <= m; r += r & -r) tree[r]++;   // record arr[i] for the indices to its left
         }
         int[] res = new int[queries.length];
-        for (int k = 0; k < queries.length; k++) res[k] = greater[queries[k]];
+        for (int k = 0; k < queries.length; k++) res[k] = greater[queries[k]];   // each query is now a lookup
         return res;
     }
 

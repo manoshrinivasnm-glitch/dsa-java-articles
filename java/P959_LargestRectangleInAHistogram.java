@@ -5,12 +5,12 @@ public class P959_LargestRectangleInAHistogram {
 
     /** Approach 1: fix the left edge, extend right, track the minimum height. O(n^2) time, O(1) space. */
     static int bruteForce(int[] heights) {
-        int n = heights.length, best = 0;
-        for (int i = 0; i < n; i++) {
-            int minH = Integer.MAX_VALUE;
-            for (int j = i; j < n; j++) {
-                minH = Math.min(minH, heights[j]);
-                best = Math.max(best, minH * (j - i + 1));
+        int n = heights.length, best = 0;            // best = largest area found so far
+        for (int i = 0; i < n; i++) {                // left edge i
+            int minH = Integer.MAX_VALUE;            // lowest bar in heights[i..j]
+            for (int j = i; j < n; j++) {            // right edge j
+                minH = Math.min(minH, heights[j]);   // the rectangle is as tall as its lowest bar
+                best = Math.max(best, minH * (j - i + 1));   // area of the rectangle over bars i..j
             }
         }
         return best;
@@ -20,35 +20,36 @@ public class P959_LargestRectangleInAHistogram {
     static int better(int[] heights) {
         int n = heights.length;
         int[] left = new int[n], right = new int[n];   // nearest strictly smaller bar on each side
-        Deque<Integer> st = new ArrayDeque<>();
-        for (int i = 0; i < n; i++) {
-            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) st.pop();
-            left[i] = st.isEmpty() ? -1 : st.peek();
+        Deque<Integer> st = new ArrayDeque<>();        // indices; heights increase upwards
+        for (int i = 0; i < n; i++) {                  // left to right: find the previous smaller bar
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) st.pop();   // keep only smaller bars
+            left[i] = st.isEmpty() ? -1 : st.peek();   // -1: no smaller bar on the left
             st.push(i);
         }
-        st.clear();
-        for (int i = n - 1; i >= 0; i--) {
-            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) st.pop();
-            right[i] = st.isEmpty() ? n : st.peek();
+        st.clear();                                    // reuse the stack for the right-to-left pass
+        for (int i = n - 1; i >= 0; i--) {             // right to left: find the next smaller bar
+            while (!st.isEmpty() && heights[st.peek()] >= heights[i]) st.pop();   // keep only smaller bars
+            right[i] = st.isEmpty() ? n : st.peek();   // n: no smaller bar on the right
             st.push(i);
         }
         int best = 0;
+        // the widest rectangle as tall as bar i runs between its two smaller neighbours
         for (int i = 0; i < n; i++) best = Math.max(best, heights[i] * (right[i] - left[i] - 1));
         return best;
     }
 
     /** Approach 3: one pass; a bar's rectangle is measured at the moment it is popped. O(n) time, O(n) space. */
     static int optimal(int[] heights) {
-        int n = heights.length, best = 0;
-        Deque<Integer> st = new ArrayDeque<>();
-        for (int i = 0; i <= n; i++) {
+        int n = heights.length, best = 0;            // best = largest area found so far
+        Deque<Integer> st = new ArrayDeque<>();      // indices; heights increase upwards
+        for (int i = 0; i <= n; i++) {               // i == n is one extra step for the sentinel
             int h = (i == n) ? 0 : heights[i];       // a height-0 sentinel flushes the stack at the end
-            while (!st.isEmpty() && heights[st.peek()] >= h) {
-                int height = heights[st.pop()];
-                int leftBoundary = st.isEmpty() ? -1 : st.peek();
-                best = Math.max(best, height * (i - leftBoundary - 1));
+            while (!st.isEmpty() && heights[st.peek()] >= h) {   // h ends the bar on top: measure it
+                int height = heights[st.pop()];      // the bar whose rectangle is measured now
+                int leftBoundary = st.isEmpty() ? -1 : st.peek();   // nearest smaller bar on the left
+                best = Math.max(best, height * (i - leftBoundary - 1));   // spans everything between them
             }
-            st.push(i);
+            st.push(i);                              // i waits until a lower bar ends it
         }
         return best;
     }

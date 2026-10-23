@@ -6,11 +6,11 @@ public class P963_SlidingWindowMaximum {
     /** Approach 1: scan every window. O(n * k) time, O(1) extra space. */
     static int[] bruteForce(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0 || k <= 0 || k > n) return new int[0];
-        int[] res = new int[n - k + 1];
-        for (int i = 0; i + k <= n; i++) {
+        if (n == 0 || k <= 0 || k > n) return new int[0];   // no complete window fits
+        int[] res = new int[n - k + 1];              // one answer per window
+        for (int i = 0; i + k <= n; i++) {           // i is the window's first index
             int mx = Integer.MIN_VALUE;
-            for (int j = i; j < i + k; j++) mx = Math.max(mx, nums[j]);
+            for (int j = i; j < i + k; j++) mx = Math.max(mx, nums[j]);   // maximum of nums[i..i+k-1]
             res[i] = mx;
         }
         return res;
@@ -19,14 +19,14 @@ public class P963_SlidingWindowMaximum {
     /** Approach 2: max-heap of {value, index} with lazy removal of indices that left the window. O(n log n) time, O(n) space. */
     static int[] better(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0 || k <= 0 || k > n) return new int[0];
+        if (n == 0 || k <= 0 || k > n) return new int[0];     // no complete window fits
         int[] res = new int[n - k + 1];
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(b[0], a[0]));   // largest value first
         for (int i = 0; i < n; i++) {
-            pq.offer(new int[]{nums[i], i});
-            if (i >= k - 1) {
+            pq.offer(new int[]{nums[i], i});                  // keep the index to tell when it leaves
+            if (i >= k - 1) {                                 // the first full window ends at k - 1
                 while (pq.peek()[1] <= i - k) pq.poll();      // discard maxima that are no longer in the window
-                res[i - k + 1] = pq.peek()[0];
+                res[i - k + 1] = pq.peek()[0];                // the top is now the window's maximum
             }
         }
         return res;
@@ -35,14 +35,14 @@ public class P963_SlidingWindowMaximum {
     /** Approach 3: monotonic deque of indices whose values decrease from front to back. O(n) time, O(k) space. */
     static int[] optimal(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0 || k <= 0 || k > n) return new int[0];
+        if (n == 0 || k <= 0 || k > n) return new int[0];   // no complete window fits
         int[] res = new int[n - k + 1];
-        Deque<Integer> dq = new ArrayDeque<>();
+        Deque<Integer> dq = new ArrayDeque<>();      // indices; values decrease from front to back
         for (int i = 0; i < n; i++) {
             if (!dq.isEmpty() && dq.peekFirst() <= i - k) dq.pollFirst();     // front slid out of the window
             while (!dq.isEmpty() && nums[dq.peekLast()] <= nums[i]) dq.pollLast();   // can never be a maximum again
-            dq.offerLast(i);
-            if (i >= k - 1) res[i - k + 1] = nums[dq.peekFirst()];
+            dq.offerLast(i);                         // i may be the maximum of later windows
+            if (i >= k - 1) res[i - k + 1] = nums[dq.peekFirst()];   // the front holds the window's maximum
         }
         return res;
     }

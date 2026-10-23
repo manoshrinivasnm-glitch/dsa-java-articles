@@ -8,8 +8,8 @@ public class P964_StockSpanProblem {
         int n = prices.length;
         int[] span = new int[n];
         for (int i = 0; i < n; i++) {
-            int j = i;
-            while (j >= 0 && prices[j] <= prices[i]) j--;
+            int j = i;                                // walk left starting from day i itself
+            while (j >= 0 && prices[j] <= prices[i]) j--;   // stop at the first strictly higher price
             span[i] = i - j;                          // j is the previous greater day, or -1
         }
         return span;
@@ -21,9 +21,9 @@ public class P964_StockSpanProblem {
         int[] span = new int[n];
         Deque<Integer> st = new ArrayDeque<>();      // indices whose prices strictly decrease from bottom to top
         for (int i = 0; i < n; i++) {
-            while (!st.isEmpty() && prices[st.peek()] <= prices[i]) st.pop();
-            span[i] = st.isEmpty() ? i + 1 : i - st.peek();
-            st.push(i);
+            while (!st.isEmpty() && prices[st.peek()] <= prices[i]) st.pop();   // they lie inside i's span
+            span[i] = st.isEmpty() ? i + 1 : i - st.peek();   // distance back to the previous greater day
+            st.push(i);                              // i may block days that come later
         }
         return span;
     }
@@ -33,9 +33,9 @@ public class P964_StockSpanProblem {
         private final Deque<int[]> st = new ArrayDeque<>();   // {price, span}
 
         int next(int price) {
-            int span = 1;
-            while (!st.isEmpty() && st.peek()[0] <= price) span += st.pop()[1];
-            st.push(new int[]{price, span});
+            int span = 1;                                     // today always counts itself
+            while (!st.isEmpty() && st.peek()[0] <= price) span += st.pop()[1];   // absorb their whole spans
+            st.push(new int[]{price, span});                  // remember the span so later days can reuse it
             return span;
         }
     }
@@ -43,7 +43,7 @@ public class P964_StockSpanProblem {
     static int[] online(int[] prices) {
         StockSpanner spanner = new StockSpanner();
         int[] span = new int[prices.length];
-        for (int i = 0; i < prices.length; i++) span[i] = spanner.next(prices[i]);
+        for (int i = 0; i < prices.length; i++) span[i] = spanner.next(prices[i]);   // one call per day
         return span;
     }
 

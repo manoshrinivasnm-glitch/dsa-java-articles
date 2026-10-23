@@ -6,33 +6,35 @@ public class P970_RemoveKDigits {
     /** Approach 1: k rounds; each round deletes the first digit that is larger than its right neighbour. O(n * k) time, O(n) space. */
     static String bruteForce(String num, int k) {
         StringBuilder sb = new StringBuilder(num);
-        for (int round = 0; round < k; round++) {
+        for (int round = 0; round < k; round++) {     // each round deletes one digit
             int i = 0;
+            // find the first digit that is larger than its right neighbour
             while (i + 1 < sb.length() && sb.charAt(i) <= sb.charAt(i + 1)) i++;
             sb.deleteCharAt(i);                       // first "peak", or the last digit if the string is non-decreasing
         }
-        return stripLeadingZeros(sb);
+        return stripLeadingZeros(sb);                 // deletions can expose zeros at the front
     }
 
     static String stripLeadingZeros(StringBuilder sb) {
         int i = 0;
-        while (i < sb.length() && sb.charAt(i) == '0') i++;
+        while (i < sb.length() && sb.charAt(i) == '0') i++;   // skip every leading zero
         String s = sb.substring(i);
-        return s.isEmpty() ? "0" : s;
+        return s.isEmpty() ? "0" : s;                 // nothing left means the number is 0
     }
 
     /** Approach 2: monotonic stack; pop larger digits while deletions remain. O(n) time, O(n) space. */
     static String optimal(String num, int k) {
         StringBuilder st = new StringBuilder();      // used as a stack of digits
-        for (char c : num.toCharArray()) {
+        for (char c : num.toCharArray()) {           // read digits left to right
+            // a larger digit in front of c makes the number bigger, so delete it while we may
             while (k > 0 && st.length() > 0 && st.charAt(st.length() - 1) > c) {
                 st.deleteCharAt(st.length() - 1);
-                k--;
+                k--;                                 // one deletion used
             }
-            st.append(c);
+            st.append(c);                            // c waits; later digits may still remove it
         }
         st.setLength(st.length() - k);               // deletions still owed come off the end
-        return stripLeadingZeros(st);
+        return stripLeadingZeros(st);                // leading zeros may remain after the deletions
     }
 
     // ---------------------------------------------------------------- tests

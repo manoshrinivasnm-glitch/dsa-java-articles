@@ -6,20 +6,22 @@ public class P962_MaximumRectangles {
     /** Approach 1: try every rectangle, count its 1s with a 2D prefix sum. O(n^2 * m^2) time, O(n * m) space. */
     static int bruteForce(char[][] matrix) {
         int n = matrix.length;
-        if (n == 0) return 0;
+        if (n == 0) return 0;                          // empty matrix has no rectangle
         int m = matrix[0].length;
         int[][] pre = new int[n + 1][m + 1];           // pre[i][j] = number of 1s in rows < i and columns < j
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)                    // build the 2D prefix sum
             for (int j = 0; j < m; j++)
+                // inclusion-exclusion over the three neighbouring prefixes
                 pre[i + 1][j + 1] = pre[i][j + 1] + pre[i + 1][j] - pre[i][j] + (matrix[i][j] == '1' ? 1 : 0);
         int best = 0;
         for (int r1 = 0; r1 < n; r1++)
-            for (int c1 = 0; c1 < m; c1++)
+            for (int c1 = 0; c1 < m; c1++)             // top-left corner (r1, c1)
                 for (int r2 = r1; r2 < n; r2++)
-                    for (int c2 = c1; c2 < m; c2++) {
+                    for (int c2 = c1; c2 < m; c2++) {  // bottom-right corner (r2, c2)
                         int area = (r2 - r1 + 1) * (c2 - c1 + 1);
+                        // 1s inside the rectangle, by inclusion-exclusion
                         int ones = pre[r2 + 1][c2 + 1] - pre[r1][c2 + 1] - pre[r2 + 1][c1] + pre[r1][c1];
-                        if (ones == area) best = Math.max(best, area);
+                        if (ones == area) best = Math.max(best, area);   // all 1s: a valid rectangle
                     }
         return best;
     }
@@ -27,18 +29,18 @@ public class P962_MaximumRectangles {
     /** Approach 2: run of 1s ending at each cell, then walk upward from every cell as a bottom-right corner. O(n^2 * m) time, O(n * m) space. */
     static int better(char[][] matrix) {
         int n = matrix.length;
-        if (n == 0) return 0;
+        if (n == 0) return 0;                          // empty matrix has no rectangle
         int m = matrix[0].length;
         int[][] width = new int[n][m];                 // number of consecutive 1s ending at (i, j), going left
         int best = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (matrix[i][j] == '0') continue;
-                width[i][j] = (j == 0 ? 0 : width[i][j - 1]) + 1;
-                int minWidth = width[i][j];
-                for (int k = i; k >= 0 && minWidth > 0; k--) {
-                    minWidth = Math.min(minWidth, width[k][j]);
-                    best = Math.max(best, minWidth * (i - k + 1));
+                if (matrix[i][j] == '0') continue;     // a 0 cannot be a bottom-right corner
+                width[i][j] = (j == 0 ? 0 : width[i][j - 1]) + 1;   // extend the run from the left neighbour
+                int minWidth = width[i][j];            // narrowest run among the rows used so far
+                for (int k = i; k >= 0 && minWidth > 0; k--) {   // grow upwards; row k is the top row
+                    minWidth = Math.min(minWidth, width[k][j]);   // only as wide as its narrowest row
+                    best = Math.max(best, minWidth * (i - k + 1));   // area with rows k..i
                 }
             }
         }
@@ -47,27 +49,28 @@ public class P962_MaximumRectangles {
 
     /** Approach 3: each row is the base of a histogram; solve largest rectangle in histogram per row. O(n * m) time, O(m) space. */
     static int optimal(char[][] matrix) {
-        if (matrix.length == 0) return 0;
+        if (matrix.length == 0) return 0;            // empty matrix has no rectangle
         int m = matrix[0].length, best = 0;
-        int[] heights = new int[m];
-        for (char[] row : matrix) {
+        int[] heights = new int[m];                  // heights[j] = run of 1s ending at this row in column j
+        for (char[] row : matrix) {                  // each row in turn is the base
+            // a 1 extends the column's run, a 0 resets it
             for (int j = 0; j < m; j++) heights[j] = row[j] == '1' ? heights[j] + 1 : 0;
-            best = Math.max(best, largestRectangle(heights));
+            best = Math.max(best, largestRectangle(heights));   // best rectangle resting on this row
         }
         return best;
     }
 
     static int largestRectangle(int[] heights) {
         int n = heights.length, best = 0;
-        Deque<Integer> st = new ArrayDeque<>();
-        for (int i = 0; i <= n; i++) {
-            int h = (i == n) ? 0 : heights[i];
-            while (!st.isEmpty() && heights[st.peek()] >= h) {
-                int height = heights[st.pop()];
-                int leftBoundary = st.isEmpty() ? -1 : st.peek();
-                best = Math.max(best, height * (i - leftBoundary - 1));
+        Deque<Integer> st = new ArrayDeque<>();      // indices; heights increase upwards
+        for (int i = 0; i <= n; i++) {               // i == n is one extra step for the sentinel
+            int h = (i == n) ? 0 : heights[i];       // height 0 at the end flushes the stack
+            while (!st.isEmpty() && heights[st.peek()] >= h) {   // h ends the bar on top: measure it
+                int height = heights[st.pop()];      // the bar whose rectangle is measured now
+                int leftBoundary = st.isEmpty() ? -1 : st.peek();   // nearest smaller bar on the left
+                best = Math.max(best, height * (i - leftBoundary - 1));   // spans everything between them
             }
-            st.push(i);
+            st.push(i);                              // i waits until a lower bar ends it
         }
         return best;
     }

@@ -6,13 +6,13 @@ public class P968_NextGreaterElement {
     /** Approach 1: for every index, scan right until a greater element appears. O(n^2) time, O(1) extra space. */
     static int[] bruteForce(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
+        int[] res = new int[n];                      // res[i] = next greater value of arr[i]
         for (int i = 0; i < n; i++) {
-            res[i] = -1;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] > arr[i]) {
+            res[i] = -1;                             // assume none until one is found
+            for (int j = i + 1; j < n; j++) {        // scan everything to the right of i
+                if (arr[j] > arr[i]) {               // the first strictly greater value is the answer
                     res[i] = arr[j];
-                    break;
+                    break;                           // stop at the nearest one
                 }
             }
         }
@@ -22,22 +22,24 @@ public class P968_NextGreaterElement {
     /** Approach 2: scan right to left keeping a monotonic stack of candidates. O(n) time, O(n) space. */
     static int[] optimal(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
+        int[] res = new int[n];                      // res[i] = next greater value of arr[i]
         Deque<Integer> st = new ArrayDeque<>();      // values; top is the nearest, deeper ones are strictly larger
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {           // right to left: the stack holds values to the right
             while (!st.isEmpty() && st.peek() <= arr[i]) st.pop();   // hidden behind arr[i] for everyone further left
-            res[i] = st.isEmpty() ? -1 : st.peek();
-            st.push(arr[i]);
+            res[i] = st.isEmpty() ? -1 : st.peek();  // survivors are greater; the top is the nearest
+            st.push(arr[i]);                         // arr[i] is now a candidate for elements on its left
         }
         return res;
     }
 
     /** LeetCode 496 variant: nums1 is a subset of nums2 (distinct values); answer each nums1 value by its position in nums2. O(n + m) time. */
     static int[] nextGreaterOfSubset(int[] nums1, int[] nums2) {
-        int[] nge = optimal(nums2);
-        Map<Integer, Integer> answerOf = new HashMap<>();
+        int[] nge = optimal(nums2);                  // next greater value for every position of nums2
+        Map<Integer, Integer> answerOf = new HashMap<>();   // value -> its next greater value in nums2
+        // values are distinct, so each is a unique key
         for (int i = 0; i < nums2.length; i++) answerOf.put(nums2[i], nge[i]);
         int[] res = new int[nums1.length];
+        // look each query value up by value
         for (int i = 0; i < nums1.length; i++) res[i] = answerOf.get(nums1[i]);
         return res;
     }

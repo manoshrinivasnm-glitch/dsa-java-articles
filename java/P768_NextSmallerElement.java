@@ -6,13 +6,13 @@ public class P768_NextSmallerElement {
     /** Approach 1: for every index, scan right until a smaller element appears. O(n^2) time, O(1) extra space. */
     static int[] bruteForce(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
+        int[] res = new int[n];                      // res[i] = next smaller value of arr[i]
         for (int i = 0; i < n; i++) {
-            res[i] = -1;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[i]) {
+            res[i] = -1;                             // assume none until one is found
+            for (int j = i + 1; j < n; j++) {        // scan everything to the right of i
+                if (arr[j] < arr[i]) {               // the first strictly smaller value is the answer
                     res[i] = arr[j];
-                    break;
+                    break;                           // stop at the nearest one
                 }
             }
         }
@@ -22,12 +22,12 @@ public class P768_NextSmallerElement {
     /** Approach 2: scan right to left keeping a stack whose deeper entries are strictly smaller. O(n) time, O(n) space. */
     static int[] optimal(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
-        Deque<Integer> st = new ArrayDeque<>();
-        for (int i = n - 1; i >= 0; i--) {
+        int[] res = new int[n];                      // res[i] = next smaller value of arr[i]
+        Deque<Integer> st = new ArrayDeque<>();      // values to the right; deeper ones are smaller
+        for (int i = n - 1; i >= 0; i--) {           // right to left: the stack holds values to the right
             while (!st.isEmpty() && st.peek() >= arr[i]) st.pop();   // arr[i] is nearer and no larger: they can never win again
-            res[i] = st.isEmpty() ? -1 : st.peek();
-            st.push(arr[i]);
+            res[i] = st.isEmpty() ? -1 : st.peek();  // survivors are smaller; the top is the nearest
+            st.push(arr[i]);                         // arr[i] is now a candidate for elements on its left
         }
         return res;
     }
@@ -35,12 +35,12 @@ public class P768_NextSmallerElement {
     /** Variant (nearest smaller element on the LEFT, as on InterviewBit): same stack, scanned left to right. O(n) time, O(n) space. */
     static int[] previousSmaller(int[] arr) {
         int n = arr.length;
-        int[] res = new int[n];
-        Deque<Integer> st = new ArrayDeque<>();
-        for (int i = 0; i < n; i++) {
-            while (!st.isEmpty() && st.peek() >= arr[i]) st.pop();
-            res[i] = st.isEmpty() ? -1 : st.peek();
-            st.push(arr[i]);
+        int[] res = new int[n];                      // res[i] = nearest smaller value on the left
+        Deque<Integer> st = new ArrayDeque<>();      // values to the left; deeper ones are smaller
+        for (int i = 0; i < n; i++) {                // left to right: the stack holds values to the left
+            while (!st.isEmpty() && st.peek() >= arr[i]) st.pop();   // nearer and no larger: they never win
+            res[i] = st.isEmpty() ? -1 : st.peek();  // survivors are smaller; the top is the nearest
+            st.push(arr[i]);                         // arr[i] is now a candidate for elements on its right
         }
         return res;
     }

@@ -6,12 +6,12 @@ public class P965_TrappingRainwater {
     /** Approach 1: for every bar, scan both sides for the tallest wall. O(n^2) time, O(1) space. */
     static long bruteForce(int[] height) {
         int n = height.length;
-        long water = 0;
-        for (int i = 0; i < n; i++) {
-            int leftMax = 0, rightMax = 0;
-            for (int j = 0; j <= i; j++) leftMax = Math.max(leftMax, height[j]);
-            for (int j = i; j < n; j++) rightMax = Math.max(rightMax, height[j]);
-            water += Math.min(leftMax, rightMax) - height[i];
+        long water = 0;                              // total trapped water
+        for (int i = 0; i < n; i++) {                // water above each bar is counted separately
+            int leftMax = 0, rightMax = 0;           // tallest bar on each side, bar i included
+            for (int j = 0; j <= i; j++) leftMax = Math.max(leftMax, height[j]);   // tallest bar in 0..i
+            for (int j = i; j < n; j++) rightMax = Math.max(rightMax, height[j]);   // tallest bar in i..n-1
+            water += Math.min(leftMax, rightMax) - height[i];   // lower wall sets the level, minus the bar
         }
         return water;
     }
@@ -19,48 +19,53 @@ public class P965_TrappingRainwater {
     /** Approach 2: precompute prefix maxima and suffix maxima. O(n) time, O(n) space. */
     static long prefixSuffix(int[] height) {
         int n = height.length;
-        if (n == 0) return 0;
-        int[] leftMax = new int[n], rightMax = new int[n];
+        if (n == 0) return 0;                        // no bars, no water
+        int[] leftMax = new int[n], rightMax = new int[n];   // tallest bar on each side of i
         leftMax[0] = height[0];
+        // leftMax[i] = tallest bar in 0..i
         for (int i = 1; i < n; i++) leftMax[i] = Math.max(leftMax[i - 1], height[i]);
         rightMax[n - 1] = height[n - 1];
+        // rightMax[i] = tallest bar in i..n-1
         for (int i = n - 2; i >= 0; i--) rightMax[i] = Math.max(rightMax[i + 1], height[i]);
         long water = 0;
+        // each bar holds water up to the lower of its two walls
         for (int i = 0; i < n; i++) water += Math.min(leftMax[i], rightMax[i]) - height[i];
         return water;
     }
 
     /** Approach 3: monotonic stack; when a taller bar arrives, fill the dip in front of it layer by layer. O(n) time, O(n) space. */
     static long monotonicStack(int[] height) {
-        long water = 0;
+        long water = 0;                              // total trapped water
         Deque<Integer> st = new ArrayDeque<>();      // indices; heights never increase from bottom to top
         for (int i = 0; i < height.length; i++) {
+            // bar i is taller: it is the right wall of the dip on top
             while (!st.isEmpty() && height[i] > height[st.peek()]) {
-                int bottom = st.pop();
+                int bottom = st.pop();               // the floor of the dip being filled
                 if (st.isEmpty()) break;             // no wall on the left: this layer spills out
-                int left = st.peek();
-                long width = i - left - 1;
+                int left = st.peek();                // the left wall of the dip
+                long width = i - left - 1;           // gap strictly between the two walls
+                // the lower wall sets the water level above this floor
                 long depth = Math.min(height[left], height[i]) - height[bottom];
-                water += width * depth;
+                water += width * depth;              // add this horizontal layer of water
             }
-            st.push(i);
+            st.push(i);                              // i waits as a possible left wall
         }
         return water;
     }
 
     /** Approach 4: two pointers; the side with the lower wall already knows its answer. O(n) time, O(1) space. */
     static long optimal(int[] height) {
-        int l = 0, r = height.length - 1;
-        int leftMax = 0, rightMax = 0;
+        int l = 0, r = height.length - 1;            // two pointers moving towards each other
+        int leftMax = 0, rightMax = 0;               // tallest bar seen from each side so far
         long water = 0;
         while (l < r) {
             if (height[l] <= height[r]) {            // the right side has a wall at least this tall
-                if (height[l] >= leftMax) leftMax = height[l];
-                else water += leftMax - height[l];
+                if (height[l] >= leftMax) leftMax = height[l];   // a new tallest bar holds no water
+                else water += leftMax - height[l];   // trapped up to the left maximum
                 l++;
             } else {                                 // the left side has a wall taller than this
-                if (height[r] >= rightMax) rightMax = height[r];
-                else water += rightMax - height[r];
+                if (height[r] >= rightMax) rightMax = height[r];   // a new tallest bar holds no water
+                else water += rightMax - height[r];  // trapped up to the right maximum
                 r--;
             }
         }

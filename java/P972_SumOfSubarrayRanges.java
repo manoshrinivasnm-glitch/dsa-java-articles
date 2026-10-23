@@ -6,15 +6,15 @@ public class P972_SumOfSubarrayRanges {
     /** Approach 1: enumerate every subarray and scan it for max and min. O(n^3) time, O(1) space. */
     static long bruteForce(int[] nums) {
         int n = nums.length;
-        long total = 0;
+        long total = 0;                               // sum of max - min over all subarrays
         for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                int mx = nums[i], mn = nums[i];
-                for (int k = i; k <= j; k++) {
+            for (int j = i; j < n; j++) {             // every subarray nums[i..j]
+                int mx = nums[i], mn = nums[i];       // max and min of nums[i..j]
+                for (int k = i; k <= j; k++) {        // scan the subarray from scratch
                     mx = Math.max(mx, nums[k]);
                     mn = Math.min(mn, nums[k]);
                 }
-                total += (long) mx - mn;
+                total += (long) mx - mn;              // add this subarray's range
             }
         }
         return total;
@@ -25,9 +25,9 @@ public class P972_SumOfSubarrayRanges {
         int n = nums.length;
         long total = 0;
         for (int i = 0; i < n; i++) {
-            int mx = nums[i], mn = nums[i];
-            for (int j = i; j < n; j++) {
-                mx = Math.max(mx, nums[j]);
+            int mx = nums[i], mn = nums[i];           // max and min of nums[i..j], grown with j
+            for (int j = i; j < n; j++) {             // extend the end one step at a time
+                mx = Math.max(mx, nums[j]);           // only nums[j] is new, so update in O(1)
                 mn = Math.min(mn, nums[j]);
                 total += (long) mx - mn;              // long: max - min can reach 2 * 10^9
             }
@@ -37,24 +37,24 @@ public class P972_SumOfSubarrayRanges {
 
     /** Approach 3: sum of subarray maximums minus sum of subarray minimums, each with monotonic stacks. O(n) time, O(n) space. */
     static long optimal(int[] nums) {
-        return sumOfMaximums(nums) - sumOfMinimums(nums);
+        return sumOfMaximums(nums) - sumOfMinimums(nums);   // each range is max - min, so the sums split
     }
 
     static long sumOfMinimums(int[] a) {
         int n = a.length;
-        long total = 0;
+        long total = 0;                               // sum of the minimum of every subarray
         int[] left = new int[n];
-        Deque<Integer> st = new ArrayDeque<>();
+        Deque<Integer> st = new ArrayDeque<>();       // indices; values never decrease upwards
         for (int i = 0; i < n; i++) {
             while (!st.isEmpty() && a[st.peek()] > a[i]) st.pop();      // stop at previous element <= a[i]
-            left[i] = st.isEmpty() ? i + 1 : i - st.peek();
+            left[i] = st.isEmpty() ? i + 1 : i - st.peek();   // how many starts make a[i] the minimum
             st.push(i);
         }
-        st.clear();
+        st.clear();                                   // reuse the stack for the right-to-left pass
         for (int i = n - 1; i >= 0; i--) {
             while (!st.isEmpty() && a[st.peek()] >= a[i]) st.pop();     // stop at next element < a[i]
-            int right = st.isEmpty() ? n - i : st.peek() - i;
-            total += (long) a[i] * left[i] * right;
+            int right = st.isEmpty() ? n - i : st.peek() - i;   // how many ends make a[i] the minimum
+            total += (long) a[i] * left[i] * right;   // a[i] is the minimum of left[i] * right subarrays
             st.push(i);
         }
         return total;
@@ -62,19 +62,19 @@ public class P972_SumOfSubarrayRanges {
 
     static long sumOfMaximums(int[] a) {
         int n = a.length;
-        long total = 0;
+        long total = 0;                               // sum of the maximum of every subarray
         int[] left = new int[n];
-        Deque<Integer> st = new ArrayDeque<>();
+        Deque<Integer> st = new ArrayDeque<>();       // indices; values never increase upwards
         for (int i = 0; i < n; i++) {
             while (!st.isEmpty() && a[st.peek()] < a[i]) st.pop();      // stop at previous element >= a[i]
-            left[i] = st.isEmpty() ? i + 1 : i - st.peek();
+            left[i] = st.isEmpty() ? i + 1 : i - st.peek();   // how many starts make a[i] the maximum
             st.push(i);
         }
-        st.clear();
+        st.clear();                                   // reuse the stack for the right-to-left pass
         for (int i = n - 1; i >= 0; i--) {
             while (!st.isEmpty() && a[st.peek()] <= a[i]) st.pop();     // stop at next element > a[i]
-            int right = st.isEmpty() ? n - i : st.peek() - i;
-            total += (long) a[i] * left[i] * right;
+            int right = st.isEmpty() ? n - i : st.peek() - i;   // how many ends make a[i] the maximum
+            total += (long) a[i] * left[i] * right;   // a[i] is the maximum of left[i] * right subarrays
             st.push(i);
         }
         return total;
