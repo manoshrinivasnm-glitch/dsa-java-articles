@@ -4,39 +4,39 @@ import java.util.*;
 public class P623_LengthOfLoopInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node; a loop points back to an earlier one
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Store the step number at which each node was first seen; at the first repeat, the difference of step numbers is the loop length. O(n) time, O(n) space. */
     static int bruteForce(ListNode head) {
-        Map<ListNode, Integer> firstSeen = new HashMap<>();
-        int step = 0;
+        Map<ListNode, Integer> firstSeen = new HashMap<>();   // node -> step at which we first reached it
+        int step = 0;                                         // how many moves we have made from head
         for (ListNode t = head; t != null; t = t.next, step++) {
-            Integer earlier = firstSeen.get(t);
+            Integer earlier = firstSeen.get(t);               // null if this is the first visit
             if (earlier != null) return step - earlier;   // nodes visited between the two visits form the loop
             firstSeen.put(t, step);
         }
-        return 0;
+        return 0;                                             // reached null: no loop
     }
 
     /** Approach 2: optimal. Detect the loop with slow and fast pointers, then walk once around the loop from the meeting point and count. O(n) time, O(1) space. */
     static int optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        ListNode slow = head, fast = head;               // both start at the head
+        while (fast != null && fast.next != null) {      // fast can still take two steps
+            slow = slow.next;                            // one step
+            fast = fast.next.next;                       // two steps
             if (slow == fast) return loopLength(slow);   // the meeting node is somewhere on the loop
         }
-        return 0;
+        return 0;                                        // fast fell off the end: no loop
     }
 
     /** Counts the nodes on the loop that contains onLoop: step forward until we are back where we started. */
     static int loopLength(ListNode onLoop) {
-        int length = 1;
-        for (ListNode t = onLoop.next; t != onLoop; t = t.next) length++;
+        int length = 1;                                                       // counts onLoop itself
+        for (ListNode t = onLoop.next; t != onLoop; t = t.next) length++;     // one lap around the loop
         return length;
     }
 

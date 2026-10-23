@@ -11,14 +11,14 @@ public class P2841_FlatteningOfLL {
 
     /** Approach 1: collect every value, sort, and build a fresh bottom-linked list. O(N log N) time, O(N) space, where N is the total number of nodes. */
     static Node bruteForce(Node head) {
-        List<Integer> vals = new ArrayList<>();
-        for (Node col = head; col != null; col = col.next) {
-            for (Node t = col; t != null; t = t.bottom) vals.add(t.val);
+        List<Integer> vals = new ArrayList<>();                            // every value from every column
+        for (Node col = head; col != null; col = col.next) {               // walk the top row, one column at a time
+            for (Node t = col; t != null; t = t.bottom) vals.add(t.val);   // walk down this column
         }
         Collections.sort(vals);
-        Node dummy = new Node(0), tail = dummy;
-        for (int v : vals) { tail.bottom = new Node(v); tail = tail.bottom; }
-        return dummy.bottom;
+        Node dummy = new Node(0), tail = dummy;                            // tail: last node of the new list
+        for (int v : vals) { tail.bottom = new Node(v); tail = tail.bottom; }   // chain new nodes through bottom
+        return dummy.bottom;                                               // first real node of the flat list
     }
 
     /** Approach 2: recursion. Flatten everything to the right of head, then merge head's own column into that result. O(N * k) time in the worst case for k columns, O(k) stack, no new nodes. */
@@ -26,16 +26,16 @@ public class P2841_FlatteningOfLL {
         if (head == null || head.next == null) return head;        // a single column is already a sorted bottom list
         Node rest = better(head.next);                             // flatten columns 2..k first
         head.next = null;                                          // this column no longer points sideways
-        return mergeBottom(head, rest);
+        return mergeBottom(head, rest);                            // merge this column into the flattened rest
     }
 
     /** Merge two sorted bottom-linked lists into one, reusing the nodes. */
     static Node mergeBottom(Node a, Node b) {
-        Node dummy = new Node(0), tail = dummy;
-        while (a != null && b != null) {
-            if (a.val <= b.val) { tail.bottom = a; a = a.bottom; }
+        Node dummy = new Node(0), tail = dummy;                    // tail: last node of the merged list
+        while (a != null && b != null) {                           // both lists still have nodes
+            if (a.val <= b.val) { tail.bottom = a; a = a.bottom; } // take the smaller front node
             else { tail.bottom = b; b = b.bottom; }
-            tail = tail.bottom;
+            tail = tail.bottom;                                    // the taken node is the new tail
             tail.next = null;                                      // keep the result strictly one-dimensional
         }
         tail.bottom = (a != null) ? a : b;                         // whatever is left is already sorted
@@ -44,17 +44,18 @@ public class P2841_FlatteningOfLL {
 
     /** Approach 3: k-way merge with a min-heap that holds the current front node of each column. O(N log k) time, O(k) space. */
     static Node optimal(Node head) {
+        // min-heap by value; it holds the front node of every column that still has nodes
         PriorityQueue<Node> heap = new PriorityQueue<>((x, y) -> Integer.compare(x.val, y.val));
-        for (Node col = head; col != null; col = col.next) heap.offer(col);
-        Node dummy = new Node(0), tail = dummy;
+        for (Node col = head; col != null; col = col.next) heap.offer(col);   // seed with the top of each column
+        Node dummy = new Node(0), tail = dummy;                    // tail: last node of the flat list
         while (!heap.isEmpty()) {
-            Node smallest = heap.poll();
+            Node smallest = heap.poll();                           // the smallest value not yet placed
             if (smallest.bottom != null) heap.offer(smallest.bottom);   // the next node of the same column takes its place
-            smallest.next = null;
-            tail.bottom = smallest;
+            smallest.next = null;                                  // flattened nodes link only through bottom
+            tail.bottom = smallest;                                // append it to the result
             tail = smallest;
         }
-        tail.bottom = null;
+        tail.bottom = null;                                        // end the flat list cleanly
         return dummy.bottom;
     }
 

@@ -11,14 +11,14 @@ public class P610_RemoveDuplicatesFromSortedDLL {
 
     /** Approach 1: a hash set of the values already kept; unlink any node whose value was seen before. O(n) time, O(n) space; works even if the list were not sorted. */
     static Node bruteForce(Node head) {
-        Set<Integer> seen = new HashSet<>();
+        Set<Integer> seen = new HashSet<>();              // values already kept in the list
         Node cur = head;
         while (cur != null) {
-            Node next = cur.next;
+            Node next = cur.next;                         // save it before any link is cut
             if (!seen.add(cur.val)) {                     // add returns false when the value is already present
                 cur.prev.next = cur.next;                 // a duplicate is never the head, so prev is non-null
-                if (cur.next != null) cur.next.prev = cur.prev;
-                cur.prev = null;
+                if (cur.next != null) cur.next.prev = cur.prev;   // right neighbour points back past cur
+                cur.prev = null;                          // fully detach the removed node
                 cur.next = null;
             }
             cur = next;
@@ -28,25 +28,26 @@ public class P610_RemoveDuplicatesFromSortedDLL {
 
     /** Approach 2: in a sorted list equal values are adjacent, so from each kept node jump over the whole run of equal values. O(n) time, O(1) space. */
     static Node optimal(Node head) {
-        Node cur = head;
+        Node cur = head;                                  // the node we keep from the current run
         while (cur != null && cur.next != null) {
             Node runEnd = cur.next;
-            while (runEnd != null && runEnd.val == cur.val) runEnd = runEnd.next;   // first node with a different value, or null
+            // move to the first node with a different value, or null
+            while (runEnd != null && runEnd.val == cur.val) runEnd = runEnd.next;
             cur.next = runEnd;                            // splice out the whole run at once
-            if (runEnd != null) runEnd.prev = cur;
-            cur = runEnd;
+            if (runEnd != null) runEnd.prev = cur;        // fix the back link too
+            cur = runEnd;                                 // the next distinct value is kept next
         }
         return head;
     }
 
     /** Approach 3: the same idea written as "delete the next node while it equals the current one". O(n) time, O(1) space. */
     static Node optimalOneAtATime(Node head) {
-        for (Node cur = head; cur != null; cur = cur.next) {
-            while (cur.next != null && cur.next.val == cur.val) {
+        for (Node cur = head; cur != null; cur = cur.next) {          // cur is always a kept node
+            while (cur.next != null && cur.next.val == cur.val) {     // the next node repeats cur's value
                 Node dup = cur.next;
-                cur.next = dup.next;
-                if (dup.next != null) dup.next.prev = cur;
-                dup.prev = null;
+                cur.next = dup.next;                                  // skip over the duplicate
+                if (dup.next != null) dup.next.prev = cur;            // and fix the back link
+                dup.prev = null;                                      // fully detach the removed node
                 dup.next = null;
             }
         }

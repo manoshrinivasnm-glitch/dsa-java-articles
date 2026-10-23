@@ -4,35 +4,35 @@ import java.util.*;
 public class P2844_CheckIfLLIsPalindromeOrNot {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Push every value on a stack, then walk the list again comparing each value with the popped one. O(n) time, O(n) space. */
     static boolean bruteForce(ListNode head) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);
-        for (ListNode t = head; t != null; t = t.next) {
+        Deque<Integer> stack = new ArrayDeque<>();                          // values, last one on top
+        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);   // pass 1: save every value
+        for (ListNode t = head; t != null; t = t.next) {                    // pass 2: front to back again
             if (t.val != stack.pop()) return false;   // the pop yields the values back to front
         }
-        return true;
+        return true;                                  // every value matched its mirror
     }
 
     /** Approach 2: optimal. Find the middle, reverse the second half in place, compare the halves, then restore the list. O(n) time, O(1) space. */
     static boolean optimal(ListNode head) {
-        if (head == null || head.next == null) return true;
-        ListNode slow = head, fast = head;
+        if (head == null || head.next == null) return true;     // 0 or 1 node always reads the same both ways
+        ListNode slow = head, fast = head;                      // fast moves twice as fast to find the middle
         while (fast.next != null && fast.next.next != null) {   // slow stops on the last node of the first half
             slow = slow.next;
             fast = fast.next.next;
         }
         ListNode secondHalf = reverse(slow.next);              // second half, now reversed
-        boolean palindrome = true;
-        ListNode a = head, b = secondHalf;
+        boolean palindrome = true;                              // assume yes until a mismatch shows up
+        ListNode a = head, b = secondHalf;                      // a: first half, b: reversed second half
         while (b != null) {                                     // the second half is never longer than the first
-            if (a.val != b.val) { palindrome = false; break; }
+            if (a.val != b.val) { palindrome = false; break; }  // mirror values differ: not a palindrome
             a = a.next;
             b = b.next;
         }
@@ -42,14 +42,14 @@ public class P2844_CheckIfLLIsPalindromeOrNot {
 
     /** Standard in-place reversal; returns the new head. */
     static ListNode reverse(ListNode head) {
-        ListNode prev = null, current = head;
+        ListNode prev = null, current = head;   // prev heads the reversed part, current is the next node to flip
         while (current != null) {
-            ListNode next = current.next;
-            current.next = prev;
-            prev = current;
+            ListNode next = current.next;       // remember the rest before cutting the link
+            current.next = prev;                // flip the pointer backwards
+            prev = current;                     // advance both pointers
             current = next;
         }
-        return prev;
+        return prev;                            // the old tail is the new head
     }
 
     // ---------------------------------------------------------------- helpers

@@ -11,15 +11,15 @@ public class P609_DeleteAllOccurrencesOfAKeyInDLL {
 
     /** Approach 1: copy the surviving values into a list and build a brand-new DLL from them. O(n) time, O(n) space. */
     static Node bruteForce(Node head, int key) {
-        List<Integer> kept = new ArrayList<>();
+        List<Integer> kept = new ArrayList<>();           // values that survive, in order
         for (Node t = head; t != null; t = t.next) {
-            if (t.val != key) kept.add(t.val);
+            if (t.val != key) kept.add(t.val);            // drop every copy of key
         }
-        Node newHead = null, tail = null;
+        Node newHead = null, tail = null;                 // ends of the new list being built
         for (int v : kept) {
             Node node = new Node(v);
-            if (newHead == null) newHead = node;
-            else { tail.next = node; node.prev = tail; }
+            if (newHead == null) newHead = node;          // first survivor becomes the head
+            else { tail.next = node; node.prev = tail; }  // link both ways to the current tail
             tail = node;
         }
         return newHead;
@@ -30,11 +30,11 @@ public class P609_DeleteAllOccurrencesOfAKeyInDLL {
         Node cur = head;
         while (cur != null) {
             Node next = cur.next;                         // save it before any link is cut
-            if (cur.val == key) {
-                if (cur.prev != null) cur.prev.next = cur.next;
+            if (cur.val == key) {                         // this node must go
+                if (cur.prev != null) cur.prev.next = cur.next;   // left neighbour skips over cur
                 else head = cur.next;                     // deleting the current head
-                if (cur.next != null) cur.next.prev = cur.prev;
-                cur.prev = null;
+                if (cur.next != null) cur.next.prev = cur.prev;   // right neighbour points back past cur
+                cur.prev = null;                          // fully detach the removed node
                 cur.next = null;
             }
             cur = next;
@@ -44,21 +44,21 @@ public class P609_DeleteAllOccurrencesOfAKeyInDLL {
 
     /** Approach 3: the same unlinking with a sentinel node in front of the head, so the head needs no special case. O(n) time, O(1) space. */
     static Node optimalWithSentinel(Node head, int key) {
-        Node sentinel = new Node(0);
+        Node sentinel = new Node(0);                      // fake node in front of the real head
         sentinel.next = head;
-        if (head != null) head.prev = sentinel;
+        if (head != null) head.prev = sentinel;           // link it both ways
         Node cur = head;
         while (cur != null) {
-            Node next = cur.next;
-            if (cur.val == key) {
+            Node next = cur.next;                         // save it before any link is cut
+            if (cur.val == key) {                         // this node must go
                 cur.prev.next = cur.next;                 // cur.prev is never null thanks to the sentinel
-                if (cur.next != null) cur.next.prev = cur.prev;
-                cur.prev = null;
+                if (cur.next != null) cur.next.prev = cur.prev;   // right neighbour points back past cur
+                cur.prev = null;                          // fully detach the removed node
                 cur.next = null;
             }
             cur = next;
         }
-        Node newHead = sentinel.next;
+        Node newHead = sentinel.next;                     // the first surviving node, or null
         if (newHead != null) newHead.prev = null;         // detach the sentinel again
         return newHead;
     }

@@ -13,62 +13,63 @@ public class P617_AddOneToANumberRepresentedByLL {
     /** Approach 1: reverse the list so the units digit comes first, add with carry, reverse back. O(n) time, O(1) space, three passes. */
     static ListNode bruteForce(ListNode head) {
         if (head == null) return new ListNode(1);          // an empty list stands for 0
-        head = reverse(head);
+        head = reverse(head);                              // units digit first, so the carry can flow forward
         int carry = 1;                                     // the +1 we are adding
-        ListNode cur = head, last = null;
-        while (cur != null && carry > 0) {
+        ListNode cur = head, last = null;                  // last remembers the final digit we touched
+        while (cur != null && carry > 0) {                 // stop early once no carry is left
             int sum = cur.val + carry;
-            cur.val = sum % 10;
-            carry = sum / 10;
+            cur.val = sum % 10;                            // keep the low digit here
+            carry = sum / 10;                              // pass the rest on to the next digit
             last = cur;
             cur = cur.next;
         }
-        if (carry > 0) last.next = new ListNode(carry);    // every digit was 9: append the new most significant digit (the list is still reversed)
-        return reverse(head);
+        // every digit was 9: append the new most significant digit (the list is still reversed)
+        if (carry > 0) last.next = new ListNode(carry);
+        return reverse(head);                              // restore most-significant-digit-first order
     }
 
     /** Standard in-place reversal, used before and after the addition. */
     static ListNode reverse(ListNode head) {
-        ListNode prev = null, cur = head;
+        ListNode prev = null, cur = head;   // prev heads the reversed part, cur is the next node to flip
         while (cur != null) {
-            ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
+            ListNode next = cur.next;       // remember the rest before cutting the link
+            cur.next = prev;                // flip the pointer backwards
+            prev = cur;                     // advance both pointers
             cur = next;
         }
-        return prev;
+        return prev;                        // the old tail is the new head
     }
 
     /** Approach 2: recursion. The deepest call handles the units digit and each call returns the carry to its caller. O(n) time, O(n) stack. */
     static ListNode better(ListNode head) {
-        if (head == null) return new ListNode(1);
-        int carry = addOneRec(head);
-        if (carry == 0) return head;
+        if (head == null) return new ListNode(1);          // an empty list stands for 0
+        int carry = addOneRec(head);                       // add 1 in place; returns the top carry
+        if (carry == 0) return head;                       // no overflow: the list already holds the answer
         return new ListNode(carry, head);                  // the carry out of the first digit becomes a new leading node
     }
 
     /** Adds 1 to the number formed by node..end, in place, and returns the carry out of node. */
     static int addOneRec(ListNode node) {
         if (node == null) return 1;                        // base case: the "+1" arrives at the units digit
-        int carry = addOneRec(node.next);
+        int carry = addOneRec(node.next);                  // finish every less significant digit first
         int sum = node.val + carry;
-        node.val = sum % 10;
-        return sum / 10;
+        node.val = sum % 10;                               // keep the low digit here
+        return sum / 10;                                   // carry for the digit to the left
     }
 
     /** Approach 3: one forward pass. Remember the last digit that is not 9; increment it and zero everything after it. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        if (head == null) return new ListNode(1);
-        ListNode lastNotNine = null;
+        if (head == null) return new ListNode(1);          // an empty list stands for 0
+        ListNode lastNotNine = null;                       // rightmost digit that can absorb the +1
         for (ListNode cur = head; cur != null; cur = cur.next) {
-            if (cur.val != 9) lastNotNine = cur;
+            if (cur.val != 9) lastNotNine = cur;           // later non-9 digits replace earlier ones
         }
         if (lastNotNine == null) {                         // every digit is 9: 99...9 + 1 = 100...0
             lastNotNine = new ListNode(0, head);           // a leading 0 that is about to become the new 1
             head = lastNotNine;
         }
-        lastNotNine.val++;
-        for (ListNode cur = lastNotNine.next; cur != null; cur = cur.next) cur.val = 0;
+        lastNotNine.val++;                                 // this digit takes the +1 without a carry
+        for (ListNode cur = lastNotNine.next; cur != null; cur = cur.next) cur.val = 0;   // trailing 9s roll to 0
         return head;
     }
 

@@ -4,8 +4,8 @@ import java.util.*;
 public class P619_DeleteTheMiddleNodeInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
@@ -14,22 +14,22 @@ public class P619_DeleteTheMiddleNodeInLL {
     static ListNode bruteForce(ListNode head) {
         if (head == null || head.next == null) return null;   // 0 or 1 node: deleting the middle leaves nothing
         int n = 0;
-        for (ListNode t = head; t != null; t = t.next) n++;
+        for (ListNode t = head; t != null; t = t.next) n++;   // pass 1: count the nodes; the middle is index n / 2
         ListNode t = head;
         for (int i = 0; i < n / 2 - 1; i++) t = t.next;       // stop on the node just before the middle
-        t.next = t.next.next;
+        t.next = t.next.next;                                 // skip over the middle to unlink it
         return head;
     }
 
     /** Approach 2: optimal, one pass. Start fast two nodes ahead so that slow stops on the node just before the middle. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        if (head == null || head.next == null) return null;
-        ListNode slow = head, fast = head.next.next;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        if (head == null || head.next == null) return null;   // 0 or 1 node: deleting the middle leaves nothing
+        ListNode slow = head, fast = head.next.next;          // head start: slow ends just before the middle
+        while (fast != null && fast.next != null) {           // fast can still take two steps
+            slow = slow.next;                                 // one step
+            fast = fast.next.next;                            // two steps
         }
-        slow.next = slow.next.next;          // slow.next is the middle node
+        slow.next = slow.next.next;                           // slow.next is the middle node; unlink it
         return head;
     }
 

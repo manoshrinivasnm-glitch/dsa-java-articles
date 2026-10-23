@@ -4,27 +4,27 @@ import java.util.*;
 public class P2845_DetectALoopInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node; a loop points back to an earlier one
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Remember every node visited; the first repeat proves a loop. O(n) time, O(n) space. */
     static boolean bruteForce(ListNode head) {
-        Set<ListNode> seen = new HashSet<>();
-        for (ListNode t = head; t != null; t = t.next) {
+        Set<ListNode> seen = new HashSet<>();          // every node visited so far (by identity)
+        for (ListNode t = head; t != null; t = t.next) {   // follow next pointers until null or a repeat
             if (!seen.add(t)) return true;     // add returns false when the node object was already in the set
         }
-        return false;
+        return false;                          // reached null, so the list ends and has no loop
     }
 
     /** Approach 2: optimal, Floyd's tortoise and hare. A slow and a fast pointer meet if and only if there is a loop. O(n) time, O(1) space. */
     static boolean optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
+        ListNode slow = head, fast = head;     // both start at the head
+        while (fast != null && fast.next != null) {   // fast can still take two steps
             slow = slow.next;                  // one step
-            fast = fast.next.next;             // two steps
+            fast = fast.next.next;             // two steps, so inside a loop it gains one node per round
             if (slow == fast) return true;     // same node object, not same value
         }
         return false;                          // fast fell off the end, so there is no loop

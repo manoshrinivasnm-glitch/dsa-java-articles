@@ -12,24 +12,24 @@ public class P625_AddTwoNumbersInLinkedList {
 
     /** Approach 1: convert both lists to a long, add, convert back. Only valid while both numbers have at most 18 digits. O(n + m) time, O(1) extra space. */
     static ListNode bruteForce(ListNode l1, ListNode l2) {
-        long sum = toLong(l1) + toLong(l2);
-        if (sum == 0) return new ListNode(0);
-        ListNode dummy = new ListNode(0), tail = dummy;
-        while (sum > 0) {
-            tail.next = new ListNode((int) (sum % 10));
+        long sum = toLong(l1) + toLong(l2);                // add the two numbers as plain longs
+        if (sum == 0) return new ListNode(0);              // 0 still needs one digit node
+        ListNode dummy = new ListNode(0), tail = dummy;    // dummy anchors the result; tail is its last node
+        while (sum > 0) {                                  // peel digits off from the units end
+            tail.next = new ListNode((int) (sum % 10));    // lowest remaining digit becomes the next node
             tail = tail.next;
-            sum /= 10;
+            sum /= 10;                                     // drop the digit just written
         }
         return dummy.next;
     }
 
     /** Reads a reversed-digit list into a long; refuses inputs that cannot fit. */
     static long toLong(ListNode head) {
-        long value = 0, place = 1;
+        long value = 0, place = 1;                         // place is 1, 10, 100, ... for each next node
         int digits = 0;
-        for (ListNode t = head; t != null; t = t.next) {
+        for (ListNode t = head; t != null; t = t.next) {   // the head is the units digit
             if (++digits > 18) throw new IllegalArgumentException("more than 18 digits: does not fit in a long");
-            value += t.val * place;
+            value += t.val * place;                        // add this digit at its place value
             place *= 10;
         }
         return value;
@@ -37,41 +37,41 @@ public class P625_AddTwoNumbersInLinkedList {
 
     /** Approach 2: walk both lists together, one digit at a time, writing each digit of the result into a new list. O(max(n, m)) time, O(max(n, m)) space for the answer. */
     static ListNode better(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0), tail = dummy;
+        ListNode dummy = new ListNode(0), tail = dummy;    // dummy anchors the result; tail is its last node
         int carry = 0;
-        while (l1 != null || l2 != null || carry != 0) {
+        while (l1 != null || l2 != null || carry != 0) {   // keep going while any digit or carry remains
             int sum = carry;
-            if (l1 != null) { sum += l1.val; l1 = l1.next; }
+            if (l1 != null) { sum += l1.val; l1 = l1.next; }   // a missing digit counts as 0
             if (l2 != null) { sum += l2.val; l2 = l2.next; }
-            tail.next = new ListNode(sum % 10);
+            tail.next = new ListNode(sum % 10);            // write the low digit of this column
             tail = tail.next;
-            carry = sum / 10;
+            carry = sum / 10;                              // carry 1 into the next column if sum >= 10
         }
         return dummy.next;
     }
 
     /** Approach 3: reuse the nodes of l1 for the answer and borrow l2's tail when l2 is longer. O(max(n, m)) time, O(1) extra space (at most one new node). */
     static ListNode optimal(ListNode l1, ListNode l2) {
-        if (l1 == null) return l2;
+        if (l1 == null) return l2;                        // adding to nothing: the other list is the answer
         if (l2 == null) return l1;
-        ListNode head = l1, prev = null;
+        ListNode head = l1, prev = null;                  // the answer is written into l1's nodes; prev trails l1
         int carry = 0;
         while (l1 != null && l2 != null) {                // digits present in both numbers
             int sum = l1.val + l2.val + carry;
-            l1.val = sum % 10;
+            l1.val = sum % 10;                            // overwrite l1's digit with the column result
             carry = sum / 10;
             prev = l1;
             l1 = l1.next;
             l2 = l2.next;
         }
         if (l1 == null) {                                 // l2 is longer: continue on l2's remaining nodes
-            prev.next = l2;
+            prev.next = l2;                               // borrow l2's tail onto the answer
             l1 = l2;
         }
         while (l1 != null && carry != 0) {                // push the carry through the remaining digits
             int sum = l1.val + carry;
             l1.val = sum % 10;
-            carry = sum / 10;
+            carry = sum / 10;                             // once this is 0 the remaining digits stay as they are
             prev = l1;
             l1 = l1.next;
         }

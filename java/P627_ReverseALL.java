@@ -4,24 +4,24 @@ import java.util.*;
 public class P627_ReverseALL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Push every value on a stack, then pop them back into the same nodes front to back. O(n) time, O(n) space. */
     static ListNode bruteForce(ListNode head) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);
-        for (ListNode t = head; t != null; t = t.next) t.val = stack.pop();   // pops come out last-in first-out
+        Deque<Integer> stack = new ArrayDeque<>();                            // values, last one on top
+        for (ListNode t = head; t != null; t = t.next) stack.push(t.val);     // pass 1: save every value
+        for (ListNode t = head; t != null; t = t.next) t.val = stack.pop();   // pass 2: pops come out last-first
         return head;
     }
 
     /** Approach 2: optimal, iterative. Walk the list once and point every node at its predecessor. O(n) time, O(1) space. */
     static ListNode optimalIterative(ListNode head) {
-        ListNode prev = null, current = head;
-        while (current != null) {
+        ListNode prev = null, current = head;   // prev heads the reversed part, current is the next node to flip
+        while (current != null) {               // flip one link per iteration
             ListNode next = current.next;   // remember the rest before cutting the link
             current.next = prev;            // flip the pointer backwards
             prev = current;                 // advance both pointers

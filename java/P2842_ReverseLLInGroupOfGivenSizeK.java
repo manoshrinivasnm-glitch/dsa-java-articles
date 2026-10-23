@@ -13,17 +13,17 @@ public class P2842_ReverseLLInGroupOfGivenSizeK {
     /** Approach 1: copy the values into a list, reverse each full block of k entries, write the values back. O(n) time, O(n) space; node identities are not preserved. */
     static ListNode bruteForce(ListNode head, int k) {
         List<Integer> vals = new ArrayList<>();
-        for (ListNode t = head; t != null; t = t.next) vals.add(t.val);
+        for (ListNode t = head; t != null; t = t.next) vals.add(t.val);   // copy the values out in order
         int n = vals.size();
-        for (int start = 0; start + k <= n; start += k) {
-            for (int i = start, j = start + k - 1; i < j; i++, j--) {
+        for (int start = 0; start + k <= n; start += k) {                 // only full blocks of k are reversed
+            for (int i = start, j = start + k - 1; i < j; i++, j--) {     // swap from both ends of the block inward
                 int tmp = vals.get(i);
                 vals.set(i, vals.get(j));
                 vals.set(j, tmp);
             }
         }
         ListNode t = head;
-        for (int v : vals) { t.val = v; t = t.next; }
+        for (int v : vals) { t.val = v; t = t.next; }                     // write the values back over the nodes
         return head;
     }
 
@@ -31,14 +31,15 @@ public class P2842_ReverseLLInGroupOfGivenSizeK {
     static ListNode better(ListNode head, int k) {
         ListNode node = head;
         int count = 0;
-        while (node != null && count < k) { node = node.next; count++; }
+        while (node != null && count < k) { node = node.next; count++; }   // check that k nodes are left
         if (count < k) return head;                            // fewer than k nodes remain: leave them unchanged
         ListNode restReversed = better(node, k);              // node is the first node of the next block
-        ListNode prev = restReversed, cur = head;
-        for (int i = 0; i < k; i++) {                          // reverse this block; its old first node ends up pointing at the rest
-            ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
+        ListNode prev = restReversed, cur = head;              // starting prev at the rest links the block to it
+        // reverse this block; its old first node ends up pointing at the rest
+        for (int i = 0; i < k; i++) {
+            ListNode next = cur.next;                          // remember the rest before cutting the link
+            cur.next = prev;                                   // flip the pointer backwards
+            prev = cur;                                        // advance both pointers
             cur = next;
         }
         return prev;                                           // the old k-th node is the new first node of the block
@@ -46,9 +47,9 @@ public class P2842_ReverseLLInGroupOfGivenSizeK {
 
     /** Approach 3: iterative. For each block find its k-th node, cut the block off, reverse it, and splice it back between the previous block and the rest. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head, int k) {
-        ListNode dummy = new ListNode(0, head);
-        ListNode prevBlockTail = dummy;
-        while (true) {
+        ListNode dummy = new ListNode(0, head);                          // stays in front of the head as it changes
+        ListNode prevBlockTail = dummy;                                  // last node of the already-processed part
+        while (true) {                                                   // one block per iteration
             ListNode kth = prevBlockTail;
             for (int i = 0; i < k && kth != null; i++) kth = kth.next;   // k-th node of the current block
             if (kth == null) break;                                      // fewer than k nodes remain
@@ -56,21 +57,21 @@ public class P2842_ReverseLLInGroupOfGivenSizeK {
             kth.next = null;                                             // isolate the block
             prevBlockTail.next = reverse(blockStart);                    // kth is now the first node of the block
             blockStart.next = nextBlockStart;                            // the old first node is now the block's tail
-            prevBlockTail = blockStart;
+            prevBlockTail = blockStart;                                  // the next block hangs after this one
         }
-        return dummy.next;
+        return dummy.next;                                               // the real head after all swaps
     }
 
     /** Standard in-place reversal of a whole list. */
     static ListNode reverse(ListNode head) {
-        ListNode prev = null, cur = head;
+        ListNode prev = null, cur = head;   // prev heads the reversed part, cur is the next node to flip
         while (cur != null) {
-            ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
+            ListNode next = cur.next;       // remember the rest before cutting the link
+            cur.next = prev;                // flip the pointer backwards
+            prev = cur;                     // advance both pointers
             cur = next;
         }
-        return prev;
+        return prev;                        // the old tail is the new head
     }
 
     // ---------------------------------------------------------------- helpers

@@ -12,27 +12,28 @@ public class P2843_RotateALL {
 
     /** Approach 1: rotate by one place k times; every single rotation walks to the tail. O(n * k) time, O(1) space. */
     static ListNode bruteForce(ListNode head, int k) {
-        if (head == null || head.next == null) return head;
-        for (int i = 0; i < k; i++) {
+        if (head == null || head.next == null) return head;   // 0 or 1 node: rotating changes nothing
+        for (int i = 0; i < k; i++) {                     // one single-step rotation per iteration
             ListNode secondLast = head;
-            while (secondLast.next.next != null) secondLast = secondLast.next;
+            while (secondLast.next.next != null) secondLast = secondLast.next;   // walk to the node before the tail
             ListNode last = secondLast.next;
             secondLast.next = null;                       // detach the tail node
             last.next = head;                             // and put it in front
-            head = last;
+            head = last;                                  // the old tail is the new head
         }
         return head;
     }
 
     /** Approach 2: copy the values into a list and write them back shifted by k mod n positions. O(n) time, O(n) space. */
     static ListNode better(ListNode head, int k) {
-        if (head == null) return null;
+        if (head == null) return null;                    // nothing to rotate
         List<Integer> vals = new ArrayList<>();
-        for (ListNode t = head; t != null; t = t.next) vals.add(t.val);
-        int n = vals.size(), shift = k % n;
+        for (ListNode t = head; t != null; t = t.next) vals.add(t.val);   // copy the values out in order
+        int n = vals.size(), shift = k % n;               // n rotations restore the list: only k mod n counts
         ListNode t = head;
-        for (int i = 0; i < n; i++) {
-            t.val = vals.get((i - shift + n) % n);        // position i of the result holds position i - shift of the original
+        for (int i = 0; i < n; i++) {                     // rewrite each node front to back
+            // position i of the result holds position i - shift of the original
+            t.val = vals.get((i - shift + n) % n);
             t = t.next;
         }
         return head;
@@ -40,16 +41,17 @@ public class P2843_RotateALL {
 
     /** Approach 3: count the nodes, join the tail to the head to form a ring, then cut the ring after node n - (k mod n). O(n) time, O(1) space. */
     static ListNode optimal(ListNode head, int k) {
-        if (head == null || head.next == null) return head;
-        int n = 1;
+        if (head == null || head.next == null) return head;   // 0 or 1 node: rotating changes nothing
+        int n = 1;                                        // counts head already
         ListNode tail = head;
-        while (tail.next != null) { tail = tail.next; n++; }
-        int shift = k % n;
+        while (tail.next != null) { tail = tail.next; n++; }   // find the tail and the length together
+        int shift = k % n;                                // every n rotations bring the list back
         if (shift == 0) return head;                      // whole turns change nothing
         tail.next = head;                                 // close the ring
         ListNode newTail = head;
-        for (int i = 1; i < n - shift; i++) newTail = newTail.next;    // node number n - shift (1-based) becomes the new tail
-        ListNode newHead = newTail.next;
+        // node number n - shift (1-based) becomes the new tail
+        for (int i = 1; i < n - shift; i++) newTail = newTail.next;
+        ListNode newHead = newTail.next;                  // the node after the new tail starts the rotated list
         newTail.next = null;                              // open the ring again
         return newHead;
     }

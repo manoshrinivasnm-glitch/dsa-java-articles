@@ -4,39 +4,41 @@ import java.util.*;
 public class P628_SegregateOddAndEvenNodesInLinkedList {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Collect the values at odd positions, then at even positions, and write them back over the nodes. O(n) time, O(n) space. */
     static ListNode bruteForce(ListNode head) {
-        List<Integer> values = new ArrayList<>();
-        ListNode t = head;
+        List<Integer> values = new ArrayList<>();    // odd-position values first, then even-position ones
+        ListNode t = head;                           // start on position 1
         while (t != null) {                          // positions 1, 3, 5, ...
             values.add(t.val);
-            t = (t.next == null) ? null : t.next.next;
+            t = (t.next == null) ? null : t.next.next;   // jump two nodes, stopping safely at the end
         }
-        t = (head == null) ? null : head.next;
+        t = (head == null) ? null : head.next;       // start again on position 2
         while (t != null) {                          // positions 2, 4, 6, ...
             values.add(t.val);
             t = (t.next == null) ? null : t.next.next;
         }
-        int i = 0;
+        int i = 0;                                   // next value to write back
+        // overwrite the nodes front to back in the new order
         for (ListNode cur = head; cur != null; cur = cur.next) cur.val = values.get(i++);
         return head;
     }
 
     /** Approach 2: optimal. Grow an odd chain and an even chain by re-linking the existing nodes, then attach the even chain after the odd one. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null) return head;   // 0 or 1 node: already segregated
+        // odd and even are the tails of the two chains; evenHead is kept to join them at the end
         ListNode odd = head, even = head.next, evenHead = head.next;
-        while (even != null && even.next != null) {
+        while (even != null && even.next != null) {           // another odd node still follows even
             odd.next = even.next;        // the next odd node sits right after the current even one
-            odd = odd.next;
+            odd = odd.next;              // move the odd tail forward
             even.next = odd.next;        // the next even node sits right after the new odd one
-            even = even.next;
+            even = even.next;            // move the even tail forward
         }
         odd.next = evenHead;             // odd chain is complete; hang the even chain after it
         return head;

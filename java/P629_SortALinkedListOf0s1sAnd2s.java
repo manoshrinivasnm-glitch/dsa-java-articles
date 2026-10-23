@@ -4,41 +4,42 @@ import java.util.*;
 public class P629_SortALinkedListOf0s1sAnd2s {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force, counting. Count how many 0s, 1s and 2s there are, then overwrite the values front to back. Two passes. O(n) time, O(1) space. */
     static ListNode bruteForce(ListNode head) {
-        int zeros = 0, ones = 0, twos = 0;
-        for (ListNode t = head; t != null; t = t.next) {
+        int zeros = 0, ones = 0, twos = 0;                 // how many of each value the list holds
+        for (ListNode t = head; t != null; t = t.next) {   // pass 1: count
             if (t.val == 0) zeros++;
             else if (t.val == 1) ones++;
             else twos++;
         }
-        for (ListNode t = head; t != null; t = t.next) {
-            if (zeros > 0) { t.val = 0; zeros--; }
-            else if (ones > 0) { t.val = 1; ones--; }
-            else t.val = 2;
+        for (ListNode t = head; t != null; t = t.next) {   // pass 2: rewrite values in sorted order
+            if (zeros > 0) { t.val = 0; zeros--; }         // all the 0s go first
+            else if (ones > 0) { t.val = 1; ones--; }      // then the 1s
+            else t.val = 2;                                // the rest are 2s
         }
         return head;
     }
 
     /** Approach 2: optimal, re-linking. Thread the nodes onto three chains (0s, 1s, 2s) in one pass, then join the chains. O(n) time, O(1) space, no values are changed. */
     static ListNode optimal(ListNode head) {
+        // one placeholder head per chain, so appending never needs an empty-chain check
         ListNode zeroDummy = new ListNode(-1), oneDummy = new ListNode(-1), twoDummy = new ListNode(-1);
-        ListNode zero = zeroDummy, one = oneDummy, two = twoDummy;
-        for (ListNode t = head; t != null; t = t.next) {
-            if (t.val == 0) { zero.next = t; zero = t; }
-            else if (t.val == 1) { one.next = t; one = t; }
-            else { two.next = t; two = t; }
+        ListNode zero = zeroDummy, one = oneDummy, two = twoDummy;            // current tail of each chain
+        for (ListNode t = head; t != null; t = t.next) {                      // one pass over the original list
+            if (t.val == 0) { zero.next = t; zero = t; }                      // append to the 0-chain
+            else if (t.val == 1) { one.next = t; one = t; }                   // append to the 1-chain
+            else { two.next = t; two = t; }                                   // append to the 2-chain
         }
         zero.next = (oneDummy.next != null) ? oneDummy.next : twoDummy.next;   // skip the 1-chain if it is empty
-        one.next = twoDummy.next;
+        one.next = twoDummy.next;                                              // 1s are followed by the 2s
         two.next = null;                                                        // the last 2 (or the last node overall) ends the list
-        return zeroDummy.next;
+        return zeroDummy.next;                                                 // first real node of the joined list
     }
 
     // ---------------------------------------------------------------- helpers

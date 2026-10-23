@@ -4,30 +4,30 @@ import java.util.*;
 public class P2846_FindTheIntersectionPointOfYLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node; tails may be shared
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. For every node of A, scan all of B looking for the same node object. O(m * n) time, O(1) space. */
     static ListNode bruteForce(ListNode headA, ListNode headB) {
-        for (ListNode a = headA; a != null; a = a.next) {
-            for (ListNode b = headB; b != null; b = b.next) {
+        for (ListNode a = headA; a != null; a = a.next) {       // try each node of A in order
+            for (ListNode b = headB; b != null; b = b.next) {   // look for that very node anywhere in B
                 if (a == b) return a;              // identity, not value
             }
         }
-        return null;
+        return null;                               // no shared node: the lists do not meet
     }
 
     /** Approach 2: better. Put every node of A in a hash set; the first node of B that is in the set is the intersection. O(m + n) time, O(m) space. */
     static ListNode better(ListNode headA, ListNode headB) {
-        Set<ListNode> nodesOfA = new HashSet<>();
+        Set<ListNode> nodesOfA = new HashSet<>();                          // every node object of list A
         for (ListNode a = headA; a != null; a = a.next) nodesOfA.add(a);
-        for (ListNode b = headB; b != null; b = b.next) {
-            if (nodesOfA.contains(b)) return b;
+        for (ListNode b = headB; b != null; b = b.next) {                  // walk B from its head
+            if (nodesOfA.contains(b)) return b;                            // first shared node is where they join
         }
-        return null;
+        return null;                                                       // no shared node
     }
 
     /** Approach 3: optimal via lengths. Advance the longer list by the length difference, then walk both together until they coincide. O(m + n) time, O(1) space. */
@@ -35,9 +35,9 @@ public class P2846_FindTheIntersectionPointOfYLL {
         int lenA = length(headA), lenB = length(headB);
         ListNode a = headA, b = headB;
         for (int i = 0; i < lenA - lenB; i++) a = a.next;    // only one of these two loops actually runs
-        for (int i = 0; i < lenB - lenA; i++) b = b.next;
+        for (int i = 0; i < lenB - lenA; i++) b = b.next;    // it skips the extra nodes of the longer list
         while (a != b) {                                     // both now have the same number of nodes left
-            a = a.next;
+            a = a.next;                                      // step both in lockstep
             b = b.next;
         }
         return a;                                            // the meeting node, or null when both ran off the end
@@ -45,16 +45,16 @@ public class P2846_FindTheIntersectionPointOfYLL {
 
     static int length(ListNode head) {
         int n = 0;
-        for (ListNode t = head; t != null; t = t.next) n++;
+        for (ListNode t = head; t != null; t = t.next) n++;   // count every node up to null
         return n;
     }
 
     /** Approach 4: optimal, two pointers that switch lists. Each pointer walks A then B (or B then A), so both cover m + n steps and arrive aligned. O(m + n) time, O(1) space. */
     static ListNode optimalTwoPointer(ListNode headA, ListNode headB) {
         ListNode a = headA, b = headB;
-        while (a != b) {
+        while (a != b) {                         // stops at the shared node, or when both are null
             a = (a == null) ? headB : a.next;    // when a list ends, jump to the head of the other one
-            b = (b == null) ? headA : b.next;
+            b = (b == null) ? headA : b.next;    // same for b, so both walk m + n nodes in total
         }
         return a;                                // the intersection, or null when both are null together
     }

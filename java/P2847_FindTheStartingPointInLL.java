@@ -4,34 +4,34 @@ import java.util.*;
 public class P2847_FindTheStartingPointInLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node; a loop points back to an earlier one
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     /** Approach 1: brute force. Remember every node visited; the first node seen a second time is where the loop starts. O(n) time, O(n) space. */
     static ListNode bruteForce(ListNode head) {
-        Set<ListNode> seen = new HashSet<>();
-        for (ListNode t = head; t != null; t = t.next) {
+        Set<ListNode> seen = new HashSet<>();  // every node visited so far (by identity)
+        for (ListNode t = head; t != null; t = t.next) {   // walk forward until null or a repeat
             if (!seen.add(t)) return t;        // add returns false for a node object already in the set
         }
-        return null;
+        return null;                           // reached the end: no loop
     }
 
     /** Approach 2: optimal, Floyd's algorithm. Once slow and fast meet, a pointer from head and the slow pointer, both moving one step, meet at the loop's first node. O(n) time, O(1) space. */
     static ListNode optimal(ListNode head) {
-        ListNode slow = head, fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        ListNode slow = head, fast = head;     // tortoise and hare both start at the head
+        while (fast != null && fast.next != null) {   // fast can still take two steps
+            slow = slow.next;                  // one step
+            fast = fast.next.next;             // two steps
             if (slow == fast) {                // a loop exists; now locate its entry
-                ListNode entry = head;
+                ListNode entry = head;         // head is as far from the entry as slow is, going round
                 while (entry != slow) {        // both advance one step at a time
                     entry = entry.next;
                     slow = slow.next;
                 }
-                return entry;
+                return entry;                  // the node where they meet is the start of the loop
             }
         }
         return null;                           // fast reached the end: no loop

@@ -4,8 +4,8 @@ import java.util.*;
 public class P2849_RemoveNthNodeFromTheBackOfTheLL {
 
     static class ListNode {
-        int val;
-        ListNode next;
+        int val;                                         // the value stored in this node
+        ListNode next;                                   // the following node, or null at the tail
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
@@ -13,27 +13,27 @@ public class P2849_RemoveNthNodeFromTheBackOfTheLL {
     /** Approach 1: brute force, two passes. Count the nodes; the target is index len - n from the front, so walk to the node before it and unlink. O(len) time, O(1) space. */
     static ListNode bruteForce(ListNode head, int n) {
         int len = 0;
-        for (ListNode t = head; t != null; t = t.next) len++;
+        for (ListNode t = head; t != null; t = t.next) len++;   // pass 1: count the nodes
         if (n <= 0 || n > len) return head;          // nothing sensible to remove
         if (n == len) return head.next;              // the target is the head itself
         ListNode t = head;
         for (int i = 0; i < len - n - 1; i++) t = t.next;   // t is now the node just before the target
-        t.next = t.next.next;
+        t.next = t.next.next;                        // skip over the target to unlink it
         return head;
     }
 
     /** Approach 2: optimal, one pass. Move fast n steps ahead, then move slow and fast together until fast is on the last node; slow then sits just before the target. O(len) time, O(1) space. */
     static ListNode optimal(ListNode head, int n) {
-        if (n <= 0) return head;
+        if (n <= 0) return head;                     // no such position: leave the list alone
         ListNode fast = head;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {                // put fast n nodes ahead of head
             if (fast == null) return head;           // n is larger than the length: nothing to remove
             fast = fast.next;
         }
         if (fast == null) return head.next;          // the gap spans the whole list, so the head is the target
-        ListNode slow = head;
+        ListNode slow = head;                        // trails fast by exactly n nodes
         while (fast.next != null) {                  // stop when fast stands on the last node
-            slow = slow.next;
+            slow = slow.next;                        // move both, keeping the gap fixed
             fast = fast.next;
         }
         slow.next = slow.next.next;                  // unlink the target

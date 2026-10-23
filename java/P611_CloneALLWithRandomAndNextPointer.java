@@ -11,20 +11,20 @@ public class P611_CloneALLWithRandomAndNextPointer {
 
     /** Approach 1: copy values and next pointers, then resolve each random by position: find the index of the target in the original list and walk to the same index in the copy. O(n^2) time, O(1) extra space beyond the copy. */
     static Node bruteForce(Node head) {
-        if (head == null) return null;
+        if (head == null) return null;                                     // empty list: nothing to copy
         Node copyHead = new Node(head.val), copyTail = copyHead;          // pass 1: values and next pointers
         for (Node t = head.next; t != null; t = t.next) {
-            copyTail.next = new Node(t.val);
+            copyTail.next = new Node(t.val);                               // append a copy of t
             copyTail = copyTail.next;
         }
         Node orig = head, copy = copyHead;                                 // pass 2: random pointers by position
-        while (orig != null) {
-            if (orig.random != null) {
+        while (orig != null) {                                             // orig and copy move in step
+            if (orig.random != null) {                                     // a null random stays null in the copy
                 int pos = 0;
                 for (Node t = head; t != orig.random; t = t.next) pos++;   // index of the random target in the original list
                 Node target = copyHead;
                 for (int i = 0; i < pos; i++) target = target.next;        // the node at the same index in the copy
-                copy.random = target;
+                copy.random = target;                                      // point at the copy, never the original
             }
             orig = orig.next;
             copy = copy.next;
@@ -34,32 +34,32 @@ public class P611_CloneALLWithRandomAndNextPointer {
 
     /** Approach 2: a hash map from original node to its copy. Pass 1 creates the copies, pass 2 wires next and random through the map. O(n) time, O(n) space. */
     static Node better(Node head) {
-        Map<Node, Node> copyOf = new HashMap<>();
-        for (Node t = head; t != null; t = t.next) copyOf.put(t, new Node(t.val));
-        for (Node t = head; t != null; t = t.next) {
+        Map<Node, Node> copyOf = new HashMap<>();                                    // original node -> its copy
+        for (Node t = head; t != null; t = t.next) copyOf.put(t, new Node(t.val));   // pass 1: make every copy
+        for (Node t = head; t != null; t = t.next) {                                 // pass 2: wire the copies
             Node copy = copyOf.get(t);
             copy.next = copyOf.get(t.next);          // get(null) is null, so the tail needs no special case
-            copy.random = copyOf.get(t.random);
+            copy.random = copyOf.get(t.random);      // the copy of whatever t.random points at
         }
-        return copyOf.get(head);
+        return copyOf.get(head);                     // the copy of the head (null for an empty list)
     }
 
     /** Approach 3: interleave each copy right after its original (A, A', B, B', ...), set every copy's random to original.random.next, then unzip the two lists. O(n) time, O(1) extra space. */
     static Node optimal(Node head) {
-        if (head == null) return null;
+        if (head == null) return null;                           // empty list: nothing to copy
         for (Node t = head; t != null; t = t.next.next) {        // step 1: insert a copy after every original
             Node copy = new Node(t.val);
-            copy.next = t.next;
-            t.next = copy;
+            copy.next = t.next;                                  // copy points where t used to
+            t.next = copy;                                       // t now points at its copy
         }
         for (Node t = head; t != null; t = t.next.next) {        // step 2: the copy's random is the copy of the original's random
-            if (t.random != null) t.next.random = t.random.next;
+            if (t.random != null) t.next.random = t.random.next; // t.random.next is the copy of t.random
         }
-        Node copyHead = head.next;
+        Node copyHead = head.next;                               // the first copy heads the cloned list
         for (Node t = head; t != null; t = t.next) {             // step 3: separate the two lists, restoring the original
-            Node copy = t.next;
-            t.next = copy.next;
-            copy.next = (copy.next != null) ? copy.next.next : null;
+            Node copy = t.next;                                  // t's copy sits right after it
+            t.next = copy.next;                                  // original skips its copy
+            copy.next = (copy.next != null) ? copy.next.next : null;   // copy skips the next original
         }
         return copyHead;
     }
